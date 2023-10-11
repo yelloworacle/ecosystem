@@ -1,30 +1,35 @@
-*{padding:0px; margin:0px;}
+* {
+    padding: 0px;
+    margin: 0px;
+}
 
-*, *:before, *:after {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
-  }
-  
+}
+
 body {
-  background-color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  color: #505050;
-  font-weight: 100;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-  }
-  
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    color: #505050;
+    font-weight: 100;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+}
+
 a {
-  text-decoration: none;
-  cursor: pointer;
-  align-items: center;
-  color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    align-items: center;
+    color: inherit;
 }
 
 html {
@@ -49,6 +54,13 @@ nav {
 main {
     width: 100%;
     height: calc(100% - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,8 +118,9 @@ h1 {
         width: 100%;
     }
 }
-.show[selected]{
-    display:block!important;
+
+.show[selected] {
+    display: block !important;
 }
 
 [hidden] {
@@ -116,15 +129,15 @@ h1 {
 
 .button-round {
     position: absolute;
-    bottom:15px;
-    right:15px; 
+    bottom: 15px;
+    right: 15px;
     border: 2px solid #007bff;
     background-color: #f0f0f0;
-    color: #007bff;            
-    border-radius:50%; 
-    padding:15px; 
-    width:50px; 
-    height:50px;
+    color: #007bff;
+    border-radius: 50%;
+    padding: 15px;
+    width: 50px;
+    height: 50px;
 }
 
 .button-round:hover {
@@ -143,12 +156,12 @@ h1 {
 }
 
 sidenav {
-    position: fixed; 
-    top: 0px; 
-    left: 0px; 
-    overflow: hidden; 
-    background: whitesmoke; 
-    height: 100vh; 
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    background: whitesmoke;
+    height: 100vh;
     width: 0px;
     z-index: 10;
 }
@@ -167,15 +180,15 @@ sidenav ul li {
     justify-content: space-between;
     width: 100%;
     line-height: 40px;
-    height:40px;
-    overflow:hidden;
-    white-space:nowrap;
+    height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 sidenav ul li:hover {
     background: lightgray;
 }
 
-[sidenav="open"] sidenav{
+[sidenav="open"] sidenav {
     width: 270px
 }
