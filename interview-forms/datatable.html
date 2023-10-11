@@ -25,9 +25,9 @@
                         pass_id="datatable">
                         <i
                             toggle-attribute="src"
-                            toggle-value="/assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+                            toggle-value="./assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
                             class="display:flex height:18px fill:#505050"
-                            src="/assets/svg/sort.svg"></i>
+                            src="./assets/svg/sort.svg"></i>
                     </a>
                 </span>
             </td>
@@ -53,9 +53,9 @@
                         pass_id="datatable">
                         <i
                             toggle-attribute="src"
-                            toggle-value="/assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+                            toggle-value="./assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
                             class="display:flex height:18px fill:#505050"
-                            src="/assets/svg/sort.svg"></i>
+                            src="./assets/svg/sort.svg"></i>
                     </a>
                 </span>
             </td>
@@ -63,8 +63,7 @@
 
         <tbody
             array="interviews"
-            filter-sort-key="name"
-            filter-sort-direction="asc"
+            object
             render-selector="[template]">
             <tr
                 class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
@@ -100,6 +99,6 @@
         pass-src="./interviews/form.html"
         pass-refresh
         class="button-round">
-        <i src="/assets/svg/plus.svg"></i>
+        <i src="./assets/svg/plus.svg"></i>
     </button>
 </div>
