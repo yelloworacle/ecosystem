@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <div class="main-view">
     <table class="width:100% border-collapse:collapse">
-        <tr class="border-bottom:1px_solid_darkgray">
-            <td
-                class="position:sticky top:0 background:white padding:0px_10px_10px">
-                <floating-label>
-                    <input
-                        type="text"
-                        filter-selector="document; tbody tr[template]"
-                        filter-key="name"
-                        pass_id="datatable"
-                        placeholder="Name"
-                        class="floating-label" />
-                </floating-label>
-                <span
-                    class="position:absolute bottom:20px right:20px float:right z-index:6">
-                    <a
-                        filter-selector="document; tbody tr[template]"
-                        filter-sort-key="name"
-                        filter-sort-direction="asc"
-                        click-value="desc, asc"
-                        click-attribute="filter-sort-direction"
-                        pass_id="datatable">
-                        <i
-                            toggle-attribute="src"
-                            toggle-value="./assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
-                            class="display:flex height:18px fill:#505050"
-                            src="./assets/svg/sort.svg"></i>
-                    </a>
-                </span>
-            </td>
-            <td
-                class="position:sticky top:0 background:white padding:0px_10px_10px">
-                <floating-label>
-                    <input
-                        type="text"
-                        filter-selector="document; tbody tr[template]"
-                        filter-key="_id"
-                        pass_id="datatable"
-                        placeholder="Document_id"
-                        class="floating-label" />
-                </floating-label>
-                <span
-                    class="position:absolute bottom:20px right:20px float:right z-index:6">
-                    <a
-                        filter-selector="document; tbody tr[template]"
-                        filter-sort-key="_id"
-                        filter-sort-direction=""
-                        click-value="desc, asc"
-                        click-attribute="filter-sort-direction"
-                        pass_id="datatable">
-                        <i
-                            toggle-attribute="src"
-                            toggle-value="./assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
-                            class="display:flex height:18px fill:#505050"
-                            src="./assets/svg/sort.svg"></i>
-                    </a>
-                </span>
-            </td>
-        </tr>
+        <tbody>
+            <tr class="border-bottom:1px_solid_darkgray">
+                <td
+                    class="position:sticky top:0 background:white padding:0px_10px_10px">
+                    <floating-label>
+                        <input
+                            type="text"
+                            filter-selector="document; tbody[render-selector]"
+                            filter-key="name"
+                            pass_id="datatable"
+                            placeholder="Name"
+                            class="floating-label" />
+                    </floating-label>
+                    <span
+                        class="position:absolute bottom:20px right:20px float:right z-index:6">
+                        <a
+                            filter-selector="document; tbody[render-selector]"
+                            filter-sort-key="name"
+                            filter-sort-direction="asc"
+                            click-value="desc, asc"
+                            click-attribute="filter-sort-direction"
+                            pass_id="datatable">
+                            <i
+                                toggle-attribute="src"
+                                toggle-value="./assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+                                class="display:flex height:18px fill:#505050"
+                                src="./assets/svg/sort.svg"></i>
+                        </a>
+                    </span>
+                </td>
+                <td
+                    class="position:sticky top:0 background:white padding:0px_10px_10px">
+                    <floating-label>
+                        <input
+                            type="text"
+                            filter-selector="document; tbody[render-selector]"
+                            filter-key="_id"
+                            pass_id="datatable"
+                            placeholder="Document_id"
+                            class="floating-label" />
+                    </floating-label>
+                    <span
+                        class="position:absolute bottom:20px right:20px float:right z-index:6">
+                        <a
+                            filter-selector="document; tbody[render-selector]"
+                            filter-sort-key="_id"
+                            filter-sort-direction=""
+                            click-value="desc, asc"
+                            click-attribute="filter-sort-direction"
+                            pass_id="datatable">
+                            <i
+                                toggle-attribute="src"
+                                toggle-value="./assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+                                class="display:flex height:18px fill:#505050"
+                                src="./assets/svg/sort.svg"></i>
+                        </a>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
 
         <tbody
             array="interviews"
@@ -70,7 +72,8 @@
                 class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
                 template
                 object="{{object._id}}"
-                toggle="selected">
+                toggle="selected"
+                render="object">
                 <td
                     class="padding:5px display:flex min-width:200px align-items:center">
                     <div>
@@ -80,6 +83,9 @@
                             pass-src="./interviews/form.html"
                             pass-refresh>
                             <h4>{{object.firstname}} {{object.lastname}}</h4>
+                            <div
+                                pass_to="form-fields"
+                                pass-object="{{object._id}}"></div>
                         </a>
                         <h5>{{object.email}}</h5>
                     </div>
@@ -104,5 +110,6 @@
         pass-refresh
         class="button-round">
         <i src="./assets/svg/plus.svg"></i>
+        <div pass_to="form-fields" pass-object="" pass-refresh></div>
     </button>
 </div>

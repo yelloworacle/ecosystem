@@ -8,8 +8,8 @@
                 <floating-label>
                     <input
                         type="text"
+                        filter-selector="document; tbody[render-selector]"
                         filter-key="name"
-                        filter-selector=""
                         pass_id="datatable"
                         placeholder="Form Name"
                         class="floating-label" />
@@ -17,11 +17,11 @@
                 <span
                     class="position:absolute bottom:20px right:20px float:right z-index:6">
                     <a
+                        filter-selector="document; tbody[render-selector]"
                         filter-sort-key="name"
                         filter-sort-direction="asc"
                         click-value="desc, asc"
                         click-attribute="filter-sort-direction"
-                        filter-selector=""
                         pass_id="datatable">
                         <i
                             toggle-attribute="src"
@@ -36,8 +36,8 @@
                 <floating-label>
                     <input
                         type="text"
+                        filter-selector="document; tbody[render-selector]"
                         filter-key="_id"
-                        filter-selector=""
                         pass_id="datatable"
                         placeholder="Object_id"
                         class="floating-label" />
@@ -45,11 +45,11 @@
                 <span
                     class="position:absolute bottom:20px right:20px float:right z-index:6">
                     <a
+                        filter-selector="document; tbody[render-selector]"
                         filter-sort-key="_id"
                         filter-sort-direction=""
                         click-value="desc, asc"
                         click-attribute="filter-sort-direction"
-                        filter-selector=""
                         pass_id="datatable">
                         <i
                             toggle-attribute="src"
@@ -61,13 +61,11 @@
             </td>
         </tr>
 
-        <tbody
-            array="interviews"
-            object
-            render-selector="[template]">
+        <tbody array="interview-forms" object render-selector="[template]">
             <tr
                 class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
-                templat
+                template
+                render="object"
                 object="{{object._id}}"
                 toggle="selected">
                 <td
@@ -100,5 +98,6 @@
         pass-refresh
         class="button-round">
         <i src="./assets/svg/plus.svg"></i>
+        <div pass_to="form-fields" pass-object="" pass-refresh></div>
     </button>
 </div>
