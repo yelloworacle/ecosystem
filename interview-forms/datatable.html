@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 
 <div class="main-view">
+    <div
+        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
+        <a
+            actions="pass"
+            pass_to="main"
+            pass-src="./interview-forms/datatable.html"
+            pass-overwrite
+            class="padding:0px_10px"
+            ><i
+                class="height:20px fill:#505050"
+                src="./assets/svg/angle-left.svg"></i
+        ></a>
+        <div
+            class="display:flex align-items:center transition:0.3s"
+            hover="display:block!important"
+            hover-selector=".options">
+            <div class="display:none options">
+                <a
+                    actions="delete, pass"
+                    array="interviews"
+                    object=""
+                    pass_to="main"
+                    pass-src="./interview-forms/datatable.html"
+                    pass-overwrite
+                    class="padding:0px_10px">
+                    <i
+                        class="height:18px fill:#505050"
+                        src="./assets/svg/trash-alt.svg"></i>
+                </a>
+            </div>
+            <a class="padding:0px_10px"
+                ><i
+                    class="height:20px fill:#505050"
+                    src="./assets/svg/ellipsis-v.svg"></i
+            ></a>
+        </div>
+    </div>
+
     <table class="width:100% border-collapse:collapse">
         <tr class="border-bottom:1px_solid_darkgray">
             <td
@@ -25,7 +63,7 @@
                         pass_id="datatable">
                         <i
                             toggle-attribute="src"
-                            toggle-value="./assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+                            toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
                             class="display:flex height:18px fill:#505050"
                             src="./assets/svg/sort.svg"></i>
                     </a>
@@ -53,7 +91,7 @@
                         pass_id="datatable">
                         <i
                             toggle-attribute="src"
-                            toggle-value="./assets/svg/sort-down.svg, /assets/svg/sort-up.svg"
+                            toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
                             class="display:flex height:18px fill:#505050"
                             src="./assets/svg/sort.svg"></i>
                     </a>
@@ -68,23 +106,28 @@
                 render="object"
                 object="{{object._id}}"
                 toggle="selected">
-                <td
-                    class="padding:5px display:flex min-width:200px align-items:center">
-                    <div>
-                        <a
-                            actions="pass"
-                            pass_to="main"
-                            pass-src="./interviews/form.html">
-                            <h4>{{object.name}}</h4>
-                        </a>
-                    </div>
+                <td class="padding:10px">
+                    <a
+                        actions="pass"
+                        pass_to="main"
+                        pass-src="./interview-forms/form.html"
+                        pass-overwrite>
+                        <h4>{{object.name}}</h4>
+                        <div
+                            pass_to="form-fields"
+                            pass-object="{{object._id}}"></div>
+                    </a>
                 </td>
                 <td class="padding:10px">
                     <a
                         actions="pass"
                         pass_to="main"
-                        pass-src="./interviews/form.html">
+                        pass-src="./interview-forms/form.html"
+                        pass-overwrite>
                         <b>{{object._id}}</b>
+                        <div
+                            pass_to="form-fields"
+                            pass-object="{{object._id}}"></div>
                     </a>
                 </td>
             </tr>
