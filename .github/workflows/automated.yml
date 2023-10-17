@@ -1,0 +1,20 @@
+name: Automated
+"on":
+  push:
+    branches:
+      - master
+jobs:
+  about:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: setup nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Jaid/action-sync-node-meta
+        uses: jaid/action-sync-node-meta@v1.4.0
+        with:
+          direction: overwrite-github
+          githubToken: "${{ secrets.GITHUB }}"
