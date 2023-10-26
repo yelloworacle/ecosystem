@@ -80,6 +80,13 @@ h1 {
     color: #007bff;
 }
 
+.menu_icon {
+    position: fixed;
+    left: 15px;
+    top: 25px;
+    z-index: 11
+}
+
 .button-container {
     display: flex;
     flex-wrap: wrap;
@@ -102,7 +109,7 @@ h1 {
 }
 
 .button.question {
-    width: 400px;
+    flex-grow: 1;
     min-width: 100px;
     max-width: 600px;
     font-size: 20px;
