@@ -10,7 +10,15 @@
             type="text/css"
             href="https://cdn.cocreate.app/latest/CoCreate.min.css" />
 
-        <link rel="stylesheet" href="./index.css" type="text/css" parse />
+        <link
+            rel="stylesheet"
+            href="./index.css"
+            array="files"
+            object="65395d6f6ebd31be4c4349b2"
+            key="{}"
+            type="text/css"
+            parse="true" />
+
         <link rel="manifest" href="/manifest.webmanifest" />
     </head>
     <style>
@@ -37,6 +45,12 @@
         .selected {
             background-color: gainsboro;
         }
+        .menu_icon {
+            position: fixed;
+            left: 15px;
+            top: 25px;
+            z-index: 11;
+        }
     </style>
     <body>
         <a href="./signin.html" session="false" hidden></a>
@@ -52,7 +66,6 @@
 
         <!-- Menu Icon -->
         <a
-            style="position: fixed; left: 15px; top: 25px; z-index: 11"
             actions=""
             class="menu_icon"
             click="active"
@@ -124,13 +137,25 @@
                     </div>
                 </li>
             </ul>
+            <div
+                class="line-height:40px height:40px overflow:hidden white-space:nowrap position:absolute bottom:0px background:gainsboro width:100%">
+                <a
+                    actions="signOut"
+                    href="./signin.html"
+                    class="display:flex align-items:center">
+                    <span
+                        class="display:flex justify-content:center min-width:50px">
+                        <i
+                            class="display:flex height:16px fill:#505050"
+                            src="./assets/svg/sign-out-alt.svg"></i>
+                    </span>
+                    <span>Sign Out</span>
+                </a>
+            </div>
         </sidenav>
 
         <main pass_id="main" src="./interviews/datatable.html"></main>
 
-        <!-- <script src="https://CoCreate.app/dist/CoCreate.min.js"></script> -->
-        <script src="http://CoCreate.app/dist/CoCreate.js"></script>
-
-        <!-- <script src="/CoCreateJS/dist/CoCreate.min.js"></script> -->
+        <script src="https://CoCreate.app/dist/CoCreate.js"></script>
     </body>
 </html>
