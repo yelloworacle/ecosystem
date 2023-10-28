@@ -1,7 +1,7 @@
 {
-    "short_name": "CoCreate",
-    "name": "CoCreate",
-    "description": "Build your business in miutes",
+    "short_name": "OracleAI",
+    "name": "OracleAI",
+    "description": "OracleAI",
     "protocol_handlers": [
         {
           "protocol": "web+jngl",
