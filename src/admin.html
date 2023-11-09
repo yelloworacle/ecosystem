@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CareerCall | CareerCalling | professionalCalling</title>
+        <title>OracleAi</title>
 
         <link
             rel="stylesheet"
@@ -57,7 +57,12 @@
 
         <nav>
             <!-- Icon Logo -->
-            <a href="./" class="">
+            <a
+                actions="pass"
+                pass_to="main"
+                pass-src="./oracle/index.html"
+                href="./"
+                class="height:50px padding:5px_12px">
                 <span class="logo-name"
                     >Oracle<span class="logo-name-colored">AI</span></span
                 >
@@ -84,7 +89,7 @@
                     <a
                         actions="pass, action(document; .menu_icon)"
                         pass_to="main"
-                        pass-src="./interviews/datatable.html"
+                        pass-src="./questions/datatable.html"
                         pass-overwrite
                         class="display:flex align-items:center">
                         <span
@@ -92,6 +97,62 @@
                             <i
                                 class="display:flex height:16px fill:#505050"
                                 src="./assets/svg/users.svg"></i>
+                        </span>
+                        <span>Users</span>
+                    </a>
+                    <div class="float:right width:50px text-align:center">
+                        <a
+                            actions="pass, action(document; .menu_icon)"
+                            pass_to="main"
+                            pass-src="./questions/form.html"
+                            pass-overwrite
+                            class="display:flex justify-content:center align-items:center height:40px">
+                            <i
+                                class="display:flex height:18px fill:#505050"
+                                src="./assets/svg/plus.svg"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="">
+                    <a
+                        actions="pass, action(document; .menu_icon)"
+                        pass_to="main"
+                        pass-src="./questions/datatable.html"
+                        pass-overwrite
+                        class="display:flex align-items:center">
+                        <span
+                            class="display:flex justify-content:center min-width:50px">
+                            <i
+                                class="display:flex height:16px fill:#505050"
+                                src="./assets/svg/circle-question.svg"></i>
+                        </span>
+                        <span>Questions</span>
+                    </a>
+                    <div class="float:right width:50px text-align:center">
+                        <a
+                            actions="pass, action(document; .menu_icon)"
+                            pass_to="main"
+                            pass-src="./questions/form.html"
+                            pass-overwrite
+                            class="display:flex justify-content:center align-items:center height:40px">
+                            <i
+                                class="display:flex height:18px fill:#505050"
+                                src="./assets/svg/plus.svg"></i>
+                        </a>
+                    </div>
+                </li>
+                <li class="">
+                    <a
+                        actions="pass, action(document; .menu_icon)"
+                        pass_to="main"
+                        pass-src="./interviews/datatable.html"
+                        pass-overwrite
+                        class="display:flex align-items:center">
+                        <span
+                            class="display:flex justify-content:center min-width:50px">
+                            <i
+                                class="display:flex height:16px fill:#505050"
+                                src="./assets/svg/clipboard-question.svg"></i>
                         </span>
                         <span>Interviews</span>
                     </a>
@@ -155,7 +216,7 @@
             </div>
         </sidenav>
 
-        <main pass_id="main" src="./interviews/datatable.html"></main>
+        <main pass_id="main" src="./users/datatable.html"></main>
 
         <script src="./dist/CoCreate.js"></script>
     </body>
