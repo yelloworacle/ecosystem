@@ -8,19 +8,20 @@
             <div class="input-container">
                 <label for="job-dislikes"
                     >We will ask a series of questions, with each answer the
-                    karma bar will increase. When the your karma reaches its max
+                    karma bar will increase. When your karma reaches its max
                     potential OracleAI will work its magic.</label
                 >
                 <div class="position:relative">
                     <input
-                        id="job-dislikes"
+                        id="question"
                         type="text"
+                        array="users"
                         object=""
                         key="jobDislikes" />
                     <div class="progress-bar">
                         <div class="progress" style="width: 50%"></div>
                     </div>
-                    <span class="position:absolute bottom:12px right:6px">
+                    <span class="position:absolute bottom:12px right:8px">
                         <a actions="save, reset">
                             <i
                                 class="display:flex height:20px"
