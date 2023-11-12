@@ -59,7 +59,7 @@
             <!-- Icon Logo -->
             <a
                 actions="pass"
-                pass_to="main"
+                pass_to="adminView"
                 pass-src="./oracle/index.html"
                 href="./"
                 class="height:50px padding:5px_12px">
@@ -88,7 +88,7 @@
                 <li class="">
                     <a
                         actions="pass, action(document; .menu_icon)"
-                        pass_to="main"
+                        pass_to="adminView"
                         pass-src="./users/datatable.html"
                         class="display:flex align-items:center">
                         <span
@@ -102,7 +102,7 @@
                     <div class="float:right width:50px text-align:center">
                         <a
                             actions="pass, action(document; .menu_icon)"
-                            pass_to="main"
+                            pass_to="adminView"
                             pass-src="./users/form.html"
                             class="display:flex justify-content:center align-items:center height:40px">
                             <i
@@ -114,7 +114,7 @@
                 <li class="">
                     <a
                         actions="pass, action(document; .menu_icon)"
-                        pass_to="main"
+                        pass_to="adminView"
                         pass-src="./questions/datatable.html"
                         class="display:flex align-items:center">
                         <span
@@ -128,7 +128,7 @@
                     <div class="float:right width:50px text-align:center">
                         <a
                             actions="pass, action(document; .menu_icon)"
-                            pass_to="main"
+                            pass_to="adminView"
                             pass-src="./questions/form.html"
                             class="display:flex justify-content:center align-items:center height:40px">
                             <i
@@ -140,7 +140,7 @@
                 <li class="">
                     <a
                         actions="pass, action(document; .menu_icon)"
-                        pass_to="main"
+                        pass_to="adminView"
                         pass-src="./interviews/datatable.html"
                         pass-overwrite
                         class="display:flex align-items:center">
@@ -155,7 +155,7 @@
                     <div class="float:right width:50px text-align:center">
                         <a
                             actions="pass, action(document; .menu_icon)"
-                            pass_to="main"
+                            pass_to="adminView"
                             pass-src="./interviews/form.html"
                             pass-overwrite
                             class="display:flex justify-content:center align-items:center height:40px">
@@ -168,7 +168,7 @@
                 <li class="">
                     <a
                         actions="pass, action(document; .menu_icon)"
-                        pass_to="main"
+                        pass_to="adminView"
                         pass-src="./interview-forms/datatable.html"
                         pass-overwrite
                         class="display:flex align-items:center">
@@ -184,7 +184,7 @@
                     <div class="float:right width:50px text-align:center">
                         <a
                             actions="pass, action(document; .menu_icon)"
-                            pass_to="main"
+                            pass_to="adminView"
                             pass-src="./interview-forms/form.html"
                             pass-overwrite
                             class="display:flex justify-content:center align-items:center height:40px">
@@ -212,7 +212,10 @@
             </div>
         </sidenav>
 
-        <main pass_id="main" src="./users/datatable.html" pass-overwrite></main>
+        <main
+            pass_id="adminView"
+            src="./users/datatable.html"
+            pass-overwrite></main>
 
         <script src="./dist/CoCreate.js"></script>
     </body>
