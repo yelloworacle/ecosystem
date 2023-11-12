@@ -89,8 +89,7 @@
                     <a
                         actions="pass, action(document; .menu_icon)"
                         pass_to="main"
-                        pass-src="./questions/datatable.html"
-                        pass-overwrite
+                        pass-src="./users/datatable.html"
                         class="display:flex align-items:center">
                         <span
                             class="display:flex justify-content:center min-width:50px">
@@ -104,8 +103,7 @@
                         <a
                             actions="pass, action(document; .menu_icon)"
                             pass_to="main"
-                            pass-src="./questions/form.html"
-                            pass-overwrite
+                            pass-src="./users/form.html"
                             class="display:flex justify-content:center align-items:center height:40px">
                             <i
                                 class="display:flex height:18px fill:#505050"
@@ -118,7 +116,6 @@
                         actions="pass, action(document; .menu_icon)"
                         pass_to="main"
                         pass-src="./questions/datatable.html"
-                        pass-overwrite
                         class="display:flex align-items:center">
                         <span
                             class="display:flex justify-content:center min-width:50px">
@@ -133,7 +130,6 @@
                             actions="pass, action(document; .menu_icon)"
                             pass_to="main"
                             pass-src="./questions/form.html"
-                            pass-overwrite
                             class="display:flex justify-content:center align-items:center height:40px">
                             <i
                                 class="display:flex height:18px fill:#505050"
@@ -216,7 +212,7 @@
             </div>
         </sidenav>
 
-        <main pass_id="main" src="./users/datatable.html"></main>
+        <main pass_id="main" src="./users/datatable.html" pass-overwrite></main>
 
         <script src="./dist/CoCreate.js"></script>
     </body>
