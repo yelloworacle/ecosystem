@@ -5,31 +5,43 @@
         class="display:flex align-items:center flex-direction:column width:100%">
         <div
             class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
-            <div class="input-container">
-                <label for="question"
-                    >We will ask a series of questions, with each answer the
-                    karma bar will increase. When your karma reaches its max
-                    potential OracleAI will work its magic.</label
-                >
-                <div class="position:relative">
-                    <input
-                        id="question"
-                        type="text"
-                        array="users"
-                        object=""
-                        key="jobDislikes" />
-                    <div class="progress-bar">
-                        <div class="progress" style="width: 50%"></div>
+            <!-- <label for="question"
+                >We will ask a series of questions, with each answer the karma
+                bar will increase. When your karma reaches its max potential
+                OracleAI will work its magic.</label
+            > -->
+            <form>
+                <div
+                    storage="mongodb"
+                    array="questions"
+                    object
+                    filter-limit="1"
+                    filter-sort-key="position"
+                    filter-sort-direction="asc"
+                    render-selector=".question">
+                    <div class="input-container question" template>
+                        <label for="question">{{object.question}}</label>
+                        <div class="position:relative">
+                            <input
+                                id="question"
+                                type="{{object.type}}"
+                                array="users"
+                                object=""
+                                key="{{object.name}}" />
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 50%"></div>
+                            </div>
+                        </div>
                     </div>
                     <span class="position:absolute bottom:12px right:8px">
-                        <a actions="save, reset">
+                        <a filter-on="click" filter-closest="[render-selector]">
                             <i
                                 class="display:flex height:20px"
                                 src="./assets/svg/angle-right.svg"></i>
                         </a>
                     </span>
                 </div>
-            </div>
+            </form>
 
             <div class="card loading">
                 <div class="card-content">
