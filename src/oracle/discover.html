@@ -15,10 +15,11 @@
                     storage="mongodb"
                     array="questions"
                     object
+                    filter-index="1"
                     filter-limit="1"
                     filter-sort-key="position"
                     filter-sort-direction="asc"
-                    render-selector=".question">
+                    render-selector="[template]">
                     <div class="input-container question" template>
                         <label for="question">{{object.question}}</label>
                         <div class="position:relative">
