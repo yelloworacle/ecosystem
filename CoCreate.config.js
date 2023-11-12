@@ -5,6 +5,9 @@ module.exports = {
     "directories": [
         {
             "entry": "./src",
+            "exclude": [
+                ".txt"
+            ],
             "array": "files",
             "object": {
                 "name": "{{name}}",
