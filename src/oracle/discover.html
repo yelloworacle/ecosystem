@@ -61,6 +61,23 @@
                     key="answeredQuestions[]"
                     value="{{object.name}}"
                     read="false" />
+                <div
+                    value-type="json"
+                    openai="system"
+                    crud="{array: 'ai', object: '', $filter: {}}"
+                    hidden></div>
+                <div
+                    value-type="json"
+                    openai="user"
+                    object
+                    crud="{array: 'users', key: questions}"
+                    hidden></div>
+                <div
+                    value-type="json"
+                    openai="assistant"
+                    object
+                    crud="{array: 'users', key: careers}"
+                    hidden></div>
 
                 <div class="progress-bar">
                     <div class="progress" style="width: 50%"></div>
@@ -105,7 +122,7 @@
                     <div class="card-row">
                         <span class="card-label">Pros:</span>
                         <span class="card-value load-value"
-                            >{{careers.pro}}</span
+                            >{{careers.pros}}</span
                         >
                     </div>
                     <div class="card-row">
@@ -208,3 +225,8 @@
         <i src="./assets/svg/plus.svg"></i>
     </button>
 </div>
+<form
+    openai
+    class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
+    <input openai="system" />
+</form>
