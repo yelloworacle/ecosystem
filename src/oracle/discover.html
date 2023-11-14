@@ -34,17 +34,21 @@
 
         <!-- TODO: await answeredQuestions filter then add array -->
         <div
+            id="questions"
             array="questions"
             object
             filter-limit="1"
             render-selector="[template]"
-            read="false">
+            read="false"
+            loader>
             <form
                 realtime="false"
                 array="users"
                 class="position:relative"
                 template>
-                <label for="question">{{object.question}}</label>
+                <label for="question" class="load-value"
+                    >{{object.question}}</label
+                >
 
                 <input
                     id="question"
@@ -75,33 +79,46 @@
             id="careers"
             array="users"
             key="careers"
-            render-selector="[template]">
+            render-selector="[template]"
+            loader>
             <div class="card margin-bottom:15px" template>
                 <div class="card-content">
                     <div class="card-row full-width">
                         <span class="card-label">Career Name:</span>
-                        <span class="card-value">{{careers.name}}</span>
+                        <span class="card-value load-value"
+                            >{{careers.name}}</span
+                        >
                     </div>
                     <div class="card-row">
                         <span class="card-label">Average Salary:</span>
-                        <span class="card-value">{{careers.salary}}</span>
+                        <span class="card-value load-value"
+                            >{{careers.salary}}</span
+                        >
                     </div>
                     <div class="card-row">
                         <span class="card-label">Stress Level:</span>
-                        <span class="card-value">{{careers.stress}}</span>
+                        <span class="card-value load-value"
+                            >{{careers.stress}}</span
+                        >
                     </div>
 
                     <div class="card-row">
                         <span class="card-label">Pros:</span>
-                        <span class="card-value">{{careers.pro}}</span>
+                        <span class="card-value load-value"
+                            >{{careers.pro}}</span
+                        >
                     </div>
                     <div class="card-row">
                         <span class="card-label">Cons:</span>
-                        <span class="card-value">{{careers.cons}}</span>
+                        <span class="card-value load-value"
+                            >{{careers.cons}}</span
+                        >
                     </div>
                     <div class="card-row full-width">
                         <span class="card-label">Interesting Fact:</span>
-                        <span class="card-value">{{careers.facts}}</span>
+                        <span class="card-value load-value"
+                            >{{careers.facts}}</span
+                        >
                     </div>
                 </div>
             </div>

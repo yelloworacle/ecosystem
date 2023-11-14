@@ -256,11 +256,11 @@ input:focus {
     }
 }
 
-#careers> :first-child {
+[loader]> :first-child {
     display: block !important;
 }
 
-#careers > [template] .card-value {
+[loader] > [template] .load-value {
     display: block !important;
     /* Your placeholder's size may vary depending on content size */
     width: 100%;
@@ -274,7 +274,7 @@ input:focus {
     animation: placeholderShimmer 1.5s linear infinite forwards;
 }
 
-.loading .card-value:before {
+.loading .load-value:before {
     content: "\00a0";
     /* Non-breaking space character to ensure the span has height before content loads */
 }
