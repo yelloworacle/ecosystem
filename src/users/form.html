@@ -98,6 +98,20 @@
             autocomplete="current-password" />
     </div>
 
+    <div
+        id="questions"
+        object
+        key="questions"
+        render-selector="[template]"
+        read="false">
+        <input
+            type="text"
+            key="{{questions.key}}"
+            value="{{questions.value}}"
+            template
+            read="false" />
+    </div>
+
     <button
         actions="save, pass"
         pass_to="adminView"
