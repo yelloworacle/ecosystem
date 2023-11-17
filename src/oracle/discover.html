@@ -7,11 +7,6 @@
     class="display:flex justify-content:center width:100% padding-top:80px">
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
-        <!-- <label for="question"
-                >We will ask a series of questions, with each answer the karma
-                bar will increase. When your karma reaches its max potential
-                OracleAI will work its magic.</label
-            > -->
         <div
             filter-sort-key="position"
             filter-sort-direction="asc"
@@ -23,7 +18,7 @@
             array="users"
             key="answeredQuestions"
             filter-key="name"
-            filter-operator="$ne"
+            filter-operator="$nin"
             filter-next
             value-type="json"
             realtime="false"
@@ -61,23 +56,6 @@
                     key="answeredQuestions[]"
                     value="{{object.name}}"
                     read="false" />
-                <div
-                    value-type="json"
-                    openai="system"
-                    crud="{array: 'ai', object: '', $filter: {}}"
-                    hidden></div>
-                <div
-                    value-type="json"
-                    openai="user"
-                    object
-                    crud="{array: 'users', key: questions}"
-                    hidden></div>
-                <div
-                    value-type="json"
-                    openai="assistant"
-                    object
-                    crud="{array: 'users', key: careers}"
-                    hidden></div>
 
                 <div class="progress-bar">
                     <div class="progress" style="width: 50%"></div>
@@ -139,82 +117,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="card">
-                    <div class="card-content">
-                        <div class="card-row full-width">
-                            <span class="card-label">Career Name:</span>
-                            <span class="card-value">Teacher</span>
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Average Salary:</span>
-                            <span class="card-value">$60,000</span>
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Stress Level:</span>
-                            <span class="card-value">Moderate to High</span>
-                        </div>
-
-                        <div class="card-row">
-                            <span class="card-label">Pros:</span>
-                            <span class="card-value"
-                                >Summer vacations, shaping future
-                                generations</span
-                            >
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Cons:</span>
-                            <span class="card-value"
-                                >Challenging work environment, high
-                                responsibility</span
-                            >
-                        </div>
-                        <div class="card-row full-width">
-                            <span class="card-label">Interesting Fact:</span>
-                            <span class="card-value"
-                                >High level of job security in public school
-                                positions</span
-                            >
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-row full-width">
-                            <span class="card-label">Career Name:</span>
-                            <span class="card-value">Police Officer</span>
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Average Salary:</span>
-                            <span class="card-value">$65,000</span>
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Stress Level:</span>
-                            <span class="card-value">High</span>
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Pros:</span>
-                            <span class="card-value"
-                                >Pension benefits, sense of serving the
-                                community</span
-                            >
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Cons:</span>
-                            <span class="card-value"
-                                >Risk of harm, high-stress situations</span
-                            >
-                        </div>
-                        <div class="card-row full-width">
-                            <span class="card-label">Interesting Fact:</span>
-                            <span class="card-value"
-                                >Opportunities for advancement without a college
-                                degree</span
-                            >
-                        </div>
-                    </div>
-                </div> -->
         </div>
     </div>
 
@@ -225,8 +127,8 @@
         <i src="./assets/svg/plus.svg"></i>
     </button>
 </div>
-<form
-    openai
-    class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
-    <input openai="system" />
-</form>
+
+<!-- <form openai>
+    <div array="ai" object filter-key="type" openai="system"></div>
+    <div array="users" object key="questions" openai="user"></div>
+</form> -->
