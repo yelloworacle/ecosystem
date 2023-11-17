@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<form
+    pass_id="form-fields"
+    array="careers"
+    object=""
+    realtime="false"
+    class="main-view">
+    <!-- deleteObject-->
+
+    <div
+        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
+        <a
+            actions="pass"
+            pass_to="adminView"
+            pass-src="./careers/datatable.html"
+            pass-overwrite
+            class="padding:0px_10px"
+            ><i
+                class="height:20px fill:#505050"
+                src="./assets/svg/angle-left.svg"></i
+        ></a>
+        <div
+            class="display:flex align-items:center transition:0.3s"
+            hover="display:block!important"
+            hover-selector=".options">
+            <div class="display:none options">
+                <a
+                    actions="delete, pass"
+                    array="careers"
+                    object=""
+                    pass_to="adminView"
+                    pass-src="./careers/datatable.html"
+                    pass-overwrite
+                    class="padding:0px_10px">
+                    <i
+                        class="height:18px fill:#505050"
+                        src="./assets/svg/trash-alt.svg"></i>
+                </a>
+                <a
+                    actions="save, pass"
+                    pass_to="adminView"
+                    pass-src="./careers/datatable.html"
+                    pass-overwrite
+                    class="padding:0px_10px">
+                    <i
+                        class="height:18px fill:#505050"
+                        src="./assets/svg/save.svg"></i>
+                </a>
+            </div>
+            <a class="padding:0px_10px"
+                ><i
+                    class="height:20px fill:#505050"
+                    src="./assets/svg/ellipsis-v.svg"></i
+            ></a>
+        </div>
+    </div>
+
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="name"
+            placeholder="Name"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="_id"
+            placeholder="ID"
+            class="floating-label"
+            readonly />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="salary"
+            placeholder="Salary"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="stress"
+            placeholder="Stress Level"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="pros"
+            placeholder="Pros"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="cons"
+            placeholder="Cons"
+            class="floating-label" />
+    </floating-label>
+
+    <floating-label class="input-600">
+        <input
+            type="text"
+            key="facts"
+            placeholder="Interesting Facts"
+            class="floating-label" />
+    </floating-label>
+
+    <button
+        actions="save, pass"
+        pass_to="adminView"
+        pass-src="./careers/datatable.html"
+        pass-overwrite
+        class="button-round">
+        <i src="./assets/svg/save.svg"></i>
+    </button>
+</form>
