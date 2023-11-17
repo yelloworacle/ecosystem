@@ -4,11 +4,20 @@
     <p class="font-size:20px margin:25px">
         Chart and Envision Your Future's Many Paths
     </p>
-    <button
-        actions="pass"
-        pass_to="mainView"
-        pass-src="./oracle/discover.html"
-        class="font-size:24px">
-        Discover
-    </button>
+    <div
+        localstorage-get="user_id"
+        localstorage-attribute="object"
+        localstorage-selector="[array='users']">
+        <form realtime="false" array="users" object>
+            <input type="hidden" key="_id" localstorage-set="user_id" />
+            <input type="hidden" key="answeredQuestions[]" value="Discover" />
+            <button
+                actions="save, localStorage, pass"
+                pass_to="mainView"
+                pass-src="./oracle/discover.html"
+                class="font-size:24px">
+                Discover
+            </button>
+        </form>
+    </div>
 </header>
