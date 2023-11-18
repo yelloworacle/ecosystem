@@ -7,68 +7,72 @@
     class="display:flex justify-content:center width:100% padding-top:80px">
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
-        <div
-            filter-sort-key="position"
-            filter-sort-direction="asc"
-            filter-parent="[array='questions']"></div>
+        <section class="position:relative">
+            <div
+                filter-sort-key="position"
+                filter-sort-direction="asc"
+                filter-parent="[array='questions']"></div>
 
-        <textarea
-            id="answeredQuestions"
-            array="users"
-            key="answeredQuestions"
-            filter-key="name"
-            filter-operator="$nin"
-            filter-next
-            value-type="json"
-            realtime="false"
-            input-attribute="read"
-            input-value="true"
-            input-next
-            hidden></textarea>
-
-        <div
-            id="questions"
-            array="questions"
-            object
-            filter-limit="1"
-            render-selector="[template]"
-            read="false"
-            loader>
-            <form
-                realtime="false"
+            <textarea
+                id="answeredQuestions"
                 array="users"
-                class="position:relative"
-                template>
-                <label for="question" class="load-value margin-bottom:5px"
-                    >{{object.question}}</label
-                >
+                key="answeredQuestions"
+                filter-key="name"
+                filter-operator="$nin"
+                filter-next
+                value-type="json"
+                realtime="false"
+                input-attribute="read"
+                input-value="true"
+                input-next
+                hidden></textarea>
 
-                <input
-                    id="question"
-                    type="{{object.type}}"
-                    key="questions.{{object.name}}"
-                    read="false" />
-                <input
-                    id="answeredQuestion"
-                    type="hidden"
-                    key="answeredQuestions[]"
-                    value="{{object.name}}"
-                    read="false" />
+            <div
+                id="questions"
+                array="questions"
+                object
+                filter-limit="1"
+                render-selector="[template]"
+                read="false"
+                loader>
+                <form
+                    realtime="false"
+                    array="users"
+                    class="position:relative"
+                    template>
+                    <label for="question" class="load-value margin-bottom:5px"
+                        >{{object.question}}</label
+                    >
 
-                <div class="progress-bar">
-                    <div class="progress" style="width: 50%"></div>
-                </div>
+                    <input
+                        id="question"
+                        type="{{object.type}}"
+                        key="questions.{{object.name}}"
+                        read="false" />
+                    <input
+                        id="answeredQuestion"
+                        type="hidden"
+                        key="answeredQuestions[]"
+                        value="{{object.name}}"
+                        read="false" />
 
-                <a
-                    actions="{{object.actions}}"
-                    class="position:absolute bottom:12px right:8px">
-                    <i
-                        class="display:flex height:20px"
-                        src="./assets/svg/angle-right.svg"></i>
-                </a>
-            </form>
-        </div>
+                    <input
+                        type="hidden"
+                        calculate="({{object.position}} / 7) * 100" />
 
+                    <a
+                        actions="{{object.actions}}"
+                        class="position:absolute bottom:12px right:8px">
+                        <i
+                            class="display:flex height:20px"
+                            src="./assets/svg/angle-right.svg"></i>
+                    </a>
+                </form>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" style="width: 50%"></div>
+            </div>
+        </section>
         <!-- <textarea
             id="currentCareers"
             array="users"
@@ -86,10 +90,10 @@
         <div
             id="careers"
             array="users"
-            object
+            object="{{}}"
             key="careers"
             render-selector="[template]"
-            filter-limit="5"
+            filter-limit="1"
             loader>
             <div class="card margin-bottom:15px" template>
                 <div class="card-content">
