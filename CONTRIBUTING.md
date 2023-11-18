@@ -1,4 +1,4 @@
-# Contributing to CareerPaths
+# Contributing to OracleAI
 
 This project is work of [many contributors](https://github.com/frankpagan/careerCalling/contributors).
 You're encouraged to submit [pull requests](https://github.com/frankpagan/careerCalling/pulls),

@@ -1,9 +1,9 @@
 {
-  "name": "careerpaths",
+  "name": "oracleai",
   "version": "1.0.0",
   "description": "Discover your career path with AI",
   "keywords": [
-    "careerPaths"
+    "OracleAI"
   ],
   "publishConfig": {
     "access": "restricted"
@@ -12,10 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/frankpagan/careerCalling.git"
   },
-  "author": "careerPaths",
+  "author": "OracleAI",
   "license": "Proprietary",
   "bugs": {
     "url": "https://github.com/frankpagan/careerCalling/issues"
   },
-  "homepage": "https://careerPaths.com/"
+  "homepage": "https://oracleai.com/"
 }
