@@ -14,7 +14,6 @@
 
         <textarea
             id="answeredQuestions"
-            type="text"
             array="users"
             key="answeredQuestions"
             filter-key="name"
@@ -27,7 +26,6 @@
             input-next
             hidden></textarea>
 
-        <!-- TODO: await answeredQuestions filter then add array -->
         <div
             id="questions"
             array="questions"
@@ -41,7 +39,7 @@
                 array="users"
                 class="position:relative"
                 template>
-                <label for="question" class="load-value"
+                <label for="question" class="load-value margin-bottom:5px"
                     >{{object.question}}</label
                 >
 
@@ -70,11 +68,28 @@
                 </a>
             </form>
         </div>
+
+        <!-- <textarea
+            id="currentCareers"
+            array="users"
+            key="careers"
+            filter-key="name"
+            filter-operator="$in"
+            filter-selector="document; #careers"
+            value-type="json"
+            realtime="false"
+            input-attribute="read"
+            input-value="true"
+            input-next
+            hidden></textarea> -->
+
         <div
             id="careers"
             array="users"
+            object
             key="careers"
             render-selector="[template]"
+            filter-limit="5"
             loader>
             <div class="card margin-bottom:15px" template>
                 <div class="card-content">
@@ -120,6 +135,43 @@
         </div>
     </div>
 
+    <form>
+        <div
+            array="ai"
+            object
+            filter-key="type"
+            filter-value="system"
+            openai="system"
+            save="false"
+            component></div>
+        <div
+            array="users"
+            object
+            key="questions"
+            openai="user"
+            save="false"
+            component></div>
+        <textarea
+            id="response"
+            array="users"
+            key="careers"
+            value-type="json"
+            openai="response"
+            crdt="false"
+            hidden></textarea>
+        <!-- <textarea
+            id="response"
+            array="careers"
+            key="{}"
+            value-type="json"
+            openai="response"
+            crdt="false"
+            hidden></textarea> -->
+
+        <a id="request" actions="openAi, save"></a>
+        <!-- <a id="request" actions="openAi">test</a> -->
+    </form>
+
     <button
         class="button-round position:fixed bottom:20px right:20px"
         actions="install"
@@ -127,8 +179,3 @@
         <i src="./assets/svg/plus.svg"></i>
     </button>
 </div>
-
-<!-- <form openai>
-    <div array="ai" object filter-key="type" openai="system"></div>
-    <div array="users" object key="questions" openai="user"></div>
-</form> -->
