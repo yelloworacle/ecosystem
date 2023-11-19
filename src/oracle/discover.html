@@ -74,12 +74,12 @@
                         onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()" />
                     <a
                         actions="click, {{object.actions}}"
-                        click-next
+                        click-selector="i[src]"
                         click-attribute="src"
                         click-value="./assets/svg/spinner.svg"
-                        class="position:absolute bottom:12px right:8px">
+                        class="position:absolute bottom:12px right:8px font-size:20px">
                         <i
-                            class="display:flex height:20px"
+                            class="display:flex"
                             src="./assets/svg/angle-right.svg"></i>
                     </a>
 
@@ -185,6 +185,7 @@
             value-type="json"
             openai="response"
             crdt="false"
+            realtime="false"
             hidden></textarea>
         <!-- <textarea
             id="response"
