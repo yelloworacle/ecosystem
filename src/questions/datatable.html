@@ -116,6 +116,62 @@
                             filter-selector="document; tbody[render-selector]"
                             filter-key="_id"
                             pass_id="datatable"
+                            placeholder="Position"
+                            class="floating-label" />
+                    </floating-label>
+                    <span
+                        class="position:absolute bottom:20px right:20px float:right z-index:6">
+                        <a
+                            filter-selector="document; tbody[render-selector]"
+                            filter-sort-key="position"
+                            filter-sort-direction=""
+                            click-value="desc, asc"
+                            click-attribute="filter-sort-direction"
+                            pass_id="datatable">
+                            <i
+                                toggle-attribute="src"
+                                toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                class="display:flex height:18px fill:#505050"
+                                src="./assets/svg/sort.svg"></i>
+                        </a>
+                    </span>
+                </td>
+                <td
+                    class="position:sticky top:0 background:white padding:0px_10px_10px">
+                    <floating-label>
+                        <input
+                            type="text"
+                            filter-selector="document; tbody[render-selector]"
+                            filter-key="_id"
+                            pass_id="datatable"
+                            placeholder="Actions"
+                            class="floating-label" />
+                    </floating-label>
+                    <span
+                        class="position:absolute bottom:20px right:20px float:right z-index:6">
+                        <a
+                            filter-selector="document; tbody[render-selector]"
+                            filter-sort-key="Actions"
+                            filter-sort-direction=""
+                            click-value="desc, asc"
+                            click-attribute="filter-sort-direction"
+                            pass_id="datatable">
+                            <i
+                                toggle-attribute="src"
+                                toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                class="display:flex height:18px fill:#505050"
+                                src="./assets/svg/sort.svg"></i>
+                        </a>
+                    </span>
+                </td>
+                <td
+                    class="position:sticky top:0 background:white padding:0px_10px_10px">
+                    <floating-label>
+                        <input
+                            type="text"
+                            filter-selector="document; tbody[render-selector]"
+                            filter-key="_id"
+                            pass_id="datatable"
                             placeholder="id"
                             class="floating-label" />
                     </floating-label>
@@ -166,6 +222,30 @@
                                 pass-object="{{object._id}}"></div>
                         </a>
                     </div>
+                </td>
+                <td class="padding:10px min-width:130px">
+                    <a
+                        actions="pass"
+                        pass_to="adminView"
+                        pass-src="./questions/form.html"
+                        pass-overwrite>
+                        <b>{{object.position}}</b>
+                        <div
+                            pass_to="form-fields"
+                            pass-object="{{object.position}}"></div>
+                    </a>
+                </td>
+                <td class="padding:10px min-width:130px">
+                    <a
+                        actions="pass"
+                        pass_to="adminView"
+                        pass-src="./questions/form.html"
+                        pass-overwrite>
+                        <b>{{object.actions}}</b>
+                        <div
+                            pass_to="form-fields"
+                            pass-object="{{object.actions}}"></div>
+                    </a>
                 </td>
                 <td class="padding:10px">
                     <a
