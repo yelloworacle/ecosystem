@@ -5,6 +5,22 @@
     localstorage-attribute="object"
     localstorage-selector="[array='users'][]"
     class="display:flex justify-content:center width:100% padding-top:80px">
+    <style>
+        /* Add a CSS animation to make the icon spin */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Apply the animation to the icon with a class */
+        [src="./assets/svg/spinner.svg"] {
+            animation: spin 2s linear infinite; /* Adjust the duration and other properties as needed */
+        }
+    </style>
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
         <section class="position:relative">
@@ -40,15 +56,6 @@
                     array="users"
                     class="position:relative"
                     template>
-                    <label for="question" class="load-value margin-bottom:5px"
-                        >{{object.question}}</label
-                    >
-
-                    <input
-                        id="question"
-                        type="{{object.type}}"
-                        key="questions.{{object.name}}"
-                        read="false" />
                     <input
                         id="answeredQuestion"
                         type="hidden"
@@ -56,21 +63,37 @@
                         value="{{object.name}}"
                         read="false" />
 
+                    <label for="question" class="load-value margin-bottom:5px"
+                        >{{object.question}}</label
+                    >
                     <input
-                        type="hidden"
-                        calculate="({{object.position}} / 7) * 100" />
-
+                        id="question"
+                        type="{{object.type}}"
+                        key="questions.{{object.name}}"
+                        read="false"
+                        onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()" />
                     <a
-                        actions="{{object.actions}}"
+                        actions="click, {{object.actions}}"
+                        click-next
+                        click-attribute="src"
+                        click-value="./assets/svg/spinner.svg"
                         class="position:absolute bottom:12px right:8px">
                         <i
                             class="display:flex height:20px"
                             src="./assets/svg/angle-right.svg"></i>
                     </a>
+
+                    <div class="progress-bar">
+                        <input
+                            type="hidden"
+                            calculate="({{object.position}} % 8 === 0 || {{object.position}} % 8 === 1 ) ? 0 : (({{object.position}} / 8) * 100)"
+                            input-next
+                            input-attribute="style"
+                            value-prefix="width:"
+                            value-suffix="%" />
+                        <div class="progress" style="width: 0%"></div>
+                    </div>
                 </form>
-            </div>
-            <div class="progress-bar">
-                <div class="progress" style="width: 50%"></div>
             </div>
         </section>
         <!-- <textarea
