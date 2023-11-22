@@ -20,6 +20,44 @@
         [src="./assets/svg/spinner.svg"] {
             animation: spin 2s linear infinite; /* Adjust the duration and other properties as needed */
         }
+        [template] .question-input {
+            display: none;
+        }
+
+        input[type="button"] {
+            display: none;
+        }
+        input[type="button"] + a {
+            padding: 15px 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease,
+                border 0.3s ease;
+            border: 2px solid #007bff;
+            background-color: #f0f0f0;
+            color: #007bff;
+            border-radius: 8px;
+            position: relative;
+            z-index: 5;
+            left: 0px;
+            top: 5px;
+            width: 100%;
+            display: block;
+        }
+
+        input[type="button"] + a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        input[type="button"] + a i {
+            display: none !important;
+        }
+        input[type="button"] + a::before {
+            content: "Begin Our Journey";
+        }
     </style>
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
@@ -66,32 +104,34 @@
                     <label for="question" class="load-value margin-bottom:5px"
                         >{{object.question}}</label
                     >
-                    <input
-                        id="question"
-                        type="{{object.type}}"
-                        key="questions.{{object.name}}"
-                        read="false"
-                        onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()" />
-                    <a
-                        actions="click, {{object.actions}}"
-                        click-selector="i[src]"
-                        click-attribute="src"
-                        click-value="./assets/svg/spinner.svg"
-                        class="position:absolute bottom:12px right:8px font-size:20px">
-                        <i
-                            class="display:flex"
-                            src="./assets/svg/angle-right.svg"></i>
-                    </a>
-
-                    <div class="progress-bar">
+                    <div class="question-input">
                         <input
-                            type="hidden"
-                            calculate="({{object.position}} % 7 === 1) ? 0 : (({{object.position}} % 7) / 7 * 100)"
-                            input-next
-                            input-attribute="style"
-                            value-prefix="width:"
-                            value-suffix="%" />
-                        <div class="progress" style="width: 0%"></div>
+                            id="question"
+                            type="{{object.type}}"
+                            key="questions.{{object.name}}"
+                            read="false"
+                            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()" />
+                        <a
+                            actions="click, {{object.actions}}"
+                            click-selector="i[src]"
+                            click-attribute="src"
+                            click-value="./assets/svg/spinner.svg"
+                            class="position:absolute bottom:12px right:8px font-size:20px">
+                            <i
+                                class="display:flex"
+                                src="./assets/svg/angle-right.svg"></i>
+                        </a>
+
+                        <div class="progress-bar">
+                            <input
+                                type="hidden"
+                                calculate="({{object.position}} % 7 === 1) ? 0 : (({{object.position}} % 7) / 7 * 100)"
+                                input-next
+                                input-attribute="style"
+                                value-prefix="width:"
+                                value-suffix="%" />
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
                     </div>
                 </form>
             </div>
