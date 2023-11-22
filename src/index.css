@@ -264,7 +264,6 @@ input:focus {
     display: block !important;
     /* Your placeholder's size may vary depending on content size */
     width: 100%;
-    height: 16px;
     color: transparent;
     background: #f6f7f8;
     background-image: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
