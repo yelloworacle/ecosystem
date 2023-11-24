@@ -3,10 +3,10 @@
     <div
         class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
         <a
-            actions="pass"
-            pass_to="adminView"
-            pass-src="./test/datatable.html"
-            pass-overwrite
+            actions="state"
+            state_to="adminView"
+            state-src="./test/datatable.html"
+            state-overwrite
             class="padding:0px_10px"
             ><i
                 class="height:20px fill:#505050"
@@ -87,7 +87,7 @@
                             type="text"
                             filter-selector="document; tbody[render-selector]"
                             filter-key="name"
-                            pass_id="datatable"
+                            state_id="datatable"
                             placeholder="Name"
                             class="floating-label" />
                     </floating-label>
@@ -99,7 +99,7 @@
                             filter-sort-direction=""
                             click-value="desc, asc"
                             click-attribute="filter-sort-direction"
-                            pass_id="datatable">
+                            state_id="datatable">
                             <i
                                 toggle-attribute="src"
                                 toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
@@ -115,7 +115,7 @@
                             type="text"
                             filter-selector="document; tbody[render-selector]"
                             filter-key="_id"
-                            pass_id="datatable"
+                            state_id="datatable"
                             placeholder="id"
                             class="floating-label" />
                     </floating-label>
@@ -127,7 +127,7 @@
                             filter-sort-direction=""
                             click-value="desc, asc"
                             click-attribute="filter-sort-direction"
-                            pass_id="datatable">
+                            state_id="datatable">
                             <i
                                 toggle-attribute="src"
                                 toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
@@ -156,27 +156,27 @@
                     class="padding:5px display:flex min-width:200px align-items:center">
                     <div>
                         <a
-                            actions="pass"
-                            pass_to="adminView"
-                            pass-src="./test/form.html"
-                            pass-overwrite>
+                            actions="state"
+                            state_to="adminView"
+                            state-src="./test/form.html"
+                            state-overwrite>
                             <h4>{{object.name}}</h4>
                             <div
-                                pass_to="form-fields"
-                                pass-object="{{object._id}}"></div>
+                                state_to="form-fields"
+                                state-object="{{object._id}}"></div>
                         </a>
                     </div>
                 </td>
                 <td class="padding:10px">
                     <a
-                        actions="pass"
-                        pass_to="adminView"
-                        pass-src="./test/form.html"
-                        pass-overwrite>
+                        actions="state"
+                        state_to="adminView"
+                        state-src="./test/form.html"
+                        state-overwrite>
                         <b>{{object._id}}</b>
                         <div
-                            pass_to="form-fields"
-                            pass-object="{{object._id}}"></div>
+                            state_to="form-fields"
+                            state-object="{{object._id}}"></div>
                     </a>
                 </td>
             </tr>
@@ -184,12 +184,12 @@
     </table>
 
     <button
-        actions="pass"
-        pass_to="adminView"
-        pass-src="./test/form.html"
-        pass-overwrite
+        actions="state"
+        state_to="adminView"
+        state-src="./test/form.html"
+        state-overwrite
         class="button-round">
         <i src="./assets/svg/plus.svg"></i>
-        <div pass_to="form-fields" pass-object="" pass-overwrite></div>
+        <div state_to="form-fields" state-object="" state-overwrite></div>
     </button>
 </div>

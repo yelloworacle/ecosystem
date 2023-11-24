@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <form
-    pass_id="form-fields"
+    state_id="form-fields"
     array="interviews"
     object=""
     realtime="false"
@@ -10,10 +10,10 @@
     <div
         class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
         <a
-            actions="pass"
-            pass_to="adminView"
-            pass-src="./interviews/datatable.html"
-            pass-overwrite
+            actions="state"
+            state_to="adminView"
+            state-src="./interviews/datatable.html"
+            state-overwrite
             class="padding:0px_10px"
             ><i
                 class="height:20px fill:#505050"
@@ -25,22 +25,22 @@
             hover-selector=".options">
             <div class="display:none options">
                 <a
-                    actions="delete, pass"
+                    actions="delete, state"
                     array="interviews"
                     object=""
-                    pass_to="adminView"
-                    pass-src="./interviews/datatable.html"
-                    pass-overwrite
+                    state_to="adminView"
+                    state-src="./interviews/datatable.html"
+                    state-overwrite
                     class="padding:0px_10px">
                     <i
                         class="height:18px fill:#505050"
                         src="./assets/svg/trash-alt.svg"></i>
                 </a>
                 <a
-                    actions="save, pass"
-                    pass_to="adminView"
-                    pass-src="./interviews/datatable.html"
-                    pass-overwrite
+                    actions="save, state"
+                    state_to="adminView"
+                    state-src="./interviews/datatable.html"
+                    state-overwrite
                     class="padding:0px_10px">
                     <i
                         class="height:18px fill:#505050"
@@ -284,10 +284,10 @@
     </floating-label>
 
     <button
-        actions="save, pass"
-        pass_to="adminView"
-        pass-src="./interviews/datatable.html"
-        pass-overwrite
+        actions="save, state"
+        state_to="adminView"
+        state-src="./interviews/datatable.html"
+        state-overwrite
         class="button-round">
         <i src="./assets/svg/save.svg"></i>
     </button>
