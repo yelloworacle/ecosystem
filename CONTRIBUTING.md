@@ -1,19 +1,19 @@
-# Contributing to OracleAI
+# Contributing to Yellow Oracle
 
-This project is work of [many contributors](https://github.com/frankpagan/careerCalling/contributors).
-You're encouraged to submit [pull requests](https://github.com/frankpagan/careerCalling/pulls),
-[propose features and discuss issues](https://github.com/frankpagan/careerCalling/issues).
+This project is work of [many contributors](https://github.com/frankpagan/YellowOracle/contributors).
+You're encouraged to submit [pull requests](https://github.com/frankpagan/YellowOracle/pulls),
+[propose features and discuss issues](https://github.com/frankpagan/YellowOracle/issues).
 
 In the examples below, substitute your Github username for `contributor` in URLs.
 
 ## Fork the Project
 
-Fork the [project on Github](https://github.com/frankpagan/careerCalling) and check out your copy.
+Fork the [project on Github](https://github.com/frankpagan/YellowOracle) and check out your copy.
 
 ```
-git clone https://github.com//frankpagan/careerCalling.git
-cd careerCalling
-git remote add upstream https://github.com/frankpagan/careerCalling.git
+git clone https://github.com//frankpagan/YellowOracle.git
+cd YellowOracle
+git remote add upstream https://github.com/frankpagan/YellowOracle.git
 ```
 
 ## Create a Topic Branch
@@ -70,7 +70,7 @@ git push origin my-feature-branch
 
 ## Make a Pull Request
 
-Go to [https://github.com/frankpagan/careerCalling](https://github.com/frankpagan/careerCalling) and select your feature branch.
+Go to [https://github.com/frankpagan/YellowOracle](https://github.com/frankpagan/YellowOracle) and select your feature branch.
 Click the 'Pull Request' button and fill out the form. Pull requests are usually reviewed within a few days.
 
 ## Rebase
@@ -88,7 +88,7 @@ git push origin my-feature-branch -f
 Update the [CHANGELOG](CHANGELOG.md) with the pull request number. A typical entry looks as follows.
 
 ```
-* [#123](https://github.com/frankpagan/careerCalling/pull/123): Reticulated splines - [@contributor](https://github.com/contributor).
+* [#123](https://github.com/frankpagan/YellowOracle/pull/123): Reticulated splines - [@contributor](https://github.com/contributor).
 ```
 
 Amend your previous commit and force push the changes.

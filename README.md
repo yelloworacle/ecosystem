@@ -1,4 +1,4 @@
-# OracleAI
+# Yellow Oracle
 
 Discover Your Destiny
 Chart and Envision Your Future's Many Paths
@@ -71,4 +71,4 @@ By incorporating these attributes in your HTML, you can fully leverage the power
 
 # License
 
-[Proprietary](https://github.com/frankpagan/careerCalling/blob/master/LICENSE)
+[Proprietary](https://github.com/frankpagan/YellowOracle/blob/master/LICENSE)

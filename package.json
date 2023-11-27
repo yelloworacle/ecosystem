@@ -1,21 +1,21 @@
 {
-  "name": "oracleai",
+  "name": "yelloworacle",
   "version": "1.0.0",
   "description": "Discover your career path with AI",
   "keywords": [
-    "OracleAI"
+    "Yellow Oracle"
   ],
   "publishConfig": {
     "access": "restricted"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frankpagan/careerCalling.git"
+    "url": "git+https://github.com/frankpagan/YellowOracle.git"
   },
-  "author": "OracleAI",
+  "author": "Yellow Oracle",
   "license": "Proprietary",
   "bugs": {
-    "url": "https://github.com/frankpagan/careerCalling/issues"
+    "url": "https://github.com/frankpagan/YellowOracle/issues"
   },
   "homepage": "https://oracleai.com/"
 }

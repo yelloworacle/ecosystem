@@ -62,9 +62,10 @@ header {
     font-size: 32px;
 }
 
+/* seconday lighter yellow FDE87D */
 .logo-name-colored {
     font-size: 32px;
-    color: #007bff;
+    color: #F7CC02;
 }
 
 .menu_icon {
@@ -81,14 +82,14 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease,
         border 0.3s ease;
-    border: 2px solid #007bff;
+    border: 2px solid #F7CC02;
     background-color: #f0f0f0;
-    color: #007bff;
+    color: #F7CC02;
     border-radius: 8px;
 }
 
 button:hover {
-    background-color: #007bff;
+    background-color: #F7CC02;
     color: #fff;
 }
 
@@ -114,9 +115,9 @@ button:hover {
     position: fixed;
     bottom: 15px;
     right: 15px;
-    border: 2px solid #007bff;
+    border: 2px solid #F7CC02;
     background-color: #f0f0f0;
-    color: #007bff;
+    color: #F7CC02;
     border-radius: 50%;
     padding: 15px;
     width: 50px;
@@ -124,14 +125,14 @@ button:hover {
 }
 
 .button-round:hover {
-    background-color: #007bff;
+    background-color: #F7CC02;
     color: #fff;
-    fill: #007bff;
+    fill: #F7CC02;
 }
 
 .button-round i {
     height: 20px;
-    fill: #007bff;
+    fill: #F7CC02;
 }
 
 .button-round:hover i {

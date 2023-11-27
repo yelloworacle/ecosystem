@@ -1,7 +1,7 @@
 {
-    "short_name": "OracleAI",
-    "name": "OracleAI",
-    "description": "OracleAI",
+    "short_name": "Yellow Oracle",
+    "name": "Yellow Oracle",
+    "description": "Yellow Oracle",
     "protocol_handlers": [
         {
           "protocol": "web+jngl",
