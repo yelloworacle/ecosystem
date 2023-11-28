@@ -203,6 +203,35 @@
                     <a
                         actions="state, action(document; .menu_icon)"
                         state_to="adminView"
+                        state-src="./subscriptions/datatable.html"
+                        state-overwrite
+                        class="display:flex align-items:center">
+                        <span
+                            class="display:flex justify-content:center min-width:50px">
+                            <i
+                                class="display:flex height:16px fill:#505050"
+                                src="./assets/svg/clipboard-question.svg"></i>
+                        </span>
+                        <span>Subscriptions</span>
+                    </a>
+                    <div class="float:right width:50px text-align:center">
+                        <a
+                            actions="state, action(document; .menu_icon)"
+                            state_to="adminView"
+                            state-src="./subscriptions/form.html"
+                            state-overwrite
+                            class="display:flex justify-content:center align-items:center height:40px">
+                            <i
+                                class="display:flex height:18px fill:#505050"
+                                src="./assets/svg/plus.svg"></i>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="">
+                    <a
+                        actions="state, action(document; .menu_icon)"
+                        state_to="adminView"
                         state-src="./interview-forms/datatable.html"
                         state-overwrite
                         class="display:flex align-items:center">
