@@ -20,12 +20,6 @@
         [src="./assets/svg/spinner.svg"] {
             animation: spin 2s linear infinite; /* Adjust the duration and other properties as needed */
         }
-        [template] .question-input {
-            display: none;
-        }
-        [template] .unloc {
-            display: none;
-        }
 
         input[type="button"] {
             display: none;
@@ -111,7 +105,7 @@
                         <input
                             id="question"
                             type="{{object.type}}"
-                            key="questions.{{object.name}}"
+                            key="{{object.name}}"
                             read="false"
                             onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()" />
                         <a
@@ -119,21 +113,16 @@
                             click-selector="i[src]"
                             click-attribute="src"
                             click-value="./assets/svg/spinner.svg"
-                            class="position:absolute bottom:12px right:8px font-size:20px">
+                            class="display:flex position:absolute bottom:10px right:8px font-size:20px">
+                            <span>Enter </span>
                             <i
                                 class="display:flex"
                                 src="./assets/svg/angle-right.svg"></i>
                         </a>
 
                         <div class="progress-bar">
-                            <input
-                                type="hidden"
-                                calculate="({{object.position}} % 7 === 1) ? 0 : (({{object.position}} % 7) / 7 * 100)"
-                                input-next
-                                input-attribute="style"
-                                value-prefix="width:"
-                                value-suffix="%" />
-                            <div class="progress" style="width: 0%"></div>
+                            <div
+                                class="progress width:{{object.progress}}"></div>
                         </div>
                     </div>
                 </form>
@@ -206,8 +195,6 @@
                             >Subscribe to unlock additional details</a
                         >
                     </button>
-
-                    <div class=""></div>
                 </div>
             </div>
         </div>
@@ -251,10 +238,10 @@
         <!-- <a id="request" actions="openAi">test</a> -->
     </form>
 
-    <button
+    <!-- <button
         class="button-round position:fixed bottom:20px right:20px"
         actions="install"
         hidden>
         <i src="./assets/svg/plus.svg"></i>
-    </button>
+    </button> -->
 </div>
