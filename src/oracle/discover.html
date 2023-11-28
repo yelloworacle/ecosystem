@@ -141,63 +141,74 @@
             input-value="true"
             input-next
             hidden></textarea> -->
+        <section>
+            <input
+                type="hidden"
+                array="users"
+                object
+                key="subscription"
+                realtime="false"
+                input-parent="template [array='subscriptions']"
+                input-attribute="object" />
 
-        <div
-            id="careers"
-            array="users"
-            object="{{}}"
-            key="careers"
-            render-selector="[template]"
-            filter-limit="1"
-            loader>
-            <div class="card margin-bottom:15px" template>
-                <div class="card-content">
-                    <div class="card-row full-width">
-                        <span class="card-label">Career Name:</span>
-                        <span class="card-value load-value"
-                            >{{careers.name}}</span
-                        >
-                    </div>
-                    <div class="card-row">
-                        <span class="card-label">Average Salary:</span>
-                        <span class="card-value load-value"
-                            >{{careers.salary}}</span
-                        >
-                    </div>
-                    <div class="card-row">
-                        <span class="card-label">Stress Level:</span>
-                        <span class="card-value load-value"
-                            >{{careers.stress}}</span
-                        >
-                    </div>
+            <div
+                id="careers"
+                array="users"
+                object="{{}}"
+                key="careers"
+                render-selector="[template]"
+                filter-limit="1">
+                <div class="card margin-bottom:15px" template>
+                    <div class="card-content">
+                        <div class="card-row full-width">
+                            <span class="card-label">Career Name:</span>
+                            <span class="card-value load-value"
+                                >{{careers.name}}</span
+                            >
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Average Salary:</span>
+                            <span class="card-value load-value"
+                                >{{careers.salary}}</span
+                            >
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Stress Level:</span>
+                            <span class="card-value load-value"
+                                >{{careers.stress}}</span
+                            >
+                        </div>
 
-                    <div class="card-row">
-                        <span class="card-label">Pros:</span>
-                        <span class="card-value load-value"
-                            >{{careers.pros}}</span
-                        >
+                        <div class="card-row">
+                            <span class="card-label">Pros:</span>
+                            <span class="card-value load-value"
+                                >{{careers.pros}}</span
+                            >
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Cons:</span>
+                            <span class="card-value load-value"
+                                >{{careers.cons}}</span
+                            >
+                        </div>
+                        <div class="card-row full-width">
+                            <span class="card-label">Interesting Fact:</span>
+                            <span class="card-value load-value"
+                                >{{careers.facts}}</span
+                            >
+                        </div>
+                        <div array="subscriptions" object="{{}}" key="fields">
+                            <button
+                                class="unlock width:100% margin-top:20px font-size:16px">
+                                <a href="./pricing.html"
+                                    >Subscribe to unlock additional details</a
+                                >
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-row">
-                        <span class="card-label">Cons:</span>
-                        <span class="card-value load-value"
-                            >{{careers.cons}}</span
-                        >
-                    </div>
-                    <div class="card-row full-width">
-                        <span class="card-label">Interesting Fact:</span>
-                        <span class="card-value load-value"
-                            >{{careers.facts}}</span
-                        >
-                    </div>
-                    <button
-                        class="unlock width:100% margin-top:20px font-size:16px">
-                        <a href="./pricing.html"
-                            >Subscribe to unlock additional details</a
-                        >
-                    </button>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 
     <form>
