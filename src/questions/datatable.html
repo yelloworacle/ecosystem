@@ -114,7 +114,7 @@
                         <input
                             type="text"
                             filter-selector="document; tbody[render-selector]"
-                            filter-key="_id"
+                            filter-key="position"
                             state_id="datatable"
                             placeholder="Position"
                             class="floating-label" />
@@ -124,6 +124,34 @@
                         <a
                             filter-selector="document; tbody[render-selector]"
                             filter-sort-key="position"
+                            filter-sort-direction=""
+                            click-value="desc, asc"
+                            click-attribute="filter-sort-direction"
+                            state_id="datatable">
+                            <i
+                                toggle-attribute="src"
+                                toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                class="display:flex height:18px fill:#505050"
+                                src="./assets/svg/sort.svg"></i>
+                        </a>
+                    </span>
+                </td>
+                <td
+                    class="position:sticky top:0 background:white padding:0px_10px_10px">
+                    <floating-label>
+                        <input
+                            type="text"
+                            filter-selector="document; tbody[render-selector]"
+                            filter-key="position"
+                            state_id="datatable"
+                            placeholder="Progress"
+                            class="floating-label" />
+                    </floating-label>
+                    <span
+                        class="position:absolute bottom:20px right:20px float:right z-index:6">
+                        <a
+                            filter-selector="document; tbody[render-selector]"
+                            filter-sort-key="progress"
                             filter-sort-direction=""
                             click-value="desc, asc"
                             click-attribute="filter-sort-direction"
@@ -232,7 +260,19 @@
                         <b>{{object.position}}</b>
                         <div
                             state_to="form-fields"
-                            state-object="{{object.position}}"></div>
+                            state-object="{{object._id}}"></div>
+                    </a>
+                </td>
+                <td class="padding:10px min-width:130px">
+                    <a
+                        actions="state"
+                        state_to="adminView"
+                        state-src="./questions/form.html"
+                        state-overwrite>
+                        <b>{{object.progress}}</b>
+                        <div
+                            state_to="form-fields"
+                            state-object="{{object._id}}"></div>
                     </a>
                 </td>
                 <td class="padding:10px min-width:130px">
@@ -244,7 +284,7 @@
                         <b>{{object.actions}}</b>
                         <div
                             state_to="form-fields"
-                            state-object="{{object.actions}}"></div>
+                            state-object="{{object._id}}"></div>
                     </a>
                 </td>
                 <td class="padding:10px">
