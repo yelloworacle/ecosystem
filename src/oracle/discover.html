@@ -142,15 +142,6 @@
             input-next
             hidden></textarea> -->
         <section>
-            <input
-                type="hidden"
-                array="users"
-                object
-                key="subscription"
-                realtime="false"
-                input-parent="template [array='subscriptions']"
-                input-attribute="object" />
-
             <div
                 id="careers"
                 array="users"
@@ -197,7 +188,25 @@
                                 >{{careers.facts}}</span
                             >
                         </div>
-                        <div array="subscriptions" object="{{}}" key="fields">
+                        <!-- <input
+                            type="hidden"
+                            array="users"
+                            object
+                            key="subscription"
+                            realtime="false"
+                            input-next
+                            input-attribute="object" /> -->
+                        <input
+                            type="hidden"
+                            localstorage-get="subscription"
+                            localstorage-next
+                            localstorage-attribute="object" />
+
+                        <div
+                            array="subscriptions"
+                            object=""
+                            key="fields"
+                            class="width:100%">
                             <button
                                 class="unlock width:100% margin-top:20px font-size:16px">
                                 <a href="./pricing.html"
@@ -224,6 +233,13 @@
             array="users"
             object
             key="questions"
+            openai="user"
+            save="false"
+            component></div>
+        <div
+            array="users"
+            object
+            key="careers"
             openai="user"
             save="false"
             component></div>
