@@ -13,7 +13,6 @@ async function processCareers() {
         apiKey: ""
     })
 
-    const openAi = new openai({})
 
     const errors = []
     while (careerNames.length > 0) {
@@ -21,11 +20,11 @@ async function processCareers() {
         try {
             const messages = [...systemMessages]
             messages.push({ role: 'user', content: name })
-            let data = await openAi.send({
+            let data = await openai.send({
                 method: 'openai.chat',
                 chat: {
                     apiKey: "REDACTED_OPENAI_KEY",
-                    model: 'gpt-3.5-turbo',
+                    model: 'gpt-4-1106-preview',
                     messages,
                     max_tokens: 3300,
                     temperature: 0.6,
