@@ -47,6 +47,37 @@
                 line-height: 24px;
             }
         </style>
+
+        <script src="https://js.stripe.com/v3/"></script>
+        <style>
+            /* Basic styling for the form */
+            .stripe-element,
+            .input-field {
+                margin-bottom: 20px;
+                padding: 10px 14px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                background-color: white;
+            }
+            .input-field {
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            [display="features"] .features {
+                display: block;
+            }
+            [display="checkout"] .checkout {
+                display: block;
+            }
+
+            [display="features"] .checkout {
+                display: none;
+            }
+            [display="checkout"] .features {
+                display: none;
+            }
+        </style>
     </head>
     <body>
         <nav>
@@ -68,50 +99,84 @@
 
         <main>
             <section>
-                <div class="col-xl-12">
-                    <!-- Pricing Plans Container -->
-                    <div
-                        class="display:flex flex-wrap:wrap gap:15px padding-top:80px">
-                        <!-- Plan -->
-                        <div class="card flex-grow:1 width:300px padding:25px">
-                            <h3>Free Plan</h3>
-                            <div class="plan-pricing-label">
-                                <strong>Free for Life</strong>
-                            </div>
-                            <div class="plan-features-label">
-                                <strong>Features of Basic Plan</strong>
-                                <ul class="plan-features">
-                                    <li>
-                                        Career matches with important career
-                                        details.
-                                    </li>
-                                </ul>
-                            </div>
-                            <button
-                                class="width:100% margin-top:20px font-size:18px">
-                                Subscribe
-                            </button>
+                <!-- Pricing Plans Container -->
+                <div
+                    class="display:flex flex-wrap:wrap gap:15px padding-top:80px">
+                    <!-- Plan -->
+                    <div class="card flex-grow:1 width:340px padding:25px">
+                        <h3>Free Plan</h3>
+                        <div class="plan-pricing-label">
+                            <strong>Free for Life</strong>
                         </div>
+                        <div class="plan-features-label">
+                            <strong>Features of Basic Plan</strong>
+                            <ul class="plan-features">
+                                <li>
+                                    Career matches with important career
+                                    details.
+                                </li>
+                            </ul>
+                        </div>
+                        <button
+                            class="width:100% margin-top:20px font-size:18px">
+                            Subscribe
+                        </button>
+                    </div>
 
-                        <!-- Plan -->
-                        <div class="card flex-grow:1 width:300px padding:25px">
-                            <!-- <div class="recommended-badge">Recommended</div> -->
-                            <h3>Individual Plan</h3>
-                            <div class="plan-pricing-label">
-                                <strong>$2.99</strong>/ monthly
+                    <!-- Plan -->
+                    <div class="card flex-grow:1 width:340px padding:25px">
+                        <!-- <div class="recommended-badge">Recommended</div> -->
+                        <h3>Individual Plan</h3>
+                        <div class="plan-pricing-label">
+                            <strong>$2.99</strong>/ monthly
+                        </div>
+                        <div display="features">
+                            <div class="features">
+                                <div class="plan-features-label">
+                                    <strong>Features of Standard Plan</strong>
+                                    <ul class="plan-features">
+                                        <li>Everything in free plan +</li>
+                                        <li>More in-depth career details</li>
+                                    </ul>
+                                </div>
+                                <button
+                                    click-attribute="display"
+                                    click-value="checkout"
+                                    click-closest="[display]"
+                                    class="width:100% margin-top:20px font-size:18px">
+                                    Subscribe
+                                </button>
                             </div>
-                            <div class="plan-features-label">
-                                <strong>Features of Standard Plan</strong>
-                                <ul class="plan-features">
-                                    <li>Everything in free plan +</li>
-                                    <li>More in-depth career details</li>
-                                </ul>
+
+                            <div class="checkout">
+                                <form id="payment-form">
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        class="input-field"
+                                        placeholder="Name"
+                                        required />
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        class="input-field"
+                                        placeholder="Email"
+                                        required />
+                                    <!-- Other fields as needed -->
+
+                                    <div
+                                        id="card-element"
+                                        class="stripe-element">
+                                        <!-- Stripe Elements will be inserted here -->
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        class="width:100% margin-top:20px font-size:18px">
+                                        Subscribe
+                                    </button>
+                                </form>
                             </div>
-                            <button
-                                href="https://checkout.yelloworacle.com/b/test_cN28xB3HH9YCcgg6oo"
-                                class="width:100% margin-top:20px font-size:18px">
-                                Subscribe
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -119,5 +184,6 @@
         </main>
 
         <script src="./dist/CoCreate.js"></script>
+        <script src="./pricing.js"></script>
     </body>
 </html>
