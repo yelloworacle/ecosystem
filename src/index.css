@@ -265,7 +265,7 @@ input:focus {
 .progress-bar {
     width: 100%;
     background-color: #e0e0e0;
-    height: 5px;
+    height: 10px;
     position: absolute;
     bottom: 0px;
     border: 1px solid transparent;
