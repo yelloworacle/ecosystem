@@ -8,7 +8,7 @@
         localstorage-get="user_id"
         localstorage-attribute="object"
         localstorage-selector="[array='users']">
-        <form realtime="false" array="users" object>
+        <form realtime="false" array="users" object broadcast="false">
             <input type="hidden" key="_id" localstorage-set="user_id" />
             <input type="hidden" key="answeredQuestions[]" value="Discover" />
             <button
