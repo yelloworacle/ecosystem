@@ -24,6 +24,11 @@
         input[type="button"] {
             display: none;
         }
+        input#question {
+            padding-bottom: 15px;
+            padding-right: 85px;
+        }
+
         input[type="button"] + a {
             padding: 15px 30px;
             text-align: center;
@@ -54,6 +59,16 @@
         }
         input[type="button"] + a::before {
             content: "Begin Your Journey";
+        }
+
+        [unique="true"],
+        [validation="true"] {
+            outline: 1px solid green;
+        }
+
+        [unique="false"],
+        [validation="false"] {
+            outline: 1px solid red;
         }
     </style>
     <div
@@ -90,7 +105,8 @@
                     realtime="false"
                     array="users"
                     class="position:relative"
-                    template>
+                    template
+                    broadcast="false">
                     <input
                         id="answeredQuestion"
                         type="hidden"
@@ -98,23 +114,25 @@
                         value="{{object.name}}"
                         read="false" />
 
-                    <label for="question" class="load-value margin-bottom:5px"
+                    <label for="question" class="load-value"
                         >{{object.question}}</label
                     >
-                    <div class="question-input">
+                    <div class="question-input margin-top:5px">
                         <input
                             id="question"
                             type="{{object.type}}"
                             key="{{object.name}}"
+                            autocomplete="{{object.name}}"
                             read="false"
-                            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()" />
+                            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"
+                            required />
                         <a
-                            actions="click, {{object.actions}}"
+                            actions="{{object.actions}}"
                             click-selector="i[src]"
                             click-attribute="src"
                             click-value="./assets/svg/spinner.svg"
-                            class="display:flex position:absolute bottom:10px right:8px font-size:20px">
-                            <span>Enter </span>
+                            class="display:flex position:absolute bottom:15px right:8px font-size:20px">
+                            <span class="margin-right:5px">Enter</span>
                             <i
                                 class="display:flex"
                                 src="./assets/svg/angle-right.svg"></i>
@@ -128,20 +146,53 @@
                 </form>
             </div>
         </section>
-        <!-- <textarea
-            id="currentCareers"
-            array="users"
-            key="careers"
-            filter-key="name"
-            filter-operator="$in"
-            filter-selector="document; #careers"
-            value-type="json"
-            realtime="false"
-            input-attribute="read"
-            input-value="true"
-            input-next
-            hidden></textarea> -->
+
         <section>
+            <input
+                type="hidden"
+                localstorage-get="subscription"
+                localstorage-parent="#subscription"
+                localstorage-attribute="object" />
+
+            <!-- <input
+                type="hidden"
+                array="subscriptions"
+                object="6571fe530c48ef6970900a82"
+                key="fields"
+                realtime="false" /> -->
+
+            <!-- <input
+                type="hidden"
+                array="users"
+                object
+                key="subscription"
+                realtime="false"
+                input-next
+                input-attribute="object" /> -->
+
+            <!-- <div
+                id="subscription"
+                array="subscriptions"
+                object=""
+                realtime="false"
+                key="fields"
+                input-next="[template] #subscribed"
+                input-attribute="value"
+                class="width:100%"
+                hidden
+                component></div> -->
+            <textarea
+                id="subscription"
+                array="subscriptions"
+                object=""
+                realtime="false"
+                key="fields"
+                input-next="[template] #subscribed"
+                input-attribute="value"
+                class="width:100%"
+                hidden
+                save="false"></textarea>
+
             <div
                 id="careers"
                 array="users"
@@ -188,25 +239,41 @@
                                 >{{careers.facts}}</span
                             >
                         </div>
-                        <!-- <input
-                            type="hidden"
-                            array="users"
-                            object
-                            key="subscription"
-                            realtime="false"
-                            input-next
-                            input-attribute="object" /> -->
-                        <input
-                            type="hidden"
-                            localstorage-get="subscription"
-                            localstorage-next
-                            localstorage-attribute="object" />
 
-                        <div
-                            array="subscriptions"
-                            object=""
-                            key="fields"
-                            class="width:100%">
+                        <div class="card-row">
+                            <span class="card-label">Apprentice:</span>
+                            <span class="card-value load-value"
+                                >{{careers.apprentice}}</span
+                            >
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Satisfaction:</span>
+                            <span class="card-value load-value"
+                                >{{careers.satisfaction}}</span
+                            >
+                        </div>
+                        <div class="card-row full-width">
+                            <span class="card-label">Sacrifices:</span>
+                            <span class="card-value load-value"
+                                >{{careers.sacrifices}}</span
+                            >
+                        </div>
+
+                        <div class="card-row full-width">
+                            <span class="card-label">Characteristics:</span>
+                            <span class="card-value load-value"
+                                >{{careers.characteristics}}</span
+                            >
+                        </div>
+                        <div class="card-row full-width">
+                            <span class="card-label"
+                                >Career Path Variability:</span
+                            >
+                            <span class="card-value load-value"
+                                >{{careers.careerPathVariability}}</span
+                            >
+                        </div>
+                        <div id="subscribed" class="width:100%">
                             <button
                                 class="unlock width:100% margin-top:20px font-size:16px">
                                 <a href="./pricing.html"
@@ -251,6 +318,7 @@
             openai="response"
             crdt="false"
             realtime="false"
+            broadcast="false"
             hidden></textarea>
         <!-- <textarea
             id="response"
