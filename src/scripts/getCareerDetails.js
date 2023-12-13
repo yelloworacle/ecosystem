@@ -24,7 +24,7 @@ async function processCareers() {
                 const messages = []
                 messages.push({
                     role: 'system',
-                    content: `need details about the career name provided. Your response needs to be a valid Json object containing the following keys with no additional context required:
+                    content: `Need details about the career name provided. Your response needs to be a valid Json object containing the following keys with no additional context required:
                     ${careerFields[i]}
                     `
                 })
@@ -34,7 +34,7 @@ async function processCareers() {
                     method: 'openai.chat',
                     chat: {
                         apiKey: "REDACTED_OPENAI_KEY",
-                        model: 'gpt-4-1106-preview',
+                        model: 'gpt-3.5-turbo',
                         messages,
                         max_tokens: 3300,
                         temperature: 0.6,
