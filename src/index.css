@@ -66,6 +66,8 @@ header {
 .logo-name-colored {
     font-size: 32px;
     color: #F7CC02;
+    text-shadow: 2px 2px 4px #000000;
+    /* -webkit-text-stroke: 1px black; */
 }
 
 .menu_icon {
