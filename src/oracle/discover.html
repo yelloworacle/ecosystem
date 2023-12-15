@@ -153,47 +153,7 @@
                 localstorage-get="subscription"
                 localstorage-parent="#subscription"
                 localstorage-attribute="object" />
-            <textarea
-                array="users"
-                key="careers"
-                filter-key="name"
-                filter-operator="$in"
-                filter-parent="#careers"
-                filter-case-sensitive="false"
-                value-type="json"
-                realtime="false"
-                input-attribute="array"
-                input-value="careers"
-                input-parent="#careers"
-                hidden></textarea>
 
-            <!-- <input
-                type="hidden"
-                array="subscriptions"
-                object="6571fe530c48ef6970900a82"
-                key="fields"
-                realtime="false" /> -->
-
-            <!-- <input
-                type="hidden"
-                array="users"
-                object
-                key="subscription"
-                realtime="false"
-                input-next
-                input-attribute="object" /> -->
-
-            <!-- <div
-                id="subscription"
-                array="subscriptions"
-                object=""
-                realtime="false"
-                key="fields"
-                input-next="[template] #subscribed"
-                input-attribute="value"
-                class="width:100%"
-                hidden
-                component></div> -->
             <textarea
                 id="subscription"
                 array="subscriptions"
@@ -324,31 +284,27 @@
             component></div>
         <textarea
             id="response"
-            array="users"
-            key="careers"
             value-type="json"
             openai="response"
-            crdt="false"
-            realtime="false"
-            broadcast="false"
             hidden></textarea>
-        <!-- <textarea
-            id="response"
-            array="careers"
-            key="{}"
-            value-type="json"
-            openai="response"
-            crdt="false"
-            hidden></textarea> -->
-
-        <a id="request" actions="openAi, save"></a>
-        <!-- <a id="request" actions="openAi">test</a> -->
+        <a id="request" actions="openAi, manageCareers"></a>
     </form>
 
-    <!-- <button
-        class="button-round position:fixed bottom:20px right:20px"
-        actions="install"
-        hidden>
-        <i src="./assets/svg/plus.svg"></i>
-    </button> -->
+    <textarea
+        id="mergedCareers"
+        array="users"
+        key="careers"
+        value-type="json"
+        crdt="false"
+        realtime="false"
+        broadcast="false"
+        filter-key="name"
+        filter-operator="$in"
+        filter-selector="document; #careers"
+        filter-case-sensitive="false"
+        value-type="json"
+        input-attribute="array"
+        input-value="careers"
+        input-selector="document; #careers"
+        hidden></textarea>
 </div>
