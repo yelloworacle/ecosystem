@@ -153,6 +153,19 @@
                 localstorage-get="subscription"
                 localstorage-parent="#subscription"
                 localstorage-attribute="object" />
+            <textarea
+                array="users"
+                key="careers"
+                filter-key="name"
+                filter-operator="$in"
+                filter-parent="#careers"
+                filter-case-sensitive="false"
+                value-type="json"
+                realtime="false"
+                input-attribute="array"
+                input-value="careers"
+                input-parent="#careers"
+                hidden></textarea>
 
             <!-- <input
                 type="hidden"
@@ -195,74 +208,73 @@
 
             <div
                 id="careers"
-                array="users"
-                object="{{}}"
-                key="careers"
-                render-selector="[template]"
-                filter-limit="1">
+                array=""
+                object
+                filter-sort-key="name"
+                render-selector="[template]">
                 <div class="card margin-bottom:15px" template>
                     <div class="card-content">
                         <div class="card-row full-width">
                             <span class="card-label">Career Name:</span>
                             <span class="card-value load-value"
-                                >{{careers.name}}</span
+                                >{{object.name}}</span
                             >
                         </div>
                         <div class="card-row">
                             <span class="card-label">Average Salary:</span>
                             <span class="card-value load-value"
-                                >{{careers.salary}}</span
+                                >{{object.salary}}</span
                             >
                         </div>
                         <div class="card-row">
                             <span class="card-label">Stress Level:</span>
                             <span class="card-value load-value"
-                                >{{careers.stress}}</span
+                                >{{object.stress}}</span
                             >
                         </div>
 
                         <div class="card-row">
                             <span class="card-label">Pros:</span>
                             <span class="card-value load-value"
-                                >{{careers.pros}}</span
+                                >{{object.pros}}</span
                             >
                         </div>
                         <div class="card-row">
                             <span class="card-label">Cons:</span>
                             <span class="card-value load-value"
-                                >{{careers.cons}}</span
+                                >{{object.cons}}</span
                             >
                         </div>
                         <div class="card-row full-width">
                             <span class="card-label">Interesting Fact:</span>
                             <span class="card-value load-value"
-                                >{{careers.facts}}</span
+                                >{{object.facts}}</span
                             >
                         </div>
 
                         <div class="card-row">
                             <span class="card-label">Apprentice:</span>
                             <span class="card-value load-value"
-                                >{{careers.apprentice}}</span
+                                >{{object.apprentice}}</span
                             >
                         </div>
                         <div class="card-row">
                             <span class="card-label">Satisfaction:</span>
                             <span class="card-value load-value"
-                                >{{careers.satisfaction}}</span
+                                >{{object.satisfaction}}</span
                             >
                         </div>
                         <div class="card-row full-width">
                             <span class="card-label">Sacrifices:</span>
                             <span class="card-value load-value"
-                                >{{careers.sacrifices}}</span
+                                >{{object.sacrifices}}</span
                             >
                         </div>
 
                         <div class="card-row full-width">
                             <span class="card-label">Characteristics:</span>
                             <span class="card-value load-value"
-                                >{{careers.characteristics}}</span
+                                >{{object.characteristics}}</span
                             >
                         </div>
                         <div class="card-row full-width">
@@ -270,7 +282,7 @@
                                 >Career Path Variability:</span
                             >
                             <span class="card-value load-value"
-                                >{{careers.careerPathVariability}}</span
+                                >{{object.careerPathVariability}}</span
                             >
                         </div>
                         <div id="subscribed" class="width:100%">
