@@ -57,23 +57,10 @@
 
     <floating-label class="input-600">
         <input
+            id="name"
             type="text"
             key="name"
             placeholder="Name"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="number"
-            key="position"
-            placeholder="Position"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="progress"
-            placeholder="Progress"
             class="floating-label" />
     </floating-label>
     <floating-label class="input-600">
@@ -83,6 +70,14 @@
             placeholder="Question"
             rows="4"
             class="floating-label"></textarea>
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            id="position"
+            type="number"
+            key="position"
+            placeholder="Position"
+            class="floating-label" />
     </floating-label>
     <floating-label class="input-300">
         <input
@@ -98,13 +93,21 @@
             placeholder="Actions"
             class="floating-label" />
     </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="attributes"
+            placeholder="Attributes"
+            class="floating-label" />
+    </floating-label>
 
     <button
-        actions="save, state"
+        actions="save, updatePositions, state"
         state_to="adminView"
         state-src="./questions/datatable.html"
         state-overwrite
         class="button-round">
         <i src="./assets/svg/save.svg"></i>
     </button>
+    <script src="./questions/positions.js"></script>
 </form>
