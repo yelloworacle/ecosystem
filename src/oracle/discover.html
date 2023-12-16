@@ -73,11 +73,18 @@
     </style>
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
+        <!-- <div
+            array="questions"
+            object
+            fiter-sort-key="position"
+            filter-limit="0"
+            component></div> -->
+
         <section class="position:relative">
             <div
                 filter-sort-key="position"
                 filter-sort-direction="asc"
-                filter-parent="[array='questions']"></div>
+                filter-parent="#questions"></div>
 
             <textarea
                 id="answeredQuestions"
@@ -95,6 +102,7 @@
 
             <div
                 id="questions"
+                storage="mongodb"
                 array="questions"
                 object
                 filter-limit="1"
@@ -124,6 +132,7 @@
                             key="{{object.name}}"
                             autocomplete="{{object.name}}"
                             read="false"
+                            {{object.attributes}}
                             onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"
                             required />
                         <a
@@ -140,10 +149,18 @@
 
                         <div class="progress-bar">
                             <div
-                                class="progress width:{{object.progress}}"></div>
+                                position="{{object.position}}"
+                                class="progress"
+                                style="width: 0px"></div>
                         </div>
                     </div>
                 </form>
+            </div>
+            <div
+                template="validate"
+                class="card margin:5px padding:10px {{status}}">
+                <span class="{{type}}">{{message}}</span
+                ><a actions="remove"> X</a>
             </div>
         </section>
 
@@ -296,7 +313,6 @@
         key="careers"
         value-type="json"
         crdt="false"
-        realtime="false"
         broadcast="false"
         filter-key="name"
         filter-operator="$in"
@@ -307,4 +323,7 @@
         input-value="careers"
         input-selector="document; #careers"
         hidden></textarea>
+
+    <script src="./oracle/index.js"></script>
+    <script src="./oracle/progress.js"></script>
 </div>
