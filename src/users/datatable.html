@@ -155,7 +155,10 @@
                             state_to="adminView"
                             state-src="./users/form.html"
                             state-overwrite>
-                            <h4>{{object.firstname}} {{object.lastname}}</h4>
+                            <h4>
+                                {{object.name}} {{object.firstname}}
+                                {{object.lastname}}
+                            </h4>
                             <div
                                 state_to="form-fields"
                                 state-object="{{object._id}}"></div>
@@ -178,6 +181,8 @@
             </tr>
         </tbody>
     </table>
+
+    <div filter-on="scroll" filter-previous="[render-selector]"></div>
 
     <button
         actions="state"
