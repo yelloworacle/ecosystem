@@ -10,7 +10,7 @@ CoCreate.observer.init({
         if (!position)
             return
         else
-            position -= 2
+            position -= 1
 
         let data = await CoCreate.socket.send({
             method: "object.read",
