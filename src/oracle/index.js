@@ -7,7 +7,7 @@ document.addEventListener('actionsLoaded', function () {
 
             let preValue = element.getValue()
             let newValue = [...value, ...preValue]
-            element.setValue(newValue)
+            element.setValue(newValue, false)
             document.dispatchEvent(new CustomEvent('manageCareers', {
                 detail: {}
             }));
@@ -26,7 +26,7 @@ document.addEventListener('actionsLoaded', function () {
                 const careerExists = careers.object.some(existingCareer => existingCareer.name === careerName);
 
                 if (!careerExists) {
-                    await addCareer(careerName)
+                    addCareer(careerName)
                 }
             }
 
