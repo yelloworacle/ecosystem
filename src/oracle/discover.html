@@ -61,6 +61,10 @@
             content: "Begin Your Journey";
         }
 
+        #question[type="hidden"] ~ .sibling {
+            display: none;
+        }
+
         [unique="true"],
         [validation="true"] {
             outline: 1px solid green;
@@ -140,14 +144,14 @@
                             click-selector="i[src]"
                             click-attribute="src"
                             click-value="./assets/svg/spinner.svg"
-                            class="display:flex position:absolute top:9px right:8px font-size:20px">
+                            class="sibling display:flex position:absolute top:9px right:8px font-size:20px">
                             <span class="margin-right:5px">Enter</span>
                             <i
                                 class="display:flex"
                                 src="./assets/svg/angle-right.svg"></i>
                         </a>
 
-                        <div class="progress-bar">
+                        <div class="sibling progress-bar">
                             <div
                                 position="{{object.position}}"
                                 class="progress"
