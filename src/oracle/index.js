@@ -79,7 +79,7 @@ const careerFields = [`
 
 async function addCareer(name) {
     try {
-        let careersDetails = {}
+        let careersDetails
         for (let i = 0; i < careerFields.length; i++) {
             const messages = []
             messages.push({
@@ -110,13 +110,15 @@ async function addCareer(name) {
                     content = JSON.parse(content)
                     careersDetails = { ...careersDetails, ...content }
                 } catch (error) {
-                    console.error(`Error processing ${name}: ${error}`);
+                    console.error(`Error parsing career ${name}: ${error}`);
                 }
             } else {
-                console.error(`Error processing ${name}: ${error}`);
+                console.error(`Error AI content is empty ${name}: ${error}`);
             }
         }
 
+        if (!careersDetails)
+            return
         let request = {
             method: "object.create",
             array: "careers",
@@ -127,7 +129,7 @@ async function addCareer(name) {
 
         data = await CoCreate.crud.send(request)
         if (!data || !data.object || !data.object[0]) {
-            console.error(`Error processing ${name}: ${error}`);
+            console.error(`Error saving career ${name}: ${error}`);
         }
         else
             console.log('created career: ', data.object[0])
