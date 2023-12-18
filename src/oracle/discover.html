@@ -106,13 +106,13 @@
                 array="questions"
                 object
                 filter-limit="1"
-                render-selector="[template]"
+                render-selector="#temp"
                 read="false"
                 loader>
                 <form
+                    id="temp"
                     realtime="false"
                     array="users"
-                    class="position:relative"
                     template
                     broadcast="false">
                     <input
@@ -125,7 +125,7 @@
                     <label for="question" class="load-value"
                         >{{object.question}}</label
                     >
-                    <div class="question-input margin-top:5px">
+                    <div class="position:relative margin-top:5px">
                         <input
                             id="question"
                             type="{{object.type}}"
@@ -140,7 +140,7 @@
                             click-selector="i[src]"
                             click-attribute="src"
                             click-value="./assets/svg/spinner.svg"
-                            class="display:flex position:absolute bottom:15px right:8px font-size:20px">
+                            class="display:flex position:absolute top:9px right:8px font-size:20px">
                             <span class="margin-right:5px">Enter</span>
                             <i
                                 class="display:flex"
@@ -154,13 +154,13 @@
                                 style="width: 0px"></div>
                         </div>
                     </div>
+                    <div
+                        template="validate"
+                        class="card margin:5px padding:10px {{status}}">
+                        <span class="{{type}}">{{message}}</span
+                        ><a actions="remove"> X</a>
+                    </div>
                 </form>
-            </div>
-            <div
-                template="validate"
-                class="card margin:5px padding:10px {{status}}">
-                <span class="{{type}}">{{message}}</span
-                ><a actions="remove"> X</a>
             </div>
         </section>
 
