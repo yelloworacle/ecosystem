@@ -58,7 +58,6 @@ CoCreate.observer.init({
         }
 
         mutation.target.style.width = `${progressBarPercentage}%`;
-        console.log(`Progress Bar Width: ${progressBarPercentage}%`);
 
     }
 });
