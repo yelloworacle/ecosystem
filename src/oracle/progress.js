@@ -20,7 +20,7 @@ CoCreate.observer.init({
                     { key: 'position', direction: 'asc' }
                 ],
                 query: [
-                    { key: "actions", value: 'validate, click, save, action(document; #request)', operator: '$eq' }
+                    { key: "actions", value: ['validate, click, save, action(document; #request)', 'validate, click, signUp, signIn, action(document; #request)'], operator: '$in' },
                 ]
             }
         });

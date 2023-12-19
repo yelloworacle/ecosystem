@@ -25,7 +25,7 @@ CoCreate.actions.init({
             const careerExists = careers.object.some(existingCareer => existingCareer.name === careerName);
 
             if (!careerExists) {
-                addCareer(careerName)
+                addCareer(careerName, element, newValue)
             }
         }
 
@@ -77,7 +77,7 @@ const careerFields = [`
 ]
 
 
-async function addCareer(name) {
+async function addCareer(name, element, careerNames) {
     try {
         let careersDetails
         for (let i = 0; i < careerFields.length; i++) {
@@ -131,8 +131,10 @@ async function addCareer(name) {
         if (!data || !data.object || !data.object[0]) {
             console.error(`Error saving career ${name}: ${error}`);
         }
-        else
+        else {
+            element.setValue(careerNames, false)
             console.log('created career: ', data.object[0])
+        }
     } catch (error) {
         console.error(`Error processing ${name}: ${error}`);
     }

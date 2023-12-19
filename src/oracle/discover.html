@@ -24,7 +24,7 @@
         input[type="button"] {
             display: none;
         }
-        input#question {
+        input.question {
             padding-bottom: 15px;
             padding-right: 85px;
         }
@@ -61,7 +61,7 @@
             content: "Begin Your Journey";
         }
 
-        #question[type="hidden"] ~ .sibling {
+        .question[type="hidden"] ~ .sibling {
             display: none;
         }
 
@@ -74,6 +74,14 @@
         [validation="false"] {
             outline: 1px solid red;
         }
+
+        .hidden-input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            z-index: -1;
+        }
     </style>
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
@@ -84,7 +92,7 @@
             filter-limit="0"
             component></div> -->
 
-        <section class="position:relative">
+        <section>
             <div
                 filter-sort-key="position"
                 filter-sort-direction="asc"
@@ -126,19 +134,20 @@
                         value="{{object.name}}"
                         read="false" />
 
-                    <label for="question" class="load-value"
+                    <label for="{{object.name}}" class="load-value"
                         >{{object.question}}</label
                     >
                     <div class="position:relative margin-top:5px">
                         <input
-                            id="question"
+                            id="{{object.name}}"
                             type="{{object.type}}"
                             key="{{object.name}}"
-                            autocomplete="{{object.name}}"
+                            autocomplete="on"
                             read="false"
                             {{object.attributes}}
                             onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"
-                            required />
+                            required
+                            class="question" />
                         <a
                             actions="{{object.actions}}"
                             click-selector="i[src]"
@@ -269,7 +278,7 @@
                         <div id="subscribed" class="width:100%">
                             <button
                                 class="unlock width:100% margin-top:20px font-size:16px">
-                                <a href="./pricing.html"
+                                <a href="./pricing/"
                                     >Subscribe to unlock additional details</a
                                 >
                             </button>
@@ -328,6 +337,57 @@
         input-selector="document; #careers"
         hidden></textarea>
 
+    <!-- <form realtime="false" array="users" object broadcast="false" hidden>
+        <input type="hidden" key="_id" localstorage-set="user_id" />
+        <input type="hidden" key="answeredQuestions[]" value="Discover" />
+        <button id="createUser" actions="save, localStorage"></button>
+    </form> -->
+
     <script src="./oracle/index.js"></script>
     <script src="./oracle/progress.js"></script>
+    <script>
+        let user_id = localStorage.getItem("user_id");
+        if (!user_id) {
+            CoCreate.crud
+                .send({
+                    method: "object.create",
+                    array: "users",
+                    object: {
+                        "answeredQuestions[]": "Discover",
+                    },
+                })
+                .then((user) => {
+                    if (user.object[0]) {
+                        localStorage.setItem("user_id", user.object[0]._id);
+                        let userElements =
+                            document.querySelectorAll("[array='users']");
+                        userElements.forEach(function (element) {
+                            element.setAttribute("object", user.object[0]._id);
+                        });
+                    }
+                });
+        }
+
+        CoCreate.observer.init({
+            name: "setEmailInput",
+            observe: ["addedNodes"],
+            target: "#password",
+            callback: async (mutation) => {
+                console.log("password");
+                // Create a new input element
+                const input = document.createElement("input");
+
+                // Set properties on the input element
+                input.type = "email"; // Set the type of input
+                input.id = "email"; // Set a unique ID
+                input.name = "email"; // Set the name property
+                input.classList.add("hidden-input");
+                input.setAttribute("array", "users");
+                input.setAttribute("object", "");
+                input.setAttribute("key", "email");
+                // Append the input element to the desired container
+                mutation.target.parentElement.appendChild(input);
+            },
+        });
+    </script>
 </div>

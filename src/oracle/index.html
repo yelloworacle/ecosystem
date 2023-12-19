@@ -1,23 +1,14 @@
 <!DOCTYPE html>
-<header class="text-align:center">
+<header class="text-align:center min-height:100vh">
     <h1>Discover Your Destiny</h1>
     <p class="font-size:20px margin:25px">
         Chart and Envision Your Future's Many Paths
     </p>
-    <div
-        localstorage-get="user_id"
-        localstorage-attribute="object"
-        localstorage-selector="[array='users']">
-        <form realtime="false" array="users" object broadcast="false">
-            <input type="hidden" key="_id" localstorage-set="user_id" />
-            <input type="hidden" key="answeredQuestions[]" value="Discover" />
-            <button
-                actions="save, localStorage, state"
-                state_to="mainView"
-                state-src="./oracle/discover.html"
-                class="font-size:24px">
-                Discover
-            </button>
-        </form>
-    </div>
+    <button
+        actions="state"
+        state_to="mainView"
+        state-src="./oracle/discover.html"
+        class="font-size:24px">
+        Discover
+    </button>
 </header>
