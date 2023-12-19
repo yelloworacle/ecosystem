@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<div
+    class="display:flex justify-content:space-between align-items:center padding:10px">
+    <!-- Logo -->
+    <a
+        href="{{path}}"
+        actions="state"
+        state_to="mainView"
+        state-src="./oracle/index.html"
+        class="height:50px width:210px display:flex align-items:center">
+        <img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
+        <span class="logo-name"
+            >Yellow <span class="logo-name-colored">Oracle</span></span
+        >
+    </a>
+
+    <!-- Menu Icon -->
+    <a
+        class="menu_icon"
+        click="active"
+        click-attribute="class"
+        click-selector="document; .menu_icon[]"
+        toggle="width:0px,"
+        toggle-selector="document; #menuL"
+        toggle-attribute="style">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
+</div>
+
+<!-- Navigation -->
+<div class="color:#212121 text-transform:uppercase margin-top:30px">
+    <a
+        href="{{path}}"
+        actions="state"
+        state_to="mainView"
+        state-src="./oracle/index.html"
+        class="display:block color:#F7CC02:hover padding:12px_24px"
+        >Home</a
+    >
+    <a
+        href="{{path}}"
+        actions="state"
+        state_to="mainView"
+        state-src="./oracle/discover.html"
+        class="display:block color:#F7CC02:hover padding:12px_24px"
+        >Discover</a
+    >
+    <a
+        href="{{path}}account/"
+        class="display:block color:#F7CC02:hover padding:12px_24px"
+        >Account</a
+    >
+    <!-- <a href="{{path}}blog/" class="display:block color:#F7CC02:hover padding:12px_24px">Blog</a>
+				<a href="{{path}}discuss/" class="display:block color:#F7CC02:hover padding:12px_24px">Discuss</a>
+				<a href="{{path}}university/" class="display:block color:#F7CC02:hover padding:12px_24px">University</a> -->
+</div>
+
+<div resize="right"></div>

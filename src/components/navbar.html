@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<style>
+    .sticky-nav {
+        position: sticky;
+        background: #fff;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+        height: auto;
+        right: 0;
+        top: 0;
+    }
+</style>
+<!-- Logo -->
+<a
+    href="{{path}}"
+    actions="state"
+    state_to="mainView"
+    state-src="./oracle/index.html"
+    class="height:50px display:flex align-items:center display:none@xs@sm@md">
+    <img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
+    <span class="logo-name"
+        >Yellow <span class="logo-name-colored">Oracle</span></span
+    >
+</a>
+
+<!-- Menu Icon -->
+<a
+    class="menu_icon display:none@md@lg@xl"
+    click="active"
+    click-attribute="class"
+    click-selector="document; .menu_icon[]"
+    toggle="width:300px,"
+    toggle-selector="document; #menuL"
+    toggle-attribute="style">
+    <span></span>
+    <span></span>
+    <span></span>
+</a>
+<!-- Icon Logo -->
+<a
+    href="{{path}}"
+    actions="state"
+    state_to="mainView"
+    state-src="./oracle/index.html"
+    class="height:50px display:none@lg@xl">
+    <img
+        array="organizations"
+        object=""
+        key="icon-logo"
+        src="{{path}}assets/icons/icon-1240-1240.png"
+        height="50px"
+        alt="icon logo" />
+</a>
+
+<!-- Navigation -->
+<div
+    class="display:flex align-items:center display:none@xs@sm overflow:auto height:50px width:100% margin-left:20px font-size:20px padding-top:5px">
+    <a
+        href="{{path}}"
+        actions="state"
+        state_to="mainView"
+        state-src="./oracle/index.html"
+        class="margin-right:25px color:#F7CC02:hover"
+        >Home</a
+    >
+    <a
+        href="{{path}}"
+        actions="state"
+        state_to="mainView"
+        state-src="./oracle/discover.html"
+        class="margin-right:25px color:#F7CC02:hover"
+        >Discover</a
+    >
+
+    <a
+        href="{{path}}account/"
+        class="margin-right:25px color:#F7CC02:hover"
+        state_to="signin"
+        state-href="./"
+        actions="state">
+        Account</a
+    >
+</div>
+
+<!-- Horizontal Scroll Nav/Tabs -->
+<div
+    class="display:flex direction:rtl overflow:auto align-items:center width:320px width:100%@xs@sm height:50px padding-right:10px font-size:20px">
+    <!-- Social Share -->
+    <div class="display:flex align-items:center font-size:20px">
+        <a
+            href="https://www.pinterest.com/yelloworacle"
+            target="_blank"
+            class="margin-right:15px">
+            <i
+                class="display:flex height:20px"
+                src="{{path}}assets/svg/pinterest-p.svg"></i>
+        </a>
+        <a
+            href="https://twitter.com/yelloworacle1"
+            target="_blank"
+            class="margin-right:15px">
+            <i
+                class="display:flex height:20px"
+                src="{{path}}assets/svg/twitter.svg"></i>
+        </a>
+        <a
+            href="https://www.facebook.com/yelloworacle"
+            target="_blank"
+            class="margin-right:15px">
+            <i
+                class="display:flex height:20px"
+                src="{{path}}assets/svg/facebook.svg"></i>
+        </a>
+        <a
+            href="https://www.instagram.com/yelloworacle/"
+            target="_blank"
+            class="margin-right:15px">
+            <i
+                class="display:flex height:20px"
+                src="{{path}}assets/svg/instagram.svg"></i>
+        </a>
+        <a
+            href="https://www.linkedin.com/company/yelloworacle"
+            target="_blank"
+            class="margin-right:15px">
+            <i
+                class="display:flex height:20px"
+                src="{{path}}assets/svg/linkedin-in.svg"></i>
+        </a>
+    </div>
+
+    <!-- fullscreen toogle and icon transform-->
+    <a class="margin-right:15px" fullscreen></a>
+</div>
+
+<!-- Avatar -->
+<div
+    localstorage-get="user_id"
+    localstorage-key="userId"
+    class="avatar-wrapper margin-right:10px">
+    <a
+        class="avatar round"
+        href="{{path}}account/signin.html"
+        state_to="signin"
+        state-href="../"
+        actions="state">
+        <div state_to="mainView" state-src="./oracle/discover.html"></div>
+        <span array="users" object="{{userId}}" key="name" class="avatar-name">
+            <i class="height:20px" src="{{path}}assets/svg/sign-in-alt.svg"></i>
+        </span>
+        <span class="avatar-image">
+            <img
+                array="users"
+                object="{{userId}}"
+                key="avatar"
+                onerror="this.style.display='none'"
+                width="40px" />
+        </span>
+    </a>
+    <div
+        class="avatar-status"
+        array="users"
+        object="{{userId}}"
+        user-status="{'name':'status'}"></div>
+</div>
