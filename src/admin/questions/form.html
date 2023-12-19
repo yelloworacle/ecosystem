@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<form
+    state_id="form-fields"
+    array="questions"
+    object=""
+    realtime="false"
+    class="main-view max-width:600px">
+    <!-- deleteObject-->
+
+    <div
+        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
+        <a
+            actions="state"
+            state_to="adminView"
+            state-src="./questions/datatable.html"
+            state-overwrite
+            class="padding:0px_10px"
+            ><i class="height:20px" src="../assets/svg/angle-left.svg"></i
+        ></a>
+        <div
+            class="display:flex align-items:center transition:0.3s"
+            hover="display:block!important"
+            hover-selector=".options">
+            <div class="display:none options">
+                <a
+                    actions="delete, state"
+                    array="questions"
+                    object=""
+                    state_to="adminView"
+                    state-src="./questions/datatable.html"
+                    state-overwrite
+                    class="padding:0px_10px">
+                    <i
+                        class="height:18px"
+                        src="../assets/svg/trash-alt.svg"></i>
+                </a>
+                <a
+                    actions="save, state"
+                    state_to="adminView"
+                    state-src="./questions/datatable.html"
+                    state-overwrite
+                    class="padding:0px_10px">
+                    <i class="height:18px" src="../assets/svg/save.svg"></i>
+                </a>
+            </div>
+            <a class="padding:0px_10px"
+                ><i class="height:20px" src="../assets/svg/ellipsis-v.svg"></i
+            ></a>
+        </div>
+    </div>
+
+    <floating-label class="input-600">
+        <input
+            id="name"
+            type="text"
+            key="name"
+            placeholder="Name"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-600">
+        <textarea
+            type="text"
+            key="question"
+            placeholder="Question"
+            rows="4"
+            class="floating-label"></textarea>
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            id="position"
+            type="number"
+            key="position"
+            placeholder="Position"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="type"
+            placeholder="Type"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="actions"
+            placeholder="Actions"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="attributes"
+            placeholder="Attributes"
+            class="floating-label" />
+    </floating-label>
+
+    <button
+        actions="save, updatePositions, state"
+        state_to="adminView"
+        state-src="./questions/datatable.html"
+        state-overwrite
+        class="button-round">
+        <i src="../assets/svg/save.svg"></i>
+    </button>
+    <script src="./questions/positions.js"></script>
+</form>
