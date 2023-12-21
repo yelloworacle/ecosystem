@@ -373,20 +373,24 @@
             observe: ["addedNodes"],
             target: "#password",
             callback: async (mutation) => {
-                console.log("password");
-                // Create a new input element
-                const input = document.createElement("input");
+                const email = document.createElement("input");
+                email.type = "email";
+                email.id = "email";
+                email.name = "email";
+                email.classList.add("hidden-input");
+                email.setAttribute("array", "users");
+                email.setAttribute("object", "");
+                email.setAttribute("key", "email");
+                mutation.target.parentElement.appendChild(email);
 
-                // Set properties on the input element
-                input.type = "email"; // Set the type of input
-                input.id = "email"; // Set a unique ID
-                input.name = "email"; // Set the name property
-                input.classList.add("hidden-input");
-                input.setAttribute("array", "users");
-                input.setAttribute("object", "");
-                input.setAttribute("key", "email");
-                // Append the input element to the desired container
-                mutation.target.parentElement.appendChild(input);
+                const roles = document.createElement("input");
+                roles.type = "hidden";
+                roles.id = "roles";
+                roles.setAttribute("array", "users");
+                roles.setAttribute("object", "");
+                roles.setAttribute("key", "roles[]");
+                roles.value = "657726510fee1c6415f70760";
+                mutation.target.parentElement.appendChild(roles);
             },
         });
     </script>
