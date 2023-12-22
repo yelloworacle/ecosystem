@@ -39,7 +39,6 @@
                 border 0.3s ease;
             border: 2px solid #f7cc02;
             background-color: #f0f0f0;
-            color: #f7cc02;
             border-radius: 8px;
             position: relative;
             z-index: 5;
@@ -51,9 +50,11 @@
 
         input[type="button"] + a:hover {
             background-color: #f7cc02;
-            color: #fff;
         }
 
+        input[type="button"] + a span {
+            display: none !important;
+        }
         input[type="button"] + a i {
             display: none !important;
         }
@@ -134,7 +135,9 @@
                         value="{{object.name}}"
                         read="false" />
 
-                    <label for="{{object.name}}" class="load-value"
+                    <label
+                        for="{{object.name}}"
+                        class="load-value font-size:18px"
                         >{{object.question}}</label
                     >
                     <div class="position:relative margin-top:5px">
@@ -142,7 +145,8 @@
                             id="{{object.name}}"
                             type="{{object.type}}"
                             key="{{object.name}}"
-                            autocomplete="on"
+                            name="{{object.name}}"
+                            autocomplete="{{object.name}}"
                             read="false"
                             {{object.attributes}}
                             onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"
@@ -154,7 +158,9 @@
                             click-attribute="src"
                             click-value="./assets/svg/spinner.svg"
                             class="sibling display:flex position:absolute top:9px right:8px font-size:20px">
-                            <span class="margin-right:5px">Enter</span>
+                            <span class="margin-right:5px font-weight:400"
+                                >Enter</span
+                            >
                             <i
                                 class="display:flex"
                                 src="./assets/svg/angle-right.svg"></i>
@@ -348,6 +354,8 @@
     <script>
         let user_id = localStorage.getItem("user_id");
         if (!user_id) {
+            console.log("test");
+            document.getElementById("answeredQuestions").setValue("Discover");
             CoCreate.crud
                 .send({
                     method: "object.create",
