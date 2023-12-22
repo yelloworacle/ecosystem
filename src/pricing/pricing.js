@@ -3,16 +3,18 @@ let productionPk = "pk_live_51OK9b5DSpIU4j2Jo6VbxSw3F8LHhru5wn2FZyE7pqWtRqHoD1hB
 let testPk = "pk_test_51OK9b5DSpIU4j2Joz6AeDvWPQEpoWhRweNS6Hevwvza5IcHwTpgTGTNU5GGMZUiQYzeSBifqV8AWaT3OtjUAVwXt00c3hmBILe"
 
 
-let pk
-if (environment === 'production')
+let pk, price, coupon
+if (environment === 'production') {
     pk = productionPk
-else
+    price = 'price_1OPdVuDSpIU4j2JoDTXa1i6J'
+    coupon = 'miY3GbhY'
+} else {
     pk = testPk
+    price = 'price_1OP7WaDSpIU4j2JoOhYOpB4U'
+    coupon = 'SUHCpxy7'
+}
 
 const stripe = Stripe(pk);
-
-// "pk_test_51OK9b5DSpIU4j2Joz6AeDvWPQEpoWhRweNS6Hevwvza5IcHwTpgTGTNU5GGMZUiQYzeSBifqV8AWaT3OtjUAVwXt00c3hmBILe"
-// "pk_live_51OK9b5DSpIU4j2Jo6VbxSw3F8LHhru5wn2FZyE7pqWtRqHoD1hBrtDkxMySPpJNEyGTEoPE0Nfs7bGFqkB5UX17300yYKufL6v"
 
 var elements = stripe.elements();
 
@@ -35,6 +37,7 @@ form.addEventListener("submit", function (event) {
     submitButton.innerHTML = "Processing";
 
     var additionalData = {
+        customer: document.getElementById("customer").value,
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
     };
@@ -47,31 +50,44 @@ form.addEventListener("submit", function (event) {
                 console.log(result.error.message);
                 submitButton.innerHTML = "Payment Failed";
             } else {
-                // Send the token and additional data to your server
-                additionalData.token = result.token.id;
-                additionalData.discountPriceId =
-                    "price_1OP7VGDSpIU4j2JoOijeqOjw";
-                additionalData.trial_period_days = 30;
-                additionalData.priceId =
-                    "price_1OP7WaDSpIU4j2JoOhYOpB4U";
-                additionalData.subscription_id =
-                    "6571fe530c48ef6970900a82";
+                additionalData.source = result.token.id;
+
+                if (!additionalData.customer) {
+                    let data = await CoCreate.socket.send({
+                        method: "stripe.customers.create",
+                        broadcast: false,
+                        stripe: additionalData,
+                        environment
+                    });
+                    if (!data.stripe || !data.stripe.id)
+                        return submitButton.innerHTML = "Payment Failed";
+
+                    additionalData.customer = data.stripe.id;
+
+                }
+
                 let data = await CoCreate.socket.send({
                     method: "stripe.subscriptions.create",
                     broadcast: false,
-                    stripe: additionalData,
+                    stripe: {
+                        customer: additionalData.customer,
+                        items: [{ price }],
+                        coupon: coupon,
+                        expand: ['latest_invoice.payment_intent']
+                    },
                     environment
                 });
 
-                if (data.stripe.subscription.id) {
+                if (data.stripe.id) {
                     CoCreate.crud.send({
                         method: "object.update",
                         broadcast: false,
                         array: "users",
                         object: {
                             _id: data.user_id,
+                            customerId: additionalData.customer,
                             subscription: "6571fe530c48ef6970900a82",
-                            subscriptionId: data.stripe.subscription.id
+                            subscriptionId: data.stripe.id
                         },
                     });
 

@@ -116,6 +116,9 @@
             <section>
                 <!-- Pricing Plans Container -->
                 <div
+                    localstorage-get="user_id"
+                    localstorage-attribute="object"
+                    localstorage-selector="[array='users'][]"
                     class="display:flex flex-wrap:wrap gap:15px padding-top:80px">
                     <!-- Plan -->
                     <div class="card flex-grow:1 width:365px padding:25px">
@@ -149,6 +152,13 @@
 
                             <div class="checkout">
                                 <form id="payment-form">
+                                    <input
+                                        type="hidden"
+                                        array="users"
+                                        object=""
+                                        key="customerId"
+                                        id="customer"
+                                        class="input-field" />
                                     <input
                                         type="text"
                                         id="name"
