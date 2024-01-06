@@ -27,6 +27,10 @@
         text-align: center;
         padding-top: 30px;
     }
+    .ambassador .join .terms {
+        text-align: center;
+        padding: 30px;
+    }
 </style>
 <div class="ambassador">
     <h1>Become an Ambassador</h1>
@@ -45,8 +49,32 @@
         Comments and suggestions are greatly appreciated to continuously improve
         user and employer experiences.
     </p>
-    <div class="join">
-        <button actions="validate">Join</button>
-        <a href="../terms/ambassador.html">Ambassador Terms</a>
-    </div>
+    <form class="join" realtime="false">
+        <floating-label class="width:100%">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="ambassador"
+                value=""
+                placeholder="Ambassador URL"
+                unique
+                class="floating-label width:calc(100%_-_140px)!important margin-left:140px" />
+            <span
+                class="position:relative top:-34px left:6px float:left padding:5px background:whitesmoke"
+                >yelloworacle.com/</span
+            >
+        </floating-label>
+        <div class="terms">
+            <input
+                type="checkbox"
+                array="users"
+                object=""
+                key="ambassadorTerms"
+                placeholder="Accept Terms"
+                required />
+            <a href="../terms/ambassador.html">Ambassador Terms</a>
+        </div>
+        <button actions="validate, save">Join</button>
+    </form>
 </div>

@@ -215,7 +215,7 @@ sidenav ul li:hover {
     width: 270px
 }
 
-input {
+input:not([type="checkbox"]) {
     display: block;
     width: 100%;
     padding: 0.5625rem 1rem;
@@ -234,7 +234,7 @@ input {
         box-shadow 0.15s ease-in-out;
 }
 
-input:focus {
+input:focus:not([type="checkbox"]) {
     outline: 1px solid #495057;
 }
 
