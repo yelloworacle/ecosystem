@@ -3,7 +3,8 @@ module.exports = {
     "host": {
         "$branch": {
             "main": "wss://yelloworacle.com",
-            "dev": "wss://dev.yelloworacle.com"
+            "dev": "wss://dev.yelloworacle.com",
+            "test": "wss://test.yelloworacle.com"
         }
     },
     "apikey": "c685ywd5-9031-224a-b974-60f07jety103",
