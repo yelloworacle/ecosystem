@@ -1,6 +1,11 @@
 module.exports = {
     "organization_id": "652c8d62679eca03e0b116a7",
-    "host": "wss://yelloworacle.com",
+    "host": {
+        "$branch": {
+            "main": "wss://yelloworacle.com",
+            "dev": "wss://dev.yelloworacle.com"
+        }
+    },
     "apikey": "c685ywd5-9031-224a-b974-60f07jety103",
     "directories": [
         {
