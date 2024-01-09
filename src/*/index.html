@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch All Page</title>
+</head>
+<body>
+    <h1>Ambassador Page</h1>
+    <p id="unique-path"></p>
+
+    <script>
+        // Function to get and process the path
+        function processPath() {
+            // Get the current URL path
+            const path = window.location.pathname;
+
+            // Optional: Check if the path matches expected format
+            // Update this regex based on your expected path format
+            const regex = /^\/[a-zA-Z0-9]+$/;
+            if (regex.test(path)) {
+                // Path is in the correct format, you can use it as needed
+                document.getElementById('unique-path').textContent = 'Unique Path: ' + path;
+                localStorage.setItem('ambassador', path)
+                
+                // Additional logic here (e.g., send to server, display on page, etc.)
+            } else {
+                // Handle unexpected or incorrect path formats
+                console.error('Invalid path format:', path);
+            }
+        }
+
+        // Call the function on page load
+        window.onload = processPath;
+    </script>
+</body>
+</html>
