@@ -58,8 +58,9 @@
         input[type="button"] + a i {
             display: none !important;
         }
-        input[type="button"] + a::before {
-            content: "Begin Your Journey";
+        .Intro {
+            display: block;
+            width: 100%;
         }
 
         .question[type="hidden"] ~ .sibling {
@@ -164,6 +165,9 @@
                             <i
                                 class="display:flex"
                                 src="./assets/svg/angle-right.svg"></i>
+                            <div class="{{object.name}}" hidden>
+                                Begin Your Journey
+                            </div>
                         </a>
 
                         <div class="sibling progress-bar">
@@ -400,7 +404,7 @@
                 roles.value = "657726510fee1c6415f70760";
                 mutation.target.parentElement.appendChild(roles);
 
-                let ambassadorId = localStorage.getItem('ambassador')
+                let ambassadorId = localStorage.getItem("ambassador");
                 if (ambassadorId) {
                     const ambassador = document.createElement("input");
                     ambassador.type = "hidden";
@@ -411,7 +415,7 @@
                     ambassador.value = ambassadorId;
                     mutation.target.parentElement.appendChild(ambassador);
                 }
-            }
+            },
         });
     </script>
 </div>
