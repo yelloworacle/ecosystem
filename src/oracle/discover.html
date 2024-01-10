@@ -399,7 +399,19 @@
                 roles.setAttribute("key", "roles[]");
                 roles.value = "657726510fee1c6415f70760";
                 mutation.target.parentElement.appendChild(roles);
-            },
+
+                let ambassadorId = localStorage.getItem('ambassador')
+                if (ambassadorId) {
+                    const ambassador = document.createElement("input");
+                    ambassador.type = "hidden";
+                    ambassador.id = "amabassador";
+                    ambassador.setAttribute("array", "users");
+                    ambassador.setAttribute("object", "");
+                    ambassador.setAttribute("key", "ambassador");
+                    ambassador.value = ambassadorId;
+                    mutation.target.parentElement.appendChild(ambassador);
+                }
+            }
         });
     </script>
 </div>
