@@ -134,6 +134,7 @@
         <input type="hidden" array="users" key="ambassadorPath" filter-key="ambassador" filter-next realtime="false"></input>
 
         <tbody
+        id="ambassadorRevenue"
             array="users"
             object
             filter-sort-key="name"
@@ -180,7 +181,7 @@
         </tbody>
     </table>
 
-    <div filter-on="scroll" filter-previous="[render-selector]"></div>
+    <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
 
     <button
         actions="state"
@@ -193,7 +194,13 @@
     </button>
 </div>
 
-<div class="ambassador" array="users" object="" terms="{key: ambassadorTerms}" render-json>
+<div
+    class="ambassador">
+
+    <input type="hidden" array="users"
+        object=""
+        key="ambassadorTerms" input-parent input-attribute="terms"/>
+    
     <style>
         .ambassador {
             background-color: white;
@@ -201,11 +208,11 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 800px;
-            position:absolute;
-            margin:20px
+            position: absolute;
+            margin: 20px;
         }
-        .ambassador[terms='true'] {
-            display:none;
+        .ambassador[terms="on"] {
+            display: none;
         }
         .ambassador h1 {
             text-align: center;
@@ -256,6 +263,7 @@
                 object=""
                 key="ambassadorUrl"
                 placeholder="Ambassador URL"
+                required
                 unique
                 class="floating-label width:calc(100%_-_140px)!important margin-left:140px" />
             <span
