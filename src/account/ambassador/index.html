@@ -307,12 +307,13 @@
                     required />
                 <a href="../terms/ambassador.html">Ambassador Terms</a>
             </div>
-
             <div
                 template="validate"
-                class="card margin:5px padding:10px {{status}}">
-                <span class="{{type}}">{{message}}</span
-                ><a actions="remove"> X</a>
+                class="card margin-bottom:15px padding:10px min-height:40px max-width:800px">
+                <span class="{{status}}">
+                    <span class="{{type}}">{{message}}</span
+                    ><a actions="remove"> X</a>
+                </span>
             </div>
 
             <button actions="validate, save">Join</button>
