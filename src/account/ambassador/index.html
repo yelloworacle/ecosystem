@@ -197,9 +197,13 @@
 <div
     class="ambassador">
 
-    <input type="hidden" array="users"
+    <input 
+        type="hidden" 
+        array="users"
         object=""
-        key="ambassadorTerms" input-parent input-attribute="terms"/>
+        key="ambassadorTerms" 
+        input-closest="main" 
+        input-attribute="terms"/>
     
     <style>
         .ambassador {
@@ -208,11 +212,16 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-width: 800px;
-            position: absolute;
             margin: 20px;
         }
-        .ambassador[terms="on"] {
+        .main-view {
+            display:none
+        }
+        [terms="on"] .ambassador {
             display: none;
+        }
+        [terms="on"] .main-view {
+            display: flex;
         }
         .ambassador h1 {
             text-align: center;
@@ -255,6 +264,10 @@
         Comments and suggestions are greatly appreciated to continuously improve
         user and employer experiences.
     </p>
+    <p>
+        Example: yelloworacle.com/customName or yelloworacle.com/unique-name
+        <!-- <small class="width:100%">Example: yelloworacle.com/customName or yelloworacle.com/unique-name</small> -->
+    </p>
     <form class="join" realtime="false">
         <floating-label class="width:100%">
             <input
@@ -271,6 +284,7 @@
                 >yelloworacle.com/</span
             >
         </floating-label>
+
         <div class="terms">
             <input
                 type="checkbox"
