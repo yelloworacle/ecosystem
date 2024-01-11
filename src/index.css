@@ -397,3 +397,13 @@ footer p {
     margin-top: 10px;
     line-height: 1.6;
 }
+
+[unique="true"],
+[validation="true"] {
+    outline: 1px solid green!important;
+}
+
+[unique="false"],
+[validation="false"] {
+    outline: 1px solid red!important;
+}
