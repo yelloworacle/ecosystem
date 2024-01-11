@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<div class="main-view">
-    <div
-        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
-        <a
-            actions="state"
-            state_to="adminView"
-            state-src="./users/datatable.html"
-            state-overwrite
-            class="padding:0px_10px"
-            ><i class="height:20px" src="../assets/svg/angle-left.svg"></i
-        ></a>
+<div class="main-view max-width:800px">
+    <section id="table">
         <div
-            class="display:flex align-items:center transition:0.3s"
-            hover-selector=".options"
-            hover-attribute="class"
-            hover-value="display:block!important">
-            <div class="display:none options">
-                <a
-                    actions="delete"
-                    delete-selector="document; tbody[array]"
-                    class="padding:0px_10px"
-                    ><i
-                        class="height:18px"
-                        src="../assets/svg/trash-alt.svg"></i
-                ></a>
-                <!-- <a
+            class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
+            <a
+                actions="state"
+                state_to="adminView"
+                state-src="./users/datatable.html"
+                state-overwrite
+                class="padding:0px_10px"
+                ><i class="height:20px" src="../assets/svg/angle-left.svg"></i
+            ></a>
+            <div
+                class="display:flex align-items:center transition:0.3s"
+                hover-selector=".options"
+                hover-attribute="class"
+                hover-value="display:block!important">
+                <div class="display:none options">
+                    <a
+                        actions="delete"
+                        delete-selector="document; tbody[array]"
+                        class="padding:0px_10px"
+                        ><i
+                            class="height:18px"
+                            src="../assets/svg/trash-alt.svg"></i
+                    ></a>
+                    <!-- <a
                     actions="export"
                     export-selector="document; tbody[array]"
                     export-type="csv"
@@ -33,7 +34,7 @@
                         class="height:18px"
                         src="../assets/svg/file-csv.svg"></i
                 ></a> -->
-                <!-- <a
+                    <!-- <a
                     actions="export"
                     export-selector="document; tbody[array]"
                     class="padding:0px_10px">
@@ -62,214 +63,226 @@
                         class="height:18px"
                         src="../assets/svg/print.svg"></i
                 ></a> -->
+                </div>
+                <a class="padding:0px_10px"
+                    ><i
+                        class="height:20px"
+                        src="../assets/svg/ellipsis-v.svg"></i
+                ></a>
             </div>
-            <a class="padding:0px_10px"
-                ><i class="height:20px" src="../assets/svg/ellipsis-v.svg"></i
-            ></a>
         </div>
-    </div>
 
-    <table class="width:100% border-collapse:collapse">
-        <tbody>
-            <tr class="border-bottom:1px_solid_darkgray">
-                <td
-                    class="position:sticky top:0 background:white padding:0px_10px_10px">
-                    <floating-label>
-                        <input
-                            type="text"
-                            filter-selector="document; tbody[render-selector]"
-                            filter-key="firstname"
-                            state_id="datatable"
-                            placeholder="Name"
-                            class="floating-label" />
-                    </floating-label>
-                    <span
-                        class="position:absolute bottom:20px right:20px float:right z-index:6">
-                        <a
-                            filter-selector="document; tbody[render-selector]"
-                            filter-sort-key="firstname"
-                            filter-sort-direction="asc"
-                            click-value="desc, asc"
-                            click-attribute="filter-sort-direction"
-                            state_id="datatable">
-                            <i
-                                toggle-attribute="src"
-                                toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
-                                class="display:flex height:18px"
-                                src="../assets/svg/sort.svg"></i>
-                        </a>
-                    </span>
-                </td>
-                <td
-                    class="position:sticky top:0 background:white padding:0px_10px_10px">
-                    <floating-label>
-                        <input
-                            type="text"
-                            filter-selector="document; tbody[render-selector]"
-                            filter-key="_id"
-                            state_id="datatable"
-                            placeholder="id"
-                            class="floating-label" />
-                    </floating-label>
-                    <span
-                        class="position:absolute bottom:20px right:20px float:right z-index:6">
-                        <a
-                            filter-selector="document; tbody[render-selector]"
-                            filter-sort-key="_id"
-                            filter-sort-direction=""
-                            click-value="desc, asc"
-                            click-attribute="filter-sort-direction"
-                            state_id="datatable">
-                            <i
-                                toggle-attribute="src"
-                                toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
-                                class="display:flex height:18px"
-                                src="../assets/svg/sort.svg"></i>
-                        </a>
-                    </span>
-                </td>
-            </tr>
-        </tbody>
+        <table class="width:100% border-collapse:collapse">
+            <tbody>
+                <tr class="border-bottom:1px_solid_darkgray">
+                    <td
+                        class="position:sticky top:0 background:white padding:0px_10px_10px">
+                        <floating-label>
+                            <input
+                                type="text"
+                                filter-selector="document; tbody[render-selector]"
+                                filter-key="firstname"
+                                state_id="datatable"
+                                placeholder="Name"
+                                class="floating-label" />
+                        </floating-label>
+                        <span
+                            class="position:absolute bottom:20px right:20px float:right z-index:6">
+                            <a
+                                filter-selector="document; tbody[render-selector]"
+                                filter-sort-key="firstname"
+                                filter-sort-direction="asc"
+                                click-value="desc, asc"
+                                click-attribute="filter-sort-direction"
+                                state_id="datatable">
+                                <i
+                                    toggle-attribute="src"
+                                    toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                    class="display:flex height:18px"
+                                    src="../assets/svg/sort.svg"></i>
+                            </a>
+                        </span>
+                    </td>
+                    <td
+                        class="position:sticky top:0 background:white padding:0px_10px_10px">
+                        <floating-label>
+                            <input
+                                type="text"
+                                filter-selector="document; tbody[render-selector]"
+                                filter-key="_id"
+                                state_id="datatable"
+                                placeholder="id"
+                                class="floating-label" />
+                        </floating-label>
+                        <span
+                            class="position:absolute bottom:20px right:20px float:right z-index:6">
+                            <a
+                                filter-selector="document; tbody[render-selector]"
+                                filter-sort-key="_id"
+                                filter-sort-direction=""
+                                click-value="desc, asc"
+                                click-attribute="filter-sort-direction"
+                                state_id="datatable">
+                                <i
+                                    toggle-attribute="src"
+                                    toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                    class="display:flex height:18px"
+                                    src="../assets/svg/sort.svg"></i>
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
 
-        <input type="hidden" array="users" key="ambassadorPath" filter-key="ambassador" filter-next realtime="false"></input>
+            <input
+                type="hidden"
+                array="users"
+                key="ambassadorUrl"
+                realtime="false"
+                input-next
+                input-attribute="value" />
 
-        <tbody
-        id="ambassadorRevenue"
-            array="users"
-            object
-            filter-sort-key="name"
-            filter-sort-direction="asc"
-            render-selector="[template]">
-            <tr
-                class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
-                template
-                object="{{object._id}}"
-                toggle="selected"
-                toggle-attribute="class">
-                <td
-                    class="padding:5px display:flex min-width:200px align-items:center">
-                    <div>
+            <input
+                type="hidden"
+                filter-key="ambassador"
+                filter-next
+                filter-operator="$eq"
+                value="index.html" />
+
+            <tbody
+                id="ambassadorRevenue"
+                array="users"
+                object
+                filter-sort-key="name"
+                filter-sort-direction="asc"
+                render-selector="[template]">
+                <tr
+                    class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
+                    template
+                    object="{{object._id}}"
+                    toggle="selected"
+                    toggle-attribute="class">
+                    <td
+                        class="padding:5px display:flex min-width:200px align-items:center">
+                        <div>
+                            <a
+                                actions="state"
+                                state_to="adminView"
+                                state-src="./users/form.html"
+                                state-overwrite>
+                                <h4>
+                                    {{object.name}} {{object.firstname}}
+                                    {{object.lastname}}
+                                </h4>
+                                <div
+                                    state_to="form-fields"
+                                    state-object="{{object._id}}"></div>
+                            </a>
+                            <h5>{{object.email}}</h5>
+                        </div>
+                    </td>
+                    <td class="padding:10px">
                         <a
                             actions="state"
                             state_to="adminView"
                             state-src="./users/form.html"
                             state-overwrite>
-                            <h4>
-                                {{object.name}} {{object.firstname}}
-                                {{object.lastname}}
-                            </h4>
+                            <b>{{object._id}}</b>
                             <div
                                 state_to="form-fields"
                                 state-object="{{object._id}}"></div>
                         </a>
-                        <h5>{{object.email}}</h5>
-                    </div>
-                </td>
-                <td class="padding:10px">
-                    <a
-                        actions="state"
-                        state_to="adminView"
-                        state-src="./users/form.html"
-                        state-overwrite>
-                        <b>{{object._id}}</b>
-                        <div
-                            state_to="form-fields"
-                            state-object="{{object._id}}"></div>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
+        <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
 
-    <button
-        actions="state"
-        state_to="adminView"
-        state-src="./users/form.html"
-        state-overwrite
-        class="button-round">
-        <i src="../assets/svg/plus.svg"></i>
-        <div state_to="form-fields" state-object="" state-overwrite></div>
-    </button>
-</div>
+        <button
+            actions="state"
+            state_to="adminView"
+            state-src="./users/form.html"
+            state-overwrite
+            class="button-round">
+            <i src="../assets/svg/plus.svg"></i>
+            <div state_to="form-fields" state-object="" state-overwrite></div>
+        </button>
+    </section>
+    <section id="terms" class="ambassador padding:40px@md@lg@xl">
+        <input
+            type="hidden"
+            array="users"
+            object=""
+            key="ambassadorTerms"
+            input-closest=".main-view"
+            input-attribute="terms" />
 
-<div
-    class="ambassador">
+        <style>
+            .ambassador {
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
 
-    <input 
-        type="hidden" 
-        array="users"
-        object=""
-        key="ambassadorTerms" 
-        input-closest="main" 
-        input-attribute="terms"/>
-    
-    <style>
-        .ambassador {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 20px;
-        }
-        .main-view {
-            display:none
-        }
-        [terms="on"] .ambassador {
-            display: none;
-        }
-        [terms="on"] .main-view {
-            display: flex;
-        }
-        .ambassador h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .ambassador p {
-            font-size: 18px;
-            font-weight: 400;
-            margin-top: 20px;
-            line-height: 1.6;
-        }
-        .ambassador a {
-            padding-left: 15px;
-            color: #1a73e8;
-            font-weight: bold;
-        }
-        .ambassador .join {
-            text-align: center;
-            padding-top: 30px;
-        }
-        .ambassador .join .terms {
-            text-align: center;
-            padding: 30px;
-        }
-    </style>
+            #table {
+                display: none;
+            }
+            [terms="on"] #table {
+                display: block;
+            }
 
-    <h1>Become an Ambassador</h1>
-    <p>
-        Ambassadors of YellowOracle.com receive a unique ID and receive 15% of
-        fees associated with purchases of services from users paid out with a
-        minimum amount of $100 UDS, paid monthly, for the life of the
-        relationship. Must have authority to act on behalf of any organization.
-    </p>
-    <p>
-        Ambassadors of YellowOracle.com promote the website to both end-users
-        and employers with their unique ID.
-    </p>
-    <p>
-        YellowOracle appreciates Ambassadors who spread the word with integrity.
-        Comments and suggestions are greatly appreciated to continuously improve
-        user and employer experiences.
-    </p>
-    <p>
-        Example: yelloworacle.com/customName or yelloworacle.com/unique-name
-        <!-- <small class="width:100%">Example: yelloworacle.com/customName or yelloworacle.com/unique-name</small> -->
-    </p>
-    <form class="join" realtime="false">
-        <floating-label class="width:100%">
+            [terms="on"] #terms {
+                display: none;
+            }
+
+            .ambassador h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .ambassador p {
+                font-size: 18px;
+                font-weight: 400;
+                margin-top: 20px;
+                line-height: 1.6;
+            }
+            .ambassador a {
+                padding-left: 15px;
+                color: #1a73e8;
+                font-weight: bold;
+            }
+            .ambassador .join {
+                text-align: center;
+                padding-top: 30px;
+            }
+            .ambassador .join .terms {
+                text-align: center;
+                padding: 30px;
+            }
+        </style>
+
+        <h1>Become an Ambassador</h1>
+        <p>
+            Ambassadors of YellowOracle.com receive a unique ID and receive 15%
+            of fees associated with purchases of services from users paid out
+            with a minimum amount of $100 UDS, paid monthly, for the life of the
+            relationship. Must have authority to act on behalf of any
+            organization.
+        </p>
+        <p>
+            Ambassadors of YellowOracle.com promote the website to both
+            end-users and employers with their unique ID.
+        </p>
+        <p>
+            YellowOracle appreciates Ambassadors who spread the word with
+            integrity. Comments and suggestions are greatly appreciated to
+            continuously improve user and employer experiences.
+        </p>
+        <p>
+            Example: yelloworacle.com/customName or yelloworacle.com/unique-name
+            <!-- <small class="width:100%">Example: yelloworacle.com/customName or yelloworacle.com/unique-name</small> -->
+        </p>
+        <form class="join" realtime="false">
             <input
                 type="text"
                 array="users"
@@ -278,31 +291,31 @@
                 placeholder="Ambassador URL"
                 required
                 unique
-                class="floating-label width:calc(100%_-_140px)!important margin-left:140px" />
+                class="padding-left:145px!important" />
             <span
                 class="position:relative top:-34px left:6px float:left padding:5px background:whitesmoke"
                 >yelloworacle.com/</span
             >
-        </floating-label>
 
-        <div class="terms">
-            <input
-                type="checkbox"
-                array="users"
-                object=""
-                key="ambassadorTerms"
-                placeholder="Accept Terms"
-                required />
-            <a href="../terms/ambassador.html">Ambassador Terms</a>
-        </div>
-        
-        <div
-            template="validate"
-            class="card margin:5px padding:10px {{status}}">
-            <span class="{{type}}">{{message}}</span
-            ><a actions="remove"> X</a>
-        </div>
+            <div class="terms">
+                <input
+                    type="checkbox"
+                    array="users"
+                    object=""
+                    key="ambassadorTerms"
+                    placeholder="Accept Terms"
+                    required />
+                <a href="../terms/ambassador.html">Ambassador Terms</a>
+            </div>
 
-        <button actions="validate, save">Join</button>
-    </form>
+            <div
+                template="validate"
+                class="card margin:5px padding:10px {{status}}">
+                <span class="{{type}}">{{message}}</span
+                ><a actions="remove"> X</a>
+            </div>
+
+            <button actions="validate, save">Join</button>
+        </form>
+    </section>
 </div>
