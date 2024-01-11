@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <div class="main-view max-width:800px">
-    <section id="table">
+    <section id="table" class="width:100%">
         <div
             class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
             <a
@@ -72,6 +72,18 @@
             </div>
         </div>
 
+        <input
+            type="hidden"
+            array="users"
+            key="ambassadorUrl"
+            realtime="false"
+            filter-key="ambassador"
+            filter-next="#ambassadorRevenue"
+            filter-operator="$eq"
+            input-next="#ambassadorRevenue"
+            input-attribute="array"
+            input-value="users" />
+
         <table class="width:100% border-collapse:collapse">
             <tbody>
                 <tr class="border-bottom:1px_solid_darkgray">
@@ -134,24 +146,8 @@
                 </tr>
             </tbody>
 
-            <input
-                type="hidden"
-                array="users"
-                key="ambassadorUrl"
-                realtime="false"
-                input-next
-                input-attribute="value" />
-
-            <input
-                type="hidden"
-                filter-key="ambassador"
-                filter-next
-                filter-operator="$eq"
-                value="index.html" />
-
             <tbody
                 id="ambassadorRevenue"
-                array="users"
                 object
                 filter-sort-key="name"
                 filter-sort-direction="asc"
