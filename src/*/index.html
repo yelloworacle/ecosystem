@@ -106,6 +106,24 @@
             realtime="false"
             hidden></textarea>
 
+        <input
+            id="ambassadorId"
+            type=""
+            filter-key="ambassadorUrl"
+            filter-operator="$eq"
+            input-next
+            input-attribute="array"
+            input-value="users" />
+
+        <div object filter-limit="1" render-selector="[template]">
+            <div template>
+                <input
+                    type=""
+                    value="{{object._id}}"
+                    localstorage-set="ambassador" />
+            </div>
+        </div>
+
         <main
             state_id="mainView"
             src="./oracle/index.html"
@@ -122,17 +140,20 @@
         <div actions></div>
 
         <script src="./dist/CoCreate.js"></script>
-        <script>
-            function processPath() {
-                let path = window.location.pathname;
-                path = path.substring(1)
-                if (path) {
-                    if (!localStorage.getItem('subscription'))
-                        localStorage.setItem('ambassador', path);
-                }
-            }
 
-            window.onload = processPath;
+        <script>
+            document.addEventListener("elementsLoaded", function () {
+                let path = window.location.pathname;
+                path = path.substring(1);
+                if (path) {
+                    if (!localStorage.getItem("subscription")) {
+                        let input = document.getElementById("ambassadorId");
+                        if (input) {
+                            input.setValue(path);
+                        }
+                    }
+                }
+            });
         </script>
     </body>
 </html>
