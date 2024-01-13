@@ -15,9 +15,7 @@ CoCreate.actions.init({
             method: "object.read",
             array: "careers",
             $filter: {
-                query: [
-                    { key: "name", value, operator: '$in' }
-                ]
+                query: { name: { $in: value } }
             }
         });
 
