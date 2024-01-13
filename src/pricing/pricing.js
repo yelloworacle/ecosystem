@@ -91,6 +91,20 @@ form.addEventListener("submit", function (event) {
                         },
                     });
 
+                    CoCreate.crud.send({
+                        method: "object.create",
+                        broadcast: false,
+                        array: "payments",
+                        object: {
+                            user_id: data.user_id,
+                            ambassador: localStorage.getItem('ambassador'),
+                            customerId: additionalData.customer,
+                            subscription: "6571fe530c48ef6970900a82",
+                            subscriptionId: data.stripe.id,
+                            invoice: data.stripe.latest_invoice
+                        },
+                    });
+
                     submitButton.innerHTML = "Payment Successful";
                     window.localStorage.setItem('subscription', '6571fe530c48ef6970900a82')
 
