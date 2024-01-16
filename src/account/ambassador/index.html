@@ -1,108 +1,117 @@
 <!DOCTYPE html>
 <div class="main-view max-width:800px">
-    <section id="table" class="width:100%">
-        <div
-            class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
-            <a
-                actions="state"
-                state_to="adminView"
-                state-src="./users/datatable.html"
-                state-overwrite
-                class="padding:0px_10px"
-                ><i class="height:20px" src="../assets/svg/angle-left.svg"></i
-            ></a>
-            <div
-                class="display:flex align-items:center transition:0.3s"
-                hover-selector=".options"
-                hover-attribute="class"
-                hover-value="display:block!important">
-                <div class="display:none options">
-                    <a
-                        actions="delete"
-                        delete-selector="document; tbody[array]"
-                        class="padding:0px_10px"
-                        ><i
-                            class="height:18px"
-                            src="../assets/svg/trash-alt.svg"></i
-                    ></a>
-                    <!-- <a
-                    actions="export"
-                    export-selector="document; tbody[array]"
-                    export-type="csv"
-                    class="padding:0px_10px"
-                    ><i
-                        class="height:18px"
-                        src="../assets/svg/file-csv.svg"></i
-                ></a> -->
-                    <!-- <a
-                    actions="export"
-                    export-selector="document; tbody[array]"
-                    class="padding:0px_10px">
-                    <i
-                        class="height:18px"
-                        src="../assets/svg/file-download.svg"></i
-                ></a>
-                <a
-                    actions="import"
-                    array="users"
-                    class="padding:0px_10px"
-                    ><i
-                        class="height:18px"
-                        src="../assets/svg/file-upload.svg"></i
-                ></a>
-                <a actions="copy" copy-selector="tbody" class="padding:0px_10px"
-                    ><i
-                        class="height:18px"
-                        src="../assets/svg/copy.svg"></i
-                ></a>
-                <a
-                    actions="print"
-                    print-closest="nav; parent; tbody"
-                    class="padding:0px_10px"
-                    ><i
-                        class="height:18px"
-                        src="../assets/svg/print.svg"></i
-                ></a> -->
-                </div>
-                <a class="padding:0px_10px"
-                    ><i
-                        class="height:20px"
-                        src="../assets/svg/ellipsis-v.svg"></i
-                ></a>
+    <style>
+        .ambassador {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #table {
+            display: none;
+        }
+        [terms="true"] #table {
+            display: block;
+        }
+
+        [terms="true"] #dashboard {
+            display: block;
+        }
+
+        [terms="true"] #terms {
+            display: none;
+        }
+
+        .ambassador h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .ambassador p {
+            font-size: 18px;
+            font-weight: 400;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        .ambassador a {
+            padding-left: 15px;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+        .ambassador .join {
+            text-align: center;
+            padding-top: 30px;
+        }
+        .ambassador .join .terms {
+            text-align: center;
+            padding: 30px;
+        }
+        #dashboard .card {
+            flex-grow: 1;
+        }
+    </style>
+
+    <input
+        type="hidden"
+        realtime="false"
+        filter-key="ambassador"
+        filter-selector="document; [ambassador][]"
+        value="$user_id" />
+
+    <section id="dashboard" class="width:100% padding:0px">
+        <div class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
+            <div id="subscribers" class="card">
+                <h2>Subscribers</h2>
+
+                <span array="users" object key="$length" ambassador></span>
+            </div>
+
+            <!-- Next Payout Section -->
+            <div id="nextPayout" class="card">
+                <h2>Next Payout</h2>
+                <span>$</span>
+                <span
+                    array="payouts"
+                    object
+                    filter-key="status"
+                    filter-value="pending"
+                    key="$sum.amount"
+                    ambassador></span>
+            </div>
+
+            <!-- Total Payouts Section -->
+            <div id="totalPayouts" class="card">
+                <h2>Total Payouts</h2>
+                <span>$</span>
+                <span
+                    array="payouts"
+                    object
+                    filter-key="status"
+                    filter-value="completed"
+                    key="$sum.amount"
+                    ambassador></span>
             </div>
         </div>
-
-        <input
-            type="hidden"
-            array="users"
-            key="ambassadorUrl"
-            realtime="false"
-            filter-key="ambassador"
-            filter-next="#ambassadorRevenue"
-            filter-operator="$eq"
-            input-next="#ambassadorRevenue"
-            input-attribute="array"
-            input-value="users" />
-
+    </section>
+    <section id="table" class="width:100% padding:0px">
         <table class="width:100% border-collapse:collapse">
             <tbody>
                 <tr class="border-bottom:1px_solid_darkgray">
                     <td
-                        class="position:sticky top:0 background:white padding:0px_10px_10px">
+                        class="position:sticky top:0 background:white padding:10px">
                         <floating-label>
                             <input
                                 type="text"
                                 filter-selector="document; tbody[render-selector]"
-                                filter-key="firstname"
+                                filter-key="amount"
                                 state_id="datatable"
-                                placeholder="Name"
+                                placeholder="Amount"
                                 class="floating-label" />
                         </floating-label>
                         <span
                             class="position:absolute bottom:20px right:20px float:right z-index:6">
                             <a
                                 filter-selector="document; tbody[render-selector]"
-                                filter-sort-key="firstname"
+                                filter-sort-key="amount"
                                 filter-sort-direction="asc"
                                 click-value="desc, asc"
                                 click-attribute="filter-sort-direction"
@@ -116,7 +125,7 @@
                         </span>
                     </td>
                     <td
-                        class="position:sticky top:0 background:white padding:0px_10px_10px">
+                        class="position:sticky top:0 background:white padding:10px">
                         <floating-label>
                             <input
                                 type="text"
@@ -147,11 +156,10 @@
             </tbody>
 
             <tbody
-                id="ambassadorRevenue"
+                array="payouts"
                 object
-                filter-sort-key="name"
-                filter-sort-direction="asc"
-                render-selector="[template]">
+                render-selector="[template]"
+                ambassador>
                 <tr
                     class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
                     template
@@ -159,22 +167,18 @@
                     toggle="selected"
                     toggle-attribute="class">
                     <td
-                        class="padding:5px display:flex min-width:200px align-items:center">
+                        class="padding:10px display:flex min-width:200px align-items:center">
                         <div>
                             <a
                                 actions="state"
                                 state_to="adminView"
                                 state-src="./users/form.html"
                                 state-overwrite>
-                                <h4>
-                                    {{object.name}} {{object.firstname}}
-                                    {{object.lastname}}
-                                </h4>
+                                <h4>{{object.amount}}</h4>
                                 <div
                                     state_to="form-fields"
                                     state-object="{{object._id}}"></div>
                             </a>
-                            <h5>{{object.email}}</h5>
                         </div>
                     </td>
                     <td class="padding:10px">
@@ -193,6 +197,7 @@
             </tbody>
         </table>
 
+        <!-- <div filter-on="fetched" filter-previous="[render-selector]"></div> -->
         <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
 
         <button
@@ -213,49 +218,6 @@
             key="ambassadorTerms"
             input-closest=".main-view"
             input-attribute="terms" />
-
-        <style>
-            .ambassador {
-                background-color: white;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-
-            #table {
-                display: none;
-            }
-            [terms="true"] #table {
-                display: block;
-            }
-
-            [terms="true"] #terms {
-                display: none;
-            }
-
-            .ambassador h1 {
-                text-align: center;
-                margin-bottom: 30px;
-            }
-            .ambassador p {
-                font-size: 18px;
-                font-weight: 400;
-                margin-top: 20px;
-                line-height: 1.6;
-            }
-            .ambassador a {
-                padding-left: 15px;
-                color: #1a73e8;
-                font-weight: bold;
-            }
-            .ambassador .join {
-                text-align: center;
-                padding-top: 30px;
-            }
-            .ambassador .join .terms {
-                text-align: center;
-                padding: 30px;
-            }
-        </style>
 
         <h1>Become an Ambassador</h1>
         <p>
