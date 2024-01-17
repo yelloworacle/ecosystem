@@ -1,7 +1,11 @@
-const environment = "test" // production, test
+let environment = "production" // production, test
+
+if (window.location.host.startsWith("test.") || window.location.host.startsWith("dev.")) {
+    environment = 'test'
+}
+
 let productionPk = "pk_live_51OK9b5DSpIU4j2Jo6VbxSw3F8LHhru5wn2FZyE7pqWtRqHoD1hBrtDkxMySPpJNEyGTEoPE0Nfs7bGFqkB5UX17300yYKufL6v"
 let testPk = "pk_test_51OK9b5DSpIU4j2Joz6AeDvWPQEpoWhRweNS6Hevwvza5IcHwTpgTGTNU5GGMZUiQYzeSBifqV8AWaT3OtjUAVwXt00c3hmBILe"
-
 
 let pk, price, coupon
 if (environment === 'production') {
