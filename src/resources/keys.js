@@ -10,7 +10,7 @@ module.exports = [
             "object": {
                 "*": {
                     "$array": "users",
-                    "$eq._id": "this.userId"
+                    "$eq._id": "$user_Id"
                 },
                 "read": {
                     "$array": "questions"
