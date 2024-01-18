@@ -113,7 +113,14 @@
             filter-key="ambassadorUrl"
             filter-operator="$eq" />
 
-        <div array="users" object filter-limit="1" render-selector="[template]">
+        <div
+            ambassador
+            array="users"
+            object
+            filter-limit="1"
+            filter-max="1"
+            render-selector="[template]"
+            update="false">
             <div template>
                 <input
                     type="hidden"
