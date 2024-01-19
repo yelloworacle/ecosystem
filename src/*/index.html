@@ -112,7 +112,8 @@
             filter-next
             filter-key="ambassadorUrl"
             filter-operator="$eq"
-            value="$pathname" />
+            value="$pathname"
+            value-replace="/" />
 
         <div
             ambassador
@@ -145,18 +146,5 @@
         <div actions></div>
 
         <script src="./dist/CoCreate.js"></script>
-
-        <script>
-            let path = window.location.pathname;
-            path = path.substring(1);
-            if (path) {
-                if (!localStorage.getItem("subscription")) {
-                    let input = document.getElementById("ambassadorId");
-                    if (input) {
-                        input.value = path;
-                    }
-                }
-            }
-        </script>
     </body>
 </html>
