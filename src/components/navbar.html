@@ -12,6 +12,10 @@
     .menu_icon[session="idle"] {
         display: block;
     }
+    .signin[session="on"],
+    .signin[session="idle"] {
+        display: none;
+    }
 </style>
 
 <!-- Menu Icon -->
@@ -143,17 +147,24 @@
     localstorage-get="user_id"
     localstorage-key="userId"
     class="avatar-wrapper margin-right:10px">
-    <a
-        class="avatar round"
-        href="./signin.html"
-        state_to="signin"
-        state-href="./"
-        actions="state">
-        <div state_to="mainView" state-src="./oracle/discover.html"></div>
+    <div class="avatar round">
         <span array="users" object="{{userId}}" key="name" class="avatar-name">
             <i class="height:20px" src="{{path}}assets/svg/sign-in-alt.svg"></i>
         </span>
         <span class="avatar-image">
+            <div
+                class="position:absolute height:100% width:100% signin"
+                session>
+                <a
+                    href="./signin.html"
+                    class="display:block height:100% width:100%">
+                </a>
+            </div>
+            <a
+                state_to="mainView"
+                state-src="./account/profile/"
+                class="display:block height:100% width:100%">
+            </a>
             <img
                 array="users"
                 object="{{userId}}"
@@ -161,7 +172,7 @@
                 onerror="this.style.display='none'"
                 width="40px" />
         </span>
-    </a>
+    </div>
     <div
         class="avatar-status"
         array="users"
