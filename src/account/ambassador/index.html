@@ -7,19 +7,20 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        #table {
+        #terms {
             display: none;
         }
-        [terms="true"] #table {
-            display: block;
-        }
 
-        [terms="true"] #dashboard {
-            display: block;
-        }
-
-        [terms="true"] #terms {
+        [terms="false"] #table {
             display: none;
+        }
+
+        [terms="false"] #dashboard {
+            display: none;
+        }
+
+        [terms="false"] #terms {
+            display: block;
         }
 
         .ambassador h1 {
@@ -118,9 +119,9 @@
                                 state_id="datatable">
                                 <i
                                     toggle-attribute="src"
-                                    toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
                                     class="display:flex height:18px"
-                                    src="../assets/svg/sort.svg"></i>
+                                    src="./assets/svg/sort.svg"></i>
                             </a>
                         </span>
                     </td>
@@ -146,9 +147,9 @@
                                 state_id="datatable">
                                 <i
                                     toggle-attribute="src"
-                                    toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
                                     class="display:flex height:18px"
-                                    src="../assets/svg/sort.svg"></i>
+                                    src="./assets/svg/sort.svg"></i>
                             </a>
                         </span>
                     </td>
@@ -174,9 +175,9 @@
                                 state_id="datatable">
                                 <i
                                     toggle-attribute="src"
-                                    toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
                                     class="display:flex height:18px"
-                                    src="../assets/svg/sort.svg"></i>
+                                    src="./assets/svg/sort.svg"></i>
                             </a>
                         </span>
                     </td>
@@ -237,17 +238,8 @@
 
         <!-- <div filter-on="fetched" filter-previous="[render-selector]"></div> -->
         <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
-
-        <button
-            actions="state"
-            state_to="adminView"
-            state-src="./users/form.html"
-            state-overwrite
-            class="button-round">
-            <i src="../assets/svg/plus.svg"></i>
-            <div state_to="form-fields" state-object="" state-overwrite></div>
-        </button>
     </section>
+
     <section id="terms" class="ambassador padding:40px@md@lg@xl">
         <input
             type="hidden"
@@ -278,6 +270,7 @@
             Example: yelloworacle.com/customName or yelloworacle.com/unique-name
             <!-- <small class="width:100%">Example: yelloworacle.com/customName or yelloworacle.com/unique-name</small> -->
         </p>
+
         <form class="join" realtime="false">
             <input
                 type="text"
@@ -301,7 +294,7 @@
                     key="ambassadorTerms"
                     placeholder="Accept Terms"
                     required />
-                <a href="../terms/ambassador.html">Ambassador Terms</a>
+                <a href="./terms/ambassador.html">Ambassador Terms</a>
             </div>
             <div
                 template="validate"

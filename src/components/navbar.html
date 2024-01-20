@@ -8,7 +8,27 @@
         right: 0;
         top: 0;
     }
+    .menu_icon[session="on"],
+    .menu_icon[session="idle"] {
+        display: block;
+    }
 </style>
+
+<!-- Menu Icon -->
+<a
+    class="menu_icon display:none@md@lg@xl"
+    click="active"
+    click-attribute="class"
+    click-selector="document; .menu_icon[]"
+    toggle="width:300px,"
+    toggle-selector="document; #menuL"
+    toggle-attribute="style"
+    session>
+    <span></span>
+    <span></span>
+    <span></span>
+</a>
+
 <!-- Logo -->
 <a
     href="{{path}}"
@@ -22,19 +42,6 @@
     >
 </a>
 
-<!-- Menu Icon -->
-<a
-    class="menu_icon display:none@md@lg@xl"
-    click="active"
-    click-attribute="class"
-    click-selector="document; .menu_icon[]"
-    toggle="width:300px,"
-    toggle-selector="document; #menuL"
-    toggle-attribute="style">
-    <span></span>
-    <span></span>
-    <span></span>
-</a>
 <!-- Icon Logo -->
 <a
     href="{{path}}"
@@ -72,11 +79,10 @@
     >
 
     <a
-        href="{{path}}account/"
-        class="margin-right:25px color:#F7CC02:hover"
-        state_to="signin"
-        state-href="./"
-        actions="state">
+        href="{{path}}"
+        actions="state"
+        state_to="mainView"
+        state-src="./account/profile/">
         Account</a
     >
 </div>
@@ -139,9 +145,9 @@
     class="avatar-wrapper margin-right:10px">
     <a
         class="avatar round"
-        href="{{path}}account/signin.html"
+        href="./signin.html"
         state_to="signin"
-        state-href="../"
+        state-href="./"
         actions="state">
         <div state_to="mainView" state-src="./oracle/discover.html"></div>
         <span array="users" object="{{userId}}" key="name" class="avatar-name">

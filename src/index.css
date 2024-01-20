@@ -407,3 +407,48 @@ footer p {
 [validation="false"] {
     outline: 1px solid red!important;
 }
+
+.main-view {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    overflow: auto;
+}
+
+.input-300 {
+    width: 292px;
+}
+
+.input-600 {
+    width: 100%;
+    max-width: 600px;
+}
+
+@media (max-width: 628px) {
+    .input-300 {
+        width: 100%;
+    }
+}
+
+.selected {
+    background-color: gainsboro;
+}
+
+/* .menu_icon {
+        position: fixed;
+        left: 15px;
+        top: 25px;
+        z-index: 11;
+    } */
+
+[session] {
+    display: none;
+}
+
+[session="on"],
+[session="idle"] {
+    display: block;
+}
+        

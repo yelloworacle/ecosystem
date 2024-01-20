@@ -29,32 +29,133 @@
     </a>
 </div>
 
-<!-- Navigation -->
-<div class="color:#212121 text-transform:uppercase margin-top:30px">
-    <a
-        href="{{path}}"
-        actions="state"
-        state_to="mainView"
-        state-src="./oracle/index.html"
-        class="display:block color:#F7CC02:hover padding:12px_24px"
-        >Home</a
-    >
-    <a
-        href="{{path}}"
-        actions="state"
-        state_to="mainView"
-        state-src="./oracle/discover.html"
-        class="display:block color:#F7CC02:hover padding:12px_24px"
-        >Discover</a
-    >
-    <a
-        href="{{path}}account/"
-        class="display:block color:#F7CC02:hover padding:12px_24px"
-        >Account</a
-    >
-    <!-- <a href="{{path}}blog/" class="display:block color:#F7CC02:hover padding:12px_24px">Blog</a>
-				<a href="{{path}}discuss/" class="display:block color:#F7CC02:hover padding:12px_24px">Discuss</a>
-				<a href="{{path}}university/" class="display:block color:#F7CC02:hover padding:12px_24px">University</a> -->
-</div>
+<ul>
+    <!-- Navigation -->
+    <menu
+        class="color:#212121 text-transform:uppercase margin-bottom:30px display:none@md@lg@xl">
+        <a
+            href="{{path}}"
+            actions="state"
+            state_to="mainView"
+            state-src="./oracle/index.html"
+            class="display:block color:#F7CC02:hover padding:12px_24px"
+            >Home</a
+        >
+        <a
+            href="{{path}}"
+            actions="state"
+            state_to="mainView"
+            state-src="./oracle/discover.html"
+            class="display:block color:#F7CC02:hover padding:12px_24px"
+            >Discover</a
+        >
+        <a
+            href="{{path}}"
+            actions="state"
+            state_to="mainView"
+            state-src="./account/profile/"
+            class="display:block color:#F7CC02:hover padding:12px_24px"
+            >Account</a
+        >
+    </menu>
+
+    <menu id="account" session>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./account/profile/"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/user.svg"></i>
+                </span>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./account/answers/"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/circle-question.svg"></i>
+                </span>
+                <span>Answers</span>
+            </a>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./account/careers/"
+                state-overwrite
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/person-dots-from-line.svg"></i>
+                </span>
+                <span>Careers</span>
+            </a>
+        </li>
+
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./account/subscription/"
+                state-overwrite
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/clipboard-question.svg"></i>
+                </span>
+                <span>Subscription</span>
+            </a>
+        </li>
+
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./account/ambassador/"
+                state-overwrite
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/people-roof.svg"></i>
+                </span>
+                <span>Ambassador</span>
+            </a>
+        </li>
+        <div
+            class="line-height:40px height:40px overflow:hidden white-space:nowrap position:absolute bottom:0px background:gainsboro width:100%">
+            <a
+                actions="signOut"
+                href="./signin.html"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/sign-out-alt.svg"></i>
+                </span>
+                <span>Sign Out</span>
+            </a>
+        </div>
+    </menu>
+</ul>
 
 <div resize="right"></div>

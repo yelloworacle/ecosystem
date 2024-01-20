@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 
-<div
-    localstorage-get="user_id"
-    localstorage-attribute="object"
-    localstorage-selector="[array='users']:not([ambassador])[]"
-    class="display:flex justify-content:center width:100% padding-top:80px">
+<div class="display:flex justify-content:center width:100% padding-top:80px">
     <style>
         /* Add a CSS animation to make the icon spin */
         @keyframes spin {
@@ -356,6 +352,7 @@
                     array: "users",
                     object: {
                         "answeredQuestions[]": "Discover",
+                        ambassadorTerms: false,
                     },
                 })
                 .then((user) => {
