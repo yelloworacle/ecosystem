@@ -85,7 +85,10 @@
             }
         </style> -->
     </head>
-    <body>
+    <body
+        localstorage-get="user_id"
+        localstorage-attribute="object"
+        localstorage-selector="[array='users']:not([ambassador])[]">
         <!-- Navbar  -->
         <nav
             class="width:100% display:flex align-items:center background:transparent padding-top:10px padding-bottom:10px z-index:1"
@@ -118,9 +121,6 @@
             src="./oracle/index.html"
             state-overwrite
             state-onstoragechange="false"
-            localstorage-get="user_id"
-            localstorage-attribute="object"
-            localstorage-selector="[array='users']:not([ambassador])[]"
             class="padding:15px"></main>
 
         <!-- Footer -->
