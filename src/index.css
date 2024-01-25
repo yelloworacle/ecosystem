@@ -179,7 +179,6 @@ button:hover {
 sidenav {
     position: fixed;
     top: 0px;
-    left: 0px;
     overflow: hidden;
     background: whitesmoke;
     height: 100vh;
