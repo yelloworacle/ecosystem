@@ -5,11 +5,11 @@
         class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
         <a
             actions="state"
-            state_to="adminView"
-            state-src="./interview-forms/datatable.html"
+            state_to="mainView"
+            state-src="./admin/interview-forms/datatable.html"
             state-overwrite
             class="padding:0px_10px"
-            ><i class="height:20px" src="../assets/svg/angle-left.svg"></i
+            ><i class="height:20px" src="./assets/svg/angle-left.svg"></i
         ></a>
         <div
             class="display:flex align-items:center transition:0.3s"
@@ -21,25 +21,22 @@
                     actions="delete, state"
                     array="interviews"
                     object=""
-                    state_to="adminView"
-                    state-src="./interview-forms/datatable.html"
+                    state_to="mainView"
+                    state-src="./admin/interview-forms/datatable.html"
                     state-overwrite
                     class="padding:0px_10px">
-                    <i
-                        class="height:18px"
-                        src="../assets/svg/trash-alt.svg"></i>
+                    <i class="height:18px" src="./assets/svg/trash-alt.svg"></i>
                 </a>
             </div>
             <a class="padding:0px_10px"
-                ><i class="height:20px" src="../assets/svg/ellipsis-v.svg"></i
+                ><i class="height:20px" src="./assets/svg/ellipsis-v.svg"></i
             ></a>
         </div>
     </div>
 
     <table class="width:100% border-collapse:collapse">
         <tr class="border-bottom:1px_solid_darkgray">
-            <td
-                class="position:sticky top:0 background:white padding:0px_10px_10px">
+            <td class="position:sticky top:0 background:white padding:10px">
                 <floating-label>
                     <input
                         type="text"
@@ -60,14 +57,13 @@
                         state_id="datatable">
                         <i
                             toggle-attribute="src"
-                            toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                            toggle-value="./assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
                             class="display:flex height:18px"
-                            src="../assets/svg/sort.svg"></i>
+                            src="./assets/svg/sort.svg"></i>
                     </a>
                 </span>
             </td>
-            <td
-                class="position:sticky top:0 background:white padding:0px_10px_10px">
+            <td class="position:sticky top:0 background:white padding:10px">
                 <floating-label>
                     <input
                         type="text"
@@ -88,9 +84,9 @@
                         state_id="datatable">
                         <i
                             toggle-attribute="src"
-                            toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                            toggle-value="./assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
                             class="display:flex height:18px"
-                            src="../assets/svg/sort.svg"></i>
+                            src="./assets/svg/sort.svg"></i>
                     </a>
                 </span>
             </td>
@@ -107,8 +103,8 @@
                 <td class="padding:10px">
                     <a
                         actions="state"
-                        state_to="adminView"
-                        state-src="./interview-forms/form.html"
+                        state_to="mainView"
+                        state-src="./admin/interview-forms/form.html"
                         state-overwrite>
                         <h4>{{object.name}}</h4>
                         <div
@@ -119,8 +115,8 @@
                 <td class="padding:10px">
                     <a
                         actions="state"
-                        state_to="adminView"
-                        state-src="./interview-forms/form.html"
+                        state_to="mainView"
+                        state-src="./admin/interview-forms/form.html"
                         state-overwrite>
                         <b>{{object._id}}</b>
                         <div
@@ -134,11 +130,11 @@
 
     <button
         actions="state"
-        state_to="adminView"
-        state-src="./interview-forms/form.html"
+        state_to="mainView"
+        state-src="./admin/interview-forms/form.html"
         state-overwrite
         class="button-round">
-        <i src="../assets/svg/plus.svg"></i>
+        <i src="./assets/svg/plus.svg"></i>
         <div state_to="form-fields" state-object="" state-overwrite></div>
     </button>
 </div>

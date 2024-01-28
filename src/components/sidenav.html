@@ -11,7 +11,7 @@
         href="{{path}}"
         actions="state"
         state_to="mainView"
-        state-src="./oracle/index.html"
+        state-src="./home/"
         class="height:50px width:210px display:flex align-items:center">
         <img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
         <span class="logo-name" translate="no"
@@ -34,15 +34,18 @@
     </a>
 </div>
 
-<ul>
+<ul class="overflow:auto height:calc(100vh_-_110px)">
     <!-- Navigation -->
     <menu
         class="color:#212121 text-transform:uppercase margin-bottom:30px display:none@md@lg@xl">
+        <h3 class="text-transform:capitalize margin:50px_10px_0px">
+            Navigation
+        </h3>
         <a
             href="{{path}}"
             actions="state"
             state_to="mainView"
-            state-src="./oracle/index.html"
+            state-src="./home/"
             class="display:block color:#F7CC02:hover padding:12px_24px"
             >Home</a
         >
@@ -50,9 +53,9 @@
             href="{{path}}"
             actions="state"
             state_to="mainView"
-            state-src="./oracle/discover.html"
+            state-src="./oracle/"
             class="display:block color:#F7CC02:hover padding:12px_24px"
-            >Discover</a
+            >Oracle</a
         >
         <a
             href="./blog/index.html"
@@ -70,6 +73,7 @@
     </menu>
 
     <menu id="account" session>
+        <h3 class="margin:50px_10px_0px">Account</h3>
         <li class="">
             <a
                 actions="state, action(document; .menu_icon)"
@@ -150,20 +154,265 @@
                 <span>Ambassador</span>
             </a>
         </li>
-        <div
-            class="line-height:40px height:40px overflow:hidden white-space:nowrap position:absolute bottom:0px background:gainsboro width:100%">
+    </menu>
+
+    <menu id="admin" session>
+        <h3 class="margin:50px_10px_0px">Admin</h3>
+
+        <li class="">
             <a
-                actions="signOut"
-                href="./signin.html"
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/users/datatable.html"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
                     <i
                         class="display:flex height:16px"
-                        src="{{path}}assets/svg/sign-out-alt.svg"></i>
+                        src="{{path}}assets/svg/users.svg"></i>
                 </span>
-                <span>Sign Out</span>
+                <span>Users</span>
             </a>
-        </div>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/users/form.html"
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/payments/datatable.html"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/credit-card.svg"></i>
+                </span>
+                <span>Payments</span>
+            </a>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/payments/form.html"
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/payouts/datatable.html"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/hand-holding-dollar.svg"></i>
+                </span>
+                <span>Payouts</span>
+            </a>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/payouts/form.html"
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/blog/datatable.html"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/blog.svg"></i>
+                </span>
+                <span>Blog Posts</span>
+            </a>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/blog/form.html"
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/social/index.html"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/share-from-square.svg"></i>
+                </span>
+                <span>Social Posts</span>
+            </a>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/social/form.html"
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/questions/datatable.html"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/circle-question.svg"></i>
+                </span>
+                <span>Questions</span>
+            </a>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/questions/form.html"
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/careers/datatable.html"
+                state-overwrite
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/person-dots-from-line.svg"></i>
+                </span>
+                <span>Careers</span>
+            </a>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/careers/form.html"
+                    state-overwrite
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/subscriptions/datatable.html"
+                state-overwrite
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/clipboard-question.svg"></i>
+                </span>
+                <span>Subscriptions</span>
+            </a>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/subscriptions/form.html"
+                    state-overwrite
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state, action(document; .menu_icon)"
+                state_to="mainView"
+                state-src="./admin/ai/datatable.html"
+                state-overwrite
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i
+                        class="display:flex height:16px"
+                        src="{{path}}assets/svg/brain.svg"></i>
+                </span>
+                <span>AI Settings</span>
+            </a>
+
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state, action(document; .menu_icon)"
+                    state_to="mainView"
+                    state-src="./admin/ai/form.html"
+                    state-overwrite
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i
+                        class="display:flex height:18px"
+                        src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
     </menu>
+    <div
+        class="line-height:40px height:40px overflow:hidden white-space:nowrap position:absolute bottom:0px background:gainsboro width:100%">
+        <a
+            actions="signOut"
+            href="./signin.html"
+            class="display:flex align-items:center">
+            <span class="display:flex justify-content:center min-width:50px">
+                <i
+                    class="display:flex height:16px"
+                    src="{{path}}assets/svg/sign-out-alt.svg"></i>
+            </span>
+            <span>Sign Out</span>
+        </a>
+    </div>
 </ul>

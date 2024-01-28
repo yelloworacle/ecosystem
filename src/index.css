@@ -191,10 +191,6 @@ sidenav .close {
     padding: 10px;
 }
 
-sidenav ul {
-    padding-top: 80px;
-}
-
 sidenav ul li {
     display: flex;
     justify-content: space-between;
@@ -410,8 +406,6 @@ footer p {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    width: 100%;
-    max-width: 600px;
     overflow: auto;
 }
 
