@@ -40,8 +40,11 @@
     </floating-label>
 
     <button
-        actions="save"
-        class="position:absolute bottom:15px right:15px background:dodgerblue opacity:0.8 grow-hover round">
-        <i class="height:20px fill:#505050" src="../assets/svg/save.svg"></i>
+        actions="save, state"
+        state_to="adminView"
+        state-src="./blog/datatable.html"
+        state-overwrite
+        class="button-round">
+        <i src="../assets/svg/save.svg"></i>
     </button>
 </form>
