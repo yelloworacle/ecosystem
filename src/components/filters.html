@@ -15,120 +15,6 @@
     </form>
 </div>
 
-<!-- Stay Connected -->
-<div class="margin-bottom:60px padding:10px">
-    <form>
-        <div class="border-bottom:3px_solid_#F7CC02">
-            <span
-                class="background:#F7CC02 color:#fff font-size:16px padding:5px_30px_2px_30px letter-spacing:1.3px"
-                >Stay Connected</span
-            >
-        </div>
-        <div class="padding:10px margin-top:20px">
-            <div
-                class="background:#3C5A99 padding:9px_10px margin-bottom:10px display:flex cursor:pointer background:#222:hover transition:0.3s">
-                <span
-                    class="color:#fff margin-top:2px padding-right:10px border-right:1px_solid_#aaa font-size:16px">
-                    <i
-                        class="height:16px fill:#505050"
-                        src="{{path}}assets/svg/facebook-f.svg"></i>
-                </span>
-                <span
-                    class="color:#fff font-size:12px margin-top:3px margin-left:10px"
-                    >12345</span
-                >
-                <span
-                    class="color:#fff font-size:12px margin-top:3px margin-left:10px"
-                    >Fans</span
-                >
-                <span
-                    class="color:#fff font-size:12px margin-top:3px margin-left:auto font-size:11px@lg width:20% padding-left:10px border-left:1px_solid_#aaa"
-                    >LIKE</span
-                >
-            </div>
-
-            <div
-                class="background:#55ADEE padding:9px_10px margin-bottom:10px display:flex cursor:pointer background:#222:hover transition:0.3s">
-                <span
-                    class="color:#fff margin-top:2px padding-right:10px border-right:1px_solid_#aaa font-size:16px">
-                    <i
-                        class="height:20px fill:#505050"
-                        src="{{path}}assets/svg/twitter.svg"></i>
-                </span>
-                <span
-                    class="color:#fff font-size:12px margin-top:3px margin-left:10px"
-                    >3190
-                </span>
-                <span
-                    class="color:#fff font-size:12px margin-top:3px margin-left:10px"
-                    >Fans</span
-                >
-                <span
-                    class="color:#fff font-size:11px margin-top:3px margin-left:auto font-size:10px@lg width:25% padding-left:10px border-left:1px_solid_#aaa"
-                    >TWIT</span
-                >
-            </div>
-
-            <div
-                class="background:#FF0000 padding:9px_10px display:flex cursor:pointer background:#222:hover transition:0.3s">
-                <span
-                    class="color:#fff margin-top:2px padding-right:10px border-right:1px_solid_#aaa font-size:16px">
-                    <i
-                        class="height:16px fill:#505050"
-                        src="{{path}}assets/svg/youtube.svg"></i>
-                </span>
-                <span
-                    class="color:#fff font-size:12px margin-top:3px margin-left:10px"
-                    >30000
-                </span>
-                <span
-                    class="color:#fff font-size:12px margin-top:3px margin-left:10px"
-                    >Fans</span
-                >
-                <span
-                    class="color:#fff font-size:12px margin-top:3px margin-left:auto font-size:11px@lg width:20% padding-left:10px border-left:1px_solid_#aaa"
-                    >SUB</span
-                >
-            </div>
-        </div>
-    </form>
-</div>
-
-<!-- Popular -->
-<div class="margin-bottom:60px padding:10px">
-    <div class="border-bottom:3px_solid_#F7CC02">
-        <span
-            class="background:#F7CC02 color:#fff font-size:16px padding:5px_30px_2px_30px letter-spacing:1.3px"
-            >Popular Posts</span
-        >
-    </div>
-
-    <!-- Fetch and Render Popular -->
-    <div
-        array="module_activities"
-        filter-limit="4"
-        filter-sort-key="name"
-        filter-sort-direction="asc"
-        render-selector="[template]"
-        class="padding:10px margin-top:20px">
-        <!-- Popular Template -->
-        <div
-            class="margin-bottom:15px display:flex justify-content:space-between"
-            template>
-            <div class="flex-basis:25%">
-                <img class="width:100% height:60px" src="" />
-            </div>
-            <div class="flex-basis:70%">
-                <a
-                    class="text-align:justify font-size:12px font-family:arial line-height:24px"
-                    href="#"
-                    >Most inspirational movie you have ever seen?</a
-                >
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Category Filters -->
 <div class="margin-bottom:60px padding:10px">
     <form>
@@ -292,4 +178,38 @@
     </form>
 </div>
 
-<div resize="right"></div>
+<!-- Popular -->
+<div class="margin-bottom:60px padding:10px">
+    <div class="border-bottom:3px_solid_#F7CC02">
+        <span
+            class="background:#F7CC02 color:#fff font-size:16px padding:5px_30px_2px_30px letter-spacing:1.3px"
+            >Popular Posts</span
+        >
+    </div>
+
+    <!-- Fetch and Render Popular -->
+    <div
+        array="blog-post"
+        object
+        filter-limit="10"
+        filter-sort-key="likes"
+        filter-sort-direction="desc"
+        render-selector="[template]"
+        class="padding:10px margin-top:20px">
+        <!-- Popular Template -->
+        <div
+            class="margin-bottom:15px display:flex justify-content:space-between"
+            template>
+            <div class="flex-basis:25%">
+                <img class="width:100% height:60px" src="" />
+            </div>
+            <div class="flex-basis:70%">
+                <a
+                    class="text-align:justify font-size:12px font-family:arial line-height:24px"
+                    href="#"
+                    >Most inspirational movie you have ever seen?</a
+                >
+            </div>
+        </div>
+    </div>
+</div>
