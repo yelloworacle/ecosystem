@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <div
     class="width:100%"
-    resize-attribute="$click"
+    resize-attribute="menu-icon"
+    resize-value="active"
     resize-if="300px"
-    resize-selector="document; .menu_icon"></div>
+    resize-selector="document; [menu-icon][]"></div>
+<div
+    class="width:100%"
+    resize-attribute="menu-icon"
+    resize-value="false"
+    resize-if="0px"
+    resize-selector="document; [menu-icon][]"></div>
+
 <div
     class="display:flex justify-content:space-between align-items:center padding:10px">
     <!-- Logo -->
@@ -21,10 +29,7 @@
 
     <!-- Menu Icon -->
     <a
-        class="menu_icon"
-        click="active"
-        click-attribute="class"
-        click-selector="document; .menu_icon[]"
+        menu-icon
         toggle="width:0px,"
         toggle-selector="document; #menuL"
         toggle-attribute="style">
@@ -38,7 +43,7 @@
     <!-- Navigation -->
     <menu
         class="color:#212121 text-transform:uppercase margin-bottom:30px display:none@md@lg@xl">
-        <h3 class="text-transform:capitalize margin:50px_10px_0px">
+        <h3 class="text-transform:capitalize margin:50px_10px_5px">
             Navigation
         </h3>
         <a
@@ -73,7 +78,7 @@
     </menu>
 
     <menu id="account" session>
-        <h3 class="margin:50px_10px_0px">Account</h3>
+        <h3 class="margin:50px_10px_5px">Account</h3>
         <li class="">
             <a
                 actions="state, action(document; .menu_icon)"
@@ -157,7 +162,42 @@
     </menu>
 
     <menu id="admin" session>
-        <h3 class="margin:50px_10px_0px">Admin</h3>
+        <input
+            type="hidden"
+            filter-key="key"
+            value="$user_id"
+            filter-parent="#isadmin" />
+
+        <div
+            filter-key="roles"
+            filter-value="652c8d62d31d27088bdd29fc"
+            filter-operator="$in"
+            filter-next></div>
+
+        <input
+            type="hidden"
+            id="isadmin"
+            array="keys"
+            object
+            key="key"
+            input-parent
+            input-attribute="admin"
+            input-value="true"
+            filter-limit="1" />
+        <!-- <div
+            id="isadmin"
+            array="keys"
+            object
+            filter-limit="1"
+            render-selector="[template]">
+            <input
+                input-closest="menu"
+                input-attribute="admin"
+                input-value="true"
+                template />
+        </div> -->
+
+        <h3 class="margin:50px_10px_5px">Admin</h3>
 
         <li class="">
             <a
