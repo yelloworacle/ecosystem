@@ -2,41 +2,93 @@
 
 <form
     state_id="form-fields"
-    array="module_activities"
+    array="blog-posts"
     object=""
-    class="margin-bottom:75px">
-    <input type="hidden" key="module_id" state_id="module_id" value />
-    <floating-label>
+    realtime="false"
+    class="main-view max-width:600px">
+    <floating-label class="input-300">
         <input
             type="text"
-            key="name"
+            key="author"
+            placeholder="Author Name"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <select key="status" class="floating-label">
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+            <!-- Other statuses -->
+        </select>
+    </floating-label>
+
+    <floating-label class="input-600">
+        <input
+            type="text"
+            key="title"
             placeholder="Title"
             class="floating-label" />
     </floating-label>
-    <floating-label>
+
+    <floating-label class="input-300">
+        <input
+            type="file"
+            key="image"
+            placeholder="Upload Featured Image"
+            accept="image/*"
+            class="floating-label" />
+    </floating-label>
+
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="tags"
+            placeholder="Tags (comma-separated)"
+            class="floating-label" />
+    </floating-label>
+
+    <floating-label class="input-600">
+        <textarea
+            key="shortDescription"
+            placeholder="Short Description"
+            class="floating-label"></textarea>
+    </floating-label>
+
+    <floating-label class="input-600">
         <textarea
             key="content"
             placeholder="Content"
             class="floating-label"></textarea>
     </floating-label>
-    <floating-label>
-        <textarea
-            key="short_description"
-            placeholder="Short Description"
-            class="floating-label"></textarea>
-    </floating-label>
-    <floating-label>
+
+    <floating-label class="input-300">
         <input
             type="text"
             key="meta-title"
             placeholder="Meta Title"
             class="floating-label" />
     </floating-label>
-    <floating-label>
+
+    <floating-label class="input-300">
         <textarea
             key="meta_keywords"
             placeholder="Meta Keywords"
             class="floating-label"></textarea>
+    </floating-label>
+
+    <!-- Additional Fields -->
+
+    <floating-label class="input-300">
+        <textarea
+            key="meta_description"
+            placeholder="Meta Description"
+            class="floating-label"></textarea>
+    </floating-label>
+
+    <floating-label class="input-300">
+        <select key="category" class="floating-label" placeholder="Category">
+            <option value="">Select Category</option>
+            <!-- Options here -->
+        </select>
     </floating-label>
 
     <button

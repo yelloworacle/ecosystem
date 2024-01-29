@@ -75,7 +75,7 @@
                         <input
                             type="text"
                             filter-selector="document; tbody[render-selector]"
-                            filter-key="firstname"
+                            filter-key="title"
                             state_id="datatable"
                             placeholder="Name"
                             class="floating-label" />
@@ -84,7 +84,7 @@
                         class="position:absolute bottom:20px right:20px float:right z-index:6">
                         <a
                             filter-selector="document; tbody[render-selector]"
-                            filter-sort-key="firstname"
+                            filter-sort-key="title"
                             filter-sort-direction="asc"
                             click-value="desc, asc"
                             click-attribute="filter-sort-direction"
@@ -130,8 +130,7 @@
         <tbody
             array="blog-posts"
             object
-            filter-sort-key="name"
-            filter-sort-direction="asc"
+            filter-limit="20"
             render-selector="[template]">
             <tr
                 class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
@@ -145,24 +144,21 @@
                         <a
                             actions="state"
                             state_to="mainView"
-                            state-src="./admin/users/form.html"
+                            state-src="./admin/blog/form.html"
                             state-overwrite>
-                            <h4>
-                                {{object.name}} {{object.firstname}}
-                                {{object.lastname}}
-                            </h4>
+                            <h4>{{object.title}}</h4>
                             <div
                                 state_to="form-fields"
                                 state-object="{{object._id}}"></div>
                         </a>
-                        <h5>{{object.email}}</h5>
+                        <h5>{{object.shortDescription}}</h5>
                     </div>
                 </td>
                 <td class="padding:10px">
                     <a
                         actions="state"
                         state_to="mainView"
-                        state-src="./admin/users/form.html"
+                        state-src="./admin/blog/form.html"
                         state-overwrite>
                         <b>{{object._id}}</b>
                         <div
