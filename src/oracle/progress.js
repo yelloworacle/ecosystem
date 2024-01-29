@@ -1,5 +1,4 @@
-
-
+// TODO: replace using html5 attributes filter and calculate 
 CoCreate.observer.init({
     name: 'getProgress',
     observe: ['addedNodes'],
