@@ -87,7 +87,6 @@
         <!-- Navbar  -->
         <nav
             class="width:auto display:flex align-items:center background:transparent padding-top:10px padding-bottom:10px z-index:1"
-            content_id="content"
             scroll="sticky-nav,"
             scroll-up="5"
             scroll-down="5"
@@ -100,57 +99,50 @@
             class="position:fixed top:0px left:0px overflow:hidden background:whitesmoke height:100vh width:300px@lg@xl"
             path="../"
             src="../components/sidenav.html"
-            resize-selector="document; main"
+            resize-selector="document; main, document; footer"
             resize-attribute="style"
             resize-property="margin-left"
             session></sidenav>
 
         <!-- Main Content -->
-        <main class="padding:20px" content_id="content">
-            <!--  Blog Header -->
-            <div
-                class="width:100% display:flex flex-wrap:wrap justify-content:space-between background:#F23A2E border-radius:3px padding:10px_0 margin-bottom:20px">
-                <div class="left-text flex-basis:40% margin:0_20px">
-                    <h3
-                        class="color:#fff letter-spacing:1.4px font-weight:500 font-size:16px@sm font-size:13px@xs padding:5px font-family:tahoma">
-                        LATEST POSTS
-                    </h3>
-                </div>
-            </div>
-
-            <!-- Fetch and Render Blog Posts -->
-            <div
-                class="display:flex flex-wrap:wrap"
-                array="blog-posts"
-                object
-                filter-limit="12"
-                render-selector="[template]">
-                <!-- Blog Post Template -->
+        <main>
+            <section class="flex-grow:1">
+                <!--  Blog Header -->
                 <div
-                    class="card position:relative flex-grow:1 margin-bottom:50px height:470px width:300px max-width:600px margin:10px"
-                    template>
-                    <a
-                        class="height:400px overflow:hidden"
-                        href="../blog/post.html">
-                        <div
-                            class="position:absolute top:20px right:20px background:#e74c3c width:55px height:55px padding:12.5px_0 border-radius:100% color:#ffffff font-weight:700 text-align:center box-sizing:border-box">
-                            <div class="font-size:18px">27</div>
-                            <div
-                                class="font-size:12px text-transform:uppercase">
-                                Mar
-                            </div>
-                        </div>
+                    class="width:100% background:#F7CC02 border-radius:3px padding:20px margin-bottom:20px">
+                    <h3>LATEST POSTS</h3>
+                </div>
 
-                        <!-- Image -->
-                        <!-- <img src="images/main-img.jpg" width="100%" /> -->
-                        <!-- Post Content -->
-                        <div
-                            class="post-content position:absolute bottom:0 background:#ffffff width:100% padding:30px">
+                <!-- Fetch and Render Blog Posts -->
+                <div
+                    class="display:flex flex-wrap:wrap"
+                    array="blog-posts"
+                    object
+                    filter-limit="12"
+                    render-selector="[template]">
+                    <!-- Blog Post Template -->
+                    <div
+                        class="card position:relative flex-grow:1 margin-bottom:50px height:470px width:300px max-width:600px margin:10px"
+                        template>
+                        <a class="overflow:hidden" href="../blog/post.html">
+                            <div
+                                class="position:absolute top:20px right:20px background:#e74c3c width:55px height:55px padding:12.5px_0 border-radius:100% color:#ffffff font-weight:700 text-align:center box-sizing:border-box">
+                                <div class="font-size:18px">
+                                    {{object.created.on}}
+                                </div>
+                                <div class="font-size:12px">Mar</div>
+                            </div>
+
+                            <!-- Image -->
+                            <img
+                                src="../assets/screenshot-1.png"
+                                width="100%" />
+                            <!-- Post Content -->
                             <div
                                 hover="display:block"
                                 hover-selector=".description">
                                 <h2
-                                    class="font-size:24px margin:0 padding:0_0_10px color:#333333 font-weight:700">
+                                    class="font-size:24px margin:0 padding:0_0_10px font-weight:700">
                                     {{object.title}}
                                 </h2>
                                 <h3
@@ -160,46 +152,39 @@
                                     {{object.shortDescription}}
                                 </p>
                             </div>
-                            <div class="margin:30px_0_0 color:#999999">
-                                <span class="margin:0_16px_0_0">
-                                    <i
-                                        class="height:16px fill:#505050"
-                                        src="../assets/svg/clock.svg"></i>
-                                    6 mins ago
+                            <div
+                                class="display:flex flex-wrap:wrap gap:10px padding:20px_0px">
+                                <span>
+                                    <i src="../assets/svg/clock.svg"></i>
+                                    <a href="#"> 6 mins ago</a>
                                 </span>
-                                <span class="">
-                                    <i
-                                        class="height:16px fill:#505050"
-                                        src="../assets/svg/comments.svg"></i
-                                    ><a
-                                        class="color:#999999 color:#999999:hover text-decoration:none:hover"
-                                        href="#">
-                                        39 comments</a
-                                    >
+                                <span>
+                                    <i src="../assets/svg/comments.svg"></i
+                                    ><a href="#"> 39 comments</a>
                                 </span>
                             </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </main>
+            </section>
 
-        <!-- SideNav Right -->
-        <sidenav
-            id="menuR"
-            class="position:fixed top:0px right:0px!important overflow:scroll padding-top:100px background:white z-index:6!important height:100vh width:300px width:0px@sm@xs"
-            resizable
-            resize-selector="[content_id='content']"
-            resize-property="margin-right"
-            resize-value="width"
-            path="../"
-            src="../components/filters.html"></sidenav>
+            <!-- SideNav Right -->
+            <filters
+                id="menuR"
+                class="overflow:scroll padding-top:70px height:100vh width:300px width:0px@xxs@xs@sm@md"
+                resizable
+                resize-selector="[content_id='content']"
+                resize-property="margin-right"
+                resize-value="width"
+                path="../"
+                src="../components/filters.html"></filters>
+        </main>
 
         <!-- SidNav Right Floating toggle Button -->
         <button
             class="button-round"
             toggle="width:300px, width:0px"
-            toggle-selector="#menuR"
+            toggle-selector="document; #menuR"
             toggle-attribute="style">
             <i src="../assets/svg/sliders-h.svg"></i>
         </button>
