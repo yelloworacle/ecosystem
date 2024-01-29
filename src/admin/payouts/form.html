@@ -2,7 +2,7 @@
 
 <form
     state_id="form-fields"
-    array="users"
+    array="payouts"
     object=""
     realtime="false"
     class="main-view max-width:600px">
@@ -49,61 +49,17 @@
     <floating-label class="input-300">
         <input
             type="text"
-            key="firstname"
-            placeholder="First Name"
+            key="amount"
+            placeholder="Amount"
             class="floating-label" />
     </floating-label>
     <floating-label class="input-300">
         <input
             type="text"
-            key="lastname"
-            placeholder="Last Name"
+            key="ambasador"
+            placeholder="Ambassador"
             class="floating-label" />
     </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="email"
-            placeholder="Email"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="tel"
-            key="phone"
-            placeholder="Phone"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="password"
-            key="password"
-            placeholder="password"
-            class="floating-label" />
-    </floating-label>
-
-    <div class="height:0px width:0px overflow:hidden">
-        <input type="email" name="email" autocomplete="email" />
-        <input type="tel" name="phone" autocomplete="tel" />
-        <input
-            type="password"
-            name="password"
-            autocomplete="current-password" />
-    </div>
-
-    <div
-        id="questions"
-        object
-        key="questions"
-        render-selector="[template]"
-        read="false">
-        <input
-            type="text"
-            key="{{questions.key}}"
-            value="{{questions.value}}"
-            template
-            read="false" />
-    </div>
 
     <button
         actions="save, state"
