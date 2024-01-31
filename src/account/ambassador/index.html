@@ -274,11 +274,6 @@
         </p>
 
         <form class="join" realtime="false">
-            <input type="hidden" stripe="type" value="custom" />
-            <input type="hiden" array="users" object="" key="email" />
-
-            <input type="text" stripe="country" value="US" />
-
             <input
                 type="text"
                 array="users"
@@ -293,6 +288,176 @@
                 >yelloworacle.com/</span
             >
 
+            <input type="hidden" stripe="accounts.create.type" value="custom" />
+            <input
+                type="hidden"
+                array="users"
+                object=""
+                key="email"
+                stripe="accounts.create.email" />
+            <input
+                type="hidden"
+                array="users"
+                object=""
+                key="email"
+                stripe="accounts.create.individual.email" />
+            <input
+                type="hidden"
+                stripe="accounts.create.business_profile.product_description"
+                value="AI generated career recomendations" />
+            <input
+                type="number"
+                stripe="accounts.create.business_profile.mcc"
+                value="5968"
+                hidden />
+            <input
+                type="hidden"
+                stripe="accounts.create.business_profile.url"
+                value="https://yelloworacle.com" />
+            <input
+                type="hidden"
+                stripe="accounts.create.settings.payments.statement_descriptor"
+                value="yelloworacle" />
+            <input
+                type="checkbox"
+                stripe="accounts.create.capabilities.card_payments.requested"
+                hidden
+                checked />
+            <input
+                type="checkbox"
+                stripe="accounts.create.capabilities.transfers.requested"
+                hidden
+                checked />
+
+            <div
+                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                <floating-label class="flex-grow:1">
+                    <input
+                        type="text"
+                        array="users"
+                        object=""
+                        key="firstname"
+                        stripe="accounts.create.individual.first_name"
+                        placeholder="First Name"
+                        required />
+                </floating-label>
+
+                <floating-label class="flex-grow:1">
+                    <input
+                        type="text"
+                        array="users"
+                        object=""
+                        key="lastname"
+                        stripe="accounts.create.individual.last_name"
+                        placeholder="Last Name"
+                        required />
+                </floating-label>
+            </div>
+
+            <floating-label class="margin-top:20px padding:10px_0px">
+                <div
+                    class="floating-label display:flex flex-wrap:wrap gap:15px"
+                    placeholder="Date of Birth:"
+                    active>
+                    <floating-label class="flex-grow:1 width:75px">
+                        <input
+                            type="number"
+                            stripe="accounts.create.individual.dob.day"
+                            placeholder="Day"
+                            min="1"
+                            max="31"
+                            required />
+                    </floating-label>
+                    <floating-label class="flex-grow:1 width:90px">
+                        <input
+                            type="number"
+                            stripe="accounts.create.individual.dob.month"
+                            placeholder="Month"
+                            min="1"
+                            max="12"
+                            required />
+                    </floating-label>
+                    <floating-label class="flex-grow:1 width:80px">
+                        <input
+                            type="number"
+                            stripe="accounts.create.individual.dob.year"
+                            placeholder="Year"
+                            min="1900"
+                            max="2024"
+                            required />
+                    </floating-label>
+                </div>
+            </floating-label>
+            <div
+                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                <floating-label class="flex-grow:1">
+                    <select
+                        array="users"
+                        object=""
+                        key="business_type"
+                        stripe="accounts.create.business_type"
+                        placeholder="Bussiness Type">
+                        <option value="individual">Individual</option>
+                        <option value="company">Company</option>
+                        <option value="non_profit">non_profit</option>
+                        <option value="BR">government_entity</option>
+                    </select>
+                </floating-label>
+
+                <floating-label class="flex-grow:1">
+                    <select
+                        id="country"
+                        key="country"
+                        stripe="accounts.create.country"
+                        placeholder="Country"
+                        required>
+                        <option value="" disabled selected>
+                            Select a Country
+                        </option>
+                        <option value="AU">Australia</option>
+                        <option value="AT">Austria</option>
+                        <option value="BE">Belgium</option>
+                        <option value="BR">Brazil</option>
+                        <option value="BG">Bulgaria</option>
+                        <option value="CA">Canada</option>
+                        <option value="CY">Cyprus</option>
+                        <option value="CZ">Czech Republic</option>
+                        <option value="DK">Denmark</option>
+                        <option value="EE">Estonia</option>
+                        <option value="FI">Finland</option>
+                        <option value="FR">France</option>
+                        <option value="DE">Germany</option>
+                        <option value="GR">Greece</option>
+                        <option value="HK">Hong Kong</option>
+                        <option value="HU">Hungary</option>
+                        <option value="IN">India</option>
+                        <option value="IE">Ireland</option>
+                        <option value="IT">Italy</option>
+                        <option value="JP">Japan</option>
+                        <option value="LV">Latvia</option>
+                        <option value="LT">Lithuania</option>
+                        <option value="LU">Luxembourg</option>
+                        <option value="MT">Malta</option>
+                        <option value="MX">Mexico</option>
+                        <option value="NL">Netherlands</option>
+                        <option value="NZ">New Zealand</option>
+                        <option value="NO">Norway</option>
+                        <option value="PL">Poland</option>
+                        <option value="PT">Portugal</option>
+                        <option value="RO">Romania</option>
+                        <option value="SG">Singapore</option>
+                        <option value="SK">Slovakia</option>
+                        <option value="SI">Slovenia</option>
+                        <option value="ES">Spain</option>
+                        <option value="SE">Sweden</option>
+                        <option value="CH">Switzerland</option>
+                        <option value="TH">Thailand</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="US">United States</option>
+                    </select>
+                </floating-label>
+            </div>
+
             <div class="terms">
                 <input
                     type="checkbox"
@@ -303,6 +468,19 @@
                     required />
                 <a href="./terms/ambassador.html">Ambassador Terms</a>
             </div>
+
+            <input
+                type="hidden"
+                stripe="accounts.create.tos_acceptance.ip"
+                value="$ip" />
+
+            <input
+                type="date"
+                stripe="accounts.create.tos_acceptance.date"
+                value-type="toUnixTimestamp"
+                value="$now"
+                hidden />
+
             <div
                 template="validate"
                 class="card margin-bottom:15px padding:10px min-height:40px max-width:800px">
@@ -312,7 +490,10 @@
                 </span>
             </div>
 
-            <button actions="validate, save">Join</button>
+            <!-- <button actions="accounts.create">Join</button> -->
+            <button actions="validate, accounts.create, save">Join</button>
         </form>
     </section>
 </div>
+
+<script src="./account/ambassador/index.js"></script>
