@@ -132,14 +132,6 @@ button:hover {
     }
 }
 
-.show[selected] {
-    display: block !important;
-}
-
-[hidden] {
-    display: none
-}
-
 .button-round {
     position: fixed;
     bottom: 15px;
@@ -222,6 +214,10 @@ input:not([type="checkbox"]) {
 
 input:focus:not([type="checkbox"]) {
     outline: 1px solid #495057;
+}
+
+input[hidden] {
+    display: none;
 }
 
 .input-container {
@@ -448,4 +444,12 @@ footer p {
 [menu-icon][session="on"],
 [menu-icon][session="idle"] {
     display: block;
+}
+
+.show[selected] {
+    display: block !important;
+}
+
+[hidden] {
+    display: none
 }
