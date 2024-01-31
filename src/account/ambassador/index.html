@@ -458,6 +458,86 @@
                 </floating-label>
             </div>
 
+            <div
+                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                <floating-label class="flex-grow:1">
+                    <input
+                        type="text"
+                        array="users"
+                        object=""
+                        key="account_number"
+                        stripe="accounts.create.external_account.account_number"
+                        placeholder="Account Number"
+                        required />
+                </floating-label>
+
+                <floating-label class="flex-grow:1">
+                    <input
+                        type="text"
+                        array="users"
+                        object=""
+                        key="routing_number"
+                        stripe="accounts.create.external_account.routing_number"
+                        placeholder="Routing Number"
+                        required />
+                </floating-label>
+            </div>
+
+            <div
+                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                <floating-label class="flex-grow:1">
+                    <select
+                        array="users"
+                        object=""
+                        key="account_holder_type"
+                        stripe="accounts.create.external_account.account_holder_type"
+                        placeholder="Account Holder Type">
+                        <option value="individual">Individual</option>
+                        <option value="company">Company</option>
+                    </select>
+                </floating-label>
+
+                <floating-label class="flex-grow:1">
+                    <input
+                        type="text"
+                        array="users"
+                        object=""
+                        key="account_holder_name"
+                        stripe="accounts.create.external_account.account_holder_name"
+                        placeholder="Account Holder Name"
+                        required />
+                </floating-label>
+            </div>
+
+            <div
+                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                <floating-label class="flex-grow:1">
+                    <select
+                        array="users"
+                        object=""
+                        key="currency"
+                        stripe="accounts.create.external_account.currency"
+                        placeholder="Currency">
+                        <option value="usd">USD</option>
+                        <option value="eur">EUR</option>
+                        <option value="gbp">GBP</option>
+                    </select>
+                </floating-label>
+
+                <floating-label class="flex-grow:1">
+                    <select
+                        array="users"
+                        object=""
+                        key="country"
+                        stripe="accounts.create.external_account.country"
+                        placeholder="Country">
+                        <option value="US">United States</option>
+                        <option value="GB">United Kingdom</option>
+                        <option value="CA">Canada</option>
+                    </select>
+                </floating-label>
+            </div>
+
             <div class="terms">
                 <input
                     type="checkbox"
