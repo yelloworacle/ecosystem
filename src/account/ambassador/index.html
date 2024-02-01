@@ -242,7 +242,10 @@
         <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
     </section>
 
-    <section id="terms" class="ambassador padding:40px@md@lg@xl">
+    <section
+        id="terms"
+        class="ambassador padding:40px@md@lg@xl"
+        module="stripe">
         <input
             type="hidden"
             array="users"
@@ -288,44 +291,56 @@
                 >yelloworacle.com/</span
             >
 
-            <input type="hidden" stripe="accounts.create.type" value="custom" />
+            <input
+                type="hidden"
+                stripe="accounts.create"
+                stripe-key="type"
+                value="custom" />
             <input
                 type="hidden"
                 array="users"
                 object=""
                 key="email"
-                stripe="accounts.create.email" />
+                stripe="accounts.create"
+                stripe-key="email" />
             <input
                 type="hidden"
                 array="users"
                 object=""
                 key="email"
-                stripe="accounts.create.individual.email" />
+                stripe="accounts.create"
+                stripe-key="individual.email" />
             <input
                 type="hidden"
-                stripe="accounts.create.business_profile.product_description"
+                stripe="accounts.create"
+                stripe-key="business_profile.product_description"
                 value="AI generated career recomendations" />
             <input
                 type="number"
-                stripe="accounts.create.business_profile.mcc"
+                stripe="accounts.create"
+                stripe-key="business_profile.mcc"
                 value="5968"
                 hidden />
             <input
                 type="hidden"
-                stripe="accounts.create.business_profile.url"
+                stripe="accounts.create"
+                stripe-key="business_profile.url"
                 value="https://yelloworacle.com" />
             <input
                 type="hidden"
-                stripe="accounts.create.settings.payments.statement_descriptor"
+                stripe="accounts.create"
+                stripe-key="settings.payments.statement_descriptor"
                 value="yelloworacle" />
             <input
                 type="checkbox"
-                stripe="accounts.create.capabilities.card_payments.requested"
+                stripe="accounts.create"
+                stripe-key="capabilities.card_payments.requested"
                 hidden
                 checked />
             <input
                 type="checkbox"
-                stripe="accounts.create.capabilities.transfers.requested"
+                stripe="accounts.create"
+                stripe-key="capabilities.transfers.requested"
                 hidden
                 checked />
 
@@ -337,7 +352,8 @@
                         array="users"
                         object=""
                         key="email"
-                        stripe="accounts.create.individual.email"
+                        stripe="accounts.create"
+                        stripe-key="individual.email"
                         placeholder="Email"
                         required />
                 </floating-label>
@@ -348,7 +364,8 @@
                         array="users"
                         object=""
                         key="phone"
-                        stripe="accounts.create.individual.phone"
+                        stripe="accounts.create"
+                        stripe-key="individual.phone"
                         placeholder="Phone"
                         required />
                 </floating-label>
@@ -362,7 +379,8 @@
                         array="users"
                         object=""
                         key="firstname"
-                        stripe="accounts.create.individual.first_name"
+                        stripe="accounts.create"
+                        stripe-key="individual.first_name"
                         placeholder="First Name"
                         required />
                 </floating-label>
@@ -373,7 +391,8 @@
                         array="users"
                         object=""
                         key="lastname"
-                        stripe="accounts.create.individual.last_name"
+                        stripe="accounts.create"
+                        stripe-key="individual.last_name"
                         placeholder="Last Name"
                         required />
                 </floating-label>
@@ -387,7 +406,8 @@
                         array="users"
                         object=""
                         key="ssn_last_4"
-                        stripe="accounts.create.individual.ssn_last_4"
+                        stripe="accounts.create"
+                        stripe-key="individual.ssn_last_4"
                         placeholder="SSN Last 4 Digits"
                         required />
                 </floating-label>
@@ -400,7 +420,8 @@
                     <floating-label class="flex-grow:1 width:75px">
                         <input
                             type="number"
-                            stripe="accounts.create.individual.dob.day"
+                            stripe="accounts.create"
+                            stripe-key="individual.dob.day"
                             placeholder="Day"
                             min="1"
                             max="31"
@@ -409,7 +430,8 @@
                     <floating-label class="flex-grow:1 width:90px">
                         <input
                             type="number"
-                            stripe="accounts.create.individual.dob.month"
+                            stripe="accounts.create"
+                            stripe-key="individual.dob.month"
                             placeholder="Month"
                             min="1"
                             max="12"
@@ -418,7 +440,8 @@
                     <floating-label class="flex-grow:1 width:80px">
                         <input
                             type="number"
-                            stripe="accounts.create.individual.dob.year"
+                            stripe="accounts.create"
+                            stripe-key="individual.dob.year"
                             placeholder="Year"
                             min="1900"
                             max="2024"
@@ -435,7 +458,8 @@
                         array="users"
                         object=""
                         key="address_line1"
-                        stripe="accounts.create.individual.address.line1"
+                        stripe="accounts.create"
+                        stripe-key="individual.address.line1"
                         placeholder="Address Line 1"
                         required />
                 </floating-label>
@@ -446,7 +470,8 @@
                         array="users"
                         object=""
                         key="address_city"
-                        stripe="accounts.create.individual.address.city"
+                        stripe="accounts.create"
+                        stripe-key="individual.address.city"
                         placeholder="City"
                         required />
                 </floating-label>
@@ -460,7 +485,8 @@
                         array="users"
                         object=""
                         key="address_postal_code"
-                        stripe="accounts.create.individual.address.postal_code"
+                        stripe="accounts.create"
+                        stripe-key="individual.address.postal_code"
                         placeholder="Postal Code"
                         required />
                 </floating-label>
@@ -470,7 +496,8 @@
                         array="users"
                         object=""
                         key="address_country"
-                        stripe="accounts.create.individual.address.country"
+                        stripe="accounts.create"
+                        stripe-key="individual.address.country"
                         placeholder="Country"
                         required>
                         <!-- Insert <option> tags for countries here -->
@@ -479,13 +506,14 @@
             </div>
 
             <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
                 <floating-label class="flex-grow:1">
                     <select
                         array="users"
                         object=""
                         key="business_type"
-                        stripe="accounts.create.business_type"
+                        stripe="accounts.create"
+                        stripe-key="business_type"
                         placeholder="Bussiness Type">
                         <option value="individual">Individual</option>
                         <option value="company">Company</option>
@@ -498,7 +526,8 @@
                     <select
                         id="country"
                         key="country"
-                        stripe="accounts.create.country"
+                        stripe="accounts.create"
+                        stripe-key="country"
                         placeholder="Country"
                         required>
                         <option value="" disabled selected>
@@ -642,7 +671,8 @@
                         array="users"
                         object=""
                         key="company_name"
-                        stripe="accounts.create.company.name"
+                        stripe="accounts.create"
+                        stripe-key="company.name"
                         placeholder="Company Name"
                         required />
                 </floating-label>
@@ -653,7 +683,8 @@
                         array="users"
                         object=""
                         key="company_phone"
-                        stripe="accounts.create.company.phone"
+                        stripe="accounts.create"
+                        stripe-key="company.phone"
                         placeholder="Company Phone"
                         required />
                 </floating-label>
@@ -667,23 +698,35 @@
                         array="users"
                         object=""
                         key="tax_id"
-                        stripe="accounts.create.company.tax_id"
+                        stripe="accounts.create"
+                        stripe-key="company.tax_id"
                         placeholder="Tax ID"
                         required />
                 </floating-label>
-
                 <floating-label class="flex-grow:1">
                     <input
                         type="text"
                         array="users"
                         object=""
-                        key="company_address_line1"
-                        stripe="accounts.create.company.address.line1"
-                        placeholder="Address Line 1"
+                        key="company_registration_number"
+                        stripe="accounts.create"
+                        stripe-key="company.registration_number"
+                        placeholder="Registration Number"
                         required />
                 </floating-label>
             </div>
 
+            <floating-label class="margin-top:20px">
+                <input
+                    type="text"
+                    array="users"
+                    object=""
+                    key="company_address_line1"
+                    stripe="accounts.create"
+                    stripe-key="company.address.line1"
+                    placeholder="Address Line 1"
+                    required />
+            </floating-label>
             <div
                 class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
                 <floating-label class="flex-grow:1">
@@ -692,7 +735,8 @@
                         array="users"
                         object=""
                         key="company_address_city"
-                        stripe="accounts.create.company.address.city"
+                        stripe="accounts.create"
+                        stripe-key="company.address.city"
                         placeholder="City"
                         required />
                 </floating-label>
@@ -702,35 +746,22 @@
                         array="users"
                         object=""
                         key="company_address_country"
-                        stripe="accounts.create.company.address.country"
+                        stripe="accounts.create"
+                        stripe-key="company.address.country"
                         placeholder="Country"
                         required>
                         <!-- Insert <option> tags for countries here -->
                     </select>
                 </floating-label>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
                 <floating-label class="flex-grow:1">
                     <input
                         type="text"
                         array="users"
                         object=""
                         key="company_address_postal_code"
-                        stripe="accounts.create.company.address.postal_code"
+                        stripe="accounts.create"
+                        stripe-key="company.address.postal_code"
                         placeholder="Postal Code"
-                        required />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="company_registration_number"
-                        stripe="accounts.create.company.registration_number"
-                        placeholder="Registration Number"
                         required />
                 </floating-label>
             </div>
@@ -738,14 +769,15 @@
             <!-- Include additional fields as needed, such as for ownership or management info -->
 
             <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
                 <floating-label class="flex-grow:1">
                     <input
                         type="text"
                         array="users"
                         object=""
                         key="account_number"
-                        stripe="accounts.create.external_account.account_number"
+                        stripe="accounts.create"
+                        stripe-key="external_account.account_number"
                         placeholder="Account Number"
                         required
                         value="000123456789" />
@@ -757,7 +789,8 @@
                         array="users"
                         object=""
                         key="routing_number"
-                        stripe="accounts.create.external_account.routing_number"
+                        stripe="accounts.create"
+                        stripe-key="external_account.routing_number"
                         placeholder="Routing Number"
                         required
                         value="110000000" />
@@ -771,7 +804,8 @@
                         array="users"
                         object=""
                         key="account_holder_type"
-                        stripe="accounts.create.external_account.account_holder_type"
+                        stripe="accounts.create"
+                        stripe-key="external_account.account_holder_type"
                         placeholder="Account Holder Type">
                         <option value="individual">Individual</option>
                         <option value="company">Company</option>
@@ -784,7 +818,8 @@
                         array="users"
                         object=""
                         key="account_holder_name"
-                        stripe="accounts.create.external_account.account_holder_name"
+                        stripe="accounts.create"
+                        stripe-key="external_account.account_holder_name"
                         placeholder="Account Holder Name"
                         required />
                 </floating-label>
@@ -797,7 +832,8 @@
                         array="users"
                         object=""
                         key="currency"
-                        stripe="accounts.create.external_account.currency"
+                        stripe="accounts.create"
+                        stripe-key="external_account.currency"
                         placeholder="Currency">
                         <option value="ALL">Albanian Lek (ALL)</option>
                         <option value="DZD">Algerian Dinar (DZD)</option>
@@ -960,7 +996,8 @@
                         array="users"
                         object=""
                         key="country"
-                        stripe="accounts.create.external_account.country"
+                        stripe="accounts.create"
+                        stripe-key="external_account.country"
                         placeholder="Country">
                         <option value="US">United States</option>
                         <option value="GB">United Kingdom</option>
@@ -982,12 +1019,14 @@
 
             <input
                 type="hidden"
-                stripe="accounts.create.tos_acceptance.ip"
+                stripe="accounts.create"
+                stripe-key="tos_acceptance.ip"
                 value="$ip" />
 
             <input
                 type="date"
-                stripe="accounts.create.tos_acceptance.date"
+                stripe="accounts.create"
+                stripe-key="tos_acceptance.date"
                 value-type="toUnixTimestamp"
                 value="$now"
                 hidden />
@@ -1001,8 +1040,10 @@
                 </span>
             </div>
 
-            <!-- <button actions="accounts.create">Join</button> -->
-            <button actions="validate, accounts.create, save">Join</button>
+            <!-- <button actions="stripe.accounts.create">Join</button> -->
+            <button actions="validate, stripe.accounts.create, save">
+                Join
+            </button>
         </form>
     </section>
 </div>
