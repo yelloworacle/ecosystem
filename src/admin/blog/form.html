@@ -5,7 +5,7 @@
     array="blog-posts"
     object=""
     realtime="false"
-    class="main-view max-width:600px">
+    class="main-view max-width:600px padding-top:10px">
     <floating-label class="input-300">
         <input
             type="text"
@@ -33,16 +33,18 @@
         <input
             type="file"
             key="image"
-            placeholder="Upload Featured Image"
             accept="image/*"
+            placeholder="Upload Image or Video Thumbnail"
             class="floating-label" />
     </floating-label>
 
+    <!-- New Video Upload Field -->
     <floating-label class="input-300">
         <input
-            type="text"
-            key="tags"
-            placeholder="Tags (comma-separated)"
+            type="file"
+            key="video"
+            accept="video/*"
+            placeholder="Upload Video"
             class="floating-label" />
     </floating-label>
 
@@ -60,7 +62,22 @@
             class="floating-label"></textarea>
     </floating-label>
 
-    <floating-label class="input-300">
+    <floating-label class="input-600">
+        <select key="category" class="floating-label" placeholder="Category">
+            <option value="">Select Category</option>
+            <!-- Options here -->
+        </select>
+    </floating-label>
+
+    <floating-label class="input-600">
+        <input
+            type="text"
+            key="tags"
+            placeholder="Tags (comma-separated)"
+            class="floating-label" />
+    </floating-label>
+
+    <floating-label class="input-600">
         <input
             type="text"
             key="meta-title"
@@ -68,7 +85,7 @@
             class="floating-label" />
     </floating-label>
 
-    <floating-label class="input-300">
+    <floating-label class="input-600">
         <textarea
             key="meta_keywords"
             placeholder="Meta Keywords"
@@ -77,18 +94,11 @@
 
     <!-- Additional Fields -->
 
-    <floating-label class="input-300">
+    <floating-label class="input-600">
         <textarea
             key="meta_description"
             placeholder="Meta Description"
             class="floating-label"></textarea>
-    </floating-label>
-
-    <floating-label class="input-300">
-        <select key="category" class="floating-label" placeholder="Category">
-            <option value="">Select Category</option>
-            <!-- Options here -->
-        </select>
     </floating-label>
 
     <button
