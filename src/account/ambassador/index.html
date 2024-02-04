@@ -360,7 +360,7 @@
 
                 <floating-label class="flex-grow:1">
                     <input
-                        type="text"
+                        type="tel"
                         array="users"
                         object=""
                         key="phone"
@@ -394,6 +394,60 @@
                         stripe="accounts.create"
                         stripe-key="individual.last_name"
                         placeholder="Last Name"
+                        required />
+                </floating-label>
+            </div>
+
+            <div
+                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                <floating-label class="flex-grow:1">
+                    <input
+                        type="text"
+                        array="users"
+                        object=""
+                        key="address_line1"
+                        stripe="accounts.create"
+                        stripe-key="individual.address.line1"
+                        placeholder="Address Line 1"
+                        required />
+                </floating-label>
+            </div>
+            <div
+                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                <floating-label class="flex-grow:1">
+                    <input
+                        type="text"
+                        array="users"
+                        object=""
+                        key="address.city"
+                        stripe="accounts.create"
+                        stripe-key="individual.address.city"
+                        placeholder="City"
+                        required />
+                </floating-label>
+
+                <floating-label class="flex-grow:1">
+                    <select
+                        array="users"
+                        object=""
+                        key="address.country"
+                        stripe="accounts.create"
+                        stripe-key="individual.address.country"
+                        placeholder="Country"
+                        required
+                        src="./account/ambassador/countries.html">
+                        <!-- Insert <option> tags for countries here -->
+                    </select>
+                </floating-label>
+                <floating-label class="flex-grow:1">
+                    <input
+                        type="text"
+                        array="users"
+                        object=""
+                        key="address.postal_code"
+                        stripe="accounts.create"
+                        stripe-key="individual.address.postal_code"
+                        placeholder="Postal Code"
                         required />
                 </floating-label>
             </div>
@@ -444,65 +498,10 @@
                             stripe-key="individual.dob.year"
                             placeholder="Year"
                             min="1900"
-                            max="2024"
+                            max="2006"
                             required />
                     </floating-label>
                 </div>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="address_line1"
-                        stripe="accounts.create"
-                        stripe-key="individual.address.line1"
-                        placeholder="Address Line 1"
-                        required />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="address_city"
-                        stripe="accounts.create"
-                        stripe-key="individual.address.city"
-                        placeholder="City"
-                        required />
-                </floating-label>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="address_postal_code"
-                        stripe="accounts.create"
-                        stripe-key="individual.address.postal_code"
-                        placeholder="Postal Code"
-                        required />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <select
-                        array="users"
-                        object=""
-                        key="address_country"
-                        stripe="accounts.create"
-                        stripe-key="individual.address.country"
-                        placeholder="Country"
-                        required>
-                        <!-- Insert <option> tags for countries here -->
-                    </select>
-                </floating-label>
             </div>
 
             <div
@@ -529,137 +528,8 @@
                         stripe="accounts.create"
                         stripe-key="country"
                         placeholder="Country"
-                        required>
-                        <option value="" disabled selected>
-                            Select a Country
-                        </option>
-                        <option value="AL">Albania</option>
-                        <option value="DZ">Algeria</option>
-                        <option value="AO">Angola</option>
-                        <option value="AG">Antigua &amp; Barbuda</option>
-                        <option value="AR">Argentina</option>
-                        <option value="AM">Armenia</option>
-                        <option value="AU">Australia</option>
-                        <option value="AT">Austria</option>
-                        <option value="AZ">Azerbaijan</option>
-                        <option value="BS">Bahamas</option>
-                        <option value="BH">Bahrain</option>
-                        <option value="BD">Bangladesh</option>
-                        <option value="BE">Belgium</option>
-                        <option value="BJ">Benin</option>
-                        <option value="BT">Bhutan</option>
-                        <option value="BO">Bolivia</option>
-                        <option value="BA">Bosnia &amp; Herzegovina</option>
-                        <option value="BW">Botswana</option>
-                        <option value="BR">Brazil</option>
-                        <option value="BN">Brunei</option>
-                        <option value="BG">Bulgaria</option>
-                        <option value="KH">Cambodia</option>
-                        <option value="CA">Canada</option>
-                        <option value="CL">Chile</option>
-                        <option value="CO">Colombia</option>
-                        <option value="CR">Costa Rica</option>
-                        <option value="CI">Côte d’Ivoire</option>
-                        <option value="HR">Croatia</option>
-                        <option value="CY">Cyprus</option>
-                        <option value="CZ">Czech Republic</option>
-                        <option value="DK">Denmark</option>
-                        <option value="DO">Dominican Republic</option>
-                        <option value="EC">Ecuador</option>
-                        <option value="EG">Egypt</option>
-                        <option value="SV">El Salvador</option>
-                        <option value="EE">Estonia</option>
-                        <option value="ET">Ethiopia</option>
-                        <option value="FI">Finland</option>
-                        <option value="FR">France</option>
-                        <option value="GA">Gabon</option>
-                        <option value="GM">Gambia</option>
-                        <option value="DE">Germany</option>
-                        <option value="GH">Ghana</option>
-                        <option value="GI">Gibraltar</option>
-                        <option value="GR">Greece</option>
-                        <option value="GT">Guatemala</option>
-                        <option value="GY">Guyana</option>
-                        <option value="HK">Hong Kong</option>
-                        <option value="HU">Hungary</option>
-                        <option value="IS">Iceland</option>
-                        <option value="IN">India</option>
-                        <option value="ID">Indonesia</option>
-                        <option value="IE">Ireland</option>
-                        <option value="IL">Israel</option>
-                        <option value="IT">Italy</option>
-                        <option value="JM">Jamaica</option>
-                        <option value="JP">Japan</option>
-                        <option value="JO">Jordan</option>
-                        <option value="KZ">Kazakhstan</option>
-                        <option value="KE">Kenya</option>
-                        <option value="KW">Kuwait</option>
-                        <option value="LA">Laos</option>
-                        <option value="LV">Latvia</option>
-                        <option value="LI">Liechtenstein</option>
-                        <option value="LT">Lithuania</option>
-                        <option value="LU">Luxembourg</option>
-                        <option value="MO">Macao SAR China</option>
-                        <option value="MG">Madagascar</option>
-                        <option value="MY">Malaysia</option>
-                        <option value="MT">Malta</option>
-                        <option value="MU">Mauritius</option>
-                        <option value="MX">Mexico</option>
-                        <option value="MD">Moldova</option>
-                        <option value="MC">Monaco</option>
-                        <option value="MN">Mongolia</option>
-                        <option value="MA">Morocco</option>
-                        <option value="MZ">Mozambique</option>
-                        <option value="NA">Namibia</option>
-                        <option value="NL">Netherlands</option>
-                        <option value="NZ">New Zealand</option>
-                        <option value="NE">Niger</option>
-                        <option value="NG">Nigeria</option>
-                        <option value="MK">North Macedonia</option>
-                        <option value="NO">Norway</option>
-                        <option value="OM">Oman</option>
-                        <option value="PK">Pakistan</option>
-                        <option value="PA">Panama</option>
-                        <option value="PY">Paraguay</option>
-                        <option value="PE">Peru</option>
-                        <option value="PH">Philippines</option>
-                        <option value="PL">Poland</option>
-                        <option value="PT">Portugal</option>
-                        <option value="QA">Qatar</option>
-                        <option value="RO">Romania</option>
-                        <option value="RW">Rwanda</option>
-                        <option value="SM">San Marino</option>
-                        <option value="SA">Saudi Arabia</option>
-                        <option value="SN">Senegal</option>
-                        <option value="RS">Serbia</option>
-                        <option value="SG">Singapore</option>
-                        <option value="SK">Slovakia</option>
-                        <option value="SI">Slovenia</option>
-                        <option value="ZA">South Africa</option>
-                        <option value="KR">South Korea</option>
-                        <option value="ES">Spain</option>
-                        <option value="LK">Sri Lanka</option>
-                        <option value="LC">St. Lucia</option>
-                        <option value="SE">Sweden</option>
-                        <option value="CH">Switzerland</option>
-                        <option value="TW">Taiwan</option>
-                        <option value="TZ">Tanzania</option>
-                        <option value="TH">Thailand</option>
-                        <option value="TT">Trinidad &amp; Tobago</option>
-                        <option value="TN">Tunisia</option>
-                        <option value="TR">Turkey</option>
-                        <option value="AE">United Arab Emirates</option>
-                        <option value="GB-iban-none">
-                            United Kingdom (IBAN)
-                        </option>
-                        <option value="GB-account-sort_code">
-                            United Kingdom (Sort Code)
-                        </option>
-                        <option value="US">United States</option>
-                        <option value="UY">Uruguay</option>
-                        <option value="UZ">Uzbekistan</option>
-                        <option value="VN">Vietnam</option>
-                    </select>
+                        required
+                        src="./account/ambassador/countries.html"></select>
                 </floating-label>
             </div>
 
@@ -679,7 +549,7 @@
 
                 <floating-label class="flex-grow:1">
                     <input
-                        type="text"
+                        type="tel"
                         array="users"
                         object=""
                         key="company_phone"
@@ -749,7 +619,8 @@
                         stripe="accounts.create"
                         stripe-key="company.address.country"
                         placeholder="Country"
-                        required>
+                        required
+                        src="./account/ambassador/countries.html">
                         <!-- Insert <option> tags for countries here -->
                     </select>
                 </floating-label>
@@ -834,161 +705,8 @@
                         key="currency"
                         stripe="accounts.create"
                         stripe-key="external_account.currency"
-                        placeholder="Currency">
-                        <option value="ALL">Albanian Lek (ALL)</option>
-                        <option value="DZD">Algerian Dinar (DZD)</option>
-                        <option value="AOA">Angolan Kwanza (AOA)</option>
-                        <option value="XCD">
-                            East Caribbean Dollar (XCD) - Antigua & Barbuda
-                        </option>
-                        <option value="ARS">Argentine Peso (ARS)</option>
-                        <option value="AMD">Armenian Dram (AMD)</option>
-                        <option value="AUD">Australian Dollar (AUD)</option>
-                        <option value="EUR">Euro (EUR) - Austria</option>
-                        <option value="AZN">Azerbaijani Manat (AZN)</option>
-                        <option value="BSD">Bahamian Dollar (BSD)</option>
-                        <option value="BHD">Bahraini Dinar (BHD)</option>
-                        <option value="BDT">Bangladeshi Taka (BDT)</option>
-                        <option value="EUR">Euro (EUR) - Belgium</option>
-                        <option value="XOF">
-                            West African CFA Franc (XOF) - Benin
-                        </option>
-                        <option value="BTN">Bhutanese Ngultrum (BTN)</option>
-                        <option value="BOB">Bolivian Boliviano (BOB)</option>
-                        <option value="BAM">
-                            Bosnia and Herzegovina Convertible Mark (BAM)
-                        </option>
-                        <option value="BWP">Botswana Pula (BWP)</option>
-                        <option value="BRL">Brazilian Real (BRL)</option>
-                        <option value="BND">Brunei Dollar (BND)</option>
-                        <option value="BGN">Bulgarian Lev (BGN)</option>
-                        <option value="KHR">Cambodian Riel (KHR)</option>
-                        <option value="CAD">Canadian Dollar (CAD)</option>
-                        <option value="CLP">Chilean Peso (CLP)</option>
-                        <option value="COP">Colombian Peso (COP)</option>
-                        <option value="CRC">Costa Rican Colón (CRC)</option>
-                        <option value="XOF">
-                            West African CFA Franc (XOF) - Côte d’Ivoire
-                        </option>
-                        <option value="HRK">Croatian Kuna (HRK)</option>
-                        <option value="EUR">Euro (EUR) - Cyprus</option>
-                        <option value="CZK">Czech Koruna (CZK)</option>
-                        <option value="DKK">Danish Krone (DKK)</option>
-                        <option value="DOP">Dominican Peso (DOP)</option>
-                        <option value="USD">
-                            United States Dollar (USD) - Ecuador
-                        </option>
-                        <option value="EGP">Egyptian Pound (EGP)</option>
-                        <option value="USD">
-                            United States Dollar (USD) - El Salvador
-                        </option>
-                        <option value="EUR">Euro (EUR) - Estonia</option>
-                        <option value="ETB">Ethiopian Birr (ETB)</option>
-                        <option value="EUR">Euro (EUR) - Finland</option>
-                        <option value="EUR">Euro (EUR) - France</option>
-                        <option value="XAF">
-                            Central African CFA Franc (XAF) - Gabon
-                        </option>
-                        <option value="GMD">Gambian Dalasi (GMD)</option>
-                        <option value="EUR">Euro (EUR) - Germany</option>
-                        <option value="GHS">Ghanaian Cedi (GHS)</option>
-                        <option value="GIP">Gibraltar Pound (GIP)</option>
-                        <option value="EUR">Euro (EUR) - Greece</option>
-                        <option value="GTQ">Guatemalan Quetzal (GTQ)</option>
-                        <option value="GYD">Guyanese Dollar (GYD)</option>
-                        <option value="HKD">Hong Kong Dollar (HKD)</option>
-                        <option value="HUF">Hungarian Forint (HUF)</option>
-                        <option value="ISK">Icelandic Króna (ISK)</option>
-                        <option value="INR">Indian Rupee (INR)</option>
-                        <option value="IDR">Indonesian Rupiah (IDR)</option>
-                        <option value="EUR">Euro (EUR) - Ireland</option>
-                        <option value="ILS">Israeli New Shekel (ILS)</option>
-                        <option value="EUR">Euro (EUR) - Italy</option>
-                        <option value="JMD">Jamaican Dollar (JMD)</option>
-                        <option value="JPY">Japanese Yen (JPY)</option>
-                        <option value="JOD">Jordanian Dinar (JOD)</option>
-                        <option value="KZT">Kazakhstani Tenge (KZT)</option>
-                        <option value="KES">Kenyan Shilling (KES)</option>
-                        <option value="KWD">Kuwaiti Dinar (KWD)</option>
-                        <option value="LAK">Lao Kip (LAK)</option>
-                        <option value="EUR">Euro (EUR) - Latvia</option>
-                        <option value="CHF">
-                            Swiss Franc (CHF) - Liechtenstein
-                        </option>
-                        <option value="EUR">Euro (EUR) - Lithuania</option>
-                        <option value="EUR">Euro (EUR) - Luxembourg</option>
-                        <option value="MOP">Macanese Pataca (MOP)</option>
-                        <option value="MGA">Malagasy Ariary (MGA)</option>
-                        <option value="MYR">Malaysian Ringgit (MYR)</option>
-                        <option value="EUR">Euro (EUR) - Malta</option>
-                        <option value="MUR">Mauritian Rupee (MUR)</option>
-                        <option value="MXN">Mexican Peso (MXN)</option>
-                        <option value="MDL">Moldovan Leu (MDL)</option>
-                        <option value="EUR">Euro (EUR) - Monaco</option>
-                        <option value="MNT">Mongolian Tugrik (MNT)</option>
-                        <option value="MAD">Moroccan Dirham (MAD)</option>
-                        <option value="MZN">Mozambican Metical (MZN)</option>
-                        <option value="NAD">Namibian Dollar (NAD)</option>
-                        <option value="EUR">Euro (EUR) - Netherlands</option>
-                        <option value="NZD">New Zealand Dollar (NZD)</option>
-                        <option value="XOF">
-                            West African CFA Franc (XOF) - Niger
-                        </option>
-                        <option value="NGN">Nigerian Naira (NGN)</option>
-                        <option value="MKD">Macedonian Denar (MKD)</option>
-                        <option value="NOK">Norwegian Krone (NOK)</option>
-                        <option value="OMR">Omani Rial (OMR)</option>
-                        <option value="PKR">Pakistani Rupee (PKR)</option>
-                        <option value="PAB">Panamanian Balboa (PAB)</option>
-                        <option value="PYG">Paraguayan Guarani (PYG)</option>
-                        <option value="PEN">Peruvian Sol (PEN)</option>
-                        <option value="PHP">Philippine Peso (PHP)</option>
-                        <option value="PLN">Polish Złoty (PLN)</option>
-                        <option value="EUR">Euro (EUR) - Portugal</option>
-                        <option value="QAR">Qatari Riyal (QAR)</option>
-                        <option value="RON">Romanian Leu (RON)</option>
-                        <option value="RWF">Rwandan Franc (RWF)</option>
-                        <option value="EUR">Euro (EUR) - San Marino</option>
-                        <option value="SAR">Saudi Riyal (SAR)</option>
-                        <option value="XOF">
-                            West African CFA Franc (XOF) - Senegal
-                        </option>
-                        <option value="RSD">Serbian Dinar (RSD)</option>
-                        <option value="SGD">Singapore Dollar (SGD)</option>
-                        <option value="EUR">Euro (EUR) - Slovakia</option>
-                        <option value="EUR">Euro (EUR) - Slovenia</option>
-                        <option value="ZAR">South African Rand (ZAR)</option>
-                        <option value="KRW">South Korean Won (KRW)</option>
-                        <option value="EUR">Euro (EUR) - Spain</option>
-                        <option value="LKR">Sri Lankan Rupee (LKR)</option>
-                        <option value="XCD">
-                            East Caribbean Dollar (XCD) - St. Lucia
-                        </option>
-                        <option value="SEK">Swedish Krona (SEK)</option>
-                        <option value="CHF">
-                            Swiss Franc (CHF) - Switzerland
-                        </option>
-                        <option value="TWD">New Taiwan Dollar (TWD)</option>
-                        <option value="TZS">Tanzanian Shilling (TZS)</option>
-                        <option value="THB">Thai Baht (THB)</option>
-                        <option value="TTD">
-                            Trinidad and Tobago Dollar (TTD)
-                        </option>
-                        <option value="TND">Tunisian Dinar (TND)</option>
-                        <option value="TRY">Turkish Lira (TRY)</option>
-                        <option value="AED">
-                            United Arab Emirates Dirham (AED)
-                        </option>
-                        <option value="GBP">
-                            British Pound Sterling (GBP) - United Kingdom
-                        </option>
-                        <option value="USD" selected>
-                            United States Dollar (USD) - United States
-                        </option>
-                        <option value="UYU">Uruguayan Peso (UYU)</option>
-                        <option value="UZS">Uzbekistani Som (UZS)</option>
-                        <option value="VND">Vietnamese Dong (VND)</option>
-                    </select>
+                        placeholder="Currency"
+                        src="./account/ambassador/currencies.html"></select>
                 </floating-label>
 
                 <floating-label class="flex-grow:1">
@@ -998,11 +716,8 @@
                         key="country"
                         stripe="accounts.create"
                         stripe-key="external_account.country"
-                        placeholder="Country">
-                        <option value="US">United States</option>
-                        <option value="GB">United Kingdom</option>
-                        <option value="CA">Canada</option>
-                    </select>
+                        placeholder="Country"
+                        src="./account/ambassador/countries.html"></select>
                 </floating-label>
             </div>
 
@@ -1040,10 +755,10 @@
                 </span>
             </div>
 
-            <!-- <button actions="stripe.accounts.create">Join</button> -->
-            <button actions="validate, stripe.accounts.create, save">
+            <button actions="stripe.accounts.create">Join</button>
+            <!-- <button actions="validate, stripe.accounts.create, save">
                 Join
-            </button>
+            </button> -->
         </form>
     </section>
 </div>
