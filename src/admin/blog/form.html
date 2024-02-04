@@ -30,22 +30,36 @@
     </floating-label>
 
     <floating-label class="input-300">
-        <input
+        <div
             type="file"
             key="image"
             accept="image/*"
             placeholder="Upload Image or Video Thumbnail"
-            class="floating-label" />
+            class="floating-label min-height:40px active"
+            render-selector="[template]"
+            active>
+            <div template>
+                <img src="{{image.src}}" alt="image" width="100%" />
+            </div>
+        </div>
     </floating-label>
 
-    <!-- New Video Upload Field -->
     <floating-label class="input-300">
-        <input
+        <div
             type="file"
             key="video"
             accept="video/*"
             placeholder="Upload Video"
-            class="floating-label" />
+            class="floating-label min-height:40px"
+            render-selector="[template]"
+            active>
+            <div template>
+                <video controls width="250">
+                    <source src="{{video.src}}" type="{{video.content-type}}" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
     </floating-label>
 
     <floating-label class="input-600">
