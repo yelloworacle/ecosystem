@@ -441,6 +441,12 @@ footer p {
     display: block;
 }
 
+@media (max-width: 768px) {
+    sidenav#menuL {
+        display: block;
+    }
+}
+
 [menu-icon][session="on"],
 [menu-icon][session="idle"] {
     display: block;
@@ -453,3 +459,4 @@ footer p {
 [hidden] {
     display: none
 }
+
