@@ -2,8 +2,61 @@
 
 <!-- Individual -->
 <form realtime="false">
+    <account
+        class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
+        <floating-label class="flex-grow:1">
+            <select
+                array="users"
+                object=""
+                key="business_type"
+                stripe="accounts.create"
+                stripe-key="business_type"
+                placeholder="Bussiness Type">
+                <option value="individual">Individual</option>
+                <option value="company">Company</option>
+                <option value="non_profit">non_profit</option>
+                <option value="BR">government_entity</option>
+            </select>
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <select
+                id="country"
+                key="country"
+                stripe="accounts.create"
+                stripe-key="country"
+                placeholder="Country"
+                required
+                src="./account/ambassador/countries.html"></select>
+        </floating-label>
+    </account>
+
     <individual
         class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="firstname"
+                stripe="accounts.create"
+                stripe-key="individual.first_name"
+                placeholder="First Name"
+                required />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="lastname"
+                stripe="accounts.create"
+                stripe-key="individual.last_name"
+                placeholder="Last Name"
+                required />
+        </floating-label>
+
         <floating-label class="flex-grow:1">
             <input
                 type="text"
@@ -116,7 +169,7 @@
             </floating-label>
         </div>
 
-        <!-- should be auto rendered as it is US Only -->
+        <!-- Individual Location Specific -->
         <floating-label class="flex-grow:1">
             <input
                 type="text"
@@ -205,7 +258,7 @@
             </floating-label>
         </div>
 
-        <!-- Location Specific -->
+        <!-- Company Location Specific -->
         <floating-label class="flex-grow:1">
             <input
                 type="text"
