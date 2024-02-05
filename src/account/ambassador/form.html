@@ -1,118 +1,309 @@
 <!DOCTYPE html>
 
-<form
-    state_id="form-fields"
-    array="users"
-    object=""
-    realtime="false"
-    class="main-view max-width:600px">
-    <div
-        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
-        <a
-            actions="state"
-            state_to="adminView"
-            state-src="./users/datatable.html"
-            state-overwrite
-            class="padding:0px_10px"
-            ><i class="height:20px" src="../assets/svg/angle-left.svg"></i
-        ></a>
+<!-- Individual -->
+<form realtime="false">
+    <individual
+        class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="email"
+                stripe="accounts.update"
+                stripe-key="individual.email"
+                placeholder="Email"
+                required />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="tel"
+                array="users"
+                object=""
+                key="phone"
+                stripe="accounts.update"
+                stripe-key="individual.phone"
+                placeholder="Phone"
+                required />
+        </floating-label>
+
+        <!-- address field -->
         <div
-            class="display:flex align-items:center transition:0.3s"
-            hover="display:block!important"
-            hover-selector=".options">
-            <div class="display:none options">
-                <a
-                    actions="delete, state"
+            class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+            <floating-label class="flex-grow:1 width:100%">
+                <input
+                    type="text"
                     array="users"
                     object=""
-                    state_to="adminView"
-                    state-src="./users/datatable.html"
-                    state-overwrite
-                    class="padding:0px_10px">
-                    <i
-                        class="height:18px"
-                        src="../assets/svg/trash-alt.svg"></i>
-                </a>
-                <a
-                    actions="save, state"
-                    state_to="adminView"
-                    state-src="./users/datatable.html"
-                    state-overwrite
-                    class="padding:0px_10px">
-                    <i class="height:18px" src="../assets/svg/save.svg"></i>
-                </a>
-            </div>
-            <a class="padding:0px_10px"
-                ><i class="height:20px" src="../assets/svg/ellipsis-v.svg"></i
-            ></a>
+                    key="address_line1"
+                    stripe="accounts.update"
+                    stripe-key="individual.address.line1"
+                    placeholder="Address Line 1"
+                    required />
+            </floating-label>
+
+            <floating-label class="flex-grow:1 width:190px">
+                <input
+                    type="text"
+                    array="users"
+                    object=""
+                    key="address.city"
+                    stripe="accounts.update"
+                    stripe-key="individual.address.city"
+                    placeholder="City"
+                    required />
+            </floating-label>
+
+            <floating-label class="flex-grow:1 width:230px">
+                <select
+                    array="users"
+                    object=""
+                    key="address.country"
+                    stripe="accounts.update"
+                    stripe-key="individual.address.country"
+                    placeholder="Country"
+                    required
+                    src="./account/ambassador/countries.html"></select>
+            </floating-label>
+            <floating-label class="flex-grow:1 width:115px">
+                <input
+                    type="text"
+                    array="users"
+                    object=""
+                    key="address.postal_code"
+                    stripe="accounts.update"
+                    stripe-key="individual.address.postal_code"
+                    placeholder="Postal Code"
+                    required />
+            </floating-label>
         </div>
-    </div>
 
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="firstname"
-            placeholder="First Name"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="lastname"
-            placeholder="Last Name"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="email"
-            placeholder="Email"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="tel"
-            key="phone"
-            placeholder="Phone"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="password"
-            key="password"
-            placeholder="password"
-            class="floating-label" />
-    </floating-label>
+        <!-- Date of Birth Fields -->
+        <div
+            class="floating-label display:flex flex-wrap:wrap gap:15px"
+            placeholder="Date of Birth:"
+            active>
+            <floating-label class="flex-grow:1 width:75px">
+                <input
+                    type="number"
+                    stripe="accounts.update"
+                    stripe-key="individual.dob.day"
+                    placeholder="Day"
+                    min="1"
+                    max="31"
+                    required />
+            </floating-label>
+            <floating-label class="flex-grow:1 width:90px">
+                <input
+                    type="number"
+                    stripe="accounts.update"
+                    stripe-key="individual.dob.month"
+                    placeholder="Month"
+                    min="1"
+                    max="12"
+                    required />
+            </floating-label>
+            <floating-label class="flex-grow:1 width:80px">
+                <input
+                    type="number"
+                    stripe="accounts.update"
+                    stripe-key="individual.dob.year"
+                    placeholder="Year"
+                    min="1900"
+                    max="2006"
+                    required />
+            </floating-label>
+        </div>
 
-    <div class="height:0px width:0px overflow:hidden">
-        <input type="email" name="email" autocomplete="email" />
-        <input type="tel" name="phone" autocomplete="tel" />
-        <input
-            type="password"
-            name="password"
-            autocomplete="current-password" />
-    </div>
+        <!-- should be auto rendered as it is US Only -->
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="ssn_last_4"
+                stripe="accounts.update"
+                stripe-key="individual.ssn_last_4"
+                placeholder="SSN Last 4 Digits"
+                required />
+        </floating-label>
+    </individual>
 
-    <div
-        id="questions"
-        object
-        key="questions"
-        render-selector="[template]"
-        read="false">
-        <input
-            type="text"
-            key="{{questions.key}}"
-            value="{{questions.value}}"
-            template
-            read="false" />
-    </div>
+    <!-- Comapny -->
+    <company
+        class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="company_name"
+                stripe="accounts.update"
+                stripe-key="company.name"
+                placeholder="Company Name"
+                required />
+        </floating-label>
+        <floating-label class="flex-grow:1">
+            <input
+                type="tel"
+                array="users"
+                object=""
+                key="company.phone"
+                stripe="accounts.update"
+                stripe-key="company.phone"
+                placeholder="Company Phone"
+                required />
+        </floating-label>
 
-    <button
-        actions="save, state"
-        state_to="adminView"
-        state-src="./users/datatable.html"
-        state-overwrite
-        class="button-round">
-        <i src="../assets/svg/save.svg"></i>
-    </button>
+        <div
+            class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+            <floating-label class="margin-top:20px width:100%">
+                <input
+                    type="text"
+                    array="users"
+                    object=""
+                    key="company_address_line1"
+                    stripe="accounts.update"
+                    stripe-key="company.address.line1"
+                    placeholder="Company Address Line 1"
+                    required />
+            </floating-label>
+            <floating-label class="flex-grow:1 width:175px">
+                <input
+                    type="text"
+                    array="users"
+                    object=""
+                    key="company_address_city"
+                    stripe="accounts.update"
+                    stripe-key="company.address.city"
+                    placeholder="Company City"
+                    required />
+            </floating-label>
+
+            <floating-label class="flex-grow:1 width:220px">
+                <select
+                    array="users"
+                    object=""
+                    key="company_address_country"
+                    stripe="accounts.update"
+                    stripe-key="company.address.country"
+                    placeholder="Company Country"
+                    required
+                    src="./account/ambassador/countries.html"></select>
+            </floating-label>
+            <floating-label class="flex-grow:1 width:140px">
+                <input
+                    type="text"
+                    array="users"
+                    object=""
+                    key="company_address_postal_code"
+                    stripe="accounts.update"
+                    stripe-key="company.address.postal_code"
+                    placeholder="Company Postal Code"
+                    required />
+            </floating-label>
+        </div>
+
+        <!-- Location Specific -->
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="tax_id"
+                stripe="accounts.update"
+                stripe-key="company.tax_id"
+                placeholder="Tax ID"
+                required />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="company_registration_number"
+                stripe="accounts.update"
+                stripe-key="company.registration_number"
+                placeholder="Registration Number" />
+        </floating-label>
+    </company>
+
+    <!-- External Account -->
+    <bank-account
+        class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="account_number"
+                stripe="accounts.update"
+                stripe-key="external_account.account_number"
+                placeholder="Account Number"
+                required
+                value="000123456789" />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="routing_number"
+                stripe="accounts.update"
+                stripe-key="external_account.routing_number"
+                placeholder="Routing Number"
+                required
+                value="110000000" />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <select
+                array="users"
+                object=""
+                key="account_holder_type"
+                stripe="accounts.update"
+                stripe-key="external_account.account_holder_type"
+                placeholder="Account Holder Type">
+                <option value="individual">Individual</option>
+                <option value="company">Company</option>
+            </select>
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="account_holder_name"
+                stripe="accounts.update"
+                stripe-key="external_account.account_holder_name"
+                placeholder="Account Holder Name"
+                required />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <select
+                array="users"
+                object=""
+                key="currency"
+                stripe="accounts.update"
+                stripe-key="external_account.currency"
+                placeholder="Currency"
+                src="./account/ambassador/currencies.html"></select>
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <select
+                array="users"
+                object=""
+                key="country"
+                stripe="accounts.update"
+                stripe-key="external_account.country"
+                placeholder="Country"
+                src="./account/ambassador/countries.html"></select>
+        </floating-label>
+    </bank-account>
 </form>

@@ -60,6 +60,10 @@
         filter-selector="document; [ambassador][]"
         value="$user_id" />
 
+    <section
+        id="Account"
+        class="width:100% padding:0px"
+        src="./account/ambassador/form.html"></section>
     <section id="dashboard" class="width:100% padding:0px">
         <div class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
             <div id="subscribers" class="card">
@@ -303,13 +307,7 @@
                 key="email"
                 stripe="accounts.create"
                 stripe-key="email" />
-            <input
-                type="hidden"
-                array="users"
-                object=""
-                key="email"
-                stripe="accounts.create"
-                stripe-key="individual.email" />
+
             <input
                 type="hidden"
                 stripe="accounts.create"
@@ -351,33 +349,6 @@
                         type="text"
                         array="users"
                         object=""
-                        key="email"
-                        stripe="accounts.create"
-                        stripe-key="individual.email"
-                        placeholder="Email"
-                        required />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="tel"
-                        array="users"
-                        object=""
-                        key="phone"
-                        stripe="accounts.create"
-                        stripe-key="individual.phone"
-                        placeholder="Phone"
-                        required />
-                </floating-label>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
                         key="firstname"
                         stripe="accounts.create"
                         stripe-key="individual.first_name"
@@ -401,112 +372,6 @@
             <div
                 class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
                 <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="address_line1"
-                        stripe="accounts.create"
-                        stripe-key="individual.address.line1"
-                        placeholder="Address Line 1"
-                        required />
-                </floating-label>
-            </div>
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="address.city"
-                        stripe="accounts.create"
-                        stripe-key="individual.address.city"
-                        placeholder="City"
-                        required />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <select
-                        array="users"
-                        object=""
-                        key="address.country"
-                        stripe="accounts.create"
-                        stripe-key="individual.address.country"
-                        placeholder="Country"
-                        required
-                        src="./account/ambassador/countries.html">
-                        <!-- Insert <option> tags for countries here -->
-                    </select>
-                </floating-label>
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="address.postal_code"
-                        stripe="accounts.create"
-                        stripe-key="individual.address.postal_code"
-                        placeholder="Postal Code"
-                        required />
-                </floating-label>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="ssn_last_4"
-                        stripe="accounts.create"
-                        stripe-key="individual.ssn_last_4"
-                        placeholder="SSN Last 4 Digits"
-                        required />
-                </floating-label>
-
-                <!-- Date of Birth Fields -->
-                <div
-                    class="floating-label display:flex flex-wrap:wrap gap:15px"
-                    placeholder="Date of Birth:"
-                    active>
-                    <floating-label class="flex-grow:1 width:75px">
-                        <input
-                            type="number"
-                            stripe="accounts.create"
-                            stripe-key="individual.dob.day"
-                            placeholder="Day"
-                            min="1"
-                            max="31"
-                            required />
-                    </floating-label>
-                    <floating-label class="flex-grow:1 width:90px">
-                        <input
-                            type="number"
-                            stripe="accounts.create"
-                            stripe-key="individual.dob.month"
-                            placeholder="Month"
-                            min="1"
-                            max="12"
-                            required />
-                    </floating-label>
-                    <floating-label class="flex-grow:1 width:80px">
-                        <input
-                            type="number"
-                            stripe="accounts.create"
-                            stripe-key="individual.dob.year"
-                            placeholder="Year"
-                            min="1900"
-                            max="2006"
-                            required />
-                    </floating-label>
-                </div>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
-                <floating-label class="flex-grow:1">
                     <select
                         array="users"
                         object=""
@@ -529,194 +394,6 @@
                         stripe-key="country"
                         placeholder="Country"
                         required
-                        src="./account/ambassador/countries.html"></select>
-                </floating-label>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="company_name"
-                        stripe="accounts.create"
-                        stripe-key="company.name"
-                        placeholder="Company Name"
-                        required />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="tel"
-                        array="users"
-                        object=""
-                        key="company_phone"
-                        stripe="accounts.create"
-                        stripe-key="company.phone"
-                        placeholder="Company Phone"
-                        required />
-                </floating-label>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="tax_id"
-                        stripe="accounts.create"
-                        stripe-key="company.tax_id"
-                        placeholder="Tax ID"
-                        required />
-                </floating-label>
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="company_registration_number"
-                        stripe="accounts.create"
-                        stripe-key="company.registration_number"
-                        placeholder="Registration Number"
-                        required />
-                </floating-label>
-            </div>
-
-            <floating-label class="margin-top:20px">
-                <input
-                    type="text"
-                    array="users"
-                    object=""
-                    key="company_address_line1"
-                    stripe="accounts.create"
-                    stripe-key="company.address.line1"
-                    placeholder="Address Line 1"
-                    required />
-            </floating-label>
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="company_address_city"
-                        stripe="accounts.create"
-                        stripe-key="company.address.city"
-                        placeholder="City"
-                        required />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <select
-                        array="users"
-                        object=""
-                        key="company_address_country"
-                        stripe="accounts.create"
-                        stripe-key="company.address.country"
-                        placeholder="Country"
-                        required
-                        src="./account/ambassador/countries.html">
-                        <!-- Insert <option> tags for countries here -->
-                    </select>
-                </floating-label>
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="company_address_postal_code"
-                        stripe="accounts.create"
-                        stripe-key="company.address.postal_code"
-                        placeholder="Postal Code"
-                        required />
-                </floating-label>
-            </div>
-
-            <!-- Include additional fields as needed, such as for ownership or management info -->
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:50px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="account_number"
-                        stripe="accounts.create"
-                        stripe-key="external_account.account_number"
-                        placeholder="Account Number"
-                        required
-                        value="000123456789" />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="routing_number"
-                        stripe="accounts.create"
-                        stripe-key="external_account.routing_number"
-                        placeholder="Routing Number"
-                        required
-                        value="110000000" />
-                </floating-label>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <select
-                        array="users"
-                        object=""
-                        key="account_holder_type"
-                        stripe="accounts.create"
-                        stripe-key="external_account.account_holder_type"
-                        placeholder="Account Holder Type">
-                        <option value="individual">Individual</option>
-                        <option value="company">Company</option>
-                    </select>
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        array="users"
-                        object=""
-                        key="account_holder_name"
-                        stripe="accounts.create"
-                        stripe-key="external_account.account_holder_name"
-                        placeholder="Account Holder Name"
-                        required />
-                </floating-label>
-            </div>
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <select
-                        array="users"
-                        object=""
-                        key="currency"
-                        stripe="accounts.create"
-                        stripe-key="external_account.currency"
-                        placeholder="Currency"
-                        src="./account/ambassador/currencies.html"></select>
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <select
-                        array="users"
-                        object=""
-                        key="country"
-                        stripe="accounts.create"
-                        stripe-key="external_account.country"
-                        placeholder="Country"
                         src="./account/ambassador/countries.html"></select>
                 </floating-label>
             </div>
