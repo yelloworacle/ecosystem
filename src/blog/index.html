@@ -137,15 +137,18 @@
                             </div>
 
                             <!-- Image -->
-                            <img
-                                src="../assets/screenshot-1.png"
-                                width="100%" />
+                            <img src="{{object.image[0].src}}" width="100%" />
 
-                            <img src="{{object.image}}" width="100%" />
-
-                            <video width="320" height="240" controls>
+                            <!-- Video -->
+                            <video
+                                width="320"
+                                height="240"
+                                controls
+                                poster="{{object.image[0].src}}"
+                                onloadeddata="this.previousElementSibling.style.display='none';"
+                                onerror="this.style.display='none';">
                                 <source
-                                    src="{{object.image}}"
+                                    src="{{object.video[0].src}}"
                                     type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
