@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<!-- Comapny -->
+<form realtime="false" class="width:100% display:flex flex-wrap:wrap gap:15px">
+    <floating-label class="flex-grow:1">
+        <input
+            type="text"
+            array="users"
+            object=""
+            key="company_name"
+            stripe="accounts.update"
+            stripe-key="company.name"
+            placeholder="Company Name"
+            required />
+    </floating-label>
+    <floating-label class="flex-grow:1">
+        <input
+            type="tel"
+            array="users"
+            object=""
+            key="company.phone"
+            stripe="accounts.update"
+            stripe-key="company.phone"
+            placeholder="Company Phone"
+            required />
+    </floating-label>
+
+    <div class="width:100% display:flex flex-wrap:wrap gap:15px">
+        <floating-label class="width:100%">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="company_address_line1"
+                stripe="accounts.update"
+                stripe-key="company.address.line1"
+                placeholder="Company Address Line 1"
+                required />
+        </floating-label>
+        <floating-label class="flex-grow:1 width:175px">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="company_address_city"
+                stripe="accounts.update"
+                stripe-key="company.address.city"
+                placeholder="Company City"
+                required />
+        </floating-label>
+
+        <floating-label class="flex-grow:1 width:220px">
+            <select
+                array="users"
+                object=""
+                key="company_address_country"
+                stripe="accounts.update"
+                stripe-key="company.address.country"
+                placeholder="Company Country"
+                required
+                src="./account/ambassador/countries.html"></select>
+        </floating-label>
+        <floating-label class="flex-grow:1 width:140px">
+            <input
+                type="text"
+                array="users"
+                object=""
+                key="company_address_postal_code"
+                stripe="accounts.update"
+                stripe-key="company.address.postal_code"
+                placeholder="Company Postal Code"
+                required />
+        </floating-label>
+    </div>
+
+    <!-- Company Location Specific -->
+    <floating-label class="flex-grow:1">
+        <input
+            type="text"
+            array="users"
+            object=""
+            key="tax_id"
+            stripe="accounts.update"
+            stripe-key="company.tax_id"
+            placeholder="Tax ID"
+            required />
+    </floating-label>
+
+    <floating-label class="flex-grow:1">
+        <input
+            type="text"
+            array="users"
+            object=""
+            key="company_registration_number"
+            stripe="accounts.update"
+            stripe-key="company.registration_number"
+            placeholder="Registration Number" />
+    </floating-label>
+</form>
+
+<additional-document>
+    <!-- Additional Document Front Upload -->
+    <form
+        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+        <floating-label class="margin-top:20px width:100%">
+            <input
+                type="file"
+                array="users"
+                object=""
+                key="comapny_additional_document_front"
+                placeholder="Additional Document Front"
+                required />
+            <span>Upload Additional Document Front</span>
+        </floating-label>
+        <input
+            type="hidden"
+            stripe="files.create"
+            stripe-key="purpose"
+            value="identity_document"
+            required />
+        <input
+            type="hidden"
+            stripe="files.create"
+            stripe-key="file.name"
+            value="comapny_additional_document_front"
+            required />
+        <input
+            type="hidden"
+            array="users"
+            key="company_additional_document_front.src"
+            stripe="files.create"
+            stripe-key="file.data"
+            required />
+        <input
+            type="hidden"
+            array="users"
+            key="company_additional_document_front.id"
+            stripe="files.create"
+            stripe-key="id"
+            required />
+
+        <button actions="validate, stripe.files.create">Upload</button>
+    </form>
+
+    <!-- Additional Document Back Upload -->
+    <form
+        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+        <floating-label class="margin-top:20px width:100%">
+            <input
+                type="file"
+                array="users"
+                object=""
+                key="company_additional_document_back"
+                placeholder="Additional Document Back"
+                required />
+            <span>Upload Additional Document Back</span>
+        </floating-label>
+        <input
+            type="hidden"
+            stripe="files.create"
+            stripe-key="purpose"
+            value="identity_document"
+            required />
+        <input
+            type="hidden"
+            stripe="files.create"
+            stripe-key="file.name"
+            value="company_additional_document_back"
+            required />
+        <input
+            type="hidden"
+            array="users"
+            key="company_additional_document_back.src"
+            stripe="files.create"
+            stripe-key="file.data"
+            required />
+        <input
+            type="hidden"
+            array="users"
+            key="company_additional_document_back.id"
+            stripe="files.create"
+            stripe-key="id"
+            required />
+
+        <button actions="validate, stripe.files.create">Upload</button>
+    </form>
+
+    <!-- Save Additional Document IDs to Stripe Account -->
+    <form class="width:100% display:flex flex-wrap:wrap margin-top:20px">
+        <input
+            type="hidden"
+            array="users"
+            key="company_additional_document_front.id"
+            stripe="accounts.update"
+            stripe-key="company.verification.additional_document.front"
+            required />
+        <input
+            type="hidden"
+            array="users"
+            key="company_additional_document_back.id"
+            stripe="accounts.update"
+            stripe-key="company.verification.additional_document.back" />
+
+        <button actions="validate, stripe.accounts.update">Save</button>
+    </form>
+</additional-document>

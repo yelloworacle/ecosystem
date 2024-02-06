@@ -1,0 +1,60 @@
+<bank_account_ownership_verification>
+    <!-- Bank Account Ownership Verifications Upload -->
+    <form
+        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+        <floating-label class="margin-top:20px width:100%">
+            <input
+                type="file"
+                array="users"
+                object=""
+                key="bank_account_ownership_verification"
+                placeholder="Proof of Address"
+                multiple
+                required />
+            <span>Upload Proof of Address</span>
+        </floating-label>
+        <input
+            type="hidden"
+            stripe="files.create"
+            stripe-key="purpose"
+            value="account_requirement"
+            required />
+        <input
+            type="hidden"
+            stripe="files.create"
+            stripe-key="file.name"
+            value="bank_account_ownership_verification"
+            required />
+        <input
+            type="hidden"
+            array="users"
+            key="bank_account_ownership_verification.src"
+            stripe="files.create"
+            stripe-key="file.data"
+            required />
+        <input
+            type="hidden"
+            array="users"
+            key="bank_account_ownership_verification.id"
+            stripe="files.create"
+            stripe-key="id"
+            required />
+
+        <button actions="validate, stripe.files.create">Upload</button>
+    </form>
+
+    <!-- Form to Update Stripe Account with Bank Account Ownership Verification ID -->
+    <form class="width:100% display:flex flex-wrap:wrap margin-top:20px">
+        <input
+            type="hidden"
+            array="users"
+            key="bank_account_ownership_verification.id"
+            stripe="accounts.update"
+            stripe-key="documents.bank_account_ownership_verification.files[]"
+            required />
+
+        <button actions="validate, stripe.accounts.update">
+            Update Account
+        </button>
+    </form>
+</bank_account_ownership_verification>

@@ -60,11 +60,15 @@
         filter-selector="document; [ambassador][]"
         value="$user_id" />
 
-    <section
-        id="Account"
-        class="width:100% padding:0px"
-        src="./account/ambassador/form.html"></section>
     <section id="dashboard" class="width:100% padding:0px">
+        <button
+            actions="state"
+            state_to="mainView"
+            state-src="./account/ambassador/form/"
+            state-overwrite="">
+            <i src="./assets/svg/cog.svg"></i> Payout Settings
+        </button>
+
         <div class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
             <div id="subscribers" class="card">
                 <h2>Subscribers</h2>
@@ -432,10 +436,10 @@
                 </span>
             </div>
 
-            <button actions="stripe.accounts.create">Join</button>
-            <!-- <button actions="validate, stripe.accounts.create, save">
+            <!-- <button actions="stripe.accounts.create">Join</button> -->
+            <button actions="validate, stripe.accounts.create, save">
                 Join
-            </button> -->
+            </button>
         </form>
     </section>
 </div>

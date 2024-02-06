@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<!-- External Account -->
+<form realtime="false" class="width:100% display:flex flex-wrap:wrap gap:15px">
+    <floating-label class="flex-grow:1">
+        <input
+            type="text"
+            array="users"
+            object=""
+            key="account_number"
+            stripe="accounts.update"
+            stripe-key="external_account.account_number"
+            placeholder="Account Number"
+            required
+            value="000123456789" />
+    </floating-label>
+
+    <floating-label class="flex-grow:1">
+        <input
+            type="text"
+            array="users"
+            object=""
+            key="routing_number"
+            stripe="accounts.update"
+            stripe-key="external_account.routing_number"
+            placeholder="Routing Number"
+            required
+            value="110000000" />
+    </floating-label>
+
+    <floating-label class="flex-grow:1">
+        <select
+            array="users"
+            object=""
+            key="account_holder_type"
+            stripe="accounts.update"
+            stripe-key="external_account.account_holder_type"
+            placeholder="Account Holder Type">
+            <option value="individual">Individual</option>
+            <option value="company">Company</option>
+        </select>
+    </floating-label>
+
+    <floating-label class="flex-grow:1">
+        <input
+            type="text"
+            array="users"
+            object=""
+            key="account_holder_name"
+            stripe="accounts.update"
+            stripe-key="external_account.account_holder_name"
+            placeholder="Account Holder Name"
+            required />
+    </floating-label>
+
+    <floating-label class="flex-grow:1">
+        <select
+            array="users"
+            object=""
+            key="currency"
+            stripe="accounts.update"
+            stripe-key="external_account.currency"
+            placeholder="Currency"
+            src="./account/ambassador/currencies.html"></select>
+    </floating-label>
+
+    <floating-label class="flex-grow:1">
+        <select
+            array="users"
+            object=""
+            key="country"
+            stripe="accounts.update"
+            stripe-key="external_account.country"
+            placeholder="Country"
+            src="./account/ambassador/countries.html"></select>
+    </floating-label>
+</form>
