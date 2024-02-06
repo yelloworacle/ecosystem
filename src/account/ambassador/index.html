@@ -73,7 +73,7 @@
             <div id="subscribers" class="card">
                 <h2>Subscribers</h2>
 
-                <span array="users" object key="$length" ambassador></span>
+                <span array="users" object key="$length" ambassador>0</span>
             </div>
 
             <!-- Next Payout Section -->
@@ -86,7 +86,9 @@
                     filter-key="status"
                     filter-value="pending"
                     key="$sum.amount"
-                    ambassador></span>
+                    ambassador
+                    >0</span
+                >
             </div>
 
             <!-- Total Payouts Section -->
@@ -99,7 +101,9 @@
                     filter-key="status"
                     filter-value="paid"
                     key="$sum.amount"
-                    ambassador></span>
+                    ambassador
+                    >0</span
+                >
             </div>
         </div>
     </section>
