@@ -15,98 +15,95 @@
         background-color: #f9f9f9;
         display: none;
     }
-    section[display="account"] account.accordion-content {
+    .accordian[display="account"] account.accordion-content {
         display: block;
     }
-    section[display="individual"] individual.accordion-content {
+    .accordian[display="individual"] individual.accordion-content {
         display: flex;
     }
-    section[display="company"] company.accordion-content {
+    .accordian[display="company"] company.accordion-content {
         display: flex;
     }
-    section[display="bank-account"] bank-account.accordion-content {
+    .accordian[display="bank-account"] bank-account.accordion-content {
         display: flex;
     }
-    section[display="documents"] documents.accordion-content {
+    .accordian[display="documents"] documents.accordion-content {
         display: flex;
     }
 </style>
-<div>
-    <section class="width:800px">
-        <div class="accordion-item">
-            <div
-                class="accordion-button"
-                click-closest="section"
-                click-attribute="display"
-                click-value="account">
-                Account
-            </div>
-            <!-- Account -->
-            <account
-                class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
-                src="account/ambassador/form/account.html">
-            </account>
+<div class="accordian width:100% max-width:800px">
+    <div class="accordion-item">
+        <div
+            class="accordion-button"
+            click-closest=".accordian"
+            click-attribute="display"
+            click-value="account">
+            Account
+        </div>
+        <!-- Account -->
+        <account
+            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            src="account/ambassador/form/account.html">
+        </account>
+    </div>
+
+    <div class="accordion-item">
+        <div
+            class="accordion-button"
+            click-closest=".accordian"
+            click-attribute="display"
+            click-value="individual">
+            Individual
+        </div>
+        <!-- Individual -->
+        <individual
+            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            src="account/ambassador/form/individual.html">
+        </individual>
+    </div>
+    <div class="accordion-item">
+        <div
+            class="accordion-button"
+            click-closest=".accordian"
+            click-attribute="display"
+            click-value="company">
+            Company
         </div>
 
-        <div class="accordion-item">
-            <div
-                class="accordion-button"
-                click-closest="section"
-                click-attribute="display"
-                click-value="individual">
-                Individual
-            </div>
-            <!-- Individual -->
-            <individual
-                class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
-                src="account/ambassador/form/individual.html">
-            </individual>
+        <!-- Comapny -->
+        <company
+            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            src="account/ambassador/form/company.html">
+        </company>
+    </div>
+    <div class="accordion-item">
+        <div
+            class="accordion-button"
+            click-closest=".accordian"
+            click-attribute="display"
+            click-value="bank-account">
+            Bank Account
         </div>
-        <div class="accordion-item">
-            <div
-                class="accordion-button"
-                click-closest="section"
-                click-attribute="display"
-                click-value="company">
-                Company
-            </div>
 
-            <!-- Comapny -->
-            <company
-                class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
-                src="account/ambassador/form/company.html">
-            </company>
+        <!-- External Account -->
+        <bank-account
+            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            src="account/ambassador/form/bank-account.html">
+        </bank-account>
+    </div>
+    <div class="accordion-item">
+        <div
+            class="accordion-button"
+            click-closest=".accordian"
+            click-attribute="display"
+            click-value="documents">
+            Documents
         </div>
-        <div class="accordion-item">
-            <div
-                class="accordion-button"
-                click-closest="section"
-                click-attribute="display"
-                click-value="bank-account">
-                Bank Account
-            </div>
 
-            <!-- External Account -->
-            <bank-account
-                class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
-                src="account/ambassador/form/bank-account.html">
-            </bank-account>
-        </div>
-        <div class="accordion-item">
-            <div
-                class="accordion-button"
-                click-closest="section"
-                click-attribute="display"
-                click-value="documents">
-                Documents
-            </div>
-
-            <!-- Documents -->
-            <documents
-                class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
-                src="account/ambassador/form/documents.html">
-            </documents>
-        </div>
-        <!-- Add more sections as needed -->
-    </section>
+        <!-- Documents -->
+        <documents
+            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            src="account/ambassador/form/documents.html">
+        </documents>
+    </div>
 </div>

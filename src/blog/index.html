@@ -108,8 +108,8 @@
             input-value="../"></sidenav>
 
         <!-- Main Content -->
-        <main>
-            <section class="flex-grow:1">
+        <main class="align-items:start">
+            <section class="flex-grow:1 margin-top:50px">
                 <!--  Blog Header -->
                 <div
                     class="width:100% background:#F7CC02 border-radius:3px padding:20px margin-bottom:20px">
@@ -125,7 +125,7 @@
                     render-selector="[template]">
                     <!-- Blog Post Template -->
                     <div
-                        class="card position:relative flex-grow:1 margin-bottom:50px height:470px width:300px max-width:600px margin:10px"
+                        class="card position:relative flex-grow:1 margin-bottom:50px width:300px max-width:600px margin:10px"
                         template>
                         <a class="overflow:hidden" href="../blog/post.html">
                             <!-- Image -->
@@ -184,7 +184,7 @@
             <!-- SideNav Right -->
             <filters
                 id="menuR"
-                class="overflow:scroll padding-top:70px height:100vh width:300px width:0px@xxs@xs@sm@md"
+                class="overflow:hidden margin-top:70px height:100% width:0px width:300px@lg@xl"
                 resizable
                 resize-selector="[content_id='content']"
                 resize-property="margin-right"
