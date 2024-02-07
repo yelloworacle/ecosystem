@@ -9,62 +9,82 @@
         text-align: left;
     }
 
-    .accordion-content {
+    .form {
         padding: 18px;
         overflow: hidden;
         background-color: #f9f9f9;
         display: none;
     }
-    .accordian[display="account"] account.accordion-content {
+
+    #individual {
+        display: none;
+    }
+    .forms[business="individual"] #individual {
         display: block;
     }
-    .accordian[display="individual"] individual.accordion-content {
+
+    .forms[display="account"] account.form {
+        display: block;
+    }
+    .forms[display="individual"] individual.form {
         display: flex;
     }
-    .accordian[display="company"] company.accordion-content {
+    .forms[display="company"] company.form {
         display: flex;
     }
-    .accordian[display="bank-account"] bank-account.accordion-content {
+    .forms[display="bank-account"] bank-account.form {
         display: flex;
     }
-    .accordian[display="documents"] documents.accordion-content {
+    .forms[display="documents"] documents.form {
         display: flex;
     }
 </style>
-<div class="accordian width:100% max-width:800px">
+<div class="forms width:100% max-width:800px">
+    <div
+        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
+        <a
+            actions="state"
+            state_to="mainView"
+            state-src="./account/ambassador/"
+            state-overwrite
+            class="padding:0px_10px"
+            ><i src="./assets/svg/angle-left.svg"></i
+        ></a>
+    </div>
+
     <div class="accordion-item">
         <div
             class="accordion-button"
-            click-closest=".accordian"
+            click-closest=".forms"
             click-attribute="display"
             click-value="account">
             Account
         </div>
         <!-- Account -->
         <account
-            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            class="form width:100% display:flex flex-wrap:wrap gap:15px"
             src="account/ambassador/form/account.html">
         </account>
     </div>
 
-    <div class="accordion-item">
+    <div id="individual" class="accordion-item">
         <div
             class="accordion-button"
-            click-closest=".accordian"
+            click-closest=".forms"
             click-attribute="display"
             click-value="individual">
             Individual
         </div>
         <!-- Individual -->
         <individual
-            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            class="form width:100% display:flex flex-wrap:wrap gap:15px"
             src="account/ambassador/form/individual.html">
         </individual>
     </div>
     <div class="accordion-item">
         <div
             class="accordion-button"
-            click-closest=".accordian"
+            click-closest=".forms"
             click-attribute="display"
             click-value="company">
             Company
@@ -72,14 +92,14 @@
 
         <!-- Comapny -->
         <company
-            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            class="form width:100% display:flex flex-wrap:wrap gap:15px"
             src="account/ambassador/form/company.html">
         </company>
     </div>
     <div class="accordion-item">
         <div
             class="accordion-button"
-            click-closest=".accordian"
+            click-closest=".forms"
             click-attribute="display"
             click-value="bank-account">
             Bank Account
@@ -87,14 +107,14 @@
 
         <!-- External Account -->
         <bank-account
-            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            class="form width:100% display:flex flex-wrap:wrap gap:15px"
             src="account/ambassador/form/bank-account.html">
         </bank-account>
     </div>
     <div class="accordion-item">
         <div
             class="accordion-button"
-            click-closest=".accordian"
+            click-closest=".forms"
             click-attribute="display"
             click-value="documents">
             Documents
@@ -102,7 +122,7 @@
 
         <!-- Documents -->
         <documents
-            class="accordion-content width:100% display:flex flex-wrap:wrap gap:15px"
+            class="form width:100% display:flex flex-wrap:wrap gap:15px"
             src="account/ambassador/form/documents.html">
         </documents>
     </div>

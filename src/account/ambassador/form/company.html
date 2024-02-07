@@ -2,6 +2,18 @@
 
 <!-- Comapny -->
 <form realtime="false" class="width:100% display:flex flex-wrap:wrap gap:15px">
+    <style>
+        #tax_id,
+        #registration_number {
+            display: none;
+        }
+        form[country="US"] #tax_id {
+            display: block;
+        }
+        form:not([country="US"]) #registration_number {
+            display: block;
+        }
+    </style>
     <floating-label class="flex-grow:1">
         <input
             type="text"
@@ -58,7 +70,9 @@
                 stripe-key="company.address.country"
                 placeholder="Company Country"
                 required
-                src="./account/ambassador/countries.html"></select>
+                input-closest="form"
+                input-attribute="country"
+                src="./account/ambassador/form/countries.html"></select>
         </floating-label>
         <floating-label class="flex-grow:1 width:140px">
             <input
@@ -74,7 +88,7 @@
     </div>
 
     <!-- Company Location Specific -->
-    <floating-label class="flex-grow:1">
+    <floating-label id="tax_id" class="flex-grow:1">
         <input
             type="text"
             array="users"
@@ -82,11 +96,10 @@
             key="tax_id"
             stripe="accounts.update"
             stripe-key="company.tax_id"
-            placeholder="Tax ID"
-            required />
+            placeholder="Tax ID" />
     </floating-label>
 
-    <floating-label class="flex-grow:1">
+    <floating-label id="registration_number" class="flex-grow:1">
         <input
             type="text"
             array="users"
@@ -98,7 +111,7 @@
     </floating-label>
 </form>
 
-<additional-document>
+<additional-document hidden>
     <!-- Additional Document Front Upload -->
     <form
         class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">

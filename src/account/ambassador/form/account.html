@@ -9,7 +9,10 @@
             key="business_type"
             stripe="accounts.create"
             stripe-key="business_type"
-            placeholder="Bussiness Type">
+            placeholder="Bussiness Type"
+            input-closest=".forms"
+            input-attribute="business">
+            <option value="" disabled selected>Select a Type</option>
             <option value="individual">Individual</option>
             <option value="company">Company</option>
             <option value="non_profit">non_profit</option>
@@ -25,6 +28,6 @@
             stripe-key="country"
             placeholder="Country"
             required
-            src="./account/ambassador/countries.html"></select>
+            src="./account/ambassador/form/countries.html"></select>
     </floating-label>
 </form>

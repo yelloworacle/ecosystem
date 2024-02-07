@@ -2,6 +2,15 @@
 
 <!-- Individual -->
 <form realtime="false" class="width:100% display:flex flex-wrap:wrap gap:15px">
+    <style>
+        #ssn_last_4 {
+            display: none;
+        }
+        form[country="US"] #ssn_last_4 {
+            display: block;
+        }
+    </style>
+
     <floating-label class="flex-grow:1">
         <input
             type="text"
@@ -84,8 +93,10 @@
                 stripe="accounts.update"
                 stripe-key="individual.address.country"
                 placeholder="Country"
+                input-closest="form"
+                input-attribute="country"
                 required
-                src="./account/ambassador/countries.html"></select>
+                src="./account/ambassador/form/countries.html"></select>
         </floating-label>
         <floating-label class="flex-grow:1 width:115px">
             <input
@@ -138,7 +149,7 @@
     </div>
 
     <!-- Individual Location Specific -->
-    <floating-label class="flex-grow:1">
+    <floating-label id="ssn_last_4" class="flex-grow:1">
         <input
             type="text"
             array="users"
@@ -151,7 +162,7 @@
     </floating-label>
 </form>
 
-<identity-document>
+<identity-document hidden>
     <form
         class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
         <floating-label class="margin-top:20px width:100%">
@@ -254,7 +265,7 @@
     </form>
 </identity-document>
 
-<additional-document>
+<additional-document hidden>
     <!-- Additional Document Front Upload -->
     <form
         class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
