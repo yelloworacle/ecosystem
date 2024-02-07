@@ -61,13 +61,17 @@
         value="$user_id" />
 
     <section id="dashboard" class="width:100% padding:0px">
-        <button
-            actions="state"
-            state_to="mainView"
-            state-src="./account/ambassador/form/"
-            state-overwrite="">
-            <i src="./assets/svg/cog.svg"></i> Payout Settings
-        </button>
+        <div
+            class="width:100% display:flex justify-content:flex-end margin-bottom:30px">
+            <button
+                actions="state"
+                state_to="mainView"
+                state-src="./account/ambassador/form/"
+                state-overwrite=""
+                class="float:right">
+                <i src="./assets/svg/cog.svg"></i> Payout Settings
+            </button>
+        </div>
 
         <div class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
             <div id="subscribers" class="card">
@@ -134,7 +138,6 @@
                                 <i
                                     toggle-attribute="src"
                                     toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    class="display:flex height:18px"
                                     src="./assets/svg/sort.svg"></i>
                             </a>
                         </span>
@@ -162,7 +165,6 @@
                                 <i
                                     toggle-attribute="src"
                                     toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    class="display:flex height:18px"
                                     src="./assets/svg/sort.svg"></i>
                             </a>
                         </span>
@@ -190,7 +192,6 @@
                                 <i
                                     toggle-attribute="src"
                                     toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    class="display:flex height:18px"
                                     src="./assets/svg/sort.svg"></i>
                             </a>
                         </span>
@@ -402,7 +403,7 @@
                         stripe-key="country"
                         placeholder="Country"
                         required
-                        src="./account/ambassador/countries.html"></select>
+                        src="./account/ambassador/form/countries.html"></select>
                 </floating-label>
             </div>
 
@@ -448,4 +449,13 @@
     </section>
 </div>
 
-<script src="./account/ambassador/index.js"></script>
+<script>
+    let input = document.querySelector('[value="$ip"]');
+    if (input) {
+        fetch("https://api.ipify.org?format=json")
+            .then((response) => response.json())
+            .then((data) => {
+                input.value = data.ip;
+            });
+    }
+</script>
