@@ -19,7 +19,7 @@
         href="{{path}}"
         actions="state"
         state_to="mainView"
-        state-src="./home/"
+        state-src="{{path}}home/"
         class="height:50px width:210px display:flex align-items:center">
         <img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
         <span class="logo-name" translate="no"
@@ -51,7 +51,7 @@
             href="{{path}}"
             actions="state"
             state_to="mainView"
-            state-src="./home/"
+            state-src="{{path}}home/"
             class="display:block color:#F7CC02:hover padding:12px_24px"
             >Home</a
         >
@@ -59,12 +59,12 @@
             href="{{path}}"
             actions="state"
             state_to="mainView"
-            state-src="./oracle/"
+            state-src="{{path}}oracle/"
             class="display:block color:#F7CC02:hover padding:12px_24px"
             >Oracle</a
         >
         <a
-            href="./blog/index.html"
+            href="{{path}}blog/index.html"
             class="display:block color:#F7CC02:hover padding:12px_24px"
             >Blog</a
         >
@@ -72,7 +72,7 @@
             href="{{path}}"
             actions="state"
             state_to="mainView"
-            state-src="./account/profile/"
+            state-src="{{path}}account/profile/"
             class="display:block color:#F7CC02:hover padding:12px_24px"
             >Account</a
         >
@@ -84,13 +84,11 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./account/profile/"
+                state-src="{{path}}account/profile/"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/user.svg"></i>
+                    <i src="{{path}}assets/svg/user.svg"></i>
                 </span>
                 <span>Profile</span>
             </a>
@@ -99,13 +97,11 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./account/answers/"
+                state-src="{{path}}account/answers/"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/circle-question.svg"></i>
+                    <i src="{{path}}assets/svg/circle-question.svg"></i>
                 </span>
                 <span>Answers</span>
             </a>
@@ -114,14 +110,12 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./account/careers/"
+                state-src="{{path}}account/careers/"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/person-dots-from-line.svg"></i>
+                    <i src="{{path}}assets/svg/person-dots-from-line.svg"></i>
                 </span>
                 <span>Careers</span>
             </a>
@@ -131,14 +125,12 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./account/subscription/"
+                state-src="{{path}}account/subscription/"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/clipboard-question.svg"></i>
+                    <i src="{{path}}assets/svg/clipboard-question.svg"></i>
                 </span>
                 <span>Subscription</span>
             </a>
@@ -148,14 +140,12 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./account/members/"
+                state-src="{{path}}account/members/"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/people-roof.svg"></i>
+                    <i src="{{path}}assets/svg/people-roof.svg"></i>
                 </span>
                 <span>Members</span>
             </a>
@@ -165,14 +155,12 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./account/ambassador/"
+                state-src="{{path}}account/ambassador/"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/bullhorn.svg"></i>
+                    <i src="{{path}}assets/svg/bullhorn.svg"></i>
                 </span>
                 <span>Ambassador</span>
             </a>
@@ -221,13 +209,11 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/users/datatable.html"
+                state-src="{{path}}admin/users/datatable.html"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/users.svg"></i>
+                    <i src="{{path}}assets/svg/users.svg"></i>
                 </span>
                 <span>Users</span>
             </a>
@@ -235,11 +221,9 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/users/form.html"
+                    state-src="{{path}}admin/users/form.html"
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -247,13 +231,11 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/payments/datatable.html"
+                state-src="{{path}}admin/payments/datatable.html"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/credit-card.svg"></i>
+                    <i src="{{path}}assets/svg/credit-card.svg"></i>
                 </span>
                 <span>Payments</span>
             </a>
@@ -261,11 +243,9 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/payments/form.html"
+                    state-src="{{path}}admin/payments/form.html"
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -273,13 +253,11 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/payouts/datatable.html"
+                state-src="{{path}}admin/payouts/datatable.html"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/hand-holding-dollar.svg"></i>
+                    <i src="{{path}}assets/svg/hand-holding-dollar.svg"></i>
                 </span>
                 <span>Payouts</span>
             </a>
@@ -287,11 +265,9 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/payouts/form.html"
+                    state-src="{{path}}admin/payouts/form.html"
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -299,13 +275,11 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/blog/datatable.html"
+                state-src="{{path}}admin/blog/datatable.html"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/blog.svg"></i>
+                    <i src="{{path}}assets/svg/blog.svg"></i>
                 </span>
                 <span>Blog Posts</span>
             </a>
@@ -313,11 +287,9 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/blog/form.html"
+                    state-src="{{path}}admin/blog/form.html"
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -325,13 +297,11 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/social/index.html"
+                state-src="{{path}}admin/social/index.html"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/share-from-square.svg"></i>
+                    <i src="{{path}}assets/svg/share-from-square.svg"></i>
                 </span>
                 <span>Social Posts</span>
             </a>
@@ -339,11 +309,9 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/social/form.html"
+                    state-src="{{path}}admin/social/form.html"
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -351,13 +319,11 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/questions/datatable.html"
+                state-src="{{path}}admin/questions/datatable.html"
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/circle-question.svg"></i>
+                    <i src="{{path}}assets/svg/circle-question.svg"></i>
                 </span>
                 <span>Questions</span>
             </a>
@@ -365,11 +331,9 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/questions/form.html"
+                    state-src="{{path}}admin/questions/form.html"
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -377,14 +341,12 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/careers/datatable.html"
+                state-src="{{path}}admin/careers/datatable.html"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/person-dots-from-line.svg"></i>
+                    <i src="{{path}}assets/svg/person-dots-from-line.svg"></i>
                 </span>
                 <span>Careers</span>
             </a>
@@ -392,12 +354,10 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/careers/form.html"
+                    state-src="{{path}}admin/careers/form.html"
                     state-overwrite
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -405,14 +365,12 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/subscriptions/datatable.html"
+                state-src="{{path}}admin/subscriptions/datatable.html"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/clipboard-question.svg"></i>
+                    <i src="{{path}}assets/svg/clipboard-question.svg"></i>
                 </span>
                 <span>Subscriptions</span>
             </a>
@@ -420,12 +378,10 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/subscriptions/form.html"
+                    state-src="{{path}}admin/subscriptions/form.html"
                     state-overwrite
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -433,14 +389,12 @@
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="./admin/ai/datatable.html"
+                state-src="{{path}}admin/ai/datatable.html"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i
-                        class="display:flex height:16px"
-                        src="{{path}}assets/svg/brain.svg"></i>
+                    <i src="{{path}}assets/svg/brain.svg"></i>
                 </span>
                 <span>AI Settings</span>
             </a>
@@ -449,12 +403,10 @@
                 <a
                     actions="state"
                     state_to="mainView"
-                    state-src="./admin/ai/form.html"
+                    state-src="{{path}}admin/ai/form.html"
                     state-overwrite
                     class="display:flex justify-content:center align-items:center height:40px">
-                    <i
-                        class="display:flex height:18px"
-                        src="{{path}}assets/svg/plus.svg"></i>
+                    <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
         </li>
@@ -463,12 +415,10 @@
         class="line-height:40px height:40px overflow:hidden white-space:nowrap position:absolute bottom:0px background:gainsboro width:100%">
         <a
             actions="signOut"
-            href="./signin.html"
+            href="{{path}}signin.html"
             class="display:flex align-items:center">
             <span class="display:flex justify-content:center min-width:50px">
-                <i
-                    class="display:flex height:16px"
-                    src="{{path}}assets/svg/sign-out-alt.svg"></i>
+                <i src="{{path}}assets/svg/sign-out-alt.svg"></i>
             </span>
             <span>Sign Out</span>
         </a>

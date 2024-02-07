@@ -36,7 +36,7 @@
     href="{{path}}"
     actions="state"
     state_to="mainView"
-    state-src="./home/"
+    state-src="{{path}}home/"
     class="height:50px display:flex align-items:center display:none@xs@sm@md">
     <img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
     <span class="logo-name" translate="no"
@@ -49,7 +49,7 @@
     href="{{path}}"
     actions="state"
     state_to="mainView"
-    state-src="./home/"
+    state-src="{{path}}home/"
     class="height:50px display:none@lg@xl">
     <img
         array="organizations"
@@ -67,7 +67,7 @@
         href="{{path}}"
         actions="state"
         state_to="mainView"
-        state-src="./home/"
+        state-src="{{path}}home/"
         class="margin-right:25px color:#F7CC02:hover"
         >Home</a
     >
@@ -75,12 +75,14 @@
         href="{{path}}"
         actions="state"
         state_to="mainView"
-        state-src="./oracle/"
+        state-src="{{path}}oracle/"
         class="margin-right:25px color:#F7CC02:hover"
         >Oracle</a
     >
 
-    <a href="./blog/index.html" class="margin-right:25px color:#F7CC02:hover"
+    <a
+        href="{{path}}blog/index.html"
+        class="margin-right:25px color:#F7CC02:hover"
         >Blog</a
     >
 
@@ -88,7 +90,7 @@
         href="{{path}}"
         actions="state"
         state_to="mainView"
-        state-src="./account/profile/">
+        state-src="{{path}}account/profile/">
         Account</a
     >
 </div>
@@ -155,13 +157,13 @@
                 class="position:absolute height:100% width:100% signin"
                 session>
                 <a
-                    href="./signin.html"
+                    href="{{path}}signin.html"
                     class="display:block height:100% width:100%">
                 </a>
             </div>
             <a
                 state_to="mainView"
-                state-src="./account/profile/"
+                state-src="{{path}}account/profile/"
                 class="display:block height:100% width:100%">
             </a>
             <img

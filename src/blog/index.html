@@ -113,20 +113,45 @@
                 <!--  Blog Header -->
                 <div
                     class="width:100% background:#F7CC02 border-radius:3px padding:20px margin-bottom:20px">
-                    <h3>LATEST POSTS</h3>
+                    <h3><span>LATEST POSTS</span></h3>
+                </div>
+
+                <div class="position:relative padding:10px">
+                    <floating-label>
+                        <input
+                            type="text"
+                            filter-selector="document; #blog-posts"
+                            filter-key="title"
+                            state_id="datatable"
+                            placeholder="Search" />
+                    </floating-label>
+                    <span
+                        class="position:absolute bottom:20px right:20px float:right z-index:6">
+                        <a
+                            filter-selector="document; #blog-posts"
+                            filter-sort-key="_id"
+                            filter-sort-direction="asc"
+                            click-value="desc, asc"
+                            click-attribute="filter-sort-direction"
+                            state_id="datatable">
+                            <i
+                                toggle-attribute="src"
+                                toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                src="../assets/svg/sort.svg"></i>
+                        </a>
+                    </span>
                 </div>
 
                 <!-- Fetch and Render Blog Posts -->
                 <div
-                    class="display:flex flex-wrap:wrap"
+                    id="blog-posts"
+                    class="display:flex flex-wrap:wrap gap:15px"
                     array="blog-posts"
                     object
                     filter-limit="12"
                     render-selector="[template]">
                     <!-- Blog Post Template -->
-                    <div
-                        class="card position:relative flex-grow:1 margin-bottom:50px width:300px max-width:600px margin:10px"
-                        template>
+                    <div class="card flex-grow:1 width:300px" template>
                         <a class="overflow:hidden" href="../blog/post.html">
                             <!-- Image -->
                             <img src="{{object.image[0].src}}" width="100%" />
@@ -180,27 +205,7 @@
                     </div>
                 </div>
             </section>
-
-            <!-- SideNav Right -->
-            <filters
-                id="menuR"
-                class="overflow:hidden margin-top:70px height:100% width:0px width:300px@lg@xl"
-                resizable
-                resize-selector="[content_id='content']"
-                resize-property="margin-right"
-                resize-value="width"
-                path="../"
-                src="../components/filters.html"></filters>
         </main>
-
-        <!-- SidNav Right Floating toggle Button -->
-        <button
-            class="button-round"
-            toggle="width:300px, width:0px"
-            toggle-selector="document; #menuR"
-            toggle-attribute="style">
-            <i src="../assets/svg/sliders-h.svg"></i>
-        </button>
 
         <!-- Footer -->
         <footer
