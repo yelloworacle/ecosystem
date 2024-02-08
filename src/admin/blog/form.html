@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<a href="./signin.html" session="false" hidden></a>
 
 <form
     state_id="form-fields"
@@ -54,10 +55,7 @@
             render-selector="[template]"
             active>
             <div template>
-                <video controls width="250">
-                    <source src="{{video.src}}" type="{{video.content-type}}" />
-                    Your browser does not support the video tag.
-                </video>
+                <video src="{{video.src}}" controls width="250"></video>
             </div>
         </div>
     </floating-label>
