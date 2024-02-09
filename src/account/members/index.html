@@ -2,70 +2,74 @@
 <a href="./signin.html" session="false" hidden></a>
 
 <div class="width:100% max-width:600px">
-    <div class="padding:10px">
-        <form realtime="false">
-            <input
-                id="subscriptionId"
-                type="hidden"
-                array="users"
-                object=""
-                key="subscriptionId"
-                stripe="subscription.update"
-                stripe-key="$param[0].subscriptionId"
-                required />
-            <input
-                type="hidden"
-                array="users"
-                object=""
-                key="members"
-                stripe="subscription.update"
-                stripe-key="items[0].price"
-                value="price_1OgphfDSpIU4j2Jos30M9l41" />
+    <form
+        realtime="false"
+        class="margin-bottom:20px width:300px width:100%@xs@sm margin-left:auto">
+        <input
+            id="subscriptionId"
+            type="hidden"
+            array="users"
+            object=""
+            key="subscriptionId"
+            stripe="subscription.update"
+            stripe-key="$param[0].subscriptionId"
+            required />
 
-            <!-- +1 from members -->
-            <input
-                type="number"
-                array="users"
-                object=""
-                key="members"
-                stripe="subscription.update"
-                stripe-key="items[0].quantity"
-                required
-                hidden />
+        <input
+            type="hidden"
+            stripe="subscription.update"
+            stripe-key="items[0].price"
+            value="price_1OgphfDSpIU4j2Jos30M9l41" />
 
-            <input
-                type="email"
-                array="users"
-                object=""
-                key="email"
-                required
-                hidden />
+        <!-- +1 from members -->
+        <input
+            id="members"
+            type="number"
+            array="users"
+            object=""
+            key="members"
+            required
+            hidden />
 
-            <input
-                type="hidden"
-                array="users"
-                object=""
-                key="_id"
-                postmark="memberAccount" />
+        <input
+            type="number"
+            array="users"
+            object=""
+            key="members"
+            stripe="subscription.update"
+            stripe-key="items[0].quantity"
+            calculate="{#members} + 1"
+            required
+            hidden />
 
-            <div class="position:relative margin-top:5px">
-                <input
-                    type="email"
-                    placeholder="Member Email"
-                    required
-                    class="question" />
-                <a
-                    actions="validate, stripe.subscriptions.update, postmark.sendEmail"
-                    click-selector="i[src]"
-                    click-attribute="src"
-                    click-value="./assets/svg/spinner.svg"
-                    class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
-                    <span class="margin-right:5px font-weight:400">Add </span>
-                    <i src="./assets/svg/angle-right.svg"></i>
-                </a>
-            </div>
-        </form>
-    </div>
+        <input
+            type="email"
+            array="users"
+            object=""
+            key="email"
+            required
+            hidden />
+
+        <input
+            type="hidden"
+            array="users"
+            object=""
+            key="_id"
+            postmark="memberAccount" />
+
+        <div class="position:relative margin-top:5px">
+            <input type="email" placeholder="Member Email" required />
+            <a
+                actions="validate, stripe.subscriptions.update, postmark.sendEmail"
+                click-selector="i[src]"
+                click-attribute="src"
+                click-value="./assets/svg/spinner.svg"
+                class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
+                <span class="margin-right:5px font-weight:400">Add </span>
+                <i src="./assets/svg/angle-right.svg"></i>
+            </a>
+        </div>
+    </form>
 
     <div
         class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
@@ -97,6 +101,11 @@
             </div>
         </div>
     </div>
+    <input
+        type="hidden"
+        filter-selector="document; tbody[render-selector]"
+        filter-key="memberAccount"
+        filter-value="$user_id" />
 
     <table class="width:100% border-collapse:collapse">
         <tbody>
@@ -108,8 +117,7 @@
                             filter-selector="document; tbody[render-selector]"
                             filter-key="firstname"
                             state_id="datatable"
-                            placeholder="Name"
-                            class="floating-label" />
+                            placeholder="Name" />
                     </floating-label>
                     <span
                         class="position:absolute bottom:20px right:20px float:right z-index:6">
@@ -129,7 +137,6 @@
                 </td>
             </tr>
         </tbody>
-
         <tbody
             array="users"
             object
