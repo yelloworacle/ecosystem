@@ -89,6 +89,7 @@
             <textarea
                 id="answeredQuestions"
                 array="users"
+                object="$user_id"
                 key="answeredQuestions"
                 filter-key="name"
                 filter-operator="$nin"
@@ -113,6 +114,7 @@
                     id="temp"
                     realtime="false"
                     array="users"
+                    object="$user_id"
                     template
                     broadcast="false">
                     <input
@@ -294,14 +296,14 @@
             component></div>
         <div
             array="users"
-            object
+            object="$user_id"
             key="questions"
             openai="user"
             save="false"
             component></div>
         <div
             array="users"
-            object
+            object="$user_id"
             key="careers"
             openai="user"
             save="false"
@@ -317,6 +319,7 @@
     <textarea
         id="mergedCareers"
         array="users"
+        object="$user_id"
         key="careers"
         value-type="json"
         crdt="false"

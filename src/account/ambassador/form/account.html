@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 
 <!-- Account -->
-<form realtime="false" class="width:100% display:flex flex-wrap:wrap gap:15px">
+<form
+    realtime="false"
+    array="users"
+    object="$user_id"
+    class="width:100% display:flex flex-wrap:wrap gap:15px">
     <floating-label class="flex-grow:1">
         <select
-            array="users"
-            object=""
             key="business_type"
             stripe="accounts.create"
             stripe-key="business_type"

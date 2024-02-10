@@ -149,7 +149,7 @@
 <!-- Avatar -->
 <div class="avatar-wrapper margin-right:10px">
     <div class="avatar round">
-        <span array="users" object key="name" class="avatar-name">
+        <span array="users" object="$user_id" key="name" class="avatar-name">
             <i class="height:20px" src="{{path}}assets/svg/sign-in-alt.svg"></i>
         </span>
         <span class="avatar-image">
@@ -168,7 +168,7 @@
             </a>
             <img
                 array="users"
-                object="{{userId}}"
+                object="$user_id"
                 key="avatar"
                 onerror="this.style.display='none'"
                 width="40px" />
@@ -177,6 +177,6 @@
     <div
         class="avatar-status"
         array="users"
-        object="{{userId}}"
+        object="$user_id"
         user-status="{'name':'status'}"></div>
 </div>

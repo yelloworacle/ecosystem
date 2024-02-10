@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 
 <!-- Comapny -->
-<form realtime="false" class="width:100% display:flex flex-wrap:wrap gap:15px">
+<form
+    realtime="false"
+    array="users"
+    object="$user_id"
+    class="width:100% display:flex flex-wrap:wrap gap:15px">
     <style>
         #tax_id,
         #registration_number {
@@ -17,8 +21,6 @@
     <floating-label class="flex-grow:1">
         <input
             type="text"
-            array="users"
-            object=""
             key="company_name"
             stripe="accounts.update"
             stripe-key="company.name"
@@ -28,8 +30,6 @@
     <floating-label class="flex-grow:1">
         <input
             type="tel"
-            array="users"
-            object=""
             key="company.phone"
             stripe="accounts.update"
             stripe-key="company.phone"
@@ -41,8 +41,6 @@
         <floating-label class="width:100%">
             <input
                 type="text"
-                array="users"
-                object=""
                 key="company_address_line1"
                 stripe="accounts.update"
                 stripe-key="company.address.line1"
@@ -52,8 +50,6 @@
         <floating-label class="flex-grow:1 width:175px">
             <input
                 type="text"
-                array="users"
-                object=""
                 key="company_address_city"
                 stripe="accounts.update"
                 stripe-key="company.address.city"
@@ -63,8 +59,6 @@
 
         <floating-label class="flex-grow:1 width:220px">
             <select
-                array="users"
-                object=""
                 key="company_address_country"
                 stripe="accounts.update"
                 stripe-key="company.address.country"
@@ -77,8 +71,6 @@
         <floating-label class="flex-grow:1 width:140px">
             <input
                 type="text"
-                array="users"
-                object=""
                 key="company_address_postal_code"
                 stripe="accounts.update"
                 stripe-key="company.address.postal_code"
@@ -91,8 +83,6 @@
     <floating-label id="tax_id" class="flex-grow:1">
         <input
             type="text"
-            array="users"
-            object=""
             key="tax_id"
             stripe="accounts.update"
             stripe-key="company.tax_id"
@@ -102,8 +92,6 @@
     <floating-label id="registration_number" class="flex-grow:1">
         <input
             type="text"
-            array="users"
-            object=""
             key="company_registration_number"
             stripe="accounts.update"
             stripe-key="company.registration_number"
@@ -114,12 +102,12 @@
 <additional-document hidden>
     <!-- Additional Document Front Upload -->
     <form
+        array="users"
+        object="$user_id"
         class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
         <floating-label class="margin-top:20px width:100%">
             <input
                 type="file"
-                array="users"
-                object=""
                 key="comapny_additional_document_front"
                 placeholder="Additional Document Front"
                 required />
@@ -138,14 +126,12 @@
             required />
         <input
             type="hidden"
-            array="users"
             key="company_additional_document_front.src"
             stripe="files.create"
             stripe-key="file.data"
             required />
         <input
             type="hidden"
-            array="users"
             key="company_additional_document_front.id"
             stripe="files.create"
             stripe-key="id"
@@ -156,12 +142,12 @@
 
     <!-- Additional Document Back Upload -->
     <form
+        array="users"
+        object="$user_id"
         class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
         <floating-label class="margin-top:20px width:100%">
             <input
                 type="file"
-                array="users"
-                object=""
                 key="company_additional_document_back"
                 placeholder="Additional Document Back"
                 required />
@@ -180,14 +166,12 @@
             required />
         <input
             type="hidden"
-            array="users"
             key="company_additional_document_back.src"
             stripe="files.create"
             stripe-key="file.data"
             required />
         <input
             type="hidden"
-            array="users"
             key="company_additional_document_back.id"
             stripe="files.create"
             stripe-key="id"
@@ -197,17 +181,18 @@
     </form>
 
     <!-- Save Additional Document IDs to Stripe Account -->
-    <form class="width:100% display:flex flex-wrap:wrap margin-top:20px">
+    <form
+        array="users"
+        object="$user_id"
+        class="width:100% display:flex flex-wrap:wrap margin-top:20px">
         <input
             type="hidden"
-            array="users"
             key="company_additional_document_front.id"
             stripe="accounts.update"
             stripe-key="company.verification.additional_document.front"
             required />
         <input
             type="hidden"
-            array="users"
             key="company_additional_document_back.id"
             stripe="accounts.update"
             stripe-key="company.verification.additional_document.back" />

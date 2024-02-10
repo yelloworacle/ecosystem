@@ -4,12 +4,12 @@
 <div class="width:100% max-width:600px">
     <form
         realtime="false"
+        array="users"
+        object="$user_id"
         class="margin-bottom:20px width:300px width:100%@xs@sm margin-left:auto">
         <input
             id="subscriptionId"
             type="hidden"
-            array="users"
-            object=""
             key="subscriptionId"
             stripe="subscription.update"
             stripe-key="$param[0].subscriptionId"
@@ -22,19 +22,10 @@
             value="price_1OgphfDSpIU4j2Jos30M9l41" />
 
         <!-- +1 from members -->
-        <input
-            id="members"
-            type="number"
-            array="users"
-            object=""
-            key="members"
-            required
-            hidden />
+        <input id="members" type="number" key="members" required hidden />
 
         <input
             type="number"
-            array="users"
-            object=""
             key="members"
             stripe="subscription.update"
             stripe-key="items[0].quantity"
@@ -42,20 +33,9 @@
             required
             hidden />
 
-        <input
-            type="email"
-            array="users"
-            object=""
-            key="email"
-            required
-            hidden />
+        <input type="email" key="email" required hidden />
 
-        <input
-            type="hidden"
-            array="users"
-            object=""
-            key="_id"
-            postmark="memberAccount" />
+        <input type="hidden" key="_id" postmark="memberAccount" />
 
         <div class="position:relative margin-top:5px">
             <input type="email" placeholder="Member Email" required />
@@ -76,7 +56,7 @@
         <a
             actions="state"
             state_to="mainView"
-            state-src="./admin/users/datatable.html"
+            state-src="./account/profile/"
             state-overwrite
             class="padding:0px_10px"
             ><i src="./assets/svg/angle-left.svg"></i

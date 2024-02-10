@@ -262,7 +262,7 @@
         <input
             type="hidden"
             array="users"
-            object=""
+            object="$user_id"
             key="ambassadorTerms"
             input-closest=".main-view"
             input-attribute="terms" />
@@ -289,11 +289,9 @@
             <!-- <small class="width:100%">Example: yelloworacle.com/customName or yelloworacle.com/unique-name</small> -->
         </p>
 
-        <form class="join" realtime="false">
+        <form array="users" object="$user_id" class="join" realtime="false">
             <input
                 type="text"
-                array="users"
-                object=""
                 key="ambassadorUrl"
                 placeholder="Ambassador URL"
                 required
@@ -311,8 +309,6 @@
                 value="custom" />
             <input
                 type="hidden"
-                array="users"
-                object=""
                 key="email"
                 stripe="accounts.create"
                 stripe-key="email" />
@@ -356,8 +352,6 @@
                 <floating-label class="flex-grow:1">
                     <input
                         type="text"
-                        array="users"
-                        object=""
                         key="firstname"
                         stripe="accounts.create"
                         stripe-key="individual.first_name"
@@ -368,8 +362,6 @@
                 <floating-label class="flex-grow:1">
                     <input
                         type="text"
-                        array="users"
-                        object=""
                         key="lastname"
                         stripe="accounts.create"
                         stripe-key="individual.last_name"
@@ -382,8 +374,6 @@
                 class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
                 <floating-label class="flex-grow:1">
                     <select
-                        array="users"
-                        object=""
                         key="business_type"
                         stripe="accounts.create"
                         stripe-key="business_type"
@@ -410,8 +400,6 @@
             <div class="terms">
                 <input
                     type="checkbox"
-                    array="users"
-                    object=""
                     key="ambassadorTerms"
                     placeholder="Accept Terms"
                     required />
