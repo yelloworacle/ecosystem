@@ -21,29 +21,42 @@
             stripe-key="items[0].price"
             value="price_1OgphfDSpIU4j2Jos30M9l41" />
 
+        <!-- TODO: should be replaced with with an array of user_id that are currently a member of account-->
+        <!-- TODO: using the member array $length we can get the current quantitiy -->
+        <!-- TODO: a teporary code should be added to array similar to forgot password so user can can be authorized to replace the temp id with there existing or newly generated id -->
+
         <!-- +1 from members -->
-        <input id="members" type="number" key="members" required hidden />
+        <input
+            id="members"
+            type="number"
+            key="members.$length"
+            required
+            hidden />
 
         <input
             type="number"
-            key="members"
+            key="members.$length"
             stripe="subscription.update"
             stripe-key="items[0].quantity"
             calculate="{#members} + 1"
             required
             hidden />
 
-        <input type="email" key="email" required hidden />
-
-        <input type="hidden" key="_id" postmark="memberAccount" />
+        <input type="hidden" key="name" />
+        <input type="hidden" key="from" value="invite@yelloworacle.com" />
+        <input type="hidden" key="origin" value="$origin" />
+        <input type="hidden" key="hostname" value="yelloworacle.com" />
+        <input type="hidden" key="path" value="/invite.html" />
 
         <div class="position:relative margin-top:5px">
-            <input type="email" placeholder="Member Email" required />
+            <input
+                type="email"
+                placeholder="Member Email"
+                key="email"
+                crud="false"
+                required />
             <a
-                actions="validate, stripe.subscriptions.update, postmark.sendEmail"
-                click-selector="i[src]"
-                click-attribute="src"
-                click-value="./assets/svg/spinner.svg"
+                actions="validate, stripe.subscriptions.update, inviteUser"
                 class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
                 <span class="margin-right:5px font-weight:400">Add </span>
                 <i src="./assets/svg/angle-right.svg"></i>
@@ -185,6 +198,14 @@
     </table>
 
     <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
+
+    <div class="position:fixed!important bottom:15px right:15px">
+        <div
+            template="validate, inviteUser"
+            class="card position:fixed!important bottom:15px right:15px padding:10px {{status}}">
+            <span class="{{type}}">{{message}}</span><a actions="remove"> X</a>
+        </div>
+    </div>
 
     <button
         actions="state"
