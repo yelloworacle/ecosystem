@@ -58,8 +58,6 @@
         }
     </style>
     <body style="padding: 0px">
-        <a href="./" session="true" hidden></a>
-
         <!-- <a href="./signup.html" title="" class=" margin-left:auto">Sign Up</a> -->
 
         <nav class="padding-top:20px">
@@ -116,13 +114,13 @@
                         </div>
                         <div
                             class="padding:25px background:gainsboro text-align:left">
-                            <input
-                                type="hidden"
-                                value="$search.email"
-                                onload-parent=".user_id[]"
-                                onload-attribute="value" />
-
                             <floating-label class="margin-top:20px">
+                                <input
+                                    type="hidden"
+                                    value="$search.email"
+                                    onload-next
+                                    onload-attribute="value" />
+
                                 <input
                                     type="email"
                                     id="email"
@@ -131,8 +129,7 @@
                                     autocomplete="email"
                                     required
                                     hidden
-                                    readonly
-                                    class="user_id" />
+                                    readonly />
                             </floating-label>
                             <input
                                 type="hidden"
@@ -150,10 +147,16 @@
 
                             <input
                                 type="hidden"
+                                value="$search.user_id"
+                                onload-next
+                                onload-attribute="value" />
+
+                            <input
+                                type="hidden"
                                 input-parent
                                 input-attribute="display"
                                 input-value="signin"
-                                class="user_id" />
+                                key="_id" />
 
                             <div id="signin">
                                 <div class="display:flex align-items:center">
