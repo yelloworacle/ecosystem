@@ -10,20 +10,21 @@
         <input type="hidden" key="name" />
         <input
             id="subscriptionItemId"
-            type=""
+            type="hidden"
             key="subscriptionItemId"
             stripe="subscriptionItems.update"
             stripe-key="$param[0]"
             required />
 
-        <input id="members" type="number" key="members.$length" />
+        <input id="members" type="number" key="members.$length" hidden />
 
         <input
             type="number"
             stripe="subscriptionItems.update"
             stripe-key="quantity"
             calculate="{(#members)} + 1"
-            required />
+            required
+            hidden />
 
         <input type="hidden" key="name" />
         <input type="hidden" key="from" value="invite@yelloworacle.com" />
