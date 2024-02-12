@@ -11,10 +11,12 @@ let pk, price, coupon
 if (environment === 'production') {
     pk = productionPk
     price = 'price_1OPdVuDSpIU4j2JoDTXa1i6J'
+    memberPrice = 'price_1Oj6Q2DSpIU4j2JoMlEOKZ5S'
     coupon = 'miY3GbhY'
 } else {
     pk = testPk
     price = 'price_1OP7WaDSpIU4j2JoOhYOpB4U'
+    memberPrice = 'price_1OgphfDSpIU4j2Jos30M9l41'
     coupon = 'SUHCpxy7'
 }
 
@@ -88,7 +90,7 @@ loadStripeLibrary(function () {
                         broadcast: false,
                         stripe: {
                             customer: additionalData.customer,
-                            items: [{ price }],
+                            items: [{ price }, { price: priceMembers, quantity: 0 }],
                             coupon: coupon,
                             expand: ['latest_invoice.payment_intent']
                         },
@@ -104,7 +106,8 @@ loadStripeLibrary(function () {
                                 _id: data.user_id,
                                 customerId: additionalData.customer,
                                 subscription: "6571fe530c48ef6970900a82",
-                                subscriptionId: data.stripe.id
+                                subscriptionId: data.stripe.id,
+                                subscriptionItemId: data.stripe.items[1].id
                             },
                         });
 
