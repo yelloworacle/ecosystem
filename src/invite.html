@@ -82,8 +82,11 @@
                 <div class="text-align:center padding:20px width:100%">
                     <h1>Welcome to Yellow Oracle!</h1>
                     <p>
-                        You've been invited to join our
-                        <span value="$search.name"></span>.
+                        You've been invited to join
+                        <span
+                            onload-attribute="value"
+                            onload-value="$search.name"></span
+                        >.
                     </p>
                 </div>
 
@@ -102,8 +105,8 @@
                                     onload-attribute="value"
                                     onload-value="Sign In"
                                     hidden />
-                                <!-- TODO: need to update the h3 innertext basesed on section display -->
-                                <h3>Sign Up</h3>
+
+                                <h3 id="authContainer">Sign Up</h3>
                             </div>
                             <div
                                 class="float:right width:25% padding-top:5px font-size:70px line-height:100px text-align:right color:very-light-gray">
@@ -159,14 +162,18 @@
                                 key="_id" />
 
                             <div id="signin">
-                                <div class="display:flex align-items:center">
+                                <div
+                                    class="display:flex align-items:center margin-top:15px">
                                     <button
-                                        class="button margin-top:15px"
+                                        class="button"
                                         actions="validate, signIn, acceptInvite"
                                         href="./">
                                         Accept Invite
                                     </button>
-                                    <a show="#forgotpass" hide="#signin"
+                                    <a
+                                        show="#forgotpass"
+                                        hide="#signin"
+                                        class="padding:10px"
                                         >Forgot Password</a
                                     >
                                 </div>
@@ -176,6 +183,9 @@
                                         click-closest="section"
                                         click-attribute="display"
                                         click-value="signup"
+                                        toggle-attribute="value"
+                                        toggle-value="Sign Up"
+                                        toggle-selector="document; #authContainer"
                                         >Click here.</a
                                     >
                                 </p>
@@ -194,6 +204,9 @@
                                         click-closest="section"
                                         click-attribute="display"
                                         click-value="signin"
+                                        toggle-attribute="value"
+                                        toggle-value="Sign In"
+                                        toggle-selector="document; #authContainer"
                                         >Click here.</a
                                     >
                                 </p>
