@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Invitation | Yellow Oracle</title>
+
+        <link
+            rel="stylesheet"
+            href="./index.css"
+            array="files"
+            object="65395d6f6ebd31be4c4349b2"
+            key="{}"
+            type="text/css"
+            parse="true" />
+        <link
+            rel="icon"
+            type="image/x-icon"
+            href="./assets/icons/favicon.ico" />
+
+        <link rel="manifest" href="./manifest.webmanifest" />
+    </head>
+
+    <style>
+        .signup-prompt {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .signup-prompt a {
+            color: #1a73e8; /* A noticeable, but not too bright, blue color */
+            text-decoration: none; /* Removes the default underline */
+            font-weight: bold;
+        }
+
+        .signup-prompt a:hover,
+        .signup-prompt a:focus {
+            text-decoration: underline; /* Adds an underline on hover for visual feedback */
+            color: #0f62fe; /* Slightly darker shade of blue for hover effect */
+        }
+        #signin {
+            display: none;
+        }
+
+        [display="signin"] #signin {
+            display: block;
+        }
+        [display="signin"] #signup {
+            display: none;
+        }
+        [display="signup"] #signup {
+            display: block;
+        }
+        [display="signup"] #signin {
+            display: none;
+        }
+    </style>
+    <body style="padding: 0px">
+        <a href="./" session="true" hidden></a>
+
+        <!-- <a href="./signup.html" title="" class=" margin-left:auto">Sign Up</a> -->
+
+        <nav class="padding-top:20px">
+            <!-- Icon Logo -->
+            <a
+                href="./"
+                actions="state"
+                state_to="mainView"
+                state-src="./home/"
+                class="height:50px padding:5px_12px display:flex align-items:center">
+                <img height="50px" src="./assets/icons/icon-1240-1240.png" />
+                <span class="logo-name" translate="no"
+                    >Yellow <span class="logo-name-colored">Oracle</span></span
+                >
+            </a>
+        </nav>
+
+        <!-- <a href="./signup.html" title="" class="position:relative z-index:1 float:right margin:15px margin-left:auto color:white">Sign Up</a> -->
+        <main>
+            <div class="width:100% padding:15px">
+                <!-- Introduction Section -->
+                <div class="text-align:center padding:20px width:100%">
+                    <h1>Welcome to Yellow Oracle!</h1>
+                    <p>
+                        You've been invited to join our
+                        <span value="$search.name"></span>.
+                    </p>
+                </div>
+
+                <section
+                    class="display:flex align-items:center justify-content:center width:100%">
+                    <form
+                        realtime="false"
+                        array="users"
+                        class="flex-grow:1 max-width:400px">
+                        <div
+                            class="overflow:hidden padding:0px_25px background:white">
+                            <div class="float:left width:75% padding-top:25px">
+                                <input
+                                    value="$search.user_id"
+                                    onload-next
+                                    onload-attribute="value"
+                                    onload-value="Sign In"
+                                    hidden />
+                                <!-- TODO: need to update the h3 innertext basesed on section display -->
+                                <h3>Sign Up</h3>
+                            </div>
+                            <div
+                                class="float:right width:25% padding-top:5px font-size:70px line-height:100px text-align:right color:very-light-gray">
+                                <i
+                                    class="height:70px"
+                                    src="./assets/svg/sign-in-alt.svg"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="padding:25px background:gainsboro text-align:left">
+                            <input
+                                type="hidden"
+                                value="$search.email"
+                                onload-parent=".user_id[]"
+                                onload-attribute="value" />
+
+                            <floating-label class="margin-top:20px">
+                                <input
+                                    type="email"
+                                    id="email"
+                                    key="email"
+                                    name="email"
+                                    autocomplete="email"
+                                    required
+                                    hidden
+                                    readonly
+                                    class="user_id" />
+                            </floating-label>
+                            <input
+                                type="hidden"
+                                key="token"
+                                value="$search.token"
+                                required />
+
+                            <floating-label class="margin-top:20px">
+                                <input
+                                    type="password"
+                                    key="password"
+                                    placeholder="Password"
+                                    class="floating-label" />
+                            </floating-label>
+
+                            <input
+                                type="hidden"
+                                input-parent
+                                input-attribute="display"
+                                input-value="signin"
+                                class="user_id" />
+
+                            <div id="signin">
+                                <div class="display:flex align-items:center">
+                                    <button
+                                        class="button margin-top:15px"
+                                        actions="validate, signIn, acceptInvite"
+                                        href="./">
+                                        Accept Invite
+                                    </button>
+                                    <a show="#forgotpass" hide="#signin"
+                                        >Forgot Password</a
+                                    >
+                                </div>
+                                <p class="signup-prompt">
+                                    Don't have an account?
+                                    <a
+                                        click-closest="section"
+                                        click-attribute="display"
+                                        click-value="signup"
+                                        >Click here.</a
+                                    >
+                                </p>
+                            </div>
+                            <div id="signup">
+                                <button
+                                    class="button margin-top:15px"
+                                    actions="validate, signUp, acceptInvite"
+                                    href="./">
+                                    Accept Invite
+                                </button>
+
+                                <p class="signup-prompt">
+                                    Already have an account?
+                                    <a
+                                        click-closest="section"
+                                        click-attribute="display"
+                                        click-value="signin"
+                                        >Click here.</a
+                                    >
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+
+                    <form realtime="false" array="users" hidden id="forgotpass">
+                        <div
+                            class="overflow:hidden padding:0px_25px background:white">
+                            <div class="float:left width:75% padding-top:25px">
+                                <h3>Password Recovery</h3>
+                            </div>
+                            <div
+                                class="float:right width:25% padding-top:5px font-size:70px line-height:100px text-align:right color:very-light-gray">
+                                <i
+                                    class="height:70px"
+                                    src="./assets/svg/key.svg"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="padding:25px background:gainsboro text-align:left">
+                            <floating-label>
+                                <input
+                                    type="email"
+                                    key="email"
+                                    id="email"
+                                    placeholder="Email"
+                                    autocomplete="email"
+                                    class="floating-label" />
+                            </floating-label>
+
+                            <input
+                                type="hidden"
+                                key="from"
+                                id="from"
+                                name="from"
+                                value="passwordRecovery@yelloworacle.com" />
+                            <input
+                                type="hidden"
+                                key="origin"
+                                id="origin"
+                                name="origin"
+                                value="$origin" />
+                            <input
+                                type="hidden"
+                                key="hostname"
+                                id="hostname"
+                                name="hostname"
+                                value="yelloworacle.com" />
+                            <input
+                                type="hidden"
+                                key="path"
+                                id="path"
+                                name="path"
+                                value="/password-reset.html" />
+
+                            <button class="button margin-top:15px">
+                                <a actions="forgotPassword">Send Email</a>
+                            </button>
+
+                            <a show="#signin" hide="#forgotpass">Sign In</a>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+
+        <div class="position:fixed!important bottom:15px right:15px">
+            <div
+                template="signIn, validate, forgotPassword"
+                class="card position:fixed!important bottom:15px right:15px padding:10px {{status}}">
+                <span class="{{type}}">{{message}}</span
+                ><a actions="remove"> X</a>
+            </div>
+        </div>
+
+        <script src="./dist/CoCreate.js"></script>
+    </body>
+</html>
