@@ -38,14 +38,26 @@
                 placeholder="Member Email"
                 key="email"
                 crud="false"
+                input-selector="document; #setemailinput"
+                input-attribute="value"
                 required />
             <a
-                actions="validate, stripe.subscriptionItems.update, inviteUser"
+                actions="validate, stripe.subscriptionItems.update, inviteUser, action(document; #setmember)"
                 class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
                 <span class="margin-right:5px font-weight:400">Add </span>
                 <i src="./assets/svg/angle-right.svg"></i>
             </a>
         </div>
+    </form>
+
+    <form object="$user_id">
+        <input
+            id="setemailinput"
+            type="hidden"
+            array="users"
+            key="$addToSet.members"
+            realtime="false" />
+        <a id="setmember" actions="save"></a>
     </form>
 
     <div
@@ -141,29 +153,25 @@
                     <div class="padding:10px">
                         <form realtime="false">
                             <input
-                                id="subscriptionId"
                                 type="hidden"
                                 array="users"
-                                object=""
-                                key="subscriptionId"
+                                object="$user_id"
+                                key="subscriptionItemId"
                                 stripe="subscriptionItems.update"
-                                stripe-key="$param[0].subscriptionId"
+                                stripe-key="$param[0]"
                                 required />
-                            <input
-                                type="hidden"
-                                stripe="subscriptionItems.update"
-                                stripe-key="items[0].price"
-                                value="price_1OgphfDSpIU4j2Jos30M9l41" />
 
                             <input
                                 type="number"
                                 stripe="subscriptionItems.update"
-                                stripe-key="items[0].quantity"
+                                stripe-key="quantity"
                                 calculate="{(#members)} - 1"
                                 required
                                 hidden />
 
                             <input
+                                array="users"
+                                object="$user_id"
                                 value="{{members}}"
                                 key="$pull.members"
                                 hidden />
