@@ -119,20 +119,19 @@
                             class="padding:25px background:gainsboro text-align:left">
                             <floating-label class="margin-top:20px">
                                 <input
-                                    type="hidden"
-                                    value="$search.email"
-                                    onload-next
-                                    onload-attribute="value" />
-
-                                <input
                                     type="email"
                                     id="email"
                                     key="email"
                                     name="email"
                                     autocomplete="email"
+                                    placeholder="Email"
                                     required
-                                    hidden
                                     readonly />
+                                <input
+                                    type="hidden"
+                                    value="$search.email"
+                                    onload-previous
+                                    onload-attribute="value" />
                             </floating-label>
                             <input
                                 type="hidden"
