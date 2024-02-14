@@ -345,70 +345,77 @@
     <script src="./oracle/index.js"></script>
     <script src="./oracle/progress.js"></script>
     <script>
-        let user_id = localStorage.getItem("user_id");
-        if (!user_id) {
-            console.log("test");
-            document.getElementById("answeredQuestions").setValue("Discover");
-            CoCreate.crud
-                .send({
-                    method: "object.create",
-                    array: "users",
-                    object: {
-                        "answeredQuestions[]": "Discover",
-                        ambassadorTerms: false,
-                    },
-                })
-                .then((user) => {
-                    if (user.object[0]) {
-                        localStorage.setItem("user_id", user.object[0]._id);
-                        let userElements = document.querySelectorAll(
-                            "[array='users']:not([ambassador])"
-                        );
+        (function () {
+            let user_id = localStorage.getItem("user_id");
+            if (!user_id) {
+                console.log("test");
+                document
+                    .getElementById("answeredQuestions")
+                    .setValue("Discover");
+                CoCreate.crud
+                    .send({
+                        method: "object.create",
+                        array: "users",
+                        object: {
+                            "answeredQuestions[]": "Discover",
+                            ambassadorTerms: false,
+                        },
+                    })
+                    .then((user) => {
+                        if (user.object[0]) {
+                            localStorage.setItem("user_id", user.object[0]._id);
+                            let userElements = document.querySelectorAll(
+                                "[array='users']:not([ambassador])"
+                            );
 
-                        userElements.forEach(function (element) {
-                            element.setAttribute("object", user.object[0]._id);
-                        });
+                            userElements.forEach(function (element) {
+                                element.setAttribute(
+                                    "object",
+                                    user.object[0]._id
+                                );
+                            });
+                        }
+                    });
+            }
+
+            CoCreate.observer.init({
+                name: "setEmailInput",
+                observe: ["addedNodes"],
+                target: "#password",
+                callback: async (mutation) => {
+                    const email = document.createElement("input");
+                    email.type = "email";
+                    email.id = "email";
+                    email.name = "email";
+                    email.classList.add("hidden-input");
+                    email.setAttribute("array", "users");
+                    email.setAttribute("object", "");
+                    email.setAttribute("key", "email");
+                    email.setAttribute("autocomplete", "email");
+                    mutation.target.parentElement.appendChild(email);
+
+                    const roles = document.createElement("input");
+                    roles.type = "hidden";
+                    roles.id = "roles";
+                    roles.setAttribute("array", "users");
+                    roles.setAttribute("object", "");
+                    roles.setAttribute("key", "roles[]");
+                    roles.value = "657726510fee1c6415f70760";
+                    mutation.target.parentElement.appendChild(roles);
+
+                    let ambassadorId = localStorage.getItem("ambassador");
+                    if (ambassadorId) {
+                        const ambassador = document.createElement("input");
+                        ambassador.type = "hidden";
+                        ambassador.id = "amabassador";
+                        ambassador.setAttribute("array", "users");
+                        ambassador.setAttribute("object", "");
+                        ambassador.setAttribute("key", "ambassador");
+                        ambassador.value = ambassadorId;
+                        mutation.target.parentElement.appendChild(ambassador);
                     }
-                });
-        }
-
-        CoCreate.observer.init({
-            name: "setEmailInput",
-            observe: ["addedNodes"],
-            target: "#password",
-            callback: async (mutation) => {
-                const email = document.createElement("input");
-                email.type = "email";
-                email.id = "email";
-                email.name = "email";
-                email.classList.add("hidden-input");
-                email.setAttribute("array", "users");
-                email.setAttribute("object", "");
-                email.setAttribute("key", "email");
-                email.setAttribute("autocomplete", "email");
-                mutation.target.parentElement.appendChild(email);
-
-                const roles = document.createElement("input");
-                roles.type = "hidden";
-                roles.id = "roles";
-                roles.setAttribute("array", "users");
-                roles.setAttribute("object", "");
-                roles.setAttribute("key", "roles[]");
-                roles.value = "657726510fee1c6415f70760";
-                mutation.target.parentElement.appendChild(roles);
-
-                let ambassadorId = localStorage.getItem("ambassador");
-                if (ambassadorId) {
-                    const ambassador = document.createElement("input");
-                    ambassador.type = "hidden";
-                    ambassador.id = "amabassador";
-                    ambassador.setAttribute("array", "users");
-                    ambassador.setAttribute("object", "");
-                    ambassador.setAttribute("key", "ambassador");
-                    ambassador.value = ambassadorId;
-                    mutation.target.parentElement.appendChild(ambassador);
-                }
-            },
-        });
+                },
+            });
+        })();
     </script>
 </div>
