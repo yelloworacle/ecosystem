@@ -138,6 +138,7 @@
                             autocomplete="{{object.name}}"
                             read="false"
                             {{object.attributes}}
+                            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"
                             required
                             class="question" />
                         <a
@@ -389,7 +390,7 @@
                     email.name = "email";
                     email.classList.add("hidden-input");
                     email.setAttribute("array", "users");
-                    email.setAttribute("object", "");
+                    email.setAttribute("object", "$user_id");
                     email.setAttribute("key", "email");
                     email.setAttribute("autocomplete", "email");
                     mutation.target.parentElement.appendChild(email);
@@ -398,7 +399,7 @@
                     roles.type = "hidden";
                     roles.id = "roles";
                     roles.setAttribute("array", "users");
-                    roles.setAttribute("object", "");
+                    roles.setAttribute("object", "$user_id");
                     roles.setAttribute("key", "roles[]");
                     roles.value = "657726510fee1c6415f70760";
                     mutation.target.parentElement.appendChild(roles);
@@ -409,7 +410,7 @@
                         ambassador.type = "hidden";
                         ambassador.id = "amabassador";
                         ambassador.setAttribute("array", "users");
-                        ambassador.setAttribute("object", "");
+                        ambassador.setAttribute("object", "$user_id");
                         ambassador.setAttribute("key", "ambassador");
                         ambassador.value = ambassadorId;
                         mutation.target.parentElement.appendChild(ambassador);
