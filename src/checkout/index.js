@@ -1,3 +1,4 @@
+
 let environment = "production" // production, test
 
 if (window.location.host.startsWith("test.") || window.location.host.startsWith("dev.")) {
@@ -90,7 +91,7 @@ loadStripeLibrary(function () {
                         broadcast: false,
                         stripe: {
                             customer: additionalData.customer,
-                            items: [{ price }, { price: priceMembers, quantity: 0 }],
+                            items: [{ price }, { price: memberPrice, quantity: 0 }],
                             coupon: coupon,
                             expand: ['latest_invoice.payment_intent']
                         },
@@ -107,7 +108,7 @@ loadStripeLibrary(function () {
                                 customerId: additionalData.customer,
                                 subscription: "6571fe530c48ef6970900a82",
                                 subscriptionId: data.stripe.id,
-                                subscriptionItemId: data.stripe.items[1].id
+                                subscriptionItemId: data.stripe.items.data[1].id
                             },
                         });
 
@@ -115,8 +116,7 @@ loadStripeLibrary(function () {
                         window.localStorage.setItem('subscription', '6571fe530c48ef6970900a82')
 
                         setTimeout(function () {
-                            // window.location = "/";
-                            window.location.href = "/"
+                            window.history.back();
                         }, 3000);
                     } else {
                         submitButton.innerHTML = "Payment Failed";

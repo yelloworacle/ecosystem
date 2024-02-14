@@ -138,7 +138,6 @@
                             autocomplete="{{object.name}}"
                             read="false"
                             {{object.attributes}}
-                            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"
                             required
                             class="question" />
                         <a
@@ -176,9 +175,11 @@
         <section>
             <input
                 type="hidden"
-                localstorage-get="subscription"
-                localstorage-parent="#subscription"
-                localstorage-attribute="object" />
+                array="users"
+                object="$user_id"
+                key="subscription"
+                input-next
+                input-attribute="object" />
 
             <textarea
                 id="subscription"
@@ -318,6 +319,7 @@
 
     <textarea
         id="mergedCareers"
+        realtime="true"
         array="users"
         object="$user_id"
         key="careers"
