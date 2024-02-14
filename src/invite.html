@@ -93,6 +93,7 @@
                 <section
                     class="display:flex align-items:center justify-content:center width:100%">
                     <form
+                        id="signinform"
                         realtime="false"
                         array="users"
                         class="flex-grow:1 max-width:400px">
@@ -171,7 +172,7 @@
                                     </button>
                                     <a
                                         show="#forgotpass"
-                                        hide="#signin"
+                                        hide="#signinform"
                                         class="padding:10px"
                                         >Forgot Password</a
                                     >
@@ -213,7 +214,12 @@
                         </div>
                     </form>
 
-                    <form realtime="false" array="users" hidden id="forgotpass">
+                    <form
+                        realtime="false"
+                        array="users"
+                        hidden
+                        id="forgotpass"
+                        class="flex-grow:1 max-width:400px">
                         <div
                             class="overflow:hidden padding:0px_25px background:white">
                             <div class="float:left width:75% padding-top:25px">
@@ -267,7 +273,7 @@
                                 <a actions="forgotPassword">Send Email</a>
                             </button>
 
-                            <a show="#signin" hide="#forgotpass">Sign In</a>
+                            <a show="#signinform" hide="#forgotpass">Sign In</a>
                         </div>
                     </form>
                 </section>
