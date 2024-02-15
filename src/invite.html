@@ -197,7 +197,7 @@
                             <div id="signup">
                                 <button
                                     class="button margin-top:15px"
-                                    actions="validate, signUp, acceptInvite"
+                                    actions="validate, signUp, signIn, acceptInvite"
                                     href="./">
                                     Accept Invite
                                 </button>
@@ -286,7 +286,7 @@
 
         <div class="position:fixed!important bottom:15px right:15px">
             <div
-                template="signIn, validate, forgotPassword"
+                template="signUp, signIn, validate, forgotPassword, acceptInvite"
                 class="card position:fixed!important bottom:15px right:15px padding:10px {{status}}">
                 <span class="{{type}}">{{message}}</span
                 ><a actions="remove"> X</a>
