@@ -9,7 +9,7 @@
         <meta name="description" content="{{object.meta-description}}" />
         <meta name="keywords" content="{{object.meta-keywords}}" />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content="Yellow Oracle" />
+        <meta name="author" content="{{object.author}}" />
         <meta name="generator" content="Yellow Oracle" />
 
         <!-- Canonical Tag -->
@@ -68,10 +68,7 @@
         <link rel="manifest" href="../manifest.webmanifest" />
     </head>
 
-    <body
-        localstorage-get="user_id"
-        localstorage-attribute="object"
-        localstorage-selector="[array='users']:not([ambassador])[]">
+    <body>
         <!-- Navbar  -->
         <nav
             class="width:auto display:flex align-items:center background:transparent padding-top:10px padding-bottom:10px z-index:1"
