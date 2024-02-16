@@ -137,6 +137,25 @@
                                     value="$search.email"
                                     onload-previous
                                     onload-attribute="value" />
+
+                                <input
+                                    type="checkbox"
+                                    array="users"
+                                    object="$user_id"
+                                    key="ambassadorTerms"
+                                    hidden />
+                                <input
+                                    type="hidden"
+                                    array="users"
+                                    object="$user_id"
+                                    key="answeredQuestions[]"
+                                    value="Discover" />
+                                <input
+                                    type="hidden"
+                                    array="keys"
+                                    object="$user_id"
+                                    key="roles[]"
+                                    value="657726510fee1c6415f70760" />
                             </floating-label>
                             <input
                                 type="hidden"
@@ -274,7 +293,10 @@
                                 value="/password-reset.html" />
 
                             <button class="button margin-top:15px">
-                                <a actions="forgotPassword">Send Email</a>
+                                <a actions="forgotPassword, action(next;)"
+                                    >Send Email</a
+                                >
+                                <a show="#signinform" hide="#forgotpass"></a>
                             </button>
 
                             <a show="#signinform" hide="#forgotpass">Sign In</a>

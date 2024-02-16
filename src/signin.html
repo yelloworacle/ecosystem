@@ -171,7 +171,10 @@
                                 value="/password-reset.html" />
 
                             <button class="button margin-top:15px">
-                                <a actions="forgotPassword">Send Email</a>
+                                <a actions="forgotPassword, action(next;)"
+                                    >Send Email</a
+                                >
+                                <a show="#signin" hide="#forgotpass"></a>
                             </button>
 
                             <a show="#signin" hide="#forgotpass">Sign In</a>
