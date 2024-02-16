@@ -44,16 +44,29 @@
             display: none;
         }
 
+        #forgotpass {
+            display: none;
+        }
+
         [display="signin"] #signin {
             display: block;
         }
-        [display="signin"] #signup {
+        [display="signin"] #signup,
+        [display="signin"] #forgotpass {
             display: none;
         }
         [display="signup"] #signup {
             display: block;
         }
-        [display="signup"] #signin {
+        [display="signup"] #signin,
+        [display="signup"] #forgotpass {
+            display: none;
+        }
+        [display="forgotpass"] #forgotpass {
+            display: block;
+        }
+        [display="forgotpass"] #signin,
+        [display="forgotpass"] #signup {
             display: none;
         }
     </style>
@@ -90,28 +103,111 @@
                     </p>
                 </div>
 
+                <input
+                    value="$search.user_id"
+                    onload-next
+                    onload-attribute="value"
+                    hidden />
+
+                <input
+                    input-next
+                    input-attribute="display"
+                    input-value="signin"
+                    hidden />
+
                 <section
                     class="display:flex align-items:center justify-content:center width:100%">
                     <form
-                        id="signinform"
-                        realtime="false"
+                        id="signup"
                         array="users"
                         class="flex-grow:1 max-width:400px">
                         <div
                             class="overflow:hidden padding:0px_25px background:white">
                             <div class="float:left width:75% padding-top:25px">
+                                <h3>Sign Up</h3>
+                            </div>
+                            <div
+                                class="float:right width:25% padding-top:5px font-size:70px line-height:100px text-align:right color:very-light-gray">
+                                <i
+                                    class="height:70px"
+                                    src="./assets/svg/sign-in-alt.svg"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="padding:25px background:gainsboro text-align:left">
+                            <floating-label class="margin-top:20px">
                                 <input
-                                    value="$search.user_id"
-                                    onload-next
-                                    onload-attribute="value"
-                                    hidden />
+                                    type="email"
+                                    id="email"
+                                    key="email"
+                                    name="email"
+                                    autocomplete="email"
+                                    placeholder="Email"
+                                    required
+                                    unique
+                                    readonly />
                                 <input
-                                    input-next
-                                    input-attribute="value"
-                                    input-value="Sign In"
-                                    hidden />
+                                    type="hidden"
+                                    value="$search.email"
+                                    onload-previous
+                                    onload-attribute="value" />
+                            </floating-label>
 
-                                <h3 id="authContainer">Sign Up</h3>
+                            <input
+                                type="checkbox"
+                                key="ambassadorTerms"
+                                hidden />
+                            <input
+                                type="hidden"
+                                key="answeredQuestions[]"
+                                value="Discover" />
+                            <input
+                                type="hidden"
+                                key="token"
+                                value="$search.token"
+                                required />
+                            <input type="hidden" key="_id" />
+
+                            <floating-label class="margin-top:20px">
+                                <input
+                                    type="password"
+                                    key="password"
+                                    placeholder="Password"
+                                    class="floating-label" />
+                            </floating-label>
+                            <input
+                                type="hidden"
+                                key="roles[]"
+                                value="657726510fee1c6415f70760" />
+
+                            <button
+                                class="button margin-top:15px"
+                                actions="validate, signUp, signIn, acceptInvite"
+                                href="./">
+                                Accept Invite
+                            </button>
+
+                            <p class="signup-prompt">
+                                Already have an account?
+                                <a
+                                    click-closest="section"
+                                    click-attribute="display"
+                                    click-value="signin"
+                                    >Click here.</a
+                                >
+                            </p>
+                        </div>
+                    </form>
+
+                    <form
+                        id="signin"
+                        array="users"
+                        class="flex-grow:1 max-width:400px"
+                        hidden>
+                        <div
+                            class="overflow:hidden padding:0px_25px background:white">
+                            <div class="float:left width:75% padding-top:25px">
+                                <h3>Sign In</h3>
                             </div>
                             <div
                                 class="float:right width:25% padding-top:5px font-size:70px line-height:100px text-align:right color:very-light-gray">
@@ -137,26 +233,8 @@
                                     value="$search.email"
                                     onload-previous
                                     onload-attribute="value" />
-
-                                <input
-                                    type="checkbox"
-                                    array="users"
-                                    object="$user_id"
-                                    key="ambassadorTerms"
-                                    hidden />
-                                <input
-                                    type="hidden"
-                                    array="users"
-                                    object="$user_id"
-                                    key="answeredQuestions[]"
-                                    value="Discover" />
-                                <input
-                                    type="hidden"
-                                    array="keys"
-                                    object="$user_id"
-                                    key="roles[]"
-                                    value="657726510fee1c6415f70760" />
                             </floating-label>
+
                             <input
                                 type="hidden"
                                 key="token"
@@ -171,77 +249,37 @@
                                     class="floating-label" />
                             </floating-label>
 
-                            <input
-                                type="hidden"
-                                value="$search.user_id"
-                                onload-next
-                                onload-attribute="value" />
-
-                            <input
-                                type="hidden"
-                                input-parent
-                                input-attribute="display"
-                                input-value="signin"
-                                key="_id" />
-
-                            <div id="signin">
-                                <div
-                                    class="display:flex align-items:center margin-top:15px">
-                                    <button
-                                        class="button"
-                                        actions="validate, signIn, acceptInvite"
-                                        href="./">
-                                        Accept Invite
-                                    </button>
-                                    <a
-                                        show="#forgotpass"
-                                        hide="#signinform"
-                                        class="padding:10px"
-                                        >Forgot Password</a
-                                    >
-                                </div>
-                                <p class="signup-prompt">
-                                    Don't have an account?
-                                    <a
-                                        click-closest="section"
-                                        click-attribute="display"
-                                        click-value="signup"
-                                        toggle-attribute="value"
-                                        toggle-value="Sign Up"
-                                        toggle-selector="document; #authContainer"
-                                        >Click here.</a
-                                    >
-                                </p>
-                            </div>
-                            <div id="signup">
+                            <div
+                                class="display:flex align-items:center margin-top:15px">
                                 <button
-                                    class="button margin-top:15px"
-                                    actions="validate, signUp, signIn, acceptInvite"
+                                    class="button"
+                                    actions="validate, signIn, acceptInvite"
                                     href="./">
                                     Accept Invite
                                 </button>
-
-                                <p class="signup-prompt">
-                                    Already have an account?
-                                    <a
-                                        click-closest="section"
-                                        click-attribute="display"
-                                        click-value="signin"
-                                        toggle-attribute="value"
-                                        toggle-value="Sign In"
-                                        toggle-selector="document; #authContainer"
-                                        >Click here.</a
-                                    >
-                                </p>
+                                <a
+                                    click-closest="section"
+                                    click-attribute="display"
+                                    click-value="forgotpass"
+                                    class="padding:10px"
+                                    >Forgot Password</a
+                                >
                             </div>
+                            <p class="signup-prompt">
+                                Don't have an account?
+                                <a
+                                    click-closest="section"
+                                    click-attribute="display"
+                                    click-value="signup"
+                                    >Click here.</a
+                                >
+                            </p>
                         </div>
                     </form>
 
                     <form
-                        realtime="false"
-                        array="users"
-                        hidden
                         id="forgotpass"
+                        array="users"
                         class="flex-grow:1 max-width:400px">
                         <div
                             class="overflow:hidden padding:0px_25px background:white">
@@ -296,10 +334,18 @@
                                 <a actions="forgotPassword, action(next;)"
                                     >Send Email</a
                                 >
-                                <a show="#signinform" hide="#forgotpass"></a>
+                                <a
+                                    click-closest="section"
+                                    click-attribute="display"
+                                    click-value="signin"></a>
                             </button>
 
-                            <a show="#signinform" hide="#forgotpass">Sign In</a>
+                            <a
+                                click-closest="section"
+                                click-attribute="display"
+                                click-value="signin"
+                                >Sign In</a
+                            >
                         </div>
                     </form>
                 </section>
