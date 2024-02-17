@@ -124,19 +124,10 @@
         </li>
 
         <li class="">
-            <input
-                type="hidden"
-                array="users"
-                object="$user_id"
-                key="subscription"
-                input-next
-                input-attribute="state-src"
-                input-value="{{path}}account/subscription/" />
-
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="{{path}}checkout/"
+                state-src="{{path}}account/subscription/"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
@@ -148,19 +139,10 @@
         </li>
 
         <li class="">
-            <input
-                type="hidden"
-                array="users"
-                object="$user_id"
-                key="subscription"
-                input-next
-                input-attribute="state-src"
-                input-value="{{path}}account/members/" />
-
             <a
                 actions="state"
                 state_to="mainView"
-                state-src="{{path}}checkout/"
+                state-src="{{path}}account/members/"
                 state-overwrite
                 class="display:flex align-items:center">
                 <span
