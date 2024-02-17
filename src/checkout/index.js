@@ -99,7 +99,7 @@
                         });
 
                         if (data.stripe.id) {
-                            CoCreate.crud.send({
+                            await CoCreate.crud.send({
                                 method: "object.update",
                                 broadcast: false,
                                 array: "users",
