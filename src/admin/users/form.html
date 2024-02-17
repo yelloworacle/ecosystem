@@ -23,6 +23,14 @@
             hover-selector=".options">
             <div class="display:none options">
                 <a
+                    actions="delete, action(next;)"
+                    array="keys"
+                    crud="false"
+                    read="false"
+                    class="padding:0px_10px">
+                    <i src="./assets/svg/trash-alt.svg"></i>
+                </a>
+                <a
                     actions="delete, state"
                     array="users"
                     crud="false"
@@ -30,7 +38,7 @@
                     state_to="mainView"
                     state-src="./admin/users/datatable.html"
                     state-overwrite
-                    class="padding:0px_10px">
+                    hidden>
                     <i src="./assets/svg/trash-alt.svg"></i>
                 </a>
                 <a
