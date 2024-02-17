@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <a href="./signin.html" session="false" hidden></a>
+<input
+    id="test"
+    type="hidden"
+    array="users"
+    object="$user_id"
+    key="subscription"
+    input-next
+    input-if="false"
+    input-attribute="$click" />
+<a
+    actions="state"
+    state_to="mainView"
+    state-src="./checkout/"
+    state-overwrite></a>
 
 <div class="width:100% max-width:600px" module="stripe">
     <form
