@@ -48,14 +48,19 @@
             ></a>
         </div>
     </div>
-
     <floating-label class="input-300">
         <input
             type="text"
-            key="name"
-            placeholder="Name"
-            class="floating-label"
-            required />
+            key="firstname"
+            placeholder="First Name"
+            class="floating-label" />
+    </floating-label>
+    <floating-label class="input-300">
+        <input
+            type="text"
+            key="lastname"
+            placeholder="Last Name"
+            class="floating-label" />
     </floating-label>
     <floating-label class="input-300">
         <input
@@ -64,7 +69,6 @@
             placeholder="Email"
             class="floating-label"
             email
-            unique
             required />
     </floating-label>
     <floating-label class="input-300">
@@ -74,21 +78,21 @@
             placeholder="Phone"
             class="floating-label" />
     </floating-label>
-    <floating-label class="input-300">
+    <!-- <floating-label class="input-300">
         <input type="password" key="password" placeholder="password"
-        class="floating-label" length:="8" required/>
+        class="floating-label" length="8" required/>
     </floating-label>
-
-    <div class="height:0px width:0px overflow:hidden">
+ -->
+    <!-- <div class="height:0px width:0px overflow:hidden">
         <input type="email" name="email" autocomplete="email" />
         <input type="tel" name="phone" autocomplete="tel" />
         <input
             type="password"
             name="password"
             autocomplete="current-password" />
-    </div>
+    </div> -->
 
-    <div
+    <!-- <div
         id="questions"
         object
         key="questions"
@@ -100,7 +104,7 @@
             value="{{questions.value}}"
             template
             read="false" />
-    </div>
+    </div> -->
 
     <button
         actions="validate, save, state"
