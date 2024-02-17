@@ -57,6 +57,7 @@
             submitButton.innerHTML = "Processing";
 
             var additionalData = {
+                ambassadorAccount: document.getElementById("ambassadorAccount").value,
                 customer: document.getElementById("customer").value,
                 name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
@@ -86,7 +87,7 @@
 
                         }
 
-                        let data = await CoCreate.socket.send({
+                        let data = {
                             method: "stripe.subscriptions.create",
                             broadcast: false,
                             stripe: {
@@ -96,7 +97,15 @@
                                 expand: ['latest_invoice.payment_intent']
                             },
                             environment
-                        });
+                        }
+
+                        if (ambassadorAccount)
+                            data.stripe.transfer_data = {
+                                destination: ambassadorAccount,
+                                application_fee_percent: 15 // Or use application_fee_amount for a fixed fee
+                            }
+
+                        data = await CoCreate.socket.send(data);
 
                         if (data.stripe.id) {
                             await CoCreate.crud.send({

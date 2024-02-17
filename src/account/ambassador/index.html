@@ -305,6 +305,15 @@
             <input
                 type="hidden"
                 stripe="accounts.create"
+                stripe-key="id"
+                stripe-request="false"
+                array="users"
+                object="$user_id"
+                key="ambassadorAccount" />
+
+            <input
+                type="hidden"
+                stripe="accounts.create"
                 stripe-key="type"
                 value="custom" />
             <input
@@ -334,6 +343,16 @@
                 stripe="accounts.create"
                 stripe-key="settings.payments.statement_descriptor"
                 value="yelloworacle" />
+            <input
+                type="hidden"
+                stripe="accounts.create"
+                stripe-key="settings.payouts.schedule.interval"
+                value="weekly" />
+            <input
+                type="hidden"
+                stripe="accounts.create"
+                stripe-key="settings.payouts.schedule.weekly_anchor"
+                value="monday" />
             <input
                 type="checkbox"
                 stripe="accounts.create"
