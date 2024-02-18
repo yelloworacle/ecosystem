@@ -1,36 +1,36 @@
-CoCreate.actions.init({
-    name: "manageCareers",
-    callback: async (action) => {
-        let value = action.form[0].getValue()
-        const element = document.getElementById('mergedCareers');
-
-        let preValue = element.getValue()
-        let newValue = [...value, ...preValue]
-        element.setValue(newValue, false)
-        document.dispatchEvent(new CustomEvent('manageCareers', {
-            detail: {}
-        }));
-
-        let careers = await CoCreate.socket.send({
-            method: "object.read",
-            array: "careers",
-            $filter: {
-                query: { name: { $in: value } }
-            }
-        });
-
-        for (let careerName of value) {
-            const careerExists = careers.object.some(existingCareer => existingCareer.name === careerName);
-
-            if (!careerExists) {
-                addCareer(careerName, element, newValue)
-            }
-        }
-
-    }
-});
-
 (function () {
+    CoCreate.actions.init({
+        name: "manageCareers",
+        callback: async (action) => {
+            let value = action.form[0].getValue()
+            const element = document.getElementById('mergedCareers');
+
+            let preValue = element.getValue()
+            let newValue = [...value, ...preValue]
+            element.setValue(newValue, false)
+            document.dispatchEvent(new CustomEvent('manageCareers', {
+                detail: {}
+            }));
+
+            let careers = await CoCreate.socket.send({
+                method: "object.read",
+                array: "careers",
+                $filter: {
+                    query: { name: { $in: value } }
+                }
+            });
+
+            for (let careerName of value) {
+                const careerExists = careers.object.some(existingCareer => existingCareer.name === careerName);
+
+                if (!careerExists) {
+                    addCareer(careerName, element, newValue)
+                }
+            }
+
+        }
+    });
+
     const careerFields = [`
     name
     salary
