@@ -19,6 +19,7 @@
     #individual {
         display: none;
     }
+
     .forms[business="individual"] #individual {
         display: block;
     }
@@ -29,6 +30,9 @@
     .forms[display="individual"] individual.form {
         display: flex;
     }
+    /* .forms[display="individual"] company.form {
+        display: none;
+    } */
     .forms[display="company"] company.form {
         display: flex;
     }
@@ -125,5 +129,13 @@
             class="form width:100% display:flex flex-wrap:wrap gap:15px"
             src="account/ambassador/form/documents.html">
         </documents>
+    </div>
+</div>
+
+<div class="position:fixed!important bottom:15px right:15px z-index:2">
+    <div
+        template="validate, stripe.accounts"
+        class="card position:fixed!important bottom:15px right:15px padding:10px {{status}}">
+        <span class="{{type}}">{{message}}</span><a actions="remove"> X</a>
     </div>
 </div>
