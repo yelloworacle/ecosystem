@@ -74,6 +74,44 @@
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
         <section>
+            <form array="users" object="ObjectId()" hidden>
+                <input key="answeredQuestions[]" />
+                <input key="Discover" />
+                <input key="subscription" value="false" />
+                <input type="checkbox" key="ambassadorTerms" />
+                <a id="createUser" actions="save"></a>
+            </form>
+
+            <form array="users" object="$userId" hidden>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="hidden-input"
+                    array="users"
+                    object="$user_id"
+                    key="email"
+                    autocomplete="email" />
+
+                <input
+                    type="hidden"
+                    id="roles"
+                    array="keys"
+                    object="$user_id"
+                    key="roles[]"
+                    value="657726510fee1c6415f70760" />
+
+                <!-- Check if ambassadorid exists -->
+                <input
+                    type="hidden"
+                    id="amabassador"
+                    array="users"
+                    object="$user_id"
+                    key="ambassador"
+                    value="ambassadorIdPlaceholder" />
+                <a id="signup" actions="save"></a>
+            </form>
+
             <div
                 filter-sort-key="position"
                 filter-sort-direction="asc"
@@ -179,7 +217,6 @@
                 id="subscription"
                 array="subscriptions"
                 object=""
-                realtime="false"
                 key="fields"
                 input-next="[template] #subscribed"
                 input-attribute="value"
@@ -324,7 +361,6 @@
         filter-operator="$in"
         filter-selector="document; #careers"
         filter-case-sensitive="false"
-        value-type="json"
         input-attribute="array"
         input-value="careers"
         input-selector="document; #careers"
@@ -343,6 +379,7 @@
             let user_id = localStorage.getItem("user_id");
             if (!user_id) {
                 console.log("test");
+                // document.getElementById("createUser").click();
                 document
                     .getElementById("answeredQuestions")
                     .setValue("Discover");

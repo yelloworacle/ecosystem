@@ -7,7 +7,6 @@
             actions="state"
             state_to="mainView"
             state-src="./admin/users/datatable.html"
-            state-overwrite
             class="padding:0px_10px"
             ><i src="./assets/svg/angle-left.svg"></i
         ></a>
@@ -191,8 +190,7 @@
                         <a
                             actions="state"
                             state_to="mainView"
-                            state-src="./admin/payouts/form.html"
-                            state-overwrite>
+                            state-src="./admin/payouts/form.html">
                             <h4
                                 array="users"
                                 object="{{object.user_id}}"
@@ -211,8 +209,7 @@
                     <a
                         actions="state"
                         state_to="mainView"
-                        state-src="./admin/payouts/form.html"
-                        state-overwrite>
+                        state-src="./admin/payouts/form.html">
                         {{object.amount}}
                         <div
                             state_to="form-fields"
@@ -223,8 +220,7 @@
                     <a
                         actions="state"
                         state_to="mainView"
-                        state-src="./admin/payouts/form.html"
-                        state-overwrite>
+                        state-src="./admin/payouts/form.html">
                         {{object.status}}
                         <div
                             state_to="form-fields"
@@ -235,8 +231,7 @@
                     <a
                         actions="state"
                         state_to="mainView"
-                        state-src="./admin/payouts/form.html"
-                        state-overwrite>
+                        state-src="./admin/payouts/form.html">
                         <b>{{object._id}}</b>
                         <div
                             state_to="form-fields"
@@ -253,9 +248,8 @@
         actions="state"
         state_to="mainView"
         state-src="./admin/payouts/form.html"
-        state-overwrite
         class="button-round">
         <i src="./assets/svg/plus.svg"></i>
-        <div state_to="form-fields" state-object="" state-overwrite></div>
+        <div state_to="form-fields" state-object=""></div>
     </button>
 </div>

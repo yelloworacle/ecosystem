@@ -7,7 +7,6 @@
             actions="state"
             state_to="mainView"
             state-src="./admin/ai/datatable.html"
-            state-overwrite
             class="padding:0px_10px"
             ><i src="./assets/svg/angle-left.svg"></i
         ></a>
@@ -144,8 +143,7 @@
                         <a
                             actions="state"
                             state_to="mainView"
-                            state-src="./admin/ai/form.html"
-                            state-overwrite>
+                            state-src="./admin/ai/form.html">
                             <h4>{{object.type}}</h4>
                             <p>{{object.content}}</p>
                             <div
@@ -158,8 +156,7 @@
                     <a
                         actions="state"
                         state_to="mainView"
-                        state-src="./admin/ai/form.html"
-                        state-overwrite>
+                        state-src="./admin/ai/form.html">
                         <b>{{object._id}}</b>
                         <div
                             state_to="form-fields"
@@ -174,9 +171,8 @@
         actions="state"
         state_to="mainView"
         state-src="./admin/ai/form.html"
-        state-overwrite
         class="button-round">
         <i src="./assets/svg/plus.svg"></i>
-        <div state_to="form-fields" state-object="" state-overwrite></div>
+        <div state_to="form-fields" state-object=""></div>
     </button>
 </div>

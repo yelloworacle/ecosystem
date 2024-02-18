@@ -67,7 +67,6 @@
                 actions="state"
                 state_to="mainView"
                 state-src="./account/ambassador/form/"
-                state-overwrite=""
                 class="float:right">
                 <i src="./assets/svg/cog.svg"></i> Payout Settings
             </button>
@@ -214,9 +213,8 @@
                         class="padding:10px display:flex min-width:200px align-items:center">
                         <a
                             actions="state"
-                            state_to="adminView"
-                            state-src="./users/form.html"
-                            state-overwrite>
+                            state_to="mainView"
+                            state-src="./users/form.html">
                             <h4>{{object.amount}}</h4>
                             <div
                                 state_to="form-fields"
@@ -226,9 +224,8 @@
                     <td class="padding:10px">
                         <a
                             actions="state"
-                            state_to="adminView"
-                            state-src="./users/form.html"
-                            state-overwrite>
+                            state_to="mainView"
+                            state-src="./users/form.html">
                             <b>{{object.status}}</b>
                             <div
                                 state_to="form-fields"
@@ -238,9 +235,8 @@
                     <td class="padding:10px">
                         <a
                             actions="state"
-                            state_to="adminView"
-                            state-src="./users/form.html"
-                            state-overwrite>
+                            state_to="mainView"
+                            state-src="./users/form.html">
                             <b>{{object._id}}</b>
                             <div
                                 state_to="form-fields"
