@@ -164,28 +164,10 @@
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/clipboard-question.svg"></i>
-                </span>
-                <span>Subscription</span>
-            </a>
-        </li>
-
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}account/members/"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
+                    <!-- <i src="{{path}}assets/svg/clipboard-question.svg"></i> -->
                     <i src="{{path}}assets/svg/people-roof.svg"></i>
                 </span>
-                <span>Members</span>
+                <span>Subscription</span>
             </a>
         </li>
 
@@ -205,6 +187,23 @@
                     <i src="{{path}}assets/svg/bullhorn.svg"></i>
                 </span>
                 <span>Ambassador</span>
+            </a>
+        </li>
+
+        <li class="">
+            <a
+                share
+                click-closest="sidenav"
+                click-attribute="style"
+                click-value="width:0px"
+                click-if="<=993px"
+                click-if-value="$innerWidth"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i src="{{path}}assets/svg/share-alt.svg"></i>
+                </span>
+                <span>Share</span>
             </a>
         </li>
     </menu>
