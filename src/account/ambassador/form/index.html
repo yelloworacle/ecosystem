@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<a href="./signin.html" session="false" hidden></a>
+
 <style>
     .accordion-button {
         width: 100%;
@@ -43,7 +45,8 @@
         display: flex;
     }
 </style>
-<div class="forms width:100% max-width:800px">
+
+<div class="forms width:100% max-width:800px" module="stripe">
     <div
         class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
         <a
@@ -138,3 +141,20 @@
         <span class="{{type}}">{{message}}</span><a actions="remove"> X</a>
     </div>
 </div>
+
+<script>
+    (function () {
+        CoCreate.observer.init({
+            name: "setEmailInput",
+            observe: ["addedNodes"],
+            target: "[value='$ip']",
+            callback: async (mutation) => {
+                fetch("https://api.ipify.org?format=json")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        mutation.target.value = data.ip;
+                    });
+            },
+        });
+    })();
+</script>

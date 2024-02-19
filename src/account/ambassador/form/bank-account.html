@@ -6,6 +6,21 @@
     object="$user_id"
     realtime="false"
     class="width:100% display:flex flex-wrap:wrap gap:15px">
+    <input
+        type="hidden"
+        array="users"
+        object="$user_id"
+        key="ambassadorAccount"
+        stripe="accounts.update"
+        stripe-key="$param[0]"
+        required />
+    <input
+        type="hidden"
+        stripe="accounts.update"
+        stripe-key="external_account.object"
+        value="bank_account"
+        required />
+
     <floating-label class="flex-grow:1">
         <input
             type="text"
@@ -67,7 +82,7 @@
             src="./account/ambassador/form/countries.html"></select>
     </floating-label>
 
-    <button actions="validate, stripe.accounts.update" class="width:100%">
+    <button actions="validate, save, stripe.accounts.update" class="width:100%">
         Save
     </button>
 </form>

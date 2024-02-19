@@ -38,11 +38,20 @@
             stripe-key="id"
             required />
 
-        <button actions="validate, stripe.files.create">Upload</button>
+        <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
 
     <!-- Form to Update Stripe Account with Bank Account Ownership Verification ID -->
     <form class="width:100% display:flex flex-wrap:wrap margin-top:20px">
+        <input
+            type="hidden"
+            array="users"
+            object="$user_id"
+            key="ambassadorAccount"
+            stripe="accounts.update"
+            stripe-key="$param[0]"
+            required />
+
         <input
             type="hidden"
             array="users"
@@ -51,7 +60,7 @@
             stripe-key="documents.bank_account_ownership_verification.files[]"
             required />
 
-        <button actions="validate, stripe.accounts.update">
+        <button actions="validate, save, stripe.accounts.update">
             Update Account
         </button>
     </form>

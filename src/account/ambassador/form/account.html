@@ -6,6 +6,15 @@
     array="users"
     object="$user_id"
     class="width:100% display:flex flex-wrap:wrap gap:15px">
+    <input
+        type="hidden"
+        array="users"
+        object="$user_id"
+        key="ambassadorAccount"
+        stripe="accounts.update"
+        stripe-key="$param[0]"
+        required />
+
     <floating-label class="flex-grow:1">
         <select
             key="business_type"
@@ -33,7 +42,7 @@
             src="./account/ambassador/form/countries.html"></select>
     </floating-label>
 
-    <button actions="validate, stripe.accounts.update" class="width:100%">
+    <button actions="validate, save, stripe.accounts.update" class="width:100%">
         Save
     </button>
 </form>

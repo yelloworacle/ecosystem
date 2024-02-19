@@ -18,6 +18,28 @@
             display: block;
         }
     </style>
+    <input
+        type="hidden"
+        array="users"
+        object="$user_id"
+        key="ambassadorAccount"
+        stripe="accounts.update"
+        stripe-key="$param[0]"
+        required />
+    <input
+        type="hidden"
+        stripe="accounts.update"
+        stripe-key="tos_acceptance.ip"
+        value="$ip" />
+
+    <input
+        type="date"
+        stripe="accounts.update"
+        stripe-key="tos_acceptance.date"
+        value-type="toUnixTimestamp"
+        value="$now"
+        hidden />
+
     <floating-label class="flex-grow:1">
         <input
             type="text"
@@ -98,7 +120,7 @@
             placeholder="Registration Number" />
     </floating-label>
 
-    <button actions="validate, stripe.accounts.update" class="width:100%">
+    <button actions="validate, save, stripe.accounts.update" class="width:100%">
         Save
     </button>
 </form>
@@ -141,7 +163,7 @@
             stripe-key="id"
             required />
 
-        <button actions="validate, stripe.files.create">Upload</button>
+        <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
 
     <!-- Additional Document Back Upload -->
@@ -181,7 +203,7 @@
             stripe-key="id"
             required />
 
-        <button actions="validate, stripe.files.create">Upload</button>
+        <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
 
     <!-- Save Additional Document IDs to Stripe Account -->
@@ -189,6 +211,15 @@
         array="users"
         object="$user_id"
         class="width:100% display:flex flex-wrap:wrap margin-top:20px">
+        <input
+            type="hidden"
+            array="users"
+            object="$user_id"
+            key="ambassadorAccount"
+            stripe="accounts.update"
+            stripe-key="$param[0]"
+            required />
+
         <input
             type="hidden"
             key="company_additional_document_front.id"
@@ -201,6 +232,6 @@
             stripe="accounts.update"
             stripe-key="company.verification.additional_document.back" />
 
-        <button actions="validate, stripe.accounts.update">Save</button>
+        <button actions="validate, save, stripe.accounts.update">Save</button>
     </form>
 </additional-document>
