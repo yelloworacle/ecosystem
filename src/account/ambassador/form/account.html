@@ -1,48 +1,18 @@
 <!DOCTYPE html>
 
 <!-- Account -->
-<form
-    realtime="false"
-    array="users"
-    object="$user_id"
-    class="width:100% display:flex flex-wrap:wrap gap:15px">
-    <input
-        type="hidden"
-        array="users"
-        object="$user_id"
-        key="ambassadorAccount"
+<floating-label class="flex-grow:1">
+    <select
+        key="business_type"
         stripe="accounts.update"
-        stripe-key="$param[0]"
-        required />
-
-    <floating-label class="flex-grow:1">
-        <select
-            key="business_type"
-            stripe="accounts.update"
-            stripe-key="business_type"
-            placeholder="Bussiness Type"
-            input-closest=".forms"
-            input-attribute="business">
-            <option value="" disabled selected>Select a Type</option>
-            <option value="individual">Individual</option>
-            <option value="company">Company</option>
-            <option value="non_profit">non_profit</option>
-            <option value="BR">government_entity</option>
-        </select>
-    </floating-label>
-
-    <floating-label class="flex-grow:1">
-        <select
-            id="country"
-            key="country"
-            stripe="accounts.update"
-            stripe-key="country"
-            placeholder="Country"
-            required
-            src="./account/ambassador/form/countries.html"></select>
-    </floating-label>
-
-    <button actions="validate, save, stripe.accounts.update" class="width:100%">
-        Save
-    </button>
-</form>
+        stripe-key="business_type"
+        placeholder="Bussiness Type"
+        input-closest=".forms"
+        input-attribute="business">
+        <option value="" disabled selected>Select a Type</option>
+        <option value="individual">Individual</option>
+        <option value="company">Company</option>
+        <option value="non_profit">non_profit</option>
+        <option value="BR">government_entity</option>
+    </select>
+</floating-label>

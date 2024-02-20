@@ -1,191 +1,160 @@
 <!DOCTYPE html>
 
 <!-- Individual -->
-<form
-    realtime="false"
-    array="users"
-    object="$user_id"
-    class="width:100% display:flex flex-wrap:wrap gap:15px">
-    <style>
-        #ssn_last_4 {
-            display: none;
-        }
-        form[country="US"] #ssn_last_4 {
-            display: block;
-        }
-    </style>
+<style>
+    #ssn_last_4 {
+        display: none;
+    }
+    form[country="US"] #ssn_last_4 {
+        display: block;
+    }
+</style>
+
+<input
+    type="hidden"
+    stripe="accounts.update"
+    stripe-key="tos_acceptance.ip"
+    value="$ip" />
+
+<input
+    type="date"
+    stripe="accounts.update"
+    stripe-key="tos_acceptance.date"
+    value-type="toUnixTimestamp"
+    value="$now"
+    hidden />
+
+<floating-label class="flex-grow:1">
     <input
-        type="hidden"
-        array="users"
-        object="$user_id"
-        key="ambassadorAccount"
-        stripe="accounts.update"
-        stripe-key="$param[0]"
-        required />
+        type="text"
+        key="firstname"
+        stripe="accounts.create"
+        stripe-key="individual.first_name"
+        placeholder="First Name" />
+</floating-label>
 
+<floating-label class="flex-grow:1">
     <input
-        type="hidden"
-        stripe="accounts.update"
-        stripe-key="tos_acceptance.ip"
-        value="$ip" />
+        type="text"
+        key="lastname"
+        stripe="accounts.create"
+        stripe-key="individual.last_name"
+        placeholder="Last Name" />
+</floating-label>
 
+<floating-label class="flex-grow:1">
     <input
-        type="date"
+        type="text"
+        key="email"
         stripe="accounts.update"
-        stripe-key="tos_acceptance.date"
-        value-type="toUnixTimestamp"
-        value="$now"
-        hidden />
+        stripe-key="individual.email"
+        placeholder="Email" />
+</floating-label>
 
-    <floating-label class="flex-grow:1">
+<floating-label class="flex-grow:1">
+    <input
+        type="tel"
+        key="phone"
+        stripe="accounts.update"
+        stripe-key="individual.phone"
+        placeholder="Phone" />
+</floating-label>
+
+<!-- address field -->
+<div class="width:100% display:flex flex-wrap:wrap gap:15px">
+    <floating-label class="flex-grow:1 width:100%">
         <input
             type="text"
-            key="firstname"
-            stripe="accounts.create"
-            stripe-key="individual.first_name"
-            placeholder="First Name"
-            required />
-    </floating-label>
-
-    <floating-label class="flex-grow:1">
-        <input
-            type="text"
-            key="lastname"
-            stripe="accounts.create"
-            stripe-key="individual.last_name"
-            placeholder="Last Name"
-            required />
-    </floating-label>
-
-    <floating-label class="flex-grow:1">
-        <input
-            type="text"
-            key="email"
+            key="address_line1"
             stripe="accounts.update"
-            stripe-key="individual.email"
-            placeholder="Email"
-            required />
+            stripe-key="individual.address.line1"
+            placeholder="Address Line 1" />
     </floating-label>
 
-    <floating-label class="flex-grow:1">
-        <input
-            type="tel"
-            key="phone"
-            stripe="accounts.update"
-            stripe-key="individual.phone"
-            placeholder="Phone"
-            required />
-    </floating-label>
-
-    <!-- address field -->
-    <div class="width:100% display:flex flex-wrap:wrap gap:15px">
-        <floating-label class="flex-grow:1 width:100%">
-            <input
-                type="text"
-                key="address_line1"
-                stripe="accounts.update"
-                stripe-key="individual.address.line1"
-                placeholder="Address Line 1"
-                required />
-        </floating-label>
-
-        <floating-label class="flex-grow:1 width:190px">
-            <input
-                type="text"
-                key="address.city"
-                stripe="accounts.update"
-                stripe-key="individual.address.city"
-                placeholder="City"
-                required />
-        </floating-label>
-
-        <floating-label class="flex-grow:1 width:190px">
-            <input
-                type="text"
-                key="address.state"
-                stripe="accounts.update"
-                stripe-key="individual.address.state"
-                placeholder="State"
-                required />
-        </floating-label>
-
-        <floating-label class="flex-grow:1 width:230px">
-            <select
-                key="address.country"
-                stripe="accounts.update"
-                stripe-key="individual.address.country"
-                placeholder="Country"
-                input-closest="form"
-                input-attribute="country"
-                required
-                src="./account/ambassador/form/countries.html"></select>
-        </floating-label>
-        <floating-label class="flex-grow:1 width:115px">
-            <input
-                type="text"
-                key="address.postal_code"
-                stripe="accounts.update"
-                stripe-key="individual.address.postal_code"
-                placeholder="Postal Code"
-                required />
-        </floating-label>
-    </div>
-
-    <!-- Date of Birth Fields -->
-    <div
-        class="floating-label display:flex flex-wrap:wrap gap:15px"
-        placeholder="Date of Birth:"
-        active>
-        <floating-label class="flex-grow:1 width:75px">
-            <input
-                type="number"
-                key="individual.dob.day"
-                stripe="accounts.update"
-                stripe-key="individual.dob.day"
-                placeholder="Day"
-                min="1"
-                max="31"
-                required />
-        </floating-label>
-        <floating-label class="flex-grow:1 width:90px">
-            <input
-                type="number"
-                key="individual.dob.month"
-                stripe="accounts.update"
-                stripe-key="individual.dob.month"
-                placeholder="Month"
-                min="1"
-                max="12"
-                required />
-        </floating-label>
-        <floating-label class="flex-grow:1 width:80px">
-            <input
-                type="number"
-                key="individual.dob.year"
-                stripe="accounts.update"
-                stripe-key="individual.dob.year"
-                placeholder="Year"
-                min="1900"
-                max="2006"
-                required />
-        </floating-label>
-    </div>
-
-    <!-- Individual Location Specific -->
-    <floating-label id="ssn_last_4" class="flex-grow:1">
+    <floating-label class="flex-grow:1 width:190px">
         <input
             type="text"
-            key="ssn_last_4"
+            key="address.city"
             stripe="accounts.update"
-            stripe-key="individual.ssn_last_4"
-            placeholder="SSN Last 4 Digits"
-            required />
+            stripe-key="individual.address.city"
+            placeholder="City" />
     </floating-label>
 
-    <button actions="validate, save, stripe.accounts.update" class="width:100%">
-        Save
-    </button>
-</form>
+    <floating-label class="flex-grow:1 width:190px">
+        <input
+            type="text"
+            key="address.state"
+            stripe="accounts.update"
+            stripe-key="individual.address.state"
+            placeholder="State" />
+    </floating-label>
+
+    <floating-label class="flex-grow:1 width:230px">
+        <select
+            key="address.country"
+            stripe="accounts.update"
+            stripe-key="individual.address.country"
+            placeholder="Country"
+            input-closest="form"
+            input-attribute="country"
+            src="./account/ambassador/form/countries.html"></select>
+    </floating-label>
+    <floating-label class="flex-grow:1 width:115px">
+        <input
+            type="text"
+            key="address.postal_code"
+            stripe="accounts.update"
+            stripe-key="individual.address.postal_code"
+            placeholder="Postal Code" />
+    </floating-label>
+</div>
+
+<!-- Date of Birth Fields -->
+<div
+    class="floating-label display:flex flex-wrap:wrap gap:15px"
+    placeholder="Date of Birth:"
+    active>
+    <floating-label class="flex-grow:1 width:75px">
+        <input
+            type="number"
+            key="individual.dob.day"
+            stripe="accounts.update"
+            stripe-key="individual.dob.day"
+            placeholder="Day"
+            min="1"
+            max="31" />
+    </floating-label>
+    <floating-label class="flex-grow:1 width:90px">
+        <input
+            type="number"
+            key="individual.dob.month"
+            stripe="accounts.update"
+            stripe-key="individual.dob.month"
+            placeholder="Month"
+            min="1"
+            max="12" />
+    </floating-label>
+    <floating-label class="flex-grow:1 width:80px">
+        <input
+            type="number"
+            key="individual.dob.year"
+            stripe="accounts.update"
+            stripe-key="individual.dob.year"
+            placeholder="Year"
+            min="1900"
+            max="2006" />
+    </floating-label>
+</div>
+
+<!-- Individual Location Specific -->
+<floating-label id="ssn_last_4" class="flex-grow:1">
+    <input
+        type="text"
+        key="ssn_last_4"
+        stripe="accounts.update"
+        stripe-key="individual.ssn_last_4"
+        placeholder="SSN Last 4 Digits" />
+</floating-label>
 
 <identity-document hidden>
     <form
@@ -196,33 +165,28 @@
             <input
                 type="file"
                 key="identity_document_front"
-                placeholder="Identity Document Front"
-                required />
+                placeholder="Identity Document Front" />
         </floating-label>
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="purpose"
-            value="identity_document"
-            required />
+            value="identity_document" />
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="file.name"
-            value="identity_document_front"
-            required />
+            value="identity_document_front" />
         <input
             type="hidden"
             key="identity_document_front.src"
             stripe="files.create"
-            stripe-key="file.data"
-            required />
+            stripe-key="file.data" />
         <input
             type="hidden"
             key="identity_document_front.id"
             stripe="files.create"
-            stripe-key="id"
-            required />
+            stripe-key="id" />
 
         <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
@@ -236,33 +200,28 @@
                 type="file"
                 object="$user_id"
                 key="identity_document_back"
-                placeholder="Identity Document Back"
-                required />
+                placeholder="Identity Document Back" />
         </floating-label>
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="purpose"
-            value="identity_document"
-            required />
+            value="identity_document" />
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="file.name"
-            value="identity_document_back"
-            required />
+            value="identity_document_back" />
         <input
             type="hidden"
             key="identity_document_back.src"
             stripe="files.create"
-            stripe-key="file.data"
-            required />
+            stripe-key="file.data" />
         <input
             type="hidden"
             key="identity_document_back.id"
             stripe="files.create"
-            stripe-key="id"
-            required />
+            stripe-key="id" />
 
         <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
@@ -274,21 +233,18 @@
             object="$user_id"
             key="ambassadorAccount"
             stripe="accounts.update"
-            stripe-key="$param[0]"
-            required />
+            stripe-key="$param[0]" />
 
         <input
             type="hidden"
             key="identity_document_front.id"
             stripe="accounts.update"
-            stripe-key="individual.verification.document.front"
-            required />
+            stripe-key="individual.verification.document.front" />
         <input
             type="hidden"
             key="identity_document_back.id"
             stripe="accounts.update"
-            stripe-key="individual.verification.document.back"
-            required />
+            stripe-key="individual.verification.document.back" />
 
         <button actions="validate, save, stripe.accounts.update">Save</button>
     </form>
@@ -304,33 +260,28 @@
             <input
                 type="file"
                 key="additional_document_front"
-                placeholder="Additional Document Front"
-                required />
+                placeholder="Additional Document Front" />
         </floating-label>
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="purpose"
-            value="identity_document"
-            required />
+            value="identity_document" />
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="file.name"
-            value="additional_document_front"
-            required />
+            value="additional_document_front" />
         <input
             type="hidden"
             key="additional_document_front.src"
             stripe="files.create"
-            stripe-key="file.data"
-            required />
+            stripe-key="file.data" />
         <input
             type="hidden"
             key="additional_document_front.id"
             stripe="files.create"
-            stripe-key="id"
-            required />
+            stripe-key="id" />
 
         <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
@@ -344,33 +295,28 @@
             <input
                 type="file"
                 key="additional_document_back"
-                placeholder="Additional Document Back"
-                required />
+                placeholder="Additional Document Back" />
         </floating-label>
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="purpose"
-            value="identity_document"
-            required />
+            value="identity_document" />
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="file.name"
-            value="additional_document_back"
-            required />
+            value="additional_document_back" />
         <input
             type="hidden"
             key="additional_document_back.src"
             stripe="files.create"
-            stripe-key="file.data"
-            required />
+            stripe-key="file.data" />
         <input
             type="hidden"
             key="additional_document_back.id"
             stripe="files.create"
-            stripe-key="id"
-            required />
+            stripe-key="id" />
 
         <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
@@ -386,15 +332,13 @@
             object="$user_id"
             key="ambassadorAccount"
             stripe="accounts.update"
-            stripe-key="$param[0]"
-            required />
+            stripe-key="$param[0]" />
 
         <input
             type="hidden"
             key="additional_document_front.id"
             stripe="accounts.update"
-            stripe-key="individual.verification.additional_document.front"
-            required />
+            stripe-key="individual.verification.additional_document.front" />
         <input
             type="hidden"
             key="additional_document_back.id"

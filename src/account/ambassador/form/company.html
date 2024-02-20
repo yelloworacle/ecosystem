@@ -1,129 +1,113 @@
 <!DOCTYPE html>
 
 <!-- Comapny -->
-<form
-    realtime="false"
-    array="users"
-    object="$user_id"
-    class="width:100% display:flex flex-wrap:wrap gap:15px">
-    <style>
-        #tax_id,
-        #registration_number {
-            display: none;
-        }
-        form[country="US"] #tax_id {
-            display: block;
-        }
-        form:not([country="US"]) #registration_number {
-            display: block;
-        }
-    </style>
-    <input
-        type="hidden"
-        array="users"
-        object="$user_id"
-        key="ambassadorAccount"
-        stripe="accounts.update"
-        stripe-key="$param[0]"
-        required />
-    <input
-        type="hidden"
-        stripe="accounts.update"
-        stripe-key="tos_acceptance.ip"
-        value="$ip" />
+<style>
+    #tax_id,
+    #registration_number {
+        display: none;
+    }
+    form[country="US"] #tax_id {
+        display: block;
+    }
+    form:not([country="US"]) #registration_number {
+        display: block;
+    }
+</style>
+<input
+    type="hidden"
+    stripe="accounts.update"
+    stripe-key="tos_acceptance.ip"
+    value="$ip" />
 
-    <input
-        type="date"
-        stripe="accounts.update"
-        stripe-key="tos_acceptance.date"
-        value-type="toUnixTimestamp"
-        value="$now"
-        hidden />
+<input
+    type="date"
+    stripe="accounts.update"
+    stripe-key="tos_acceptance.date"
+    value-type="toUnixTimestamp"
+    value="$now"
+    hidden />
 
-    <floating-label class="flex-grow:1">
+<floating-label class="flex-grow:1">
+    <input
+        type="text"
+        key="company_name"
+        stripe="accounts.update"
+        stripe-key="company.name"
+        placeholder="Company Name" />
+</floating-label>
+<floating-label class="flex-grow:1">
+    <input
+        type="tel"
+        key="company.phone"
+        stripe="accounts.update"
+        stripe-key="company.phone"
+        placeholder="Company Phone" />
+</floating-label>
+
+<div class="width:100% display:flex flex-wrap:wrap gap:15px">
+    <floating-label class="width:100%">
         <input
             type="text"
-            key="company_name"
+            key="company_address_line1"
             stripe="accounts.update"
-            stripe-key="company.name"
-            placeholder="Company Name"
-            required />
+            stripe-key="company.address.line1"
+            placeholder="Company Address Line 1" />
     </floating-label>
-    <floating-label class="flex-grow:1">
-        <input
-            type="tel"
-            key="company.phone"
-            stripe="accounts.update"
-            stripe-key="company.phone"
-            placeholder="Company Phone"
-            required />
-    </floating-label>
-
-    <div class="width:100% display:flex flex-wrap:wrap gap:15px">
-        <floating-label class="width:100%">
-            <input
-                type="text"
-                key="company_address_line1"
-                stripe="accounts.update"
-                stripe-key="company.address.line1"
-                placeholder="Company Address Line 1"
-                required />
-        </floating-label>
-        <floating-label class="flex-grow:1 width:175px">
-            <input
-                type="text"
-                key="company_address_city"
-                stripe="accounts.update"
-                stripe-key="company.address.city"
-                placeholder="Company City"
-                required />
-        </floating-label>
-
-        <floating-label class="flex-grow:1 width:220px">
-            <select
-                key="company_address_country"
-                stripe="accounts.update"
-                stripe-key="company.address.country"
-                placeholder="Company Country"
-                required
-                input-closest="form"
-                input-attribute="country"
-                src="./account/ambassador/form/countries.html"></select>
-        </floating-label>
-        <floating-label class="flex-grow:1 width:140px">
-            <input
-                type="text"
-                key="company_address_postal_code"
-                stripe="accounts.update"
-                stripe-key="company.address.postal_code"
-                placeholder="Company Postal Code"
-                required />
-        </floating-label>
-    </div>
-
-    <!-- Company Location Specific -->
-    <floating-label id="tax_id" class="flex-grow:1">
+    <floating-label class="flex-grow:1 width:175px">
         <input
             type="text"
-            key="tax_id"
+            key="company_address_city"
             stripe="accounts.update"
-            stripe-key="company.tax_id"
-            placeholder="Tax ID" />
+            stripe-key="company.address.city"
+            placeholder="Company City" />
     </floating-label>
-
-    <floating-label id="registration_number" class="flex-grow:1">
+    <floating-label class="flex-grow:1 width:175px">
         <input
             type="text"
-            key="company_registration_number"
+            key="company_address_state"
             stripe="accounts.update"
-            stripe-key="company.registration_number"
-            placeholder="Registration Number" />
+            stripe-key="company.address.state"
+            placeholder="Company State" />
     </floating-label>
 
-    <button actions="validate, save, stripe.accounts.update" class="width:100%">
-        Save
-    </button>
-</form>
+    <floating-label class="flex-grow:1 width:220px">
+        <select
+            key="company_address_country"
+            stripe="accounts.update"
+            stripe-key="company.address.country"
+            placeholder="Company Country"
+            input-closest="form"
+            input-attribute="country"
+            src="./account/ambassador/form/countries.html"></select>
+    </floating-label>
+    <floating-label class="flex-grow:1 width:140px">
+        <input
+            type="text"
+            key="company_address_postal_code"
+            stripe="accounts.update"
+            stripe-key="company.address.postal_code"
+            placeholder="Company Postal Code" />
+    </floating-label>
+</div>
+
+<!-- Company Location Specific -->
+<floating-label id="tax_id" class="flex-grow:1">
+    <input
+        type="text"
+        key="tax_id"
+        stripe="accounts.update"
+        stripe-key="company.tax_id"
+        placeholder="Tax ID" />
+</floating-label>
+
+<floating-label id="registration_number" class="flex-grow:1">
+    <input
+        type="text"
+        key="company_registration_number"
+        stripe="accounts.update"
+        stripe-key="company.registration_number"
+        placeholder="Registration Number" />
+</floating-label>
 
 <additional-document hidden>
     <!-- Additional Document Front Upload -->
@@ -135,33 +119,28 @@
             <input
                 type="file"
                 key="comapny_additional_document_front"
-                placeholder="Additional Document Front"
-                required />
+                placeholder="Additional Document Front" />
         </floating-label>
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="purpose"
-            value="identity_document"
-            required />
+            value="identity_document" />
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="file.name"
-            value="comapny_additional_document_front"
-            required />
+            value="comapny_additional_document_front" />
         <input
             type="hidden"
             key="company_additional_document_front.src"
             stripe="files.create"
-            stripe-key="file.data"
-            required />
+            stripe-key="file.data" />
         <input
             type="hidden"
             key="company_additional_document_front.id"
             stripe="files.create"
-            stripe-key="id"
-            required />
+            stripe-key="id" />
 
         <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
@@ -175,33 +154,28 @@
             <input
                 type="file"
                 key="company_additional_document_back"
-                placeholder="Additional Document Back"
-                required />
+                placeholder="Additional Document Back" />
         </floating-label>
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="purpose"
-            value="identity_document"
-            required />
+            value="identity_document" />
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="file.name"
-            value="company_additional_document_back"
-            required />
+            value="company_additional_document_back" />
         <input
             type="hidden"
             key="company_additional_document_back.src"
             stripe="files.create"
-            stripe-key="file.data"
-            required />
+            stripe-key="file.data" />
         <input
             type="hidden"
             key="company_additional_document_back.id"
             stripe="files.create"
-            stripe-key="id"
-            required />
+            stripe-key="id" />
 
         <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
@@ -217,15 +191,13 @@
             object="$user_id"
             key="ambassadorAccount"
             stripe="accounts.update"
-            stripe-key="$param[0]"
-            required />
+            stripe-key="$param[0]" />
 
         <input
             type="hidden"
             key="company_additional_document_front.id"
             stripe="accounts.update"
-            stripe-key="company.verification.additional_document.front"
-            required />
+            stripe-key="company.verification.additional_document.front" />
         <input
             type="hidden"
             key="company_additional_document_back.id"

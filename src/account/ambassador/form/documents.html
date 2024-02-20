@@ -8,35 +8,30 @@
                 array="users"
                 key="bank_account_ownership_verification"
                 placeholder="Proof of Address"
-                multiple
-                required />
+                multiple />
         </floating-label>
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="purpose"
-            value="account_requirement"
-            required />
+            value="account_requirement" />
         <input
             type="hidden"
             stripe="files.create"
             stripe-key="file.name"
-            value="bank_account_ownership_verification"
-            required />
+            value="bank_account_ownership_verification" />
         <input
             type="hidden"
             array="users"
             key="bank_account_ownership_verification.src"
             stripe="files.create"
-            stripe-key="file.data"
-            required />
+            stripe-key="file.data" />
         <input
             type="hidden"
             array="users"
             key="bank_account_ownership_verification.id"
             stripe="files.create"
-            stripe-key="id"
-            required />
+            stripe-key="id" />
 
         <button actions="validate, save, stripe.files.create">Upload</button>
     </form>
@@ -49,16 +44,14 @@
             object="$user_id"
             key="ambassadorAccount"
             stripe="accounts.update"
-            stripe-key="$param[0]"
-            required />
+            stripe-key="$param[0]" />
 
         <input
             type="hidden"
             array="users"
             key="bank_account_ownership_verification.id"
             stripe="accounts.update"
-            stripe-key="documents.bank_account_ownership_verification.files[]"
-            required />
+            stripe-key="documents.bank_account_ownership_verification.files[]" />
 
         <button actions="validate, save, stripe.accounts.update">
             Update Account
