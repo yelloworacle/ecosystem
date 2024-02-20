@@ -56,8 +56,8 @@
             );
             submitButton.innerHTML = "Processing";
 
+            var destination = document.getElementById("ambassadorAccount").value
             var additionalData = {
-                ambassadorAccount: document.getElementById("ambassadorAccount").value,
                 customer: document.getElementById("customer").value,
                 name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
@@ -99,11 +99,11 @@
                             environment
                         }
 
-                        if (ambassadorAccount)
-                            data.stripe.transfer_data = {
-                                destination: ambassadorAccount,
-                                application_fee_percent: 15 // Or use application_fee_amount for a fixed fee
-                            }
+                        if (destination) {
+                            data.stripe.application_fee_percent = 85
+                            // data.stripe.$param1 = { stripeAccount: destination }
+                        }
+
 
                         data = await CoCreate.socket.send(data);
 
@@ -120,6 +120,20 @@
                                     subscriptionItemId: data.stripe.items.data[1].id
                                 },
                             });
+
+
+                            // if (destination) {
+                            //     let amount = data.stripe.items.data[0].price.unit_amount * 17;
+                            //     amount = Math.round((amount * 15) / 100);
+                            //     await CoCreate.socket.send({
+                            //         method: "stripe.transfers.create",
+                            //         stripe: {
+                            //             amount, // Amount in your account's currency (MXN)
+                            //             currency: 'mxn', // Your account's currency
+                            //             destination,
+                            //         }
+                            //     });
+                            // }
 
                             submitButton.innerHTML = "Payment Successful";
                             window.localStorage.setItem('subscription', '6571fe530c48ef6970900a82')
