@@ -1,173 +1,198 @@
 <!DOCTYPE html>
 <a href="./signin.html" session="false" hidden></a>
 
-<form
-    state_id="form-fields"
-    array="blog-posts"
-    object=""
-    realtime="false"
-    class="main-view max-width:600px padding-top:10px">
-    <div
-        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
-        <a
-            actions="state"
+<div>
+    <form
+        state_id="form-fields"
+        array="blog-posts"
+        object=""
+        realtime="false"
+        class="main-view max-width:600px padding-top:10px">
+        <div
+            class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
+            <a
+                actions="state"
+                state_to="mainView"
+                state-src="./admin/blog/datatable.html"
+                class="padding:0px_10px"
+                ><i src="./assets/svg/angle-left.svg"></i
+            ></a>
+            <div
+                class="display:flex align-items:center transition:0.3s"
+                hover="display:block!important"
+                hover-selector=".options">
+                <div class="display:none options">
+                    <a
+                        actions="delete, state"
+                        array="blog-posts"
+                        crud="false"
+                        read="false"
+                        state_to="mainView"
+                        state-src="./admin/blog/datatable.html"
+                        class="padding:0px_10px">
+                        <i src="./assets/svg/trash-alt.svg"></i>
+                    </a>
+                    <a
+                        actions="save, state"
+                        state_to="mainView"
+                        state-src="./admin/blog/datatable.html"
+                        class="padding:0px_10px">
+                        <i src="./assets/svg/save.svg"></i>
+                    </a>
+                </div>
+                <a class="padding:0px_10px"
+                    ><i src="./assets/svg/ellipsis-v.svg"></i
+                ></a>
+            </div>
+        </div>
+
+        <floating-label class="input-300">
+            <input
+                type="text"
+                key="author"
+                placeholder="Author Name"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-300">
+            <select key="status" class="floating-label">
+                <option value="draft">Draft</option>
+                <option value="published">Published</option>
+                <!-- Other statuses -->
+            </select>
+        </floating-label>
+
+        <floating-label class="input-600">
+            <input
+                type="text"
+                key="title"
+                placeholder="Title"
+                class="floating-label" />
+        </floating-label>
+        <input
+            type="hidden"
+            key="title"
+            value-replaceall=" "
+            value-replace-with="-"
+            input-selector="document; #file-name"
+            input-attribute="value" />
+
+        <floating-label class="input-300">
+            <div
+                type="file"
+                key="image"
+                accept="image/*"
+                placeholder="Upload Image or Video Thumbnail"
+                class="floating-label min-height:40px active"
+                render-selector="[template]"
+                active>
+                <div template>
+                    <img src="{{image.src}}" alt="image" width="100%" />
+                </div>
+            </div>
+        </floating-label>
+
+        <floating-label class="input-300">
+            <div
+                type="file"
+                key="video"
+                accept="video/*"
+                placeholder="Upload Video"
+                class="floating-label min-height:40px"
+                render-selector="[template]"
+                active>
+                <div template>
+                    <video stream="{{video.src}}" controls width="250"></video>
+                </div>
+            </div>
+        </floating-label>
+
+        <floating-label class="input-600">
+            <textarea
+                key="shortDescription"
+                placeholder="Short Description"
+                class="floating-label"></textarea>
+        </floating-label>
+
+        <floating-label class="input-600">
+            <textarea
+                key="content"
+                placeholder="Content"
+                class="floating-label"></textarea>
+        </floating-label>
+
+        <floating-label class="input-600">
+            <select
+                key="category"
+                class="floating-label"
+                placeholder="Category">
+                <option value="">Select Category</option>
+                <!-- Options here -->
+            </select>
+        </floating-label>
+
+        <floating-label class="input-600">
+            <input
+                type="text"
+                key="tags"
+                placeholder="Tags (comma-separated)"
+                class="floating-label" />
+        </floating-label>
+
+        <floating-label class="input-600">
+            <input
+                type="text"
+                key="meta-title"
+                placeholder="Meta Title"
+                class="floating-label" />
+        </floating-label>
+
+        <floating-label class="input-600">
+            <textarea
+                key="meta_keywords"
+                placeholder="Meta Keywords"
+                class="floating-label"></textarea>
+        </floating-label>
+
+        <!-- Additional Fields -->
+
+        <floating-label class="input-600">
+            <textarea
+                key="meta_description"
+                placeholder="Meta Description"
+                class="floating-label"></textarea>
+        </floating-label>
+
+        <button
+            actions="save, state"
             state_to="mainView"
             state-src="./admin/blog/datatable.html"
-            class="padding:0px_10px"
-            ><i src="./assets/svg/angle-left.svg"></i
-        ></a>
+            class="button-round">
+            <i src="./assets/svg/save.svg"></i>
+        </button>
+        <button actions="render(document; #publish)">Publish</button>
+    </form>
+
+    <!-- Get ObjectId from blobpost and reuse for file  -->
+    <form array="files" object="">
+        <div id="publish" render-next render="object"></div>
         <div
-            class="display:flex align-items:center transition:0.3s"
-            hover="display:block!important"
-            hover-selector=".options">
-            <div class="display:none options">
-                <a
-                    actions="delete, state"
-                    array="blog-posts"
-                    crud="false"
-                    read="false"
-                    state_to="mainView"
-                    state-src="./admin/blog/datatable.html"
-                    class="padding:0px_10px">
-                    <i src="./assets/svg/trash-alt.svg"></i>
-                </a>
-                <a
-                    actions="save, state"
-                    state_to="mainView"
-                    state-src="./admin/blog/datatable.html"
-                    class="padding:0px_10px">
-                    <i src="./assets/svg/save.svg"></i>
-                </a>
-            </div>
-            <a class="padding:0px_10px"
-                ><i src="./assets/svg/ellipsis-v.svg"></i
-            ></a>
-        </div>
-    </div>
+            src="./blog/post.html"
+            value-type="text"
+            key="src"
+            class="height:100px"
+            hidden></div>
 
-    <floating-label class="input-300">
         <input
-            type="text"
-            key="author"
-            placeholder="Author Name"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <select key="status" class="floating-label">
-            <option value="draft">Draft</option>
-            <option value="published">Published</option>
-            <!-- Other statuses -->
-        </select>
-    </floating-label>
+            id="file-name"
+            key="name"
+            value-suffix=".html"
+            input-next
+            input-attribute="value" />
+        <input key="pathname" value-prefix="/blog/" />
+        <input key="path" value="/blog" />
+        <input key="directory" value="blog" />
+        <input key="content-type" value="text/html" />
 
-    <floating-label class="input-600">
-        <input
-            type="text"
-            key="title"
-            placeholder="Title"
-            class="floating-label" />
-    </floating-label>
-
-    <floating-label class="input-300">
-        <div
-            type="file"
-            key="image"
-            accept="image/*"
-            placeholder="Upload Image or Video Thumbnail"
-            class="floating-label min-height:40px active"
-            render-selector="[template]"
-            active>
-            <div template>
-                <img src="{{image.src}}" alt="image" width="100%" />
-            </div>
-        </div>
-    </floating-label>
-
-    <floating-label class="input-300">
-        <div
-            type="file"
-            key="video"
-            accept="video/*"
-            placeholder="Upload Video"
-            class="floating-label min-height:40px"
-            render-selector="[template]"
-            active>
-            <div template>
-                <video stream="{{video.src}}" controls width="250"></video>
-            </div>
-        </div>
-    </floating-label>
-
-    <floating-label class="input-600">
-        <textarea
-            key="shortDescription"
-            placeholder="Short Description"
-            class="floating-label"></textarea>
-    </floating-label>
-
-    <floating-label class="input-600">
-        <textarea
-            key="content"
-            placeholder="Content"
-            class="floating-label"></textarea>
-    </floating-label>
-
-    <floating-label class="input-600">
-        <select key="category" class="floating-label" placeholder="Category">
-            <option value="">Select Category</option>
-            <!-- Options here -->
-        </select>
-    </floating-label>
-
-    <floating-label class="input-600">
-        <input
-            type="text"
-            key="tags"
-            placeholder="Tags (comma-separated)"
-            class="floating-label" />
-    </floating-label>
-
-    <floating-label class="input-600">
-        <input
-            type="text"
-            key="meta-title"
-            placeholder="Meta Title"
-            class="floating-label" />
-    </floating-label>
-
-    <floating-label class="input-600">
-        <textarea
-            key="meta_keywords"
-            placeholder="Meta Keywords"
-            class="floating-label"></textarea>
-    </floating-label>
-
-    <!-- Additional Fields -->
-
-    <floating-label class="input-600">
-        <textarea
-            key="meta_description"
-            placeholder="Meta Description"
-            class="floating-label"></textarea>
-    </floating-label>
-
-    <button
-        actions="save, state"
-        state_to="mainView"
-        state-src="./admin/blog/datatable.html"
-        class="button-round">
-        <i src="./assets/svg/save.svg"></i>
-    </button>
-    <button actions="render(document; #publish)">Publish</button>
-</form>
-
-<form hidden file_id="{{id}}">
-    <div id="publish" render-next render="object"></div>
-    <div src="./blog/post.html" value-type="text" file="src"></div>
-
-    <button actions="createFile" value="tesing.html">createFile</button>
-
-    <input file="name" value="{{name}}" />
-    <input file="directory" value="{{directory}}" />
-    <input file="content-type" value="{{content-type}}" />
-</form>
+        <button actions="save">Publish Post</button>
+    </form>
+</div>
