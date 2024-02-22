@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<!-- Owner -->
+<style>
+    #ssn_last_4 {
+        display: none;
+    }
+    form[country="US"] #ssn_last_4 {
+        display: block;
+    }
+</style>
+
+<div
+    id="owner"
+    class="accordion-item"
+    src=""
+    apply-src="account/ambassador/form/owner.html">
+    <div
+        class="accordion-button"
+        click-closest=".forms"
+        click-attribute="display"
+        click-value="owner">
+        Owner
+    </div>
+    <!-- Owner -->
+    <owner class="form width:100% display:flex flex-wrap:wrap gap:15px">
+        <input
+            type="hidden"
+            stripe="accounts.update"
+            stripe-key="tos_acceptance.ip"
+            value="$ip" />
+
+        <input
+            type="date"
+            stripe="accounts.update"
+            stripe-key="tos_acceptance.date"
+            value-type="toUnixTimestamp"
+            value="$now"
+            hidden />
+
+        <input
+            type="hidden"
+            key="country"
+            stripe="accounts.update"
+            stripe-key="owner.address.country" />
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                key="firstname"
+                stripe="accounts.create"
+                stripe-key="owner.first_name"
+                placeholder="First Name" />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                key="lastname"
+                stripe="accounts.create"
+                stripe-key="owner.last_name"
+                placeholder="Last Name" />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="text"
+                key="email"
+                stripe="accounts.update"
+                stripe-key="owner.email"
+                placeholder="Email" />
+        </floating-label>
+
+        <floating-label class="flex-grow:1">
+            <input
+                type="tel"
+                key="phone"
+                stripe="accounts.update"
+                stripe-key="owner.phone"
+                placeholder="Phone" />
+        </floating-label>
+
+        <!-- address field -->
+        <div class="width:100% display:flex flex-wrap:wrap gap:15px">
+            <floating-label class="flex-grow:1 width:100%">
+                <input
+                    type="text"
+                    key="address_line1"
+                    stripe="accounts.update"
+                    stripe-key="owner.address.line1"
+                    placeholder="Address Line 1" />
+            </floating-label>
+
+            <floating-label class="flex-grow:1 width:190px">
+                <input
+                    type="text"
+                    key="address.city"
+                    stripe="accounts.update"
+                    stripe-key="owner.address.city"
+                    placeholder="City" />
+            </floating-label>
+
+            <floating-label class="flex-grow:1 width:190px">
+                <input
+                    type="text"
+                    key="address.state"
+                    stripe="accounts.update"
+                    stripe-key="owner.address.state"
+                    placeholder="State" />
+            </floating-label>
+
+            <floating-label class="flex-grow:1 width:115px">
+                <input
+                    type="text"
+                    key="address.postal_code"
+                    stripe="accounts.update"
+                    stripe-key="owner.address.postal_code"
+                    placeholder="Postal Code" />
+            </floating-label>
+        </div>
+
+        <!-- Date of Birth Fields -->
+        <div
+            class="floating-label display:flex flex-wrap:wrap gap:15px"
+            placeholder="Date of Birth:"
+            active>
+            <floating-label class="flex-grow:1 width:75px">
+                <input
+                    type="number"
+                    key="dob.day"
+                    stripe="accounts.update"
+                    stripe-key="owner.dob.day"
+                    placeholder="Day"
+                    min="1"
+                    max="31" />
+            </floating-label>
+            <floating-label class="flex-grow:1 width:90px">
+                <input
+                    type="number"
+                    key="dob.month"
+                    stripe="accounts.update"
+                    stripe-key="owner.dob.month"
+                    placeholder="Month"
+                    min="1"
+                    max="12" />
+            </floating-label>
+            <floating-label class="flex-grow:1 width:80px">
+                <input
+                    type="number"
+                    key="dob.year"
+                    stripe="accounts.update"
+                    stripe-key="owner.dob.year"
+                    placeholder="Year"
+                    min="1900"
+                    max="2006" />
+            </floating-label>
+        </div>
+
+        <!-- Owner Location Specific -->
+        <!-- <floating-label id="ssn_last_4" class="flex-grow:1">
+    <input
+        type="text"
+        key="ssn_last_4"
+        stripe="accounts.update"
+        stripe-key="owner.ssn_last_4"
+        placeholder="SSN Last 4 Digits" />
+</floating-label> -->
+    </owner>
+</div>

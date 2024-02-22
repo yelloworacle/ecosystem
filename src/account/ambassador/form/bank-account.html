@@ -6,6 +6,16 @@
     stripe="accounts.update"
     stripe-key="external_account.object"
     value="bank_account" />
+<input
+    type="hidden"
+    key="country"
+    stripe="accounts.update"
+    stripe-key="external_account.country" />
+<!-- <input
+    type="hidden"
+    key="currency"
+    stripe="accounts.update"
+    stripe-key="external_account.currency" /> -->
 
 <floating-label class="flex-grow:1">
     <input
@@ -14,10 +24,10 @@
         stripe="accounts.update"
         stripe-key="external_account.account_number"
         placeholder="Account Number"
-        value="000123456789" />
+        value="000000001234567897" />
 </floating-label>
 
-<floating-label class="flex-grow:1">
+<!-- <floating-label class="flex-grow:1">
     <input
         type="text"
         key="routing_number"
@@ -25,7 +35,7 @@
         stripe-key="external_account.routing_number"
         placeholder="Routing Number"
         value="110000000" />
-</floating-label>
+</floating-label> -->
 
 <floating-label class="flex-grow:1">
     <select
@@ -56,11 +66,11 @@
         src="./account/ambassador/form/currencies.html"></select>
 </floating-label>
 
-<floating-label class="flex-grow:1">
+<!-- <floating-label class="flex-grow:1">
     <select
         key="country"
         stripe="accounts.update"
         stripe-key="external_account.country"
         placeholder="Country"
         src="./account/ambassador/form/countries.html"></select>
-</floating-label>
+</floating-label> -->

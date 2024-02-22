@@ -17,24 +17,15 @@
         background-color: #f9f9f9;
         display: none;
     }
-
-    #individual {
-        display: none;
-    }
-
-    .forms[business="individual"] #individual {
-        display: block;
-    }
-
     .forms[display="account"] account.form {
         display: block;
     }
     .forms[display="individual"] individual.form {
         display: flex;
     }
-    /* .forms[display="individual"] company.form {
-        display: none;
-    } */
+    .forms[display="owner"] owner.form {
+        display: flex;
+    }
     .forms[display="company"] company.form {
         display: flex;
     }
@@ -85,35 +76,36 @@
         </account>
     </div>
 
-    <div id="individual" class="accordion-item">
-        <div
-            class="accordion-button"
-            click-closest=".forms"
-            click-attribute="display"
-            click-value="individual">
-            Individual
-        </div>
-        <!-- Individual -->
-        <individual
-            class="form width:100% display:flex flex-wrap:wrap gap:15px"
-            src="account/ambassador/form/individual.html">
-        </individual>
-    </div>
-    <div class="accordion-item">
-        <div
-            class="accordion-button"
-            click-closest=".forms"
-            click-attribute="display"
-            click-value="company">
-            Company
-        </div>
+    <input
+        id="individual"
+        key="business_type"
+        type="hidden"
+        input-next
+        input-attribute="src"
+        input-value="account/ambassador/form/individual.html"
+        input-if="individual" />
+    <div class="accordion-item"></div>
 
-        <!-- Comapny -->
-        <company
-            class="form width:100% display:flex flex-wrap:wrap gap:15px"
-            src="account/ambassador/form/company.html">
-        </company>
-    </div>
+    <input
+        id="owner"
+        key="business_type"
+        type="hidden"
+        input-next
+        input-attribute="src"
+        input-value="account/ambassador/form/owner.html"
+        input-if="!individual" />
+    <div class="accordion-item"></div>
+
+    <input
+        id="comapany"
+        type="hidden"
+        key="business_type"
+        input-next
+        input-attribute="src"
+        input-value="account/ambassador/form/company.html"
+        input-if="!individual" />
+    <div class="accordion-item"></div>
+
     <div class="accordion-item">
         <div
             class="accordion-button"
@@ -139,10 +131,10 @@
         </div>
 
         <!-- Documents -->
-        <documents
+        <!-- <documents
             class="form width:100% display:flex flex-wrap:wrap gap:15px"
             src="account/ambassador/form/documents.html">
-        </documents>
+        </documents> -->
     </div>
 
     <button

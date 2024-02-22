@@ -158,4 +158,16 @@
         class="button-round">
         <i src="./assets/svg/save.svg"></i>
     </button>
+    <button actions="render(document; #publish)">Publish</button>
+</form>
+
+<form hidden file_id="{{id}}">
+    <div id="publish" render-next render="object"></div>
+    <div src="./blog/post.html" value-type="text" file="src"></div>
+
+    <button actions="createFile" value="tesing.html">createFile</button>
+
+    <input file="name" value="{{name}}" />
+    <input file="directory" value="{{directory}}" />
+    <input file="content-type" value="{{content-type}}" />
 </form>
