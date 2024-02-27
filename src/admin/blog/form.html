@@ -73,8 +73,14 @@
             key="title"
             value-replaceall=" "
             value-replace-with="-"
-            input-selector="document; #file-name"
+            input-selector="document; .filename"
             input-attribute="value" />
+
+        <input
+            key="url"
+            value-prefix="/blog/"
+            value-suffix=".html"
+            class="filename" />
 
         <floating-label class="input-300">
             <div
@@ -183,11 +189,11 @@
             hidden></div>
 
         <input
-            id="file-name"
             key="name"
             value-suffix=".html"
             input-next
-            input-attribute="value" />
+            input-attribute="value"
+            class="filename" />
         <input key="pathname" value-prefix="/blog/" />
         <input key="path" value="/blog" />
         <input key="directory" value="blog" />
