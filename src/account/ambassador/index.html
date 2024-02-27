@@ -51,6 +51,17 @@
         #dashboard .card {
             flex-grow: 1;
         }
+        [payouts_enabled] {
+            display: none;
+        }
+        [payouts_enabled="false"] {
+            display: block;
+            background: red;
+        }
+        [payouts_enabled="true"] {
+            display: block;
+            background: green;
+        }
     </style>
 
     <input
@@ -62,7 +73,19 @@
 
     <section id="dashboard" class="width:100% padding:0px">
         <div
-            class="width:100% display:flex justify-content:flex-end margin-bottom:30px">
+            class="width:100% display:flex justify-content:flex-end margin-bottom:30px gap:15px">
+            <!-- Next Payout Section -->
+            <div id="nextPayout" class="card maxwidth:200px" payouts_enabled>
+                <span>Payouts: </span>
+                <span
+                    type="hidden"
+                    array="users"
+                    object="$user_id"
+                    key="stripe.accounts.payouts_enabled"
+                    input-parent
+                    input-attribute="payouts_enabled"></span>
+            </div>
+
             <button
                 actions="state"
                 state_to="mainView"
