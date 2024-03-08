@@ -106,7 +106,7 @@
                     <a
                         class="border-radius:5px padding:2px_5px background:#F23A2E color:#fff color:#ddd:hover font-size:12px@sm"
                         href="#"
-                        >{{category}}</a
+                        >{{object.category}}</a
                     >
                 </div>
 
@@ -184,92 +184,94 @@
                 <div
                     class="margin-top:25px width:100% border-bottom:1px_solid_#ddd"></div>
 
-                <!--  Comment Start  -->
-                <div
-                    class="padding:0_20px margin-bottom:20px margin-top:20px width:100% display:flex flex-wrap:wrap">
+                <div class="display:none!important">
+                    <!--  Comment Start  -->
                     <div
-                        class="img-comment-section margin-right:10px margin-bottom:10px flex-basis:15% flex-basis:100%@xs">
-                        <!-- <img src="images/blog-post/comment1.jpg" /> -->
-                    </div>
-                    <div
-                        class="text-comment-section flex-basis:70% flex-basis:100%@xs">
-                        <h2
-                            class="margin-bottom:6px font-size:19px@sm font-size:19px@xs color:#222">
-                            {{comment.name}}
-                        </h2>
-                        <div class="margin-bottom:6px">
-                            <a
-                                class="color:#000 font-size:14px@sm font-size:13px@xs color:tomato:hover text-decoration:underline"
-                                href="#"
-                                >{{comment.website}}</a
-                            >
+                        class="padding:0_20px margin-bottom:20px margin-top:20px width:100% display:flex flex-wrap:wrap">
+                        <div
+                            class="img-comment-section margin-right:10px margin-bottom:10px flex-basis:15% flex-basis:100%@xs">
+                            <!-- <img src="images/blog-post/comment1.jpg" /> -->
                         </div>
                         <div
-                            class="margin-bottom:8px font-size:14px@sm font-size:13px@xs">
-                            <p>{{comment.comment}}</p>
-                        </div>
-                        <div>
-                            <a href="#"
-                                ><i src="../assets/svg/thumbs-up.svg"></i
-                            ></a>
+                            class="text-comment-section flex-basis:70% flex-basis:100%@xs">
+                            <h2
+                                class="margin-bottom:6px font-size:19px@sm font-size:19px@xs color:#222">
+                                {{comment.name}}
+                            </h2>
+                            <div class="margin-bottom:6px">
+                                <a
+                                    class="color:#000 font-size:14px@sm font-size:13px@xs color:tomato:hover text-decoration:underline"
+                                    href="#"
+                                    >{{comment.website}}</a
+                                >
+                            </div>
+                            <div
+                                class="margin-bottom:8px font-size:14px@sm font-size:13px@xs">
+                                <p>{{comment.comment}}</p>
+                            </div>
+                            <div>
+                                <a href="#"
+                                    ><i src="../assets/svg/thumbs-up.svg"></i
+                                ></a>
 
-                            <a href="#"
-                                ><i src="../assets/svg/thumbs-down.svg"></i
-                            ></a>
+                                <a href="#"
+                                    ><i src="../assets/svg/thumbs-down.svg"></i
+                                ></a>
+                            </div>
                         </div>
                     </div>
+                    <!--  Comment End  -->
+
+                    <!--  Post COMMENT Start  -->
+                    <form
+                        array="comments"
+                        class="padding:0_20px width:100% margin-top:20px display:flex flex-direction:column gap:20px">
+                        <h3 class="width:100%">LEAVE A REPLY</h3>
+                        <!--  Comment Heading  -->
+                        <floating-label>
+                            <textarea
+                                rows="10"
+                                placeholder="Write Your Comment"
+                                object="{{object._id}}"
+                                key="comment"></textarea>
+                        </floating-label>
+                        <floating-label>
+                            <input
+                                type="text"
+                                placeholder="Enter Your Name"
+                                object="{{object._id}}"
+                                key="name" />
+                        </floating-label>
+                        <floating-label>
+                            <input
+                                type="email"
+                                placeholder="Enter Your Email"
+                                object="{{object._id}}"
+                                key="email" />
+                        </floating-label>
+                        <floating-label>
+                            <input
+                                type="text"
+                                placeholder="Enter Your Website URL"
+                                object="{{object._id}}"
+                                key="website" />
+                        </floating-label>
+
+                        <div class="width:100% margin-bottom:20px">
+                            <input
+                                class="margin-right:10px"
+                                type="checkbox"
+                                key="" /><span class="color:#333"
+                                >Save my name, email, and website in this
+                                browser for the next time I comment</span
+                            >
+                        </div>
+                        <button actions="validate, save">Post Comment</button>
+                    </form>
+
+                    <div
+                        class="margin-top:40px margin-bottom:50px width:100% border-bottom:1px_solid_#ddd"></div>
                 </div>
-                <!--  Comment End  -->
-
-                <!--  Post COMMENT Start  -->
-                <form
-                    array="comments"
-                    class="padding:0_20px width:100% margin-top:20px display:flex flex-direction:column gap:20px">
-                    <h3 class="width:100%">LEAVE A REPLY</h3>
-                    <!--  Comment Heading  -->
-                    <floating-label>
-                        <textarea
-                            rows="10"
-                            placeholder="Write Your Comment"
-                            object="{{object._id}}"
-                            key="comment"></textarea>
-                    </floating-label>
-                    <floating-label>
-                        <input
-                            type="text"
-                            placeholder="Enter Your Name"
-                            object="{{object._id}}"
-                            key="name" />
-                    </floating-label>
-                    <floating-label>
-                        <input
-                            type="email"
-                            placeholder="Enter Your Email"
-                            object="{{object._id}}"
-                            key="email" />
-                    </floating-label>
-                    <floating-label>
-                        <input
-                            type="text"
-                            placeholder="Enter Your Website URL"
-                            object="{{object._id}}"
-                            key="website" />
-                    </floating-label>
-
-                    <div class="width:100% margin-bottom:20px">
-                        <input
-                            class="margin-right:10px"
-                            type="checkbox"
-                            key="" /><span class="color:#333"
-                            >Save my name, email, and website in this browser
-                            for the next time I comment</span
-                        >
-                    </div>
-                    <button actions="validate, save">Post Comment</button>
-                </form>
-
-                <div
-                    class="margin-top:40px margin-bottom:50px width:100% border-bottom:1px_solid_#ddd"></div>
             </div>
         </main>
 

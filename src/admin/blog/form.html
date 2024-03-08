@@ -71,13 +71,14 @@
         <input
             type="hidden"
             key="title"
-            value-replaceall=" "
-            value-replace-with="-"
-            input-selector="document; .filename"
+            input-selector="document; .filename[]"
             input-attribute="value" />
 
         <input
+            type="hidden"
             key="url"
+            value-replaceall=" "
+            value-replace-with="-"
             value-prefix="/blog/"
             value-suffix=".html"
             class="filename" />
@@ -132,7 +133,7 @@
                 class="floating-label"
                 placeholder="Category">
                 <option value="">Select Category</option>
-                <!-- Options here -->
+                <option value="education">education</option>
             </select>
         </floating-label>
 
@@ -154,7 +155,7 @@
 
         <floating-label class="input-600">
             <textarea
-                key="meta_keywords"
+                key="meta-keywords"
                 placeholder="Meta Keywords"
                 class="floating-label"></textarea>
         </floating-label>
@@ -163,10 +164,17 @@
 
         <floating-label class="input-600">
             <textarea
-                key="meta_description"
+                key="meta-description"
                 placeholder="Meta Description"
                 class="floating-label"></textarea>
         </floating-label>
+
+        <input
+            key="_id"
+            input-selector="document; #publishform"
+            input-attribute="object"
+            hidden />
+        <input type="datetime" key="published" value="$now" hidden />
 
         <button
             actions="save, state"
@@ -175,21 +183,18 @@
             class="button-round">
             <i src="./assets/svg/save.svg"></i>
         </button>
-        <button actions="render(document; #publish)">Publish</button>
+        <button
+            actions="save, render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile)">
+            Publish
+        </button>
     </form>
 
     <!-- Get ObjectId from blobpost and reuse for file  -->
-    <form array="files" object="">
-        <div id="publish" render-next render="object"></div>
-        <div
-            src="./blog/post.html"
-            value-type="text"
-            key="src"
-            class="height:100px"
-            hidden></div>
-
+    <form id="publishform" array="files" object="" upsert="true" hidden>
         <input
             key="name"
+            value-replaceall=" "
+            value-replace-with="-"
             value-suffix=".html"
             input-next
             input-attribute="value"
@@ -198,7 +203,18 @@
         <input key="path" value="/blog" />
         <input key="directory" value="blog" />
         <input key="content-type" value="text/html" />
+        <input key="$addToSet.host" value="*" />
+        <input key="public" value="true" />
 
-        <button actions="save">Publish Post</button>
+        <div id="publish" render-next render="object"></div>
+        <div
+            id="sethtml"
+            src="./blog/post.html"
+            value-type="text"
+            click-next
+            click-attribute="value"></div>
+
+        <textarea key="src"></textarea>
+        <button id="savefile" actions="save">Publish Post</button>
     </form>
 </div>
