@@ -165,7 +165,7 @@
                 <span
                     class="display:flex justify-content:center min-width:50px">
                     <!-- <i src="{{path}}assets/svg/clipboard-question.svg"></i> -->
-                    <i src="{{path}}assets/svg/people-roof.svg"></i>
+                    <i src="{{path}}assets/svg/money-bill-wave.svg"></i>
                 </span>
                 <span>Subscription</span>
             </a>
@@ -187,6 +187,25 @@
                     <i src="{{path}}assets/svg/bullhorn.svg"></i>
                 </span>
                 <span>Ambassador</span>
+            </a>
+        </li>
+
+        <li class="">
+            <a
+                actions="state"
+                state_to="mainView"
+                state-src="{{path}}account/advertise/"
+                click-closest="sidenav"
+                click-attribute="style"
+                click-value="width:0px"
+                click-if="<=993px"
+                click-if-value="$innerWidth"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i src="{{path}}assets/svg/rectangle-ad.svg"></i>
+                </span>
+                <span>Advertise</span>
             </a>
         </li>
 
@@ -268,6 +287,33 @@
                     actions="state"
                     state_to="mainView"
                     state-src="{{path}}admin/users/form.html"
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+        <li class="">
+            <a
+                actions="state"
+                state_to="mainView"
+                state-src="{{path}}admin/organizations/datatable.html"
+                click-closest="sidenav"
+                click-attribute="style"
+                click-value="width:0px"
+                click-if="<=993px"
+                click-if-value="$innerWidth"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i src="{{path}}assets/svg/people-roof.svg"></i>
+                </span>
+                <span>Organizations</span>
+            </a>
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state"
+                    state_to="mainView"
+                    state-src="{{path}}admin/organizations/form.html"
                     class="display:flex justify-content:center align-items:center height:40px">
                     <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
@@ -448,7 +494,7 @@
                 class="display:flex align-items:center">
                 <span
                     class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/clipboard-question.svg"></i>
+                    <i src="{{path}}assets/svg/money-bill-wave.svg"></i>
                 </span>
                 <span>Subscriptions</span>
             </a>
@@ -462,6 +508,35 @@
                 </a>
             </div>
         </li>
+        <li class="">
+            <a
+                actions="state"
+                state_to="mainView"
+                state-src="{{path}}admin/advertisements/datatable.html"
+                click-closest="sidenav"
+                click-attribute="style"
+                click-value="width:0px"
+                click-if="<=993px"
+                click-if-value="$innerWidth"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i src="{{path}}assets/svg/rectangle-ad.svg"></i>
+                </span>
+                <span>Advertisements</span>
+            </a>
+
+            <div class="float:right width:50px text-align:center">
+                <a
+                    actions="state"
+                    state_to="mainView"
+                    state-src="{{path}}admin/advertisements/form.html"
+                    class="display:flex justify-content:center align-items:center height:40px">
+                    <i src="{{path}}assets/svg/plus.svg"></i>
+                </a>
+            </div>
+        </li>
+
         <li class="">
             <a
                 actions="state"
