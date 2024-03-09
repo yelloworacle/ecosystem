@@ -96,7 +96,7 @@
             }
 
             section {
-                padding: 80px 15px;
+                padding: 30px 15px;
             }
 
             main p {
@@ -108,6 +108,9 @@
 
             h3 {
                 margin-top: 30px;
+            }
+            floating-label {
+                margin-top: 15px;
             }
         </style>
     </head>
@@ -197,10 +200,22 @@
                         reaching your audience.
                     </p>
                     <form>
-                        <input type="text" placeholder="Your Name" required />
-                        <input type="email" placeholder="Your Email" required />
-                        <textarea placeholder="Message"></textarea>
-                        <button type="submit">Submit</button>
+                        <floating-label>
+                            <input
+                                type="text"
+                                placeholder="Your Name"
+                                required />
+                        </floating-label>
+                        <floating-label>
+                            <input
+                                type="email"
+                                placeholder="Your Email"
+                                required />
+                        </floating-label>
+                        <floating-label>
+                            <textarea placeholder="Message"></textarea>
+                        </floating-label>
+                        <button class="margin-top:15px">Submit</button>
                     </form>
                 </section>
             </div>
