@@ -49,7 +49,7 @@
         card.mount("#card-element");
 
         var form = document.getElementById("payment-form");
-        form.addEventListener("submit", function (event) {
+        form.addEventListener("submit", async function (event) {
             event.preventDefault();
             const submitButton = form.querySelector(
                 'button[type="submit"]'
@@ -62,6 +62,22 @@
                 name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
             };
+
+            // let paymentIntent = {
+            //     method: "stripe.paymentIntents.create",
+            //     broadcast: false,
+            //     environment,
+            //     stripe: {
+            //         customer: additionalData.customer,
+            //         items: [{ price }, { price: memberPrice, quantity: 0 }],
+            //         coupon: coupon,
+            //         expand: ['latest_invoice.payment_intent']
+            //     }
+            // }
+
+            // paymentIntent = await CoCreate.socket.send(paymentIntent);
+            // if (!paymentIntent || !paymentIntent.clientSecret)
+            //     return
 
             stripe
                 .createToken(card, additionalData)
@@ -100,9 +116,16 @@
                         }
 
                         if (destination) {
-                            data.stripe.application_fee_percent = 85
-                            // data.stripe.$param1 = { stripeAccount: destination }
+                            data.stripe.application_fee_percent = 15
+                            data.stripe.transfer_data = {
+                                destination
+                            }
                         }
+
+                        // if (destination) {
+                        //     data.stripe.application_fee_percent = 85
+                        //     // data.stripe.$param1 = { stripeAccount: destination }
+                        // }
 
 
                         data = await CoCreate.socket.send(data);

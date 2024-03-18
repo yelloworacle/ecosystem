@@ -71,28 +71,16 @@
             <!-- Next Payout Section -->
             <div id="nextPayout" class="card">
                 <h2>Clicks</h2>
-                <span
-                    array="advertisement"
-                    object
-                    filter-key="status"
-                    filter-value="pending"
-                    key="$sum.amount"
-                    advertise
+                <span array="advertisement" object key="$sum.amount" advertise
                     >0</span
                 >
             </div>
 
             <!-- Total Payouts Section -->
             <div id="totalPayouts" class="card">
-                <h2>Cost</h2>
+                <h2>Balance</h2>
                 <span>$</span>
-                <span
-                    array="payouts"
-                    object
-                    filter-key="status"
-                    filter-value="paid"
-                    key="$sum.amount"
-                    advertise
+                <span array="organizations" object key="balance" advertise
                     >0</span
                 >
             </div>
@@ -304,14 +292,12 @@
         </p>
 
         <form array="users" object="$user_id" class="join" realtime="false">
-            <div
+            <!-- <div
                 class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
                 <floating-label class="flex-grow:1">
                     <input
                         type="text"
                         key="firstname"
-                        stripe="accounts.create"
-                        stripe-key="individual.first_name"
                         placeholder="First Name"
                         required />
                 </floating-label>
@@ -320,12 +306,10 @@
                     <input
                         type="text"
                         key="lastname"
-                        stripe="accounts.create"
-                        stripe-key="individual.last_name"
                         placeholder="Last Name"
                         required />
                 </floating-label>
-            </div>
+            </div> -->
 
             <div class="terms">
                 <input
