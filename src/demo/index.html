@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FFMPEG | CoCreateJS</title>
+
+        <!-- CoCreate Favicon -->
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="../assets/favicon.ico" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+    </head>
+    <body>
+        <form>
+            <input
+                type="file"
+                processor="ffmpeg"
+                accept="video/mp4"
+                segment-duration="3"
+                path="/assets/test"
+                database="indexeddb" />
+            <button actions="upload">upload</button>
+        </form>
+
+        <!-- <video src="" controls></video> -->
+        <!-- <video
+            src="https://dev.yelloworacle.com/assets/test/invideo-ai-720_segment_0.mp4"
+            controls
+            width="250"></video> -->
+
+        <!-- <input id="fileInput" type="file" accept="video/mp4" processor="ffmpeg"/> -->
+        <span id="progress"></span>
+
+        <script src="../dist/CoCreate.js"></script>
+    </body>
+</html>
