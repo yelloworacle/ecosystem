@@ -5,20 +5,20 @@
         environment = 'test'
     }
 
-    let productionPk = "pk_live_51OK9b5DSpIU4j2Jo6VbxSw3F8LHhru5wn2FZyE7pqWtRqHoD1hBrtDkxMySPpJNEyGTEoPE0Nfs7bGFqkB5UX17300yYKufL6v"
-    let testPk = "pk_test_51OK9b5DSpIU4j2Joz6AeDvWPQEpoWhRweNS6Hevwvza5IcHwTpgTGTNU5GGMZUiQYzeSBifqV8AWaT3OtjUAVwXt00c3hmBILe"
+    let productionPk = "pk_live_51OoykOIMlR98agX1eiWRfz080ZdLitzBnAF75vbXecQBfHdy8sAu5h8B0au8lVzLKqQSiI2D1xQS8ZZoSFBEuXPr007I24duUf"
+    let testPk = "pk_test_51OoykOIMlR98agX1pLmMH5EfRTscBQKMDd6jLBJxrQILkqrKcnTxaDXjVlX65nwZ1RlF26WoEd1amURrzzQmuxbG00R21LGW40"
 
     let pk, price, coupon
     if (environment === 'production') {
         pk = productionPk
-        price = 'price_1OPdVuDSpIU4j2JoDTXa1i6J'
-        memberPrice = 'price_1Oj6Q2DSpIU4j2JoMlEOKZ5S'
-        coupon = 'miY3GbhY'
+        price = 'price_1P789fIMlR98agX1vV1GeCTX'
+        memberPrice = 'price_1P789VIMlR98agX1RcaO8LFX'
+        coupon = 'xcVCdiOQ'
     } else {
         pk = testPk
-        price = 'price_1OP7WaDSpIU4j2JoOhYOpB4U'
-        memberPrice = 'price_1OgphfDSpIU4j2Jos30M9l41'
-        coupon = 'SUHCpxy7'
+        price = 'price_1P77uXIMlR98agX171XJhkhF'
+        memberPrice = 'price_1P77tWIMlR98agX1xW9bMkvd'
+        coupon = 'WpheQ0Oq'
     }
 
     // Function to load Stripe library dynamically
