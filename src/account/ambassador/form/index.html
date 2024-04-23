@@ -46,6 +46,14 @@
         type="hidden"
         array="users"
         object="$user_id"
+        key="country"
+        input-parent
+        input-attribute="country" />
+
+    <input
+        type="hidden"
+        array="users"
+        object="$user_id"
         key="ambassadorAccount"
         stripe="accounts.update"
         stripe-key="$param[0]" />
