@@ -13,12 +13,12 @@
         pk = productionPk
         price = 'price_1P789fIMlR98agX1vV1GeCTX'
         memberPrice = 'price_1P789VIMlR98agX1RcaO8LFX'
-        coupon = 'xcVCdiOQ'
+        coupon = 'OrwIWSjp'
     } else {
         pk = testPk
         price = 'price_1P77uXIMlR98agX171XJhkhF'
         memberPrice = 'price_1P77tWIMlR98agX1xW9bMkvd'
-        coupon = 'WpheQ0Oq'
+        coupon = 'Vgl0elod'
     }
 
     // Function to load Stripe library dynamically
@@ -116,7 +116,7 @@
                         }
 
                         if (destination) {
-                            data.stripe.application_fee_percent = 15
+                            data.stripe.application_fee_percent = 85
                             data.stripe.transfer_data = {
                                 destination
                             }
