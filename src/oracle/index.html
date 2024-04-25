@@ -446,6 +446,20 @@
                         ambassador.value = ambassadorId;
                         mutation.target.parentElement.appendChild(ambassador);
                     }
+                    let ambassadorAccount =
+                        localStorage.getItem("ambassadorAccount");
+                    if (ambassadorAccount) {
+                        const ambassadorAcc = document.createElement("input");
+                        ambassadorAcc.type = "hidden";
+                        ambassadorAcc.id = "ambassadorAccount";
+                        ambassadorAcc.setAttribute("array", "users");
+                        ambassadorAcc.setAttribute("object", "$user_id");
+                        ambassadorAcc.setAttribute("key", "ambassadorAccount");
+                        ambassadorAcc.value = ambassadorAccount;
+                        mutation.target.parentElement.appendChild(
+                            ambassadorAcc
+                        );
+                    }
                 },
             });
         })();
