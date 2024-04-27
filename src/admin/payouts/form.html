@@ -7,42 +7,7 @@
     object=""
     realtime="false"
     class="main-view max-width:600px">
-    <div
-        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
-        <a
-            actions="state"
-            state_to="mainView"
-            state-src="./admin/payouts/datatable.html"
-            class="padding:0px_10px"
-            ><i src="./assets/svg/angle-left.svg"></i
-        ></a>
-        <div
-            class="display:flex align-items:center transition:0.3s"
-            hover="display:block!important"
-            hover-selector=".options">
-            <div class="display:none options">
-                <a
-                    actions="delete, state"
-                    array="users"
-                    object=""
-                    state_to="mainView"
-                    state-src="./admin/payouts/datatable.html"
-                    class="padding:0px_10px">
-                    <i src="./assets/svg/trash-alt.svg"></i>
-                </a>
-                <a
-                    actions="save, state"
-                    state_to="mainView"
-                    state-src="./admin/payouts/datatable.html"
-                    class="padding:0px_10px">
-                    <i src="./assets/svg/save.svg"></i>
-                </a>
-            </div>
-            <a class="padding:0px_10px"
-                ><i src="./assets/svg/ellipsis-v.svg"></i
-            ></a>
-        </div>
-    </div>
+    <div path="./" src="./components/form-toolbar.html"></div>
 
     <floating-label class="input-300">
         <input

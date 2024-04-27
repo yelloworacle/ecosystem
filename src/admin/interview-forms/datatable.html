@@ -2,35 +2,9 @@
 
 <div class="main-view">
     <div
-        class="display:flex justify-content:space-between align-items:center font-size:20px width:100%">
-        <a
-            actions="state"
-            state_to="mainView"
-            state-src="./admin/interview-forms/datatable.html"
-            class="padding:0px_10px"
-            ><i src="./assets/svg/angle-left.svg"></i
-        ></a>
-        <div
-            class="display:flex align-items:center transition:0.3s"
-            hover-selector=".options"
-            hover-attribute="class"
-            hover-value="display:block!important">
-            <div class="display:none options">
-                <a
-                    actions="delete, state"
-                    array="interviews"
-                    object=""
-                    state_to="mainView"
-                    state-src="./admin/interview-forms/datatable.html"
-                    class="padding:0px_10px">
-                    <i src="./assets/svg/trash-alt.svg"></i>
-                </a>
-            </div>
-            <a class="padding:0px_10px"
-                ><i src="./assets/svg/ellipsis-v.svg"></i
-            ></a>
-        </div>
-    </div>
+        path="./"
+        src="./components/datatable-toolbar.html"
+        class="width:100%"></div>
 
     <table class="width:100% border-collapse:collapse">
         <tr class="border-bottom:1px_solid_darkgray">
