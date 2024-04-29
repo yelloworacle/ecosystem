@@ -23,7 +23,7 @@
  */
 
 const cacheName = "dynamic-v2";
-const updatedOn = new Date('2024-04-28T03:15:28.668Z');
+const updatedOn = new Date('2024-04-29T13:45:43.414Z');
 
 let organization_id = ""
 let storage = true
