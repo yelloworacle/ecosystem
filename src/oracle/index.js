@@ -100,8 +100,8 @@
                     }
                 })
 
-                if (data.chat.choices && data.chat.choices[0].message.content) {
-                    let content = data.chat.choices[0].message.content;
+                if (data.openai.choices && data.openai.choices[0].message.content) {
+                    let content = data.openai.choices[0].message.content;
                     content = content.replace(/```json\n|\n```/g, '');
                     content = content.replace(/```javascript\n|\n```/g, '');
                     try {

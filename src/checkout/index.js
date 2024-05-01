@@ -118,7 +118,8 @@
                         if (destination) {
                             data.stripe.application_fee_percent = 85
                             data.stripe.transfer_data = {
-                                destination
+                                destination,
+
                             }
                         }
 
