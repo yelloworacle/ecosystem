@@ -89,8 +89,8 @@
                 messages.push({ role: 'user', content: name })
 
                 let data = await CoCreate.socket.send({
-                    method: 'openai.chat',
-                    chat: {
+                    method: 'openai.chat.completions.create',
+                    openai: {
                         model: 'gpt-3.5-turbo',
                         messages,
                         max_tokens: 3300,
