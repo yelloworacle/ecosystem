@@ -60,6 +60,20 @@
         stripe="accounts.update"
         stripe-key="$param[0]" />
 
+    <input
+        type="hidden"
+        stripe="accounts.update"
+        stripe-key="tos_acceptance.ip"
+        value="$ip" />
+
+    <input
+        type="date"
+        stripe="accounts.update"
+        stripe-key="tos_acceptance.date"
+        value-type="toUnixTimestamp"
+        value="$now"
+        hidden />
+
     <div class="accordion-item">
         <div
             class="accordion-button"
@@ -153,19 +167,4 @@
     </div>
 </div>
 
-<script>
-    (function () {
-        CoCreate.observer.init({
-            name: "setEmailInput",
-            observe: ["addedNodes"],
-            target: "[value='$ip']",
-            callback: async (mutation) => {
-                fetch("https://api.ipify.org?format=json")
-                    .then((response) => response.json())
-                    .then((data) => {
-                        mutation.target.value = data.ip;
-                    });
-            },
-        });
-    })();
-</script>
+<script src="./account/ambassador/index.js"></script>

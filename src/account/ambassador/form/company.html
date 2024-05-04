@@ -26,20 +26,6 @@
 <company class="form width:100% display:flex flex-wrap:wrap gap:15px">
     <input
         type="hidden"
-        stripe="accounts.update"
-        stripe-key="tos_acceptance.ip"
-        value="$ip" />
-
-    <input
-        type="date"
-        stripe="accounts.update"
-        stripe-key="tos_acceptance.date"
-        value-type="toUnixTimestamp"
-        value="$now"
-        hidden />
-
-    <input
-        type="hidden"
         key="country"
         stripe="accounts.update"
         stripe-key="company.address.country" />
