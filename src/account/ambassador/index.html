@@ -316,7 +316,15 @@
                 placeholder="Ambassador URL"
                 required
                 unique
-                class="padding-left:145px!important" />
+                class="padding-left:145px!important"
+                input-next
+                input-attribute="value" />
+            <input
+                type="hidden"
+                array="ambassadors"
+                object="$user_id"
+                key="ambassadorUrl"
+                upsert="true" />
             <span
                 class="position:relative top:-34px left:6px float:left padding:5px background:whitesmoke"
                 >yelloworacle.com/</span
@@ -327,9 +335,16 @@
                 stripe="accounts.create"
                 stripe-key="id"
                 stripe-request="false"
-                array="users"
+                key="ambassadorAccount"
+                input-next
+                input-attribute="value" />
+
+            <input
+                type="hidden"
+                array="ambassadors"
                 object="$user_id"
-                key="ambassadorAccount" />
+                key="ambassadorAccount"
+                upsert="true" />
 
             <input
                 type="hidden"
@@ -468,22 +483,12 @@
             </div>
 
             <!-- <button actions="stripe.accounts.create">Join</button> -->
-            <button actions="validate, stripe.accounts.create, save">
+            <button
+                actions="validate, stripe.accounts.create, timeout(2000), save">
                 Join
             </button>
         </form>
     </section>
 </div>
 
-<script>
-    (function () {
-        let input = document.querySelector('[value="$ip"]');
-        if (input) {
-            fetch("https://api.ipify.org?format=json")
-                .then((response) => response.json())
-                .then((data) => {
-                    input.value = data.ip;
-                });
-        }
-    })();
-</script>
+<script src="./account/ambassador/index.js"></script>
