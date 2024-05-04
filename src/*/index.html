@@ -99,17 +99,26 @@
             src="./components/sidenav.html"></sidenav>
 
         <input
+            id="getPath"
+            type="hidden"
+            value="$pathname"
+            value-replace="/"
+            onload-next
+            onload-attribute="value" />
+
+        <input
             id="ambassadorId"
             type="hidden"
             filter-next
             filter-key="ambassadorUrl"
             filter-operator="$eq"
-            value="$pathname"
-            value-replace="/" />
+            input-next
+            input-attribute="array"
+            input-value="ambassadors" />
 
         <div
             ambassador
-            array="users"
+            array=""
             object
             filter-limit="1"
             render-limit="1"
