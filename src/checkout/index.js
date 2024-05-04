@@ -58,10 +58,14 @@
 
             var destination = document.getElementById("ambassadorAccount").value
             var additionalData = {
-                customer: document.getElementById("customer").value,
                 name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
             };
+
+            let customer = document.getElementById("customer").value
+
+            if (customer)
+                additionalData.customer = customer
 
             // let paymentIntent = {
             //     method: "stripe.paymentIntents.create",
