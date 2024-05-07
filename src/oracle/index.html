@@ -74,15 +74,35 @@
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
         <section>
-            <form array="users" object="ObjectId()" hidden>
-                <input key="answeredQuestions[]" />
-                <input key="Discover" />
+            <input
+                type="hidden"
+                key="_id"
+                localstorage-get="user_id"
+                localstorage-if="false"
+                localstorage-next="#createUser"
+                localstorage-attribute="$click" />
+
+            <form array="users" object="" hidden>
+                <input key="_id" localstorage-set="user_id" />
+                <input key="answeredQuestions[]" value="Discover" />
                 <input key="subscription" value="false" />
                 <input type="checkbox" key="ambassadorTerms" />
-                <a id="createUser" actions="save"></a>
+                <a
+                    id="createUser"
+                    click-selector="document; #questions"
+                    click-attribute="read"
+                    click-value="true"
+                    actions="timeout(1000), save, localStorage, click"></a>
             </form>
 
-            <form array="users" object="$userId" hidden>
+            <input
+                type="hidden"
+                id="applyRead"
+                click-parent="#questions"
+                click-attribute="read"
+                click-value="true" />
+
+            <form array="users" object="$user_id" hidden read="false">
                 <input
                     type="email"
                     id="email"
@@ -94,7 +114,6 @@
                     autocomplete="email" />
 
                 <input
-                    type="hidden"
                     id="roles"
                     array="keys"
                     object="$user_id"
@@ -103,7 +122,6 @@
 
                 <!-- Check if ambassadorid exists -->
                 <input
-                    type="hidden"
                     id="amabassador"
                     array="users"
                     object="$user_id"
@@ -366,50 +384,10 @@
         input-selector="document; #careers"
         hidden></textarea>
 
-    <!-- <form realtime="false" array="users" object broadcast="false" hidden>
-        <input type="hidden" key="_id" localstorage-set="user_id" />
-        <input type="hidden" key="answeredQuestions[]" value="Discover" />
-        <button id="createUser" actions="save, localStorage"></button>
-    </form> -->
-
     <script src="./oracle/index.js"></script>
     <script src="./oracle/progress.js"></script>
     <script>
         (function () {
-            let user_id = localStorage.getItem("user_id");
-            if (!user_id) {
-                console.log("test");
-                // document.getElementById("createUser").click();
-                document
-                    .getElementById("answeredQuestions")
-                    .setValue("Discover");
-                CoCreate.crud
-                    .send({
-                        method: "object.create",
-                        array: "users",
-                        object: {
-                            "answeredQuestions[]": "Discover",
-                            subscription: "false",
-                            ambassadorTerms: false,
-                        },
-                    })
-                    .then((user) => {
-                        if (user.object[0]) {
-                            localStorage.setItem("user_id", user.object[0]._id);
-                            let userElements = document.querySelectorAll(
-                                "[array='users']:not([ambassador])"
-                            );
-
-                            userElements.forEach(function (element) {
-                                element.setAttribute(
-                                    "object",
-                                    user.object[0]._id
-                                );
-                            });
-                        }
-                    });
-            }
-
             CoCreate.observer.init({
                 name: "setEmailInput",
                 observe: ["addedNodes"],
@@ -429,7 +407,7 @@
                     const roles = document.createElement("input");
                     roles.type = "hidden";
                     roles.id = "roles";
-                    roles.setAttribute("array", "keys");
+                    roles.setAttribute("array", "users");
                     roles.setAttribute("object", "$user_id");
                     roles.setAttribute("key", "roles[]");
                     roles.value = "657726510fee1c6415f70760";
@@ -446,6 +424,7 @@
                         ambassador.value = ambassadorId;
                         mutation.target.parentElement.appendChild(ambassador);
                     }
+
                     let ambassadorAccount =
                         localStorage.getItem("ambassadorAccount");
                     if (ambassadorAccount) {
