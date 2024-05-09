@@ -102,7 +102,7 @@
                 click-attribute="read"
                 click-value="true" />
 
-            <form array="users" object="$user_id" hidden read="false">
+            <!-- <form array="users" object="$user_id" hidden read="false">
                 <input
                     type="email"
                     id="email"
@@ -118,17 +118,17 @@
                     array="keys"
                     object="$user_id"
                     key="roles[]"
-                    value="657726510fee1c6415f70760" />
+                    value="657726510fee1c6415f70760" /> -->
 
-                <!-- Check if ambassadorid exists -->
-                <input
+            <!-- Check if ambassadorid exists -->
+            <!-- <input
                     id="amabassador"
                     array="users"
                     object="$user_id"
                     key="ambassador"
                     value="ambassadorIdPlaceholder" />
                 <a id="signup" actions="save"></a>
-            </form>
+            </form> -->
 
             <div
                 filter-sort-key="position"
@@ -236,7 +236,7 @@
                 array="subscriptions"
                 object=""
                 key="fields"
-                input-next="[template] #subscribed"
+                input-next=".subscribed[]"
                 input-attribute="value"
                 class="width:100%"
                 hidden
@@ -321,7 +321,7 @@
                                 >{{object.careerPathVariability}}</span
                             >
                         </div>
-                        <div id="subscribed" class="width:100%">
+                        <div class="width:100% subscribed">
                             <button
                                 class="unlock width:100% margin-top:20px font-size:16px">
                                 <a state_to="mainView" state-src="./checkout/"
@@ -393,6 +393,8 @@
                 observe: ["addedNodes"],
                 target: "#password",
                 callback: async (mutation) => {
+                    const container = document.createElement("div");
+
                     const email = document.createElement("input");
                     email.type = "email";
                     email.id = "email";
@@ -402,7 +404,7 @@
                     email.setAttribute("object", "$user_id");
                     email.setAttribute("key", "email");
                     email.setAttribute("autocomplete", "email");
-                    mutation.target.parentElement.appendChild(email);
+                    container.appendChild(email);
 
                     const roles = document.createElement("input");
                     roles.type = "hidden";
@@ -411,7 +413,7 @@
                     roles.setAttribute("object", "$user_id");
                     roles.setAttribute("key", "roles[]");
                     roles.value = "657726510fee1c6415f70760";
-                    mutation.target.parentElement.appendChild(roles);
+                    container.appendChild(roles);
 
                     let ambassadorId = localStorage.getItem("ambassador");
                     if (ambassadorId) {
@@ -422,7 +424,7 @@
                         ambassador.setAttribute("object", "$user_id");
                         ambassador.setAttribute("key", "ambassador");
                         ambassador.value = ambassadorId;
-                        mutation.target.parentElement.appendChild(ambassador);
+                        container.appendChild(ambassador);
                     }
 
                     let ambassadorAccount =
@@ -435,10 +437,9 @@
                         ambassadorAcc.setAttribute("object", "$user_id");
                         ambassadorAcc.setAttribute("key", "ambassadorAccount");
                         ambassadorAcc.value = ambassadorAccount;
-                        mutation.target.parentElement.appendChild(
-                            ambassadorAcc
-                        );
+                        container.appendChild(ambassadorAcc);
                     }
+                    mutation.target.parentElement.appendChild(container);
                 },
             });
         })();
