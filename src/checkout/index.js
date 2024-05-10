@@ -57,6 +57,10 @@
             submitButton.innerHTML = "Processing";
 
             var destination = document.getElementById("ambassadorAccount").value
+            var parents = document.getElementById("ambassadorParents")
+            if (parents)
+                parents = parents.getValue()
+
             var additionalData = {
                 name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
@@ -149,8 +153,31 @@
                             });
 
 
+                            if (parents) {
+                                console.log('parents: ', parents)
+                                let amount = data.stripe.items.data[0].price.unit_amount;
+                                amount = Math.round((amount * 5) / 100);
+                                for (let i = 0; i < parents.length && i < 4; i++) {
+                                    let transferData = {
+                                        method: "stripe.transfers.create",
+                                        broadcast: false,
+                                        stripe: {
+                                            amount,
+                                            currency: "usd",
+                                            destination: parents[i],
+                                            description: "5% share to connected account"
+                                        },
+                                        environment
+                                    };
+
+                                    // Send data to create transfer
+                                    let response = await CoCreate.socket.send(transferData);
+                                    console.log('Transfer response for account', parents[i], ':', response);
+                                }
+                            }
+
                             // if (destination) {
-                            //     let amount = data.stripe.items.data[0].price.unit_amount * 17;
+                            //     let amount = data.stripe.items.data[0].price.unit_amount;
                             //     amount = Math.round((amount * 15) / 100);
                             //     await CoCreate.socket.send({
                             //         method: "stripe.transfers.create",

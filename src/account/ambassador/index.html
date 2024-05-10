@@ -348,6 +348,20 @@
 
             <input
                 type="hidden"
+                localstorage-get="ambassadorParents"
+                key="ambassadorParents"
+                input-next
+                input-attribute="value" />
+
+            <input
+                type="hidden"
+                array="ambassadors"
+                object="$user_id"
+                key="ambassadorParents"
+                upsert="true" />
+
+            <input
+                type="hidden"
                 stripe="accounts.create"
                 stripe-key="type"
                 value="custom" />
@@ -484,9 +498,24 @@
 
             <!-- <button actions="stripe.accounts.create">Join</button> -->
             <button
-                actions="validate, stripe.accounts.create, timeout(2000), save">
+                actions="validate, stripe.accounts.create, timeout(2000), save, action(document; #addParent)">
                 Join
             </button>
+        </form>
+        <form hidden>
+            <input
+                array="users"
+                object="$user_id"
+                key="ambassadorAccount"
+                input-next
+                input-attribute="value" />
+
+            <input
+                array="ambassadors"
+                object="$user_id"
+                key="ambassadorParents[]" />
+
+            <button id="addParent" actions="validate, save"></button>
         </form>
     </section>
 </div>

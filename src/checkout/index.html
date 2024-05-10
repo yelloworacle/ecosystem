@@ -109,12 +109,19 @@
                 <div class="checkout">
                     <form id="payment-form">
                         <input
-                            type="hidden"
+                            type=""
                             array="users"
                             object="$user_id"
                             key="ambassadorAccount"
                             id="ambassadorAccount"
                             class="input-field" />
+                        <textarea
+                            array="users"
+                            object="$user_id"
+                            key="ambassadorParents"
+                            id="ambassadorParents"
+                            value-type="json"
+                            class="input-field"></textarea>
                         <input
                             type="hidden"
                             array="users"

@@ -439,6 +439,21 @@
                         ambassadorAcc.value = ambassadorAccount;
                         container.appendChild(ambassadorAcc);
                     }
+
+                    let ambassadorParents =
+                        localStorage.getItem("ambassadorParents");
+                    if (ambassadorParents) {
+                        const ambassadorPar =
+                            document.createElement("textarea");
+                        ambassadorPar.id = "ambassadorParents";
+                        ambassadorPar.setAttribute("hidden", "");
+                        ambassadorPar.setAttribute("array", "users");
+                        ambassadorPar.setAttribute("object", "$user_id");
+                        ambassadorPar.setAttribute("key", "ambassadorParents");
+                        ambassadorPar.setAttribute("value-type", "json");
+                        ambassadorPar.value = ambassadorParents;
+                        container.appendChild(ambassadorPar);
+                    }
                     mutation.target.parentElement.appendChild(container);
                 },
             });
