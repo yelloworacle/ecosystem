@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<div class="display:flex justify-content:center width:100% padding-top:80px">
+<div class="display:flex justify-content:center width:100% padding:80px_0px">
     <style>
         /* Add a CSS animation to make the icon spin */
         @keyframes spin {
@@ -112,21 +112,30 @@
                     object="$user_id"
                     key="email"
                     autocomplete="email" />
-
                 <input
                     id="roles"
-                    array="keys"
+                    array="users"
                     object="$user_id"
                     key="roles[]"
-                    value="657726510fee1c6415f70760" /> -->
-
-            <!-- Check if ambassadorid exists -->
-            <!-- <input
+                    value="657726510fee1c6415f70760" />
+                <input
                     id="amabassador"
                     array="users"
                     object="$user_id"
                     key="ambassador"
-                    value="ambassadorIdPlaceholder" />
+                    localstorage-get="amabassador" />
+                <input
+                    id="amabassadorAccount"
+                    array="users"
+                    object="$user_id"
+                    key="amabassadorAccount"
+                    localstorage-get="amabassadorAccount" />
+                <input
+                    id="amabassadorParents"
+                    array="users"
+                    object="$user_id"
+                    key="amabassadorParents"
+                    localstorage-get="amabassadorParents" />
                 <a id="signup" actions="save"></a>
             </form> -->
 
@@ -222,6 +231,38 @@
             </div>
         </section>
 
+        <section class="position:relative">
+            <h3 class="position:absolute top:-5px left:30px">
+                Career Example:
+            </h3>
+            <a
+                click-parent
+                click-attribute="hidden"
+                click-value=""
+                class="position:absolute top:30px right:30px">
+                <i src="./assets/svg/times.svg"></i>
+            </a>
+            <textarea
+                id="subscription"
+                array="subscriptions"
+                object="6571fe530c48ef6970900a82"
+                key="fields"
+                input-next=".subscribed[]"
+                input-attribute="value"
+                class="width:100%"
+                hidden
+                save="false"></textarea>
+
+            <div
+                array="careers"
+                object
+                filter-key="name"
+                filter-value="Surgeon"
+                filter-operator="$eq"
+                render-selector="[template]"
+                src="./oracle/career-template.html"></div>
+        </section>
+
         <section>
             <input
                 type="hidden"
@@ -247,91 +288,8 @@
                 array=""
                 object
                 filter-sort-key="name"
-                render-selector="[template]">
-                <div class="card margin-bottom:15px" template>
-                    <div class="card-content">
-                        <div class="card-row full-width">
-                            <span class="card-label">Career Name:</span>
-                            <span class="card-value load-value"
-                                >{{object.name}}</span
-                            >
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Average Salary:</span>
-                            <span class="card-value load-value"
-                                >{{object.salary}}</span
-                            >
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Stress Level:</span>
-                            <span class="card-value load-value"
-                                >{{object.stress}}</span
-                            >
-                        </div>
-
-                        <div class="card-row">
-                            <span class="card-label">Pros:</span>
-                            <span class="card-value load-value"
-                                >{{object.pros}}</span
-                            >
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Cons:</span>
-                            <span class="card-value load-value"
-                                >{{object.cons}}</span
-                            >
-                        </div>
-                        <div class="card-row full-width">
-                            <span class="card-label">Interesting Fact:</span>
-                            <span class="card-value load-value"
-                                >{{object.facts}}</span
-                            >
-                        </div>
-
-                        <div class="card-row">
-                            <span class="card-label">Apprentice:</span>
-                            <span class="card-value load-value"
-                                >{{object.apprentice}}</span
-                            >
-                        </div>
-                        <div class="card-row">
-                            <span class="card-label">Satisfaction:</span>
-                            <span class="card-value load-value"
-                                >{{object.satisfaction}}</span
-                            >
-                        </div>
-                        <div class="card-row full-width">
-                            <span class="card-label">Sacrifices:</span>
-                            <span class="card-value load-value"
-                                >{{object.sacrifices}}</span
-                            >
-                        </div>
-
-                        <div class="card-row full-width">
-                            <span class="card-label">Characteristics:</span>
-                            <span class="card-value load-value"
-                                >{{object.characteristics}}</span
-                            >
-                        </div>
-                        <div class="card-row full-width">
-                            <span class="card-label"
-                                >Career Path Variability:</span
-                            >
-                            <span class="card-value load-value"
-                                >{{object.careerPathVariability}}</span
-                            >
-                        </div>
-                        <div class="width:100% subscribed">
-                            <button
-                                class="unlock width:100% margin-top:20px font-size:16px">
-                                <a state_to="mainView" state-src="./checkout/"
-                                    >Subscribe to unlock additional details</a
-                                >
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                render-selector="[template]"
+                src="./oracle/career-template.html"></div>
         </section>
     </div>
 
