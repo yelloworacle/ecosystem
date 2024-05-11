@@ -109,35 +109,44 @@
                 <div class="checkout">
                     <form id="payment-form">
                         <input
-                            type=""
+                            id="ambassadorAccount"
+                            type="hidden"
                             array="users"
                             object="$user_id"
                             key="ambassadorAccount"
-                            id="ambassadorAccount"
                             class="input-field" />
                         <textarea
+                            id="ambassadorParents"
                             array="users"
                             object="$user_id"
                             key="ambassadorParents"
-                            id="ambassadorParents"
                             value-type="json"
-                            class="input-field"></textarea>
+                            class="input-field"
+                            hidden></textarea>
                         <input
+                            id="customer"
                             type="hidden"
                             array="users"
                             object="$user_id"
                             key="customerId"
-                            id="customer"
                             class="input-field" />
                         <input
-                            type="text"
                             id="name"
+                            type="text"
+                            array="users"
+                            object="$user_id"
+                            key="name"
+                            save="false"
                             class="input-field"
                             placeholder="Name"
                             required />
                         <input
                             type="email"
                             id="email"
+                            array="users"
+                            object="$user_id"
+                            key="email"
+                            save="false"
                             class="input-field"
                             placeholder="Email"
                             required />
