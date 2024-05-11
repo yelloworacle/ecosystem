@@ -113,7 +113,8 @@
                 stripe-key="individual.dob.day"
                 placeholder="Day"
                 min="1"
-                max="31" />
+                max="31"
+                test-value="1" />
         </floating-label>
         <floating-label class="flex-grow:1 width:90px">
             <input
@@ -123,7 +124,8 @@
                 stripe-key="individual.dob.month"
                 placeholder="Month"
                 min="1"
-                max="12" />
+                max="12"
+                test-value="1" />
         </floating-label>
         <floating-label class="flex-grow:1 width:80px">
             <input
@@ -133,7 +135,8 @@
                 stripe-key="individual.dob.year"
                 placeholder="Year"
                 min="1900"
-                max="2006" />
+                max="2006"
+                test-value="1900" />
         </floating-label>
     </div>
 
@@ -144,6 +147,7 @@
             key="ssn_last_4"
             stripe="accounts.update"
             stripe-key="individual.ssn_last_4"
-            placeholder="SSN Last 4 Digits" />
+            placeholder="SSN Last 4 Digits"
+            test-value="0000" />
     </floating-label>
 </individual>
