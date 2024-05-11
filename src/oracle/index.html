@@ -20,6 +20,7 @@
         input[type="button"] {
             display: none;
         }
+
         input.question {
             padding-bottom: 15px;
             padding-right: 85px;
@@ -37,7 +38,6 @@
             background-color: #f0f0f0;
             border-radius: 8px;
             position: relative;
-            z-index: 5;
             left: 0px;
             top: 5px;
             width: 100%;
@@ -179,6 +179,13 @@
                         >{{object.question}}</label
                     >
                     <div class="position:relative margin-top:5px">
+                        <div class="sibling progress-bar">
+                            <div
+                                position="{{object.position}}"
+                                class="progress"
+                                style="width: 0px"></div>
+                        </div>
+
                         <input
                             id="{{object.name}}"
                             type="{{object.type}}"
@@ -204,13 +211,6 @@
                                 Begin Your Journey
                             </div>
                         </a>
-
-                        <div class="sibling progress-bar">
-                            <div
-                                position="{{object.position}}"
-                                class="progress"
-                                style="width: 0px"></div>
-                        </div>
                     </div>
                     <div
                         template="validate"
