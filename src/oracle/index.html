@@ -70,6 +70,13 @@
             height: 1px;
             z-index: -1;
         }
+
+        [example] {
+            display: none;
+        }
+        [example="Intro"] {
+            display: block;
+        }
     </style>
     <div
         class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:600px">
@@ -227,20 +234,15 @@
                         <span class="{{type}}">{{message}}</span
                         ><a actions="remove"> X</a>
                     </div>
+                    <div
+                        onload-attribute="example"
+                        onload-value="{{object.name}}"
+                        onload-selector="document; #example"></div>
                 </form>
             </div>
         </section>
 
-        <section class="position:relative" hidden>
-            <textarea
-                array="users"
-                object="$user_id"
-                key="answeredQuestions[2]"
-                input-attribute=", hidden"
-                input-value=""
-                input-parent
-                input-if=""></textarea>
-
+        <section id="example" class="position:relative" example>
             <h3 class="position:absolute top:-5px left:30px">
                 Career Example:
             </h3>
@@ -251,6 +253,17 @@
                 class="position:absolute top:30px right:30px">
                 <i src="./assets/svg/times.svg"></i>
             </a>
+
+            <textarea
+                array="users"
+                object="$user_id"
+                key="answeredQuestions[1]"
+                input-attribute="hidden"
+                input-value="false"
+                input-parent
+                input-if=""
+                hidden></textarea>
+
             <textarea
                 id="subscription"
                 array="subscriptions"
