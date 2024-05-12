@@ -71,13 +71,19 @@
             z-index: -1;
         }
 
-        [example] {
+        /* [example] {
             display: none;
-        }
+        } */
         [example="Intro"] {
             display: block;
         }
-        [example="Intro"] .unlock {
+        [example] #show-example {
+            display: none;
+        }
+        [example="Intro"] #close-example {
+            display: none;
+        }
+        [example="Intro"] .subscribed {
             display: none;
         }
     </style>
@@ -245,17 +251,28 @@
             </div>
         </section>
 
-        <section id="example" class="position:relative" example>
+        <section id="example" class="position:relative" example hidden>
             <h3 class="position:absolute top:-5px left:30px">
                 Career Example:
             </h3>
             <a
-                click-parent
-                click-attribute="hidden"
-                click-value=""
+                id="close-example"
+                show="document; #oracle"
+                hide="document; #example"
                 class="position:absolute top:30px right:30px">
                 <i src="./assets/svg/times.svg"></i>
             </a>
+
+            <textarea
+                id="subscription"
+                array="subscriptions"
+                object="6571fe530c48ef6970900a82"
+                key="fields"
+                input-next=".subscribed[]"
+                input-attribute="value"
+                class="width:100%"
+                hidden
+                save="false"></textarea>
 
             <textarea
                 array="users"
@@ -267,7 +284,7 @@
                 input-if=""
                 hidden></textarea>
 
-            <!-- <textarea
+            <textarea
                 id="subscription"
                 array="subscriptions"
                 object="6571fe530c48ef6970900a82"
@@ -276,7 +293,7 @@
                 input-attribute="value"
                 class="width:100%"
                 hidden
-                save="false"></textarea> -->
+                save="false"></textarea>
 
             <div
                 array="careers"
@@ -288,7 +305,7 @@
                 src="./oracle/career-template.html"></div>
         </section>
 
-        <section>
+        <section id="oracle" class="oracle">
             <input
                 type="hidden"
                 array="users"
