@@ -8,17 +8,25 @@
     let productionPk = "pk_live_51OoykOIMlR98agX1eiWRfz080ZdLitzBnAF75vbXecQBfHdy8sAu5h8B0au8lVzLKqQSiI2D1xQS8ZZoSFBEuXPr007I24duUf"
     let testPk = "pk_test_51OoykOIMlR98agX1pLmMH5EfRTscBQKMDd6jLBJxrQILkqrKcnTxaDXjVlX65nwZ1RlF26WoEd1amURrzzQmuxbG00R21LGW40"
 
-    let pk, price, coupon
+    let pk, price, coupon, promos
     if (environment === 'production') {
         pk = productionPk
         price = 'price_1P789fIMlR98agX1vV1GeCTX'
         memberPrice = 'price_1P789VIMlR98agX1RcaO8LFX'
-        coupon = 'OrwIWSjp'
+        coupon = 'v7BoWgix'
+        promos = {
+            military: "OrwIWSjp", //"promo_1PGjDuIMlR98agX1tMLAXwRG",
+            veteran: "OrwIWSjp" //"promo_1PGjEFIMlR98agX1MDQfFCO2"
+        }
     } else {
         pk = testPk
         price = 'price_1P77uXIMlR98agX171XJhkhF'
         memberPrice = 'price_1P77tWIMlR98agX1xW9bMkvd'
         coupon = 'Vgl0elod'
+        promos = {
+            military: "ELAsxpac", //"promo_1PGjARIMlR98agX1qkEyTnZR",
+            veteran: "ELAsxpac" //"promo_1PGjARIMlR98agX10havIZuM"
+        }
     }
 
     // Function to load Stripe library dynamically
@@ -60,6 +68,9 @@
             var parents = document.getElementById("ambassadorParents")
             if (parents)
                 parents = parents.getValue()
+            var couponCode = document.getElementById("coupon").value
+            if (couponCode)
+                coupon = promos[couponCode.toLowerCase()]
 
             var additionalData = {
                 name: document.getElementById("name").value,
