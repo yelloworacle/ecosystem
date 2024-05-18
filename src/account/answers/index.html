@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <a href="./signin.html" session="false" hidden></a>
 
-<style>
-    .coming-soon-container {
-        text-align: center;
-        background-color: white;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .coming-soon-container h1 {
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    .coming-soon-container p {
-        color: #666;
-    }
-</style>
-<div class="coming-soon-container">
-    <h1>Coming Soon</h1>
-    <p>We are working hard to bring this section to you. Stay tuned!</p>
-</div>
+<form array="users" object="$user_id" class="main-view max-width:600px">
+    <div
+        array="users"
+        filter-key="_id"
+        filter-value="$user_id"
+        key="questions"
+        render-selector="[template]"
+        render-type="object"
+        class="display:flex flex-wrap:wrap gap:10px padding-top:10px">
+        <floating-label template class="input-600">
+            <input
+                key="questions.{{questions.key}}"
+                placeholder="{{questions.key}}" />
+        </floating-label>
+    </div>
+</form>
