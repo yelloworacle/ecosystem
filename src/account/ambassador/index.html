@@ -62,6 +62,17 @@
             display: block;
             background: green;
         }
+        [charges_enabled] {
+            display: none;
+        }
+        [charges_enabled="false"] {
+            display: block;
+            background: red;
+        }
+        [charges_enabled="true"] {
+            display: block;
+            background: green;
+        }
     </style>
 
     <input
@@ -74,14 +85,23 @@
     <section id="dashboard" class="width:100% padding:0px">
         <div
             class="width:100% display:flex justify-content:flex-end margin-bottom:30px gap:15px">
-            <!-- Next Payout Section -->
+            <div id="nextPayout" class="card maxwidth:200px" charges_enabled>
+                <span>Charges: </span>
+                <span
+                    type="hidden"
+                    array="users"
+                    object="$user_id"
+                    key="stripe.account.charges_enabled"
+                    input-parent
+                    input-attribute="charges_enabled"></span>
+            </div>
             <div id="nextPayout" class="card maxwidth:200px" payouts_enabled>
                 <span>Payouts: </span>
                 <span
                     type="hidden"
                     array="users"
                     object="$user_id"
-                    key="stripe.accounts.payouts_enabled"
+                    key="stripe.account.payouts_enabled"
                     input-parent
                     input-attribute="payouts_enabled"></span>
             </div>
@@ -360,6 +380,14 @@
                 key="ambassadorParents"
                 upsert="true" />
 
+            <div
+                type="hidden"
+                stripe="accounts.create"
+                stripe-key="{}"
+                stripe-request="false"
+                key="stripe.account"
+                component></div>
+
             <input
                 type="hidden"
                 stripe="accounts.create"
@@ -498,7 +526,7 @@
 
             <!-- <button actions="stripe.accounts.create">Join</button> -->
             <button
-                actions="validate, stripe.accounts.create, timeout(2000), save, action(document; #addParent)">
+                actions="validate, stripe.accounts.create, timeout(2000), save">
                 Join
             </button>
         </form>
@@ -513,7 +541,9 @@
             <input
                 array="ambassadors"
                 object="$user_id"
-                key="ambassadorParents[]" />
+                key="ambassadorParents[]"
+                input-next
+                input-attribute="click" />
 
             <button id="addParent" actions="validate, save"></button>
         </form>
