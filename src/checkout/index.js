@@ -44,16 +44,16 @@
     loadStripeLibrary(function () {
         const stripe = Stripe(pk);
 
-        var elements = stripe.elements();
+        const elements = stripe.elements();
 
-        var style = {
+        const style = {
             base: {
                 fontSize: "16px",
                 color: "#32325d",
             },
         };
 
-        var card = elements.create("card", { style: style });
+        const card = elements.create("card", { style: style });
         card.mount("#card-element");
 
         var form = document.getElementById("payment-form");
@@ -64,15 +64,18 @@
             );
             submitButton.innerHTML = "Processing";
 
-            var destination = document.getElementById("ambassadorAccount").value
-            var parents = document.getElementById("ambassadorParents")
+            const destination = document.getElementById("ambassadorAccount").value
+            const enabled = document.getElementById("ambassador").getValue()
+
+            let parents = document.getElementById("ambassadorParents")
             if (parents)
                 parents = parents.getValue()
-            var couponCode = document.getElementById("coupon").value
+
+            let couponCode = document.getElementById("coupon").value
             if (couponCode)
                 coupon = promos[couponCode.toLowerCase()]
 
-            var additionalData = {
+            let additionalData = {
                 name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
             };
@@ -81,22 +84,6 @@
 
             if (customer)
                 additionalData.customer = customer
-
-            // let paymentIntent = {
-            //     method: "stripe.paymentIntents.create",
-            //     broadcast: false,
-            //     environment,
-            //     stripe: {
-            //         customer: additionalData.customer,
-            //         items: [{ price }, { price: memberPrice, quantity: 0 }],
-            //         coupon: coupon,
-            //         expand: ['latest_invoice.payment_intent']
-            //     }
-            // }
-
-            // paymentIntent = await CoCreate.socket.send(paymentIntent);
-            // if (!paymentIntent || !paymentIntent.clientSecret)
-            //     return
 
             stripe
                 .createToken(card, additionalData)
@@ -134,18 +121,12 @@
                             environment
                         }
 
-                        if (destination) {
+                        if (destination && enabled) {
                             data.stripe.application_fee_percent = 85
                             data.stripe.transfer_data = {
                                 destination
                             }
                         }
-
-                        // if (destination) {
-                        //     data.stripe.application_fee_percent = 85
-                        //     // data.stripe.$param1 = { stripeAccount: destination }
-                        // }
-
 
                         data = await CoCreate.socket.send(data);
 
@@ -163,8 +144,7 @@
                                 },
                             });
 
-
-                            if (parents) {
+                            if (parents && enabled) {
                                 console.log('parents: ', parents)
                                 let amount = data.stripe.items.data[0].price.unit_amount;
                                 amount = Math.round((amount * 5) / 100);
@@ -186,19 +166,6 @@
                                     console.log('Transfer response for account', parents[i], ':', response);
                                 }
                             }
-
-                            // if (destination) {
-                            //     let amount = data.stripe.items.data[0].price.unit_amount;
-                            //     amount = Math.round((amount * 15) / 100);
-                            //     await CoCreate.socket.send({
-                            //         method: "stripe.transfers.create",
-                            //         stripe: {
-                            //             amount, // Amount in your account's currency (MXN)
-                            //             currency: 'mxn', // Your account's currency
-                            //             destination,
-                            //         }
-                            //     });
-                            // }
 
                             submitButton.innerHTML = "Payment Successful";
                             window.localStorage.setItem('subscription', '6571fe530c48ef6970900a82')
