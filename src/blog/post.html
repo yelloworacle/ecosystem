@@ -104,7 +104,7 @@
                     render-selector="[template]"
                     class="padding:0_20px width:100% margin-top:20px display:flex flex-wrap:wrap gap:10px">
                     <a
-                        class="border-radius:5px padding:2px_5px background:#F23A2E color:#fff color:#ddd:hover font-size:12px@sm"
+                        class="border-radius:5px padding:2px_5px background:#F23A2E color:#fff color:#ddd:hover font-size:12px@sm display:none:empty"
                         href="#"
                         >{{object.category}}</a
                     >
@@ -123,12 +123,35 @@
                             >{{object.author}} {{object.published}}</a
                         ></span
                     >
-                    <a href="#"
-                        ><i src="../assets/svg/eye.svg"></i> {{object.views}}
-                    </a>
+                    <form hidden>
+                        <input
+                            type="number"
+                            array="blog-posts"
+                            object="{{object._id}}"
+                            key="$inc.views"
+                            value="1"
+                            hidden />
+                        <input
+                            id="tester"
+                            onload-next
+                            onload-attribute="$click" />
+                        <div actions="timeout(2000), save"></div>
+                    </form>
+                    <i src="../assets/svg/eye.svg"></i>
+                    <span array="blog-posts" object="{{object._id}}" key="views"
+                        >{{object.views}}</span
+                    >
+
                     <a href="#"
                         ><i src="../assets/svg/comment-alt.svg"></i>
-                        {{object.comments.$length}}
+                        <span
+                            array="comments"
+                            object
+                            key="$length"
+                            filter-key="post_id"
+                            filter-value="{{object._id}}"
+                            >0</span
+                        >
                     </a>
                 </div>
 
@@ -136,20 +159,35 @@
                     class="margin-top:25px margin-bottom:10px width:100% border-bottom:1px_solid_#ddd"></div>
 
                 <!--  Social Icon Start  -->
-                <div class="padding:0_20px display:flex flex-wrap:wrap">
-                    <div
-                        class="social display:flex flex-wrap:wrap justify-content:flex-start align-items:center">
-                        <a class="padding:10px color:#F7CC02:hover">
+                <div
+                    class="padding:0_20px"
+                    share-network="true"
+                    share-url="$href"
+                    share-title="{{object.title}}"
+                    share-height="600"
+                    share-width="600"
+                    share-media="{{object.image[0].src}}">
+                    <div class="display:flex flex-wrap:wrap gap:10px">
+                        <a
+                            href="#"
+                            share-network="facebook"
+                            class="color:#F7CC02:hover">
                             <i src="../assets/svg/facebook-f.svg"></i>
                         </a>
-                        <a class="padding:10px color:#F7CC02:hover">
-                            <i src="../assets/svg/twitter.svg"></i>
-                        </a>
-                        <a class="padding:10px color:#F7CC02:hover">
-                            <i src="../assets/svg/linkedin-in.svg"></i>
-                        </a>
-                        <a class="padding:10px color:#F7CC02:hover">
-                            <i src="../assets/svg/envelope.svg"></i>
+                        <a
+                            href="#"
+                            share-network="twitter"
+                            class="color:#F7CC02:hover"
+                            ><i src="../assets/svg/twitter.svg"></i
+                        ></a>
+                        <a
+                            href="#"
+                            share-network="linkedin"
+                            class="color:#F7CC02:hover"
+                            ><i src="../assets/svg/linkedin-in.svg"></i
+                        ></a>
+                        <a share class="color:#F7CC02:hover">
+                            <i src="../assets/svg/share-alt.svg"></i>
                         </a>
                     </div>
                 </div>
@@ -165,8 +203,7 @@
 
                     <!-- Video -->
                     <video
-                        width="320"
-                        height="240"
+                        width="100%"
                         controls
                         poster="{{object.image[0].src}}"
                         onloadeddata="this.previousElementSibling.style.display='none';"
@@ -184,77 +221,123 @@
                 <div
                     class="margin-top:25px width:100% border-bottom:1px_solid_#ddd"></div>
 
-                <div class="display:none!important">
-                    <!--  Comment Start  -->
-                    <div
-                        class="padding:0_20px margin-bottom:20px margin-top:20px width:100% display:flex flex-wrap:wrap">
+                <!--  Comment Start  -->
+                <input
+                    type="hidden"
+                    filter-next
+                    filter-key="post_id"
+                    filter-value="{{object._id}}" />
+                <div
+                    class="padding:0_20px margin-bottom:20px margin-top:20px width:100% display:flex flex-wrap:wrap"
+                    array="comments"
+                    object
+                    filter-limit="20"
+                    render-selector="[template]">
+                    <div template render-as="comment">
                         <div
                             class="img-comment-section margin-right:10px margin-bottom:10px flex-basis:15% flex-basis:100%@xs">
                             <!-- <img src="images/blog-post/comment1.jpg" /> -->
-                        </div>
-                        <div
-                            class="text-comment-section flex-basis:70% flex-basis:100%@xs">
-                            <h2
-                                class="margin-bottom:6px font-size:19px@sm font-size:19px@xs color:#222">
-                                {{comment.name}}
-                            </h2>
-                            <div class="margin-bottom:6px">
-                                <a
-                                    class="color:#000 font-size:14px@sm font-size:13px@xs color:tomato:hover text-decoration:underline"
-                                    href="#"
-                                    >{{comment.website}}</a
-                                >
+                            <div
+                                class="text-comment-section flex-basis:70% flex-basis:100%@xs">
+                                <div class="display:flex">
+                                    <!-- Avatar -->
+                                    <div
+                                        class="avatar-wrapper margin-right:10px">
+                                        <div class="avatar round">
+                                            <span class="avatar-name">
+                                                {{comment.name}}
+                                            </span>
+                                            <span class="avatar-image">
+                                                <img
+                                                    array="users"
+                                                    object="$user_id"
+                                                    key="avatar"
+                                                    onerror="this.style.display='none'"
+                                                    width="40px" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h2
+                                            class="margin-bottom:6px font-size:19px@sm@xs">
+                                            {{comment.name}}
+                                        </h2>
+                                        <div class="margin-bottom:6px">
+                                            <a
+                                                class="color:#000 font-size:14px@sm font-size:13px@xs color:tomato:hover text-decoration:underline"
+                                                href="#"
+                                                >{{comment.website}}</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div
                                 class="margin-bottom:8px font-size:14px@sm font-size:13px@xs">
                                 <p>{{comment.comment}}</p>
                             </div>
-                            <div>
-                                <a href="#"
-                                    ><i src="../assets/svg/thumbs-up.svg"></i
-                                ></a>
+                            <div class="display:flex">
+                                <form>
+                                    <input
+                                        type="number"
+                                        array="blog-posts"
+                                        object="{{object._id}}"
+                                        key="$inc.likes"
+                                        value="1"
+                                        hidden />
+                                    <a actions="save"
+                                        ><i
+                                            src="../assets/svg/thumbs-up.svg"></i
+                                    ></a>
+                                </form>
+                                <span
+                                    array="blog-posts"
+                                    object="{{object._id}}"
+                                    key="likes"
+                                    >{{object.likes}}</span
+                                >
 
-                                <a href="#"
+                                <!-- <a href="#"
                                     ><i src="../assets/svg/thumbs-down.svg"></i
-                                ></a>
+                                ></a> -->
                             </div>
                         </div>
+                        <div
+                            class="margin-top:25px width:100% border-bottom:1px_solid_#ddd"></div>
                     </div>
                     <!--  Comment End  -->
 
                     <!--  Post COMMENT Start  -->
                     <form
                         array="comments"
+                        object=""
                         class="padding:0_20px width:100% margin-top:20px display:flex flex-direction:column gap:20px">
                         <h3 class="width:100%">LEAVE A REPLY</h3>
-                        <!--  Comment Heading  -->
+                        <input
+                            type="hidden"
+                            key="post_id"
+                            value="{{object._id}}" />
                         <floating-label>
                             <textarea
                                 rows="10"
                                 placeholder="Write Your Comment"
-                                object="{{object._id}}"
-                                key="comment"></textarea>
+                                key="comment"
+                                required></textarea>
                         </floating-label>
                         <floating-label>
                             <input
                                 type="text"
                                 placeholder="Enter Your Name"
-                                object="{{object._id}}"
-                                key="name" />
+                                key="name"
+                                required />
                         </floating-label>
                         <floating-label>
                             <input
                                 type="email"
                                 placeholder="Enter Your Email"
-                                object="{{object._id}}"
-                                key="email" />
-                        </floating-label>
-                        <floating-label>
-                            <input
-                                type="text"
-                                placeholder="Enter Your Website URL"
-                                object="{{object._id}}"
-                                key="website" />
+                                key="email"
+                                required />
                         </floating-label>
 
                         <div class="width:100% margin-bottom:20px">
@@ -262,9 +345,10 @@
                                 class="margin-right:10px"
                                 type="checkbox"
                                 key="" /><span class="color:#333"
-                                >Save my name, email, and website in this
-                                browser for the next time I comment</span
+                                >Save my name and email in this browser for the
+                                next time I comment</span
                             >
+                            <!-- ToDo: store data in local storage if above is checked -->
                         </div>
                         <button actions="validate, save">Post Comment</button>
                     </form>
