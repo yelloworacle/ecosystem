@@ -121,10 +121,15 @@
         </floating-label>
 
         <floating-label class="input-600">
-            <textarea
+            <editor
+                contenteditable="true"
                 key="content"
                 placeholder="Content"
-                class="floating-label"></textarea>
+                class="floating-label"></editor>
+            <!-- <textarea
+                key="content"
+                placeholder="Content"
+                class="floating-label"></textarea> -->
         </floating-label>
 
         <floating-label class="input-600">
@@ -217,4 +222,5 @@
         <textarea key="src"></textarea>
         <button id="savefile" actions="save" hidden>Publish Post</button>
     </form>
+    <div src="./components/toolbar.html" value-type="outerHTML"></div>
 </div>
