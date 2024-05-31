@@ -1,0 +1,192 @@
+<!-- Selected Toolbar -->
+<toolbar
+    toolbar-placement="top"
+    toolbar-selector="editor"
+    toolbar-event="click"
+    class="position:absolute pointer-events:none display:none">
+    <tools
+        class="display:flex justify-content:space-between width:100% color:white font-size:11px z-index:7">
+        <span
+            class="padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid"
+            tagname></span>
+        <!--<span class="padding:3px background:dodgerblue pointer-events:auto"><i  src="./assets/svg/arrows-alt.svg"></i></span>-->
+        <div
+            class="display:flex align-items:center padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid pointer-events:auto">
+            <span actions="cloneElement" class="margin-right:10px"
+                ><i src="./assets/svg/clone.svg"></i
+            ></span>
+            <span
+                actions="remove"
+                remove-selector="editor"
+                class="margin-right:10px"
+                ><i src="./assets/svg/trash-alt.svg"></i
+            ></span>
+            <span actions="previousElement" class="margin-right:10px"
+                ><i src="./assets/svg/arrow-up.svg"></i
+            ></span>
+            <span actions="nextElement"
+                ><i src="./assets/svg/arrow-down.svg"></i
+            ></span>
+        </div>
+    </tools>
+    <div class="height:100% width:100% border:2px_dodgerblue_solid"></div>
+</toolbar>
+
+<!-- Hover Toolbar -->
+<toolbar
+    toolbar-placent="top"
+    toolbar-selector="editor"
+    toolbar-event="mouseover"
+    class="position:absolute pointer-events:none display:none">
+    <tools
+        class="tools display:flex align-items:center color:white font-size:11px z-index:7">
+        <span
+            class="padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid"
+            tagname></span>
+    </tools>
+    <div class="height:100% width:100% border:1px_dodgerblue_solid"></div>
+</toolbar>
+<!-- End Hover Toolbar -->
+
+<!-- Collaboration Toolbar -->
+<div
+    toolbar-placent="top"
+    toolbar-selector="editor"
+    toolbar-event="mouseup"
+    class="toolbar position:absolute pointer-events:none display:none">
+    <tools
+        class="display:flex align-items:center width:fit-content background:gainsboro border-radius:5px pointer-events:auto z-index:7">
+        <div
+            actions="nodeName"
+            nodekey="b"
+            nodetarget="#canvas;"
+            classkey="rte-btn"
+            class="padding:5px"
+            id="bold-button">
+            <i src="./assets/svg/bold.svg"></i>
+        </div>
+        <div
+            actions="nodeName"
+            nodekey="i"
+            nodetarget="#canvas;"
+            class="rte-btn"
+            id="italic-button">
+            <i src="./assets/svg/italic.svg"></i>
+        </div>
+        <div class="rte-btn" id="link-button" show="#link" hide="#link">
+            <i src="./assets/svg/link.svg"></i>
+        </div>
+        <div
+            id="link"
+            class="position:absolute display:flex align-items:center transition:0.4s background:gainsboro height:28px border-radius:5px"
+            hidden>
+            <input type="text" key="" />
+            <div
+                actions="nodeName"
+                nodekey="a"
+                nodetarget="#canvas;"
+                class="rte-btn"
+                id="link-button-1">
+                <i src="./assets/svg/link.svg"></i>
+            </div>
+            <div hide="#link">
+                <i src="./assets/svg/times.svg"></i>
+            </div>
+        </div>
+        <div
+            actions="nodeName"
+            nodekey="q"
+            nodetarget="#canvas;"
+            class="rte-btn"
+            id="quote-button">
+            <i src="./assets/svg/quote-right.svg"></i>
+        </div>
+        <div
+            class="rte-btn"
+            id="heading-btn"
+            hover="width:fit-content"
+            hover-selector="#headings">
+            <i src="./assets/svg/heading.svg"></i>
+        </div>
+        <div
+            id="headings"
+            hover="width:fit-content"
+            hover-selector="#headings"
+            class="position:absolute display:flex align-items:center transition:0.4s width:0px background:gainsboro overflow:hidden height:28px border-radius:5px">
+            <div
+                actions="nodeName"
+                nodekey="h1"
+                nodetarget="#canvas;"
+                class="rte-btn"
+                id="header-1-button">
+                <i src="./assets/svg/heading.svg"></i><sub>1</sub>
+            </div>
+            <div
+                actions="nodeName"
+                nodekey="h2"
+                nodetarget="#canvas;"
+                class="rte-btn"
+                id="header-2-button">
+                <i src="./assets/svg/heading.svg"></i><sub>2</sub>
+            </div>
+            <div
+                actions="nodeName"
+                nodekey="h3"
+                nodetarget="#canvas;"
+                class="rte-btn"
+                id="header-3-button">
+                <i src="./assets/svg/heading.svg"></i><sub>3</sub>
+            </div>
+            <div
+                actions="nodeName"
+                nodekey="h4"
+                nodetarget="#canvas;"
+                class="rte-btn"
+                id="header-4-button">
+                <i src="./assets/svg/heading.svg"></i><sub>4</sub>
+            </div>
+            <div
+                actions="nodeName"
+                nodekey="h5"
+                nodetarget="#canvas;"
+                class="rte-btn"
+                id="header-5-button">
+                <i src="./assets/svg/heading.svg"></i><sub>5</sub>
+            </div>
+            <div
+                actions="nodeName"
+                nodekey="h6"
+                nodetarget="#canvas;"
+                class="rte-btn"
+                id="header-6-button">
+                <i src="./assets/svg/heading.svg"></i><sub>6</sub>
+            </div>
+        </div>
+        <div
+            class="rte-btn"
+            id="show-controls"
+            show="#sidebar-controls"
+            hide="#sidebar-controls">
+            <i src="./assets/svg/plus.svg"></i>
+        </div>
+        <div
+            id="sidebar-controls"
+            class="display:flex align-items:center"
+            hidden>
+            <div class="rte-btn" id="image-button">
+                <i src="./assets/svg/camera.svg"></i>
+            </div>
+            <div class="rte-btn" id="video-button">
+                <i src="./assets/svg/play.svg"></i>
+            </div>
+            <div class="rte-btn" id="tweet-button">
+                <i src="./assets/svg/twitter.svg"></i>
+            </div>
+            <div class="rte-btn" id="divider-button">
+                <i src="./assets/svg/minus.svg"></i>
+            </div>
+        </div>
+    </tools>
+    <div class="height:100% width:100% pointer-events:none"></div>
+</div>
+<!-- End Collaboration Toolbar -->
