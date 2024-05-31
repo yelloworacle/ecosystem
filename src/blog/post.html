@@ -119,10 +119,17 @@
                     class="padding:0_20px margin-top:20px display:flex flex-wrap:wrap gap:10px">
                     <span
                         >By
-                        <a href="#" class="font-weight:bold"
-                            >{{object.author}} {{object.published}}</a
-                        ></span
+                        <a class="font-weight:bold">{{object.author}}</a></span
                     >
+                    <input
+                        type="date"
+                        value="{{object.published}}"
+                        value-type="toLocaleDateString"
+                        onload-next
+                        onload-attribute="value"
+                        hidden />
+                    <span></span>
+
                     <form hidden>
                         <input
                             type="number"
@@ -142,8 +149,8 @@
                         >{{object.views}}</span
                     >
 
-                    <a href="#"
-                        ><i src="../assets/svg/comment-alt.svg"></i>
+                    <a href="#comments">
+                        <i src="../assets/svg/comment-alt.svg"></i>
                         <span
                             array="comments"
                             object
@@ -228,6 +235,7 @@
                     filter-key="post_id"
                     filter-value="{{object._id}}" />
                 <div
+                    id="comments"
                     class="padding:0_20px margin-bottom:20px margin-top:20px width:100% display:flex flex-wrap:wrap"
                     array="comments"
                     object
@@ -258,17 +266,18 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h2
-                                            class="margin-bottom:6px font-size:19px@sm@xs">
-                                            {{comment.name}}
-                                        </h2>
-                                        <div class="margin-bottom:6px">
-                                            <a
-                                                class="color:#000 font-size:14px@sm font-size:13px@xs color:tomato:hover text-decoration:underline"
-                                                href="#"
-                                                >{{comment.website}}</a
-                                            >
+                                        <div>{{comment.name}}</div>
+                                        <div>
+                                            <input
+                                                type="date"
+                                                value="{{comment.created.on}}"
+                                                value-type="toLocaleDateString"
+                                                onload-next
+                                                onload-attribute="value"
+                                                hidden />
+                                            <span></span>
                                         </div>
+                                        <!-- <div>{{comment.created.on}}</div> -->
                                     </div>
                                 </div>
                             </div>
