@@ -202,7 +202,6 @@ input:not([type="checkbox"], [hidden]) {
     font-weight: 400;
     line-height: 1.5;
     color: #495057;
-    background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #dee2e6;
     -webkit-appearance: none;
