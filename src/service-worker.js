@@ -68,12 +68,12 @@ self.addEventListener("fetch", async (e) => {
 
                 if (!navigator.onLine || !!cacheResponse && cacheType !== 'false' && (!fetchedOn || fetchedOn > updatedOn)) {
                     const organization = cacheResponse.headers.get('organization')
-                    console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
+                    // console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
                     const lastModified = cacheResponse.headers.get('last-modified')
                     sendCacheUpdate(e.request.url, organization, lastModified);
                     return cacheResponse;
                 } else {
-                    console.log('fetching fetchOn less', fetchedOn > updatedOn)
+                    // console.log('fetching fetchOn less', fetchedOn > updatedOn)
 
                     const networkResponse = await fetch(e.request);
 
@@ -85,7 +85,7 @@ self.addEventListener("fetch", async (e) => {
                         storage = storageHeader
 
                     if (cacheType && cacheType !== 'false' && networkResponse.status === 200) {
-                        console.log('caching')
+                        // console.log('caching')
 
                         caches.open(cacheName).then((cache) => {
                             if (networkResponse.status !== 206) {
@@ -100,7 +100,7 @@ self.addEventListener("fetch", async (e) => {
                                         self.clients.matchAll().then((clients) => {
                                             clients.forEach((client) => {
                                                 client.postMessage({ action: 'cacheType', cacheType }); // Send a custom message
-                                                console.log(`file ${cacheType} has been triggered`)
+                                                // console.log(`file ${cacheType} has been triggered`)
                                             });
                                         });
                                     }
