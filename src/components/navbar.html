@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <style>
-    .sticky-nav {
-        position: sticky;
-        background: #fff;
-        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
-        height: auto;
-        right: 0;
-        top: 0;
-    }
     .menu_icon[session="on"],
     .menu_icon[session="idle"] {
         display: block;
@@ -68,7 +60,7 @@
         actions="state"
         state_to="mainView"
         state-src="{{path}}home/"
-        class="margin-right:25px color:#F7CC02:hover"
+        class="margin-right:25px"
         >Home</a
     >
     <a
@@ -76,15 +68,11 @@
         actions="state"
         state_to="mainView"
         state-src="{{path}}oracle/"
-        class="margin-right:25px color:#F7CC02:hover"
+        class="margin-right:25px"
         >Oracle</a
     >
 
-    <a
-        href="{{path}}blog/index.html"
-        class="margin-right:25px color:#F7CC02:hover"
-        >Blog</a
-    >
+    <a href="{{path}}blog/index.html" class="margin-right:25px">Blog</a>
 
     <a
         href="{{path}}"

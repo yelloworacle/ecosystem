@@ -32,6 +32,12 @@ a {
     cursor: pointer;
     align-items: center;
     color: inherit;
+    fill: inherit;
+}
+
+a:hover {
+    color: #F7CC02;
+    fill: #F7CC02;
 }
 
 nav {
@@ -41,6 +47,15 @@ nav {
     align-items: center;
     justify-content: center;
     padding: 10px;
+}
+
+.sticky-nav {
+    position: sticky;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+    height: auto;
+    right: 0;
+    top: 0;
 }
 
 main {
@@ -91,6 +106,10 @@ section {
     margin-bottom: 6px;
     transition: all .25s;
     background-color: #000;
+}
+
+[menu-icon]:hover span {
+    background-color: #F7CC02;
 }
 
 [menu-icon="active"] span:first-child {
@@ -187,7 +206,7 @@ sidenav ul li {
 }
 
 sidenav ul li:hover {
-    background: lightgray;
+    background: #fff;
 }
 
 [sidenav="open"] sidenav {
@@ -197,11 +216,11 @@ sidenav ul li:hover {
 input:not([type="checkbox"], [hidden]) {
     display: block;
     width: 100%;
-    padding: 0.5625rem 1rem;
+    /* padding: 0.5625rem 1rem; */
     font-size: 0.9375rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #495057;
+    color: inherit;
     background-clip: padding-box;
     border: 1px solid #dee2e6;
     -webkit-appearance: none;
@@ -252,12 +271,7 @@ input[hidden] {
 
 .card-label {
     font-size: 0.85em;
-    color: #333;
     margin-bottom: 4px;
-}
-
-.card-value {
-    color: #666;
 }
 
 @media (max-width: 300px) {
@@ -283,7 +297,7 @@ input[hidden] {
 
 .progress-bar {
     width: 100%;
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
     height: 10px;
     position: absolute;
     top: 38px;
@@ -459,3 +473,107 @@ footer p {
     display: none
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333;
+        color: #f0f0f0;
+        fill: #f0f0f0;
+    }
+
+    a:hover {
+        color: #F7CC02;
+        fill: #F7CC02;
+    }
+
+    .sticky-nav {
+        background: #333;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    sidenav {
+        background-color: #333;
+    }
+
+    sidenav .nav {
+        background-color: #222;
+    }
+
+    sidenav ul li:hover {
+        background: #1e1e1e;
+    }
+    sidenav ul li:hover {
+        background: #444;
+    }
+
+    sidenav ul:last-child {
+        /* Your styles for the last list item */
+        background: #222;
+        /* Example style */
+    }
+
+    header {
+        background-color: #333;
+    }
+
+    footer {
+        background-color: #145a8b;
+        color: #000;
+        fill: #000;
+    }
+
+    footer a:hover {
+        color: #444;
+        fill: #444;
+    }
+
+    option {
+        background-color: #333;
+        color: #f0f0f0;
+        fill: #f0f0f0;
+    }
+
+    button {
+        background-color: #222;
+        color: #f0f0f0;
+    }
+
+    .alt-section:nth-of-type(even) {
+        background-color: #333;
+    }
+
+    .alt-section:nth-of-type(odd) {
+        background-color: #444;
+    }
+
+    .card {
+        background-color: #1e1e1e;
+        border: 1px solid #333;
+    }
+
+    .button {
+        background-color: #333;
+        color: #f0f0f0;
+        border: 1px solid #555;
+    }
+
+    [menu-icon] span {
+        background-color: #fff;
+    }
+
+    [menu-icon]:hover span {
+        background-color: #F7CC02;
+    }
+
+    .floating-label_outline {
+        border-color: inherit;
+    }
+    
+    .avatar-name {
+        color: #000; 
+        fill: #000; 
+    }
+
+    .avatar-status {
+        border: 2px solid #333; 
+    }
+}

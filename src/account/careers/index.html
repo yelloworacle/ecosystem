@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <a href="./signin.html" session="false" hidden></a>
 
-<style>
-    .coming-soon-container {
-        text-align: center;
-        background-color: white;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+<section id="oracle" class="oracle">
+    <input
+        type="hidden"
+        array="users"
+        object="$user_id"
+        key="subscription"
+        input-next
+        input-attribute="object" />
 
-    .coming-soon-container h1 {
-        color: #333;
-        margin-bottom: 20px;
-    }
+    <textarea
+        id="subscription"
+        array="subscriptions"
+        object=""
+        key="fields"
+        input-next=".subscribed[]"
+        input-attribute="value"
+        class="width:100%"
+        hidden
+        save="false"></textarea>
 
-    .coming-soon-container p {
-        color: #666;
-    }
-</style>
-<div class="coming-soon-container">
-    <h1>Coming Soon</h1>
-    <p>We are working hard to bring this section to you. Stay tuned!</p>
-</div>
+    <div
+        id="careers"
+        array="careers"
+        object
+        filter-sort-key="name"
+        render-selector="[template]"
+        src="./oracle/career-template.html"></div>
+</section>
