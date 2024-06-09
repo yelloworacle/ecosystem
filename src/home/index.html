@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<header class="text-align:center min-height:100vh">
+<header>
     <h1>Discover Your Destiny</h1>
     <p class="font-size:20px margin:25px">
         AI career suggestions FOR YOU based on YOUR personality and desires
     </p>
-    <button
-        actions="state"
-        state_to="mainView"
-        state-src="./oracle/"
-        class="font-size:24px">
-        Discover
-    </button>
+    <div class="display:flex flex-wrap:wrap gap:20px">
+        <button
+            actions="state"
+            state_to="mainView"
+            state-src="./oracle/"
+            class="font-size:24px">
+            Discover
+        </button>
+        <button
+            actions="state"
+            state_to="mainView"
+            state-src="./search/"
+            class="font-size:24px">
+            Search
+        </button>
+    </div>
 </header>
