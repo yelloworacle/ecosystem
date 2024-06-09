@@ -51,6 +51,11 @@
         #dashboard .card {
             flex-grow: 1;
         }
+        @media (prefers-color-scheme: dark) {
+            .advertise {
+                background-color: #222;
+            }
+        }
     </style>
 
     <input
@@ -102,7 +107,7 @@
                                 class="floating-label" />
                         </floating-label>
                         <span
-                            class="position:absolute bottom:20px right:20px float:right z-index:6">
+                            class="position:absolute bottom:22px right:20px float:right z-index:6">
                             <a
                                 filter-selector="document; tbody[render-selector]"
                                 filter-sort-key="amount"
@@ -129,7 +134,7 @@
                                 class="floating-label" />
                         </floating-label>
                         <span
-                            class="position:absolute bottom:20px right:20px float:right z-index:6">
+                            class="position:absolute bottom:22px right:20px float:right z-index:6">
                             <a
                                 filter-selector="document; tbody[render-selector]"
                                 filter-sort-key="status"
@@ -156,7 +161,7 @@
                                 class="floating-label" />
                         </floating-label>
                         <span
-                            class="position:absolute bottom:20px right:20px float:right z-index:6">
+                            class="position:absolute bottom:22px right:20px float:right z-index:6">
                             <a
                                 filter-selector="document; tbody[render-selector]"
                                 filter-sort-key="_id"
@@ -180,7 +185,7 @@
                 render-selector="[template]"
                 advertise>
                 <tr
-                    class="background:gainsboro:hover border-bottom:1px_solid_darkgray"
+                    class="border-bottom:1px_solid_darkgray"
                     template
                     object="{{object._id}}"
                     toggle="selected"

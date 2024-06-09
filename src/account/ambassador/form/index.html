@@ -35,6 +35,17 @@
     .forms[display="documents"] documents.form {
         display: flex;
     }
+    #delete {
+        display: none;
+    }
+    @media (prefers-color-scheme: dark) {
+        .accordion-button {
+            background-color: #222;
+        }
+        .form {
+            background-color: #222;
+        }
+    }
 </style>
 
 <form
@@ -42,7 +53,10 @@
     object="$user_id"
     class="forms width:100% max-width:800px"
     module="stripe">
-    <div path="./" src="./components/form-toolbar.html"></div>
+    <div
+        path="./"
+        src="./components/form-toolbar.html"
+        class="width:100% margin-bottom:20px"></div>
 
     <input
         type="hidden"

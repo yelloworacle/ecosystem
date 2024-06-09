@@ -21,9 +21,31 @@
             display: none;
         }
 
-        input.question {
+        input.question:not([hidden]) {
+            display: block;
+            width: 100%;
+            padding: 0.5625rem 1rem;
             padding-bottom: 15px;
             padding-right: 85px;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: inherit;
+            border: 1px solid #dee2e6;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 4px;
+            transition: border-color 0.15s ease-in-out,
+                box-shadow 0.15s ease-in-out;
+        }
+
+        input:focus:not([type="checkbox"], [hidden]) {
+            outline: 1px solid #495057;
+        }
+
+        input.question[hidden] {
+            display: none;
         }
 
         input[type="button"] + a {
@@ -46,6 +68,7 @@
 
         input[type="button"] + a:hover {
             background-color: #f7cc02;
+            color: #333;
         }
 
         input[type="button"] + a span {
@@ -61,6 +84,25 @@
 
         .question[type="hidden"] ~ .sibling {
             display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.04);
+            height: 10px;
+            position: absolute;
+            top: 38px;
+            border: 1px solid transparent;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #76b852;
+            text-align: right;
+            transition: width 0.5s ease-in-out;
+            border-bottom-left-radius: 4px;
         }
 
         .hidden-input {
@@ -85,6 +127,22 @@
         }
         [example="Intro"] .subscribed {
             display: none;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            input.question {
+                background-color: #222;
+                border: 1px solid #444 !important;
+            }
+            .progress-bar {
+                background-color: #444;
+            }
+            input[type="button"] + a {
+                background-color: #333;
+            }
+            input[type="button"] + a:hover {
+                color: #333;
+            }
         }
     </style>
     <div
@@ -227,11 +285,14 @@
                             click-selector="i[src]"
                             click-attribute="src"
                             click-value="./assets/svg/spinner.svg"
-                            class="sibling display:flex position:absolute top:9px right:8px font-size:20px">
+                            class="sibling display:flex position:absolute top:8px right:8px font-size:20px">
                             <span class="margin-right:5px font-weight:400"
                                 >Enter</span
                             >
-                            <i src="./assets/svg/angle-right.svg"></i>
+                            <i
+                                src="./assets/svg/angle-right.svg"
+                                class="position:relative top:2px"></i>
+
                             <div class="{{object.name}}" hidden>
                                 Begin Your Journey
                             </div>
