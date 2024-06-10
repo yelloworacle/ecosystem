@@ -5,10 +5,6 @@
         path="./"
         src="./components/datatable-toolbar.html"
         class="width:100%"></div>
-    <div
-        filter-sort-key="position"
-        filter-sort-direction="asc"
-        filter-next="[array='careers']"></div>
 
     <table class="width:100% border-collapse:collapse">
         <tbody>
@@ -19,6 +15,8 @@
                             type="text"
                             filter-selector="document; tbody[render-selector]"
                             filter-key="name"
+                            filter-operator="$regex"
+                            filter-regex-flag="i"
                             state_id="datatable"
                             placeholder="Name"
                             class="floating-label" />
@@ -45,6 +43,8 @@
                             type="text"
                             filter-selector="document; tbody[render-selector]"
                             filter-key="_id"
+                            filter-operator="$regex"
+                            filter-regex-flag="i"
                             state_id="datatable"
                             placeholder="id"
                             class="floating-label" />
@@ -72,7 +72,7 @@
             storage="mongodb"
             array="careers"
             object
-            filter-sort-key="position"
+            filter-sort-key="name"
             filter-sort-direction="asc"
             filter-limit="20"
             render-selector="[template]">

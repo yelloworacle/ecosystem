@@ -18,6 +18,8 @@
                             type="text"
                             filter-selector="document; tbody[render-selector]"
                             filter-key="name"
+                            filter-operator="$regex"
+                            filter-regex-flag="i"
                             state_id="datatable"
                             placeholder="Name"
                             class="floating-label" />
@@ -69,7 +71,9 @@
                         <input
                             type="text"
                             filter-selector="document; tbody[render-selector]"
-                            filter-key="_id"
+                            filter-key="actions"
+                            filter-operator="$regex"
+                            filter-regex-flag="i"
                             state_id="datatable"
                             placeholder="Actions"
                             class="floating-label" />
@@ -78,7 +82,7 @@
                         class="position:absolute bottom:18px right:18px float:right">
                         <a
                             filter-selector="document; tbody[render-selector]"
-                            filter-sort-key="Actions"
+                            filter-sort-key="actions"
                             filter-sort-direction=""
                             click-value="desc, asc"
                             click-attribute="filter-sort-direction"
@@ -96,6 +100,8 @@
                             type="text"
                             filter-selector="document; tbody[render-selector]"
                             filter-key="_id"
+                            filter-operator="$regex"
+                            filter-regex-flag="i"
                             state_id="datatable"
                             placeholder="id"
                             class="floating-label" />
