@@ -80,19 +80,16 @@
                 object="{{object._id}}"
                 toggle="selected"
                 toggle-attribute="class">
-                <td
-                    class="padding:5px display:flex min-width:200px align-items:center">
-                    <div>
-                        <a
-                            actions="state"
-                            state_to="mainView"
-                            state-src="./admin/subscriptions/form.html">
-                            <h4>{{object.name}}</h4>
-                            <div
-                                state_to="form-fields"
-                                state-object="{{object._id}}"></div>
-                        </a>
-                    </div>
+                <td class="padding:10px min-width:200px">
+                    <a
+                        actions="state"
+                        state_to="mainView"
+                        state-src="./admin/subscriptions/form.html">
+                        <h4>{{object.name}}</h4>
+                        <div
+                            state_to="form-fields"
+                            state-object="{{object._id}}"></div>
+                    </a>
                 </td>
                 <td class="padding:10px">
                     <a
