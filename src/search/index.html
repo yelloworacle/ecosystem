@@ -1,22 +1,78 @@
 <!DOCTYPE html>
 
-<section id="oracle" class="oracle">
-    <floating-label class="margin-bottom:20px">
-        <input
-            type="text"
-            filter-selector="document; [render-selector]"
-            filter-key="name"
-            filter-operator="$regex"
-            filter-regex-flag="i"
-            placeholder="Search Careers"
-            class="floating-label" />
-    </floating-label>
+<div
+    class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:800px">
+    <section id="oracle" class="oracle">
+        <floating-label class="margin-bottom:20px">
+            <input
+                type="text"
+                filter-selector="document; [render-selector]"
+                filter-key="name"
+                filter-operator="$regex"
+                filter-regex-flag="i"
+                placeholder="Search Careers"
+                class="floating-label" />
+        </floating-label>
 
-    <div
-        array="careers"
-        object
-        filter-sort-key="name"
-        filter-limit="10"
-        render-selector="[template]"
-        src="../oracle/career-template.html"></div>
-</section>
+        <div
+            array="careers"
+            object
+            filter-sort-key="name"
+            filter-limit="10"
+            render-selector="[template]"
+            src="../oracle/career-template.html"></div>
+    </section>
+
+    <section id="example" class="position:relative" example hidden>
+        <h3 class="position:absolute top:-5px left:30px">Career Example:</h3>
+        <a
+            id="close-example"
+            show="document; #oracle"
+            hide="document; #example"
+            class="position:absolute top:30px right:30px">
+            <i src="./assets/svg/times.svg"></i>
+        </a>
+
+        <textarea
+            id="subscription"
+            array="subscriptions"
+            object="6571fe530c48ef6970900a82"
+            key="fields"
+            input-next=".subscribed[]"
+            input-attribute="value"
+            class="width:100%"
+            hidden
+            save="false"></textarea>
+
+        <textarea
+            array="users"
+            object="$user_id"
+            key="answeredQuestions[1]"
+            input-attribute="hidden"
+            input-value="false"
+            input-parent
+            input-if=""
+            hidden></textarea>
+
+        <textarea
+            id="subscription"
+            array="subscriptions"
+            object="6571fe530c48ef6970900a82"
+            key="fields"
+            input-next=".subscribed[]"
+            input-attribute="value"
+            class="width:100%"
+            hidden
+            save="false"></textarea>
+
+        <div
+            array="careers"
+            object
+            filter-key="name"
+            filter-value="Surgeon"
+            filter-limit="1"
+            filter-operator="$eq"
+            render-selector="[template]"
+            src="./oracle/career-template.html"></div>
+    </section>
+</div>
