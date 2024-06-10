@@ -135,34 +135,30 @@
 </div>
 
 <!-- Avatar -->
-<div class="avatar-wrapper margin-right:10px">
-    <div class="avatar round">
-        <span array="users" object="$user_id" key="name" class="avatar-name">
-            <i class="height:20px" src="{{path}}assets/svg/sign-in-alt.svg"></i>
-        </span>
-        <span class="avatar-image">
-            <div
-                class="position:absolute height:100% width:100% signin"
-                session>
-                <a
-                    href="{{path}}signin.html"
-                    class="display:block height:100% width:100%">
-                </a>
-            </div>
+<div class="avatar round margin-right:10px">
+    <span array="users" object="$user_id" key="name" class="avatar-name">
+        <i class="height:20px" src="{{path}}assets/svg/sign-in-alt.svg"></i>
+    </span>
+    <span class="avatar-image">
+        <div class="position:absolute height:100% width:100% signin" session>
             <a
-                state_to="mainView"
-                state-src="{{path}}account/profile/"
-                href="{{path}}"
+                href="{{path}}signin.html"
                 class="display:block height:100% width:100%">
             </a>
-            <img
-                array="users"
-                object="$user_id"
-                key="avatar"
-                onerror="this.style.display='none'"
-                width="40px" />
-        </span>
-    </div>
+        </div>
+        <a
+            state_to="mainView"
+            state-src="{{path}}account/profile/"
+            href="{{path}}"
+            class="display:block height:100% width:100%">
+        </a>
+        <img
+            array="users"
+            object="$user_id"
+            key="avatar"
+            onerror="this.style.display='none'"
+            width="40px" />
+    </span>
     <div
         class="avatar-status"
         array="users"

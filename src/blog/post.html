@@ -93,8 +93,8 @@
             input-value="../"></sidenav>
 
         <!-- Main Content -->
-        <main class="align-items:start">
-            <div class="flex-grow:1 margin-top:70px max-width:800px">
+        <main>
+            <div class="max-width:800px">
                 <!--  Post Category Start  -->
                 <div
                     array="blog-posts"
@@ -137,10 +137,7 @@
                             key="$inc.views"
                             value="1"
                             hidden />
-                        <input
-                            id="tester"
-                            onload-next
-                            onload-attribute="$click" />
+                        <input onload-next onload-attribute="$click" />
                         <div actions="timeout(2000), save"></div>
                     </form>
                     <i src="../assets/svg/eye.svg"></i>
@@ -161,8 +158,7 @@
                     </a>
                 </div>
 
-                <div
-                    class="margin-top:25px margin-bottom:10px width:100% border-bottom:1px_solid_#ddd"></div>
+                <div class="margin:20px border-bottom:1px_solid_#ddd"></div>
 
                 <!--  Social Icon Start  -->
                 <div
@@ -173,25 +169,25 @@
                     share-height="600"
                     share-width="600"
                     share-media="{{object.image[0].src}}">
-                    <div class="display:flex flex-wrap:wrap gap:10px">
-                        <a href="#" share-network="facebook" class="">
+                    <div
+                        class="display:flex flex-wrap:wrap gap:20px font-size:18px">
+                        <a href="#" share-network="facebook">
                             <i src="../assets/svg/facebook-f.svg"></i>
                         </a>
-                        <a href="#" share-network="twitter" class=""
+                        <a href="#" share-network="twitter"
                             ><i src="../assets/svg/twitter.svg"></i
                         ></a>
-                        <a href="#" share-network="linkedin" class=""
+                        <a href="#" share-network="linkedin"
                             ><i src="../assets/svg/linkedin-in.svg"></i
                         ></a>
-                        <a share class="">
+                        <a share>
                             <i src="../assets/svg/share-alt.svg"></i>
                         </a>
                     </div>
                 </div>
                 <!--  Social Icon End  -->
 
-                <div
-                    class="margin-top:10px margin-bottom:25px width:100% border-bottom:1px_solid_#ddd"></div>
+                <div class="margin:20px border-bottom:1px_solid_#ddd"></div>
 
                 <!--  Post Media -->
                 <div class="padding:0_20px margin-bottom:15px width:100%">
@@ -215,10 +211,11 @@
                 <!--  Post Content -->
                 <div class="padding:0_20px width:100%">{{object.content}}</div>
 
-                <div
-                    class="margin-top:25px width:100% border-bottom:1px_solid_#ddd"></div>
+                <div class="margin:20px border-bottom:1px_solid_#ddd"></div>
 
                 <!--  Comment Start  -->
+                <h3 class="padding:0_20px">Comments</h3>
+
                 <input
                     type="hidden"
                     filter-next
@@ -232,129 +229,157 @@
                     filter-limit="20"
                     render-selector="[template]">
                     <div template render-as="comment">
-                        <div
-                            class="img-comment-section margin-right:10px margin-bottom:10px flex-basis:15% flex-basis:100%@xs">
-                            <!-- <img src="images/blog-post/comment1.jpg" /> -->
+                        <div class="display:flex padding:20px_0">
+                            <!-- Avatar -->
                             <div
-                                class="text-comment-section flex-basis:70% flex-basis:100%@xs">
-                                <div class="display:flex">
-                                    <!-- Avatar -->
-                                    <div
-                                        class="avatar-wrapper margin-right:10px">
-                                        <div class="avatar round">
-                                            <span class="avatar-name">
-                                                {{comment.name}}
-                                            </span>
-                                            <span class="avatar-image">
-                                                <img
-                                                    array="users"
-                                                    object="$user_id"
-                                                    key="avatar"
-                                                    onerror="this.style.display='none'"
-                                                    width="40px" />
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div>{{comment.name}}</div>
-                                        <div>
-                                            <input
-                                                type="date"
-                                                value="{{comment.created.on}}"
-                                                value-type="toLocaleDateString"
-                                                onload-next
-                                                onload-attribute="value"
-                                                hidden />
-                                            <span></span>
-                                        </div>
-                                        <!-- <div>{{comment.created.on}}</div> -->
-                                    </div>
-                                </div>
+                                class="avatar round width:30px!important height:30px!important margin-right:10px"
+                                background-color="random">
+                                <span class="avatar-name">
+                                    {{comment.name}}
+                                </span>
+                                <span class="avatar-image">
+                                    <img
+                                        array="users"
+                                        object="$user_id"
+                                        key="avatar"
+                                        onerror="this.style.display='none'"
+                                        width="40px" />
+                                </span>
                             </div>
 
-                            <div
-                                class="margin-bottom:8px font-size:14px@sm font-size:13px@xs">
-                                <p>{{comment.comment}}</p>
-                            </div>
-                            <div class="display:flex">
-                                <form>
+                            <div class="flex-grow:1">
+                                <span class="margin-right:10px"
+                                    >{{comment.name}}</span
+                                >
+                                <span>
                                     <input
-                                        type="number"
+                                        type="date"
+                                        value="{{comment.created.on}}"
+                                        value-type="toLocaleDateString"
+                                        onload-next
+                                        onload-attribute="value"
+                                        hidden />
+                                    <span></span>
+                                </span>
+                                <div
+                                    class="margin-bottom:8px font-size:14px@sm font-size:13px@xs">
+                                    <p>{{comment.comment}}</p>
+                                </div>
+
+                                <div class="display:flex">
+                                    <form>
+                                        <input
+                                            type="number"
+                                            array="blog-posts"
+                                            object="{{object._id}}"
+                                            key="$inc.likes"
+                                            value="1"
+                                            hidden />
+                                        <a actions="save"
+                                            ><i
+                                                src="../assets/svg/thumbs-up.svg"></i
+                                        ></a>
+                                    </form>
+                                    <span
                                         array="blog-posts"
                                         object="{{object._id}}"
-                                        key="$inc.likes"
-                                        value="1"
-                                        hidden />
-                                    <a actions="save"
-                                        ><i
-                                            src="../assets/svg/thumbs-up.svg"></i
-                                    ></a>
-                                </form>
-                                <span
-                                    array="blog-posts"
-                                    object="{{object._id}}"
-                                    key="likes"
-                                    >{{object.likes}}</span
-                                >
+                                        key="likes"
+                                        >{{object.likes}}</span
+                                    >
 
-                                <!-- <a href="#"
+                                    <!-- <a href="#"
                                     ><i src="../assets/svg/thumbs-down.svg"></i
                                 ></a> -->
+                                </div>
                             </div>
                         </div>
-                        <div
-                            class="margin-top:25px width:100% border-bottom:1px_solid_#ddd"></div>
                     </div>
                     <!--  Comment End  -->
-
-                    <!--  Post COMMENT Start  -->
-                    <form
-                        array="comments"
-                        object=""
-                        class="padding:0_20px width:100% margin-top:20px display:flex flex-direction:column gap:20px">
-                        <h3 class="width:100%">LEAVE A REPLY</h3>
-                        <input
-                            type="hidden"
-                            key="post_id"
-                            value="{{object._id}}" />
-                        <floating-label>
-                            <textarea
-                                rows="10"
-                                placeholder="Write Your Comment"
-                                key="comment"
-                                required></textarea>
-                        </floating-label>
-                        <floating-label>
-                            <input
-                                type="text"
-                                placeholder="Enter Your Name"
-                                key="name"
-                                required />
-                        </floating-label>
-                        <floating-label>
-                            <input
-                                type="email"
-                                placeholder="Enter Your Email"
-                                key="email"
-                                required />
-                        </floating-label>
-
-                        <div class="width:100% margin-bottom:20px">
-                            <input
-                                class="margin-right:10px"
-                                type="checkbox"
-                                key="" /><span class="color:#333"
-                                >Save my name and email in this browser for the
-                                next time I comment</span
-                            >
-                            <!-- ToDo: store data in local storage if above is checked -->
-                        </div>
-                        <button actions="validate, save">Post Comment</button>
-                    </form>
-
-                    <div
-                        class="margin-top:40px margin-bottom:50px width:100% border-bottom:1px_solid_#ddd"></div>
                 </div>
+
+                <div class="margin:20px border-bottom:1px_solid_#ddd"></div>
+
+                <!--  Post COMMENT Start  -->
+                <form
+                    array="comments"
+                    object=""
+                    class="width:100% margin:20px_0 padding:0_20px display:flex flex-direction:column gap:20px">
+                    <input type="hidden" key="post_id" value="{{object._id}}" />
+                    <div class="display:flex padding:20px_0">
+                        <!-- Avatar -->
+                        <div
+                            class="avatar round width:30px!important height:30px!important margin-right:10px">
+                            <span
+                                array="users"
+                                object="$user_id"
+                                key="name"
+                                class="avatar-name">
+                            </span>
+                            <span class="avatar-image">
+                                <img
+                                    array="users"
+                                    object="$user_id"
+                                    key="avatar"
+                                    onerror="this.style.display='none'"
+                                    width="40px" />
+                            </span>
+                        </div>
+
+                        <div class="flex-grow:1">
+                            <floating-label>
+                                <textarea
+                                    rows="1"
+                                    placeholder="Add a comment..."
+                                    key="comment"
+                                    required
+                                    auto-rows></textarea>
+                            </floating-label>
+                        </div>
+                    </div>
+
+                    <button actions="validate, save">Post Comment</button>
+                </form>
+                <input
+                    type="hidden"
+                    key="_id"
+                    localstorage-get="user_id"
+                    localstorage-if="false"
+                    localstorage-next="#createUser"
+                    localstorage-attribute="$click" />
+
+                <form array="users" object="" hidden>
+                    <input key="_id" localstorage-set="user_id" />
+                    <input key="answeredQuestions[]" value="Discover" />
+                    <input key="subscription" value="false" />
+                    <input type="checkbox" key="ambassadorTerms" />
+                    <a
+                        id="createUser"
+                        click-selector="document; #questions"
+                        click-attribute="read"
+                        click-value="true"
+                        actions="timeout(1000), save, localStorage, click"></a>
+                </form>
+
+                <form hidden>
+                    <floating-label>
+                        <input
+                            type="text"
+                            array="users"
+                            object="$user_id"
+                            key="name"
+                            placeholder="Enter Your Name"
+                            required />
+                    </floating-label>
+                    <floating-label>
+                        <input
+                            type="email"
+                            array="users"
+                            object="$user_id"
+                            key="email"
+                            placeholder="Enter Your Email"
+                            required />
+                    </floating-label>
+                </form>
             </div>
         </main>
 
@@ -366,5 +391,29 @@
             src="../components/footer.html"></footer>
 
         <script src="../dist/CoCreate.js"></script>
+        <script>
+            document.addEventListener(
+                "input",
+                function (event) {
+                    if (
+                        event.target.tagName.toLowerCase() !== "textarea" ||
+                        !event.target.hasAttribute("auto-rows")
+                    )
+                        return;
+                    autoResizeTextarea(event.target);
+                },
+                false
+            );
+
+            function autoResizeTextarea(textarea) {
+                const lineHeight = parseInt(
+                    window.getComputedStyle(textarea).lineHeight
+                );
+                textarea.rows = 1;
+                const lines = Math.ceil(textarea.scrollHeight / lineHeight);
+                textarea.rows = lines;
+                console.log("libesss");
+            }
+        </script>
     </body>
 </html>

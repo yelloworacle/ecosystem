@@ -28,9 +28,9 @@ body {
 }
 
 a {
+    line-height: 14px;
     text-decoration: none;
     cursor: pointer;
-    align-items: center;
     color: inherit;
     fill: inherit;
 }
@@ -266,15 +266,8 @@ sidenav ul li:hover {
     /* Non-breaking space character to ensure the span has height before content loads */
 }
 
-.avatar-wrapper {
-    height: 40px;
-    width: 40px;
-    position: relative;
-}
-
 .avatar {
     background-color: #F7CC02;
-    overflow: hidden;
     width: 40px;
     height: 40px;
     flex-shrink: 0;
