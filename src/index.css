@@ -28,7 +28,6 @@ body {
 }
 
 a {
-    line-height: 14px;
     text-decoration: none;
     cursor: pointer;
     color: inherit;
