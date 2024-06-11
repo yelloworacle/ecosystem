@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <a href="./signin.html" session="false" hidden></a>
 
-<section id="oracle" class="oracle">
+<section id="oracle" class="max-width:800px">
     <input
         type="hidden"
         array="users"
@@ -28,4 +28,22 @@
         filter-sort-key="name"
         render-selector="[template]"
         src="./oracle/career-template.html"></div>
+
+    <textarea
+        id="mergedCareers"
+        realtime="true"
+        array="users"
+        object="$user_id"
+        key="careers"
+        value-type="json"
+        crdt="false"
+        broadcast="false"
+        filter-key="name"
+        filter-operator="$in"
+        filter-selector="document; #careers"
+        filter-case-sensitive="false"
+        input-attribute="array"
+        input-value="careers"
+        input-selector="document; #careers"
+        hidden></textarea>
 </section>
