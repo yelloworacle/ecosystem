@@ -94,7 +94,7 @@
 
         <!-- Main Content -->
         <main>
-            <div class="max-width:800px">
+            <div class="width:100% max-width:800px">
                 <!--  Post Category Start  -->
                 <div
                     array="blog-posts"
@@ -210,6 +210,28 @@
 
                 <!--  Post Content -->
                 <div class="padding:0_20px width:100%">{{object.content}}</div>
+                <div
+                    class="display:flex margin:20px_0px padding:0_20px gap:5px">
+                    <form>
+                        <input
+                            type="number"
+                            array="blog-posts"
+                            object="{{object._id}}"
+                            key="$inc.likes"
+                            value="1"
+                            hidden />
+                        <a actions="save"
+                            ><i src="../assets/svg/thumbs-up.svg"></i
+                        ></a>
+                    </form>
+                    <span array="blog-posts" object="{{object._id}}" key="likes"
+                        >{{object.likes}}</span
+                    >
+
+                    <!-- <a href="#"
+                                    ><i src="../assets/svg/thumbs-down.svg"></i
+                                ></a> -->
+                </div>
 
                 <div class="margin:20px border-bottom:1px_solid_#ddd"></div>
 
@@ -234,13 +256,16 @@
                             <div
                                 class="avatar round width:30px!important height:30px!important margin-right:10px"
                                 background-color="random">
-                                <span class="avatar-name">
-                                    {{comment.name}}
+                                <span
+                                    class="avatar-name"
+                                    array="users"
+                                    object="{{comment.user_id}}"
+                                    key="name">
                                 </span>
                                 <span class="avatar-image">
                                     <img
                                         array="users"
-                                        object="$user_id"
+                                        object="{{comment.user_id}}"
                                         key="avatar"
                                         onerror="this.style.display='none'"
                                         width="40px" />
@@ -248,9 +273,11 @@
                             </div>
 
                             <div class="flex-grow:1">
-                                <span class="margin-right:10px"
-                                    >{{comment.name}}</span
-                                >
+                                <span
+                                    class="margin-right:10px"
+                                    array="users"
+                                    object="{{comment.user_id}}"
+                                    key="name"></span>
                                 <span>
                                     <input
                                         type="date"
@@ -270,8 +297,8 @@
                                     <form>
                                         <input
                                             type="number"
-                                            array="blog-posts"
-                                            object="{{object._id}}"
+                                            array="comments"
+                                            object="{{comment._id}}"
                                             key="$inc.likes"
                                             value="1"
                                             hidden />
@@ -281,10 +308,10 @@
                                         ></a>
                                     </form>
                                     <span
-                                        array="blog-posts"
-                                        object="{{object._id}}"
+                                        array="comments"
+                                        object="{{comment._id}}"
                                         key="likes"
-                                        >{{object.likes}}</span
+                                        >{{comment.likes}}</span
                                     >
 
                                     <!-- <a href="#"
@@ -300,33 +327,98 @@
                 <div class="margin:20px border-bottom:1px_solid_#ddd"></div>
 
                 <!--  Post COMMENT Start  -->
-                <form
-                    array="comments"
-                    object=""
-                    class="width:100% margin:20px_0 padding:0_20px display:flex flex-direction:column gap:20px">
-                    <input type="hidden" key="post_id" value="{{object._id}}" />
-                    <div class="display:flex padding:20px_0">
-                        <!-- Avatar -->
-                        <div
-                            class="avatar round width:30px!important height:30px!important margin-right:10px">
-                            <span
-                                array="users"
-                                object="$user_id"
-                                key="name"
-                                class="avatar-name">
-                            </span>
-                            <span class="avatar-image">
-                                <img
+                <style>
+                    .createUser {
+                        display: none;
+                    }
+                    div[hasuser="false"] .createUser {
+                        display: block;
+                    }
+                    div[hasuser="false"] #commentAvatar {
+                        display: none;
+                    }
+                    div[hasuser="false"] #commentButton {
+                        display: none;
+                    }
+                </style>
+                <input
+                    type="hidden"
+                    key="_id"
+                    localstorage-get="user_id"
+                    localstorage-if="true"
+                    localstorage-next
+                    localstorage-attribute="hasuser"
+                    localstorage-value="true" />
+                <div
+                    hasuser="false"
+                    class="padding:0_20px margin-bottom:20px margin-top:20px width:100%">
+                    <form class="createUser" array="users" object="">
+                        <div class="display:flex flex-wrap:wrap gap:20px">
+                            <floating-label class="flex-grow:1">
+                                <input
+                                    type="text"
                                     array="users"
                                     object="$user_id"
-                                    key="avatar"
-                                    onerror="this.style.display='none'"
-                                    width="40px" />
-                            </span>
+                                    key="name"
+                                    placeholder="Name"
+                                    required />
+                            </floating-label>
+                            <floating-label class="flex-grow:1">
+                                <input
+                                    type="email"
+                                    array="users"
+                                    object="$user_id"
+                                    key="email"
+                                    placeholder="Email"
+                                    required />
+                            </floating-label>
                         </div>
+                        <input key="_id" localstorage-set="user_id" hidden />
+                        <input
+                            key="answeredQuestions[]"
+                            value="Discover"
+                            hidden />
+                        <input key="subscription" value="false" hidden />
+                        <input type="checkbox" key="ambassadorTerms" hidden />
 
-                        <div class="flex-grow:1">
-                            <floating-label>
+                        <a
+                            id="createUserBtn"
+                            click-selector="document; #questions"
+                            click-attribute="read"
+                            click-value="true"
+                            actions="timeout(1000), save, localStorage, action(document, #commentButton)"></a>
+                    </form>
+
+                    <form
+                        array="comments"
+                        object=""
+                        class="width:100% margin:20px_0 display:flex flex-direction:column gap:20px">
+                        <input
+                            type="hidden"
+                            key="post_id"
+                            value="{{object._id}}" />
+                        <div class="display:flex">
+                            <!-- Avatar -->
+                            <div
+                                id="commentAvatar"
+                                class="avatar round width:30px!important height:30px!important margin-right:10px">
+                                <span
+                                    array="users"
+                                    object="$user_id"
+                                    key="name"
+                                    class="avatar-name">
+                                </span>
+                                <span class="avatar-image">
+                                    <img
+                                        array="users"
+                                        object="$user_id"
+                                        key="avatar"
+                                        onerror="this.style.display='none'"
+                                        width="40px" />
+                                </span>
+                            </div>
+
+                            <floating-label class="flex-grow:1">
                                 <textarea
                                     rows="1"
                                     placeholder="Add a comment..."
@@ -334,52 +426,26 @@
                                     required
                                     auto-rows></textarea>
                             </floating-label>
+                            <input
+                                type="hidden"
+                                key="user_id"
+                                value="$user_id"
+                                required />
                         </div>
-                    </div>
 
-                    <button actions="validate, save">Post Comment</button>
-                </form>
-                <input
-                    type="hidden"
-                    key="_id"
-                    localstorage-get="user_id"
-                    localstorage-if="false"
-                    localstorage-next="#createUser"
-                    localstorage-attribute="$click" />
+                        <button
+                            id="commentButton"
+                            actions="validate, save, reset">
+                            Post Comment
+                        </button>
+                    </form>
 
-                <form array="users" object="" hidden>
-                    <input key="_id" localstorage-set="user_id" />
-                    <input key="answeredQuestions[]" value="Discover" />
-                    <input key="subscription" value="false" />
-                    <input type="checkbox" key="ambassadorTerms" />
-                    <a
-                        id="createUser"
-                        click-selector="document; #questions"
-                        click-attribute="read"
-                        click-value="true"
-                        actions="timeout(1000), save, localStorage, click"></a>
-                </form>
-
-                <form hidden>
-                    <floating-label>
-                        <input
-                            type="text"
-                            array="users"
-                            object="$user_id"
-                            key="name"
-                            placeholder="Enter Your Name"
-                            required />
-                    </floating-label>
-                    <floating-label>
-                        <input
-                            type="email"
-                            array="users"
-                            object="$user_id"
-                            key="email"
-                            placeholder="Enter Your Email"
-                            required />
-                    </floating-label>
-                </form>
+                    <button
+                        class="createUser width:100%"
+                        actions="action(document; #createUserBtn)">
+                        Post Comment
+                    </button>
+                </div>
             </div>
         </main>
 
