@@ -191,21 +191,54 @@
 
                 <!--  Post Media -->
                 <div class="padding:0_20px margin-bottom:15px width:100%">
+                    <style>
+                        [src=""] {
+                            display: none;
+                        }
+
+                        .video-container {
+                            max-width: 100%;
+                            margin: 0 auto;
+                        }
+
+                        .iframe-container {
+                            position: relative;
+                            width: 100%;
+                            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                            height: 0;
+                            overflow: hidden;
+                        }
+
+                        .iframe-container iframe {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    </style>
+
                     <!-- Image -->
                     <img src="{{object.image[0].src}}" width="100%" />
 
                     <!-- Video -->
                     <video
                         width="100%"
+                        src="{{object.video[0].src}}"
                         controls
                         poster="{{object.image[0].src}}"
                         onloadeddata="this.previousElementSibling.style.display='none';"
-                        onerror="this.style.display='none';">
-                        <source
-                            src="{{object.video[0].src}}"
-                            type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
+                        onerror="this.style.display='none';"></video>
+                    <div class="video-container">
+                        <iframe
+                            id="myVideo"
+                            width="100%"
+                            height="315"
+                            src="{{object.videourl}}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
                 </div>
 
                 <!--  Post Content -->
