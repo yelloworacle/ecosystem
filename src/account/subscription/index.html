@@ -24,7 +24,7 @@
     object="$user_id"
     key="subscription"
     input-next
-    input-if="!false"
+    input-if="true"
     input-attribute="subscribed" />
 
 <div class="width:100% max-width:600px" module="stripe" subscribed="false">
@@ -59,20 +59,24 @@
         <input type="hidden" key="path" value="/invite.html" />
 
         <div class="position:relative margin-top:5px">
-            <input
-                type="email"
-                placeholder="Member Email"
-                key="email"
-                crud="false"
-                input-selector="document; #setemailinput"
-                input-attribute="value"
-                required />
-            <a
-                actions="validate, stripe.subscriptionItems.update, inviteUser, read(document; #membersList)"
-                class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
-                <span class="margin-right:5px font-weight:400">Invite </span>
-                <i src="./assets/svg/angle-right.svg"></i>
-            </a>
+            <floating-label>
+                <input
+                    type="email"
+                    placeholder="Member Email"
+                    key="email"
+                    crud="false"
+                    input-selector="document; #setemailinput"
+                    input-attribute="value"
+                    required />
+                <a
+                    actions="validate, stripe.subscriptionItems.update, inviteUser, read(document; #membersList)"
+                    class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
+                    <span class="margin-right:5px font-weight:400"
+                        >Invite
+                    </span>
+                    <i src="./assets/svg/angle-right.svg"></i>
+                </a>
+            </floating-label>
         </div>
     </form>
 
