@@ -3,6 +3,7 @@
 
 <div>
     <form
+        id="blog-form"
         state_id="form-fields"
         array="blog-posts"
         object=""
@@ -33,6 +34,11 @@
                 key="title"
                 placeholder="Title"
                 class="floating-label" />
+            <a
+                actions="action(document; #generate)"
+                class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
+                <i src="./assets/svg/wand-magic-sparkles.svg"></i>
+            </a>
         </floating-label>
         <input
             type="hidden"
@@ -200,5 +206,21 @@
         <textarea key="src"></textarea>
         <button id="savefile" actions="save" hidden>Publish Post</button>
     </form>
+
+    <form>
+        <input
+            class="filename"
+            openai="system"
+            value="generate a json object with no additional context for a blog post using the user providied title, the object will contain the following keys: title, shortDescription, content, tags, meta-title, meta-keywords, meta-description.  The content key value needs to be an html string and hould have have h2 and h3, etc with inline styling. The tags key value needs to be comma seperated value"
+            hidden />
+        <input openai="user" hidden />
+        <a
+            id="generate"
+            actions="openAi"
+            openai-value-type="json"
+            openai-selector="document; #blog-form"
+            openai-type="form"></a>
+    </form>
+
     <div src="./components/toolbar.html" value-type="outerHTML"></div>
 </div>
