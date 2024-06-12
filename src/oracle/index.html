@@ -419,12 +419,12 @@
             openai="user"
             save="false"
             component></div>
-        <textarea
-            id="response"
-            value-type="json"
-            openai="response"
-            hidden></textarea>
-        <a id="request" actions="openAi, manageCareers"></a>
+        <textarea id="response" value-type="json" hidden></textarea>
+        <a
+            id="request"
+            actions="openAi, manageCareers"
+            openai-value-type="json"
+            openai-previous></a>
     </form>
 
     <textarea
