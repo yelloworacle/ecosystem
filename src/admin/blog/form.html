@@ -33,6 +33,8 @@
                 type="text"
                 key="title"
                 placeholder="Title"
+                input-selector="document; .title"
+                input-attribute="value"
                 class="floating-label" />
             <a
                 actions="action(document; #generate)"
@@ -103,6 +105,8 @@
         <floating-label class="input-600">
             <textarea
                 key="shortDescription"
+                input-selector="document; .description"
+                input-attribute="value"
                 placeholder="Short Description"
                 class="floating-label"></textarea>
         </floating-label>
@@ -173,7 +177,7 @@
             <i src="./assets/svg/save.svg"></i>
         </button>
         <button
-            actions="save, render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile)">
+            actions="save, timeout(1000), render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile)">
             Publish
         </button>
     </form>
@@ -209,11 +213,11 @@
 
     <form>
         <input
-            class="filename"
             openai="system"
             value="generate a json object with no additional context for a blog post using the user providied title, the object will contain the following keys: title, shortDescription, content, tags, meta-title, meta-keywords, meta-description.  The content key value needs to be an html string and hould have have h2 and h3, etc with inline styling. The tags key value needs to be comma seperated value"
             hidden />
-        <input openai="user" hidden />
+        <input class="title" openai="user" hidden />
+        <input class="description" openai="user" hidden />
         <a
             id="generate"
             actions="openAi"
