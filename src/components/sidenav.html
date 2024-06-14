@@ -235,38 +235,13 @@
     <menu id="admin" session>
         <input
             type="hidden"
-            filter-key="key"
-            value="$user_id"
-            filter-parent="#isadmin" />
-
-        <div
-            filter-key="roles"
-            filter-value="652c8d62d31d27088bdd29fc"
-            filter-operator="$in"
-            filter-next></div>
-
-        <input
-            type="hidden"
             id="isadmin"
             array="keys"
-            object
+            object="652c8d62a91e10cd4800fffb"
             key="key"
             input-parent
             input-attribute="admin"
-            input-value="true"
-            filter-limit="1" />
-        <!-- <div
-            id="isadmin"
-            array="keys"
-            object
-            filter-limit="1"
-            render-selector="[template]">
-            <input
-                input-closest="menu"
-                input-attribute="admin"
-                input-value="true"
-                template />
-        </div> -->
+            input-value="true" />
 
         <h3 class="margin:50px_10px_5px">Admin</h3>
 
