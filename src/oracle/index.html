@@ -400,24 +400,22 @@
         <div
             array="ai"
             object
-            filter-key="type"
-            filter-value="system"
+            key="content"
+            filter-key="module"
+            filter-value="oracle"
             openai="system"
-            save="false"
             component></div>
         <div
             array="users"
             object="$user_id"
             key="questions"
             openai="user"
-            save="false"
             component></div>
         <div
             array="users"
             object="$user_id"
             key="careers"
             openai="user"
-            save="false"
             component></div>
         <textarea id="response" value-type="json" hidden></textarea>
         <a

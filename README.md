@@ -1,7 +1,6 @@
 # Yellow Oracle
 
-Discover Your Destiny
-Chart and Envision Your Future's Many Paths
+Discover AI career suggestions tailored to your personality and aspirations. Find the perfect path for your unique skills and interests.
 
 # CoCreateJS-Powered Web App
 

@@ -104,10 +104,17 @@
 
         <floating-label class="input-600">
             <textarea
-                key="shortDescription"
+                key="description"
                 input-selector="document; .description"
                 input-attribute="value"
-                placeholder="Short Description"
+                placeholder="Description"
+                class="floating-label"></textarea>
+        </floating-label>
+        <floating-label class="input-600">
+            <textarea
+                key="shortDescription"
+                input-attribute="value"
+                placeholder="shortDescription"
                 class="floating-label"></textarea>
         </floating-label>
 
@@ -212,10 +219,14 @@
     </form>
 
     <form>
-        <input
+        <div
+            array="ai"
+            object
+            key="content"
+            filter-key="module"
+            filter-value="blog"
             openai="system"
-            value="generate a json object with no additional context for a blog post using the user providied title, the object will contain the following keys: title, shortDescription, content, tags, meta-title, meta-keywords, meta-description.  The content key value needs to be an html string and hould have have h2 and h3, etc with inline styling. The tags key value needs to be comma seperated value"
-            hidden />
+            component></div>
         <input class="title" openai="user" hidden />
         <input class="description" openai="user" hidden />
         <a

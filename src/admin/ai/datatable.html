@@ -5,10 +5,10 @@
         path="./"
         src="./components/datatable-toolbar.html"
         class="width:100%"></div>
-    <div
+    <!-- <div
         filter-sort-key="position"
         filter-sort-direction="asc"
-        filter-next="[array='ai']"></div>
+        filter-next="[array='ai']"></div> -->
 
     <table class="width:100% border-collapse:collapse">
         <tbody>
@@ -72,13 +72,7 @@
             </tr>
         </tbody>
 
-        <tbody
-            array="ai"
-            object
-            filter-sort-key="position"
-            filter-sort-direction="asc"
-            filter-limit="20"
-            render-selector="[template]">
+        <tbody array="ai" object filter-limit="20" render-selector="[template]">
             <tr
                 class="border-bottom:1px_solid_darkgray"
                 template
@@ -90,7 +84,7 @@
                         actions="state"
                         state_to="mainView"
                         state-src="./admin/ai/form.html">
-                        <h4>{{object.type}}</h4>
+                        <h4>{{object.module}} - {{object.type}}</h4>
                         <p>{{object.content}}</p>
                         <div
                             state_to="form-fields"

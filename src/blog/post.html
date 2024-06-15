@@ -45,15 +45,29 @@
         <script type="application/ld+json">
             {
                 "@context": "http://schema.org",
-                "@type": "WebPage",
-                "name": "Yellow Oracle - Discover your destiny",
-                "description": "Chart and Envision Your Future's Many Paths",
-                "url": "https://yelloworacle.com",
+                "@type": "BlogPosting",
+                "headline": "{{object.meta-title}}",
+                "description": "{{object.description}}",
+                "url": "{{object.url}}",
                 "image": "https://yelloworacle.com/image.jpg",
                 "author": {
                     "@type": "Organization",
                     "name": "Yellow Oracle"
-                }
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "Yellow Oracle",
+                    "logo": {
+                        "@type": "ImageObject",
+                        "url": "https://yelloworacle.com/assets/icons/logo.png"
+                    }
+                },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://yelloworacle.com"
+                },
+                "datePublished": "{{object.published}}",
+                "dateModified": "{{object.published}}"
             }
         </script>
 
