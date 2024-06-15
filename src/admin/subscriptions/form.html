@@ -1,43 +1,45 @@
 <!DOCTYPE html>
-<form
-    state_id="form-fields"
-    array="subscriptions"
-    object=""
-    realtime="false"
-    class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
-    <div
-        path="./"
-        src="./components/form-toolbar.html"
-        class="width:100%"></div>
+<section class="centered">
+    <form
+        state_id="form-fields"
+        array="subscriptions"
+        object=""
+        realtime="false"
+        class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
+        <div
+            path="./"
+            src="./components/form-toolbar.html"
+            class="width:100%"></div>
 
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="name"
-            placeholder="Name"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="status"
-            placeholder="Status"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-600">
-        <textarea
-            type="code"
-            key="fields"
-            placeholder="Fields"
-            rows="10"
-            class="floating-label"></textarea>
-    </floating-label>
+        <floating-label class="input-300">
+            <input
+                type="text"
+                key="name"
+                placeholder="Name"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-300">
+            <input
+                type="text"
+                key="status"
+                placeholder="Status"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-600">
+            <textarea
+                type="code"
+                key="fields"
+                placeholder="Fields"
+                rows="10"
+                class="floating-label"></textarea>
+        </floating-label>
 
-    <button
-        actions="save, state"
-        state_to="mainView"
-        state-src="./admin/subscriptions/datatable.html"
-        class="button-round">
-        <i src="./assets/svg/save.svg"></i>
-    </button>
-</form>
+        <button
+            actions="save, state"
+            state_to="mainView"
+            state-src="./admin/subscriptions/datatable.html"
+            class="button-round">
+            <i src="./assets/svg/save.svg"></i>
+        </button>
+    </form>
+</section>

@@ -1,558 +1,568 @@
 <!DOCTYPE html>
-<div class="main-view max-width:800px">
-    <a href="./signin.html" session="false" hidden></a>
+<container class="centered">
+    <div class="main-view max-width:800px">
+        <a href="./signin.html" session="false" hidden></a>
 
-    <style>
-        .ambassador {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        #terms {
-            display: none;
-        }
-
-        [terms="false"] #table {
-            display: none;
-        }
-
-        [terms="false"] #dashboard {
-            display: none;
-        }
-
-        [terms="false"] #terms {
-            display: block;
-        }
-
-        .ambassador h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .ambassador p {
-            font-size: 18px;
-            font-weight: 400;
-            margin-top: 20px;
-            line-height: 1.6;
-        }
-        .ambassador a {
-            padding-left: 15px;
-            color: #1a73e8;
-            font-weight: bold;
-        }
-        .ambassador .join {
-            text-align: center;
-            padding-top: 30px;
-        }
-        .ambassador .join .terms {
-            text-align: center;
-            padding: 30px;
-        }
-        #dashboard .card {
-            flex-grow: 1;
-        }
-        [payouts_enabled] {
-            display: none;
-        }
-        [payouts_enabled="false"] {
-            display: block;
-            background: red;
-        }
-        [payouts_enabled="true"] {
-            display: block;
-            background: green;
-        }
-        [charges_enabled] {
-            display: none;
-        }
-        [charges_enabled="false"] {
-            display: block;
-            background: red;
-        }
-        [charges_enabled="true"] {
-            display: block;
-            background: green;
-        }
-        @media (prefers-color-scheme: dark) {
+        <style>
             .ambassador {
-                background-color: #222;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
-        }
-    </style>
 
-    <input
-        type="hidden"
-        realtime="false"
-        filter-key="ambassador"
-        filter-selector="document; [ambassador][]"
-        value="$user_id" />
+            #terms {
+                display: none;
+            }
 
-    <section id="dashboard" class="width:100% padding:0px">
-        <div
-            class="width:100% display:flex justify-content:flex-end margin-bottom:30px gap:15px">
-            <div id="nextPayout" class="card maxwidth:200px" charges_enabled>
-                <span>Charges: </span>
-                <span
-                    type="hidden"
-                    array="users"
-                    object="$user_id"
-                    key="stripe.account.charges_enabled"
-                    input-parent
-                    input-attribute="charges_enabled"></span>
-            </div>
-            <div id="nextPayout" class="card maxwidth:200px" payouts_enabled>
-                <span>Payouts: </span>
-                <span
-                    type="hidden"
-                    array="users"
-                    object="$user_id"
-                    key="stripe.account.payouts_enabled"
-                    input-parent
-                    input-attribute="payouts_enabled"></span>
-            </div>
+            [terms="false"] #table {
+                display: none;
+            }
 
-            <button
-                actions="state"
-                state_to="mainView"
-                state-src="./account/ambassador/form/"
-                class="float:right">
-                <i src="./assets/svg/cog.svg"></i> Payout Settings
-            </button>
-        </div>
+            [terms="false"] #dashboard {
+                display: none;
+            }
 
-        <div class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
-            <div id="subscribers" class="card">
-                <h2>Subscribers</h2>
+            [terms="false"] #terms {
+                display: block;
+            }
 
-                <span array="users" object key="$length" ambassador>0</span>
-            </div>
+            .ambassador h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .ambassador p {
+                font-size: 18px;
+                font-weight: 400;
+                margin-top: 20px;
+                line-height: 1.6;
+            }
+            .ambassador a {
+                padding-left: 15px;
+                color: #1a73e8;
+                font-weight: bold;
+            }
+            .ambassador .join {
+                text-align: center;
+                padding-top: 30px;
+            }
+            .ambassador .join .terms {
+                text-align: center;
+                padding: 30px;
+            }
+            #dashboard .card {
+                flex-grow: 1;
+            }
+            [payouts_enabled] {
+                display: none;
+            }
+            [payouts_enabled="false"] {
+                display: block;
+                background: red;
+            }
+            [payouts_enabled="true"] {
+                display: block;
+                background: green;
+            }
+            [charges_enabled] {
+                display: none;
+            }
+            [charges_enabled="false"] {
+                display: block;
+                background: red;
+            }
+            [charges_enabled="true"] {
+                display: block;
+                background: green;
+            }
+            @media (prefers-color-scheme: dark) {
+                .ambassador {
+                    background-color: #222;
+                }
+            }
+        </style>
 
-            <!-- Next Payout Section -->
-            <div id="nextPayout" class="card">
-                <h2>Next Payout</h2>
-                <span>$</span>
-                <span
-                    array="payouts"
-                    object
-                    filter-key="status"
-                    filter-value="pending"
-                    key="$sum.amount"
-                    ambassador
-                    >0</span
-                >
-            </div>
-
-            <!-- Total Payouts Section -->
-            <div id="totalPayouts" class="card" hidden>
-                <h2>Total Payouts</h2>
-                <span>$</span>
-                <span
-                    array="payouts"
-                    object
-                    filter-key="status"
-                    filter-value="paid"
-                    key="$sum.amount"
-                    ambassador
-                    >0</span
-                >
-            </div>
-        </div>
-    </section>
-    <section id="table" class="width:100% padding:0px">
-        <table class="width:100% border-collapse:collapse" hidden>
-            <tbody>
-                <tr class="border-bottom:1px_solid_darkgray">
-                    <td
-                        class="position:sticky top:0 background:white padding:10px">
-                        <floating-label>
-                            <input
-                                type="text"
-                                filter-selector="document; tbody[render-selector]"
-                                filter-key="amount"
-                                state_id="datatable"
-                                placeholder="Amount"
-                                class="floating-label" />
-                        </floating-label>
-                        <span
-                            class="position:absolute bottom:22px right:20px float:right z-index:6">
-                            <a
-                                filter-selector="document; tbody[render-selector]"
-                                filter-sort-key="amount"
-                                filter-sort-direction="asc"
-                                click-value="desc, asc"
-                                click-attribute="filter-sort-direction"
-                                state_id="datatable">
-                                <i
-                                    toggle-attribute="src"
-                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    src="./assets/svg/sort.svg"></i>
-                            </a>
-                        </span>
-                    </td>
-                    <td
-                        class="position:sticky top:0 background:white padding:10px">
-                        <floating-label>
-                            <input
-                                type="text"
-                                filter-selector="document; tbody[render-selector]"
-                                filter-key="status"
-                                state_id="datatable"
-                                placeholder="status"
-                                class="floating-label" />
-                        </floating-label>
-                        <span
-                            class="position:absolute bottom:22px right:20px float:right z-index:6">
-                            <a
-                                filter-selector="document; tbody[render-selector]"
-                                filter-sort-key="status"
-                                filter-sort-direction="asc"
-                                click-value="desc, asc"
-                                click-attribute="filter-sort-direction"
-                                state_id="datatable">
-                                <i
-                                    toggle-attribute="src"
-                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    src="./assets/svg/sort.svg"></i>
-                            </a>
-                        </span>
-                    </td>
-                    <td
-                        class="position:sticky top:0 background:white padding:10px">
-                        <floating-label>
-                            <input
-                                type="text"
-                                filter-selector="document; tbody[render-selector]"
-                                filter-key="_id"
-                                state_id="datatable"
-                                placeholder="id"
-                                class="floating-label" />
-                        </floating-label>
-                        <span
-                            class="position:absolute bottom:22px right:20px float:right z-index:6">
-                            <a
-                                filter-selector="document; tbody[render-selector]"
-                                filter-sort-key="_id"
-                                filter-sort-direction=""
-                                click-value="desc, asc"
-                                click-attribute="filter-sort-direction"
-                                state_id="datatable">
-                                <i
-                                    toggle-attribute="src"
-                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    src="./assets/svg/sort.svg"></i>
-                            </a>
-                        </span>
-                    </td>
-                </tr>
-            </tbody>
-
-            <tbody
-                array="payouts"
-                object
-                render-selector="[template]"
-                ambassador
-                hidden>
-                <tr
-                    class="border-bottom:1px_solid_darkgray"
-                    template
-                    object="{{object._id}}"
-                    toggle="selected"
-                    toggle-attribute="class">
-                    <td
-                        class="padding:10px display:flex min-width:200px align-items:center">
-                        <a
-                            actions="state"
-                            state_to="mainView"
-                            state-src="./users/form.html">
-                            <h4>{{object.amount}}</h4>
-                            <div
-                                state_to="form-fields"
-                                state-object="{{object._id}}"></div>
-                        </a>
-                    </td>
-                    <td class="padding:10px">
-                        <a
-                            actions="state"
-                            state_to="mainView"
-                            state-src="./users/form.html">
-                            <b>{{object.status}}</b>
-                            <div
-                                state_to="form-fields"
-                                state-object="{{object._id}}"></div>
-                        </a>
-                    </td>
-                    <td class="padding:10px">
-                        <a
-                            actions="state"
-                            state_to="mainView"
-                            state-src="./users/form.html">
-                            <b>{{object._id}}</b>
-                            <div
-                                state_to="form-fields"
-                                state-object="{{object._id}}"></div>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- <div filter-on="fetched" filter-previous="[render-selector]"></div> -->
-        <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
-    </section>
-
-    <section
-        id="terms"
-        class="ambassador padding:40px@md@lg@xl"
-        module="stripe">
         <input
             type="hidden"
-            array="users"
-            object="$user_id"
-            key="ambassadorTerms"
-            input-closest=".main-view"
-            input-attribute="terms" />
+            realtime="false"
+            filter-key="ambassador"
+            filter-selector="document; [ambassador][]"
+            value="$user_id" />
 
-        <h1>Become an Ambassador</h1>
-        <p>
-            Ambassadors of YellowOracle.com receive a unique ID and receive 15%
-            of fees associated with purchases of services from users paid out
-            with a minimum amount of $100 USD, paid monthly, for the life of the
-            relationship. Must have authority to act on behalf of any
-            organization.
-        </p>
-        <p>
-            Ambassadors of YellowOracle.com promote the website to both
-            end-users and employers with their unique ID.
-        </p>
-        <p>
-            YellowOracle appreciates Ambassadors who spread the word with
-            integrity. Comments and suggestions are greatly appreciated to
-            continuously improve user and employer experiences.
-        </p>
-        <p>
-            Example: yelloworacle.com/customName or yelloworacle.com/unique-name
-            <!-- <small class="width:100%">Example: yelloworacle.com/customName or yelloworacle.com/unique-name</small> -->
-        </p>
-
-        <form array="users" object="$user_id" class="join" realtime="false">
-            <input
-                type="text"
-                key="ambassadorUrl"
-                placeholder="Ambassador URL"
-                required
-                unique
-                class="padding-left:145px!important"
-                input-next
-                input-attribute="value" />
-            <input
-                type="hidden"
-                array="ambassadors"
-                object="$user_id"
-                key="ambassadorUrl"
-                upsert="true" />
-            <span
-                class="position:relative top:-34px left:6px float:left padding:5px background:whitesmoke"
-                >yelloworacle.com/</span
-            >
-
-            <input
-                type="hidden"
-                stripe="accounts.create"
-                stripe-key="id"
-                stripe-request="false"
-                key="ambassadorAccount"
-                input-next
-                input-attribute="value" />
-
-            <input
-                type="hidden"
-                array="ambassadors"
-                object="$user_id"
-                key="ambassadorAccount"
-                upsert="true" />
-
-            <input
-                type="hidden"
-                localstorage-get="ambassadorParents"
-                key="ambassadorParents"
-                input-next
-                input-attribute="value" />
-
-            <input
-                type="hidden"
-                array="ambassadors"
-                object="$user_id"
-                key="ambassadorParents"
-                upsert="true" />
-
+        <section id="dashboard" class="width:100% padding:0px">
             <div
-                type="hidden"
-                stripe="accounts.create"
-                stripe-key="{}"
-                stripe-request="false"
-                key="stripe.account"
-                component></div>
+                class="width:100% display:flex justify-content:flex-end margin-bottom:30px gap:15px">
+                <div
+                    id="nextPayout"
+                    class="card maxwidth:200px"
+                    charges_enabled>
+                    <span>Charges: </span>
+                    <span
+                        type="hidden"
+                        array="users"
+                        object="$user_id"
+                        key="stripe.account.charges_enabled"
+                        input-parent
+                        input-attribute="charges_enabled"></span>
+                </div>
+                <div
+                    id="nextPayout"
+                    class="card maxwidth:200px"
+                    payouts_enabled>
+                    <span>Payouts: </span>
+                    <span
+                        type="hidden"
+                        array="users"
+                        object="$user_id"
+                        key="stripe.account.payouts_enabled"
+                        input-parent
+                        input-attribute="payouts_enabled"></span>
+                </div>
 
-            <input
-                type="hidden"
-                stripe="accounts.create"
-                stripe-key="type"
-                value="custom" />
-            <input
-                type="hidden"
-                key="email"
-                stripe="accounts.create"
-                stripe-key="email" />
-            <input
-                type="hidden"
-                stripe="accounts.create"
-                stripe-key="business_profile.product_description"
-                value="AI generated career recomendations" />
-            <input
-                type="number"
-                stripe="accounts.create"
-                stripe-key="business_profile.mcc"
-                value="5968"
-                hidden />
-            <input
-                type="hidden"
-                stripe="accounts.create"
-                stripe-key="business_profile.url"
-                value="https://yelloworacle.com" />
-            <input
-                type="hidden"
-                stripe="accounts.create"
-                stripe-key="settings.payments.statement_descriptor"
-                value="yelloworacle" />
-            <input
-                type="hidden"
-                stripe="accounts.create"
-                stripe-key="settings.payouts.schedule.interval"
-                value="weekly" />
-            <input
-                type="hidden"
-                stripe="accounts.create"
-                stripe-key="settings.payouts.schedule.weekly_anchor"
-                value="monday" />
-            <input
-                type="checkbox"
-                stripe="accounts.create"
-                stripe-key="capabilities.card_payments.requested"
-                hidden
-                checked />
-            <input
-                type="checkbox"
-                stripe="accounts.create"
-                stripe-key="capabilities.transfers.requested"
-                hidden
-                checked />
-
-            <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        key="firstname"
-                        stripe="accounts.create"
-                        stripe-key="individual.first_name"
-                        placeholder="First Name"
-                        required />
-                </floating-label>
-
-                <floating-label class="flex-grow:1">
-                    <input
-                        type="text"
-                        key="lastname"
-                        stripe="accounts.create"
-                        stripe-key="individual.last_name"
-                        placeholder="Last Name"
-                        required />
-                </floating-label>
+                <button
+                    actions="state"
+                    state_to="mainView"
+                    state-src="./account/ambassador/form/"
+                    class="float:right">
+                    <i src="./assets/svg/cog.svg"></i> Payout Settings
+                </button>
             </div>
 
             <div
-                class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-                <floating-label class="flex-grow:1">
-                    <select
-                        key="business_type"
-                        stripe="accounts.create"
-                        stripe-key="business_type"
-                        placeholder="Bussiness Type">
-                        <option value="individual">Individual</option>
-                        <option value="company">Company</option>
-                        <option value="non_profit">non_profit</option>
-                        <option value="BR">government_entity</option>
-                    </select>
-                </floating-label>
+                class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
+                <div id="subscribers" class="card">
+                    <h2>Subscribers</h2>
 
-                <floating-label class="flex-grow:1">
-                    <select
-                        id="country"
-                        key="country"
-                        stripe="accounts.create"
-                        stripe-key="country"
-                        placeholder="Country"
-                        required
-                        src="./account/ambassador/form/countries.html"></select>
-                </floating-label>
+                    <span array="users" object key="$length" ambassador>0</span>
+                </div>
+
+                <!-- Next Payout Section -->
+                <div id="nextPayout" class="card">
+                    <h2>Next Payout</h2>
+                    <span>$</span>
+                    <span
+                        array="payouts"
+                        object
+                        filter-key="status"
+                        filter-value="pending"
+                        key="$sum.amount"
+                        ambassador
+                        >0</span
+                    >
+                </div>
+
+                <!-- Total Payouts Section -->
+                <div id="totalPayouts" class="card" hidden>
+                    <h2>Total Payouts</h2>
+                    <span>$</span>
+                    <span
+                        array="payouts"
+                        object
+                        filter-key="status"
+                        filter-value="paid"
+                        key="$sum.amount"
+                        ambassador
+                        >0</span
+                    >
+                </div>
             </div>
+        </section>
+        <section id="table" class="width:100% padding:0px">
+            <table class="width:100% border-collapse:collapse" hidden>
+                <tbody>
+                    <tr class="border-bottom:1px_solid_darkgray">
+                        <td
+                            class="position:sticky top:0 background:white padding:10px">
+                            <floating-label>
+                                <input
+                                    type="text"
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-key="amount"
+                                    state_id="datatable"
+                                    placeholder="Amount"
+                                    class="floating-label" />
+                            </floating-label>
+                            <span
+                                class="position:absolute bottom:22px right:20px float:right z-index:6">
+                                <a
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-sort-key="amount"
+                                    filter-sort-direction="asc"
+                                    click-value="desc, asc"
+                                    click-attribute="filter-sort-direction"
+                                    state_id="datatable">
+                                    <i
+                                        toggle-attribute="src"
+                                        toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                        src="./assets/svg/sort.svg"></i>
+                                </a>
+                            </span>
+                        </td>
+                        <td
+                            class="position:sticky top:0 background:white padding:10px">
+                            <floating-label>
+                                <input
+                                    type="text"
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-key="status"
+                                    state_id="datatable"
+                                    placeholder="status"
+                                    class="floating-label" />
+                            </floating-label>
+                            <span
+                                class="position:absolute bottom:22px right:20px float:right z-index:6">
+                                <a
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-sort-key="status"
+                                    filter-sort-direction="asc"
+                                    click-value="desc, asc"
+                                    click-attribute="filter-sort-direction"
+                                    state_id="datatable">
+                                    <i
+                                        toggle-attribute="src"
+                                        toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                        src="./assets/svg/sort.svg"></i>
+                                </a>
+                            </span>
+                        </td>
+                        <td
+                            class="position:sticky top:0 background:white padding:10px">
+                            <floating-label>
+                                <input
+                                    type="text"
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-key="_id"
+                                    state_id="datatable"
+                                    placeholder="id"
+                                    class="floating-label" />
+                            </floating-label>
+                            <span
+                                class="position:absolute bottom:22px right:20px float:right z-index:6">
+                                <a
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-sort-key="_id"
+                                    filter-sort-direction=""
+                                    click-value="desc, asc"
+                                    click-attribute="filter-sort-direction"
+                                    state_id="datatable">
+                                    <i
+                                        toggle-attribute="src"
+                                        toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                        src="./assets/svg/sort.svg"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
 
-            <div class="terms">
-                <input
-                    type="checkbox"
-                    key="ambassadorTerms"
-                    placeholder="Accept Terms"
-                    required />
-                <a href="./terms/ambassador.html">Ambassador Terms</a>
-            </div>
+                <tbody
+                    array="payouts"
+                    object
+                    render-selector="[template]"
+                    ambassador
+                    hidden>
+                    <tr
+                        class="border-bottom:1px_solid_darkgray"
+                        template
+                        object="{{object._id}}"
+                        toggle="selected"
+                        toggle-attribute="class">
+                        <td
+                            class="padding:10px display:flex min-width:200px align-items:center">
+                            <a
+                                actions="state"
+                                state_to="mainView"
+                                state-src="./users/form.html">
+                                <h4>{{object.amount}}</h4>
+                                <div
+                                    state_to="form-fields"
+                                    state-object="{{object._id}}"></div>
+                            </a>
+                        </td>
+                        <td class="padding:10px">
+                            <a
+                                actions="state"
+                                state_to="mainView"
+                                state-src="./users/form.html">
+                                <b>{{object.status}}</b>
+                                <div
+                                    state_to="form-fields"
+                                    state-object="{{object._id}}"></div>
+                            </a>
+                        </td>
+                        <td class="padding:10px">
+                            <a
+                                actions="state"
+                                state_to="mainView"
+                                state-src="./users/form.html">
+                                <b>{{object._id}}</b>
+                                <div
+                                    state_to="form-fields"
+                                    state-object="{{object._id}}"></div>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
+            <!-- <div filter-on="fetched" filter-previous="[render-selector]"></div> -->
+            <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
+        </section>
+
+        <section
+            id="terms"
+            class="ambassador padding:40px@md@lg@xl"
+            module="stripe">
             <input
                 type="hidden"
-                stripe="accounts.create"
-                stripe-key="tos_acceptance.ip"
-                value="$ip" />
-
-            <input
-                type="date"
-                stripe="accounts.create"
-                stripe-key="tos_acceptance.date"
-                value-type="toUnixTimestamp"
-                value="$now"
-                hidden />
-
-            <div
-                template="validate, stripe.accounts"
-                class="card margin-bottom:15px padding:10px min-height:40px max-width:800px">
-                <span class="{{status}}">
-                    <span class="{{type}}">{{message}}</span
-                    ><a actions="remove"> X</a>
-                </span>
-            </div>
-
-            <!-- <button actions="stripe.accounts.create">Join</button> -->
-            <button
-                actions="validate, stripe.accounts.create, timeout(2000), save">
-                Join
-            </button>
-        </form>
-        <form hidden>
-            <input
                 array="users"
                 object="$user_id"
-                key="ambassadorAccount"
-                input-next
-                input-attribute="value" />
+                key="ambassadorTerms"
+                input-closest=".main-view"
+                input-attribute="terms" />
 
-            <input
-                array="ambassadors"
-                object="$user_id"
-                key="ambassadorParents[]"
-                input-next
-                input-attribute="click" />
+            <h1>Become an Ambassador</h1>
+            <p>
+                Ambassadors of YellowOracle.com receive a unique ID and receive
+                15% of fees associated with purchases of services from users
+                paid out with a minimum amount of $100 USD, paid monthly, for
+                the life of the relationship. Must have authority to act on
+                behalf of any organization.
+            </p>
+            <p>
+                Ambassadors of YellowOracle.com promote the website to both
+                end-users and employers with their unique ID.
+            </p>
+            <p>
+                YellowOracle appreciates Ambassadors who spread the word with
+                integrity. Comments and suggestions are greatly appreciated to
+                continuously improve user and employer experiences.
+            </p>
+            <p>
+                Example: yelloworacle.com/customName or
+                yelloworacle.com/unique-name
+                <!-- <small class="width:100%">Example: yelloworacle.com/customName or yelloworacle.com/unique-name</small> -->
+            </p>
 
-            <button id="addParent" actions="validate, save"></button>
-        </form>
-    </section>
-</div>
+            <form array="users" object="$user_id" class="join" realtime="false">
+                <input
+                    type="text"
+                    key="ambassadorUrl"
+                    placeholder="Ambassador URL"
+                    required
+                    unique
+                    class="padding-left:145px!important"
+                    input-next
+                    input-attribute="value" />
+                <input
+                    type="hidden"
+                    array="ambassadors"
+                    object="$user_id"
+                    key="ambassadorUrl"
+                    upsert="true" />
+                <span
+                    class="position:relative top:-34px left:6px float:left padding:5px background:whitesmoke"
+                    >yelloworacle.com/</span
+                >
 
-<script src="./account/ambassador/index.js"></script>
+                <input
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="id"
+                    stripe-request="false"
+                    key="ambassadorAccount"
+                    input-next
+                    input-attribute="value" />
+
+                <input
+                    type="hidden"
+                    array="ambassadors"
+                    object="$user_id"
+                    key="ambassadorAccount"
+                    upsert="true" />
+
+                <input
+                    type="hidden"
+                    localstorage-get="ambassadorParents"
+                    key="ambassadorParents"
+                    input-next
+                    input-attribute="value" />
+
+                <input
+                    type="hidden"
+                    array="ambassadors"
+                    object="$user_id"
+                    key="ambassadorParents"
+                    upsert="true" />
+
+                <div
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="{}"
+                    stripe-request="false"
+                    key="stripe.account"
+                    component></div>
+
+                <input
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="type"
+                    value="custom" />
+                <input
+                    type="hidden"
+                    key="email"
+                    stripe="accounts.create"
+                    stripe-key="email" />
+                <input
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="business_profile.product_description"
+                    value="AI generated career recomendations" />
+                <input
+                    type="number"
+                    stripe="accounts.create"
+                    stripe-key="business_profile.mcc"
+                    value="5968"
+                    hidden />
+                <input
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="business_profile.url"
+                    value="https://yelloworacle.com" />
+                <input
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="settings.payments.statement_descriptor"
+                    value="yelloworacle" />
+                <input
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="settings.payouts.schedule.interval"
+                    value="weekly" />
+                <input
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="settings.payouts.schedule.weekly_anchor"
+                    value="monday" />
+                <input
+                    type="checkbox"
+                    stripe="accounts.create"
+                    stripe-key="capabilities.card_payments.requested"
+                    hidden
+                    checked />
+                <input
+                    type="checkbox"
+                    stripe="accounts.create"
+                    stripe-key="capabilities.transfers.requested"
+                    hidden
+                    checked />
+
+                <div
+                    class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                    <floating-label class="flex-grow:1">
+                        <input
+                            type="text"
+                            key="firstname"
+                            stripe="accounts.create"
+                            stripe-key="individual.first_name"
+                            placeholder="First Name"
+                            required />
+                    </floating-label>
+
+                    <floating-label class="flex-grow:1">
+                        <input
+                            type="text"
+                            key="lastname"
+                            stripe="accounts.create"
+                            stripe-key="individual.last_name"
+                            placeholder="Last Name"
+                            required />
+                    </floating-label>
+                </div>
+
+                <div
+                    class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+                    <floating-label class="flex-grow:1">
+                        <select
+                            key="business_type"
+                            stripe="accounts.create"
+                            stripe-key="business_type"
+                            placeholder="Bussiness Type">
+                            <option value="individual">Individual</option>
+                            <option value="company">Company</option>
+                            <option value="non_profit">non_profit</option>
+                            <option value="BR">government_entity</option>
+                        </select>
+                    </floating-label>
+
+                    <floating-label class="flex-grow:1">
+                        <select
+                            id="country"
+                            key="country"
+                            stripe="accounts.create"
+                            stripe-key="country"
+                            placeholder="Country"
+                            required
+                            src="./account/ambassador/form/countries.html"></select>
+                    </floating-label>
+                </div>
+
+                <div class="terms">
+                    <input
+                        type="checkbox"
+                        key="ambassadorTerms"
+                        placeholder="Accept Terms"
+                        required />
+                    <a href="./terms/ambassador.html">Ambassador Terms</a>
+                </div>
+
+                <input
+                    type="hidden"
+                    stripe="accounts.create"
+                    stripe-key="tos_acceptance.ip"
+                    value="$ip" />
+
+                <input
+                    type="date"
+                    stripe="accounts.create"
+                    stripe-key="tos_acceptance.date"
+                    value-type="toUnixTimestamp"
+                    value="$now"
+                    hidden />
+
+                <div
+                    template="validate, stripe.accounts"
+                    class="card margin-bottom:15px padding:10px min-height:40px max-width:800px">
+                    <span class="{{status}}">
+                        <span class="{{type}}">{{message}}</span
+                        ><a actions="remove"> X</a>
+                    </span>
+                </div>
+
+                <!-- <button actions="stripe.accounts.create">Join</button> -->
+                <button
+                    actions="validate, stripe.accounts.create, timeout(2000), save">
+                    Join
+                </button>
+            </form>
+            <form hidden>
+                <input
+                    array="users"
+                    object="$user_id"
+                    key="ambassadorAccount"
+                    input-next
+                    input-attribute="value" />
+
+                <input
+                    array="ambassadors"
+                    object="$user_id"
+                    key="ambassadorParents[]"
+                    input-next
+                    input-attribute="click" />
+
+                <button id="addParent" actions="validate, save"></button>
+            </form>
+        </section>
+    </div>
+
+    <script src="./account/ambassador/index.js"></script>
+</container>

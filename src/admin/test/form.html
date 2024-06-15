@@ -1,65 +1,67 @@
 <!DOCTYPE html>
-<form
-    state_id="form-fields"
-    array="test"
-    object=""
-    realtime="false"
-    class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
-    <!-- deleteObject-->
+<section class="centered">
+    <form
+        state_id="form-fields"
+        array="test"
+        object=""
+        realtime="false"
+        class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
+        <!-- deleteObject-->
 
-    <div
-        path="./"
-        src="./components/form-toolbar.html"
-        class="width:100%"></div>
+        <div
+            path="./"
+            src="./components/form-toolbar.html"
+            class="width:100%"></div>
 
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="name"
-            placeholder="Name"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            openai="apikey"
-            localstorge-get="openAiKey"
-            placeholder="ApiKey"
-            class="floating-label" />
-    </floating-label>
+        <floating-label class="input-300">
+            <input
+                type="text"
+                key="name"
+                placeholder="Name"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-300">
+            <input
+                type="text"
+                openai="apikey"
+                localstorge-get="openAiKey"
+                placeholder="ApiKey"
+                class="floating-label" />
+        </floating-label>
 
-    <floating-label class="input-600">
-        <textarea
-            type="text"
-            key="system"
-            openai="system"
-            placeholder="System"
-            rows="5"
-            class="floating-label"></textarea>
-    </floating-label>
+        <floating-label class="input-600">
+            <textarea
+                type="text"
+                key="system"
+                openai="system"
+                placeholder="System"
+                rows="5"
+                class="floating-label"></textarea>
+        </floating-label>
 
-    <floating-label class="input-600">
-        <textarea
-            type="code"
-            key="questions"
-            openai="system"
-            placeholder="User Questions"
-            lang="javascript"
-            rows="10"
-            class="floating-label"></textarea>
-    </floating-label>
-    <floating-label class="input-600">
-        <textarea
-            key="response"
-            openai="response"
-            placeholder="Assistant Response"
-            lang="javascript"
-            rows="10"
-            class="floating-label"></textarea>
-    </floating-label>
-    <button actions="openAi" class="width:100%">Send</button>
+        <floating-label class="input-600">
+            <textarea
+                type="code"
+                key="questions"
+                openai="system"
+                placeholder="User Questions"
+                lang="javascript"
+                rows="10"
+                class="floating-label"></textarea>
+        </floating-label>
+        <floating-label class="input-600">
+            <textarea
+                key="response"
+                openai="response"
+                placeholder="Assistant Response"
+                lang="javascript"
+                rows="10"
+                class="floating-label"></textarea>
+        </floating-label>
+        <button actions="openAi" class="width:100%">Send</button>
 
-    <button actions="save" class="button-round">
-        <i src="./assets/svg/save.svg"></i>
-    </button>
-</form>
+        <button actions="save" class="button-round">
+            <i src="./assets/svg/save.svg"></i>
+        </button>
+    </form>
+</section>

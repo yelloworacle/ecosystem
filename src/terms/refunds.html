@@ -73,22 +73,6 @@
     </head>
 
     <style type="text/css" media="screen">
-        .show[selected] {
-            display: block !important;
-        }
-
-        .bg {
-            background: radial-gradient(
-                circle at 50% 50%,
-                rgba(6, 102, 219, 0.07) 0%,
-                rgba(6, 102, 219, 0.07) 33.333%,
-                rgba(6, 102, 219, 0.21) 33.333%,
-                rgba(6, 102, 219, 0.21) 66.666%,
-                rgba(6, 102, 219, 0.35) 66.666%,
-                rgba(6, 102, 219, 0.35) 99.999%
-            );
-        }
-
         section {
             padding: 80px 15px;
         }
@@ -109,7 +93,6 @@
         <!-- Navbar  -->
         <nav
             class="position:absolute width:100% display:flex align-items:center background:transparent padding-top:10px padding-bottom:10px"
-            content_id="content"
             scroll="sticky-nav,"
             scroll-up="5"
             scroll-down="5"
@@ -125,74 +108,72 @@
             src="../components/sidenav.html"></sidenav>
 
         <!-- Modal Viewport/Boundaries -->
-        <div
-            class="position:fixed margin-top:50px"
-            content_id="content"
-            id="modal-viewport"></div>
+        <div class="position:fixed margin-top:50px" id="modal-viewport"></div>
 
         <!-- Main Content -->
-        <main
-            class="width:auto padding-top:80px padding-bottom:80px"
-            content_id="content">
-            <section id="refund-policy" class="max-width:700px">
-                <h2>Refund Policy</h2>
-                <p>
-                    At Yellow Oracle, we are committed to ensuring our
-                    customers' satisfaction. Our refund policy for our
-                    subscription services is designed to be transparent and
-                    fair.
-                </p>
+        <main class="width:auto padding-top:80px padding-bottom:80px">
+            <container class="centered">
+                <section id="refund-policy" class="max-width:700px">
+                    <h2>Refund Policy</h2>
+                    <p>
+                        At Yellow Oracle, we are committed to ensuring our
+                        customers' satisfaction. Our refund policy for our
+                        subscription services is designed to be transparent and
+                        fair.
+                    </p>
 
-                <h3>Refundable Situations</h3>
-                <p>
-                    Subscribers are eligible for refunds under the following
-                    circumstances:
-                </p>
-                <ul class="padding:20px">
-                    <li>
-                        <strong>Billing Error:</strong> If you have been
-                        incorrectly billed, please contact us within [time
-                        period, e.g., 7 days] of the charge for a full refund.
-                    </li>
-                </ul>
+                    <h3>Refundable Situations</h3>
+                    <p>
+                        Subscribers are eligible for refunds under the following
+                        circumstances:
+                    </p>
+                    <ul class="padding:20px">
+                        <li>
+                            <strong>Billing Error:</strong> If you have been
+                            incorrectly billed, please contact us within [time
+                            period, e.g., 7 days] of the charge for a full
+                            refund.
+                        </li>
+                    </ul>
 
-                <h3>Non-Refundable Situations</h3>
-                <p>
-                    Please note that in certain cases, refunds will not be
-                    issued:
-                </p>
-                <ul class="padding:20px">
-                    <li>Partial month usage (except as noted above).</li>
-                    <li>
-                        Discontent with features or services that were available
-                        and known at the time of subscription.
-                    </li>
-                    <li>
-                        Non-usage of the service without prior cancellation
-                        request.
-                    </li>
-                </ul>
+                    <h3>Non-Refundable Situations</h3>
+                    <p>
+                        Please note that in certain cases, refunds will not be
+                        issued:
+                    </p>
+                    <ul class="padding:20px">
+                        <li>Partial month usage (except as noted above).</li>
+                        <li>
+                            Discontent with features or services that were
+                            available and known at the time of subscription.
+                        </li>
+                        <li>
+                            Non-usage of the service without prior cancellation
+                            request.
+                        </li>
+                    </ul>
 
-                <p>
-                    <strong>Refund Process:</strong> To request a refund, please
-                    contact our support team with your account details and
-                    reason for the refund. All refund requests should be made
-                    within [set a time frame, e.g., 30 days] of the billing
-                    date.
-                </p>
+                    <p>
+                        <strong>Refund Process:</strong> To request a refund,
+                        please contact our support team with your account
+                        details and reason for the refund. All refund requests
+                        should be made within [set a time frame, e.g., 30 days]
+                        of the billing date.
+                    </p>
 
-                <p>
-                    <strong>Changes to Policy:</strong> Yellow Oracle reserves
-                    the right to modify this refund policy at any time.
-                    Subscribers will be notified of significant changes.
-                </p>
-            </section>
+                    <p>
+                        <strong>Changes to Policy:</strong> Yellow Oracle
+                        reserves the right to modify this refund policy at any
+                        time. Subscribers will be notified of significant
+                        changes.
+                    </p>
+                </section>
+            </container>
         </main>
 
         <!-- Footer -->
         <footer
             id="spreadtheword"
-            content_id="content"
             path="../"
             src="../components/footer.html"></footer>
 

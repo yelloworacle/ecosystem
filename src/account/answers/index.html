@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <a href="./signin.html" session="false" hidden></a>
 
-<form
-    array="users"
-    object="$user_id"
-    class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
-    <div
+<section class="centered">
+    <form
         array="users"
-        filter-key="_id"
-        filter-value="$user_id"
-        key="questions"
-        render-selector="[template]"
-        render-type="object"
-        class="display:flex flex-wrap:wrap gap:20px padding-top:10px">
-        <floating-label template class="input-600">
-            <input
-                key="questions.{{questions.key}}"
-                placeholder="{{questions.key}}" />
-        </floating-label>
-    </div>
-</form>
+        object="$user_id"
+        class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
+        <div
+            array="users"
+            filter-key="_id"
+            filter-value="$user_id"
+            key="questions"
+            render-selector="[template]"
+            render-type="object"
+            class="display:flex flex-wrap:wrap gap:20px padding-top:10px">
+            <floating-label template class="input-600">
+                <input
+                    key="questions.{{questions.key}}"
+                    placeholder="{{questions.key}}" />
+            </floating-label>
+        </div>
+    </form>
+</section>

@@ -1,118 +1,120 @@
 <!DOCTYPE html>
-<div class="main-view">
-    <a href="./signin.html" session="false" hidden></a>
-    <div
-        path="./"
-        src="./components/datatable-toolbar.html"
-        class="width:100%"></div>
+<section class="centered">
+    <div class="main-view">
+        <a href="./signin.html" session="false" hidden></a>
+        <div
+            path="./"
+            src="./components/datatable-toolbar.html"
+            class="width:100%"></div>
 
-    <table class="width:100% border-collapse:collapse">
-        <tbody>
-            <tr class="border-bottom:1px_solid_darkgray">
-                <td class="position:sticky top:0 padding:10px">
-                    <floating-label>
-                        <input
-                            type="text"
-                            filter-selector="document; tbody[render-selector]"
-                            filter-key="title"
-                            filter-operator="$regex"
-                            filter-regex-flag="i"
-                            state_id="datatable"
-                            placeholder="Name"
-                            class="floating-label" />
-                    </floating-label>
-                    <span
-                        class="position:absolute bottom:18px right:18px float:right">
+        <table class="width:100% border-collapse:collapse">
+            <tbody>
+                <tr class="border-bottom:1px_solid_darkgray">
+                    <td class="position:sticky top:0 padding:10px">
+                        <floating-label>
+                            <input
+                                type="text"
+                                filter-selector="document; tbody[render-selector]"
+                                filter-key="title"
+                                filter-operator="$regex"
+                                filter-regex-flag="i"
+                                state_id="datatable"
+                                placeholder="Name"
+                                class="floating-label" />
+                        </floating-label>
+                        <span
+                            class="position:absolute bottom:18px right:18px float:right">
+                            <a
+                                filter-selector="document; tbody[render-selector]"
+                                filter-sort-key="title"
+                                filter-sort-direction="asc"
+                                click-value="desc, asc"
+                                click-attribute="filter-sort-direction"
+                                state_id="datatable">
+                                <i
+                                    toggle-attribute="src"
+                                    toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                    src="../assets/svg/sort.svg"></i>
+                            </a>
+                        </span>
+                    </td>
+                    <td class="position:sticky top:0 padding:10px">
+                        <floating-label>
+                            <input
+                                type="text"
+                                filter-selector="document; tbody[render-selector]"
+                                filter-key="_id"
+                                filter-operator="$regex"
+                                filter-regex-flag="i"
+                                state_id="datatable"
+                                placeholder="id"
+                                class="floating-label" />
+                        </floating-label>
+                        <span
+                            class="position:absolute bottom:18px right:18px float:right">
+                            <a
+                                filter-selector="document; tbody[render-selector]"
+                                filter-sort-key="_id"
+                                filter-sort-direction=""
+                                click-value="desc, asc"
+                                click-attribute="filter-sort-direction"
+                                state_id="datatable">
+                                <i
+                                    toggle-attribute="src"
+                                    toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                    src="../assets/svg/sort.svg"></i>
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody
+                array="advertisements"
+                object
+                filter-limit="20"
+                render-selector="[template]">
+                <tr
+                    class="border-bottom:1px_solid_darkgray"
+                    template
+                    object="{{object._id}}"
+                    toggle="selected"
+                    toggle-attribute="class">
+                    <td class="padding:10px min-width:200px">
                         <a
-                            filter-selector="document; tbody[render-selector]"
-                            filter-sort-key="title"
-                            filter-sort-direction="asc"
-                            click-value="desc, asc"
-                            click-attribute="filter-sort-direction"
-                            state_id="datatable">
-                            <i
-                                toggle-attribute="src"
-                                toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
-                                src="../assets/svg/sort.svg"></i>
+                            actions="state"
+                            state_to="mainView"
+                            state-src="./admin/advertisements/form.html">
+                            <h4>{{object.title}}</h4>
+                            <div
+                                state_to="form-fields"
+                                state-object="{{object._id}}"></div>
                         </a>
-                    </span>
-                </td>
-                <td class="position:sticky top:0 padding:10px">
-                    <floating-label>
-                        <input
-                            type="text"
-                            filter-selector="document; tbody[render-selector]"
-                            filter-key="_id"
-                            filter-operator="$regex"
-                            filter-regex-flag="i"
-                            state_id="datatable"
-                            placeholder="id"
-                            class="floating-label" />
-                    </floating-label>
-                    <span
-                        class="position:absolute bottom:18px right:18px float:right">
+                    </td>
+                    <td class="padding:10px">
                         <a
-                            filter-selector="document; tbody[render-selector]"
-                            filter-sort-key="_id"
-                            filter-sort-direction=""
-                            click-value="desc, asc"
-                            click-attribute="filter-sort-direction"
-                            state_id="datatable">
-                            <i
-                                toggle-attribute="src"
-                                toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
-                                src="../assets/svg/sort.svg"></i>
+                            actions="state"
+                            state_to="mainView"
+                            state-src="./admin/advertisements/form.html">
+                            <b>{{object._id}}</b>
+                            <div
+                                state_to="form-fields"
+                                state-object="{{object._id}}"></div>
                         </a>
-                    </span>
-                </td>
-            </tr>
-        </tbody>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-        <tbody
-            array="advertisements"
-            object
-            filter-limit="20"
-            render-selector="[template]">
-            <tr
-                class="border-bottom:1px_solid_darkgray"
-                template
-                object="{{object._id}}"
-                toggle="selected"
-                toggle-attribute="class">
-                <td class="padding:10px min-width:200px">
-                    <a
-                        actions="state"
-                        state_to="mainView"
-                        state-src="./admin/advertisements/form.html">
-                        <h4>{{object.title}}</h4>
-                        <div
-                            state_to="form-fields"
-                            state-object="{{object._id}}"></div>
-                    </a>
-                </td>
-                <td class="padding:10px">
-                    <a
-                        actions="state"
-                        state_to="mainView"
-                        state-src="./admin/advertisements/form.html">
-                        <b>{{object._id}}</b>
-                        <div
-                            state_to="form-fields"
-                            state-object="{{object._id}}"></div>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <div filter-on="scroll" filter-previous="[render-selector]"></div>
 
-    <div filter-on="scroll" filter-previous="[render-selector]"></div>
-
-    <button
-        actions="state"
-        state_to="mainView"
-        state-src="./admin/advertisements/form.html"
-        class="button-round">
-        <i src="./assets/svg/plus.svg"></i>
-        <div state_to="form-fields" state-object=""></div>
-    </button>
-</div>
+        <button
+            actions="state"
+            state_to="mainView"
+            state-src="./admin/advertisements/form.html"
+            class="button-round">
+            <i src="./assets/svg/plus.svg"></i>
+            <div state_to="form-fields" state-object=""></div>
+        </button>
+    </div>
+</section>

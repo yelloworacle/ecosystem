@@ -1,107 +1,109 @@
 <!DOCTYPE html>
 
-<div class="main-view">
-    <div
-        path="./"
-        src="./components/datatable-toolbar.html"
-        class="width:100%"></div>
+<section class="centered">
+    <div class="main-view">
+        <div
+            path="./"
+            src="./components/datatable-toolbar.html"
+            class="width:100%"></div>
 
-    <table class="width:100% border-collapse:collapse">
-        <tr class="border-bottom:1px_solid_darkgray">
-            <td class="position:sticky top:0 padding:10px">
-                <floating-label>
-                    <input
-                        type="text"
-                        filter-selector="document; tbody[render-selector]"
-                        filter-key="name"
-                        state_id="datatable"
-                        placeholder="Form Name"
-                        class="floating-label" />
-                </floating-label>
-                <span
-                    class="position:absolute bottom:22px right:20px float:right z-index:6">
-                    <a
-                        filter-selector="document; tbody[render-selector]"
-                        filter-sort-key="name"
-                        filter-sort-direction="asc"
-                        click-value="desc, asc"
-                        click-attribute="filter-sort-direction"
-                        state_id="datatable">
-                        <i
-                            toggle-attribute="src"
-                            toggle-value="./assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
-                            src="./assets/svg/sort.svg"></i>
-                    </a>
-                </span>
-            </td>
-            <td class="position:sticky top:0 padding:10px">
-                <floating-label>
-                    <input
-                        type="text"
-                        filter-selector="document; tbody[render-selector]"
-                        filter-key="_id"
-                        state_id="datatable"
-                        placeholder="Object_id"
-                        class="floating-label" />
-                </floating-label>
-                <span
-                    class="position:absolute bottom:22px right:20px float:right z-index:6">
-                    <a
-                        filter-selector="document; tbody[render-selector]"
-                        filter-sort-key="_id"
-                        filter-sort-direction=""
-                        click-value="desc, asc"
-                        click-attribute="filter-sort-direction"
-                        state_id="datatable">
-                        <i
-                            toggle-attribute="src"
-                            toggle-value="./assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
-                            src="./assets/svg/sort.svg"></i>
-                    </a>
-                </span>
-            </td>
-        </tr>
-
-        <tbody array="interview-forms" object render-selector="[template]">
-            <tr
-                class="border-bottom:1px_solid_darkgray"
-                template
-                render="object"
-                object="{{object._id}}"
-                toggle="selected"
-                toggle-attribute="class">
-                <td class="padding:10px">
-                    <a
-                        actions="state"
-                        state_to="mainView"
-                        state-src="./admin/interview-forms/form.html">
-                        <h4>{{object.name}}</h4>
-                        <div
-                            state_to="form-fields"
-                            state-object="{{object._id}}"></div>
-                    </a>
+        <table class="width:100% border-collapse:collapse">
+            <tr class="border-bottom:1px_solid_darkgray">
+                <td class="position:sticky top:0 padding:10px">
+                    <floating-label>
+                        <input
+                            type="text"
+                            filter-selector="document; tbody[render-selector]"
+                            filter-key="name"
+                            state_id="datatable"
+                            placeholder="Form Name"
+                            class="floating-label" />
+                    </floating-label>
+                    <span
+                        class="position:absolute bottom:22px right:20px float:right z-index:6">
+                        <a
+                            filter-selector="document; tbody[render-selector]"
+                            filter-sort-key="name"
+                            filter-sort-direction="asc"
+                            click-value="desc, asc"
+                            click-attribute="filter-sort-direction"
+                            state_id="datatable">
+                            <i
+                                toggle-attribute="src"
+                                toggle-value="./assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                src="./assets/svg/sort.svg"></i>
+                        </a>
+                    </span>
                 </td>
-                <td class="padding:10px">
-                    <a
-                        actions="state"
-                        state_to="mainView"
-                        state-src="./admin/interview-forms/form.html">
-                        <b>{{object._id}}</b>
-                        <div
-                            state_to="form-fields"
-                            state-object="{{object._id}}"></div>
-                    </a>
+                <td class="position:sticky top:0 padding:10px">
+                    <floating-label>
+                        <input
+                            type="text"
+                            filter-selector="document; tbody[render-selector]"
+                            filter-key="_id"
+                            state_id="datatable"
+                            placeholder="Object_id"
+                            class="floating-label" />
+                    </floating-label>
+                    <span
+                        class="position:absolute bottom:22px right:20px float:right z-index:6">
+                        <a
+                            filter-selector="document; tbody[render-selector]"
+                            filter-sort-key="_id"
+                            filter-sort-direction=""
+                            click-value="desc, asc"
+                            click-attribute="filter-sort-direction"
+                            state_id="datatable">
+                            <i
+                                toggle-attribute="src"
+                                toggle-value="./assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+                                src="./assets/svg/sort.svg"></i>
+                        </a>
+                    </span>
                 </td>
             </tr>
-        </tbody>
-    </table>
 
-    <button
-        actions="state"
-        state_to="mainView"
-        state-src="./admin/interview-forms/form.html"
-        class="button-round">
-        <i src="./assets/svg/plus.svg"></i>
-        <div state_to="form-fields" state-object=""></div>
-    </button>
-</div>
+            <tbody array="interview-forms" object render-selector="[template]">
+                <tr
+                    class="border-bottom:1px_solid_darkgray"
+                    template
+                    render="object"
+                    object="{{object._id}}"
+                    toggle="selected"
+                    toggle-attribute="class">
+                    <td class="padding:10px">
+                        <a
+                            actions="state"
+                            state_to="mainView"
+                            state-src="./admin/interview-forms/form.html">
+                            <h4>{{object.name}}</h4>
+                            <div
+                                state_to="form-fields"
+                                state-object="{{object._id}}"></div>
+                        </a>
+                    </td>
+                    <td class="padding:10px">
+                        <a
+                            actions="state"
+                            state_to="mainView"
+                            state-src="./admin/interview-forms/form.html">
+                            <b>{{object._id}}</b>
+                            <div
+                                state_to="form-fields"
+                                state-object="{{object._id}}"></div>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button
+            actions="state"
+            state_to="mainView"
+            state-src="./admin/interview-forms/form.html"
+            class="button-round">
+            <i src="./assets/svg/plus.svg"></i>
+            <div state_to="form-fields" state-object=""></div>
+        </button>
+    </div>
+</section>

@@ -77,22 +77,6 @@
     </head>
 
     <style type="text/css" media="screen">
-        .show[selected] {
-            display: block !important;
-        }
-
-        .bg {
-            background: radial-gradient(
-                circle at 50% 50%,
-                rgba(6, 102, 219, 0.07) 0%,
-                rgba(6, 102, 219, 0.07) 33.333%,
-                rgba(6, 102, 219, 0.21) 33.333%,
-                rgba(6, 102, 219, 0.21) 66.666%,
-                rgba(6, 102, 219, 0.35) 66.666%,
-                rgba(6, 102, 219, 0.35) 99.999%
-            );
-        }
-
         section {
             padding: 80px 15px;
         }
@@ -113,7 +97,6 @@
         <!-- Navbar  -->
         <nav
             class="position:absolute width:100% display:flex align-items:center background:transparent padding-top:10px padding-bottom:10px"
-            content_id="content"
             scroll="sticky-nav,"
             scroll-up="5"
             scroll-down="5"
@@ -128,151 +111,150 @@
             path="../"
             src="../components/sidenav.html"></sidenav>
 
-        <!-- Modal Viewport/Boundaries -->
-        <div
-            class="position:fixed margin-top:50px"
-            content_id="content"
-            id="modal-viewport"></div>
-
         <!-- Main Content -->
-        <main
-            class="width:auto padding-top:80px padding-bottom:80px"
-            content_id="content">
-            <section id="ambassadors-program" class="max-width:700px">
-                <h2>Ambassadors Program</h2>
-                <p>
-                    Welcome to the YellowOracle.com Ambassadors Program! We
-                    appreciate your interest in becoming an Ambassador and
-                    helping us grow.
-                </p>
+        <main class="width:auto padding-top:80px padding-bottom:80px">
+            <container class="centered">
+                <section id="ambassadors-program" class="max-width:700px">
+                    <h2>Ambassadors Program</h2>
+                    <p>
+                        Welcome to the YellowOracle.com Ambassadors Program! We
+                        appreciate your interest in becoming an Ambassador and
+                        helping us grow.
+                    </p>
 
-                <h3>Eligibility and Enrollment</h3>
-                <p>
-                    To become a YellowOracle.com Ambassador, please review the
-                    eligibility criteria below and complete the enrollment
-                    process.
-                </p>
-                <ul class="padding:20px">
-                    <li>
-                        <strong>Eligibility:</strong> Ambassadors must be 18
-                        years or older and have the authority to act on behalf
-                        of any organization they represent.
-                    </li>
-                    <li>
-                        <strong>Enrollment:</strong> To become an Ambassador,
-                        eligible individuals or entities must register through
-                        YellowOracle.com's official process, receiving a unique
-                        Ambassador ID upon approval.
-                    </li>
-                </ul>
+                    <h3>Eligibility and Enrollment</h3>
+                    <p>
+                        To become a YellowOracle.com Ambassador, please review
+                        the eligibility criteria below and complete the
+                        enrollment process.
+                    </p>
+                    <ul class="padding:20px">
+                        <li>
+                            <strong>Eligibility:</strong> Ambassadors must be 18
+                            years or older and have the authority to act on
+                            behalf of any organization they represent.
+                        </li>
+                        <li>
+                            <strong>Enrollment:</strong> To become an
+                            Ambassador, eligible individuals or entities must
+                            register through YellowOracle.com's official
+                            process, receiving a unique Ambassador ID upon
+                            approval.
+                        </li>
+                    </ul>
 
-                <h3>Residual Income and Payments</h3>
-                <p>
-                    As a YellowOracle.com Ambassador, you have the opportunity
-                    to earn a lifetime residual income. Here are the details:
-                </p>
-                <ul class="padding:20px">
-                    <li>
-                        <strong>Residual Income:</strong> Ambassadors earn a 15%
-                        commission on fees associated with purchases of services
-                        from users who utilize their unique Ambassador ID.
-                    </li>
-                    <li>
-                        <strong>Earnings:</strong> Earnings are calculated
-                        monthly, and there is a minimum payout threshold of $100
-                        USD. If the threshold is not met, earnings will roll
-                        over to the next month.
-                    </li>
-                    <li>
-                        <strong>Payments:</strong> Payments are disbursed
-                        monthly to Ambassadors' designated accounts, subject to
-                        the terms and conditions of the payment processor used
-                        by YellowOracle.com.
-                    </li>
-                </ul>
+                    <h3>Residual Income and Payments</h3>
+                    <p>
+                        As a YellowOracle.com Ambassador, you have the
+                        opportunity to earn a lifetime residual income. Here are
+                        the details:
+                    </p>
+                    <ul class="padding:20px">
+                        <li>
+                            <strong>Residual Income:</strong> Ambassadors earn a
+                            15% commission on fees associated with purchases of
+                            services from users who utilize their unique
+                            Ambassador ID.
+                        </li>
+                        <li>
+                            <strong>Earnings:</strong> Earnings are calculated
+                            monthly, and there is a minimum payout threshold of
+                            $100 USD. If the threshold is not met, earnings will
+                            roll over to the next month.
+                        </li>
+                        <li>
+                            <strong>Payments:</strong> Payments are disbursed
+                            monthly to Ambassadors' designated accounts, subject
+                            to the terms and conditions of the payment processor
+                            used by YellowOracle.com.
+                        </li>
+                    </ul>
 
-                <h3>Responsibilities and Conduct</h3>
-                <p>
-                    As an Ambassador, you play a crucial role in promoting
-                    YellowOracle.com services while maintaining high standards
-                    of conduct:
-                </p>
-                <ul class="padding:20px">
-                    <li>
-                        <strong>Promotion:</strong> Ambassadors are responsible
-                        for promoting YellowOracle.com services to end-users and
-                        employers while utilizing their unique Ambassador ID.
-                    </li>
-                    <li>
-                        <strong>Ethical Standards:</strong> All promotional
-                        methods must comply with applicable laws, regulations,
-                        and ethical standards. YellowOracle.com reserves the
-                        right to review and approve or reject any promotional
-                        materials or methods.
-                    </li>
-                    <li>
-                        <strong>Professionalism:</strong> Ambassadors should
-                        maintain the highest standards of integrity and
-                        professionalism, reflecting positively on the
-                        YellowOracle.com brand.
-                    </li>
-                </ul>
+                    <h3>Responsibilities and Conduct</h3>
+                    <p>
+                        As an Ambassador, you play a crucial role in promoting
+                        YellowOracle.com services while maintaining high
+                        standards of conduct:
+                    </p>
+                    <ul class="padding:20px">
+                        <li>
+                            <strong>Promotion:</strong> Ambassadors are
+                            responsible for promoting YellowOracle.com services
+                            to end-users and employers while utilizing their
+                            unique Ambassador ID.
+                        </li>
+                        <li>
+                            <strong>Ethical Standards:</strong> All promotional
+                            methods must comply with applicable laws,
+                            regulations, and ethical standards. YellowOracle.com
+                            reserves the right to review and approve or reject
+                            any promotional materials or methods.
+                        </li>
+                        <li>
+                            <strong>Professionalism:</strong> Ambassadors should
+                            maintain the highest standards of integrity and
+                            professionalism, reflecting positively on the
+                            YellowOracle.com brand.
+                        </li>
+                    </ul>
 
-                <h3>Feedback and Continuous Improvement</h3>
-                <p>
-                    We value your insights and encourage open communication for
-                    program enhancement:
-                </p>
-                <ul class="padding:20px">
-                    <li>
-                        <strong>Feedback:</strong> YellowOracle.com values
-                        Ambassadors' insights and encourages the submission of
-                        comments and suggestions to enhance the user and
-                        employer experience.
-                    </li>
-                    <li>
-                        <strong>Continuous Dialogue:</strong> Continuous
-                        dialogue is encouraged to ensure the program remains
-                        effective and mutually beneficial.
-                    </li>
-                </ul>
+                    <h3>Feedback and Continuous Improvement</h3>
+                    <p>
+                        We value your insights and encourage open communication
+                        for program enhancement:
+                    </p>
+                    <ul class="padding:20px">
+                        <li>
+                            <strong>Feedback:</strong> YellowOracle.com values
+                            Ambassadors' insights and encourages the submission
+                            of comments and suggestions to enhance the user and
+                            employer experience.
+                        </li>
+                        <li>
+                            <strong>Continuous Dialogue:</strong> Continuous
+                            dialogue is encouraged to ensure the program remains
+                            effective and mutually beneficial.
+                        </li>
+                    </ul>
 
-                <h3>Term and Termination</h3>
-                <p>
-                    The Ambassador relationship is considered active until
-                    terminated by either party:
-                </p>
-                <ul class="padding:20px">
-                    <li>
-                        <strong>Termination:</strong> Either party may terminate
-                        the agreement with written notice. Upon termination, the
-                        Ambassador will receive any last payments owed and will
-                        no longer accrue new income from the program.
-                    </li>
-                </ul>
+                    <h3>Term and Termination</h3>
+                    <p>
+                        The Ambassador relationship is considered active until
+                        terminated by either party:
+                    </p>
+                    <ul class="padding:20px">
+                        <li>
+                            <strong>Termination:</strong> Either party may
+                            terminate the agreement with written notice. Upon
+                            termination, the Ambassador will receive any last
+                            payments owed and will no longer accrue new income
+                            from the program.
+                        </li>
+                    </ul>
 
-                <h3>Miscellaneous</h3>
-                <p>Please review the following miscellaneous terms:</p>
-                <ul class="padding:20px">
-                    <li>
-                        <strong>Policy Changes:</strong> YellowOracle.com
-                        reserves the right to modify these terms at any time.
-                        Continued participation in the Ambassador program
-                        constitutes acceptance of these changes.
-                    </li>
-                    <li>
-                        <strong>Disputes:</strong> Disputes arising under these
-                        terms will be resolved according to the laws and courts
-                        of the jurisdiction in which YellowOracle.com is based.
-                    </li>
-                </ul>
-            </section>
+                    <h3>Miscellaneous</h3>
+                    <p>Please review the following miscellaneous terms:</p>
+                    <ul class="padding:20px">
+                        <li>
+                            <strong>Policy Changes:</strong> YellowOracle.com
+                            reserves the right to modify these terms at any
+                            time. Continued participation in the Ambassador
+                            program constitutes acceptance of these changes.
+                        </li>
+                        <li>
+                            <strong>Disputes:</strong> Disputes arising under
+                            these terms will be resolved according to the laws
+                            and courts of the jurisdiction in which
+                            YellowOracle.com is based.
+                        </li>
+                    </ul>
+                </section>
+            </container>
         </main>
 
         <!-- Footer -->
         <footer
             id="spreadtheword"
-            content_id="content"
             path="../"
             src="../components/footer.html"></footer>
 

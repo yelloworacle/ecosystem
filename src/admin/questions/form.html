@@ -1,69 +1,71 @@
 <!DOCTYPE html>
-<form
-    state_id="form-fields"
-    array="questions"
-    object=""
-    realtime="false"
-    class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
-    <!-- deleteObject-->
+<section class="centered">
+    <form
+        state_id="form-fields"
+        array="questions"
+        object=""
+        realtime="false"
+        class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
+        <!-- deleteObject-->
 
-    <div
-        path="./"
-        src="./components/form-toolbar.html"
-        class="width:100%"></div>
+        <div
+            path="./"
+            src="./components/form-toolbar.html"
+            class="width:100%"></div>
 
-    <floating-label class="input-600">
-        <input
-            id="name"
-            type="text"
-            key="name"
-            placeholder="Name"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-600">
-        <textarea
-            type="text"
-            key="question"
-            placeholder="Question"
-            rows="4"
-            class="floating-label"></textarea>
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            id="position"
-            type="number"
-            key="position"
-            placeholder="Position"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="type"
-            placeholder="Type"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="actions"
-            placeholder="Actions"
-            class="floating-label" />
-    </floating-label>
-    <floating-label class="input-300">
-        <input
-            type="text"
-            key="attributes"
-            placeholder="Attributes"
-            class="floating-label" />
-    </floating-label>
+        <floating-label class="input-600">
+            <input
+                id="name"
+                type="text"
+                key="name"
+                placeholder="Name"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-600">
+            <textarea
+                type="text"
+                key="question"
+                placeholder="Question"
+                rows="4"
+                class="floating-label"></textarea>
+        </floating-label>
+        <floating-label class="input-300">
+            <input
+                id="position"
+                type="number"
+                key="position"
+                placeholder="Position"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-300">
+            <input
+                type="text"
+                key="type"
+                placeholder="Type"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-300">
+            <input
+                type="text"
+                key="actions"
+                placeholder="Actions"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-300">
+            <input
+                type="text"
+                key="attributes"
+                placeholder="Attributes"
+                class="floating-label" />
+        </floating-label>
 
-    <button
-        actions="save, updatePositions, state"
-        state_to="mainView"
-        state-src="./admin/questions/datatable.html"
-        class="button-round">
-        <i src="./assets/svg/save.svg"></i>
-    </button>
-    <script src="./admin/questions/positions.js"></script>
-</form>
+        <button
+            actions="save, updatePositions, state"
+            state_to="mainView"
+            state-src="./admin/questions/datatable.html"
+            class="button-round">
+            <i src="./assets/svg/save.svg"></i>
+        </button>
+        <script src="./admin/questions/positions.js"></script>
+    </form>
+</section>

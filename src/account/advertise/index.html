@@ -1,303 +1,313 @@
 <!DOCTYPE html>
-<div class="main-view max-width:800px">
-    <a href="./signin.html" session="false" hidden></a>
+<container class="centered">
+    <div class="main-view max-width:800px">
+        <a href="./signin.html" session="false" hidden></a>
 
-    <style>
-        .advertise {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        #terms {
-            display: none;
-        }
-
-        [terms="false"] #table {
-            display: none;
-        }
-
-        [terms="false"] #dashboard {
-            display: none;
-        }
-
-        [terms="false"] #terms {
-            display: block;
-        }
-
-        .advertise h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .advertise p {
-            font-size: 18px;
-            font-weight: 400;
-            margin-top: 20px;
-            line-height: 1.6;
-        }
-        .advertise a {
-            padding-left: 15px;
-            color: #1a73e8;
-            font-weight: bold;
-        }
-        .advertise .join {
-            text-align: center;
-            padding-top: 30px;
-        }
-        .advertise .join .terms {
-            text-align: center;
-            padding: 30px;
-        }
-        #dashboard .card {
-            flex-grow: 1;
-        }
-        @media (prefers-color-scheme: dark) {
+        <style>
             .advertise {
-                background-color: #222;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             }
-        }
-    </style>
 
-    <input
-        type="hidden"
-        realtime="false"
-        filter-key="advertise"
-        filter-selector="document; [advertise][]"
-        value="$user_id" />
+            #terms {
+                display: none;
+            }
 
-    <section id="dashboard" class="width:100% padding:0px">
-        <div class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
-            <div id="subscribers" class="card">
-                <h2>Impressions</h2>
+            [terms="false"] #table {
+                display: none;
+            }
 
-                <span array="users" object key="$length" advertise>0</span>
-            </div>
+            [terms="false"] #dashboard {
+                display: none;
+            }
 
-            <!-- Next Payout Section -->
-            <div id="nextPayout" class="card">
-                <h2>Clicks</h2>
-                <span array="advertisement" object key="$sum.amount" advertise
-                    >0</span
-                >
-            </div>
+            [terms="false"] #terms {
+                display: block;
+            }
 
-            <!-- Total Payouts Section -->
-            <div id="totalPayouts" class="card">
-                <h2>Balance</h2>
-                <span>$</span>
-                <span array="organizations" object key="balance" advertise
-                    >0</span
-                >
-            </div>
-        </div>
-    </section>
-    <section id="table" class="width:100% padding:0px">
-        <table class="width:100% border-collapse:collapse">
-            <tbody>
-                <tr class="border-bottom:1px_solid_darkgray">
-                    <td
-                        class="position:sticky top:0 background:white padding:10px">
-                        <floating-label>
-                            <input
-                                type="text"
-                                filter-selector="document; tbody[render-selector]"
-                                filter-key="amount"
-                                state_id="datatable"
-                                placeholder="Amount"
-                                class="floating-label" />
-                        </floating-label>
-                        <span
-                            class="position:absolute bottom:22px right:20px float:right z-index:6">
-                            <a
-                                filter-selector="document; tbody[render-selector]"
-                                filter-sort-key="amount"
-                                filter-sort-direction="asc"
-                                click-value="desc, asc"
-                                click-attribute="filter-sort-direction"
-                                state_id="datatable">
-                                <i
-                                    toggle-attribute="src"
-                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    src="./assets/svg/sort.svg"></i>
-                            </a>
-                        </span>
-                    </td>
-                    <td
-                        class="position:sticky top:0 background:white padding:10px">
-                        <floating-label>
-                            <input
-                                type="text"
-                                filter-selector="document; tbody[render-selector]"
-                                filter-key="status"
-                                state_id="datatable"
-                                placeholder="status"
-                                class="floating-label" />
-                        </floating-label>
-                        <span
-                            class="position:absolute bottom:22px right:20px float:right z-index:6">
-                            <a
-                                filter-selector="document; tbody[render-selector]"
-                                filter-sort-key="status"
-                                filter-sort-direction="asc"
-                                click-value="desc, asc"
-                                click-attribute="filter-sort-direction"
-                                state_id="datatable">
-                                <i
-                                    toggle-attribute="src"
-                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    src="./assets/svg/sort.svg"></i>
-                            </a>
-                        </span>
-                    </td>
-                    <td
-                        class="position:sticky top:0 background:white padding:10px">
-                        <floating-label>
-                            <input
-                                type="text"
-                                filter-selector="document; tbody[render-selector]"
-                                filter-key="_id"
-                                state_id="datatable"
-                                placeholder="id"
-                                class="floating-label" />
-                        </floating-label>
-                        <span
-                            class="position:absolute bottom:22px right:20px float:right z-index:6">
-                            <a
-                                filter-selector="document; tbody[render-selector]"
-                                filter-sort-key="_id"
-                                filter-sort-direction=""
-                                click-value="desc, asc"
-                                click-attribute="filter-sort-direction"
-                                state_id="datatable">
-                                <i
-                                    toggle-attribute="src"
-                                    toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-                                    src="./assets/svg/sort.svg"></i>
-                            </a>
-                        </span>
-                    </td>
-                </tr>
-            </tbody>
+            .advertise h1 {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            .advertise p {
+                font-size: 18px;
+                font-weight: 400;
+                margin-top: 20px;
+                line-height: 1.6;
+            }
+            .advertise a {
+                padding-left: 15px;
+                color: #1a73e8;
+                font-weight: bold;
+            }
+            .advertise .join {
+                text-align: center;
+                padding-top: 30px;
+            }
+            .advertise .join .terms {
+                text-align: center;
+                padding: 30px;
+            }
+            #dashboard .card {
+                flex-grow: 1;
+            }
+            @media (prefers-color-scheme: dark) {
+                .advertise {
+                    background-color: #222;
+                }
+            }
+        </style>
 
-            <tbody
-                array="payouts"
-                object
-                render-selector="[template]"
-                advertise>
-                <tr
-                    class="border-bottom:1px_solid_darkgray"
-                    template
-                    object="{{object._id}}"
-                    toggle="selected"
-                    toggle-attribute="class">
-                    <td
-                        class="padding:10px display:flex min-width:200px align-items:center">
-                        <a
-                            actions="state"
-                            state_to="mainView"
-                            state-src="./users/form.html">
-                            <h4>{{object.amount}}</h4>
-                            <div
-                                state_to="form-fields"
-                                state-object="{{object._id}}"></div>
-                        </a>
-                    </td>
-                    <td class="padding:10px">
-                        <a
-                            actions="state"
-                            state_to="mainView"
-                            state-src="./users/form.html">
-                            <b>{{object.status}}</b>
-                            <div
-                                state_to="form-fields"
-                                state-object="{{object._id}}"></div>
-                        </a>
-                    </td>
-                    <td class="padding:10px">
-                        <a
-                            actions="state"
-                            state_to="mainView"
-                            state-src="./users/form.html">
-                            <b>{{object._id}}</b>
-                            <div
-                                state_to="form-fields"
-                                state-object="{{object._id}}"></div>
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- <div filter-on="fetched" filter-previous="[render-selector]"></div> -->
-        <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
-    </section>
-
-    <section id="terms" class="advertise padding:40px@md@lg@xl" module="stripe">
         <input
             type="hidden"
-            array="users"
-            object="$user_id"
-            key="advertiseTerms"
-            input-closest=".main-view"
-            input-attribute="terms" />
+            realtime="false"
+            filter-key="advertise"
+            filter-selector="document; [advertise][]"
+            value="$user_id" />
 
-        <h1>Advertise With Us</h1>
-        <p>
-            At YellowOracle.com, we specialize in connecting users with careers
-            that perfectly match their personality, interests, and aspirations.
-            Our AI-driven platform analyzes user responses to carefully curated
-            questions, ensuring highly personalized career suggestions.
-        </p>
-        <p>
-            This same technology powers our advertising system, offering an
-            unparalleled opportunity for employers, universities, and trade
-            schools to reach their ideal audience. By understanding the career
-            aspirations and interests of our users, we can display your ads to
-            those most likely to engage, maximizing the effectiveness of your
-            campaigns.
-        </p>
+        <section id="dashboard" class="width:100% padding:0px">
+            <div
+                class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
+                <div id="subscribers" class="card">
+                    <h2>Impressions</h2>
 
-        <!-- <p> -->
-        <strong>Why Advertise With Us?</strong>
-        <ul>
-            <li>
-                <b>Targeted Exposure:</b> Your ads are shown to users whose
-                career interests align with what you offer, ensuring higher
-                relevance and engagement.
-            </li>
-            <li>
-                <b>Flexible Billing:</b> Choose between pay-per-click or
-                impression-based billing to suit your budget and advertising
-                goals.
-            </li>
-            <li>
-                <b>AI-Enhanced Matching:</b> Leverage our AI capabilities to
-                automatically match your ads with users based on their career
-                preferences and behavior on our platform.
-            </li>
-            <li>
-                <b>Insightful Analytics:</b> Gain access to detailed analytics
-                to track the performance of your ads and refine your strategy
-                for maximum impact.
-            </li>
-        </ul>
-        <!-- </p> -->
+                    <span array="users" object key="$length" advertise>0</span>
+                </div>
 
-        <p>
-            Partner with YellowOracle to place your institution at the forefront
-            of potential candidates' minds. Our platform is not just about
-            finding careers; it's about shaping futures. Let's work together to
-            create meaningful connections between you and your future students,
-            employees, or members.
-        </p>
-        <p>
-            Interested in learning more about how YellowOracle can help achieve
-            your advertising goals? Contact us today for more information and to
-            get started.
-        </p>
+                <!-- Next Payout Section -->
+                <div id="nextPayout" class="card">
+                    <h2>Clicks</h2>
+                    <span
+                        array="advertisement"
+                        object
+                        key="$sum.amount"
+                        advertise
+                        >0</span
+                    >
+                </div>
 
-        <form array="users" object="$user_id" class="join" realtime="false">
-            <!-- <div
+                <!-- Total Payouts Section -->
+                <div id="totalPayouts" class="card">
+                    <h2>Balance</h2>
+                    <span>$</span>
+                    <span array="organizations" object key="balance" advertise
+                        >0</span
+                    >
+                </div>
+            </div>
+        </section>
+        <section id="table" class="width:100% padding:0px">
+            <table class="width:100% border-collapse:collapse">
+                <tbody>
+                    <tr class="border-bottom:1px_solid_darkgray">
+                        <td
+                            class="position:sticky top:0 background:white padding:10px">
+                            <floating-label>
+                                <input
+                                    type="text"
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-key="amount"
+                                    state_id="datatable"
+                                    placeholder="Amount"
+                                    class="floating-label" />
+                            </floating-label>
+                            <span
+                                class="position:absolute bottom:22px right:20px float:right z-index:6">
+                                <a
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-sort-key="amount"
+                                    filter-sort-direction="asc"
+                                    click-value="desc, asc"
+                                    click-attribute="filter-sort-direction"
+                                    state_id="datatable">
+                                    <i
+                                        toggle-attribute="src"
+                                        toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                        src="./assets/svg/sort.svg"></i>
+                                </a>
+                            </span>
+                        </td>
+                        <td
+                            class="position:sticky top:0 background:white padding:10px">
+                            <floating-label>
+                                <input
+                                    type="text"
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-key="status"
+                                    state_id="datatable"
+                                    placeholder="status"
+                                    class="floating-label" />
+                            </floating-label>
+                            <span
+                                class="position:absolute bottom:22px right:20px float:right z-index:6">
+                                <a
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-sort-key="status"
+                                    filter-sort-direction="asc"
+                                    click-value="desc, asc"
+                                    click-attribute="filter-sort-direction"
+                                    state_id="datatable">
+                                    <i
+                                        toggle-attribute="src"
+                                        toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                        src="./assets/svg/sort.svg"></i>
+                                </a>
+                            </span>
+                        </td>
+                        <td
+                            class="position:sticky top:0 background:white padding:10px">
+                            <floating-label>
+                                <input
+                                    type="text"
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-key="_id"
+                                    state_id="datatable"
+                                    placeholder="id"
+                                    class="floating-label" />
+                            </floating-label>
+                            <span
+                                class="position:absolute bottom:22px right:20px float:right z-index:6">
+                                <a
+                                    filter-selector="document; tbody[render-selector]"
+                                    filter-sort-key="_id"
+                                    filter-sort-direction=""
+                                    click-value="desc, asc"
+                                    click-attribute="filter-sort-direction"
+                                    state_id="datatable">
+                                    <i
+                                        toggle-attribute="src"
+                                        toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
+                                        src="./assets/svg/sort.svg"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+
+                <tbody
+                    array="payouts"
+                    object
+                    render-selector="[template]"
+                    advertise>
+                    <tr
+                        class="border-bottom:1px_solid_darkgray"
+                        template
+                        object="{{object._id}}"
+                        toggle="selected"
+                        toggle-attribute="class">
+                        <td
+                            class="padding:10px display:flex min-width:200px align-items:center">
+                            <a
+                                actions="state"
+                                state_to="mainView"
+                                state-src="./users/form.html">
+                                <h4>{{object.amount}}</h4>
+                                <div
+                                    state_to="form-fields"
+                                    state-object="{{object._id}}"></div>
+                            </a>
+                        </td>
+                        <td class="padding:10px">
+                            <a
+                                actions="state"
+                                state_to="mainView"
+                                state-src="./users/form.html">
+                                <b>{{object.status}}</b>
+                                <div
+                                    state_to="form-fields"
+                                    state-object="{{object._id}}"></div>
+                            </a>
+                        </td>
+                        <td class="padding:10px">
+                            <a
+                                actions="state"
+                                state_to="mainView"
+                                state-src="./users/form.html">
+                                <b>{{object._id}}</b>
+                                <div
+                                    state_to="form-fields"
+                                    state-object="{{object._id}}"></div>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- <div filter-on="fetched" filter-previous="[render-selector]"></div> -->
+            <!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
+        </section>
+
+        <section
+            id="terms"
+            class="advertise padding:40px@md@lg@xl"
+            module="stripe">
+            <input
+                type="hidden"
+                array="users"
+                object="$user_id"
+                key="advertiseTerms"
+                input-closest=".main-view"
+                input-attribute="terms" />
+
+            <h1>Advertise With Us</h1>
+            <p>
+                At YellowOracle.com, we specialize in connecting users with
+                careers that perfectly match their personality, interests, and
+                aspirations. Our AI-driven platform analyzes user responses to
+                carefully curated questions, ensuring highly personalized career
+                suggestions.
+            </p>
+            <p>
+                This same technology powers our advertising system, offering an
+                unparalleled opportunity for employers, universities, and trade
+                schools to reach their ideal audience. By understanding the
+                career aspirations and interests of our users, we can display
+                your ads to those most likely to engage, maximizing the
+                effectiveness of your campaigns.
+            </p>
+
+            <!-- <p> -->
+            <strong>Why Advertise With Us?</strong>
+            <ul>
+                <li>
+                    <b>Targeted Exposure:</b> Your ads are shown to users whose
+                    career interests align with what you offer, ensuring higher
+                    relevance and engagement.
+                </li>
+                <li>
+                    <b>Flexible Billing:</b> Choose between pay-per-click or
+                    impression-based billing to suit your budget and advertising
+                    goals.
+                </li>
+                <li>
+                    <b>AI-Enhanced Matching:</b> Leverage our AI capabilities to
+                    automatically match your ads with users based on their
+                    career preferences and behavior on our platform.
+                </li>
+                <li>
+                    <b>Insightful Analytics:</b> Gain access to detailed
+                    analytics to track the performance of your ads and refine
+                    your strategy for maximum impact.
+                </li>
+            </ul>
+            <!-- </p> -->
+
+            <p>
+                Partner with YellowOracle to place your institution at the
+                forefront of potential candidates' minds. Our platform is not
+                just about finding careers; it's about shaping futures. Let's
+                work together to create meaningful connections between you and
+                your future students, employees, or members.
+            </p>
+            <p>
+                Interested in learning more about how YellowOracle can help
+                achieve your advertising goals? Contact us today for more
+                information and to get started.
+            </p>
+
+            <form array="users" object="$user_id" class="join" realtime="false">
+                <!-- <div
                 class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
                 <floating-label class="flex-grow:1">
                     <input
@@ -316,25 +326,26 @@
                 </floating-label>
             </div> -->
 
-            <div class="terms">
-                <input
-                    type="checkbox"
-                    key="advertiseTerms"
-                    placeholder="Accept Terms"
-                    required />
-                <a href="./terms/advertise.html">Advertise Terms</a>
-            </div>
+                <div class="terms">
+                    <input
+                        type="checkbox"
+                        key="advertiseTerms"
+                        placeholder="Accept Terms"
+                        required />
+                    <a href="./terms/advertise.html">Advertise Terms</a>
+                </div>
 
-            <div
-                template="validate"
-                class="card margin-bottom:15px padding:10px min-height:40px max-width:800px">
-                <span class="{{status}}">
-                    <span class="{{type}}">{{message}}</span
-                    ><a actions="remove"> X</a>
-                </span>
-            </div>
+                <div
+                    template="validate"
+                    class="card margin-bottom:15px padding:10px min-height:40px max-width:800px">
+                    <span class="{{status}}">
+                        <span class="{{type}}">{{message}}</span
+                        ><a actions="remove"> X</a>
+                    </span>
+                </div>
 
-            <button actions="validate, save">Join</button>
-        </form>
-    </section>
-</div>
+                <button actions="validate, save">Join</button>
+            </form>
+        </section>
+    </div>
+</container>

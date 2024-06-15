@@ -75,22 +75,6 @@
             parse="true" />
         <link rel="manifest" href="./manifest.webmanifest" />
         <style type="text/css" media="screen">
-            .show[selected] {
-                display: block !important;
-            }
-
-            .bg {
-                background: radial-gradient(
-                    circle at 50% 50%,
-                    rgba(6, 102, 219, 0.07) 0%,
-                    rgba(6, 102, 219, 0.07) 33.333%,
-                    rgba(6, 102, 219, 0.21) 33.333%,
-                    rgba(6, 102, 219, 0.21) 66.666%,
-                    rgba(6, 102, 219, 0.35) 66.666%,
-                    rgba(6, 102, 219, 0.35) 99.999%
-                );
-            }
-
             section {
                 padding: 30px 15px;
             }
@@ -114,7 +98,6 @@
     <body>
         <!-- Navbar  -->
         <nav
-            content_id="content"
             scroll="sticky-nav,"
             scroll-up="5"
             scroll-down="5"
@@ -137,89 +120,90 @@
             state-overwrite
             state-onstoragechange="false"
             class="padding:15px margin-left:0px!important@xs@sm@md">
-            <div>
-                <section id="hero">
-                    <h1>Advertise With Us</h1>
-                    <p>
-                        Connect with your ideal audience through targeted
-                        advertising powered by AI.
-                    </p>
-                    <a href="#contact-us" class="cta-button">Get Started</a>
-                    <!-- Call to Action Button -->
-                </section>
+            <container class="centered">
+                <div>
+                    <section id="hero">
+                        <h1>Advertise With Us</h1>
+                        <p>
+                            Connect with your ideal audience through targeted
+                            advertising powered by AI.
+                        </p>
+                        <a href="#contact-us" class="cta-button">Get Started</a>
+                        <!-- Call to Action Button -->
+                    </section>
 
-                <section id="why-advertise">
-                    <h2>Why YellowOracle?</h2>
-                    <p>
-                        Discover how our AI-driven platform offers unparalleled
-                        opportunities for targeted advertising.
-                    </p>
-                </section>
+                    <section id="why-advertise">
+                        <h2>Why YellowOracle?</h2>
+                        <p>
+                            Discover how our AI-driven platform offers
+                            unparalleled opportunities for targeted advertising.
+                        </p>
+                    </section>
 
-                <section id="benefits">
-                    <h2>Benefits of Advertising with Us</h2>
-                    <div class="benefit-item">
-                        <h3>Targeted Exposure</h3>
-                        <p>
-                            Your ads are shown to users whose career interests
-                            align with your offerings.
-                        </p>
-                    </div>
-                    <div class="benefit-item">
-                        <h3>Flexible Billing</h3>
-                        <p>
-                            Choose between pay-per-click or impression-based
-                            billing.
-                        </p>
-                    </div>
-                    <div class="benefit-item">
-                        <h3>AI-Enhanced Matching</h3>
-                        <p>
-                            Leverage our AI to match your ads with the right
-                            users.
-                        </p>
-                    </div>
-                    <div class="benefit-item">
-                        <h3>Insightful Analytics</h3>
-                        <p>
-                            Access detailed analytics to refine your advertising
-                            strategy.
-                        </p>
-                    </div>
-                </section>
+                    <section id="benefits">
+                        <h2>Benefits of Advertising with Us</h2>
+                        <div class="benefit-item">
+                            <h3>Targeted Exposure</h3>
+                            <p>
+                                Your ads are shown to users whose career
+                                interests align with your offerings.
+                            </p>
+                        </div>
+                        <div class="benefit-item">
+                            <h3>Flexible Billing</h3>
+                            <p>
+                                Choose between pay-per-click or impression-based
+                                billing.
+                            </p>
+                        </div>
+                        <div class="benefit-item">
+                            <h3>AI-Enhanced Matching</h3>
+                            <p>
+                                Leverage our AI to match your ads with the right
+                                users.
+                            </p>
+                        </div>
+                        <div class="benefit-item">
+                            <h3>Insightful Analytics</h3>
+                            <p>
+                                Access detailed analytics to refine your
+                                advertising strategy.
+                            </p>
+                        </div>
+                    </section>
 
-                <section id="contact-us">
-                    <h2>Get in Touch</h2>
-                    <p>
-                        Interested in learning more? Contact us today to start
-                        reaching your audience.
-                    </p>
-                    <form>
-                        <floating-label>
-                            <input
-                                type="text"
-                                placeholder="Your Name"
-                                required />
-                        </floating-label>
-                        <floating-label>
-                            <input
-                                type="email"
-                                placeholder="Your Email"
-                                required />
-                        </floating-label>
-                        <floating-label>
-                            <textarea placeholder="Message"></textarea>
-                        </floating-label>
-                        <button class="margin-top:15px">Submit</button>
-                    </form>
-                </section>
-            </div>
+                    <section id="contact-us">
+                        <h2>Get in Touch</h2>
+                        <p>
+                            Interested in learning more? Contact us today to
+                            start reaching your audience.
+                        </p>
+                        <form>
+                            <floating-label>
+                                <input
+                                    type="text"
+                                    placeholder="Your Name"
+                                    required />
+                            </floating-label>
+                            <floating-label>
+                                <input
+                                    type="email"
+                                    placeholder="Your Email"
+                                    required />
+                            </floating-label>
+                            <floating-label>
+                                <textarea placeholder="Message"></textarea>
+                            </floating-label>
+                            <button class="margin-top:15px">Submit</button>
+                        </form>
+                    </section>
+                </div>
+            </container>
         </main>
 
         <!-- Footer -->
         <footer
             id="spreadtheword"
-            content_id="content"
             path="./"
             src="./components/footer.html"
             class="margin-left:0px!important@xs@sm@md"></footer>
