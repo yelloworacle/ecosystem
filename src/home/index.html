@@ -22,6 +22,122 @@
     </div>
 </header>
 
-<!-- <section class="">
-    <h2>Easy to use</h2>
-</section> -->
+<style>
+    .steps-section {
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #f4f4f4;
+    }
+
+    .steps-container {
+        max-width: 1000px;
+        margin: 50px auto;
+    }
+
+    .steps-section h2 {
+        text-align: center;
+        font-size: 2em;
+        margin-bottom: 40px;
+    }
+
+    .step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
+    .step:nth-child(odd) .step-content {
+        order: 2;
+    }
+
+    .step-image {
+        flex: 1;
+        text-align: center;
+    }
+
+    .step-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .step-icon {
+        text-align: center;
+        font-size: 4em;
+    }
+    .step-content {
+        flex: 1;
+        padding: 20px;
+    }
+
+    .step-content h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .step-content p {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .step {
+            flex-direction: column;
+        }
+
+        .step-content {
+            order: 1;
+            padding: 10px;
+        }
+    }
+    @media (prefers-color-scheme: dark) {
+        .steps-section {
+            background-color: #222;
+        }
+    }
+</style>
+<section class="steps-section">
+    <div class="steps-container">
+        <h2>How It Works</h2>
+        <div class="step">
+            <div class="step-icon">
+                <i src="./assets/svg/circle-question.svg"></i>
+            </div>
+            <div class="step-content">
+                <h3>Step 1: Answer 7 Questions</h3>
+                <p>
+                    Begin your journey by answering a brief set of questions
+                    designed to understand your personality traits and
+                    interests. This step helps our advanced AI algorithms to
+                    generate accurate career matches for you.
+                </p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-icon">
+                <i src="./assets/svg/user.svg"></i>
+            </div>
+            <div class="step-content">
+                <h3>Step 2: Enter Name, Email, and Password</h3>
+                <p>
+                    Securely create your account by providing your name, email,
+                    and password. This will allow you to access your
+                    personalized career recommendations and insights anytime,
+                    anywhere.
+                </p>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-icon">
+                <i src="./assets/svg/wand-magic-sparkles.svg"></i>
+            </div>
+            <div class="step-content">
+                <h3>Step 3: Get Your Personalized Career Match</h3>
+                <p>
+                    Instantly receive a tailored list of career options that
+                    match your unique profile. Explore different paths that
+                    resonate with your strengths and passions.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
