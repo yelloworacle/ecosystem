@@ -1,184 +1,186 @@
 <!DOCTYPE html>
 <a href="./signin.html" session="false" hidden></a>
 
-<style>
-    .accordion-button {
-        width: 100%;
-        background-color: #fff;
-        cursor: pointer;
-        padding: 18px;
-        border-top: 1px solid #ddd;
-        text-align: left;
-    }
-
-    .form {
-        padding: 18px;
-        overflow: hidden;
-        background-color: #f9f9f9;
-        display: none;
-    }
-    .forms[display="account"] account.form {
-        display: block;
-    }
-    .forms[display="individual"] individual.form {
-        display: flex;
-    }
-    .forms[display="owner"] owner.form {
-        display: flex;
-    }
-    .forms[display="company"] company.form {
-        display: flex;
-    }
-    .forms[display="bank-account"] bank-account.form {
-        display: flex;
-    }
-    .forms[display="documents"] documents.form {
-        display: flex;
-    }
-    #delete {
-        display: none;
-    }
-    @media (prefers-color-scheme: dark) {
+<section class="centered">
+    <style>
         .accordion-button {
-            background-color: #222;
+            width: 100%;
+            background-color: #fff;
+            cursor: pointer;
+            padding: 18px;
+            border-top: 1px solid #ddd;
+            text-align: left;
         }
+
         .form {
-            background-color: #222;
+            padding: 18px;
+            overflow: hidden;
+            background-color: #f9f9f9;
+            display: none;
         }
-    }
-</style>
+        .forms[display="account"] account.form {
+            display: block;
+        }
+        .forms[display="individual"] individual.form {
+            display: flex;
+        }
+        .forms[display="owner"] owner.form {
+            display: flex;
+        }
+        .forms[display="company"] company.form {
+            display: flex;
+        }
+        .forms[display="bank-account"] bank-account.form {
+            display: flex;
+        }
+        .forms[display="documents"] documents.form {
+            display: flex;
+        }
+        #delete {
+            display: none;
+        }
+        @media (prefers-color-scheme: dark) {
+            .accordion-button {
+                background-color: #222;
+            }
+            .form {
+                background-color: #222;
+            }
+        }
+    </style>
 
-<form
-    array="users"
-    object="$user_id"
-    class="forms width:100% max-width:800px"
-    module="stripe">
-    <div
-        path="./"
-        src="./components/form-toolbar.html"
-        class="width:100% margin-bottom:20px"></div>
-
-    <input
-        type="hidden"
+    <form
         array="users"
         object="$user_id"
-        key="country"
-        input-parent
-        input-attribute="country" />
-
-    <input
-        type="hidden"
-        array="users"
-        object="$user_id"
-        key="ambassadorAccount"
-        stripe="accounts.update"
-        stripe-key="$param[0]" />
-
-    <input
-        type="hidden"
-        stripe="accounts.update"
-        stripe-key="tos_acceptance.ip"
-        value="$ip" />
-
-    <input
-        type="date"
-        stripe="accounts.update"
-        stripe-key="tos_acceptance.date"
-        value-type="toUnixTimestamp"
-        value="$now"
-        hidden />
-
-    <div class="accordion-item">
+        class="forms width:100% max-width:800px margin:auto"
+        module="stripe">
         <div
-            class="accordion-button"
-            click-closest=".forms"
-            click-attribute="display"
-            click-value="account">
-            Account
-        </div>
-        <!-- Account -->
-        <account
-            class="form width:100% display:flex flex-wrap:wrap gap:15px"
-            src="account/ambassador/form/account.html">
-        </account>
-    </div>
+            path="./"
+            src="./components/form-toolbar.html"
+            class="width:100% margin-bottom:20px"></div>
 
-    <input
-        id="individual"
-        key="business_type"
-        type="hidden"
-        input-next
-        input-attribute="src"
-        input-value="account/ambassador/form/individual.html"
-        input-if="individual" />
-    <div class="accordion-item"></div>
+        <input
+            type="hidden"
+            array="users"
+            object="$user_id"
+            key="country"
+            input-parent
+            input-attribute="country" />
 
-    <input
-        id="owner"
-        key="business_type"
-        type="hidden"
-        input-next
-        input-attribute="src"
-        input-value="account/ambassador/form/owner.html"
-        input-if="!individual" />
-    <div class="accordion-item"></div>
+        <input
+            type="hidden"
+            array="users"
+            object="$user_id"
+            key="ambassadorAccount"
+            stripe="accounts.update"
+            stripe-key="$param[0]" />
 
-    <input
-        id="comapany"
-        type="hidden"
-        key="business_type"
-        input-next
-        input-attribute="src"
-        input-value="account/ambassador/form/company.html"
-        input-if="!individual" />
-    <div class="accordion-item"></div>
+        <input
+            type="hidden"
+            stripe="accounts.update"
+            stripe-key="tos_acceptance.ip"
+            value="$ip" />
 
-    <div class="accordion-item">
-        <div
-            class="accordion-button"
-            click-closest=".forms"
-            click-attribute="display"
-            click-value="bank-account">
-            Bank Account
+        <input
+            type="date"
+            stripe="accounts.update"
+            stripe-key="tos_acceptance.date"
+            value-type="toUnixTimestamp"
+            value="$now"
+            hidden />
+
+        <div class="accordion-item">
+            <div
+                class="accordion-button"
+                click-closest=".forms"
+                click-attribute="display"
+                click-value="account">
+                Account
+            </div>
+            <!-- Account -->
+            <account
+                class="form width:100% display:flex flex-wrap:wrap gap:15px"
+                src="account/ambassador/form/account.html">
+            </account>
         </div>
 
-        <!-- External Account -->
-        <bank-account
-            class="form width:100% display:flex flex-wrap:wrap gap:15px"
-            src="account/ambassador/form/bank-account.html">
-        </bank-account>
-    </div>
-    <div class="accordion-item">
-        <div
-            class="accordion-button"
-            click-closest=".forms"
-            click-attribute="display"
-            click-value="documents">
-            Documents
-        </div>
+        <input
+            id="individual"
+            key="business_type"
+            type="hidden"
+            input-next
+            input-attribute="src"
+            input-value="account/ambassador/form/individual.html"
+            input-if="individual" />
+        <div class="accordion-item"></div>
 
-        <!-- Documents -->
-        <!-- <documents
+        <input
+            id="owner"
+            key="business_type"
+            type="hidden"
+            input-next
+            input-attribute="src"
+            input-value="account/ambassador/form/owner.html"
+            input-if="!individual" />
+        <div class="accordion-item"></div>
+
+        <input
+            id="comapany"
+            type="hidden"
+            key="business_type"
+            input-next
+            input-attribute="src"
+            input-value="account/ambassador/form/company.html"
+            input-if="!individual" />
+        <div class="accordion-item"></div>
+
+        <div class="accordion-item">
+            <div
+                class="accordion-button"
+                click-closest=".forms"
+                click-attribute="display"
+                click-value="bank-account">
+                Bank Account
+            </div>
+
+            <!-- External Account -->
+            <bank-account
+                class="form width:100% display:flex flex-wrap:wrap gap:15px"
+                src="account/ambassador/form/bank-account.html">
+            </bank-account>
+        </div>
+        <div class="accordion-item">
+            <div
+                class="accordion-button"
+                click-closest=".forms"
+                click-attribute="display"
+                click-value="documents">
+                Documents
+            </div>
+
+            <!-- Documents -->
+            <!-- <documents
             class="form width:100% display:flex flex-wrap:wrap gap:15px"
             src="account/ambassador/form/documents.html">
         </documents> -->
+        </div>
+
+        <button
+            actions="validate, save, stripe.accounts.update, state"
+            state_to="mainView"
+            state-src="./account/ambassador/"
+            class="width:100% margin-top:20px">
+            Save
+        </button>
+    </form>
+
+    <div class="position:fixed!important bottom:15px right:15px z-index:2">
+        <div
+            template="validate, stripe.accounts"
+            class="card position:fixed!important bottom:15px right:15px padding:10px {{status}}">
+            <span class="{{type}}">{{message}}</span><a actions="remove"> X</a>
+        </div>
     </div>
 
-    <button
-        actions="validate, save, stripe.accounts.update, state"
-        state_to="mainView"
-        state-src="./account/ambassador/"
-        class="width:100% margin-top:20px">
-        Save
-    </button>
-</form>
-
-<div class="position:fixed!important bottom:15px right:15px z-index:2">
-    <div
-        template="validate, stripe.accounts"
-        class="card position:fixed!important bottom:15px right:15px padding:10px {{status}}">
-        <span class="{{type}}">{{message}}</span><a actions="remove"> X</a>
-    </div>
-</div>
-
-<script src="./account/ambassador/index.js"></script>
+    <script src="./account/ambassador/index.js"></script>
+</section>

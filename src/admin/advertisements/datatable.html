@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <section class="centered">
-    <div class="main-view">
+    <div class="datatable-container">
         <a href="./signin.html" session="false" hidden></a>
         <div
             path="./"
             src="./components/datatable-toolbar.html"
             class="width:100%"></div>
 
-        <table class="width:100% border-collapse:collapse">
-            <tbody>
-                <tr class="border-bottom:1px_solid_darkgray">
-                    <td class="position:sticky top:0 padding:10px">
+        <table>
+            <tbody class="header">
+                <tr>
+                    <td>
                         <floating-label>
                             <input
                                 type="text"
@@ -22,8 +22,7 @@
                                 placeholder="Name"
                                 class="floating-label" />
                         </floating-label>
-                        <span
-                            class="position:absolute bottom:18px right:18px float:right">
+                        <span class="sort">
                             <a
                                 filter-selector="document; tbody[render-selector]"
                                 filter-sort-key="title"
@@ -38,7 +37,7 @@
                             </a>
                         </span>
                     </td>
-                    <td class="position:sticky top:0 padding:10px">
+                    <td>
                         <floating-label>
                             <input
                                 type="text"
@@ -50,8 +49,7 @@
                                 placeholder="id"
                                 class="floating-label" />
                         </floating-label>
-                        <span
-                            class="position:absolute bottom:18px right:18px float:right">
+                        <span class="sort">
                             <a
                                 filter-selector="document; tbody[render-selector]"
                                 filter-sort-key="_id"
@@ -91,7 +89,7 @@
                                 state-object="{{object._id}}"></div>
                         </a>
                     </td>
-                    <td class="padding:10px">
+                    <td>
                         <a
                             actions="state"
                             state_to="mainView"

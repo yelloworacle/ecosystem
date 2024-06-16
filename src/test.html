@@ -17,19 +17,51 @@
             parse="true" />
     </head>
     <body>
-        <main>
+        <main class="padding:20px">
+            <form>
+                <div
+                    type="file"
+                    array="files"
+                    object=""
+                    key="{}"
+                    accept="image/*"
+                    placeholder="Upload Image or Video Thumbnail"
+                    class="floating-label"
+                    render-selector="[template]"
+                    active>
+                    <div template file_id="{{object.id}}">
+                        <img src="{{object.src}}" alt="image" width="100%" />
+                        <input
+                            file="pathname"
+                            value="/assets{{object.pathname}}" />
+                    </div>
+                </div>
+            </form>
+
+            <floating-label>
+                <input
+                    placeholder="Search"
+                    filter-key="name"
+                    filter-operator="$regex"
+                    filter-regex-flag="i"
+                    filter-selector="document; #file-system" />
+            </floating-label>
             <div
-                type="file"
-                array="test"
-                object=""
-                key="image"
-                accept="image/*"
-                placeholder="Upload Image or Video Thumbnail"
-                class="floating-label min-height:24px"
-                render-selector="[template]"
-                active>
+                id="file-system"
+                array="files"
+                object
+                filter-key="content-type"
+                filter-value="image/"
+                filter-operator="$regex"
+                render-selector="[template]">
                 <div template>
-                    <img src="{{image.src}}" alt="image" width="100%" />
+                    <img src="{{object.pathname}}" alt="image" width="200px" />
+                    <form array="files" object="{{object._id}}">
+                        <input
+                            file="pathname"
+                            value="{{object.pathname}}"
+                            key="pathname" />
+                    </form>
                 </div>
             </div>
         </main>

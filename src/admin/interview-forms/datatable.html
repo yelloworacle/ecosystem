@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
 <section class="centered">
-    <div class="main-view">
+    <div class="datatable-container">
         <div
             path="./"
             src="./components/datatable-toolbar.html"
             class="width:100%"></div>
 
-        <table class="width:100% border-collapse:collapse">
-            <tr class="border-bottom:1px_solid_darkgray">
-                <td class="position:sticky top:0 padding:10px">
+        <table>
+            <tr>
+                <td>
                     <floating-label>
                         <input
                             type="text"
@@ -35,7 +35,7 @@
                         </a>
                     </span>
                 </td>
-                <td class="position:sticky top:0 padding:10px">
+                <td>
                     <floating-label>
                         <input
                             type="text"
@@ -71,7 +71,7 @@
                     object="{{object._id}}"
                     toggle="selected"
                     toggle-attribute="class">
-                    <td class="padding:10px">
+                    <td>
                         <a
                             actions="state"
                             state_to="mainView"
@@ -82,7 +82,7 @@
                                 state-object="{{object._id}}"></div>
                         </a>
                     </td>
-                    <td class="padding:10px">
+                    <td>
                         <a
                             actions="state"
                             state_to="mainView"

@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <a href="./signin.html" session="false" hidden></a>
 
-<div>
+<section class="centered flex-direction:column">
     <form
         id="blog-form"
         state_id="form-fields"
         array="blog-posts"
         object=""
-        realtime="false"
-        class="display:flex flex-wrap:wrap gap:20px max-width:600px padding-top:10px">
+        class="flex-form">
         <div
             path="./"
             src="./components/form-toolbar.html"
@@ -33,7 +32,7 @@
                 type="text"
                 key="title"
                 placeholder="Title"
-                input-selector="document; .title"
+                input-selector="document; .title[]"
                 input-attribute="value"
                 class="floating-label" />
             <a
@@ -42,11 +41,6 @@
                 <i src="./assets/svg/wand-magic-sparkles.svg"></i>
             </a>
         </floating-label>
-        <input
-            type="hidden"
-            key="title"
-            input-selector="document; .filename[]"
-            input-attribute="value" />
 
         <input
             type="hidden"
@@ -55,21 +49,40 @@
             value-replace-with="-"
             value-prefix="/blog/"
             value-suffix=".html"
-            class="filename" />
+            class="title" />
 
         <floating-label class="input-300">
             <div
                 type="file"
-                key="image"
+                array="files"
+                object=""
+                key="{}"
                 accept="image/*"
                 placeholder="Upload Image or Video Thumbnail"
-                class="floating-label min-height:24px active"
+                class="floating-label min-height:24px"
                 render-selector="[template]"
                 active>
-                <div template>
-                    <img src="{{image.src}}" alt="image" width="100%" />
+                <div template file_id="{{object.id}}">
+                    <img src="{{object.src}}" alt="image" width="100%" />
+                    <input
+                        file="pathname"
+                        key="image"
+                        value="/assets{{object.pathname}}" />
                 </div>
             </div>
+
+            <!-- <div
+                    type="file"
+                    key="image"
+                    accept="image/*"
+                    placeholder="Upload Image or Video Thumbnail"
+                    class="floating-label min-height:24px active"
+                    render-selector="[template]"
+                    active>
+                    <div template>
+                        <img src="{{image.src}}" alt="image" width="100%" />
+                    </div>
+                </div> -->
         </floating-label>
 
         <floating-label class="input-300">
@@ -90,15 +103,15 @@
         <floating-label class="input-300">
             <input
                 type="text"
-                key="videourl"
+                key="videoUrl"
                 placeholder="Video Url"
                 class="floating-label" />
         </floating-label>
         <floating-label class="input-300">
             <input
                 type="text"
-                key="thumbnailurl"
-                placeholder="Thumbnail Url"
+                key="imageUrl"
+                placeholder="Image Url"
                 class="floating-label" />
         </floating-label>
 
@@ -199,7 +212,7 @@
             value-suffix=".html"
             input-next
             input-attribute="value"
-            class="filename" />
+            class="title" />
         <input key="pathname" value-prefix="/blog/" />
         <input key="path" value="/blog" />
         <input key="directory" value="blog" />
@@ -239,4 +252,4 @@
     </form>
 
     <div src="./components/toolbar.html" value-type="outerHTML"></div>
-</div>
+</section>
