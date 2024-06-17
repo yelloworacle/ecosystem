@@ -12,6 +12,7 @@
             path="./"
             src="./components/form-toolbar.html"
             class="width:100%"></div>
+
         <floating-label class="input-300">
             <input
                 type="text"
@@ -34,10 +35,8 @@
                 placeholder="Title"
                 input-selector="document; .title[]"
                 input-attribute="value"
-                class="floating-label" />
-            <a
-                actions="action(document; #generate)"
-                class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
+                class="floating-label input-icon" />
+            <a actions="action(document; #generate)" class="floating-icon">
                 <i src="./assets/svg/wand-magic-sparkles.svg"></i>
             </a>
         </floating-label>
@@ -52,68 +51,87 @@
             class="title" />
 
         <floating-label class="input-300">
-            <div
+            <input
+                id="imageurl"
+                key="image"
+                filter-key="pathname"
+                filter-next
+                placeholder="Image Url"
+                class="floating-label input-icon" />
+            <a
+                id="imagefile"
                 type="file"
                 array="files"
                 object=""
                 key="{}"
                 accept="image/*"
-                placeholder="Upload Image or Video Thumbnail"
-                class="floating-label min-height:24px"
+                class="floating-icon"
+                read="false"
+                upsert="true"
                 render-selector="[template]"
-                active>
+                skip-attribute>
                 <div template file_id="{{object.id}}">
-                    <img src="{{object.src}}" alt="image" width="100%" />
                     <input
                         file="pathname"
-                        key="image"
-                        value="/assets{{object.pathname}}" />
+                        value="/assets{{object.pathname}}"
+                        onload-selector="document; #imageurl"
+                        onload-attribute="value"
+                        onload-if="!$template"
+                        hidden />
+                    <input file="public" value="true" hidden />
+                    <input file="host[]" value="*" hidden />
                 </div>
-            </div>
 
-            <!-- <div
-                    type="file"
-                    key="image"
-                    accept="image/*"
-                    placeholder="Upload Image or Video Thumbnail"
-                    class="floating-label min-height:24px active"
-                    render-selector="[template]"
-                    active>
-                    <div template>
-                        <img src="{{image.src}}" alt="image" width="100%" />
-                    </div>
-                </div> -->
+                <i src="./assets/svg/plus.svg"></i>
+            </a>
         </floating-label>
-
-        <floating-label class="input-300">
-            <div
-                type="file"
-                key="video"
-                accept="video/*"
-                placeholder="Upload Video"
-                class="floating-label min-height:24px"
-                render-selector="[template]"
-                active>
-                <div template>
-                    <video stream="{{video.src}}" controls width="250"></video>
-                </div>
-            </div>
-        </floating-label>
-
         <floating-label class="input-300">
             <input
+                id="videourl"
+                key="video"
+                filter-key="pathname"
+                filter-next
+                placeholder="Video Url"
+                class="floating-label input-icon" />
+            <a
+                id="videofile"
+                type="file"
+                array="files"
+                object=""
+                key="{}"
+                accept="video/*"
+                class="floating-icon"
+                read="false"
+                upsert="true"
+                render-selector="[template]"
+                skip-attribute>
+                <div template file_id="{{object.id}}">
+                    <input
+                        file="pathname"
+                        value="/assets{{object.pathname}}"
+                        onload-selector="document; #videourl"
+                        onload-attribute="value"
+                        onload-if="!$template"
+                        hidden />
+                    <input file="public" value="true" hidden />
+                    <input file="host[]" value="*" hidden />
+                </div>
+
+                <i src="./assets/svg/plus.svg"></i>
+            </a>
+        </floating-label>
+        <!-- <floating-label class="input-300">
+            <input
                 type="text"
-                key="videoUrl"
+                key="video"
                 placeholder="Video Url"
                 class="floating-label" />
-        </floating-label>
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="imageUrl"
-                placeholder="Image Url"
-                class="floating-label" />
-        </floating-label>
+            <a
+                actions="action(document; #generate)"
+                class="display:flex position:absolute top:9px right:8px font-size:20px">
+                <i src="./assets/svg/plus.svg"></i>
+            </a>
+        </floating-label> -->
 
         <floating-label class="input-600">
             <textarea
@@ -123,6 +141,7 @@
                 placeholder="Description"
                 class="floating-label"></textarea>
         </floating-label>
+
         <floating-label class="input-600">
             <textarea
                 key="shortDescription"
