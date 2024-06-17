@@ -401,6 +401,18 @@ footer p {
     max-width: 600px;
 }
 
+.input-icon{
+    width: calc(100% - 18px)!important;
+}
+
+.floating-icon{
+    display: flex;
+    position: absolute;
+    top: 9px;
+    right: 8px;
+    font-size: 20px;
+}
+
 @media (max-width: 628px) {
     .input-300 {
         width: 100%;
