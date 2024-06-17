@@ -24,10 +24,12 @@
         <!-- Open Graph Tags (Facebook) -->
         <meta property="og:title" content="{{object.meta-title}}" />
         <meta property="og:description" content="{{object.meta-description}}" />
-        <meta property="og:url" content="https://yelloworacle.com" />
+        <meta
+            property="og:url"
+            content="https://yelloworacle.com{{object.url}}" />
         <meta
             property="og:image"
-            content="https://yelloworacle.com/assets/image.jpg" />
+            content="https://yelloworacle.com{{object.image}}" />
         <meta property="og:type" content="website" />
 
         <!-- Twitter Card Tags (Twitter) -->
@@ -39,7 +41,10 @@
             content="{{object.meta-description}}" />
         <meta
             name="twitter:image"
-            content="https://yelloworacle.com/assets/twitter-image.jpg" />
+            content="https://yelloworacle.com{{object.image}}" />
+        <meta
+            name="twitter:url"
+            content="https://yelloworacle.com{{object.url}}" />
 
         <!-- Structured Data (Schema Markup) -->
         <script type="application/ld+json">
@@ -49,7 +54,7 @@
                 "headline": "{{object.meta-title}}",
                 "description": "{{object.description}}",
                 "url": "{{object.url}}",
-                "image": "https://yelloworacle.com/image.jpg",
+                "image": "https://yelloworacle.com{{object.image}}",
                 "author": {
                     "@type": "Organization",
                     "name": "Yellow Oracle"
@@ -232,16 +237,17 @@
                     </style>
 
                     <!-- Image -->
-                    <img src="{{object.image[0].src}}" width="100%" />
+                    <img src="{{object.image}}" width="100%" />
 
                     <!-- Video -->
-                    <video
+                    <!-- <video
                         width="100%"
-                        src="{{object.video[0].src}}"
+                        src="{{object.video}}"
                         controls
-                        poster="{{object.image[0].src}}"
+                        poster="{{object.image}}"
                         onloadeddata="this.previousElementSibling.style.display='none';"
-                        onerror="this.style.display='none';"></video>
+                        onerror="this.style.display='none';"></video> -->
+
                     <div class="video-container">
                         <iframe
                             id="myVideo"
