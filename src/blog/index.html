@@ -152,18 +152,17 @@
                     <div class="card flex-grow:1 width:300px" template>
                         <a class="overflow:hidden" href="{{object.url}}">
                             <!-- Image -->
-                            <img src="{{object.image[0].src}}" width="100%" />
-                            <img src="{{object.thumbnailurl}}" width="100%" />
+                            <img src="{{object.image}}" width="100%" />
 
                             <!-- Video -->
-                            <video
+                            <!-- <video
                                 width="100%"
                                 controls
-                                poster="{{object.image[0].src}}"
+                                poster="{{object.image}}"
                                 onloadeddata="this.previousElementSibling.style.display='none';"
                                 onerror="this.style.display='none';"
-                                src="{{object.video[0].src}}"></video>
-
+                                src="{{object.video}}"></video>
+ -->
                             <!-- Post Content -->
                             <div
                                 hover="display:block"
