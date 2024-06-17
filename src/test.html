@@ -16,9 +16,64 @@
             type="text/css"
             parse="true" />
     </head>
+
     <body>
         <main class="padding:20px">
             <form>
+                <floating-label>
+                    <input
+                        id="imageurl"
+                        array="test"
+                        object=""
+                        key="image"
+                        placeholder="imageUrl"
+                        class="floating-label" />
+                    <a
+                        id="imagefile"
+                        type="file"
+                        array="files"
+                        object=""
+                        key="{}"
+                        accept="image/*"
+                        class="display:flex position:absolute top:9px right:8px font-size:20px"
+                        render-selector="[template]">
+                        <div template file_id="{{object.id}}">
+                            <input
+                                file="pathname"
+                                value="/assets{{object.pathname}}"
+                                onload-selector="document; #imageurl"
+                                onload-attribute="value"
+                                onload-if="!$template"
+                                filter-key="pathname"
+                                filter-selector="document; #imagefile"
+                                hidden />
+                        </div>
+
+                        <i src="./assets/svg/plus.svg"></i>
+                    </a>
+                </floating-label>
+                <div
+                    type="file"
+                    array="files"
+                    object=""
+                    key="{}"
+                    accept="image/*"
+                    placeholder="Upload Image or Video Thumbnail"
+                    class="floating-label"
+                    render-selector="[template]"
+                    active>
+                    <div template file_id="{{object.id}}">
+                        <img src="{{object.src}}" alt="image" width="100%" />
+                        <input
+                            file="pathname"
+                            value="/assets{{object.pathname}}" />
+                        <input file="public" value="true" />
+                        <input file="host[]" value="*" />
+                    </div>
+                </div>
+            </form>
+
+            <floating-label>
                 <div
                     type="file"
                     array="files"
@@ -36,9 +91,9 @@
                             value="/assets{{object.pathname}}" />
                     </div>
                 </div>
-            </form>
+            </floating-label>
 
-            <floating-label>
+            <!-- <floating-label>
                 <input
                     placeholder="Search"
                     filter-key="name"
@@ -63,35 +118,8 @@
                             key="pathname" />
                     </form>
                 </div>
-            </div>
+            </div> -->
         </main>
-
-        <!-- <form>
-            <input
-                type="file"
-                directory
-                realtime="false"
-                render-selector="document; [template]" />
-
-            <button actions="saveLocally">saveLocally</button>
-        </form>
-
-        <div template file_id="{{id}}">
-            <button actions="createFile" value="tesing.js">createFile</button>
-            <button actions="deleteFile">deleteFile</button>
-            <button actions="createDirectory">createDirectory</button>
-            <button actions="deleteDirectory">deleteDirectory</button>
-
-            <input file="name" value="{{name}}" />
-            <input file="directory" value="{{directory}}" />
-            <input file="content-type" value="{{content-type}}" />
-            <textarea file="src" value-type="string">{{src}}</textarea>
-            <div>id: {{id}}</div>
-        </div> -->
-
-        <!-- <form>
-            <button actions="export" array="files">export</button>
-        </form> -->
 
         <!-- <script src="../dist/CoCreate-file.js"></script> -->
         <script src="./dist/CoCreate.js"></script>
