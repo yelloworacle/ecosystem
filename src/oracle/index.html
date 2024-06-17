@@ -17,13 +17,18 @@
             animation: spin 2s linear infinite; /* Adjust the duration and other properties as needed */
         }
 
+        .question-container {
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
+
         input[type="button"] {
             display: none;
         }
 
         input.question:not([hidden]) {
             display: block;
-            width: 100%;
+            width: calc(100% - 80px);
             padding: 0.5625rem 1rem;
             padding-bottom: 15px;
             padding-right: 85px;
@@ -31,11 +36,10 @@
             font-weight: 400;
             line-height: 1.5;
             color: inherit;
-            border: 1px solid #dee2e6;
+            border: none;
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            border-radius: 4px;
             transition: border-color 0.15s ease-in-out,
                 box-shadow 0.15s ease-in-out;
         }
@@ -130,9 +134,12 @@
         }
 
         @media (prefers-color-scheme: dark) {
-            input.question {
+            .question-container {
                 background-color: #222;
                 border: 1px solid #444 !important;
+            }
+            input.question {
+                background-color: #222;
             }
             .progress-bar {
                 background-color: #444;
@@ -261,7 +268,8 @@
                         class="load-value font-size:18px"
                         >{{object.question}}</label
                     >
-                    <div class="position:relative margin-top:5px">
+                    <div
+                        class="question-container position:relative margin-top:5px">
                         <div class="sibling progress-bar">
                             <div
                                 position="{{object.position}}"
