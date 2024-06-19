@@ -1,27 +1,55 @@
+<style>
+    .toolbar-class {
+        position: fixed;
+        pointer-events: none;
+        display: none;
+    }
+    .tools-class {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        color: white;
+        font-size: 12px;
+    }
+    .span-class {
+        padding: 3px 10px;
+        background: dodgerblue;
+        border: 1px dodgerblue solid;
+    }
+    .div-class {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 2px 5px;
+        background: dodgerblue;
+        border: 1px dodgerblue solid;
+        pointer-events: auto;
+    }
+    .element-outline {
+        height: 100%;
+        width: 100%;
+        border: 2px dodgerblue solid;
+    }
+</style>
+
 <!-- Selected Toolbar -->
 <toolbar
     toolbar-placement="top"
     toolbar-selector="editor"
     toolbar-event="click"
-    class="position:fixed pointer-events:none display:none">
-    <tools
-        class="display:flex justify-content:space-between width:100% color:white font-size:11px z-index:7">
-        <span
-            class="padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid"
-            tagname></span>
+    class="toolbar-class">
+    <tools class="tools-class">
+        <span class="span-class" tagname></span>
         <!--<span class="padding:3px background:dodgerblue pointer-events:auto"><i  src="./assets/svg/arrows-alt.svg"></i></span>-->
-        <div
-            class="display:flex align-items:center padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid pointer-events:auto">
-            <span actions="cloneElement" class="margin-right:10px"
+        <div class="div-class">
+            <span actions="cloneElement"
                 ><i src="./assets/svg/clone.svg"></i
             ></span>
-            <span
-                actions="remove"
-                remove-selector="editor"
-                class="margin-right:10px"
+            <span actions="remove" remove-selector="editor"
                 ><i src="./assets/svg/trash-alt.svg"></i
             ></span>
-            <span actions="previousElement" class="margin-right:10px"
+            <span actions="previousElement"
                 ><i src="./assets/svg/arrow-up.svg"></i
             ></span>
             <span actions="nextElement"
@@ -29,7 +57,7 @@
             ></span>
         </div>
     </tools>
-    <div class="height:100% width:100% border:2px_dodgerblue_solid"></div>
+    <div class="element-outline"></div>
 </toolbar>
 
 <!-- Hover Toolbar -->
@@ -37,14 +65,11 @@
     toolbar-placent="top"
     toolbar-selector="editor"
     toolbar-event="mouseover"
-    class="position:fixed pointer-events:none display:none">
-    <tools
-        class="tools display:flex align-items:center color:white font-size:11px z-index:7">
-        <span
-            class="padding:2px_5px background:dodgerblue border:1px_dodgerblue_solid"
-            tagname></span>
+    class="toolbar-class">
+    <tools class="tools-class">
+        <span class="span-class" tagname></span>
     </tools>
-    <div class="height:100% width:100% border:1px_dodgerblue_solid"></div>
+    <div class="element-outline"></div>
 </toolbar>
 <!-- End Hover Toolbar -->
 
@@ -52,10 +77,10 @@
 <div
     toolbar-placent="top"
     toolbar-selector="editor"
-    toolbar-event="mouseup"
-    class="toolbar position:fixed pointer-events:none display:none">
+    toolbar-event="selectionchange"
+    class="toolbar-class">
     <tools
-        class="display:flex align-items:center gap:5px width:fit-content background:gainsboro border-radius:5px pointer-events:auto z-index:7 padding:5px">
+        class="display:flex align-items:center gap:10px width:fit-content background:#222 border-radius:5px pointer-events:auto padding:5px">
         <div
             actions="nodeName"
             node-name="b"
@@ -75,7 +100,7 @@
         </div>
         <div
             id="link"
-            class="position:absolute display:flex align-items:center transition:0.4s background:gainsboro height:28px border-radius:5px"
+            class="position:absolute display:flex align-items:center transition:0.4s background:inherit height:28px border-radius:5px"
             hidden>
             <input type="text" key="" />
             <div
@@ -100,13 +125,13 @@
         <div
             id="heading-btn"
             hover-attribute="class"
-            hover-value="width:0px,"
+            hover-value="width:0px, width:fit-content"
             hover-next>
             <i src="./assets/svg/heading.svg"></i>
         </div>
         <div
             id="headings"
-            class="position:absolute display:flex align-items:center gap:5px transition:0.4s width:0px background:gainsboro overflow:hidden height:28px border-radius:5px">
+            class="position:absolute display:flex align-items:center gap:10px transition:0.4s width:0px background:inherit overflow:hidden height:28px border-radius:5px">
             <div
                 actions="nodeName"
                 node-name="h1"
