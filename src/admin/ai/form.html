@@ -11,12 +11,22 @@
         <floating-label class="input-300">
             <input
                 type="text"
-                key="type"
-                value="system"
-                placeholder="Type"
+                key="name"
+                placeholder="name"
                 class="floating-label" />
         </floating-label>
+
         <floating-label class="input-300">
+            <select
+                id="options"
+                key="type"
+                placeholder="Type"
+                class="floating-label">
+                <option value="system">System</option>
+                <option value="user">User</option>
+            </select>
+        </floating-label>
+        <!-- <floating-label class="input-300">
             <select
                 id="options"
                 key="module"
@@ -25,7 +35,7 @@
                 <option value="oracle">Oracle</option>
                 <option value="blog">Blog</option>
             </select>
-        </floating-label>
+        </floating-label> -->
         <!-- <floating-label class="input-300">
         <input
             type="number"
