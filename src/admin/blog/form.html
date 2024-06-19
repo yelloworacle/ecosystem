@@ -36,7 +36,7 @@
                 input-selector="document; .title[]"
                 input-attribute="value"
                 class="floating-label input-icon" />
-            <a actions="action(document; #generate)" class="floating-icon">
+            <a actions="action(document; #generate-post)" class="floating-icon">
                 <i src="./assets/svg/wand-magic-sparkles.svg"></i>
             </a>
         </floating-label>
@@ -143,21 +143,15 @@
         </floating-label>
 
         <floating-label class="input-600">
-            <textarea
-                key="shortDescription"
-                input-selector="document; .description"
-                input-attribute="value"
-                placeholder="shortDescription"
-                class="floating-label"></textarea>
-        </floating-label>
-
-        <floating-label class="input-600">
             <editor
+                id="content"
                 contenteditable="true"
                 key="content"
                 realtime="true"
                 placeholder="Content"
-                class="floating-label"></editor>
+                input-selector="document; .content"
+                input-attribute="value"
+                class="floating-label markdown-body"></editor>
         </floating-label>
 
         <floating-label class="input-600">
@@ -256,18 +250,41 @@
             array="ai"
             object
             key="content"
-            filter-key="module"
-            filter-value="blog"
+            filter-key="name"
+            filter-value="Blog Details"
             openai="system"
             component></div>
         <input class="title" openai="user" hidden />
-        <input class="description" openai="user" hidden />
+        <input class="content" openai="user" hidden />
         <a
-            id="generate"
+            id="generate-details"
             actions="openAi"
             openai-value-type="json"
             openai-selector="document; #blog-form"
             openai-type="form"></a>
+    </form>
+
+    <form>
+        <div
+            array="ai"
+            object
+            key="content"
+            filter-key="name"
+            filter-value="Blog Post"
+            openai="system"
+            component></div>
+        <input class="title" openai="user" hidden />
+        <input class="description" openai="user" hidden />
+        <textarea
+            id="input"
+            marked
+            input-selector="document; #content"
+            input-attribute="value"
+            hidden></textarea>
+        <a
+            id="generate-post"
+            actions="openAi, action(document; #generate-details)"
+            openai-previous></a>
     </form>
 
     <div src="./components/toolbar.html" value-type="outerHTML"></div>
