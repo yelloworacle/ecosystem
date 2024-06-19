@@ -409,8 +409,8 @@
             array="ai"
             object
             key="content"
-            filter-key="module"
-            filter-value="oracle"
+            filter-key="name"
+            filter-value="Career Suggestions"
             openai="system"
             component></div>
         <div
@@ -424,8 +424,9 @@
             object="$user_id"
             key="careers"
             openai="user"
+            openai-value-type="json"
             component></div>
-        <textarea id="response" value-type="json" hidden></textarea>
+        <textarea value-type="json" hidden></textarea>
         <a
             id="request"
             actions="openAi, manageCareers"
