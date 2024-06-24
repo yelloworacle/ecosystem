@@ -287,11 +287,12 @@
             openai-previous></a>
     </form>
     <form api="openai">
-        <input
+        <textarea
             openai="images.generate"
             openai-key="prompt"
-            value="generate an animated image for a blogpost relted to the following topic: How to choose a career"
-            hidden />
+            class="width:100%">
+generate an animated image for a blogpost relted to the following topic: How to choose a career</textarea
+        >
         <input
             type="number"
             openai="images.generate"
@@ -310,7 +311,8 @@
             openai-key="data[0].url"
             openai-request="false"
             input-previous
-            input-attribute="src" />
+            input-attribute="src"
+            hidden />
 
         <a id="generate-image" actions="openai.images.generate"
             >Generate Image</a
