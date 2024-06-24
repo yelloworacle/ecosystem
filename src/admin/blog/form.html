@@ -287,35 +287,10 @@
             openai-previous></a>
     </form>
     <form api="openai">
-        <!-- <div
-            array="ai"
-            object
-            key="content"
-            filter-key="name"
-            filter-value="Blog Post"
-            openai="system"
-            component></div> -->
-
-        <input class="title" openai="user" hidden />
-        <input class="description" openai="user" hidden />
-
-        <img src="" />
-        <input
-            openai="images.generate"
-            openai-key="data.data.url"
-            input-previous
-            input-attribute="src" />
-
-        <!-- <input
-            openai="createImage"
-            openai-key="data.data.url"
-            input-selector="document; #imagefile"
-            input-attribute="value" /> -->
-
         <input
             openai="images.generate"
             openai-key="prompt"
-            value="generate an image for my blogpost: How to choose a career"
+            value="generate an animated image for a blogpost relted to the following topic: How to choose a career"
             hidden />
         <input
             type="number"
@@ -329,7 +304,17 @@
             value="1024x1024"
             hidden />
 
-        <a id="generate-post" actions="openai.images.generate">create image</a>
+        <img src="" class="max-width:100% height:auto" />
+        <input
+            openai="images.generate"
+            openai-key="data[0].url"
+            openai-request="false"
+            input-previous
+            input-attribute="src" />
+
+        <a id="generate-image" actions="openai.images.generate"
+            >Generate Image</a
+        >
     </form>
 
     <div src="./components/toolbar.html" value-type="outerHTML"></div>
