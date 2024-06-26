@@ -35,7 +35,8 @@
                 placeholder="Title"
                 input-selector="document; .title[]"
                 input-attribute="value"
-                class="floating-label input-icon" />
+                class="floating-label input-icon"
+                value="Choosing a career" />
             <a actions="action(document; #generate-post)" class="floating-icon">
                 <i src="./assets/svg/wand-magic-sparkles.svg"></i>
             </a>
@@ -45,7 +46,7 @@
             type="hidden"
             key="url"
             value-replaceall=" "
-            value-replace-with="-"
+            value-replacement="-"
             value-prefix="/blog/"
             value-suffix=".html"
             class="title" />
@@ -120,18 +121,6 @@
                 <i src="./assets/svg/plus.svg"></i>
             </a>
         </floating-label>
-        <!-- <floating-label class="input-300">
-            <input
-                type="text"
-                key="video"
-                placeholder="Video Url"
-                class="floating-label" />
-            <a
-                actions="action(document; #generate)"
-                class="display:flex position:absolute top:9px right:8px font-size:20px">
-                <i src="./assets/svg/plus.svg"></i>
-            </a>
-        </floating-label> -->
 
         <floating-label class="input-600">
             <textarea
@@ -187,8 +176,6 @@
                 class="floating-label"></textarea>
         </floating-label>
 
-        <!-- Additional Fields -->
-
         <floating-label class="input-600">
             <textarea
                 key="meta-description"
@@ -221,7 +208,7 @@
         <input
             key="name"
             value-replaceall=" "
-            value-replace-with="-"
+            value-replacement="-"
             value-suffix=".html"
             input-next
             input-attribute="value"
@@ -246,46 +233,121 @@
     </form>
 
     <form>
-        <div
+        <input
+            openai="chat.completions.create"
+            openai-key="model"
+            value="gpt-4-1106-preview"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[0].role"
+            value="system"
+            hidden />
+        <textarea
             array="ai"
             object
             key="content"
             filter-key="name"
             filter-value="Blog Details"
-            openai="system"
-            component></div>
-        <input class="title" openai="user" hidden />
-        <input class="content" openai="user" hidden />
-        <a
-            id="generate-details"
-            actions="openAi"
-            openai-value-type="json"
-            openai-selector="document; #blog-form"
-            openai-type="form"></a>
+            openai="chat.completions.create"
+            openai-key="messages[0].content"
+            hidden></textarea>
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[1].role"
+            value="user"
+            hidden />
+        <input
+            class="title"
+            openai="chat.completions.create"
+            openai-key="messages[1].content"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[2].role"
+            value="user"
+            hidden />
+        <input
+            class="content"
+            openai="chat.completions.create"
+            openai-key="messages[2].content"
+            hidden />
+
+        <textarea
+            id="input"
+            openai="chat.completions.create"
+            openai-key="choices[0].message.content"
+            openai-request="false"
+            input-selector="document; #blog-form"
+            input-attribute="value"
+            value-type="json"
+            value-replace="/```json\n|\n```/g"
+            hidden></textarea>
+
+        <a id="generate-details" actions="openai.chat.completions.create"></a>
     </form>
 
     <form>
-        <div
+        <input
+            openai="chat.completions.create"
+            openai-key="model"
+            value="gpt-4-1106-preview"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[0].role"
+            value="system"
+            hidden />
+        <textarea
             array="ai"
             object
             key="content"
             filter-key="name"
             filter-value="Blog Post"
-            openai="system"
-            component></div>
-        <input class="title" openai="user" hidden />
-        <input class="description" openai="user" hidden />
+            openai="chat.completions.create"
+            openai-key="messages[0].content"
+            hidden></textarea>
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[1].role"
+            value="user"
+            hidden />
+        <input
+            class="title"
+            openai="chat.completions.create"
+            openai-key="messages[1].content"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[2].role"
+            value="user"
+            hidden />
+        <input
+            class="description"
+            openai="chat.completions.create"
+            openai-key="messages[2].content"
+            hidden />
+
         <textarea
             id="input"
+            openai="chat.completions.create"
+            openai-key="choices[0].message.content"
+            openai-request="false"
             marked
             input-selector="document; #content"
             input-attribute="value"
             hidden></textarea>
         <a
             id="generate-post"
-            actions="openAi, action(document; #generate-details)"
-            openai-previous></a>
+            actions="openai.chat.completions.create, action(document; #generate-details)"></a>
     </form>
+
     <form api="openai">
         <textarea
             openai="images.generate"
