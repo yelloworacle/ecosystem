@@ -65,7 +65,7 @@
             border-radius: 8px;
             position: relative;
             left: 0px;
-            top: 5px;
+            top: 0px;
             width: 100%;
             display: block;
         }
@@ -120,6 +120,9 @@
         /* [example] {
             display: none;
         } */
+        #example {
+            margin-top: 50px;
+        }
         [example="Intro"] {
             display: block;
         }
@@ -321,14 +324,14 @@
         </section>
 
         <section id="example" class="position:relative" example hidden>
-            <h3 class="position:absolute top:-5px left:30px">
+            <h3 class="position:absolute top:-30px left:0px">
                 Career Example:
             </h3>
             <a
                 id="close-example"
                 show="document; #oracle"
                 hide="document; #example"
-                class="position:absolute top:30px right:30px">
+                class="position:absolute top:15px right:15px">
                 <i src="./assets/svg/times.svg"></i>
             </a>
 
@@ -404,34 +407,71 @@
         </section>
     </div>
 
-    <form>
-        <div
+    <form api="openai">
+        <input
+            openai="chat.completions.create"
+            openai-key="model"
+            value="gpt-4-1106-preview"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[0].role"
+            value="system"
+            hidden />
+        <textarea
             array="ai"
             object
             key="content"
             filter-key="name"
             filter-value="Career Suggestions"
-            openai="system"
-            component></div>
-        <div
+            openai="chat.completions.create"
+            openai-key="messages[0].content"
+            hidden></textarea>
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[1].role"
+            value="user"
+            hidden />
+        <input
             array="users"
             object="$user_id"
             key="questions"
-            openai="user"
-            component></div>
-        <div
+            openai="chat.completions.create"
+            openai-key="messages[1].content"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[2].role"
+            value="user"
+            hidden />
+        <input
             array="users"
             object="$user_id"
             key="careers"
-            openai="user"
-            openai-value-type="json"
-            component></div>
-        <textarea value-type="json" hidden></textarea>
+            openai="chat.completions.create"
+            openai-key="messages[2].content"
+            value-prefix="careers: "
+            hidden
+            input-next
+            input-attribute="value" />
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[2].content"
+            hidden />
+
+        <textarea
+            id="careerResults"
+            openai="chat.completions.create"
+            openai-key="choices[0].message.content"
+            openai-request="false"
+            value-type="json"
+            hidden></textarea>
         <a
             id="request"
-            actions="openAi, manageCareers"
-            openai-value-type="json"
-            openai-previous></a>
+            actions="openai.chat.completions.create, manageCareers"></a>
     </form>
 
     <textarea

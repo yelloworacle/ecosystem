@@ -2,7 +2,12 @@
     CoCreate.actions.init({
         name: "manageCareers",
         callback: async (action) => {
-            let value = action.form[0].getValue()
+            const resultsElement = document.getElementById('careerResults');
+            let value = resultsElement.getValue()
+            if (!Array.isArray(value) && value.careers) {
+                value = value.careers
+            }
+
             const element = document.getElementById('mergedCareers');
 
             let preValue = element.getValue()
