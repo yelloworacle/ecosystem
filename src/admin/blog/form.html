@@ -419,13 +419,13 @@
             value="1024x1024"
             hidden />
 
-        <img src="" class="max-width:100% height:auto" />
+        <!-- <img src="" class="max-width:100% height:auto" /> -->
         <input
             openai="images.generate"
             openai-key="data[0].url"
             openai-request="false"
-            input-previous
-            input-attribute="src"
+            input-selector="document; #imageurl"
+            input-attribute="value"
             hidden />
 
         <a
