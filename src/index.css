@@ -169,6 +169,7 @@ button {
 button:hover {
     background-color: #F7CC02;
     color: #000;
+    fill: #000;
 }
 
 .second-container {
