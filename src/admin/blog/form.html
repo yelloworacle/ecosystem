@@ -36,9 +36,23 @@
                 input-selector="document; .title[]"
                 input-attribute="value"
                 class="floating-label input-icon" />
-            <a actions="action(document; #generate-post)" class="floating-icon">
-                <i src="./assets/svg/wand-magic-sparkles.svg"></i>
+
+            <a
+                actions="action(document; #generate-post)"
+                click-selector="i[src]"
+                click-attribute="src"
+                click-value="./assets/svg/spinner.svg"
+                class="floating-icon">
+                <i
+                    id="#clickIcon"
+                    src="./assets/svg/wand-magic-sparkles.svg"
+                    class="width:20px height:20px"></i>
             </a>
+            <div
+                id="generated-icon"
+                click-previous="i"
+                click-attribute="src"
+                click-value="./assets/svg/check-circle.svg"></div>
         </floating-label>
 
         <input
@@ -196,9 +210,20 @@
             class="button-round">
             <i src="./assets/svg/save.svg"></i>
         </button>
+        <a
+            id="postPublished"
+            click-selector="document; #published-icon"
+            click-attribute="src"
+            click-value="./assets/svg/check-circle.svg"
+            hidden></a>
+
         <button
-            actions="save, timeout(1000), render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile)">
+            click-selector="i[src]"
+            click-attribute="src"
+            click-value="./assets/svg/spinner.svg"
+            actions="click, save, render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile), action(document; #postPublished)">
             Publish
+            <i id="published-icon" src="./assets/svg/paper-plane.svg"></i>
         </button>
     </form>
 
@@ -286,7 +311,9 @@
             value-replace="/```json\n|\n```/g"
             hidden></textarea>
 
-        <a id="generate-details" actions="openai.chat.completions.create"></a>
+        <a
+            id="generate-details"
+            actions="openai.chat.completions.create, action(document; #generated-icon)"></a>
     </form>
 
     <form>

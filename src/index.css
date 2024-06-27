@@ -471,6 +471,22 @@ tr.hover:hover {
   background: gainsboro; 
 }
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Apply the animation to the icon with a class */
+[src="./assets/svg/spinner.svg"] {
+    animation: spin 2s linear infinite;
+    /* Adjust the duration and other properties as needed */
+}
+
 @media (prefers-color-scheme: dark) {
     body {
         background-color: #333;
