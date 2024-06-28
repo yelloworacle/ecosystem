@@ -81,7 +81,7 @@
                 click-selector="i[src]"
                 click-attribute="src"
                 click-value="./assets/svg/spinner.svg"
-                class="floating-icon right:35px">
+                class="floating-icon right:35px!important">
                 <i
                     src="./assets/svg/wand-magic-sparkles.svg"
                     class="width:20px height:20px"></i>
@@ -391,7 +391,7 @@
             hidden></textarea>
         <a
             id="generate-post"
-            actions="openai.chat.completions.create, action(document; #generate-details)"></a>
+            actions="openai.chat.completions.create, action(document; #generate-details), action(document; #generate-image)"></a>
     </form>
 
     <form api="openai">
