@@ -230,6 +230,7 @@
             class="button-round">
             <i src="./assets/svg/save.svg"></i>
         </button>
+
         <a
             id="postPublished"
             click-selector="document; #published-icon"
@@ -428,9 +429,17 @@
             input-attribute="value"
             hidden />
 
+        <div
+            openai="images.generate"
+            openai-key="data[0].url"
+            openai-request="false"
+            import-url-selector="document; #imagefile"
+            import-url
+            component></div>
+
         <a
             id="generate-image"
-            actions="openai.images.generate, action(document; #imageGenerated)"></a>
+            actions="openai.images.generate, importUrl, action(document; #imageGenerated)"></a>
     </form>
 
     <div src="./components/toolbar.html" value-type="outerHTML"></div>
