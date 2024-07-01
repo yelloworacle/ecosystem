@@ -96,7 +96,7 @@
                 id="imagefile"
                 type="file"
                 array="files"
-                object=""
+                object="ObjectId()"
                 key="{}"
                 accept="image/*"
                 class="floating-icon"
@@ -112,6 +112,8 @@
                         onload-attribute="value"
                         onload-if="!$template"
                         hidden />
+                    <input file="directory" value="/assets" hidden />
+                    <input file="path" value="/assets" hidden />
                     <input file="public" value="true" hidden />
                     <input file="host[]" value="*" hidden />
                 </div>
@@ -131,7 +133,7 @@
                 id="videofile"
                 type="file"
                 array="files"
-                object=""
+                object="ObjectId()"
                 key="{}"
                 accept="video/*"
                 class="floating-icon"
@@ -147,6 +149,8 @@
                         onload-attribute="value"
                         onload-if="!$template"
                         hidden />
+                    <input file="directory" value="/assets" hidden />
+                    <input file="path" value="/assets" hidden />
                     <input file="public" value="true" hidden />
                     <input file="host[]" value="*" hidden />
                 </div>
@@ -425,17 +429,9 @@
             openai="images.generate"
             openai-key="data[0].url"
             openai-request="false"
-            input-selector="document; #imageurl"
-            input-attribute="value"
-            hidden />
-
-        <div
-            openai="images.generate"
-            openai-key="data[0].url"
-            openai-request="false"
             import-url-selector="document; #imagefile"
             import-url
-            component></div>
+            hidden />
 
         <a
             id="generate-image"
