@@ -331,6 +331,10 @@ sidenav ul li:hover {
     overflow: hidden;
 }
 
+.avatar>.avatar-image img[src=""] {
+   display: none;  
+}
+
 .avatar>.avatar-name {
     z-index: 1;
     writing-mode: vertical-rl;
