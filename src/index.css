@@ -331,7 +331,7 @@ sidenav ul li:hover {
     overflow: hidden;
 }
 
-.avatar>.avatar-image img[src=""] {
+.avatar>.avatar-image>img:not([src]) {
    display: none;  
 }
 
