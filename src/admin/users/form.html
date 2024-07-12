@@ -2,6 +2,11 @@
 <a href="./signin.html" session="false" hidden></a>
 
 <section class="centered">
+    <style>
+        textarea {
+            resize: vertical;
+        }
+    </style>
     <form
         state_id="form-fields"
         array="users"
@@ -71,6 +76,13 @@
         <floating-label class="input-300">
             <input
                 type="text"
+                key="name"
+                placeholder="Name"
+                class="floating-label" />
+        </floating-label>
+        <floating-label class="input-300">
+            <input
+                type="text"
                 key="email"
                 placeholder="Email"
                 class="floating-label" />
@@ -104,6 +116,34 @@
                 class="floating-label" />
         </floating-label>
 
+        <floating-label class="input-600">
+            <textarea
+                key="answeredQuestions"
+                value-type="json"
+                rows="1"
+                auto-rows
+                placeholder="Answered Questions"
+                class="floating-label"></textarea>
+        </floating-label>
+        <floating-label class="input-600">
+            <textarea
+                key="questions"
+                value-type="json"
+                placeholder="questions"
+                rows="1"
+                auto-rows
+                class="floating-label"></textarea>
+        </floating-label>
+        <floating-label class="input-600">
+            <textarea
+                key="careers"
+                value-type="json"
+                placeholder="Careers"
+                rows="1"
+                auto-rows
+                class="floating-label"></textarea>
+        </floating-label>
+
         <div class="height:0px width:0px overflow:hidden">
             <input type="email" name="email" autocomplete="email" />
             <input type="tel" name="phone" autocomplete="tel" />
@@ -135,4 +175,28 @@
             <i src="./assets/svg/save.svg"></i>
         </button>
     </form>
+
+    <script>
+        document.addEventListener(
+            "input",
+            function (event) {
+                if (
+                    event.target.tagName.toLowerCase() !== "textarea" ||
+                    !event.target.hasAttribute("auto-rows")
+                )
+                    return;
+                autoResizeTextarea(event.target);
+            },
+            false
+        );
+
+        function autoResizeTextarea(textarea) {
+            const lineHeight = parseInt(
+                window.getComputedStyle(textarea).lineHeight
+            );
+            textarea.rows = 1;
+            const lines = Math.ceil(textarea.scrollHeight / lineHeight);
+            textarea.rows = lines;
+        }
+    </script>
 </section>
