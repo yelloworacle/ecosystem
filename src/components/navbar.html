@@ -140,24 +140,22 @@
         <i class="height:20px" src="{{path}}assets/svg/sign-in-alt.svg"></i>
     </span>
     <span class="avatar-image">
-        <div class="position:absolute height:100% width:100% signin" session>
-            <a
-                href="{{path}}signin.html"
-                class="display:block height:100% width:100%">
-            </a>
+        <img
+            array="users"
+            object="$user_id"
+            key="avatar[0].src"
+            onerror="this.style.display='none'" />
+
+        <div>
+            <a href="{{path}}signin.html"> </a>
         </div>
         <a
             state_to="mainView"
             state-src="{{path}}account/profile/"
             href="{{path}}"
-            class="display:block height:100% width:100%">
+            class="signin"
+            session>
         </a>
-        <img
-            array="users"
-            object="$user_id"
-            key="avatar"
-            onerror="this.style.display='none'"
-            width="40px" />
     </span>
     <div
         class="avatar-status"
