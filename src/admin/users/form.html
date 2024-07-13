@@ -153,20 +153,6 @@
                 autocomplete="current-password" />
         </div>
 
-        <div
-            id="questions"
-            object
-            key="questions"
-            render-selector="[template]"
-            read="false">
-            <input
-                type="text"
-                key="{{questions.key}}"
-                value="{{questions.value}}"
-                template
-                read="false" />
-        </div>
-
         <button
             actions="save, state"
             state_to="mainView"
@@ -175,6 +161,20 @@
             <i src="./assets/svg/save.svg"></i>
         </button>
     </form>
+
+    <!-- <div
+        id="questions"
+        object
+        key="questions"
+        render-selector="[template]"
+        read="false">
+        <input
+            type="text"
+            key="{{questions.key}}"
+            value="{{questions.value}}"
+            template
+            read="false" />
+    </div> -->
 
     <script>
         document.addEventListener(
