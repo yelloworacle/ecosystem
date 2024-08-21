@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<div class="card margin-bottom:15px" template>
+    <div class="card-content">
+        <div class="card-row full-width">
+            <span class="card-label">Career Name:</span>
+            <span class="card-value load-value">{{object.name}}</span>
+        </div>
+        <div class="card-row">
+            <span class="card-label">Average Salary:</span>
+            <span class="card-value load-value">{{object.salary}}</span>
+        </div>
+        <div class="card-row">
+            <span class="card-label">Stress Level:</span>
+            <span class="card-value load-value">{{object.stress}}</span>
+        </div>
+
+        <div class="card-row">
+            <span class="card-label">Pros:</span>
+            <span class="card-value load-value">{{object.pros}}</span>
+        </div>
+        <div class="card-row">
+            <span class="card-label">Cons:</span>
+            <span class="card-value load-value">{{object.cons}}</span>
+        </div>
+        <div class="card-row full-width">
+            <span class="card-label">Interesting Fact:</span>
+            <span class="card-value load-value">{{object.facts}}</span>
+        </div>
+
+        <div class="card-row">
+            <span class="card-label">Apprentice:</span>
+            <span class="card-value load-value">{{object.apprentice}}</span>
+        </div>
+        <div class="card-row">
+            <span class="card-label">Satisfaction:</span>
+            <span class="card-value load-value">{{object.satisfaction}}</span>
+        </div>
+        <div class="card-row full-width">
+            <span class="card-label">Sacrifices:</span>
+            <span class="card-value load-value">{{object.sacrifices}}</span>
+        </div>
+
+        <div class="card-row full-width">
+            <span class="card-label">Characteristics:</span>
+            <span class="card-value load-value"
+                >{{object.characteristics}}</span
+            >
+        </div>
+        <div class="card-row full-width">
+            <span class="card-label">Career Path Variability:</span>
+            <span class="card-value load-value"
+                >{{object.careerPathVariability}}</span
+            >
+        </div>
+        <div class="width:100% subscribed">
+            <button class="unlock width:100% margin-top:20px font-size:16px">
+                <a state_to="mainView" state-src="./checkout/"
+                    >Subscribe to unlock additional details</a
+                >
+            </button>
+
+            <a
+                id="show-example"
+                show="document; #example"
+                hide="document; #oracle"
+                class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
+                >View an example of subscribed career details</a
+            >
+        </div>
+    </div>
+</div>

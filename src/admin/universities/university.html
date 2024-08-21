@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+
+<div class="display:flex justify-content:center width:100% padding:80px_20px">
+    <style>
+        /* Add a CSS animation to make the icon spin */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Apply the animation to the icon with a class */
+        [src="./assets/svg/spinner.svg"] {
+            animation: spin 2s linear infinite; /* Adjust the duration and other properties as needed */
+        }
+
+        .question-container {
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+        }
+
+        input[type="button"] {
+            display: none;
+        }
+
+        input.question:not([hidden]) {
+            display: block;
+            width: calc(100% - 80px);
+            padding: 0.5625rem 1rem;
+            padding-bottom: 15px;
+            padding-right: 85px;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: inherit;
+            border: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            transition: border-color 0.15s ease-in-out,
+                box-shadow 0.15s ease-in-out;
+        }
+
+        input:focus:not([type="checkbox"], [hidden]) {
+            outline: 1px solid #495057;
+        }
+
+        input.question[hidden] {
+            display: none;
+        }
+
+        input[type="button"] + a {
+            padding: 15px 30px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease,
+                border 0.3s ease;
+            border: 2px solid #f7cc02;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            display: block;
+        }
+
+        input[type="button"] + a:hover {
+            background-color: #f7cc02;
+            color: #333;
+        }
+
+        input[type="button"] + a span {
+            display: none !important;
+        }
+        input[type="button"] + a i {
+            display: none !important;
+        }
+        .Intro {
+            display: block;
+            width: 100%;
+        }
+
+        .question[type="hidden"] ~ .sibling {
+            display: none;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.04);
+            height: 10px;
+            position: absolute;
+            top: 38px;
+            border: 1px solid transparent;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #76b852;
+            text-align: right;
+            transition: width 0.5s ease-in-out;
+            border-bottom-left-radius: 4px;
+        }
+
+        .hidden-input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            z-index: -1;
+        }
+
+        /* [example] {
+            display: none;
+        } */
+        #example {
+            margin-top: 50px;
+        }
+        [example="Intro"] {
+            display: block;
+        }
+        [example] #show-example {
+            display: none;
+        }
+        [example="Intro"] #close-example {
+            display: none;
+        }
+        [example="Intro"] .subscribed {
+            display: none;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .question-container {
+                background-color: #222;
+                border: 1px solid #444 !important;
+            }
+            input.question {
+                background-color: #222;
+            }
+            .progress-bar {
+                background-color: #444;
+            }
+            input[type="button"] + a {
+                background-color: #333;
+            }
+            input[type="button"] + a:hover {
+                color: #333;
+            }
+        }
+    </style>
+    <div
+        class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:800px">
+        <section>
+            <input
+                type="hidden"
+                key="_id"
+                localstorage-get="user_id"
+                localstorage-if="false"
+                localstorage-next="#createUser"
+                localstorage-attribute="$click" />
+
+            <form array="users" object="" hidden>
+                <input key="_id" localstorage-set="user_id" />
+                <input key="answeredQuestions[]" value="Discover" />
+                <input key="subscription" value="false" />
+                <input type="checkbox" key="ambassadorTerms" />
+                <a
+                    id="createUser"
+                    click-selector="document; #questions"
+                    click-attribute="read"
+                    click-value="true"
+                    actions="timeout(1000), save, localStorage, click"></a>
+            </form>
+
+            <input
+                type="hidden"
+                id="applyRead"
+                click-parent="#questions"
+                click-attribute="read"
+                click-value="true" />
+
+            <!-- <form array="users" object="$user_id" hidden read="false">
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="hidden-input"
+                    array="users"
+                    object="$user_id"
+                    key="email"
+                    autocomplete="email" />
+                <input
+                    id="roles"
+                    array="users"
+                    object="$user_id"
+                    key="roles[]"
+                    value="657726510fee1c6415f70760" />
+                <input
+                    id="amabassador"
+                    array="users"
+                    object="$user_id"
+                    key="ambassador"
+                    localstorage-get="amabassador" />
+                <input
+                    id="amabassadorAccount"
+                    array="users"
+                    object="$user_id"
+                    key="amabassadorAccount"
+                    localstorage-get="amabassadorAccount" />
+                <input
+                    id="amabassadorParents"
+                    array="users"
+                    object="$user_id"
+                    key="amabassadorParents"
+                    localstorage-get="amabassadorParents" />
+                <a id="signup" actions="save"></a>
+            </form> -->
+
+            <div
+                filter-sort-key="position"
+                filter-sort-direction="asc"
+                filter-parent="#questions"></div>
+
+            <textarea
+                id="answeredQuestions"
+                array="users"
+                object="$user_id"
+                key="answeredQuestions"
+                filter-key="name"
+                filter-operator="$nin"
+                filter-next
+                value-type="json"
+                realtime="false"
+                input-attribute="read"
+                input-value="true"
+                input-next
+                hidden></textarea>
+
+            <div
+                id="questions"
+                storage="mongodb"
+                array="questions"
+                object
+                filter-limit="1"
+                render-selector="#temp"
+                read="false"
+                loader>
+                <form
+                    id="temp"
+                    realtime="false"
+                    array="users"
+                    object="$user_id"
+                    template
+                    broadcast="false">
+                    <input
+                        id="answeredQuestion"
+                        type="hidden"
+                        key="answeredQuestions[]"
+                        value="{{object.name}}"
+                        read="false" />
+
+                    <label
+                        for="{{object.name}}"
+                        class="load-value font-size:18px"
+                        >{{object.question}}</label
+                    >
+                    <div
+                        class="question-container position:relative margin-top:5px">
+                        <div class="sibling progress-bar">
+                            <div
+                                position="{{object.position}}"
+                                class="progress"
+                                style="width: 0px"></div>
+                        </div>
+
+                        <input
+                            id="{{object.name}}"
+                            type="{{object.type}}"
+                            key="{{object.name}}"
+                            name="{{object.name}}"
+                            autocomplete="{{object.name}}"
+                            read="false"
+                            {{object.attributes}}
+                            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"
+                            required
+                            class="question" />
+                        <a
+                            actions="{{object.actions}}"
+                            click-selector="i[src]"
+                            click-attribute="src"
+                            click-value="./assets/svg/spinner.svg"
+                            class="sibling display:flex align-items:center position:absolute top:8px right:8px font-size:20px">
+                            <span class="margin-right:5px font-weight:400"
+                                >Enter</span
+                            >
+                            <i
+                                src="./assets/svg/angle-right.svg"
+                                class="position:relative top:2px"></i>
+
+                            <div class="{{object.name}}" hidden>
+                                Begin Your Journey
+                            </div>
+                        </a>
+                    </div>
+                    <div
+                        template="validate"
+                        class="card margin:5px padding:10px {{status}}">
+                        <span class="{{type}}">{{message}}</span
+                        ><a actions="remove"> X</a>
+                    </div>
+                    <div
+                        onload-attribute="example"
+                        onload-value="{{object.name}}"
+                        onload-selector="document; #example"></div>
+                </form>
+            </div>
+        </section>
+
+        <section id="example" class="position:relative" example hidden>
+            <h3 class="position:absolute top:-30px left:0px">
+                Career Example:
+            </h3>
+            <a
+                id="close-example"
+                show="document; #oracle"
+                hide="document; #example"
+                class="position:absolute top:15px right:15px">
+                <i src="./assets/svg/times.svg"></i>
+            </a>
+
+            <textarea
+                id="subscription"
+                array="subscriptions"
+                object="6571fe530c48ef6970900a82"
+                key="fields"
+                input-next=".subscribed[]"
+                input-attribute="value"
+                class="width:100%"
+                hidden
+                save="false"></textarea>
+
+            <textarea
+                array="users"
+                object="$user_id"
+                key="answeredQuestions[1]"
+                input-attribute="hidden"
+                input-value="false"
+                input-parent
+                input-if=""
+                hidden></textarea>
+
+            <textarea
+                id="subscription"
+                array="subscriptions"
+                object="6571fe530c48ef6970900a82"
+                key="fields"
+                input-next=".subscribed[]"
+                input-attribute="value"
+                class="width:100%"
+                hidden
+                save="false"></textarea>
+
+            <div
+                array="careers"
+                object
+                filter-key="name"
+                filter-value="Surgeon"
+                filter-operator="$eq"
+                render-selector="[template]"
+                src="./oracle/university-template.html"></div>
+        </section>
+
+        <section id="oracle" class="oracle">
+            <input
+                type="hidden"
+                filter-key="university"
+                filter-value=""
+                filter-parent="#programs" />
+
+            <input
+                type="hidden"
+                array="users"
+                object="$user_id"
+                key="subscription"
+                input-next
+                input-attribute="object" />
+
+            <textarea
+                id="subscription"
+                array="subscriptions"
+                object=""
+                key="fields"
+                input-next=".subscribed[]"
+                input-attribute="value"
+                class="width:100%"
+                hidden
+                save="false"></textarea>
+
+            <div
+                id="programs"
+                array=""
+                object
+                filter-sort-key="name"
+                render-selector="[template]"
+                src="./oracle/university-template.html"></div>
+        </section>
+    </div>
+
+    <form api="openai">
+        <input
+            openai="chat.completions.create"
+            openai-key="model"
+            value="gpt-4-1106-preview"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[0].role"
+            value="system"
+            hidden />
+        <textarea
+            array="ai"
+            object
+            key="content"
+            filter-key="name"
+            filter-value="Program Suggestions"
+            openai="chat.completions.create"
+            openai-key="messages[0].content"
+            hidden></textarea>
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[1].role"
+            value="user"
+            hidden />
+        <input
+            array="users"
+            object="$user_id"
+            key="questions"
+            openai="chat.completions.create"
+            openai-key="messages[1].content"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[2].role"
+            value="user"
+            hidden />
+        <input
+            array="users"
+            object="$user_id"
+            key="careers"
+            openai="chat.completions.create"
+            openai-key="messages[2].content"
+            value-prefix="programs: "
+            hidden
+            input-next
+            input-attribute="value" />
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[2].content"
+            hidden />
+
+        <textarea
+            id="careerResults"
+            openai="chat.completions.create"
+            openai-key="choices[0].message.content"
+            openai-request="false"
+            value-type="json"
+            hidden></textarea>
+        <a id="request" actions="openai.chat.completions.create"></a>
+    </form>
+
+    <textarea
+        id="mergedPrograms"
+        realtime="true"
+        array="users"
+        object="$user_id"
+        key="programs"
+        value-type="json"
+        crdt="false"
+        broadcast="false"
+        filter-key="name"
+        filter-operator="$in"
+        filter-selector="document; #programs"
+        filter-case-sensitive="false"
+        input-attribute="array"
+        input-value="programs"
+        input-selector="document; #programs"
+        hidden></textarea>
+
+    <script src="./oracle/index.js"></script>
+    <script src="./oracle/progress.js"></script>
+    <script>
+        (function () {
+            CoCreate.observer.init({
+                name: "setEmailInput",
+                observe: ["addedNodes"],
+                target: "#password",
+                callback: async (mutation) => {
+                    const container = document.createElement("div");
+
+                    const email = document.createElement("input");
+                    email.type = "email";
+                    email.id = "email";
+                    email.name = "email";
+                    email.classList.add("hidden-input");
+                    email.setAttribute("array", "users");
+                    email.setAttribute("object", "$user_id");
+                    email.setAttribute("key", "email");
+                    email.setAttribute("autocomplete", "email");
+                    container.appendChild(email);
+
+                    const roles = document.createElement("input");
+                    roles.type = "hidden";
+                    roles.id = "roles";
+                    roles.setAttribute("array", "users");
+                    roles.setAttribute("object", "$user_id");
+                    roles.setAttribute("key", "roles[]");
+                    roles.value = "657726510fee1c6415f70760";
+                    container.appendChild(roles);
+
+                    let ambassadorId = localStorage.getItem("ambassador");
+                    if (ambassadorId) {
+                        const ambassador = document.createElement("input");
+                        ambassador.type = "hidden";
+                        ambassador.id = "amabassador";
+                        ambassador.setAttribute("array", "users");
+                        ambassador.setAttribute("object", "$user_id");
+                        ambassador.setAttribute("key", "ambassador");
+                        ambassador.value = ambassadorId;
+                        container.appendChild(ambassador);
+                    }
+
+                    let ambassadorAccount =
+                        localStorage.getItem("ambassadorAccount");
+                    if (ambassadorAccount) {
+                        const ambassadorAcc = document.createElement("input");
+                        ambassadorAcc.type = "hidden";
+                        ambassadorAcc.id = "ambassadorAccount";
+                        ambassadorAcc.setAttribute("array", "users");
+                        ambassadorAcc.setAttribute("object", "$user_id");
+                        ambassadorAcc.setAttribute("key", "ambassadorAccount");
+                        ambassadorAcc.value = ambassadorAccount;
+                        container.appendChild(ambassadorAcc);
+                    }
+
+                    let ambassadorParents =
+                        localStorage.getItem("ambassadorParents");
+                    if (ambassadorParents) {
+                        const ambassadorPar =
+                            document.createElement("textarea");
+                        ambassadorPar.id = "ambassadorParents";
+                        ambassadorPar.setAttribute("hidden", "");
+                        ambassadorPar.setAttribute("array", "users");
+                        ambassadorPar.setAttribute("object", "$user_id");
+                        ambassadorPar.setAttribute("key", "ambassadorParents");
+                        ambassadorPar.setAttribute("value-type", "json");
+                        ambassadorPar.value = ambassadorParents;
+                        container.appendChild(ambassadorPar);
+                    }
+                    mutation.target.parentElement.appendChild(container);
+                },
+            });
+        })();
+    </script>
+</div>
