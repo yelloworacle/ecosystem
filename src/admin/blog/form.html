@@ -62,6 +62,7 @@
 
         <input
             type="hidden"
+            read="false"
             key="url"
             value-replaceall=" "
             value-replacement="-"
@@ -257,6 +258,7 @@
     <!-- Get ObjectId from blobpost and reuse for file  -->
     <form id="publishform" array="files" object="" upsert="true" hidden>
         <input
+            read="false"
             key="name"
             value-replaceall=" "
             value-replacement="-"
@@ -265,7 +267,7 @@
             input-next
             input-attribute="value"
             class="title" />
-        <input key="pathname" value-prefix="/blog/" />
+        <input key="pathname" value-prefix="/blog/" read="false" />
         <input key="path" value="/blog" />
         <input key="directory" value="blog" />
         <input key="content-type" value="text/html" />
