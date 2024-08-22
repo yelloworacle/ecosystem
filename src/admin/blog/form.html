@@ -38,9 +38,23 @@
                 type="text"
                 key="title"
                 placeholder="Title"
-                input-selector="document; .title[]"
+                input-next
                 input-attribute="value"
                 class="floating-label input-icon" />
+
+            <input
+                type="hidden"
+                value-replaceall=" "
+                value-replacement="-"
+                value-suffix=".html"
+                input-next
+                input-attribute="value" />
+
+            <input
+                type="hidden"
+                value-replace="/[&:!#'()*+,;=?@$[\]]/g, ''"
+                input-selector="document; .title[]"
+                input-attribute="value" />
 
             <a
                 actions="action(document; #generate-post)"
@@ -60,16 +74,7 @@
                 click-value="./assets/svg/check-circle.svg"></div>
         </floating-label>
 
-        <input
-            type="hidden"
-            read="false"
-            key="url"
-            value-replaceall=" "
-            value-replacement="-"
-            value-prefix="/blog/"
-            value-suffix=".html"
-            value-encode="uri-component"
-            class="title" />
+        <input type="hidden" key="url" value-prefix="/blog/" class="title" />
 
         <floating-label class="input-300">
             <input
@@ -257,17 +262,8 @@
 
     <!-- Get ObjectId from blobpost and reuse for file  -->
     <form id="publishform" array="files" object="" upsert="true" hidden>
-        <input
-            read="false"
-            key="name"
-            value-replaceall=" "
-            value-replacement="-"
-            value-suffix=".html"
-            value-encode="uri-component"
-            input-next
-            input-attribute="value"
-            class="title" />
-        <input key="pathname" value-prefix="/blog/" read="false" />
+        <input key="name" class="title" />
+        <input key="pathname" value-prefix="/blog/" class="title" />
         <input key="path" value="/blog" />
         <input key="directory" value="blog" />
         <input key="content-type" value="text/html" />
