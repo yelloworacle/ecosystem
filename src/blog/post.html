@@ -144,7 +144,11 @@
 
         <!-- Main Content -->
         <main>
-            <div class="width:100% max-width:800px margin:auto">
+            <div
+                class="width:100% max-width:800px margin:auto"
+                sitemap="true"
+                sitemap-publication-name="YellowOracle"
+                sitemap-genres="Blog, Opinion">
                 <!--  Post Category Start  -->
                 <div
                     array="blog-posts"
@@ -267,7 +271,11 @@
                     </style>
 
                     <!-- Image -->
-                    <img src="{{object.image}}" width="100%" />
+                    <img
+                        src="{{object.image}}"
+                        width="100%"
+                        alt="{{object.title}}"
+                        sitemap="true" />
 
                     <!-- Video -->
                     <!-- <video
@@ -700,6 +708,21 @@
                         Post Comment
                     </button>
                 </div>
+
+                <!-- Script Loading Logic -->
+                <script>
+                    // Check if the script element with the src exists
+                    if (
+                        !document.querySelector(
+                            'script[src="../dist/CoCreate.js"]'
+                        )
+                    ) {
+                        var script = document.createElement("script");
+                        script.src =
+                            "https://yelloworacle.com/dist/CoCreate.js"; // Use absolute URL if necessary
+                        document.body.appendChild(script);
+                    }
+                </script>
             </div>
         </main>
 
