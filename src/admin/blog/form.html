@@ -299,6 +299,64 @@
             object
             key="content"
             filter-key="name"
+            filter-value="Blog Post"
+            openai="chat.completions.create"
+            openai-key="messages[0].content"
+            hidden></textarea>
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[1].role"
+            value="user"
+            hidden />
+        <input
+            class="title"
+            openai="chat.completions.create"
+            openai-key="messages[1].content"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[2].role"
+            value="user"
+            hidden />
+        <input
+            class="description"
+            openai="chat.completions.create"
+            openai-key="messages[2].content"
+            hidden />
+
+        <textarea
+            id="input"
+            openai="chat.completions.create"
+            openai-key="choices[0].message.content"
+            openai-request="false"
+            marked
+            input-selector="document; #content"
+            input-attribute="value"
+            hidden></textarea>
+        <a
+            id="generate-post"
+            actions="openai.chat.completions.create, action(document; #generate-details), action(document; #generate-image)"></a>
+    </form>
+
+    <form>
+        <input
+            openai="chat.completions.create"
+            openai-key="model"
+            value="gpt-4-1106-preview"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[0].role"
+            value="system"
+            hidden />
+        <textarea
+            array="ai"
+            object
+            key="content"
+            filter-key="name"
             filter-value="Blog Details"
             openai="chat.completions.create"
             openai-key="messages[0].content"
@@ -340,64 +398,6 @@
         <a
             id="generate-details"
             actions="openai.chat.completions.create, action(document; #generated-icon)"></a>
-    </form>
-
-    <form>
-        <input
-            openai="chat.completions.create"
-            openai-key="model"
-            value="gpt-4-1106-preview"
-            hidden />
-
-        <input
-            openai="chat.completions.create"
-            openai-key="messages[0].role"
-            value="system"
-            hidden />
-        <textarea
-            array="ai"
-            object
-            key="content"
-            filter-key="name"
-            filter-value="Blog Post"
-            openai="chat.completions.create"
-            openai-key="messages[0].content"
-            hidden></textarea>
-
-        <input
-            openai="chat.completions.create"
-            openai-key="messages[1].role"
-            value="user"
-            hidden />
-        <input
-            class="title"
-            openai="chat.completions.create"
-            openai-key="messages[1].content"
-            hidden />
-
-        <input
-            openai="chat.completions.create"
-            openai-key="messages[2].role"
-            value="user"
-            hidden />
-        <input
-            class="description"
-            openai="chat.completions.create"
-            openai-key="messages[2].content"
-            hidden />
-
-        <textarea
-            id="input"
-            openai="chat.completions.create"
-            openai-key="choices[0].message.content"
-            openai-request="false"
-            marked
-            input-selector="document; #content"
-            input-attribute="value"
-            hidden></textarea>
-        <a
-            id="generate-post"
-            actions="openai.chat.completions.create, action(document; #generate-details), action(document; #generate-image)"></a>
     </form>
 
     <form api="openai">
