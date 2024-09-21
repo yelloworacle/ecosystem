@@ -1,0 +1,362 @@
+<!DOCTYPE >
+
+<style>
+    /* Chat container */
+    #chat-container {
+        visibility: hidden;
+        background-color: #f5f5f5;
+        position: fixed;
+        bottom: 18px;
+        right: 18px;
+        width: 300px;
+        height: calc(100vh - 80px);
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        z-index: 1000;
+    }
+
+    /* Chat header */
+    #chat-header {
+        background-color: #f7cc02;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    /* Chat messages */
+    #chat-body {
+        padding: 10px;
+        padding-bottom: 60px;
+        overflow-y: auto;
+        height: calc(100vh - 164px);
+    }
+
+    /* Chat input */
+    #chat-input {
+        display: flex;
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    #chat-input .messageArea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        resize: none;
+    }
+
+    #chat-input a {
+        background-color: #111;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    #chat-input button {
+        background-color: #111;
+        color: white;
+        border: none !important;
+        border-radius: 0;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    /* Messages */
+    .message {
+        word-wrap: break-word; /* Breaks long words */
+        word-break: break-word;
+        border-radius: 8px;
+    }
+
+    .message.user {
+        max-width: 70%;
+        text-align: right;
+        background-color: #e6f7ff;
+        margin-left: auto;
+        padding: 10px;
+    }
+
+    .message.assistant {
+        text-align: left;
+    }
+
+    .message.assistant .markdown-body {
+        width: calc(100% - 40px);
+        padding-right: 10px;
+    }
+
+    .message img {
+        width: 40px;
+        height: 40px;
+        display: none;
+        margin-right: 10px;
+    }
+    .message.assistant img {
+        display: block;
+    }
+
+    textarea {
+        background-color: #fff;
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        #chat-container {
+            background-color: #333;
+        }
+        #chat-header {
+            color: #000;
+            fill: #000;
+        }
+
+        .message.user {
+            background-color: #1a1a1a;
+        }
+        textarea {
+            background-color: #222;
+            color: #fff;
+        }
+    }
+</style>
+<button
+    id="chat-toggle"
+    click-next
+    click-attribute="style"
+    click-value="visibility:visible,"
+    class="button-round">
+    <i src="../assets/svg/comment-alt.svg">💬</i>
+</button>
+
+<div id="chat-container" resizable>
+    <div id="chat-header">
+        Chat with YellowOracle
+        <a
+            click-closest="#chat-container"
+            click-attribute="style"
+            click-value="visibility:visible,"
+            class="float:right font-size:20px color:#000:hover">
+            &times;
+        </a>
+    </div>
+
+    <div
+        id="chat-body"
+        class="display:flex flex-direction:column gap:36px"
+        array="aiConversations"
+        object
+        filter-key="user_id"
+        filter-value="$user_id"
+        filter-limit="5"
+        filter-sort-key="_id"
+        filter-sort-direction="desc"
+        render-selector="[template]"
+        render-reverse="true"
+        scroll-to=""
+        observe-target=".message"
+        observe-attribute="scroll-to"
+        observe-value="bottom"
+        scroll="bottom, false"
+        scroll-element=""
+        scroll-up="10"
+        scroll-attribute="observe-value">
+        <div filter-on="scroll" filter-parent></div>
+
+        <div template class="display:flex message {{object.role}}">
+            <img src="{{path}}assets/icons/icon-1240-1240.png" alt="AI Icon" />
+            <div class="markdown-body" value-type="html">
+                {{object.content}}
+            </div>
+        </div>
+    </div>
+
+    <div
+        observe-target="pre code"
+        observe-selector="document; .message pre code"
+        observe-insert-adjacent="beforebegin">
+        <div class="position:relative height:25px display:flex">
+            <a>
+                <i src="./assets/svg/clone.svg"></i>
+            </a>
+        </div>
+    </div>
+
+    <form id="chat-input" api="openai">
+        <input
+            openai="chat.completions.create"
+            openai-key="model"
+            value="gpt-4-1106-preview"
+            hidden />
+
+        <input
+            openai="chat.completions.create"
+            openai-key="messages[0].role"
+            value="system"
+            hidden />
+        <textarea
+            array="ai"
+            object
+            key="content"
+            save="false"
+            filter-key="name"
+            filter-value="Website Instructions"
+            openai="chat.completions.create"
+            openai-key="messages[0].content"
+            hidden></textarea>
+
+        <previousConversation>
+            <input
+                filter-key="userId"
+                filter-value="$user_id"
+                filter-next
+                hidden />
+
+            <!-- TODO: Needs to merge with with message array -->
+            <!-- <textarea
+                array="aiConversations"
+                object
+                save="false"
+                value-type="array"
+                openai="chat.completions.create"
+                openai-key="messages[1]"
+                hidden></textarea> -->
+        </previousConversation>
+
+        <input
+            array="aiConversations"
+            object
+            key="user_id"
+            value="$user_id"
+            hidden />
+        <input
+            array="aiConversations"
+            object
+            key="role"
+            openai="chat.completions.create"
+            openai-key="messages[1].role"
+            value="user"
+            hidden />
+        <textarea
+            array="aiConversations"
+            object
+            key="content"
+            openai="chat.completions.create"
+            openai-key="messages[1].content"
+            placeholder="Message YellowOracle"
+            rows="1"
+            auto-rows
+            class="messageArea"></textarea>
+
+        <textarea
+            openai="chat.completions.create"
+            openai-key="choices[0].message.content"
+            openai-request="false"
+            input-selector="document; #aiContent"
+            input-attribute="value"
+            marked
+            hidden></textarea>
+
+        <button
+            id="send-message"
+            actions="save, click, reset, openai.chat.completions.create, action(document; #aiAction)"
+            click-selector="document; #chat-body"
+            click-attribute="observe-value"
+            click-value="bottom">
+            <i src="./assets/svg/paper-plane.svg"></i>
+        </button>
+    </form>
+
+    <form array="aiConversations" object hidden>
+        <input key="user_id" value="$user_id" update="false" />
+        <input id="testrole" key="role" value="assistant" update="false" />
+        <input key="eid" />
+        <editor id="aiContent" key="content"></editor>
+        <a id="aiAction" actions="save, reset"></a>
+    </form>
+
+    <div resize="left"></div>
+    <div resize="top"></div>
+</div>
+
+<!-- <script>
+    let selectedElement = null;
+
+    // Simulate element selection
+    document.body.addEventListener("click", (event) => {
+        if (selectedElement) {
+            selectedElement.classList.remove("selected-element");
+        }
+        selectedElement = event.target;
+        selectedElement.classList.add("selected-element");
+    });
+</script> -->
+
+<!-- <script>
+    console.log('test')
+    const chatBody = document.getElementById('chat-body');
+    if (chatBody) {
+        // Auto-scroll to bottom when a new message is added
+        const observer = new MutationObserver(scrollToBottom);
+        observer.observe(chatBody, { childList: true });
+
+        // Scroll chat body to the bottom
+        function scrollToBottom() {
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    }
+</script> -->
+<script>
+    document.addEventListener(
+        "input",
+        function (event) {
+            if (
+                event.target.tagName.toLowerCase() !== "textarea" ||
+                !event.target.hasAttribute("auto-rows")
+            )
+                return;
+            autoResizeTextarea(event.target);
+        },
+        false
+    );
+
+    function autoResizeTextarea(textarea) {
+        const computedStyle = window.getComputedStyle(textarea);
+        let lineHeight = computedStyle.lineHeight;
+        const fontSize = parseFloat(computedStyle.fontSize); // Get fontSize in pixels
+
+        // if (lineHeight === "normal") {
+        //     // Fallback for 'normal' line-height
+        //     lineHeight = fontSize * 1.2; // Estimate a multiplier for "normal"
+        // } else
+        if (lineHeight.includes("%")) {
+            // Handle percentage-based line-height
+            lineHeight = fontSize * (parseFloat(lineHeight) / 100);
+        } else if (lineHeight.includes("px")) {
+            // Parse pixel-based line-height
+            lineHeight = parseFloat(lineHeight);
+        } else if (!isNaN(lineHeight)) {
+            // Unitless multiplier (e.g., "1.5")
+            lineHeight = parseFloat(lineHeight) * fontSize;
+        } else {
+            // Fallback to fontSize multiplier if any other unexpected case
+            lineHeight = fontSize;
+        }
+
+        console.log(lineHeight);
+        console.log("auto-rows");
+        textarea.rows = 1;
+
+        // Get the padding (top + bottom) to subtract from scrollHeight
+        const paddingTop = parseFloat(computedStyle.paddingTop);
+        const paddingBottom = parseFloat(computedStyle.paddingBottom);
+
+        // Corrected scrollHeight (excluding padding)
+        const contentHeight =
+            textarea.scrollHeight - paddingTop - paddingBottom;
+        const lines = Math.floor(contentHeight / lineHeight);
+        textarea.rows = lines;
+    }
+</script>
