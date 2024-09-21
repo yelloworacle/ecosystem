@@ -127,7 +127,7 @@
     click-next
     click-attribute="style"
     click-value="visibility:visible,"
-    class="button-round">
+    class="button-round bottom:70px">
     <i src="../assets/svg/comment-alt.svg">💬</i>
 </button>
 
@@ -261,7 +261,7 @@
 
         <button
             id="send-message"
-            actions="save, click, reset, openai.chat.completions.create, action(document; #aiAction)"
+            actions="save, click, openai.chat.completions.create, reset, action(document; #aiAction)"
             click-selector="document; #chat-body"
             click-attribute="observe-value"
             click-value="bottom">
