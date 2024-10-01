@@ -13,7 +13,7 @@
     resize-selector="document; [menu-icon][]"></div>
 
 <div
-    class="display:flex justify-content:space-between align-items:center padding:10px background:#222@dark">
+    class="display:flex justify-content:space-between align-items:center padding:10px">
     <!-- Logo -->
     <a
         href="{{path}}"
@@ -599,6 +599,42 @@
                     <i src="{{path}}assets/svg/plus.svg"></i>
                 </a>
             </div>
+        </li>
+        <li class="">
+            <a
+                href="{{path}}admin/builder/"
+                state_to="builder"
+                state-object="66f6d0cb004fd1aefd6d070d"
+                click-closest="sidenav"
+                click-attribute="style"
+                click-value="width:0px"
+                click-if="<=993px"
+                click-if-value="$innerWidth"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i src="{{path}}assets/svg/palette.svg"></i>
+                </span>
+                <span>Builder</span>
+            </a>
+        </li>
+        <li class="">
+            <a
+                href="{{path}}admin/code-editor/"
+                state_to="code-editor"
+                state-object="66f6d0cb004fd1aefd6d070d"
+                click-closest="sidenav"
+                click-attribute="style"
+                click-value="width:0px"
+                click-if="<=993px"
+                click-if-value="$innerWidth"
+                class="display:flex align-items:center">
+                <span
+                    class="display:flex justify-content:center min-width:50px">
+                    <i src="{{path}}assets/svg/code.svg"></i>
+                </span>
+                <span>Code</span>
+            </a>
         </li>
     </menu>
     <div
