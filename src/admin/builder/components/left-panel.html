@@ -1,51 +1,73 @@
 <!DOCTYPE html>
-<div class="padding:5px min-width:260px">
+<div
+    class="width:100%"
+    resize-attribute="menu-icon"
+    resize-value="active"
+    resize-if="260px"
+    resize-selector="document; #btn-left"></div>
+
+<div
+    class="width:100%"
+    resize-attribute="menu-icon"
+    resize-value="false"
+    resize-if="0px"
+    resize-selector="document; #btn-left"></div>
+
+<div class="padding:10px min-width:260px">
     <div class="display:flex margin-bottom:5px font-size:16px tabs">
         <div
-            classkey="builder-tab-round"
-            class="width:40px line-height:40px text-align:center margin:5px border-radius:50% cursor:pointer background:gainsboro background:silver:hover"
+            class="builder-tab-round"
+            selected-attribute="class"
             selected-value="active"
-            selected-selector="#vdom"
+            selected-selector="document; #vdom"
             selected-group="left-panels"
             toggle="#canvas"
-            toggle-selector="#vdom"
+            toggle-selector="document; #vdom"
             toggle-attribute="vdom-selector">
-            <i src="./assets/svg/stream.svg"></i>
+            <i src="../../../assets/svg/stream.svg"></i>
         </div>
         <div
             class="builder-tab-round"
+            selected-attribute="class"
             selected-value="active"
-            selected-selector="#assets"
+            selected-selector="document; #assets"
             selected-group="left-panels"
             toggle="files"
-            toggle-selector="#fetch-assets"
+            toggle-selector="document; #fetch-assets"
             toggle-attribute="array">
-            <i class="height:16px" src="./assets/svg/photo-video.svg"></i>
+            <i
+                class="height:16px"
+                src="../../../assets/svg/photo-video.svg"></i>
         </div>
         <div
             class="builder-tab-round"
+            selected-attribute="class"
             selected-value="active"
-            selected-selector="#files"
+            selected-selector="document; #files"
             selected-group="left-panels"
             toggle="files"
-            toggle-selector=".fetch-files"
+            toggle-selector="document; .fetch-files"
             toggle-attribute="array">
-            <i class="height:16px" src="./assets/svg/folder.svg"></i>
+            <i class="height:16px" src="../../../assets/svg/folder.svg"></i>
         </div>
         <div
             class="builder-tab-round"
+            selected-attribute="class"
             selected-value="active"
-            selected-selector="#uploader"
+            selected-selector="document; #uploader"
             selected-group="left-panels">
-            <i class="height:16px" src="./assets/svg/cloud-upload-alt.svg"></i>
+            <i
+                class="height:16px"
+                src="../../../assets/svg/cloud-upload-alt.svg"></i>
         </div>
         <div
             class="builder-tab-round"
+            selected-attribute="class"
             selected-value="active"
-            selected-selector="#blocks"
+            selected-selector="document; #blocks"
             selected-group="left-panels"
             selected>
-            <i class="height:16px" src="./assets/svg/th-large.svg"></i>
+            <i class="height:16px" src="../../../assets/svg/th-large.svg"></i>
         </div>
     </div>
 
@@ -57,67 +79,68 @@
             <div
                 class="display:flex justify-content:center position:relative margin-bottom:30px">
                 <div
-                    class="card background:gainsboro width:50% text-align:center padding:5px"
+                    class="card width:50% text-align:center padding:5px"
+                    selected-attribute="class"
                     selected-value="active"
-                    selected-selector="#elements"
+                    selected-selector="document; #elements"
                     selected-group="components"
                     selected>
                     Elements
                 </div>
                 <div
-                    class="card background:gainsboro width:50% text-align:center padding:5px"
+                    class="card width:50% text-align:center padding:5px"
+                    selected-attribute="class"
                     selected-value="active"
-                    selected-selector="#components"
+                    selected-selector="document; #components"
                     selected-group="components"
                     selected>
                     Components
                 </div>
                 <button
-                    class="position:absolute top:13px padding:5px background:gainsboro color:#505050 grow-hover border-radius:50%">
+                    class="position:absolute top:13px height:30px width:30px padding:5px grow-hover border-radius:50%">
                     <a
                         actions="state, openModal"
-                        modal-src="./marketplace/list.html"
+                        modal-src="../marketplace/list.html"
                         modal-width="840px">
-                        <i class="height:16px" src="./assets/svg/plus.svg"></i>
+                        <i
+                            class="height:16px"
+                            src="../../../assets/svg/plus.svg"></i>
                     </a>
                 </button>
             </div>
 
             <!-- Block Categories -->
             <!--<div filter-parent="[array]" filter-key="type" filter-value="611829a9c0e9580010ea589d"></div>-->
-            <div
+            <!-- <div
                 filter-next
                 filter-key="tags"
                 filter-value="6200378ea8b6b4001ae57821"
-                filter-operator="$ne"></div>
+                filter-operator="$ne"></div> -->
             <div
                 id="elements"
                 class="components display:none active"
                 array="tags"
+                object
                 filter-key="module_id"
                 filter-value="5ff747727005da1c27274194"
                 filter-sort-key="position"
                 filter-sort-direction="asc"
-                render-selector=":last-child">
+                render-selector="[template]">
                 <!-- Block Categories Template -->
-                <div
-                    template
-                    render="object"
-                    render-as="tag"
-                    object="{{tag._id}}">
+                <div template render-as="tag" object="{{tag._id}}">
                     <div
-                        class="padding:5px background:gainsboro"
+                        class="padding:5px"
                         show=".category{{tag._id}}"
                         hide=".category{{tag._id}}">
                         <span class="category{{tag._id}}" hidden
                             ><i
                                 class="height:16px"
-                                src="./assets/svg/plus.svg"></i
+                                src="../../../assets/svg/plus.svg"></i
                         ></span>
                         <span class="category{{tag._id}}"
                             ><i
                                 class="height:16px"
-                                src="./assets/svg/minus.svg"></i
+                                src="../../../assets/svg/minus.svg"></i
                         ></span>
                         <span>{{tag.name}}</span>
                     </div>
@@ -125,6 +148,7 @@
                     <div
                         class="category{{tag._id}} display:flex flex-wrap:wrap justify-content:center text-align:center padding-bottom:20px"
                         array="blocks"
+                        object
                         filter-key="category"
                         filter-value="{{tag._id}}"
                         filter-sort-key="position"
@@ -134,27 +158,29 @@
                         <div
                             template
                             class="card position:relative flex-grow:1 width:70px height:75px margin:5px padding:5px"
-                            hover="display:block!important"
+                            hover-value="display:block!important"
                             hover-selector="#editblock{{object._id}}"
+                            hover-attribute="class"
                             object="{{object._id}}">
                             <div
                                 id="editblock{{object._id}}"
                                 class="position:absolute top:8px right:8px font-size:11px display:none">
                                 <a
                                     actions="state, openModal"
-                                    modal-src="./blocks/form.html"
+                                    modal-src="../blocks/form.html"
                                     state-array="{{object.array}}"
                                     state-object="{{object._id}}"
                                     state_to="form-fields"
                                     modal-width="320px">
-                                    <i src="./assets/svg/pencil-alt.svg"></i>
+                                    <i
+                                        src="../../../assets/svg/pencil-alt.svg"></i>
                                 </a>
                             </div>
                             <div
                                 cloneable="true"
                                 class="height:65px padding:5px">
                                 <cloneable-html>{{object.html}}</cloneable-html>
-                                <i>{{object.icon}}</i>
+                                <i value-type="html">{{object.icon}}</i>
                                 <p class="font-size:11px">{{object.name}}</p>
                             </div>
                         </div>
@@ -171,26 +197,27 @@
                 id="components"
                 class="components display:none"
                 array="tags"
+                object
                 filter-key="module_id"
                 filter-value="5ff747727005da1c27274194"
                 filter-sort-key="position"
                 filter-sort-direction="asc"
-                render-selector=":lastchild">
+                render-selector=":last-child">
                 <!-- Components Categories Template -->
                 <div template render-as="tag" object="{{tag._id}}">
                     <div
-                        class="padding:5px background:gainsboro"
+                        class="padding:5px"
                         show=".category{{tag._id}}"
                         hide=".category{{tag._id}}">
                         <span class="category{{tag._id}}" hidden
                             ><i
                                 class="height:16px"
-                                src="./assets/svg/plus.svg"></i
+                                src="../../../assets/svg/plus.svg"></i
                         ></span>
                         <span class="category{{tag._id}}"
                             ><i
                                 class="height:16px"
-                                src="./assets/svg/minus.svg"></i
+                                src="../../../assets/svg/minus.svg"></i
                         ></span>
                         <span>{{tag.name}}</span>
                     </div>
@@ -198,35 +225,38 @@
                     <div
                         class="category{{tag._id}} display:flex flex-wrap:wrap justify-content:center text-align:center padding-bottom:20px"
                         array="blocks"
+                        object
                         filter-key="category"
                         filter-value="{{tag._id}}"
                         filter-sort-key="position"
                         filter-sort-direction="asc"
-                        render-selector=":last-child">
+                        render-selector="[template]">
                         <!-- Components Template -->
                         <div
                             template
                             class="card position:relative flex-grow:1 width:70px height:125px margin:5px padding:5px"
                             hover="display:block!important"
+                            hover-attribute="class"
                             hover-selector="#editcomponents{{object._id}}">
                             <div
                                 id="editcomponents{{object._id}}"
                                 class="position:absolute top:8px right:8px font-size:11px display:none">
                                 <a
                                     actions="state, openModal"
-                                    modal-src="./blocks/form.html"
+                                    modal-src="../blocks/form.html"
                                     state-array="{{object.array}}"
                                     state-object="{{object._id}}"
                                     state_to="form-fields"
                                     modal-width="320px">
-                                    <i src="./assets/svg/pencil-alt.svg"></i>
+                                    <i
+                                        src="../../../assets/svg/pencil-alt.svg"></i>
                                 </a>
                             </div>
                             <div
                                 cloneable="true"
                                 cloneable-html="{{object.html}}"
                                 class="height:115px padding:5px">
-                                <i>{{object.icon}}</i>
+                                <i value-type="html">{{object.icon}}</i>
                                 <p class="font-size:11px">{{object.name}}</p>
                             </div>
                         </div>
@@ -239,6 +269,8 @@
         <div
             id="vdom"
             vdom-selector=""
+            vdom-attribute="src"
+            vdom-attribute="src"
             dnd-group-key="vdom"
             class="left-panel display:none">
             vdom
@@ -247,22 +279,42 @@
         <!-- uploader -->
         <div id="uploader" class="left-panel display:none">
             <form>
-                <input
+                <!-- <input
                     type="file"
                     directory
                     array="files"
-                    render-closest="#uploader, [template]" />
+                    render-closest="#uploader, [template]" /> -->
 
-                <button actions="upload">upload</button>
+                <floating-label>
+                    <div
+                        type="file"
+                        array="files"
+                        object=""
+                        key="{}"
+                        placeholder="Files"
+                        class="floating-label min-height:40px active"
+                        render-selector="[template]"
+                        multiple
+                        active>
+                        <div template>
+                            <img
+                                src="{{object.src}}"
+                                alt="image"
+                                width="100%" />
+                        </div>
+                    </div>
+                </floating-label>
+
+                <button class="margin-top:30px" actions="upload">Upload</button>
             </form>
 
-            <div template>
+            <!-- <div template>
                 <input file="name" value="{{name}}" />
                 <input file="directory" value="{{directory}}" />
                 <input file="content-type" value="{{content-type}}" />
 
                 <textarea file="src" value-type="string">{{src}}</textarea>
-            </div>
+            </div> -->
         </div>
 
         <!-- Files -->
@@ -280,7 +332,7 @@
                         state-key="src"
                         modal-width="900px"
                         modal-color="#229954">
-                        <i src="./assets/svg/search.svg"></i>
+                        <i src="../../../assets/svg/search.svg"></i>
                     </a>
                 </span>
             </form>
@@ -305,11 +357,11 @@
                     array
                     object
                     filter-key="directory"
-                    filter-value="./"
+                    filter-value="/"
                     filter-operator="$eq"
                     filter-sort-key="name"
                     filter-sort-direction="asc"
-                    render-selector=":lastchild">
+                    render-selector=":last-child">
                     <div
                         filter-parent
                         filter-key="content-type"
@@ -370,7 +422,7 @@
                         render-as="$auto"
                         object="{{$auto._id}}">
                         <span class="{{$auto.content-type}}"
-                            ><i src="./assets/svg/html5.svg"></i
+                            ><i src="../../../assets/svg/html5.svg"></i
                         ></span>
                         <span
                             class="margin-left:5px"
@@ -397,7 +449,7 @@
                         state-key="src"
                         modal-width="900px"
                         modal-color="#229954">
-                        <i src="./assets/svg/search.svg"></i>
+                        <i src="../../../assets/svg/search.svg"></i>
                     </a>
                 </span>
             </form>
@@ -409,6 +461,8 @@
                 object
                 filter-key="content-type"
                 filter-value="image, video"
+                filter-operator="$regex"
+                filter-regex-flag="i"
                 filter-sort-key="path"
                 filter-sort-direction="asc"
                 render-selector=":last-child">
@@ -438,7 +492,7 @@
                             state-object="{{object._id}}"
                             state_to="form-fields"
                             modal-width="900px">
-                            <i src="./assets/svg/pencil-alt.svg"></i>
+                            <i src="../../../assets/svg/pencil-alt.svg"></i>
                         </a>
                     </div>
                     <a
