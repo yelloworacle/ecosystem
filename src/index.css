@@ -157,6 +157,51 @@ header {
     transform: rotate(-45deg) translate(-1px, -6px);
 }
 
+/* Left arrow */
+[menu-icon="active"].arrow-left span:first-child {
+    width: 15px;
+}
+
+[menu-icon="active"].arrow-left span:first-child {
+    transform: rotate(-45deg) translate(-5px, 1px);
+    width: 12px;
+
+}
+
+[menu-icon="active"].arrow-left span:nth-child(2) {
+    display: block;
+}
+
+[menu-icon="active"].arrow-left span:last-child {
+    transform: rotate(45deg) translate(-5px, -1px);
+    width: 12px;
+}
+
+/* right arrow */
+[menu-icon="active"].arrow-right span:first-child {
+    width: 15px;
+    margin-left: auto;
+}
+
+[menu-icon="active"].arrow-right span:first-child {
+    transform: rotate(45deg) translate(14px, -8px);
+    width: 12px;
+    margin-left: unset;
+    margin-right: auto;
+    left: 5px;
+}
+
+[menu-icon="active"].arrow-right span:nth-child(2) {
+    display: block;
+}
+
+[menu-icon="active"].arrow-right span:last-child {
+    transform: rotate(-45deg) translate(14px, 8px);
+    width: 12px;
+    margin-right: auto;
+    left: 5px;
+}
+
 button {
     padding: 15px 30px;
     font-weight: bold;
@@ -427,6 +472,10 @@ footer p {
     font-size: 20px;
 }
 
+textarea {
+    resize: vertical;
+}
+
 @media (max-width: 628px) {
     .input-300 {
         width: 100%;
@@ -437,7 +486,7 @@ footer p {
     background-color: gainsboro;
 }
 
-/* .menu_icon {
+/* .menu-icon {
         position: fixed;
         left: 15px;
         top: 25px;
@@ -485,6 +534,43 @@ tr.hover:hover {
   background: gainsboro; 
 }
 
+/* WebKit browsers (Chrome, Edge, Safari, Opera) */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.09);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #F7CC02;
+    opacity: 0.08;
+    /* width: 10px; */
+    /* height: 10px; */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.03);
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: rgba(0, 0, 0, 0.06);
+    /* width: 10px !important; */
+    /* height: 10px !important; */
+}
+
+/* Firefox browsers */
+* {
+    scrollbar-width: thin;
+    /* Options: auto, thin, none */
+    scrollbar-color: rgba(0, 0, 0, 0.09) rgba(0, 0, 0, 0.03);
+    /* Thumb color, Track color */
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -519,7 +605,7 @@ tr.hover:hover {
     }
 
     sidenav {
-        background-color: #333;
+        background-color: #222;
     }
 
     sidenav .nav {
