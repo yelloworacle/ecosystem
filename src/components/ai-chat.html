@@ -122,6 +122,23 @@
         }
     }
 </style>
+
+<input
+    type="hidden"
+    key="_id"
+    localstorage-get="user_id"
+    localstorage-if="false"
+    localstorage-next="#createUserAI"
+    localstorage-attribute="$click" />
+
+<form array="users" object="" hidden>
+    <input key="_id" localstorage-set="user_id" />
+    <input key="answeredQuestions[]" value="Discover" />
+    <input key="subscription" value="false" />
+    <input type="checkbox" key="ambassadorTerms" />
+    <a id="createUserAI" actions="timeout(1000), save, localStorage"></a>
+</form>
+
 <button
     id="chat-toggle"
     click-next
