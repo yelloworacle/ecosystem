@@ -52,6 +52,83 @@
                 >{{object.careerPathVariability}}</span
             >
         </div>
+        <div class="card-row full-width">
+            <span class="card-label">Why:</span>
+            <span
+                class="card-value load-value"
+                array="users"
+                object="$user_id"
+                key="why.{{object._id}}"
+                input-if="false"
+                input-next=".createWhy"
+                input-attribute="$click"></span>
+
+            <form api="openai">
+                <input
+                    openai="chat.completions.create"
+                    openai-key="model"
+                    value="gpt-4-1106-preview"
+                    hidden />
+
+                <input
+                    openai="chat.completions.create"
+                    openai-key="messages[0].role"
+                    value="system"
+                    hidden />
+                <textarea
+                    array="ai"
+                    object
+                    key="content"
+                    save="false"
+                    filter-key="name"
+                    filter-value="Why Career"
+                    openai="chat.completions.create"
+                    openai-key="messages[0].content"
+                    hidden></textarea>
+
+                <input
+                    openai="chat.completions.create"
+                    openai-key="messages[1].role"
+                    value="user"
+                    hidden />
+                <input
+                    array="users"
+                    object="$user_id"
+                    key="questions"
+                    save="false"
+                    openai="chat.completions.create"
+                    openai-key="messages[1].content"
+                    hidden />
+
+                <input
+                    openai="chat.completions.create"
+                    openai-key="messages[2].role"
+                    value="user"
+                    hidden />
+                <input
+                    openai="chat.completions.create"
+                    openai-key="messages[2].content"
+                    value="career name: {{object.name}}"
+                    hidden />
+                <textarea
+                    class="whyCareerResult"
+                    realtime="true"
+                    crdt="false"
+                    array="users"
+                    object="$user_id"
+                    key="why.{{object._id}}"
+                    openai="chat.completions.create"
+                    openai-key="choices[0].message.content"
+                    openai-request="false"
+                    hidden></textarea>
+                <a
+                    class="createWhy"
+                    actions="openai.chat.completions.create, save"
+                    >test</a
+                >
+            </form>
+        </div>
+
         <div class="width:100% subscribed">
             <button class="unlock width:100% margin-top:20px font-size:16px">
                 <a state_to="mainView" state-src="./checkout/"
