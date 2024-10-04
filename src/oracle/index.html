@@ -439,6 +439,7 @@
             key="questions"
             openai="chat.completions.create"
             openai-key="messages[1].content"
+            value-prefix="userAnswers:"
             hidden />
 
         <input
@@ -453,13 +454,11 @@
             openai="chat.completions.create"
             openai-key="messages[2].content"
             value-prefix="previousCareers: "
-            hidden
-            input-next
-            input-attribute="value" />
-        <input
+            hidden />
+        <!-- <input
             openai="chat.completions.create"
             openai-key="messages[2].content"
-            hidden />
+            hidden /> -->
 
         <textarea
             id="careerResults"
