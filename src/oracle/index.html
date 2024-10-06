@@ -322,6 +322,16 @@
             </div>
         </section>
 
+        <textarea
+            id="subscription"
+            array="subscriptions"
+            object="6571fe530c48ef6970900a82"
+            key="fields"
+            input-selector="document; .subscribed[]"
+            input-attribute="value"
+            class="width:100%"
+            hidden></textarea>
+
         <section id="example" class="position:relative" example hidden>
             <h3 class="position:absolute top:-30px left:0px">
                 Career Example:
@@ -335,17 +345,6 @@
             </a>
 
             <textarea
-                id="subscription"
-                array="subscriptions"
-                object="6571fe530c48ef6970900a82"
-                key="fields"
-                input-next=".subscribed[]"
-                input-attribute="value"
-                class="width:100%"
-                hidden
-                save="false"></textarea>
-
-            <textarea
                 array="users"
                 object="$user_id"
                 key="answeredQuestions[1]"
@@ -355,18 +354,8 @@
                 input-if=""
                 hidden></textarea>
 
-            <textarea
-                id="subscription"
-                array="subscriptions"
-                object="6571fe530c48ef6970900a82"
-                key="fields"
-                input-next=".subscribed[]"
-                input-attribute="value"
-                class="width:100%"
-                hidden
-                save="false"></textarea>
-
             <div
+                id="example-template"
                 array="careers"
                 object
                 filter-key="name"
@@ -384,17 +373,6 @@
                 key="subscription"
                 input-next
                 input-attribute="object" />
-
-            <textarea
-                id="subscription"
-                array="subscriptions"
-                object=""
-                key="fields"
-                input-next=".subscribed[]"
-                input-attribute="value"
-                class="width:100%"
-                hidden
-                save="false"></textarea>
 
             <div
                 id="careers"
@@ -455,6 +433,7 @@
             openai-key="messages[2].content"
             value-prefix="previousCareers: "
             hidden />
+
         <!-- <input
             openai="chat.completions.create"
             openai-key="messages[2].content"
