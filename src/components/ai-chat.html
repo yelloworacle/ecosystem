@@ -228,18 +228,20 @@
             <input
                 filter-key="userId"
                 filter-value="$user_id"
+                filter-sort-key="_id"
+                filter-sort-direction="desc"
                 filter-next
                 hidden />
 
             <!-- TODO: Needs to merge with with message array -->
-            <!-- <textarea
+            <textarea
                 array="aiConversations"
                 object
                 save="false"
                 value-type="array"
                 openai="chat.completions.create"
-                openai-key="messages[1]"
-                hidden></textarea> -->
+                openai-key="messages[]"
+                hidden></textarea>
         </previousConversation>
 
         <input
@@ -286,7 +288,7 @@
         </button>
     </form>
 
-    <form array="aiConversations" object hidden>
+    <form array="aiConversations" object>
         <input key="user_id" value="$user_id" update="false" />
         <input id="testrole" key="role" value="assistant" update="false" />
         <input key="eid" />
