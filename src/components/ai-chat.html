@@ -222,11 +222,13 @@
             filter-value="Website Instructions"
             openai="chat.completions.create"
             openai-key="messages[0].content"
+            reset="object"
+            skip-attribute
             hidden></textarea>
 
         <previousConversation>
             <input
-                filter-key="userId"
+                filter-key="user_id"
                 filter-value="$user_id"
                 filter-sort-key="_id"
                 filter-sort-direction="desc"
@@ -235,13 +237,16 @@
 
             <!-- TODO: Needs to merge with with message array -->
             <textarea
+                id="messagetest"
                 array="aiConversations"
                 object
+                key="{}"
                 save="false"
                 value-type="array"
                 openai="chat.completions.create"
                 openai-key="messages[]"
-                hidden></textarea>
+                reset="object"
+                skip-attribute></textarea>
         </previousConversation>
 
         <input
@@ -255,7 +260,7 @@
             object
             key="role"
             openai="chat.completions.create"
-            openai-key="messages[1].role"
+            openai-key="messages[a].role"
             value="user"
             hidden />
         <textarea
@@ -263,7 +268,7 @@
             object
             key="content"
             openai="chat.completions.create"
-            openai-key="messages[1].content"
+            openai-key="messages[a].content"
             placeholder="Message YellowOracle"
             rows="1"
             auto-rows
@@ -288,7 +293,7 @@
         </button>
     </form>
 
-    <form array="aiConversations" object>
+    <form array="aiConversations" object hidden>
         <input key="user_id" value="$user_id" update="false" />
         <input id="testrole" key="role" value="assistant" update="false" />
         <input key="eid" />
