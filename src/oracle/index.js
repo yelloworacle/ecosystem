@@ -96,7 +96,7 @@
                 let data = await CoCreate.socket.send({
                     method: 'openai.chat.completions.create',
                     openai: {
-                        model: 'gpt-3.5-turbo',
+                        model: 'gpt-4o-mini',
                         messages,
                         max_tokens: 3300,
                         temperature: 0.6,
