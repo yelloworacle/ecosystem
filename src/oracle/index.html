@@ -322,15 +322,33 @@
             </div>
         </section>
 
+        <input
+            type="hidden"
+            array="users"
+            object="$user_id"
+            key="subscription"
+            input-next
+            input-attribute="object" />
+
         <textarea
             id="subscription"
             array="subscriptions"
             object="6571fe530c48ef6970900a82"
             key="fields"
-            input-selector="document; .subscribed[]"
+            input-selector="document; #oracle .subscribed[]"
             input-attribute="value"
             class="width:100%"
             hidden></textarea>
+
+        <!-- <textarea
+        id="subscription"
+        array="subscriptions"
+        object="6571fe530c48ef6970900a82"
+        key="fields"
+        input-selector="document; #example .subscribed[]"
+        input-attribute="value"
+        class="width:100%"
+        hidden></textarea> -->
 
         <section id="example" class="position:relative" example hidden>
             <h3 class="position:absolute top:-30px left:0px">
@@ -366,14 +384,6 @@
         </section>
 
         <section id="oracle" class="oracle">
-            <input
-                type="hidden"
-                array="users"
-                object="$user_id"
-                key="subscription"
-                input-next
-                input-attribute="object" />
-
             <div
                 id="careers"
                 array=""
@@ -388,7 +398,7 @@
         <input
             openai="chat.completions.create"
             openai-key="model"
-            value="gpt-4-1106-preview"
+            value="gpt-4o-mini"
             hidden />
 
         <input
@@ -432,12 +442,8 @@
             openai="chat.completions.create"
             openai-key="messages[2].content"
             value-prefix="previousCareers: "
+            value="[]"
             hidden />
-
-        <!-- <input
-            openai="chat.completions.create"
-            openai-key="messages[2].content"
-            hidden /> -->
 
         <textarea
             id="careerResults"
