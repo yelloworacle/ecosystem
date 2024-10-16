@@ -205,7 +205,7 @@
         <input
             openai="chat.completions.create"
             openai-key="model"
-            value="gpt-4-1106-preview"
+            value="gpt-4o-mini"
             hidden />
 
         <input
@@ -246,7 +246,8 @@
                 openai="chat.completions.create"
                 openai-key="messages[]"
                 reset="object"
-                skip-attribute></textarea>
+                skip-attribute
+                hidden></textarea>
         </previousConversation>
 
         <input
@@ -263,7 +264,15 @@
             openai-key="messages[a].role"
             value="user"
             hidden />
-        <textarea
+        <span
+            array="aiConversations"
+            object
+            key="content"
+            openai="chat.completions.create"
+            openai-key="messages[a].content"
+            reset="object"
+            hidden></span>
+        <!-- <textarea
             array="aiConversations"
             object
             key="content"
@@ -272,7 +281,26 @@
             placeholder="Message YellowOracle"
             rows="1"
             auto-rows
-            class="messageArea"></textarea>
+            class="messageArea"
+            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"></textarea> -->
+        <textarea
+            placeholder="Message YellowOracle"
+            input-previous
+            input-attribute="value"
+            input-if="true"
+            rows="1"
+            auto-rows
+            class="messageArea"
+            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"></textarea>
+
+        <button
+            id="send-message"
+            actions="save, click, reset, openai.chat.completions.create, action(document; #aiAction)"
+            click-selector="document; #chat-body"
+            click-attribute="observe-value"
+            click-value="bottom">
+            <i src="./assets/svg/paper-plane.svg"></i>
+        </button>
 
         <textarea
             openai="chat.completions.create"
@@ -282,15 +310,6 @@
             input-attribute="value"
             marked
             hidden></textarea>
-
-        <button
-            id="send-message"
-            actions="save, click, openai.chat.completions.create, action(document; #aiAction), reset"
-            click-selector="document; #chat-body"
-            click-attribute="observe-value"
-            click-value="bottom">
-            <i src="./assets/svg/paper-plane.svg"></i>
-        </button>
     </form>
 
     <form array="aiConversations" object hidden>
