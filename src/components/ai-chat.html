@@ -256,12 +256,13 @@
                     <form class="width:100%">
                         <div
                             class="markdown-body"
-                            value-type="html"
                             array="aiConversations"
                             object="{{object._id}}"
-                            key="content"
-                            read="false">
-                            {{object.content}}
+                            key="html"
+                            read="false"
+                            value-type="html"
+                            value-remove-selector=".code-tools">
+                            {{object.html}}
                         </div>
 
                         <!-- User Save and cancel -->
@@ -269,13 +270,14 @@
                             <a>Send</a>
                             <a>Cancel</a>
                         </div> -->
+
                         <!-- Assistant tools -->
-                        <div class="assitant-tools">
-                            <!-- Copy as markdown, html or text -->
+                        <!-- Copy as markdown, html or text -->
+                        <!-- <div class="assitant-tools">
                             <a>
                                 <i src="./assets/svg/clone.svg"></i>
                             </a>
-                        </div>
+                        </div> -->
                     </form>
                 </div>
             </div>
@@ -284,30 +286,29 @@
 
     <div
         observe-target=".message.assistant textarea[type='code']"
-        observe-selector="document; .message.assistant textarea:not(div + span)[]"
+        observe-selector="document; .message.assistant codearea:not(.message.assistant .code-tools + codearea)[]"
         observe-insert-adjacent="beforebegin">
         <div
-            class="position:relative display:flex justify-content:space-between background-color:#292929 padding:10px">
+            class="code-tools position:relative display:flex justify-content:space-between background-color:#292929 padding:10px">
             <div class="display:flex align-items:center gap:10px">
-                <a class="display:flex align-items:center gap:5px"
+                <a
+                    class="display:flex align-items:center gap:5px"
+                    click-selector="$clikedElement"
+                    click-attribute="value"
+                    click-value-selector="document; .code-container textarea"
+                    click-insert-adjacent="afterbegin"
+                    click-replace=""
                     ><i
-                        click-selector=""
-                        click-attribute="value"
-                        click-insert-adjacent=""
-                        click-replace=""
                         class="height:20px"
                         src="./assets/svg/chevron-left.svg"></i>
-                    Insert
                 </a>
-                <a class="display:flex align-items:center gap:5px"
-                    ><i
-                        click-selector=""
-                        click-attribute="value"
-                        click-replace=""
-                        class="height:20px"
-                        src="./assets/svg/chevron-left.svg"></i>
-                    Replace
-                </a>
+                <select input-previous input-attribute="click-insert-adjacent">
+                    <option value="beforebegin">beforebegin</option>
+                    <option value="afterbegin" selected>afterbegin</option>
+                    <option value="beforeend">beforeend</option>
+                    <option value="afterend">afterend</option>
+                    <option value="replace">replace</option>
+                </select>
             </div>
             <div
                 class="display:flex justify-content:flex-end align-items:center gap:10px">
@@ -318,14 +319,14 @@
                     toggle-next
                     toggle-attribute="hidden"
                     toggle-value=""
-                    click-closest="codearea ; textarea"
+                    click-closest=".code-container textarea"
                     click-attribute="readonly"
                     click-value="">
                     <i src="./assets/svg/edit.svg"></i>
                 </a>
-                <span hidden>
+                <span class="" hidden>
                     <a
-                        toggle-closest="codearea ; textarea"
+                        toggle-closest=".code-container textarea"
                         toggle-attribute="readonly"
                         toggle-value=""
                         click-closest=".markdown-body"
@@ -333,13 +334,19 @@
                         <i src="./assets/svg/save.svg"></i>
                     </a>
                     <a
-                        click-closest=".markdown-body"
-                        click-attribute="readonly"
+                        toggle-closest=".code-container textarea"
+                        toggle-attribute="readonly"
+                        toggle-value=""
+                        click-parent
+                        click-attribute="hidden"
                         click-value="">
                         <i src="./assets/svg/ban.svg"></i>
                     </a>
                 </span>
-                <a>
+                <a
+                    toggle-closest=".code-container codearea *[]"
+                    toggle-attribute="hidden"
+                    toggle-value="">
                     <i src="./assets/svg/eye.svg"></i>
                 </a>
             </div>
@@ -350,7 +357,7 @@
         <input
             openai="chat.completions.create"
             openai-key="model"
-            value="gpt-4o"
+            value="gpt-4o-mini"
             hidden />
 
         <input
@@ -401,6 +408,7 @@
             key="user_id"
             value="$user_id"
             hidden />
+
         <input
             array="aiConversations"
             object
@@ -410,6 +418,15 @@
             value="user"
             hidden />
         <span
+            class="userMessage"
+            array="aiConversations"
+            object
+            key="html"
+            reset="object"
+            hidden></span>
+
+        <span
+            class="userMessage"
             array="aiConversations"
             object
             key="content"
@@ -417,20 +434,10 @@
             openai-key="messages[a].content"
             reset="object"
             hidden></span>
-        <!-- <textarea
-            array="aiConversations"
-            object
-            key="content"
-            openai="chat.completions.create"
-            openai-key="messages[a].content"
-            placeholder="Message YellowOracle"
-            rows="1"
-            auto-rows
-            class="messageArea"
-            onkeydown="if (event.key === 'Enter') this.nextElementSibling.click()"></textarea> -->
+
         <textarea
             placeholder="Message YellowOracle"
-            input-previous
+            input-parent=".userMessage[]"
             input-attribute="value"
             input-if="true"
             rows="1"
@@ -451,9 +458,8 @@
             openai="chat.completions.create"
             openai-key="choices[0].message.content"
             openai-request="false"
-            input-selector="document; #aiContent"
+            input-selector="document; .aiContent[]"
             input-attribute="value"
-            marked
             hidden></textarea>
     </form>
 
@@ -466,7 +472,16 @@
         <input key="user_id" value="$user_id" update="false" />
         <input id="testrole" key="role" value="assistant" update="false" />
         <input key="eid" />
-        <div id="aiContent" component key="content"></div>
+        <div class="aiContent" component key="content"></div>
+        <div
+            class="aiContent"
+            component
+            key="html"
+            marked
+            marked-code="<div class='code-container'><codearea><textarea type='code' lang='${code.lang}' class='code-editor' value='${code.text}' height='auto' input-next input-attribute='value'
+            input-events='input, onload' readonly></textarea><iframe class='preview' width='100%' hidden></iframe></codearea></div>"></div>
+
+        <!-- <div id="aiContent" component key="content"></div> -->
         <a id="aiAction" actions="save, reset"></a>
     </form>
 
@@ -502,43 +517,48 @@
     }
 </script> -->
 <script>
+    // Function to auto-resize the element based on its content
+    function autoResizeElement(element) {
+        // Reset height to auto to calculate scrollHeight correctly
+        element.style.height = "auto";
+
+        let scrollHeight;
+
+        if (element.contentDocument) {
+            scrollHeight = element.contentDocument.body.scrollHeight;
+        } else {
+            // For other elements, get scrollHeight directly
+            scrollHeight = element.scrollHeight;
+        }
+
+        // Set the height of the element to the calculated scrollHeight
+        element.style.height = scrollHeight + "px";
+    }
+
+    // Observe the resize of the element
+    function observeElementResize(element) {
+        const resizeObserver = new ResizeObserver(() => {
+            autoResizeElement(element);
+        });
+
+        resizeObserver.observe(element);
+    }
+
+    // Listen for input events on the entire document
     document.addEventListener(
         "input",
         function (event) {
-            if (
-                event.target.tagName === "TEXTAREA" &&
-                event.target.getAttribute("height") === "auto"
-            )
-                autoResizeTextarea(event.target);
+            // Check if the target element has height="auto"
+            if (event.target.getAttribute("height") === "auto") {
+                autoResizeElement(event.target);
+            }
         },
         false
     );
 
-    function autoResizeTextarea(textarea) {
-        if (!textarea.style.height) observeTextareaResize(textarea);
-        textarea.style.height = "auto";
-
-        // Get the scrollHeight, which is the full height of the content, including overflow
-        const scrollHeight = textarea.scrollHeight;
-
-        // Set the height of the textarea to the scrollHeight
-        textarea.style.height = scrollHeight + "px";
-    }
-
-    function observeTextareaResize(textarea) {
-        let previousWidth = textarea.offsetWidth;
-
-        const resizeObserver = new ResizeObserver((entries) => {
-            for (let entry of entries) {
-                const currentWidth = entry.contentRect.width;
-
-                if (currentWidth !== previousWidth) {
-                    previousWidth = currentWidth;
-                    autoResizeTextarea(textarea);
-                }
-            }
-        });
-
-        resizeObserver.observe(textarea);
-    }
+    // Add event listener for iframes on load
+    document.querySelectorAll('[height="auto"]').forEach((element) => {
+        autoResizeElement(element);
+        observeElementResize(element); // Observe resize changes
+    });
 </script>
