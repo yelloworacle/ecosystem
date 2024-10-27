@@ -3,63 +3,74 @@
     class="margin-left:10px"
     sortable
     array="files"
-    filter-key="directory"
-    filter-value="parent"
-    filter-operator="$eq"
-    filter-sort-key="directory"
-    order_type="asc"
-    render_id="$auto"
+    object
+    filter-key="content-type"
+    filter-value="text/directory"
+    filter-limit=""
     render-selector=":last-child">
-    <div filter-key="content-type" filter-value="directory" filter-parent></div>
     <!--Folder Template -->
     <div class="padding:5px" template render="object" object="{{object._id}}">
-        <span
-            class=""
-            show="#directory{{object._id}}"
-            hide="#directory{{object._id}}"
-            toggle="fa-caret-down, fa-caret-right"
-            toggle-selector="#icon{{object._id}}">
-            <i id="icon{{object._id}}" class="fa fa-caret-right"></i>
-        </span>
-        <span
-            class="margin-left:5px"
-            array="files"
-            object="{{object._id}}"
-            key="name"
-            >Folder name</span
-        >
         <div
-            id="directory{{object._id}}"
-            class="domEditor margin-left:10px"
-            hidden
-            array="files"
-            object="611ab5d9251afa96bd20f6cc"
-            key="src"
-            filter-value="{{object.path}}"></div>
+            toggle-attribute="hidden"
+            toggle-value=""
+            toggle-next
+            click-attribute="src"
+            click-value="../builder/components/filetree.html"
+            click-next>
+            <div
+                toggle="../../../assets/svg/caret-down.svg, ../../../assets/svg/caret-right.svg"
+                toggle-selector="i"
+                toggle-attribute="src">
+                <i
+                    toggle="../../../assets/svg/caret-down.svg, ../../../assets/svg/caret-right.svg"
+                    toggle-attribute="src"
+                    src="../../../assets/svg/caret-right.svg"></i>
+                <span
+                    class="margin-left:5px"
+                    array="files"
+                    object="{{object._id}}"
+                    key="name"
+                    >{{object.name}}</span
+                >
+            </div>
+        </div>
+        <div
+            class="margin-left:10px"
+            filter-key="path"
+            filter-value="{{object.pathname}}"
+            filter-operator="$eq"
+            filter-sort-key="name"
+            filter-sort-direction="asc"
+            filter-selector=":scope > div[]"
+            hidden></div>
     </div>
 </div>
 <div
     class="margin-left:10px"
     sortable
     array="files"
-    filter-key="directory"
-    filter-value="parent"
-    filter-operator="$eq"
-    filter-sort-key="directory"
+    object
+    filter-key="content-type"
+    filter-value="text/directory"
+    filter-operator="$ne"
+    filter-limit=""
     render-selector="[template]">
-    <div
-        filter-parent
-        filter-key="content-type"
-        filter-value="text/directory"
-        filter-operator="$ne"></div>
-
     <!--File Template -->
     <div class="padding:5px" template render="object" object="{{object._id}}">
-        <span class=""><i src="./assets/svg/html5.svg"></i></span>
+        <span
+            value="{{object.content-type}}"
+            value-exec="/^(image|video|audio)|(?:\/x-)?\/([^\/]+)$/"
+            value-replace="/html/, 'html5'"
+            value-prefix="../../../assets/svg/"
+            value-suffix=".svg">
+            <i src="../../../assets/svg/html5.svg"></i>
+        </span>
         <span
             class="margin-left:5px"
             array="files"
             object="{{object._id}}"
-            key="name"></span>
+            key="name"
+            >{{object.name}}</span
+        >
     </div>
 </div>
