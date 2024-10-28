@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <div
     class="margin-left:10px"
     sortable
@@ -9,7 +10,7 @@
     filter-limit=""
     render-selector=":last-child">
     <!--Folder Template -->
-    <div class="padding:5px" template render="object" object="{{object._id}}">
+    <div class="" template render="object" object="{{object._id}}">
         <div
             toggle-attribute="hidden"
             toggle-value=""
@@ -18,15 +19,15 @@
             click-value="../builder/components/filetree.html"
             click-next>
             <div
+                class="padding:5px display:flex align-items:center white-space:nowrap"
                 toggle="../../../assets/svg/caret-down.svg, ../../../assets/svg/caret-right.svg"
                 toggle-selector="i"
                 toggle-attribute="src">
                 <i
-                    toggle="../../../assets/svg/caret-down.svg, ../../../assets/svg/caret-right.svg"
-                    toggle-attribute="src"
+                    class="display:flex"
                     src="../../../assets/svg/caret-right.svg"></i>
                 <span
-                    class="margin-left:5px"
+                    class="margin-left:5px white-space:nowrap overflow:hidden text-overflow:ellipsis"
                     array="files"
                     object="{{object._id}}"
                     key="name"
@@ -56,17 +57,26 @@
     filter-limit=""
     render-selector="[template]">
     <!--File Template -->
-    <div class="padding:5px" template render="object" object="{{object._id}}">
+    <div
+        class="padding:5px display:flex align-items:center white-space:nowrap"
+        template
+        render="object"
+        object="{{object._id}}"
+        state_to="builder"
+        state-array="files"
+        state-object="{{object._id}}">
         <span
             value="{{object.content-type}}"
             value-exec="/^(image|video|audio)|(?:\/x-)?\/([^\/]+)$/"
-            value-replace="/html/, 'html5'"
             value-prefix="../../../assets/svg/"
-            value-suffix=".svg">
-            <i src="../../../assets/svg/html5.svg"></i>
+            value-suffix=".svg"
+            onload-attribute="src"
+            onload-selector="i"
+            onload-if="!$template">
+            <i class="display:flex"></i>
         </span>
         <span
-            class="margin-left:5px"
+            class="margin-left:5px white-space:nowrap overflow:hidden text-overflow:ellipsis"
             array="files"
             object="{{object._id}}"
             key="name"
