@@ -24,6 +24,7 @@
         display: none !important;
     }
 </style>
+
 <div
     class="width:100%"
     resize-attribute="menu-icon"
@@ -47,8 +48,9 @@
     save="false"
     read="false"
     class="min-width:305px">
-    <div class="padding:10px">
-        <div class="display:flex margin-bottom:5px font-size:16px tabs">
+    <div class="padding-left:10px padding-top:10px padding-bottom:10px">
+        <div
+            class="display:flex gap:10px margin-bottom:5px font-size:16px tabs">
             <div
                 class="builder-tab-round"
                 selected-attribute="class"
@@ -99,7 +101,12 @@
                 <i class="height:18px" src="../../../assets/svg/cog.svg"></i>
             </div>
         </div>
-        <div class="overflow:auto height:90vh">
+        <style>
+            [scrollable-x="false"] {
+                padding-right: 10px;
+            }
+        </style>
+        <div class="overflow:auto height:90vh" scrollable-x>
             <div class="">
                 <!--Styles -->
                 <div id="styles" class="editor-panel display:none active">
