@@ -28,62 +28,19 @@
             type="text/css"
             parse="true" />
 
-        <style>
-            .left-panel.active,
-            .right-panel.active,
-            .blocks.active,
-            .components.active,
-            .editor-panel.active {
-                display: block;
-            }
-
-            /* .builder-tab-round[selected] {
-                background: darkgrey;
-            } */
-
-            li[selected-group="screen-size"][selected] {
-                background: gainsboro;
-            }
-
-            .card:hover {
-                background: rgba(0, 0, 0, 0.2);
-            }
-
-            .toolbar-class {
-                position: fixed;
-                pointer-events: none;
-                display: none;
-            }
-        </style>
         <link rel="manifest" href="../../manifest.webmanifest" />
     </head>
 
     <body>
-        <!--<nav class="nav display:flex position:relative align-items:center box-shadow-bottom" content_id="canvas" scroll=", hide-nav" scroll-up="5" scroll-down="5" array="files" object="60de0fae14b5ab0c2dd2feb9" key="src">-->
-        <nav
-            class="nav"
-            content_id="canvas"
-            scroll=", hide-nav"
-            scroll-up="5"
-            scroll-down="5">
+        <nav class="nav" scroll=", hide-nav" scroll-up="5" scroll-down="5">
             <!-- Menu Icon Arrow Left Animations -->
-            <!-- <div
-                attribute="toggle"
-                attribute-selector="#btn-left"
-                value="width:265px,width:0px"
-                attribute-trigger="@0px-987px"></div>
-            <div
-                attribute="toggle"
-                attribute-selector="#btn-left"
-                value="width:0px,width:265px"
-                attribute-trigger="@988px-1600px"></div> -->
             <a
                 id="btn-left"
                 menu-icon
                 class="arrow-left"
                 click="active"
                 click-attribute="menu-icon"
-                toggle="width:0px,width:260px"
+                toggle="width:0px,width:310px"
                 toggle-selector="document; #menuL"
                 toggle-attribute="style">
                 <span></span>
@@ -122,37 +79,21 @@
                 </a>
 
                 <!-- Save and Make live -->
-                <a
-                    actions="saveDomText"
-                    state_id="builder"
-                    array=""
-                    object=""
-                    key="src"
+                <a actions="saveDomText" state_id="builder"
                     ><i src="../../assets/svg/save.svg"></i
                 ></a>
 
                 <!-- Builder Controls -->
-                <a
-                    actions="redo"
-                    state_id="builder"
-                    array=""
-                    object=""
-                    key="src"
-                    class=""
+                <a actions="redo" state_id="builder" class=""
                     ><i src="../../assets/svg/redo-alt.svg"></i
                 ></a>
-                <a
-                    actions="undo"
-                    state_id="builder"
-                    array=""
-                    object=""
-                    key="src"
-                    class=""
+                <a actions="undo" state_id="builder" class=""
                     ><i src="../../assets/svg/undo-alt.svg"></i
                 ></a>
 
                 <div
                     class="min-width:40px line-height:40px border-radius:50% text-align:center"
+                    selected-attribute="class"
                     selected-value="max-width:100%"
                     selected-selector="document;.canvas-container"
                     selected-group="screen-size"
@@ -163,6 +104,7 @@
                 </div>
                 <div
                     class="min-width:40px line-height:40px border-radius:50% text-align:center"
+                    selected-attribute="class"
                     selected-value="max-width:768px"
                     selected-selector="document; .canvas-container"
                     selected-group="screen-size">
@@ -172,6 +114,7 @@
                 </div>
                 <div
                     class="min-width:40px line-height:40px border-radius:50% text-align:center"
+                    selected-attribute="class"
                     selected-value="max-width:375px"
                     selected-selector="document;.canvas-container"
                     selected-group="screen-size">
@@ -229,16 +172,6 @@
             </div>
 
             <!-- Menu Icon Arrow Right Animations -->
-            <!-- <div
-                attribute="toggle"
-                attribute-selector="#btn-right"
-                value="width:310px,width:0px"
-                attribute-trigger="@0px-987px"></div>
-            <div
-                attribute="toggle"
-                attribute-selector="#btn-right"
-                value="width:0px,width:310px"
-                attribute-trigger="@988px-1600px"></div> -->
             <a
                 id="btn-right"
                 menu-icon
@@ -260,16 +193,15 @@
             class="position:fixed z-index:12!important"></div>
 
         <!-- Main Container -->
-        <main
-            content_id="canvas"
-            class="height:calc(100vh_-_74px) max-height:calc(100vh_-_74px)">
-            <div class="canvas-container height:100% margin:auto">
+        <main>
+            <div class="canvas-container height:calc(100vh_-_74px) margin:auto">
                 <iframe
                     contenteditable
                     sortable
                     id="canvas"
                     state_id="builder"
-                    array="test1"
+                    state-overwrite
+                    array=""
                     object=""
                     key="src"
                     frameborder="0"
@@ -282,12 +214,11 @@
         <!-- SideNav Left -->
         <sidenav
             id="menuL"
-            class="position:absolute top:0px left:0px overflow:hidden height:100vh width:260px width:0px@xs@sm@md z-index:8"
+            class="position:absolute top:0px left:0px overflow:hidden height:100vh width:310px width:0px@xs@sm@md z-index:8"
             resizable
             resize-attribute="style"
-            resize-selector="document; [content_id='canvas'][]"
+            resize-selector="document; main, document; nav"
             resize-property="padding-left">
-            <!-- <div class="domEditor" array="files" object="637bc8fe91249e639db315e2" key="src"></div> -->
             <div src="./components/left-panel.html"></div>
             <div resize="right"></div>
         </sidenav>
@@ -298,10 +229,9 @@
             class="position:absolute top:0px right:0px overflow:hidden height:100vh width:310px width:0px@xs@sm@md z-index:8"
             resizable
             resize-attribute="style"
-            resize-selector="document; [content_id='canvas'][]"
+            resize-selector="document; main, document; nav"
             resize-property="padding-right">
             <input type="hidden" attribute="eid" />
-            <!-- <div class="domEditor" array="files" object="637bc8fe91249e639db315e1" key="src"></div> -->
             <div src="./components/right-panel.html"></div>
             <div resize="left"></div>
         </sidenav>
@@ -344,7 +274,7 @@
 
         <!-- Hover Toolbar -->
         <toolbar
-            toolbar-placent="top"
+            toolbar-placement="top"
             toolbar-selector="iframe;"
             toolbar-event="mouseover"
             config-key="hoverable"
@@ -362,7 +292,7 @@
 
         <!-- Collaboration Toolbar -->
         <toolbar
-            toolbar-placent="top"
+            toolbar-placement="top"
             toolbar-selector="iframe;"
             toolbar-event="selectionchange"
             config-key="editable"
