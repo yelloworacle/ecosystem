@@ -3,7 +3,7 @@
     class="width:100%"
     resize-attribute="menu-icon"
     resize-value="active"
-    resize-if="260px"
+    resize-if="310px"
     resize-selector="document; #btn-left"></div>
 
 <div
@@ -13,8 +13,8 @@
     resize-if="0px"
     resize-selector="document; #btn-left"></div>
 
-<div class="padding:10px min-width:260px">
-    <div class="display:flex margin-bottom:5px font-size:16px tabs">
+<div class="padding:10px min-width:310px">
+    <div class="display:flex gap:10px margin-bottom:5px font-size:16px tabs">
         <div
             class="builder-tab-round"
             selected-attribute="class"
@@ -65,17 +65,35 @@
             selected-attribute="class"
             selected-value="active"
             selected-selector="document; #blocks"
+            selected-group="left-panels">
+            <i class="height:16px" src="../../../assets/svg/th-large.svg"></i>
+        </div>
+        <div
+            class="builder-tab-round"
+            selected-attribute="class"
+            selected-value="active"
+            selected-selector="document; #ai"
             selected-group="left-panels"
             selected>
-            <i class="height:16px" src="../../../assets/svg/th-large.svg"></i>
+            <i class="height:16px" src="../../../assets/svg/ai.svg"></i>
         </div>
     </div>
 
     <div class="overflow:auto height:90vh">
+        <!-- AI Web Developer -->
+        <div
+            id="ai"
+            class="left-panel display:none active"
+            path="../../../"
+            filter-key="name"
+            filter-value="Web Developer"
+            filter-selector="#system-instructions"
+            src="../../../components/ai.html"></div>
+
         <!-- Blocks -->
         <div
             id="blocks"
-            class="left-panel display:none position:relative active"
+            class="left-panel display:none position:relative"
             src="../builder/components/blocks.html"></div>
 
         <!-- Vdom -->
@@ -90,31 +108,10 @@
         </div>
 
         <!-- uploader -->
-        <div id="uploader" class="left-panel display:none">
-            <form>
-                <floating-label>
-                    <div
-                        type="file"
-                        array="files"
-                        object=""
-                        key="{}"
-                        placeholder="Files"
-                        class="floating-label min-height:40px active"
-                        render-selector="[template]"
-                        multiple
-                        active>
-                        <div template>
-                            <img
-                                src="{{object.src}}"
-                                alt="image"
-                                width="100%" />
-                        </div>
-                    </div>
-                </floating-label>
-
-                <button class="margin-top:30px" actions="upload">Upload</button>
-            </form>
-        </div>
+        <div
+            id="uploader"
+            class="left-panel display:none"
+            src="../builder/components/uploader.html"></div>
 
         <!-- Files -->
         <div id="files" class="left-panel display:none">
@@ -145,106 +142,9 @@
         </div>
 
         <!-- Assets -->
-        <div id="assets" class="left-panel display:none">
-            <!-- Search Assets-->
-            <form class="padding:0px_5px_20px_5px">
-                <input type="text" class="floating-label" state_to="results" />
-                <span
-                    class="position:relative bottom:28px right:14px float:right font-size:18px">
-                    <a
-                        actions="state, openModal"
-                        state_to="render"
-                        array="website-pages"
-                        object=""
-                        state-key="src"
-                        modal-width="900px"
-                        modal-color="#229954">
-                        <i src="../../../assets/svg/search.svg"></i>
-                    </a>
-                </span>
-            </form>
-            <!-- Assets -->
-            <div
-                id="fetch-assets"
-                class="display:flex flex-wrap:wrap justify-content:center width:100% text-align:center padding-bottom:20px"
-                array
-                object
-                filter-key="content-type"
-                filter-value="image, video"
-                filter-operator="$regex"
-                filter-regex-flag="i"
-                filter-sort-key="path"
-                filter-sort-direction="asc"
-                render-selector=":last-child">
-                <style>
-                    [image-type*="image"] {
-                        display: block !important;
-                    }
-
-                    [video-type*="video"] {
-                        display: block !important;
-                    }
-                </style>
-                <!-- Asset Template -->
-                <div
-                    template
-                    render="object"
-                    class="card position:relative flex-grow:1 width:105px height:90px margin:5px padding:5px"
-                    hover="display:block!important"
-                    hover-selector="#editasstes{{object._id}}">
-                    <div
-                        id="editassets{{object._id}}"
-                        class="position:absolute top:8px right:8px font-size:11px display:none">
-                        <a
-                            actions="state, openModal"
-                            modal-src="https://server.cocreate.app/CoCreate-plugins/CoCreate-tui-image-editor/demo/index.html"
-                            state-array="files"
-                            state-object="{{object._id}}"
-                            state_to="form-fields"
-                            modal-width="900px">
-                            <i src="../../../assets/svg/pencil-alt.svg"></i>
-                        </a>
-                    </div>
-                    <a
-                        actions="attributes"
-                        attribute="src"
-                        value="{{object.path}}"
-                        attribute-selector="iframe;">
-                        <!-- image -->
-                        <div
-                            cloneable="true"
-                            cloneable-html="<img src='{{object.path}}'>"
-                            class="padding:5px display:none"
-                            image-type="{{object.content-type}}">
-                            <img
-                                width="auto"
-                                height="auto"
-                                array="files"
-                                object="{{object._id}}"
-                                key="path"
-                                class="max-height:65px max-width:100%" />
-                        </div>
-                        <!-- Video -->
-                        <div
-                            cloneable="true"
-                            cloneable-html="<video><source src='{{object.path}}'></video>"
-                            class="padding:5px display:none"
-                            video-type="{{object.content-type}}">
-                            <video
-                                width="auto"
-                                height="auto"
-                                class="max-height:65px max-width:100%">
-                                <source
-                                    array="files"
-                                    object="{{object._id}}"
-                                    key="path"
-                                    src="{{object.path}}"
-                                    type="{{object.content-type}}" />
-                            </video>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <div
+            id="assets"
+            class="left-panel display:none"
+            src="../builder/components/assets.html"></div>
     </div>
 </div>
