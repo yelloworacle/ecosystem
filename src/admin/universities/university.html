@@ -503,7 +503,7 @@
             CoCreate.observer.init({
                 name: "setEmailInput",
                 observe: ["addedNodes"],
-                target: "#password",
+                selector: "#password",
                 callback: async (mutation) => {
                     const container = document.createElement("div");
 

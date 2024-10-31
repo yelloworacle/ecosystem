@@ -2,7 +2,7 @@
 CoCreate.observer.init({
     name: 'getProgress',
     observe: ['addedNodes'],
-    target: '.progress',
+    selector: '.progress',
     callback: async (mutation) => {
         let position = mutation.target.getAttribute('position');
         position = parseFloat(position)
