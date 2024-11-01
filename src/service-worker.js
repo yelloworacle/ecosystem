@@ -194,12 +194,12 @@ const sendCacheUpdate = (url, organization, lastModified) => {
     fetchTimeout = setTimeout(() => {
         self.clients.matchAll().then(clients => {
             if (clients.length > 0) {
-                clients[0].postMessage({ action: 'checkCache', returnedFromCache });
+                clients[0].postMessage({ action: 'checkCache', returnedFromCache: { ...returnedFromCache } });
+                returnedFromCache = {};
             }
         });
 
         fetchTimeout = null;
-        // returnedFromCache = {};
     }, 500);
 };
 
