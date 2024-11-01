@@ -52,7 +52,7 @@
 
             <input
                 type="hidden"
-                value-replace="/[&amp;:!#&#39;()*+,;=?@$[\\]&quot;%\\s–—]+/g, ''"
+                value-replace="/[&:!#'()*+,;=?@$[\]\u2013\u2014]/g, ''"
                 input-selector="document; .title[]"
                 input-attribute="value" />
 
