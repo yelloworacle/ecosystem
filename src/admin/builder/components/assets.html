@@ -41,11 +41,10 @@
         template
         render="object"
         class="card position:relative flex-grow:1 width:105px height:90px padding:5px"
-        hover="display:block!important"
-        hover-selector="#editasstes{{object._id}}">
-        <div
-            id="editassets{{object._id}}"
-            class="position:absolute top:8px right:8px font-size:11px display:none">
+        hover-selector=":first-child"
+        hover-attribute="hidden"
+        hover-value="">
+        <div class="position:absolute top:8px right:8px font-size:11px" hidden>
             <a
                 actions="state, openModal"
                 modal-src="https://server.cocreate.app/CoCreate-plugins/CoCreate-tui-image-editor/demo/index.html"
@@ -55,7 +54,18 @@
                 modal-width="900px">
                 <i src="../../../assets/svg/pencil-alt.svg"></i>
             </a>
+            <a
+                id="delete"
+                actions="delete"
+                array="files"
+                object="{{object._id}}"
+                class="position:absolute">
+                <i src="../../../assets/svg/trash-alt.svg"></i>
+            </a>
         </div>
+        <div
+            id="editassets{{object._id}}"
+            class="position:absolute top:8px right:8px font-size:11px display:none"></div>
         <a
             actions="attributes"
             attribute="src"
@@ -72,14 +82,6 @@
                     height="auto"
                     src="{{object.pathname}}"
                     class="max-height:65px max-width:100%" />
-                <div
-                    id="delete"
-                    actions="delete"
-                    array="files"
-                    object="{{object._id}}"
-                    class="position:absolute">
-                    <i src="../../../assets/svg/trash-alt.svg"></i>
-                </div>
             </div>
             <!-- Video -->
             <div
