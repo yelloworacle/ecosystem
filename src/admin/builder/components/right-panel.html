@@ -54,10 +54,9 @@
     crud="false"
     save="false"
     read="false"
-    class="min-width:305px">
-    <div class="padding-left:10px padding-top:10px padding-bottom:10px">
-        <div
-            class="display:flex gap:10px margin-bottom:5px font-size:16px tabs">
+    class="min-width:310px">
+    <div class="padding-bottom:10px">
+        <div class="display:flex gap:10px padding:10px tabs">
             <div
                 class="builder-tab-round"
                 selected-attribute="class"
@@ -113,7 +112,9 @@
                 padding-right: 10px;
             }
         </style>
-        <div class="overflow:auto height:90vh" scrollable-x>
+        <div
+            class="overflow:auto height:calc(100vh_-_60px) padding:0px_10px_10px_10px"
+            scrollable-x>
             <div class="">
                 <!--Styles -->
                 <div id="styles" class="editor-panel display:none active">
@@ -166,7 +167,7 @@
                                             class="display:none"
                                             id="layout-visible"
                                             value="visible" />
-                                        <span class="" for="layout-visible"
+                                        <span for="layout-visible"
                                             >Visible</span
                                         >
                                     </div>
@@ -178,9 +179,7 @@
                                             class="display:none"
                                             id="layout-hidden"
                                             value="hidden" />
-                                        <span class="" for="layout-hidden"
-                                            >Hidden</span
-                                        >
+                                        <span for="layout-hidden">Hidden</span>
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +193,7 @@
                                             class="display:none"
                                             id="layout-fill-parent"
                                             value="inherit" />
-                                        <span class="" for="layout-fill-parent"
+                                        <span for="layout-fill-parent"
                                             >Fill parent</span
                                         >
                                     </div>
@@ -206,7 +205,7 @@
                                             class="display:none"
                                             id="layout-fit-content"
                                             value="none" />
-                                        <span class="" for="layout-fit-content"
+                                        <span for="layout-fit-content"
                                             >Fit content</span
                                         >
                                     </div>
@@ -221,7 +220,7 @@
                                             type="radio"
                                             id="stretch"
                                             class="display:none" />
-                                        <span class="" for="stretch"
+                                        <span for="stretch"
                                             ><svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24"
@@ -239,7 +238,7 @@
                                             type="radio"
                                             id="verticaltop"
                                             class="display:none" />
-                                        <span class="" for="top"
+                                        <span for="top"
                                             ><svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24"
@@ -257,7 +256,7 @@
                                             type="radio"
                                             id="verticalcenter"
                                             class="display:none" />
-                                        <span class="" for="center"
+                                        <span for="center"
                                             ><svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24"
@@ -275,7 +274,7 @@
                                             type="radio"
                                             id="verticalbottom"
                                             class="display:none" />
-                                        <span class="" for="bottom"
+                                        <span for="bottom"
                                             ><svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24"
@@ -293,7 +292,7 @@
                                             type="radio"
                                             id="baseline"
                                             class="display:none" />
-                                        <span class="" for="baseline"
+                                        <span for="baseline"
                                             ><svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24"
@@ -384,11 +383,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -432,11 +431,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -482,11 +481,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -530,11 +529,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -580,11 +579,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -628,11 +627,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -678,11 +677,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -726,11 +725,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -799,11 +798,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -847,11 +846,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -891,11 +890,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -939,11 +938,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -989,11 +988,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1037,11 +1036,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1110,11 +1109,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1158,11 +1157,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1208,11 +1207,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1255,11 +1254,11 @@
                                                 render-selector=":last-child">
                                                 <cc-option
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1389,11 +1388,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1593,11 +1592,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1781,11 +1780,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1829,11 +1828,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1880,11 +1879,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -1929,11 +1928,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -2556,36 +2555,24 @@
                                             active>
                                             <ul
                                                 class="options z-index:7 margin-top:5px">
-                                                <cc-option value="none"
-                                                    ><span
-                                                        >none</span
-                                                    ></cc-option
-                                                >
-                                                <cc-option value="linear"
-                                                    ><span
-                                                        >linear</span
-                                                    ></cc-option
-                                                >
-                                                <cc-option value="ease"
-                                                    ><span
-                                                        >ease</span
-                                                    ></cc-option
-                                                >
-                                                <cc-option value="ease-in"
-                                                    ><span
-                                                        >ease-in</span
-                                                    ></cc-option
-                                                >
-                                                <cc-option value="ease-out"
-                                                    ><span
-                                                        >ease-out</span
-                                                    ></cc-option
-                                                >
-                                                <cc-option value="ease-in-out"
-                                                    ><span
-                                                        >ease-in-out</span
-                                                    ></cc-option
-                                                >
+                                                <cc-option value="none">
+                                                    <span>none</span>
+                                                </cc-option>
+                                                <cc-option value="linear">
+                                                    <span>linear</span>
+                                                </cc-option>
+                                                <cc-option value="ease">
+                                                    <span>ease</span>
+                                                </cc-option>
+                                                <cc-option value="ease-in">
+                                                    <span>ease-in</span>
+                                                </cc-option>
+                                                <cc-option value="ease-out">
+                                                    <span>ease-out</span>
+                                                </cc-option>
+                                                <cc-option value="ease-in-out">
+                                                    <span>ease-in-out</span>
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </floating-label>
@@ -3812,11 +3799,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -3859,11 +3846,11 @@
                                                 <cc-option
                                                     class="margin:0px padding:3px border-radius:4px"
                                                     template
-                                                    value="{{units}}"
-                                                    ><span value="{{units}}"
+                                                    value="{{units}}">
+                                                    <span value="{{units}}"
                                                         >{{units}}</span
-                                                    ></cc-option
-                                                >
+                                                    >
+                                                </cc-option>
                                             </ul>
                                         </cocreate-select>
                                     </div>
@@ -4153,12 +4140,12 @@
                                 read="false"
                                 active>
                                 <ul class="options z-index:7 margin-top:5px">
-                                    <cc-option value=""
-                                        ><span>none</span></cc-option
-                                    >
-                                    <cc-option value="sendEmail.to"
-                                        ><span>to</span></cc-option
-                                    >
+                                    <cc-option value="">
+                                        <span>none</span>
+                                    </cc-option>
+                                    <cc-option value="sendEmail.to">
+                                        <span>to</span>
+                                    </cc-option>
                                     <cc-option value="sendEmail.from"
                                         ><span>from</span></cc-option
                                     >
