@@ -23,184 +23,231 @@
  */
 
 const cacheName = "dynamic-v2";
-const updatedOn = new Date('2024-04-29T14:05:43.414Z');
+const updatedOn = new Date("2024-04-29T14:05:43.414Z");
 
-let organization_id = ""
-let storage = true
+let organization_id = "";
+let storage = true;
 
 const queryString = self.location.search;
 const queryParams = new URLSearchParams(queryString);
-let cacheType = queryParams.get('cache');
+let cacheType = queryParams.get("cache");
 
 self.addEventListener("install", (e) => {
-    console.log('Service Worker Installing')
-    self.skipWaiting();
+	console.log("Service Worker Installing");
+	self.skipWaiting();
 });
 
 // self.addEventListener("activate", async (e) => {
 //     e.waitUntil(clients.claim());
 // });
 
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        clients.claim().then(() => {
-            return clients.matchAll({ type: 'window' }).then(clients => {
-                clients.forEach(client => client.navigate(client.url));
-            });
-        })
-    );
+self.addEventListener("activate", (event) => {
+	event.waitUntil(
+		clients.claim().then(() => {
+			return clients.matchAll({ type: "window" }).then((clients) => {
+				clients.forEach((client) => client.navigate(client.url));
+			});
+		})
+	);
 });
 
 self.addEventListener("fetch", async (e) => {
-    if (!(e.request.url.indexOf('http') === 0) || e.request.method === 'POST') return;
+	if (!(e.request.url.indexOf("http") === 0) || e.request.method === "POST")
+		return;
 
-    e.respondWith(
-        caches
-            .match(e.request)
-            .then(async (cacheResponse) => {
-                let fetchedOn
-                if (cacheResponse && cacheType !== 'false') {
-                    fetchedOn = cacheResponse.headers.get('fetched-on')
-                    if (fetchedOn)
-                        fetchedOn = new Date(fetchedOn)
-                }
+	e.respondWith(
+		caches
+			.match(e.request)
+			.then(async (cacheResponse) => {
+				let fetchedOn;
+				if (cacheResponse && cacheType !== "false") {
+					fetchedOn = cacheResponse.headers.get("fetched-on");
+					if (fetchedOn) fetchedOn = new Date(fetchedOn);
+				}
 
+				if (
+					!navigator.onLine ||
+					(!!cacheResponse &&
+						cacheType !== "false" &&
+						(!fetchedOn || fetchedOn > updatedOn))
+				) {
+					const organization =
+						cacheResponse.headers.get("organization");
+					// console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
+					const lastModified =
+						cacheResponse.headers.get("last-modified");
+					sendCacheUpdate(e.request.url, organization, lastModified);
+					return cacheResponse;
+				} else {
+					// console.log('fetching fetchOn less', fetchedOn > updatedOn)
 
-                if (!navigator.onLine || !!cacheResponse && cacheType !== 'false' && (!fetchedOn || fetchedOn > updatedOn)) {
-                    const organization = cacheResponse.headers.get('organization')
-                    // console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
-                    const lastModified = cacheResponse.headers.get('last-modified')
-                    sendCacheUpdate(e.request.url, organization, lastModified);
-                    return cacheResponse;
-                } else {
-                    // console.log('fetching fetchOn less', fetchedOn > updatedOn)
+					const networkResponse = await fetch(e.request);
 
-                    const networkResponse = await fetch(e.request);
+					if (!organization_id)
+						organization_id =
+							networkResponse.headers.get("organization");
 
-                    if (!organization_id)
-                        organization_id = networkResponse.headers.get('organization')
+					let storageHeader = networkResponse.headers.get("storage");
+					if (storageHeader) storage = storageHeader;
 
-                    let storageHeader = networkResponse.headers.get('storage')
-                    if (storageHeader)
-                        storage = storageHeader
+					if (
+						cacheType &&
+						cacheType !== "false" &&
+						networkResponse.status === 200
+					) {
+						// console.log('caching')
 
-                    if (cacheType && cacheType !== 'false' && networkResponse.status === 200) {
-                        // console.log('caching')
+						caches
+							.open(cacheName)
+							.then((cache) => {
+								if (networkResponse.status !== 206) {
+									const networkModified =
+										networkResponse.headers.get(
+											"last-modified"
+										);
+									// if (!networkModified) {
+									//     networkResponse.headers.set('Last-Modified', new Date().toISOString());
+									// }
+									cache.put(e.request, networkResponse);
+									if (
+										cacheType === "reload" ||
+										cacheType === "prompt"
+									) {
+										const cacheModified =
+											cacheResponse.headers.get(
+												"last-modified"
+											);
+										if (networkModified !== cacheModified) {
+											self.clients
+												.matchAll()
+												.then((clients) => {
+													clients.forEach(
+														(client) => {
+															client.postMessage({
+																action: "cacheType",
+																cacheType
+															}); // Send a custom message
+															// console.log(`file ${cacheType} has been triggered`)
+														}
+													);
+												});
+										}
+									}
+								}
+							})
+							.catch(() => {});
+					}
 
-                        caches.open(cacheName).then((cache) => {
-                            if (networkResponse.status !== 206) {
-                                const networkModified = networkResponse.headers.get('last-modified');
-                                // if (!networkModified) {
-                                //     networkResponse.headers.set('Last-Modified', new Date().toISOString());
-                                // }
-                                cache.put(e.request, networkResponse);
-                                if (cacheType === 'reload' || cacheType === 'prompt') {
-                                    const cacheModified = cacheResponse.headers.get('last-modified');
-                                    if (networkModified !== cacheModified) {
-                                        self.clients.matchAll().then((clients) => {
-                                            clients.forEach((client) => {
-                                                client.postMessage({ action: 'cacheType', cacheType }); // Send a custom message
-                                                // console.log(`file ${cacheType} has been triggered`)
-                                            });
-                                        });
-                                    }
-                                }
-                            }
-                        }).catch(() => {
+					if (
+						!cacheResponse ||
+						cacheType === "false" ||
+						cacheType === "offline"
+					) {
+						return networkResponse.clone();
+					}
+				}
 
-                        });
-                    }
-
-                    if (!cacheResponse || cacheType === 'false' || cacheType === 'offline') {
-                        return networkResponse.clone();
-                    }
-
-                }
-
-                if (!!cacheResponse && cacheType !== 'false' && cacheType !== 'offline') {
-                    return cacheResponse;
-                }
-
-            })
-            .catch(function () {
-                return caches.match('./offline.html');
-            })
-    );
+				if (
+					!!cacheResponse &&
+					cacheType !== "false" &&
+					cacheType !== "offline"
+				) {
+					return cacheResponse;
+				}
+			})
+			.catch(function () {
+				return caches.match("./offline.html");
+			})
+	);
 });
 
-self.addEventListener('message', function (event) {
-    if (event.data.action === 'getOrganization')
-        event.source.postMessage({ action: 'getOrganization', organization_id });
-    else if (event.data.action === 'checkCache') {
-        event.source.postMessage({ action: 'checkCache', returnedFromCache: { ...returnedFromCache } });
-        returnedFromCache = {}
-    }
+self.addEventListener("message", function (event) {
+	if (event.data.action === "getOrganization")
+		event.source.postMessage({
+			action: "getOrganization",
+			organization_id
+		});
+	else if (event.data.action === "checkCache") {
+		event.source.postMessage({
+			action: "checkCache",
+			returnedFromCache: { ...returnedFromCache }
+		});
+		returnedFromCache = {};
+	}
 });
 
+self.addEventListener("push", (event) => {
+	const pushData = event.data.json(); // Assuming the push payload is JSON data
 
-self.addEventListener('push', (event) => {
-    const pushData = event.data.json(); // Assuming the push payload is JSON data
+	// Process the push notification data as needed
+	const { socketUrl, _id } = pushData;
 
-    // Process the push notification data as needed
-    const { socketUrl, _id } = pushData;
+	// Establish a WebSocket connection
+	const socket = new WebSocket(socketUrl);
 
-    // Establish a WebSocket connection
-    const socket = new WebSocket(socketUrl);
+	// Handle WebSocket events
+	socket.addEventListener("open", () => {
+		// The WebSocket connection is open, send the message to the server
+		socket.send(
+			JSON.stringify({
+				method: "object.read",
+				array: "files",
+				object: { _id },
+				uid: ""
+			})
+		);
+	});
 
-    // Handle WebSocket events
-    socket.addEventListener('open', () => {
-        // The WebSocket connection is open, send the message to the server
-        socket.send(JSON.stringify({ method: 'object.read', array: 'files', object: { _id }, uid: '' }));
-    });
+	socket.addEventListener("message", (event) => {
+		// Handle messages received from the server over the WebSocket
+		const serverData = JSON.parse(event.data);
+		if (serverData.uid === uid) {
+			// TODO: add file to cache and close socket
+		}
+	});
 
-    socket.addEventListener('message', (event) => {
-        // Handle messages received from the server over the WebSocket
-        const serverData = JSON.parse(event.data);
-        if (serverData.uid === uid) {
-            // TODO: add file to cache and close socket
-        }
-    });
+	socket.addEventListener("close", () => {
+		// Handle the WebSocket connection being closed
+		console.log("WebSocket connection closed.");
+	});
 
-    socket.addEventListener('close', () => {
-        // Handle the WebSocket connection being closed
-        console.log('WebSocket connection closed.');
-    });
+	socket.addEventListener("error", (error) => {
+		// Handle WebSocket errors
+		console.error("WebSocket error:", error);
+	});
 
-    socket.addEventListener('error', (error) => {
-        // Handle WebSocket errors
-        console.error('WebSocket error:', error);
-    });
-
-    // Ensure that the service worker stays active until the WebSocket connection is closed
-    event.waitUntil(
-        new Promise((resolve) => {
-            socket.addEventListener('close', () => {
-                resolve();
-            });
-        })
-    );
+	// Ensure that the service worker stays active until the WebSocket connection is closed
+	event.waitUntil(
+		new Promise((resolve) => {
+			socket.addEventListener("close", () => {
+				resolve();
+			});
+		})
+	);
 });
 
 let returnedFromCache = {};
 let fetchTimeout = null;
 const sendCacheUpdate = (url, organization, lastModified) => {
+	returnedFromCache[url] = { organization, lastModified };
 
-    returnedFromCache[url] = { organization, lastModified };
+	if (fetchTimeout) {
+		clearTimeout(fetchTimeout);
+	}
+	const self = this;
+	fetchTimeout = setTimeout(() => {
+		self.clients.matchAll().then((clients) => {
+			if (clients.length > 0) {
+				clients[0].postMessage({
+					action: "checkCache",
+					returnedFromCache: { ...returnedFromCache }
+				});
+				returnedFromCache = {};
+			}
+		});
 
-    if (fetchTimeout) {
-        clearTimeout(fetchTimeout);
-    }
-    const self = this
-    fetchTimeout = setTimeout(() => {
-        self.clients.matchAll().then(clients => {
-            if (clients.length > 0) {
-                clients[0].postMessage({ action: 'checkCache', returnedFromCache: { ...returnedFromCache } });
-                returnedFromCache = {};
-            }
-        });
-
-        fetchTimeout = null;
-    }, 500);
+		fetchTimeout = null;
+	}, 500);
 };
 
 // self.addEventListener('backgroundfetchsuccess', (event) => {

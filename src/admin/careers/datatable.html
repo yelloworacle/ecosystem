@@ -68,7 +68,6 @@
             </tbody>
 
             <tbody
-                storage="mongodb"
                 array="careers"
                 object
                 filter-sort-key="name"
@@ -106,8 +105,11 @@
                 </tr>
             </tbody>
         </table>
-
         <div filter-on="scroll" filter-previous="[render-selector]"></div>
+
+        <div filter-on="click" filter-selector="document; [render-selector]">
+            click
+        </div>
 
         <button
             actions="state"
