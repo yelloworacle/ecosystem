@@ -1,9 +1,13 @@
-.left-panel.active, .right-panel.active, .blocks.active, .components.active, .editor-panel.active {
-    display: block
+.left-panel.active,
+.right-panel.active,
+.blocks.active,
+.components.active,
+.editor-panel.active {
+    display: block;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
     opacity: 1;
 }
 
@@ -15,35 +19,29 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .builder-tab-round {
-    width: 40px;
-    line-height: 40px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .builder-tab-round:hover {
-    background: silver;
+    background: rgba(0, 0, 0, 0.02);
 }
 
 .builder-tab-round[selected] {
-    background: darkgrey;
-}
-
-[selected-group="screen-size"][selected] {
     background: gainsboro;
 }
 
-.card:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
 [image-type*="image"] {
-   display: block!important; 
+    display: block !important;
 }
 
 [video-type*="video"] {
-   display: block!important; 
+    display: block !important;
 }
 
 .toolbar-class {
