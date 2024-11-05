@@ -544,8 +544,8 @@ tr.hover:hover {
 
 /* WebKit browsers (Chrome, Edge, Safari, Opera) */
 ::-webkit-scrollbar {
-	width: 5px;
-	height: 5px;
+	width: 8px;
+	height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -555,20 +555,14 @@ tr.hover:hover {
 ::-webkit-scrollbar-thumb:hover {
 	background: #f7cc02;
 	opacity: 0.08;
-	/* width: 10px; */
-	/* height: 10px; */
 }
 
 ::-webkit-scrollbar-track {
 	background: rgba(0, 0, 0, 0.03);
-	width: 5px;
-	height: 5px;
 }
 
 ::-webkit-scrollbar-track:hover {
 	background: rgba(0, 0, 0, 0.06);
-	/* width: 10px !important; */
-	/* height: 10px !important; */
 }
 
 /* Firefox browsers */
@@ -704,5 +698,33 @@ tr.hover:hover {
 	}
 	.selected {
 		background-color: #222;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: rgba(
+			255,
+			255,
+			255,
+			0.15
+		); /* Slightly lighter for contrast */
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #f7cc02;
+		opacity: 0.5; /* Increase opacity on hover for visibility */
+	}
+
+	::-webkit-scrollbar-track {
+		background: rgba(255, 255, 255, 0.05); /* Light track background */
+	}
+
+	::-webkit-scrollbar-track:hover {
+		background: rgba(255, 255, 255, 0.1); /* Slightly brighter on hover */
+	}
+
+	/* Firefox browsers - Dark Mode */
+	* {
+		scrollbar-width: thin; /* Options: auto, thin, none */
+		scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.05);
 	}
 }
