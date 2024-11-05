@@ -147,6 +147,10 @@
 			fill: #000;
 		}
 
+		#chat-input .messageArea {
+			background-color: #1e1e1e;
+		}
+
 		#chat-input button {
 			background-color: #111;
 		}
@@ -240,24 +244,6 @@
 	observe-insert-adjacent="beforebegin"
 	hidden>
 	<div class="code-tools">
-		<div class="display:flex align-items:center gap:10px">
-			<a
-				class="display:flex align-items:center gap:5px"
-				click-selector="$clikedElement"
-				click-attribute="value"
-				click-value-selector="document; .code-container textarea"
-				click-insert-adjacent="afterbegin"
-				click-replace="">
-				<i src="{{path}}assets/svg/chevron-left.svg"></i>
-			</a>
-			<select input-previous input-attribute="click-insert-adjacent">
-				<option value="beforebegin">beforebegin</option>
-				<option value="afterbegin" selected>afterbegin</option>
-				<option value="beforeend">beforeend</option>
-				<option value="afterend">afterend</option>
-				<option value="replace">replace</option>
-			</select>
-		</div>
 		<div
 			class="display:flex justify-content:flex-end align-items:center gap:10px">
 			<a>
@@ -296,6 +282,29 @@
 				toggle-attribute="hidden"
 				toggle-value="">
 				<i src="{{path}}assets/svg/eye.svg"></i>
+			</a>
+		</div>
+		<div class="display:flex align-items:center gap:10px">
+			<select input-next input-attribute="click-insert-adjacent">
+				<option value="beforebegin">beforebegin</option>
+				<option value="afterbegin" selected>afterbegin</option>
+				<option value="beforeend">beforeend</option>
+				<option value="afterend">afterend</option>
+				<option value="replace">replace</option>
+			</select>
+			<a
+				class="display:flex align-items:center gap:5px"
+				attribute="innerText"
+				attribute-selector="iframe;"
+				actions="attributes">
+				<!-- <a
+				class="display:flex align-items:center gap:5px"
+				click-selector="$clikedElement"
+				click-attribute="value"
+				click-value-selector="document; .code-container textarea"
+				click-insert-adjacent="afterbegin"
+				click-replace=""> -->
+				<i src="{{path}}assets/svg/chevron-right.svg"></i>
 			</a>
 		</div>
 	</div>
@@ -418,7 +427,7 @@
 	hidden
 	class="position:fixed top:0 left:0 background-color:black">
 	<input key="user_id" value="$user_id" update="false" />
-	<input id="testrole" key="role" value="assistant" update="false" />
+	<input key="role" value="assistant" update="false" />
 	<input key="eid" />
 	<div class="aiContent" component key="content"></div>
 	<div
@@ -427,55 +436,8 @@
 		key="html"
 		marked
 		marked-code="<div class='code-container'><codearea><textarea type='code' lang='${code.lang}' class='code-editor' value='${code.text}' height='auto' input-next input-attribute='value'
-            input-events='input, onload' readonly></textarea><iframe class='preview' width='100%' hidden></iframe></codearea></div>"></div>
+            input-events='input, onload' readonly></textarea><iframe class='preview' width='100%' height='auto' hidden></iframe></codearea></div>"></div>
 
 	<!-- <div id="aiContent" component key="content"></div> -->
-	<a id="aiAction" actions="save, reset"></a>
+	<a id="aiAction" actions="timeout(1000), save, reset"></a>
 </form>
-
-<script>
-	// Function to auto-resize the element based on its content
-	function autoResizeElement(element) {
-		// Reset height to auto to calculate scrollHeight correctly
-		element.style.height = "auto";
-
-		let scrollHeight;
-
-		if (element.contentDocument) {
-			scrollHeight = element.contentDocument.body.scrollHeight;
-		} else {
-			// For other elements, get scrollHeight directly
-			scrollHeight = element.scrollHeight;
-		}
-
-		// Set the height of the element to the calculated scrollHeight
-		element.style.height = scrollHeight + "px";
-	}
-
-	// Observe the resize of the element
-	function observeElementResize(element) {
-		const resizeObserver = new ResizeObserver(() => {
-			autoResizeElement(element);
-		});
-
-		resizeObserver.observe(element);
-	}
-
-	// Listen for input events on the entire document
-	document.addEventListener(
-		"input",
-		function (event) {
-			// Check if the target element has height="auto"
-			if (event.target.getAttribute("height") === "auto") {
-				autoResizeElement(event.target);
-			}
-		},
-		false
-	);
-
-	// Add event listener for iframes on load
-	document.querySelectorAll('[height="auto"]').forEach((element) => {
-		autoResizeElement(element);
-		observeElementResize(element); // Observe resize changes
-	});
-</script>
