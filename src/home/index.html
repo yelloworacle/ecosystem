@@ -1,143 +1,301 @@
 <!DOCTYPE html>
 <header>
-    <p class="font-size:2em">Discover Your Destiny</p>
-    <h1 class="font-size:20px margin:25px">
-        AI career suggestions FOR YOU based on YOUR personality and desires
-    </h1>
-    <div class="display:flex flex-wrap:wrap gap:20px">
-        <button
-            actions="state"
-            state_to="mainView"
-            state-src="./oracle/"
-            class="font-size:24px">
-            Discover
-        </button>
-        <button
-            actions="state"
-            state_to="mainView"
-            state-src="./search/"
-            class="font-size:24px">
-            Search
-        </button>
-    </div>
+	<p class="font-size:2em">Discover Your Destiny</p>
+	<h1 class="font-size:20px margin:25px">
+		AI career suggestions FOR YOU based on YOUR personality and desires
+	</h1>
+	<div class="display:flex flex-wrap:wrap gap:20px">
+		<button
+			actions="state"
+			state_to="mainView"
+			state-src="./oracle/"
+			class="font-size:24px">
+			Discover
+		</button>
+		<button
+			actions="state"
+			state_to="mainView"
+			state-src="./search/"
+			class="font-size:24px">
+			Search
+		</button>
+	</div>
 </header>
 
 <style>
-    .steps-section {
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #f4f4f4;
-    }
+	.steps-section {
+		padding: 20px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		background-color: #f4f4f4;
+	}
 
-    .steps-container {
-        max-width: 1000px;
-        margin: 50px auto;
-    }
+	.steps-container {
+		max-width: 1000px;
+		margin: 50px auto;
+	}
 
-    .steps-section h2 {
-        text-align: center;
-        font-size: 2em;
-        margin-bottom: 40px;
-    }
+	.steps-section h2 {
+		text-align: center;
+		font-size: 2em;
+		margin-bottom: 40px;
+	}
 
-    .step {
-        display: flex;
-        align-items: center;
-        margin-bottom: 40px;
-    }
+	.step {
+		display: flex;
+		align-items: center;
+		margin-bottom: 40px;
+	}
 
-    .step:nth-child(odd) .step-content {
-        order: 2;
-    }
+	.step:nth-child(odd) .step-content {
+		order: 2;
+	}
 
-    .step-image {
-        flex: 1;
-        text-align: center;
-    }
+	.step-image {
+		flex: 1;
+		text-align: center;
+	}
 
-    .step-image img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 8px;
-    }
-    .step-icon {
-        text-align: center;
-        font-size: 4em;
-    }
-    .step-content {
-        flex: 1;
-        padding: 20px;
-    }
+	.step-image img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 8px;
+	}
+	.step-icon {
+		text-align: center;
+		font-size: 4em;
+	}
+	.step-content {
+		flex: 1;
+		padding: 20px;
+	}
 
-    .step-content h3 {
-        font-size: 1.5em;
-        margin-bottom: 10px;
-    }
+	.step-content h3 {
+		font-size: 1.5em;
+		margin-bottom: 10px;
+	}
 
-    .step-content p {
-        font-size: 1em;
-        line-height: 1.6;
-    }
+	.step-content p {
+		font-size: 1em;
+		line-height: 1.6;
+	}
 
-    @media (max-width: 768px) {
-        .step {
-            flex-direction: column;
-        }
+	@media (max-width: 768px) {
+		.step {
+			flex-direction: column;
+		}
 
-        .step-content {
-            order: 1;
-            padding: 10px;
-        }
-    }
-    @media (prefers-color-scheme: dark) {
-        .steps-section {
-            background-color: #222;
-        }
-    }
+		.step-content {
+			order: 1;
+			padding: 10px;
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		.steps-section {
+			background-color: #222;
+		}
+	}
 </style>
 <section class="steps-section">
-    <div class="steps-container">
-        <h2>How It Works</h2>
-        <div class="step">
-            <div class="step-icon">
-                <i src="./assets/svg/circle-question.svg"></i>
-            </div>
-            <div class="step-content">
-                <h3>Step 1: Answer 7 Questions</h3>
-                <p>
-                    Begin your journey by answering a brief set of questions
-                    designed to understand your personality traits and
-                    interests. This step helps our advanced AI algorithms to
-                    generate accurate career matches for you.
-                </p>
-            </div>
-        </div>
-        <div class="step">
-            <div class="step-icon">
-                <i src="./assets/svg/user.svg"></i>
-            </div>
-            <div class="step-content">
-                <h3>Step 2: Enter Name, Email, and Password</h3>
-                <p>
-                    Securely create your account by providing your name, email,
-                    and password. This will allow you to access your
-                    personalized career recommendations and insights anytime,
-                    anywhere.
-                </p>
-            </div>
-        </div>
-        <div class="step">
-            <div class="step-icon">
-                <i src="./assets/svg/wand-magic-sparkles.svg"></i>
-            </div>
-            <div class="step-content">
-                <h3>Step 3: Get Your Personalized Career Match</h3>
-                <p>
-                    Instantly receive a tailored list of career options that
-                    match your unique profile. Explore different paths that
-                    resonate with your strengths and passions.
-                </p>
-            </div>
-        </div>
-    </div>
+	<div class="steps-container">
+		<h2>How It Works</h2>
+		<div class="step">
+			<div class="step-icon">
+				<i src="./assets/svg/circle-question.svg"></i>
+			</div>
+			<div class="step-content">
+				<h3>Step 1: Answer 7 Questions</h3>
+				<p>
+					Begin your journey by answering a brief set of questions
+					designed to understand your personality traits and
+					interests. This step helps our advanced AI algorithms to
+					generate accurate career matches for you.
+				</p>
+			</div>
+		</div>
+		<div class="step">
+			<div class="step-icon">
+				<i src="./assets/svg/user.svg"></i>
+			</div>
+			<div class="step-content">
+				<h3>Step 2: Enter Name, Email, and Password</h3>
+				<p>
+					Securely create your account by providing your name, email,
+					and password. This will allow you to access your
+					personalized career recommendations and insights anytime,
+					anywhere.
+				</p>
+			</div>
+		</div>
+		<div class="step">
+			<div class="step-icon">
+				<i src="./assets/svg/wand-magic-sparkles.svg"></i>
+			</div>
+			<div class="step-content">
+				<h3>Step 3: Get Your Personalized Career Match</h3>
+				<p>
+					Instantly receive a tailored list of career options that
+					match your unique profile. Explore different paths that
+					resonate with your strengths and passions.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.about-us {
+		padding: 4rem 0;
+	}
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+	.about-content {
+		text-align: center;
+	}
+	.about-content h2 {
+		font-size: 2.5rem;
+		margin-bottom: 2rem;
+	}
+	.about-content p {
+		font-size: 1.125rem;
+		line-height: 1.8;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+</style>
+<section class="about-us">
+	<div class="container">
+		<div class="about-content">
+			<h2>Our Vision</h2>
+			<div class>
+				<p>
+					YellowOracle isn't just an alternative to career advisory —
+					it's a movement set to redefine excellence and relevance in
+					professional guidance. With a steadfast commitment to
+					authenticity, personalization, and innovation, we are poised
+					to change lives by positioning each individual for success
+					in an ever-evolving job market.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.team {
+		padding: 2rem 1rem;
+		background-color: #f4f4f4;
+	}
+	.team-content {
+		text-align: center;
+	}
+	.team-content h2 {
+		font-size: 2.5rem;
+		margin-bottom: 2rem;
+	}
+	.team-members {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		justify-content: center;
+	}
+	.team-member {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		max-width: 300px;
+		padding: 1.5rem;
+		text-align: center;
+		border-radius: 8px;
+		/* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+		flex: 1 1 calc(33% - 2rem);
+	}
+	.team-member img {
+		border-radius: 50%;
+		width: 200px;
+		height: 200px;
+		object-fit: contain;
+	}
+	.team-member-info {
+		flex: 1;
+	}
+	.team-member-info h3 {
+		font-size: 1.5rem;
+		margin-top: 0;
+	}
+	.team-member-info p {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: #555;
+		margin-top: 0.5rem;
+	}
+	@media (max-width: 768px) {
+		.team-member {
+			flex: 1 1 100%;
+			text-align: center;
+			padding: 1rem;
+		}
+		.team-member img {
+			margin-bottom: 1rem;
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		.team {
+			background-color: #222;
+		}
+	}
+</style>
+<section class="team">
+	<div class="container">
+		<div class="team-content">
+			<h2>Meet the Team</h2>
+			<div class="team-members">
+				<div class="team-member">
+					<img src="../assets/team/tom.jpg" alt="Team Member 1" />
+					<div class="team-member-info">
+						<h3>Thomas Palka</h3>
+						<p>
+							Tom, a retired Certified Financial Planner and
+							former owner of Genesis Advisors, founded
+							YellowOracle to help people find meaningful careers.
+							With insights gained from extensive research through
+							the National Science Foundation, he discovered a
+							need for real-world career insights.
+						</p>
+					</div>
+				</div>
+				<div class="team-member">
+					<img src="../assets/team/luis.jpg" alt="Team Member 2" />
+					<div class="team-member-info">
+						<h3>Luis Barreto</h3>
+						<p>
+							Luis Barreto is an Emmy-nominated producer and
+							director known for his work on MTV's "Road Rules,"
+							ABC's "The Mole," and "Extreme Makeover: Home
+							Edition." With a career spanning 38 countries, he's
+							worked with networks like PBS, NBC, and Discovery.
+							Now based in San Miguel de Allende, Mexico, he
+							focuses on writing and consulting.
+						</p>
+					</div>
+				</div>
+				<div class="team-member">
+					<img src="../assets/team/frank.jpg" alt="Team Member 3" />
+					<div class="team-member-info">
+						<h3>Frankie Pagan</h3>
+						<p>
+							An AI thought leader and driving force behind
+							YellowOracle's technology, Frankie founded CoCreate
+							to empower entrepreneurs by integrating automation
+							and AI to streamline business processes and
+							accelerate the journey.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
