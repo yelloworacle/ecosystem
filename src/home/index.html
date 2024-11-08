@@ -23,26 +23,33 @@
 </header>
 
 <style>
-	.container h2 {
-		font-size: 2.5rem;
-		margin-bottom: 2rem;
+	section {
+		padding: 4rem 0;
 	}
 
-	.steps-section {
-		padding: 20px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	section:nth-of-type(even) {
 		background-color: #f4f4f4;
+	}
+
+	section:nth-of-type(odd) {
+		background-color: #ffffff;
+	}
+
+	section h2 {
+		font-size: 2.5rem;
+		margin-bottom: 3rem;
+		text-align: center;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
 	}
 
 	.steps-container {
 		max-width: 1000px;
 		margin: 50px auto;
-	}
-
-	.steps-section h2 {
-		text-align: center;
-		font-size: 2em;
-		margin-bottom: 40px;
 	}
 
 	.step {
@@ -65,10 +72,12 @@
 		height: auto;
 		border-radius: 8px;
 	}
+
 	.step-icon {
 		text-align: center;
 		font-size: 4em;
 	}
+
 	.step-content {
 		flex: 1;
 		padding: 20px;
@@ -95,8 +104,11 @@
 		}
 	}
 	@media (prefers-color-scheme: dark) {
-		.steps-section {
+		section:nth-of-type(odd) {
 			background-color: #222;
+		}
+		section:nth-of-type(even) {
+			background-color: #333;
 		}
 	}
 </style>
@@ -148,20 +160,8 @@
 </section>
 
 <style>
-	.about-us {
-		padding: 4rem 0;
-	}
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 1rem;
-	}
 	.about-content {
 		text-align: center;
-	}
-	.about-content h2 {
-		font-size: 2.5rem;
-		margin-bottom: 2rem;
 	}
 	.about-content p {
 		font-size: 1.125rem;
@@ -171,39 +171,26 @@
 	}
 </style>
 <section class="about-us">
-	<div class="container">
-		<div class="about-content">
-			<h2>About Us</h2>
-			<div class>
-				<p>
-					YellowOracle is redefining career discovery by providing
-					students and job-seekers with a personalized, future-focused
-					approach to career guidance. Founded by Thomas M. Palka, a
-					retired Certified Financial Planner, and developed with
-					Emmy-nominated producer Luis and AI expert Frankie,
-					YellowOracle empowers users to find fulfilling career paths
-					through high-quality virtual career field trips, interactive
-					assessments, and AI-driven recommendations. Designed to
-					inspire and adapt to each person's evolving goals,
-					YellowOracle is more than a career tool—it's a lifelong
-					partner in building a vibrant, successful future.
-				</p>
-			</div>
-		</div>
+	<div class="container about-content">
+		<h2>About Us</h2>
+		<p>
+			YellowOracle is redefining career discovery by providing students
+			and job-seekers with a personalized, future-focused approach to
+			career guidance. Founded by Thomas M. Palka, a retired Certified
+			Financial Planner, and developed with Emmy-nominated producer Luis
+			and AI expert Frankie, YellowOracle empowers users to find
+			fulfilling career paths through high-quality virtual career field
+			trips, interactive assessments, and AI-driven recommendations.
+			Designed to inspire and adapt to each person's evolving goals,
+			YellowOracle is more than a career tool—it's a lifelong partner in
+			building a vibrant, successful future.
+		</p>
 	</div>
 </section>
 
 <style>
-	.team {
-		padding: 2rem 1rem;
-		background-color: #f4f4f4;
-	}
 	.team-content {
 		text-align: center;
-	}
-	.team-content h2 {
-		font-size: 2.5rem;
-		margin-bottom: 2rem;
 	}
 	.team-members {
 		display: flex;
@@ -258,13 +245,13 @@
 		}
 	}
 </style>
-<section class="team">
+<section class="team-section">
 	<div class="container">
 		<div class="team-content">
 			<h2>Meet the Team</h2>
 			<div class="team-members">
 				<div class="team-member">
-					<img src="../assets/team/tom.jpg" alt="Team Member 1" />
+					<img src="../assets/team/tom.jpeg" alt="Team Member 1" />
 					<div class="team-member-info">
 						<h3>Thomas Palka</h3>
 						<p>
@@ -308,18 +295,30 @@
 	</div>
 </section>
 
-<!-- <section>
+<style>
+	/* Contact Section */
+	#contactForm {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		width: 600px;
+		margin: 0 auto;
+		text-align: center;
+	}
+</style>
+<section>
 	<div class="container">
 		<div class="team-content">
 			<h2>Contact Us</h2>
 
-			<form id="contactForm" class="width:600px">
+			<form id="contactForm" array="users" object="$user_id">
 				<floating-label>
 					<input
 						type="text"
 						id="name"
-						name="name"
+						key="name"
 						required
+						reset="false"
 						placeholder="Enter your name" />
 				</floating-label>
 
@@ -327,23 +326,54 @@
 					<input
 						type="email"
 						id="email"
-						name="email"
+						key="email"
 						required
+						reset="false"
 						placeholder="Enter your email" />
 				</floating-label>
 
 				<floating-label>
 					<textarea
 						id="message"
-						name="message"
+						object
+						key="contact_form[a].message"
 						rows="4"
 						height="auto"
 						required
+						reset="value"
+						read="false"
 						placeholder="Your message here..."></textarea>
+					<input
+						type="date"
+						key="contact_form[a].date"
+						value="$now"
+						reset="false"
+						hidden />
+					<input
+						type="hidden"
+						key="contact_form[a].status"
+						value="open"
+						read="false"
+						reset="false" />
 				</floating-label>
 
-				<button type="submit">Send Message</button>
+				<div>
+					<input
+						type="checkbox"
+						id="newsletter"
+						key="newsletter.opted_in"
+						reset="false" />
+					<input
+						type="date"
+						key="newsletter.date"
+						value="$now"
+						reset="false"
+						hidden />
+					<span>Join our news letter</span>
+				</div>
+
+				<button actions="save, reset">Send Message</button>
 			</form>
 		</div>
 	</div>
-</section> -->
+</section>
