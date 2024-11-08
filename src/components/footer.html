@@ -1,51 +1,102 @@
 <div
-    class="padding:80px_15px background-color:#F7CC02 opacity:0.9 text-align:center">
-    <h2 class="font-size:2rem">SPREAD THE WORD!</h2>
+	class="padding:80px_15px background-color:#F7CC02 opacity:0.9 text-align:center">
+	<h2 class="font-size:2rem">SPREAD THE WORD!</h2>
 
-    <div
-        class="display:flex justify-content:center font-size:22px margin-bottom:25px">
-        <!-- Social Share -->
-        <a
-            href="https://twitter.com/yelloworacle1"
-            target="_blank"
-            class="margin:15px">
-            <i src="{{path}}assets/svg/twitter.svg"></i>
-        </a>
-        <a
-            href="https://www.facebook.com/yelloworacle"
-            target="_blank"
-            class="margin:15px">
-            <i src="{{path}}assets/svg/facebook.svg"></i>
-        </a>
-        <a
-            href="https://www.instagram.com/yelloworacle"
-            target="_blank"
-            class="margin:15px">
-            <i src="{{path}}assets/svg/instagram.svg"></i>
-        </a>
-        <a
-            href="https://www.linkedin.com/company/yelloworacle"
-            target="_blank"
-            class="margin:15px">
-            <i src="{{path}}assets/svg/linkedin-in.svg"></i>
-        </a>
-        <a
-            href="https://www.pinterest.com/yelloworacle"
-            target="_blank"
-            class="margin:15px">
-            <i
-                class="display:flex height:20px"
-                src="{{path}}assets/svg/pinterest-p.svg"></i>
-        </a>
-    </div>
-    <p>
-        <a href="{{path}}terms/privacy.html"> Privacy </a> |
-        <a href="{{path}}terms/index.html"> Terms </a> |
-        <a href="{{path}}terms/refunds.html"> Refunds </a> |
-        <a href="{{path}}advertize.html"> Advertize </a>
-    </p>
-    <p>2024 All Right Reserved</p>
-    <p>
-        <a href="{{path}}" translate="no">Yellow Oracle</a>
-    </p>
+	<div
+		class="display:flex justify-content:center font-size:22px margin-bottom:25px">
+		<!-- Social Share -->
+		<a
+			href="https://twitter.com/yelloworacle1"
+			target="_blank"
+			class="margin:15px">
+			<i src="{{path}}assets/svg/twitter.svg"></i>
+		</a>
+		<a
+			href="https://www.facebook.com/yelloworacle"
+			target="_blank"
+			class="margin:15px">
+			<i src="{{path}}assets/svg/facebook.svg"></i>
+		</a>
+		<a
+			href="https://www.instagram.com/yelloworacle"
+			target="_blank"
+			class="margin:15px">
+			<i src="{{path}}assets/svg/instagram.svg"></i>
+		</a>
+		<a
+			href="https://www.linkedin.com/company/yelloworacle"
+			target="_blank"
+			class="margin:15px">
+			<i src="{{path}}assets/svg/linkedin-in.svg"></i>
+		</a>
+		<a
+			href="https://www.pinterest.com/yelloworacle"
+			target="_blank"
+			class="margin:15px">
+			<i
+				class="display:flex height:20px"
+				src="{{path}}assets/svg/pinterest-p.svg"></i>
+		</a>
+	</div>
+
+	<form
+		array="users"
+		object="$user_id"
+		class="margin-bottom:20px max-width:500px margin:auto">
+		<h3 class="margin-bottom:20px">Join Our Newsletter</h3>
+		<div class="margin-bottom:10px">
+			<input
+				type="checkbox"
+				id="newsletter"
+				key="newsletter.opted_in"
+				reset="false" />
+			<input
+				type="date"
+				key="newsletter.date"
+				value="$now"
+				reset="false"
+				hidden />
+			<span>
+				I agree to receive marketing emails and accept the
+				<a
+					href="{{path}}terms/"
+					target="_blank"
+					rel="noopener noreferrer"
+					>Privacy Policy</a
+				>.</span
+			>
+		</div>
+
+		<floating-label>
+			<input
+				type="email"
+				placeholder="Email"
+				key="email"
+				input-selector="document; #setemailinput"
+				input-attribute="value"
+				required />
+			<input
+				type="date"
+				key="newsletter.date"
+				value="$now"
+				reset="false"
+				hidden />
+			<a
+				actions="validate, save"
+				class="display:flex position:absolute top:9px right:8px font-size:20px">
+				<span class="margin-right:5px font-weight:400">Join </span>
+				<i src="./assets/svg/angle-right.svg"></i>
+			</a>
+		</floating-label>
+	</form>
+	<p>
+		<a href="{{path}}terms/privacy.html"> Privacy </a> |
+		<a href="{{path}}terms/index.html"> Terms </a> |
+		<a href="{{path}}terms/refunds.html"> Refunds </a> |
+		<a href="{{path}}advertize.html"> Advertize </a>
+	</p>
+	<p>2024 All Right Reserved</p>
+	<p>
+		<a href="{{path}}" translate="no">Yellow Oracle</a>
+	</p>
 </div>
