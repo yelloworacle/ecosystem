@@ -1,147 +1,159 @@
 <!DOCTYPE html>
 <div class="card margin-bottom:15px" template>
-    <div class="card-content">
-        <div class="card-row full-width">
-            <span class="card-label">Career Name:</span>
-            <span class="card-value load-value">{{object.name}}</span>
-        </div>
-        <div class="card-row">
-            <span class="card-label">Average Salary:</span>
-            <span class="card-value load-value">{{object.salary}}</span>
-        </div>
-        <div class="card-row">
-            <span class="card-label">Stress Level:</span>
-            <span class="card-value load-value">{{object.stress}}</span>
-        </div>
+	<div class="card-content">
+		<div class="card-row full-width">
+			<span class="card-label">Career Name:</span>
+			<span class="card-value load-value">{{object.name}}</span>
+		</div>
+		<div class="card-row full-width">
+			<span class="card-label">Sense Of Purpose:</span>
+			<span class="card-value load-value">{{object.senseOfPurpose}}</span>
+		</div>
+		<div class="card-row full-width">
+			<span class="card-label">Healing Effect:</span>
+			<span class="card-value load-value">{{object.healingEffect}}</span>
+		</div>
+		<div class="card-row full-width">
+			<span class="card-label">Brings Joy:</span>
+			<span class="card-value load-value">{{object.bringsJoy}}</span>
+		</div>
+		<div class="card-row">
+			<span class="card-label">Average Salary:</span>
+			<span class="card-value load-value">{{object.salary}}</span>
+		</div>
+		<div class="card-row">
+			<span class="card-label">Stress Level:</span>
+			<span class="card-value load-value">{{object.stress}}</span>
+		</div>
 
-        <div class="card-row">
-            <span class="card-label">Pros:</span>
-            <span class="card-value load-value">{{object.pros}}</span>
-        </div>
-        <div class="card-row">
-            <span class="card-label">Cons:</span>
-            <span class="card-value load-value">{{object.cons}}</span>
-        </div>
-        <div class="card-row full-width">
-            <span class="card-label">Interesting Fact:</span>
-            <span class="card-value load-value">{{object.facts}}</span>
-        </div>
+		<div class="card-row">
+			<span class="card-label">Pros:</span>
+			<span class="card-value load-value">{{object.pros}}</span>
+		</div>
+		<div class="card-row">
+			<span class="card-label">Cons:</span>
+			<span class="card-value load-value">{{object.cons}}</span>
+		</div>
+		<div class="card-row full-width">
+			<span class="card-label">Interesting Fact:</span>
+			<span class="card-value load-value">{{object.facts}}</span>
+		</div>
 
-        <div class="card-row">
-            <span class="card-label">Apprentice:</span>
-            <span class="card-value load-value">{{object.apprentice}}</span>
-        </div>
-        <div class="card-row">
-            <span class="card-label">Satisfaction:</span>
-            <span class="card-value load-value">{{object.satisfaction}}</span>
-        </div>
-        <div class="card-row full-width">
-            <span class="card-label">Sacrifices:</span>
-            <span class="card-value load-value">{{object.sacrifices}}</span>
-        </div>
+		<div class="card-row">
+			<span class="card-label">Apprentice:</span>
+			<span class="card-value load-value">{{object.apprentice}}</span>
+		</div>
+		<div class="card-row">
+			<span class="card-label">Satisfaction:</span>
+			<span class="card-value load-value">{{object.satisfaction}}</span>
+		</div>
+		<div class="card-row full-width">
+			<span class="card-label">Sacrifices:</span>
+			<span class="card-value load-value">{{object.sacrifices}}</span>
+		</div>
 
-        <div class="card-row full-width">
-            <span class="card-label">Characteristics:</span>
-            <span class="card-value load-value"
-                >{{object.characteristics}}</span
-            >
-        </div>
-        <div class="card-row full-width">
-            <span class="card-label">Career Path Variability:</span>
-            <span class="card-value load-value"
-                >{{object.careerPathVariability}}</span
-            >
-        </div>
-        <div class="card-row full-width">
-            <span class="card-label">Why:</span>
-            <span
-                class="card-value load-value"
-                array="users"
-                object="$user_id"
-                key="why.{{object._id}}"
-                input-if="false"
-                input-next=".createWhy"
-                input-attribute="$click"
-                value-dispatch></span>
+		<div class="card-row full-width">
+			<span class="card-label">Characteristics:</span>
+			<span class="card-value load-value"
+				>{{object.characteristics}}</span
+			>
+		</div>
+		<div class="card-row full-width">
+			<span class="card-label">Career Path Variability:</span>
+			<span class="card-value load-value"
+				>{{object.careerPathVariability}}</span
+			>
+		</div>
+		<div class="card-row full-width">
+			<span class="card-label">Why:</span>
+			<span
+				class="card-value load-value"
+				array="users"
+				object="$user_id"
+				key="why.{{object._id}}"
+				input-if="false"
+				input-next=".createWhy"
+				input-attribute="$click"
+				value-dispatch></span>
 
-            <form api="openai">
-                <input
-                    openai="chat.completions.create"
-                    openai-key="model"
-                    value="gpt-4o-mini"
-                    hidden />
+			<form api="openai">
+				<input
+					openai="chat.completions.create"
+					openai-key="model"
+					value="gpt-4o-mini"
+					hidden />
 
-                <input
-                    openai="chat.completions.create"
-                    openai-key="messages[0].role"
-                    value="system"
-                    hidden />
-                <textarea
-                    array="ai"
-                    object
-                    key="content"
-                    save="false"
-                    filter-key="name"
-                    filter-value="Why Career"
-                    openai="chat.completions.create"
-                    openai-key="messages[0].content"
-                    hidden></textarea>
+				<input
+					openai="chat.completions.create"
+					openai-key="messages[0].role"
+					value="system"
+					hidden />
+				<textarea
+					array="ai"
+					object
+					key="content"
+					save="false"
+					filter-key="name"
+					filter-value="Why Career"
+					openai="chat.completions.create"
+					openai-key="messages[0].content"
+					hidden></textarea>
 
-                <input
-                    openai="chat.completions.create"
-                    openai-key="messages[1].role"
-                    value="user"
-                    hidden />
-                <input
-                    array="users"
-                    object="$user_id"
-                    key="questions"
-                    save="false"
-                    openai="chat.completions.create"
-                    openai-key="messages[1].content"
-                    hidden />
+				<input
+					openai="chat.completions.create"
+					openai-key="messages[1].role"
+					value="user"
+					hidden />
+				<input
+					array="users"
+					object="$user_id"
+					key="questions"
+					save="false"
+					openai="chat.completions.create"
+					openai-key="messages[1].content"
+					hidden />
 
-                <input
-                    openai="chat.completions.create"
-                    openai-key="messages[2].role"
-                    value="user"
-                    hidden />
-                <input
-                    openai="chat.completions.create"
-                    openai-key="messages[2].content"
-                    value="career name: {{object.name}}"
-                    hidden />
-                <textarea
-                    class="whyCareerResult"
-                    realtime="true"
-                    crdt="false"
-                    array="users"
-                    object="$user_id"
-                    key="why.{{object._id}}"
-                    openai="chat.completions.create"
-                    openai-key="choices[0].message.content"
-                    openai-request="false"
-                    hidden></textarea>
-                <a
-                    class="createWhy"
-                    actions="openai.chat.completions.create, save"></a>
-            </form>
-        </div>
+				<input
+					openai="chat.completions.create"
+					openai-key="messages[2].role"
+					value="user"
+					hidden />
+				<input
+					openai="chat.completions.create"
+					openai-key="messages[2].content"
+					value="career name: {{object.name}}"
+					hidden />
+				<textarea
+					class="whyCareerResult"
+					realtime="true"
+					crdt="false"
+					array="users"
+					object="$user_id"
+					key="why.{{object._id}}"
+					openai="chat.completions.create"
+					openai-key="choices[0].message.content"
+					openai-request="false"
+					hidden></textarea>
+				<a
+					class="createWhy"
+					actions="openai.chat.completions.create, save"></a>
+			</form>
+		</div>
 
-        <div class="width:100% subscribed">
-            <button class="unlock width:100% margin-top:20px font-size:16px">
-                <a state_to="mainView" state-src="./checkout/"
-                    >Subscribe to unlock additional details</a
-                >
-            </button>
+		<div class="width:100% subscribed">
+			<button class="unlock width:100% margin-top:20px font-size:16px">
+				<a state_to="mainView" state-src="./checkout/"
+					>Subscribe to unlock additional details</a
+				>
+			</button>
 
-            <a
-                id="show-example"
-                show="document; #example"
-                hide="document; #oracle"
-                class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
-                >View an example of subscribed career details</a
-            >
-        </div>
-    </div>
+			<a
+				id="show-example"
+				show="document; #example"
+				hide="document; #oracle"
+				class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
+				>View an example of subscribed career details</a
+			>
+		</div>
+	</div>
 </div>
