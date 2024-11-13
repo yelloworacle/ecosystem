@@ -54,6 +54,9 @@ Please provide the responses in a JSON format with the keys: senseOfPurpose, hea
 }
 
 async function enrichCareers() {
+	let processedCount = 0;
+	let updatedCount = 0;
+
 	try {
 		const { OpenAI } = await import("openai");
 
@@ -78,69 +81,79 @@ async function enrichCareers() {
 
 		const cursor = careersCollection.find(query).batchSize(100); // Adjust batchSize as needed
 
-		let processedCount = 0;
-		let updatedCount = 0;
-
 		while (await cursor.hasNext()) {
-			const career = await cursor.next();
-			const { _id, name, senseOfPurpose, healingEffect, bringsJoy } =
-				career;
+			try {
+				const career = await cursor.next();
+				const { _id, name, senseOfPurpose, healingEffect, bringsJoy } =
+					career;
 
-			// Check if all fields exist to avoid redundant processing
-			if (senseOfPurpose && healingEffect && bringsJoy) {
-				console.log(
-					`Career "${name}" already has all fields. Skipping.`
-				);
-				continue;
-			}
-
-			console.log(`Processing career: "${name}"`);
-
-			// Generate descriptions
-			const descriptions = await generateDescriptions(name);
-
-			if (descriptions) {
-				// Prepare update object
-				const updateFields = {};
-				if (!senseOfPurpose && descriptions.senseOfPurpose) {
-					updateFields.senseOfPurpose = descriptions.senseOfPurpose;
-				}
-				if (!healingEffect && descriptions.healingEffect) {
-					updateFields.healingEffect = descriptions.healingEffect;
-				}
-				if (!bringsJoy && descriptions.bringsJoy) {
-					updateFields.bringsJoy = descriptions.bringsJoy;
+				// Check if all fields exist to avoid redundant processing
+				if (senseOfPurpose && healingEffect && bringsJoy) {
+					console.log(
+						`Career "${name}" already has all fields. Skipping.`
+					);
+					continue;
 				}
 
-				if (Object.keys(updateFields).length > 0) {
-					try {
-						// Update the document in MongoDB
-						await careersCollection.updateOne(
-							{ _id },
-							{ $set: updateFields }
-						);
+				console.log(`Processing career: "${name}"`);
+
+				// Generate descriptions
+				const descriptions = await generateDescriptions(name);
+
+				if (descriptions) {
+					// Prepare update object
+					const updateFields = {};
+					if (!senseOfPurpose && descriptions.senseOfPurpose) {
+						updateFields.senseOfPurpose =
+							descriptions.senseOfPurpose;
+					}
+					if (!healingEffect && descriptions.healingEffect) {
+						updateFields.healingEffect = descriptions.healingEffect;
+					}
+					if (!bringsJoy && descriptions.bringsJoy) {
+						updateFields.bringsJoy = descriptions.bringsJoy;
+					}
+
+					if (Object.keys(updateFields).length > 0) {
+						try {
+							// Update the document in MongoDB
+							await careersCollection.updateOne(
+								{ _id },
+								{ $set: updateFields }
+							);
+							console.log(
+								`Updated career "${name}" with new fields.`
+							);
+							updatedCount++;
+						} catch (error) {
+							console.error(
+								`Failed to update career "${name}", _id: ${_id}.`
+							);
+						}
+					} else {
 						console.log(
-							`Updated career "${name}" with new fields.`
-						);
-						updatedCount++;
-					} catch (error) {
-						console.error(
-							`Failed to update career "${name}", _id: ${_id}.`
+							`No new fields to update for career "${name}".`
 						);
 					}
 				} else {
 					console.log(
-						`No new fields to update for career "${name}".`
+						`Failed to generate descriptions for "${name}".`
 					);
 				}
-			} else {
-				console.log(`Failed to generate descriptions for "${name}".`);
+
+				processedCount++;
+
+				// Optional: Add a delay to respect OpenAI rate limits
+				await new Promise((resolve) => setTimeout(resolve, 500));
+			} catch (docError) {
+				// Handle errors related to individual document processing
+				console.error(
+					`Error processing a career document:`,
+					docError.message
+				);
+				processedCount++;
+				continue;
 			}
-
-			processedCount++;
-
-			// Optional: Add a delay to respect OpenAI rate limits
-			await new Promise((resolve) => setTimeout(resolve, 1000)); // 1 second delay
 		}
 
 		console.log(
@@ -154,6 +167,7 @@ async function enrichCareers() {
 	} finally {
 		await client.close();
 		console.log("Disconnected from MongoDB.");
+		if (processedCount) enrichCareers();
 	}
 }
 
