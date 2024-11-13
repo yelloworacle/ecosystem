@@ -67,7 +67,7 @@ async function enrichCareers() {
 		await client.connect();
 		console.log("Connected to MongoDB.");
 
-		const database = client.db(); // Use the default database from URI
+		const database = client.db("652c8d62679eca03e0b116a7"); // Use the default database from URI
 		const careersCollection = database.collection("careers");
 
 		// Create a cursor that filters documents missing any of the target fields
@@ -144,7 +144,7 @@ async function enrichCareers() {
 				processedCount++;
 
 				// Optional: Add a delay to respect OpenAI rate limits
-				await new Promise((resolve) => setTimeout(resolve, 500));
+				// await new Promise((resolve) => setTimeout(resolve, 500));
 			} catch (docError) {
 				// Handle errors related to individual document processing
 				console.error(
