@@ -1,652 +1,683 @@
 <!DOCTYPE html>
 <div
-    class="width:100%"
-    resize-attribute="menu-icon"
-    resize-value="active"
-    resize-if="300px"
-    resize-selector="document; [menu-icon][]"></div>
+	class="width:100%"
+	resize-attribute="menu-icon"
+	resize-value="active"
+	resize-if="300px"
+	resize-selector="document; [menu-icon][]"></div>
 <div
-    class="width:100%"
-    resize-attribute="menu-icon"
-    resize-value="false"
-    resize-if="0px"
-    resize-selector="document; [menu-icon][]"></div>
+	class="width:100%"
+	resize-attribute="menu-icon"
+	resize-value="false"
+	resize-if="0px"
+	resize-selector="document; [menu-icon][]"></div>
 
 <div
-    class="display:flex justify-content:space-between align-items:center padding:10px">
-    <!-- Logo -->
-    <a
-        href="{{path}}"
-        actions="state"
-        state_to="mainView"
-        state-src="{{path}}home/"
-        click-closest="sidenav"
-        click-attribute="style"
-        click-value="width:0px"
-        click-if="<=993px"
-        click-if-value="$innerWidth"
-        class="height:50px width:210px display:flex align-items:center">
-        <img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
-        <span class="logo-name" translate="no"
-            >Yellow <span class="logo-name-colored">Oracle</span></span
-        >
-    </a>
+	class="display:flex justify-content:space-between align-items:center padding:10px">
+	<!-- Logo -->
+	<a
+		href="{{path}}"
+		actions="state"
+		state_to="mainView"
+		state-src="{{path}}home/"
+		click-closest="sidenav"
+		click-attribute="style"
+		click-value="width:0px"
+		click-if="<=993px"
+		click-if-value="$innerWidth"
+		class="height:50px width:210px display:flex align-items:center">
+		<img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
+		<span class="logo-name" translate="no"
+			>Yellow <span class="logo-name-colored">Oracle</span></span
+		>
+	</a>
 
-    <!-- Menu Icon -->
-    <a
-        menu-icon
-        toggle="width:0px,"
-        toggle-selector="document; #menuL"
-        toggle-attribute="style">
-        <span></span>
-        <span></span>
-        <span></span>
-    </a>
+	<!-- Menu Icon -->
+	<a
+		menu-icon
+		toggle="width:0px,"
+		toggle-selector="document; #menuL"
+		toggle-attribute="style">
+		<span></span>
+		<span></span>
+		<span></span>
+	</a>
 </div>
 
 <ul class="overflow:auto height:calc(100vh_-_110px) padding-bottom:50px">
-    <!-- Navigation -->
-    <menu
-        class="text-transform:uppercase margin-bottom:30px display:none@md@lg@xl">
-        <h3 class="text-transform:capitalize margin:50px_10px_5px">
-            Navigation
-        </h3>
-        <a
-            href="{{path}}"
-            actions="state"
-            state_to="mainView"
-            state-src="{{path}}home/"
-            click-closest="sidenav"
-            click-attribute="style"
-            click-value="width:0px"
-            click-if="<=993px"
-            click-if-value="$innerWidth"
-            class="display:block padding:12px_24px"
-            >Home</a
-        >
-        <a
-            href="{{path}}"
-            actions="state"
-            state_to="mainView"
-            state-src="{{path}}oracle/"
-            click-closest="sidenav"
-            click-attribute="style"
-            click-value="width:0px"
-            click-if="<=993px"
-            click-if-value="$innerWidth"
-            class="display:block padding:12px_24px"
-            >Oracle</a
-        >
-        <a
-            href="{{path}}blog/index.html"
-            class="display:block padding:12px_24px"
-            >Blog</a
-        >
-        <a
-            href="{{path}}"
-            actions="state"
-            state_to="mainView"
-            state-src="{{path}}account/profile/"
-            click-closest="sidenav"
-            click-attribute="style"
-            click-value="width:0px"
-            click-if="<=993px"
-            click-if-value="$innerWidth"
-            class="display:block padding:12px_24px"
-            >Account</a
-        >
-    </menu>
+	<!-- Navigation -->
+	<menu
+		class="text-transform:uppercase margin-bottom:30px display:none@md@lg@xl">
+		<h3 class="text-transform:capitalize margin:50px_10px_5px">
+			Navigation
+		</h3>
+		<a
+			href="{{path}}"
+			actions="state"
+			state_to="mainView"
+			state-src="{{path}}home/"
+			click-closest="sidenav"
+			click-attribute="style"
+			click-value="width:0px"
+			click-if="<=993px"
+			click-if-value="$innerWidth"
+			class="display:block padding:12px_24px"
+			>Home</a
+		>
+		<a
+			href="{{path}}"
+			actions="state"
+			state_to="mainView"
+			state-src="{{path}}oracle/"
+			click-closest="sidenav"
+			click-attribute="style"
+			click-value="width:0px"
+			click-if="<=993px"
+			click-if-value="$innerWidth"
+			class="display:block padding:12px_24px"
+			>Oracle</a
+		>
+		<a
+			href="{{path}}blog/index.html"
+			class="display:block padding:12px_24px"
+			>Blog</a
+		>
+		<a
+			href="{{path}}"
+			actions="state"
+			state_to="mainView"
+			state-src="{{path}}account/profile/"
+			click-closest="sidenav"
+			click-attribute="style"
+			click-value="width:0px"
+			click-if="<=993px"
+			click-if-value="$innerWidth"
+			class="display:block padding:12px_24px"
+			>Account</a
+		>
+	</menu>
 
-    <menu id="account" session>
-        <!-- TODO: if no subscription click redirect to checkout -->
+	<menu id="account" session>
+		<!-- TODO: if no subscription click redirect to checkout -->
 
-        <h3 class="margin:50px_10px_5px">Account</h3>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}account/profile/"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/user.svg"></i>
-                </span>
-                <span>Profile</span>
-            </a>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}account/answers/"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/circle-question.svg"></i>
-                </span>
-                <span>Answers</span>
-            </a>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}account/careers/"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/person-dots-from-line.svg"></i>
-                </span>
-                <span>Careers</span>
-            </a>
-        </li>
+		<h3 class="margin:50px_10px_5px">Account</h3>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}account/profile/"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/user.svg"></i>
+				</span>
+				<span>Profile</span>
+			</a>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}account/answers/"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/circle-question.svg"></i>
+				</span>
+				<span>Answers</span>
+			</a>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}account/careers/"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/person-dots-from-line.svg"></i>
+				</span>
+				<span>Careers</span>
+			</a>
+		</li>
 
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}account/subscription/"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <!-- <i src="{{path}}assets/svg/clipboard-question.svg"></i> -->
-                    <i src="{{path}}assets/svg/money-bill-wave.svg"></i>
-                </span>
-                <span>Subscription</span>
-            </a>
-        </li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}account/subscription/"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<!-- <i src="{{path}}assets/svg/clipboard-question.svg"></i> -->
+					<i src="{{path}}assets/svg/money-bill-wave.svg"></i>
+				</span>
+				<span>Subscription</span>
+			</a>
+		</li>
 
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}account/ambassador/"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/bullhorn.svg"></i>
-                </span>
-                <span>Ambassador</span>
-            </a>
-        </li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}account/ambassador/"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/bullhorn.svg"></i>
+				</span>
+				<span>Ambassador</span>
+			</a>
+		</li>
 
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}account/advertise/"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/rectangle-ad.svg"></i>
-                </span>
-                <span>Advertise</span>
-            </a>
-        </li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}account/advertise/"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/rectangle-ad.svg"></i>
+				</span>
+				<span>Advertise</span>
+			</a>
+		</li>
 
-        <li class="">
-            <a
-                share
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/share-alt.svg"></i>
-                </span>
-                <span>Share</span>
-            </a>
-        </li>
-    </menu>
+		<li class="">
+			<a
+				share
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/share-alt.svg"></i>
+				</span>
+				<span>Share</span>
+			</a>
+		</li>
+	</menu>
 
-    <menu id="admin" session>
-        <input
-            type="hidden"
-            id="isadmin"
-            array="keys"
-            object="652c8d62a91e10cd4800fffb"
-            key="key"
-            input-parent
-            input-attribute="admin"
-            input-value="true" />
+	<menu id="admin" session>
+		<input
+			type="hidden"
+			id="isadmin"
+			array="keys"
+			object="652c8d62a91e10cd4800fffb"
+			key="key"
+			input-parent
+			input-attribute="admin"
+			input-value="true" />
 
-        <h3 class="margin:50px_10px_5px">Admin</h3>
+		<h3 class="margin:50px_10px_5px">Admin</h3>
 
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/users/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/users.svg"></i>
-                </span>
-                <span>Users</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/users/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/organizations/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/people-roof.svg"></i>
-                </span>
-                <span>Organizations</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/organizations/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/payments/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/credit-card.svg"></i>
-                </span>
-                <span>Payments</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/payments/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/payouts/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/hand-holding-dollar.svg"></i>
-                </span>
-                <span>Payouts</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/payouts/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/blog/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/blog.svg"></i>
-                </span>
-                <span>Blog Posts</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/blog/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/social/index.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/share-from-square.svg"></i>
-                </span>
-                <span>Social Posts</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/social/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/questions/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/circle-question.svg"></i>
-                </span>
-                <span>Questions</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/questions/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/careers/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/person-dots-from-line.svg"></i>
-                </span>
-                <span>Careers</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/careers/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/subscriptions/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/money-bill-wave.svg"></i>
-                </span>
-                <span>Subscriptions</span>
-            </a>
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/subscriptions/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/advertisements/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/rectangle-ad.svg"></i>
-                </span>
-                <span>Advertisements</span>
-            </a>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/users/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/users.svg"></i>
+				</span>
+				<span>Users</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/users/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/organizations/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/people-roof.svg"></i>
+				</span>
+				<span>Organizations</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/organizations/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/payments/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/credit-card.svg"></i>
+				</span>
+				<span>Payments</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/payments/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/payouts/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/hand-holding-dollar.svg"></i>
+				</span>
+				<span>Payouts</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/payouts/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/blog/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/blog.svg"></i>
+				</span>
+				<span>Blog Posts</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/blog/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/social/index.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/share-from-square.svg"></i>
+				</span>
+				<span>Social Posts</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/social/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/questions/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/circle-question.svg"></i>
+				</span>
+				<span>Questions</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/questions/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/careers/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/person-dots-from-line.svg"></i>
+				</span>
+				<span>Careers</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/careers/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/subscriptions/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/money-bill-wave.svg"></i>
+				</span>
+				<span>Subscriptions</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/subscriptions/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/advertisements/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/rectangle-ad.svg"></i>
+				</span>
+				<span>Advertisements</span>
+			</a>
 
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/advertisements/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/advertisements/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
 
-        <li class="">
-            <a
-                actions="state"
-                state_to="mainView"
-                state-src="{{path}}admin/ai/datatable.html"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/brain.svg"></i>
-                </span>
-                <span>AI Settings</span>
-            </a>
+		<li class="">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}admin/ai/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/brain.svg"></i>
+				</span>
+				<span>AI Settings</span>
+			</a>
 
-            <div class="float:right width:50px text-align:center">
-                <a
-                    actions="state"
-                    state_to="mainView"
-                    state-src="{{path}}admin/ai/form.html"
-                    click-closest="sidenav"
-                    click-attribute="style"
-                    click-value="width:0px"
-                    click-if="<=993px"
-                    click-if-value="$innerWidth"
-                    class="display:flex justify-content:center align-items:center height:40px">
-                    <i src="{{path}}assets/svg/plus.svg"></i>
-                </a>
-            </div>
-        </li>
-        <li class="">
-            <a
-                href="{{path}}admin/builder/"
-                state_to="builder"
-                state-object="66f6d0cb004fd1aefd6d070d"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/palette.svg"></i>
-                </span>
-                <span>Builder</span>
-            </a>
-        </li>
-        <li class="">
-            <a
-                href="{{path}}admin/code-editor/"
-                state_to="code-editor"
-                state-object="66f6d0cb004fd1aefd6d070d"
-                click-closest="sidenav"
-                click-attribute="style"
-                click-value="width:0px"
-                click-if="<=993px"
-                click-if-value="$innerWidth"
-                class="display:flex align-items:center">
-                <span
-                    class="display:flex justify-content:center min-width:50px">
-                    <i src="{{path}}assets/svg/code.svg"></i>
-                </span>
-                <span>Code</span>
-            </a>
-        </li>
-    </menu>
-    <div
-        class="line-height:40px height:40px overflow:hidden white-space:nowrap position:absolute bottom:0px width:100% background:#222@dark">
-        <a
-            actions="signOut"
-            href="{{path}}signin.html"
-            class="display:flex align-items:center">
-            <span class="display:flex justify-content:center min-width:50px">
-                <i src="{{path}}assets/svg/sign-out-alt.svg"></i>
-            </span>
-            <span>Sign Out</span>
-        </a>
-    </div>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/ai/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
+				href="{{path}}admin/builder/"
+				state_to="builder"
+				state-object="66f6d0cb004fd1aefd6d070d"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/palette.svg"></i>
+				</span>
+				<span>Builder</span>
+			</a>
+		</li>
+		<li class="">
+			<a
+				href="{{path}}admin/code-editor/"
+				state_to="code-editor"
+				state-object="66f6d0cb004fd1aefd6d070d"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/code.svg"></i>
+				</span>
+				<span>Code</span>
+			</a>
+		</li>
+		<li class="">
+			<a
+				state_to="mainView"
+				state-src="{{path}}admin/email-campaigns/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/email-campaign.svg"></i>
+				</span>
+				<span>Email Campaigns</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/email-campaigns/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+	</menu>
+	<div
+		class="line-height:40px height:40px overflow:hidden white-space:nowrap position:absolute bottom:0px width:100% background:#222@dark">
+		<a
+			actions="signOut"
+			href="{{path}}signin.html"
+			class="display:flex align-items:center">
+			<span class="display:flex justify-content:center min-width:50px">
+				<i src="{{path}}assets/svg/sign-out-alt.svg"></i>
+			</span>
+			<span>Sign Out</span>
+		</a>
+	</div>
 </ul>
