@@ -1,20 +1,14 @@
-<svg height="1em" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <!-- Envelope -->
-  <rect x="15" y="30" width="70" height="40" fill="#4B9CD3" />
-  <polygon points="15,30 50,60 85,30" fill="#357ABD" />
-  
-  <!-- Paper inside envelope -->
-  <rect x="20" y="20" width="60" height="30" fill="#F5F5F5" />
-  <rect x="23" y="23" width="54" height="5" fill="#AAAAAA" />
-  <rect x="23" y="30" width="54" height="5" fill="#AAAAAA" />
-  <rect x="23" y="37" width="30" height="5" fill="#AAAAAA" />
-  
-  <!-- Megaphone -->
-  <polygon points="80,60 95,50 95,70" fill="#FFA726" />
-  <rect x="75" y="57" width="5" height="15" fill="#FFA726" />
-  <polygon points="75,72 72,75 78,75" fill="#FFA726" />
-  
-  <!-- Sound waves -->
-  <path d="M95 55 Q100 60 95 65" stroke="#FFA726" stroke-width="2" fill="none" />
-  <path d="M98 53 Q105 60 98 67" stroke="#FFA726" stroke-width="2" fill="none" />
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 640 512"
+  height="1em"
+  fill="currentColor"
+>
+  <!-- Envelope Icon -->
+  <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0l57.4-43c23.9-59.8 79.7-103.3 146.3-109.8l13.9-10.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176 0 384c0 35.3 28.7 64 64 64l296.2 0C335.1 417.6 320 378.5 320 336c0-5.6 .3-11.1 .8-16.6l-26.4 19.8z"/>
+
+  <!-- Bullhorn Icon Positioned Within the Envelope -->
+  <g transform="translate(390, 190) scale(0.5)">
+    <path d="M480 32c0-12.9-7.8-24.6-19.8-29.6s-25.7-2.2-34.9 6.9L381.7 53c-48 48-113.1 75-181 75l-8.7 0-32 0-96 0c-35.3 0-64 28.7-64 64l0 96c0 35.3 28.7 64 64 64l0 128c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32l0-128 8.7 0c67.9 0 133 27 181 75l43.6 43.6c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-147.6c18.6-8.8 32-32.5 32-60.4s-13.4-51.6-32-60.4L480 32zm-64 76.7L416 240l0 131.3C357.2 317.8 280.5 288 200.7 288l-8.7 0 0-96 8.7 0c79.8 0 156.5-29.8 215.3-83.3z"/>
+  </g>
 </svg>
