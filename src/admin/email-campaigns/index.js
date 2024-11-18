@@ -17,10 +17,10 @@
 
 			switch (value) {
 				case "newsletter":
-					query["newsletter.opted_in"] = true;
+					query["newsletter.opted_in"] = "on";
 					break;
 				case "subscribed":
-					query["subscribed"] = true;
+					query["subscription"] = { $ne: "false" };
 					break;
 				default:
 					// "all" does not modify the query
