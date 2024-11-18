@@ -49,7 +49,7 @@
 						Subject: formData[0].object.subject, // Email subject line
 						HtmlBody: formData[0].object.content, // HTML content of the email
 						TextBody: tempElement.innerText, // Plain text content for fallback
-						MessageStream: "outbound" // Message stream for categorization
+						MessageStream: "broadcast" // Message stream for categorization
 					};
 					Messages.push(message);
 				}
