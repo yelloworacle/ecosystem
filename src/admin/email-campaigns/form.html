@@ -3,9 +3,9 @@
 
 <section class="centered flex-direction:column">
 	<form
-		id="newsletter-form"
-		state_id="newsletter-fields"
-		array="newsletter-emails"
+		id="email-campaigns"
+		state_id="email-campaigns"
+		array="email-campaigns"
 		object=""
 		class="flex-form">
 		<!-- Toolbar Component -->
@@ -14,14 +14,15 @@
 			src="./components/form-toolbar.html"
 			class="width:100%"></div>
 
-		<!-- Subject Field -->
-		<floating-label class="input-600">
+		<!-- Frendily Name -->
+		<floating-label class="input-300">
 			<input
-				type="text"
-				key="subject"
-				placeholder="Email Subject"
+				type="type"
+				key="name"
+				placeholder="Email Name"
 				class="floating-label" />
 		</floating-label>
+
 		<!-- Schedule Field (Optional) -->
 		<floating-label class="input-300">
 			<input
@@ -31,73 +32,112 @@
 				class="floating-label" />
 		</floating-label>
 
-		<!-- Recipients Field -->
+		<!-- Subject Field -->
 		<floating-label class="input-600">
-			<textarea
-				key="recipients"
-				placeholder="Recipients (comma-separated emails)"
-				class="floating-label"></textarea>
+			<input
+				type="text"
+				key="subject"
+				placeholder="Email Subject"
+				class="floating-label" />
+		</floating-label>
+
+		<!-- Contact list Field -->
+		<floating-label class="input-300">
+			<select id="contactList" key="recipients" class="floating-label">
+				<option value="" disabled selected>
+					Select Recipient Type
+				</option>
+				<option value="newsletter">Newsletter</option>
+				<option value="all">All</option>
+				<option value="subscribed">Subscribed</option>
+				<option value="not-subscribed">Not Subscribed</option>
+			</select>
+		</floating-label>
+
+		<!-- Template Field -->
+		<floating-label class="input-300">
+			<select id="tempalte" key="template" class="floating-label">
+				<option value="" disabled selected>Select Template</option>
+				<option value="newsletter">Newsletter</option>
+				<option value="subscribed">Subscribed</option>
+				<option value="not-subscribed">Not Subscribed</option>
+			</select>
 		</floating-label>
 
 		<!-- Content Field -->
+		<!-- <floating-label class="input-600">
+			<textarea
+				id="email-content"
+				contenteditable="true"
+				key="content"
+				placeholder="Email Content"
+				class="floating-label"
+				height="auto"></textarea>
+		</floating-label> -->
+
 		<floating-label class="input-600">
-			<editor
+			<div
+				class="playground display:flex flex-direction:column position:relative overflow:hidden border-radius:2px width:auto height:600px">
+				<div
+					resizable
+					class="playground-code position:relative height:50%">
+					<textarea
+						type="code"
+						lang="html"
+						key="content"
+						input-closest=".playground .preview"
+						input-attribute="value"
+						input-events="input, onload"
+						class="height:100% width:100% outline:none border:none resize:none padding:5px"></textarea>
+					<div resize="bottom" class="background:lightgrey"></div>
+				</div>
+
+				<div class="playground-preview position:relative overflow:auto">
+					<iframe class="preview width:100% height:100%"></iframe>
+				</div>
+
+				<div
+					class="display:flex gap:15px font-size:20px position:absolute top:10px right:10px opacity:0.6">
+					<a
+						click-closest=".playground"
+						click-value="hide-preview"
+						click-attribute="class">
+						<i
+							toggle-attribute="src"
+							toggle-value="/assets/svg/eye-slash.svg, /assets/svg/eye.svg"
+							src="/assets/svg/eye.svg"></i>
+					</a>
+					<a
+						click-closest=".playground"
+						click-value="hide-code"
+						click-attribute="class">
+						<i
+							toggle-attribute="src"
+							toggle-value="/assets/svg/code.svg, /assets/svg/code.svg"
+							src="/assets/svg/code.svg"></i>
+					</a>
+					<a
+						class="margin-right:5px"
+						fullscreen
+						fullscreen-closest=".playground">
+						<i src="/assets/svg/expand.svg"></i>
+						<i src="/assets/svg/compress.svg"></i>
+					</a>
+				</div>
+			</div>
+		</floating-label>
+
+		<!-- <floating-label class="input-600">
+			<iframe
 				id="email-content"
 				contenteditable="true"
 				key="content"
 				realtime="true"
 				placeholder="Email Content"
-				input-selector="document; .content"
-				input-attribute="value"
-				class="floating-label rich-text-editor"></editor>
-		</floating-label>
-
-		<!-- Attachments Field -->
-		<floating-label class="input-600">
-			<!-- File Input -->
-			<input
-				type="file"
-				key="attachments"
-				accept="image/*,application/pdf"
-				multiple
-				array="files"
-				object="ObjectId()"
-				render-selector=".attachments-preview"
-				class="floating-label input-icon" />
-
-			<!-- Plus Icon for Visual Cue -->
-			<i src="./assets/svg/plus.svg" class="attachment-icon"></i>
-
-			<!-- Template for Rendering Attachments -->
-			<div class="attachments-preview">
-				<a
-					id="attachment-upload"
-					type="file"
-					array="files"
-					object="ObjectId()"
-					key="{}"
-					accept="image/*,application/pdf"
-					class="hidden"
-					read="false"
-					upsert="true"
-					render-selector="[template]"
-					skip-attribute>
-					<div template file_id="{{object.id}}">
-						<input
-							file="pathname"
-							value="/attachments{{object.pathname}}"
-							onload-selector="document; #attachments"
-							onload-attribute="value"
-							onload-if="!$template"
-							hidden />
-						<input file="directory" value="/attachments" hidden />
-						<input file="path" value="/attachments" hidden />
-						<input file="public" value="true" hidden />
-						<input file="host[]" value="*" hidden />
-					</div>
-				</a>
-			</div>
-		</floating-label>
+				class="floating-label rich-text-editor"
+				height="auto"
+				src="./admin/email-campaigns/templates/newsletter.html"></iframe>
+		</floating-label> -->
 
 		<!-- Hidden Metadata Fields -->
 		<input
@@ -108,11 +148,7 @@
 		<input type="datetime" key="created_at" value="$now" hidden />
 
 		<!-- Save Button -->
-		<button
-			actions="save, state"
-			state_to="mainView"
-			state-src="./admin/newsletter/datatable.html"
-			class="button-round">
+		<button actions="save" class="button-round">
 			<i src="./assets/svg/save.svg"></i>
 		</button>
 
@@ -121,40 +157,10 @@
 			click-selector="i[src]"
 			click-attribute="src"
 			click-value="./assets/svg/spinner.svg"
-			actions="click, save, timeout(1000), render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile), action(document; #emailSent)">
-			Send Newsletter
+			actions="click, save, sendMassEmails">
+			Send Emails
 			<i id="emailSent-icon" src="./assets/svg/paper-plane.svg"></i>
 		</button>
-
-		<!-- Email Sent Indicator -->
-		<a
-			id="emailSent"
-			click-selector="document; #sent-icon"
-			click-attribute="src"
-			click-value="./assets/svg/check-circle.svg"
-			hidden></a>
-	</form>
-
-	<!-- Publish Form to Handle Email Sending -->
-	<form id="sendform" array="files" object="" upsert="true" hidden>
-		<input key="name" class="title" />
-		<input key="pathname" value-prefix="/newsletter/" class="title" />
-		<input key="path" value="/newsletter" />
-		<input key="directory" value="newsletter" />
-		<input key="content-type" value="text/html" />
-		<input key="$addToSet.host" value="*" />
-		<input key="public" value="true" />
-
-		<div id="publish" render-next render="object"></div>
-		<div
-			id="sethtml"
-			src="./newsletter/email.html"
-			value-type="text"
-			click-next
-			click-attribute="value"></div>
-
-		<textarea key="src"></textarea>
-		<button id="savefile" actions="save" hidden>Send Email</button>
 	</form>
 
 	<!-- Optional: OpenAI Integration for Content Generation -->
@@ -207,3 +213,5 @@
 
 	<div src="./components/toolbar.html" value-type="outerHTML"></div>
 </section>
+
+<script src="./admin/email-campaigns/index.js"></script>
