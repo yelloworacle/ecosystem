@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html
 	dir="ltr"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:o="urn:schemas-microsoft-com:office:office">
 	<head>
-		<title>Your Guide to Choosing the Perfect Career Path!</title>
+		<title>{{object.title}}</title>
 
 		<!--[if !mso]><!-- -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,19 +13,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<meta charset="UTF-8" />
-		<meta
-			name="preheader"
-			content="Unlock your potential with our top tips for selecting a career that suits you." />
+		<meta name="preheader" content="{{object.preheader}}" />
 		<meta name="theme-color" content="#4CAF50" />
 		<meta name="format-detection" content="telephone=no" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta
-			name="apple-mobile-web-app-status-bar-style"
-			content="black-translucent" />
-		<meta name="application-name" content="[Your Company Name]" />
-		<meta name="msapplication-TileColor" content="#4CAF50" />
-		<meta name="msapplication-TileImage" content="icon.png" />
-		<meta name="msapplication-config" content="browserconfig.xml" />
+
 		<!-- Preheader Text : Hidden -->
 	</head>
 	<body bgcolor="#f4f4f4" style="margin: 0; padding: 0; color: #333333">
@@ -38,9 +30,8 @@
 				max-width: 0px;
 				opacity: 0;
 				overflow: hidden;
-			">
-			Unlock your potential with our top tips for selecting a career that
-			suits you.
+			"
+			>{{object.preheader}}
 		</span>
 
 		<style type="text/css">
@@ -208,7 +199,6 @@
 				}
 			}
 		</style>
-
 		<!-- Wrapper Table -->
 		<table
 			width="100%"
@@ -226,7 +216,6 @@
 							cellspacing="0"
 							border="0"
 							bgcolor="#ffffff"
-							class="responsive-table"
 							style="
 								margin: 20px 0;
 								border-radius: 8px;
@@ -238,7 +227,7 @@
 							<tbody>
 								<tr>
 									<td
-										class="header fubar"
+										class="header"
 										bgcolor="#4CAF50"
 										style="
 											background-color: #4caf50;
@@ -251,19 +240,15 @@
 												font-size: 24px;
 												color: #ffffff;
 											">
-											🌟 Your Guide to Choosing the
-											Perfect Career Path!
+											{{object.header}}
 										</h1>
 										<p
 											style="
 												margin: 5px 0px 0px;
 												font-size: 14px;
 												color: rgb(255, 255, 255);
-											"
-											eid="f9f742">
-											Unlock your potential with our top
-											tips for selecting a career that
-											suits you.
+											">
+											{{object.subtitle}}
 										</p>
 									</td>
 								</tr>
@@ -271,7 +256,7 @@
 								<!-- Body Content -->
 								<tr>
 									<td
-										class="body-content fubar"
+										class="body-content"
 										bgcolor="#ffffff"
 										style="
 											background-color: #ffffff;
@@ -281,124 +266,14 @@
 											font-size: 16px;
 											line-height: 1.5;
 										">
-										<!-- Email Content Here -->
-										<p>Hello [First Name],</p>
-										<p>
-											Choosing the right career is one of
-											the most important decisions you'll
-											make in your life. Whether you're
-											just starting out, considering a
-											change, or seeking advancement,
-											finding a path that aligns with your
-											passions and strengths can lead to a
-											fulfilling and successful
-											professional journey.
-										</p>
-
-										<!-- Additional Content -->
-										<p>
-											Here are some tips to help you make
-											an informed decision:
-										</p>
-										<ul>
-											<li>
-												<strong
-													>Assess Your
-													Interests:</strong
-												>
-												Identify what you enjoy doing
-												and what motivates you.
-											</li>
-											<li>
-												<strong
-													>Evaluate Your
-													Skills:</strong
-												>
-												Consider both your hard and soft
-												skills and how they fit into
-												various careers.
-											</li>
-											<li>
-												<strong
-													>Research Career
-													Options:</strong
-												>
-												Explore different fields and
-												understand the requirements and
-												growth potential.
-											</li>
-											<li>
-												<strong>Seek Guidance:</strong>
-												Consult with career counselors
-												or mentors to gain valuable
-												insights.
-											</li>
-										</ul>
-
-										<p>
-											Remember, it's never too late to
-											pursue a career that truly resonates
-											with you. Take the time to reflect
-											and plan your next steps carefully.
-										</p>
-
-										<p>
-											Wishing you success on your career
-											journey!
-										</p>
-										<p>
-											Best regards,<br />[Your Company
-											Name] Team
-										</p>
-
-										<!-- Button Example with VML for Outlook -->
-										<!--[if mso]>
-											<v:roundrect
-												xmlns:v="urn:schemas-microsoft-com:vml"
-												xmlns:w="urn:schemas-microsoft-com:office:word"
-												href="https://example.com"
-												style="
-													height: 40px;
-													v-text-anchor: middle;
-													width: 200px;
-												"
-												arcsize="10%"
-												strokecolor="#4CAF50"
-												fillcolor="#4CAF50">
-												<w:anchorlock />
-												<center
-													style="
-														color: #ffffff;
-														font-family: Arial,
-															sans-serif;
-														font-size: 16px;
-													">
-													Learn More
-												</center>
-											</v:roundrect>
-										<![endif]-->
-										<!--[if !mso]><!-- -->
-										<a
-											href="https://example.com"
-											class="button"
-											style="
-												background-color: #4caf50;
-												color: #ffffff;
-												padding: 10px 20px;
-												text-decoration: none;
-												border-radius: 4px;
-												display: inline-block;
-											"
-											>Learn More</a
-										>
-										<!--<![endif]-->
+										{{object.content}}
 									</td>
 								</tr>
 
 								<!-- Footer -->
 								<tr>
 									<td
-										class="footer fubar"
+										class="footer"
 										bgcolor="#f4f4f4"
 										style="
 											background-color: #f4f4f4;
@@ -409,17 +284,16 @@
 											font-family: Arial, sans-serif;
 										">
 										<p>
-											<em
-												>P.S. Have questions or need
+											<em>
+												P.S. Have questions or need
 												personalized advice? Reply to
-												this email, and our career
-												experts will be happy to assist
-												you!</em
-											>
+												this email, and our team will be
+												happy to assist you!
+											</em>
 										</p>
 										<p>
 											<a
-												href=""
+												href="{{{ pm:unsubscribe }}}"
 												style="
 													color: #777777;
 													text-decoration: underline;
@@ -439,7 +313,7 @@
 											>
 											|
 											<a
-												href="#"
+												href="https://yelloworacle.com"
 												style="
 													color: #777777;
 													text-decoration: underline;
