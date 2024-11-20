@@ -439,6 +439,37 @@
 		</li>
 		<li class="">
 			<a
+				state_to="mainView"
+				state-src="{{path}}admin/email-campaigns/datatable.html"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/email-campaign.svg"></i>
+				</span>
+				<span>Email Campaigns</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}admin/email-campaigns/form.html"
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+				</a>
+			</div>
+		</li>
+		<li class="">
+			<a
 				actions="state"
 				state_to="mainView"
 				state-src="{{path}}admin/questions/datatable.html"
@@ -635,37 +666,6 @@
 				</span>
 				<span>Code</span>
 			</a>
-		</li>
-		<li class="">
-			<a
-				state_to="mainView"
-				state-src="{{path}}admin/email-campaigns/datatable.html"
-				click-closest="sidenav"
-				click-attribute="style"
-				click-value="width:0px"
-				click-if="<=993px"
-				click-if-value="$innerWidth"
-				class="display:flex align-items:center">
-				<span
-					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/email-campaign.svg"></i>
-				</span>
-				<span>Email Campaigns</span>
-			</a>
-			<div class="float:right width:50px text-align:center">
-				<a
-					actions="state"
-					state_to="mainView"
-					state-src="{{path}}admin/email-campaigns/form.html"
-					click-closest="sidenav"
-					click-attribute="style"
-					click-value="width:0px"
-					click-if="<=993px"
-					click-if-value="$innerWidth"
-					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
-				</a>
-			</div>
 		</li>
 	</menu>
 	<div
