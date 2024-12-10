@@ -2,229 +2,229 @@
 <a href="./signin.html" session="false" hidden></a>
 
 <section class="centered flex-direction:column">
-    <form
-        id="blog-form"
-        state_id="form-fields"
-        array="blog-posts"
-        object=""
-        class="flex-form">
-        <div
-            path="./"
-            src="./components/form-toolbar.html"
-            class="width:100%"></div>
+	<form
+		id="blog-form"
+		state_id="form-fields"
+		array="blog-posts"
+		object=""
+		class="flex-form">
+		<div
+			path="./"
+			src="./components/form-toolbar.html"
+			class="width:100%"></div>
 
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="Name"
-                placeholder="Name"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="Name"
+				placeholder="Name"
+				class="floating-label" />
+		</floating-label>
 
-        <input key="url" placeholder="Url" class="title" />
+		<input key="url" placeholder="Url" class="title" />
 
-        <floating-label class="input-300">
-            <input
-                id="imageurl"
-                key="image"
-                filter-key="pathname"
-                filter-next
-                placeholder="Image Url"
-                class="floating-label input-icon" />
-            <a
-                actions="action(document; #generate-image)"
-                click-selector="i[src]"
-                click-attribute="src"
-                click-value="./assets/svg/spinner.svg"
-                class="floating-icon right:35px!important">
-                <i
-                    src="./assets/svg/wand-magic-sparkles.svg"
-                    class="width:20px height:20px"></i>
-            </a>
-            <div
-                id="imageGenerated"
-                click-previous="i"
-                click-attribute="src"
-                click-value="./assets/svg/check-circle.svg"></div>
+		<floating-label class="input-300">
+			<input
+				id="imageurl"
+				key="image"
+				filter-query-key="pathname"
+				filter-next
+				placeholder="Image Url"
+				class="floating-label input-icon" />
+			<a
+				actions="action(document; #generate-image)"
+				click-selector="i[src]"
+				click-attribute="src"
+				click-value="./assets/svg/spinner.svg"
+				class="floating-icon right:35px!important">
+				<i
+					src="./assets/svg/wand-magic-sparkles.svg"
+					class="width:20px height:20px"></i>
+			</a>
+			<div
+				id="imageGenerated"
+				click-previous="i"
+				click-attribute="src"
+				click-value="./assets/svg/check-circle.svg"></div>
 
-            <a
-                id="imagefile"
-                type="file"
-                array="files"
-                object="ObjectId()"
-                key="{}"
-                accept="image/*"
-                class="floating-icon"
-                read="false"
-                upsert="true"
-                render-selector="[template]"
-                skip-attribute>
-                <div template file_id="{{object.id}}">
-                    <input
-                        file="pathname"
-                        value="/assets{{object.pathname}}"
-                        onload-selector="document; #imageurl"
-                        onload-attribute="value"
-                        onload-if="!$template"
-                        hidden />
-                    <input file="directory" value="/assets" hidden />
-                    <input file="path" value="/assets" hidden />
-                    <input file="public" value="true" hidden />
-                    <input file="host[]" value="*" hidden />
-                </div>
+			<a
+				id="imagefile"
+				type="file"
+				array="files"
+				object="ObjectId()"
+				key="{}"
+				accept="image/*"
+				class="floating-icon"
+				read="false"
+				upsert="true"
+				render-selector="[template]"
+				skip-attribute>
+				<div template file_id="{{object.id}}">
+					<input
+						file="pathname"
+						value="/assets{{object.pathname}}"
+						onload-selector="document; #imageurl"
+						onload-attribute="value"
+						onload-if="!$template"
+						hidden />
+					<input file="directory" value="/assets" hidden />
+					<input file="path" value="/assets" hidden />
+					<input file="public" value="true" hidden />
+					<input file="host[]" value="*" hidden />
+				</div>
 
-                <i src="./assets/svg/plus.svg"></i>
-            </a>
-        </floating-label>
-        <floating-label class="input-300">
-            <input
-                id="videourl"
-                key="video"
-                filter-key="pathname"
-                filter-next
-                placeholder="Video Url"
-                class="floating-label input-icon" />
-            <a
-                id="videofile"
-                type="file"
-                array="files"
-                object="ObjectId()"
-                key="{}"
-                accept="video/*"
-                class="floating-icon"
-                read="false"
-                upsert="true"
-                render-selector="[template]"
-                skip-attribute>
-                <div template file_id="{{object.id}}">
-                    <input
-                        file="pathname"
-                        value="/assets{{object.pathname}}"
-                        onload-selector="document; #videourl"
-                        onload-attribute="value"
-                        onload-if="!$template"
-                        hidden />
-                    <input file="directory" value="/assets" hidden />
-                    <input file="path" value="/assets" hidden />
-                    <input file="public" value="true" hidden />
-                    <input file="host[]" value="*" hidden />
-                </div>
+				<i src="./assets/svg/plus.svg"></i>
+			</a>
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				id="videourl"
+				key="video"
+				filter-query-key="pathname"
+				filter-next
+				placeholder="Video Url"
+				class="floating-label input-icon" />
+			<a
+				id="videofile"
+				type="file"
+				array="files"
+				object="ObjectId()"
+				key="{}"
+				accept="video/*"
+				class="floating-icon"
+				read="false"
+				upsert="true"
+				render-selector="[template]"
+				skip-attribute>
+				<div template file_id="{{object.id}}">
+					<input
+						file="pathname"
+						value="/assets{{object.pathname}}"
+						onload-selector="document; #videourl"
+						onload-attribute="value"
+						onload-if="!$template"
+						hidden />
+					<input file="directory" value="/assets" hidden />
+					<input file="path" value="/assets" hidden />
+					<input file="public" value="true" hidden />
+					<input file="host[]" value="*" hidden />
+				</div>
 
-                <i src="./assets/svg/plus.svg"></i>
-            </a>
-        </floating-label>
+				<i src="./assets/svg/plus.svg"></i>
+			</a>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <textarea
-                key="description"
-                input-selector="document; .description"
-                input-attribute="value"
-                placeholder="Description"
-                class="floating-label"></textarea>
-        </floating-label>
+		<floating-label class="input-600">
+			<textarea
+				key="description"
+				input-selector="document; .description"
+				input-attribute="value"
+				placeholder="Description"
+				class="floating-label"></textarea>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <editor
-                id="content"
-                contenteditable="true"
-                key="content"
-                realtime="true"
-                placeholder="Content"
-                input-selector="document; .content"
-                input-attribute="value"
-                class="floating-label markdown-body"></editor>
-        </floating-label>
+		<floating-label class="input-600">
+			<editor
+				id="content"
+				contenteditable="true"
+				key="content"
+				realtime="true"
+				placeholder="Content"
+				input-selector="document; .content"
+				input-attribute="value"
+				class="floating-label markdown-body"></editor>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <input
-                type="text"
-                key="tags"
-                placeholder="Tags (comma-separated)"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-600">
+			<input
+				type="text"
+				key="tags"
+				placeholder="Tags (comma-separated)"
+				class="floating-label" />
+		</floating-label>
 
-        <floating-label class="input-600">
-            <input
-                type="text"
-                key="meta-title"
-                placeholder="Meta Title"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-600">
+			<input
+				type="text"
+				key="meta-title"
+				placeholder="Meta Title"
+				class="floating-label" />
+		</floating-label>
 
-        <floating-label class="input-600">
-            <textarea
-                key="meta-keywords"
-                placeholder="Meta Keywords"
-                class="floating-label"></textarea>
-        </floating-label>
+		<floating-label class="input-600">
+			<textarea
+				key="meta-keywords"
+				placeholder="Meta Keywords"
+				class="floating-label"></textarea>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <textarea
-                key="meta-description"
-                placeholder="Meta Description"
-                class="floating-label"></textarea>
-        </floating-label>
+		<floating-label class="input-600">
+			<textarea
+				key="meta-description"
+				placeholder="Meta Description"
+				class="floating-label"></textarea>
+		</floating-label>
 
-        <input
-            key="_id"
-            input-selector="document; #publishform"
-            input-attribute="object"
-            hidden />
-        <input type="datetime" key="published" value="$now" hidden />
+		<input
+			key="_id"
+			input-selector="document; #publishform"
+			input-attribute="object"
+			hidden />
+		<input type="datetime" key="published" value="$now" hidden />
 
-        <button
-            actions="save, state"
-            state_to="mainView"
-            state-src="./admin/blog/datatable.html"
-            class="button-round">
-            <i src="./assets/svg/save.svg"></i>
-        </button>
+		<button
+			actions="save, state"
+			state_to="mainView"
+			state-src="./admin/blog/datatable.html"
+			class="button-round">
+			<i src="./assets/svg/save.svg"></i>
+		</button>
 
-        <a
-            id="postPublished"
-            click-selector="document; #published-icon"
-            click-attribute="src"
-            click-value="./assets/svg/check-circle.svg"
-            hidden></a>
+		<a
+			id="postPublished"
+			click-selector="document; #published-icon"
+			click-attribute="src"
+			click-value="./assets/svg/check-circle.svg"
+			hidden></a>
 
-        <button
-            click-selector="i[src]"
-            click-attribute="src"
-            click-value="./assets/svg/spinner.svg"
-            actions="click, save, timeout(1000), render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile), action(document; #postPublished)">
-            Publish
-            <i id="published-icon" src="./assets/svg/paper-plane.svg"></i>
-        </button>
-    </form>
+		<button
+			click-selector="i[src]"
+			click-attribute="src"
+			click-value="./assets/svg/spinner.svg"
+			actions="click, save, timeout(1000), render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile), action(document; #postPublished)">
+			Publish
+			<i id="published-icon" src="./assets/svg/paper-plane.svg"></i>
+		</button>
+	</form>
 
-    <!-- Get ObjectId from blobpost and reuse for file  -->
-    <form id="publishform" array="files" object="" upsert="true" hidden>
-        <input
-            key="name"
-            value-replaceall=" "
-            value-replacement="-"
-            value-suffix=".html"
-            input-next
-            input-attribute="value"
-            class="title" />
-        <input key="pathname" value-prefix="/blog/" />
-        <input key="path" value="/blog" />
-        <input key="directory" value="blog" />
-        <input key="content-type" value="text/html" />
-        <input key="$addToSet.host" value="*" />
-        <input key="public" value="true" />
+	<!-- Get ObjectId from blobpost and reuse for file  -->
+	<form id="publishform" array="files" object="" upsert="true" hidden>
+		<input
+			key="name"
+			value-replaceall=" "
+			value-replacement="-"
+			value-suffix=".html"
+			input-next
+			input-attribute="value"
+			class="title" />
+		<input key="pathname" value-prefix="/blog/" />
+		<input key="path" value="/blog" />
+		<input key="directory" value="blog" />
+		<input key="content-type" value="text/html" />
+		<input key="$addToSet.host" value="*" />
+		<input key="public" value="true" />
 
-        <div id="publish" render-next render="object"></div>
-        <div
-            id="sethtml"
-            src="./universities/universitiy.html"
-            value-type="text"
-            click-next
-            click-attribute="value"></div>
+		<div id="publish" render-next render="object"></div>
+		<div
+			id="sethtml"
+			src="./universities/universitiy.html"
+			value-type="text"
+			click-next
+			click-attribute="value"></div>
 
-        <textarea key="src"></textarea>
-        <button id="savefile" actions="save" hidden>Publish Post</button>
-    </form>
+		<textarea key="src"></textarea>
+		<button id="savefile" actions="save" hidden>Publish Post</button>
+	</form>
 
-    <div src="./components/toolbar.html" value-type="outerHTML"></div>
+	<div src="./components/toolbar.html" value-type="outerHTML"></div>
 </section>

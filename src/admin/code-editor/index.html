@@ -1,130 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="../../assets/favicon.ico" />
-        <title>Code Editor | CoCreate</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="../../assets/favicon.ico" />
+		<title>Code Editor | CoCreate</title>
 
-        <link
-            rel="stylesheet"
-            href="./index.css"
-            array="files"
-            object="637bc8ff91249e639db315e9"
-            key="src"
-            type="text/css" />
+		<link
+			rel="stylesheet"
+			href="./index.css"
+			array="files"
+			object="637bc8ff91249e639db315e9"
+			key="src"
+			type="text/css" />
 
-        <link
-            rel="stylesheet"
-            href="../../index.css"
-            array="files"
-            object="65395d6f6ebd31be4c4349b2"
-            key="{}"
-            type="text/css"
-            parse="true" />
+		<link
+			rel="stylesheet"
+			href="../../index.css"
+			array="files"
+			object="65395d6f6ebd31be4c4349b2"
+			key="{}"
+			type="text/css"
+			parse="true" />
 
-        <link rel="manifest" href="./manifest.webmanifest" />
-    </head>
+		<link rel="manifest" href="./manifest.webmanifest" />
+	</head>
 
-    <body>
-        <div id="modal-viewport" hidden></div>
-        <!-- Navbar -->
-        <nav
-            class="nav display:flex align-items:center"
-            content_id="content"
-            scroll="sticky-nav, hide-nav"
-            scroll-up="5"
-            scroll-down="5">
-            <!-- Horizontal Scroll Nav/Tabs -->
-            <div
-                class="display:flex align-items:center gap:15px direction:rtl overflow:auto font-size:20px width:100% height:50px">
-                <!-- Modal Controls -->
-                <a actions="closeModal"
-                    ><i class="height:18px" src="../../assets/svg/times.svg"></i
-                ></a>
-                <a actions="minMaxModal">
-                    <i
-                        toggle="../../assets/svg/window-restore.svg, /assets/svg/window-maximize.svg"
-                        toggle-attribute="src"
-                        class="height:18px"
-                        src="../../assets/svg/window-maximize.svg"></i>
-                </a>
-                <a actions="parkModal"
-                    ><i
-                        class="height:18px"
-                        src="../../assets/svg/window-minimize.svg"></i
-                ></a>
+	<body>
+		<div id="modal-viewport" hidden></div>
+		<!-- Navbar -->
+		<nav
+			class="nav display:flex align-items:center"
+			content_id="content"
+			scroll="sticky-nav, hide-nav"
+			scroll-up="5"
+			scroll-down="5">
+			<!-- Horizontal Scroll Nav/Tabs -->
+			<div
+				class="display:flex align-items:center gap:15px direction:rtl overflow:auto font-size:20px width:100% height:50px">
+				<!-- Modal Controls -->
+				<a actions="closeModal"
+					><i class="height:18px" src="../../assets/svg/times.svg"></i
+				></a>
+				<a actions="minMaxModal">
+					<i
+						toggle="../../assets/svg/window-restore.svg, /assets/svg/window-maximize.svg"
+						toggle-attribute="src"
+						class="height:18px"
+						src="../../assets/svg/window-maximize.svg"></i>
+				</a>
+				<a actions="parkModal"
+					><i
+						class="height:18px"
+						src="../../assets/svg/window-minimize.svg"></i
+				></a>
 
-                <!-- fullscreen toogle and icon transform-->
-                <a fullscreen>
-                    <i
-                        class="height:18px"
-                        src="../../assets/svg/expand.svg"></i>
-                    <i
-                        class="height:18px"
-                        src="../../assets/svg/compress.svg"></i>
-                </a>
+				<!-- fullscreen toogle and icon transform-->
+				<a fullscreen>
+					<i
+						class="height:18px"
+						src="../../assets/svg/expand.svg"></i>
+					<i
+						class="height:18px"
+						src="../../assets/svg/compress.svg"></i>
+				</a>
 
-                <!-- Save and Make live -->
-                <a
-                    actions="saveDomText"
-                    state_id="code-editor"
-                    array=""
-                    object=""
-                    ><i src="../../assets/svg/save.svg"></i
-                ></a>
+				<!-- Save and Make live -->
+				<a
+					actions="saveDomText"
+					state_id="code-editor"
+					array=""
+					object=""
+					><i src="../../assets/svg/save.svg"></i
+				></a>
 
-                <!-- Render Module Form -->
-                <a
-                    actions="state, openModal"
-                    modal-src="./modules/form.html"
-                    modal-width="320px">
-                    <i class="height:18px" src="../../assets/svg/cog.svg"></i>
-                    <div
-                        state-array="modules"
-                        state-object="5ff747727005da1c27274191"
-                        state_to="form-fields"></div>
-                    <div
-                        state-filter-value="5ff747727005da1c27274191"
-                        state_to="module_id"></div>
-                </a>
+				<!-- Render Module Form -->
+				<a
+					actions="state, openModal"
+					modal-src="./modules/form.html"
+					modal-width="320px">
+					<i class="height:18px" src="../../assets/svg/cog.svg"></i>
+					<div
+						state-array="modules"
+						state-object="5ff747727005da1c27274191"
+						state_to="form-fields"></div>
+					<div
+						state-filter-query-value="5ff747727005da1c27274191"
+						state_to="module_id"></div>
+				</a>
 
-                <!-- Render Code Editor -->
-                <a
-                    actions="state, openModal"
-                    modal-src="./code-editor/index.html">
-                    <i class="height:18px" src="../../assets/svg/code.svg"></i>
-                    <div
-                        state_id="render"
-                        state-array="files"
-                        state-object="60ddfdbe14b5ab0c2dd2fdf5"
-                        state-key="src"
-                        state_to="code-editor"></div>
-                </a>
+				<!-- Render Code Editor -->
+				<a
+					actions="state, openModal"
+					modal-src="./code-editor/index.html">
+					<i class="height:18px" src="../../assets/svg/code.svg"></i>
+					<div
+						state_id="render"
+						state-array="files"
+						state-object="60ddfdbe14b5ab0c2dd2fdf5"
+						state-key="src"
+						state_to="code-editor"></div>
+				</a>
 
-                <!-- Render Builder -->
-                <a actions="state, openModal" modal-src="./builder/index.html">
-                    <i
-                        class="height:18px"
-                        src="../../assets/svg/palette.svg"></i>
-                    <div
-                        state_id="render"
-                        state-array=""
-                        state-object=""
-                        state-key=""
-                        state_to="builder"></div>
-                </a>
-            </div>
-        </nav>
+				<!-- Render Builder -->
+				<a actions="state, openModal" modal-src="./builder/index.html">
+					<i
+						class="height:18px"
+						src="../../assets/svg/palette.svg"></i>
+					<div
+						state_id="render"
+						state-array=""
+						state-object=""
+						state-key=""
+						state_to="builder"></div>
+				</a>
+			</div>
+		</nav>
 
-        <main content_id="content" class="padding:15px">
-            <!-- Tabs -->
-            <!-- <div
+		<main content_id="content" class="padding:15px">
+			<!-- Tabs -->
+			<!-- <div
                 class="margin-top:10px display:flex tabs border-bottom:5px_solid_whitesmoke">
                 <div
                     class="padding:10px_21px border-radius:3px_3px_0_0 font-size:16px cursor:pointer background:silver:hover tab"
@@ -149,24 +149,24 @@
                     JS
                 </div>
             </div> -->
-            <!-- Code Editors -->
-            <form state_id="code-editor" array="" object="">
-                <textarea
-                    type="code"
-                    lang="html"
-                    id="html"
-                    key="src"
-                    realtime="true"
-                    line-numbers
-                    class="active"></textarea>
-                <!--<textarea id="css" key="css" class="overflow:hidden height:0px"></textarea>-->
-                <!--<textarea id="js" key="js" class="overflow:hidden height:0px"></textarea>-->
-                <!--<div id="html" key="html" class="codemirror overflow:hidden height:0px active"></div>-->
-                <!--<div id="css" key="css" class="codemirror overflow:hidden height:0px"></div>-->
-                <!--<div id="js" key="js" class="codemirror overflow:hidden height:0px"></div>-->
-            </form>
-        </main>
+			<!-- Code Editors -->
+			<form state_id="code-editor" array="" object="">
+				<textarea
+					type="code"
+					lang="html"
+					id="html"
+					key="src"
+					realtime="true"
+					line-numbers
+					class="active"></textarea>
+				<!--<textarea id="css" key="css" class="overflow:hidden height:0px"></textarea>-->
+				<!--<textarea id="js" key="js" class="overflow:hidden height:0px"></textarea>-->
+				<!--<div id="html" key="html" class="codemirror overflow:hidden height:0px active"></div>-->
+				<!--<div id="css" key="css" class="codemirror overflow:hidden height:0px"></div>-->
+				<!--<div id="js" key="js" class="codemirror overflow:hidden height:0px"></div>-->
+			</form>
+		</main>
 
-        <script src="../../dist/CoCreate.js"></script>
-    </body>
+		<script src="../../dist/CoCreate.js"></script>
+	</body>
 </html>

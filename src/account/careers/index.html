@@ -2,50 +2,50 @@
 <a href="./signin.html" session="false" hidden></a>
 
 <container class="centered">
-    <section id="oracle" class="max-width:800px margin:auto">
-        <input
-            type="hidden"
-            array="users"
-            object="$user_id"
-            key="subscription"
-            input-next
-            input-attribute="object" />
+	<section id="oracle" class="max-width:800px margin:auto">
+		<input
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="subscription"
+			input-next
+			input-attribute="object" />
 
-        <textarea
-            id="subscription"
-            array="subscriptions"
-            object=""
-            key="fields"
-            input-next=".subscribed[]"
-            input-attribute="value"
-            class="width:100%"
-            hidden
-            save="false"></textarea>
+		<textarea
+			id="subscription"
+			array="subscriptions"
+			object=""
+			key="fields"
+			input-next=".subscribed[]"
+			input-attribute="value"
+			class="width:100%"
+			hidden
+			save="false"></textarea>
 
-        <div
-            id="careers"
-            array="careers"
-            object
-            filter-sort-key="name"
-            render-selector="[template]"
-            src="./oracle/career-template.html"></div>
+		<div
+			id="careers"
+			array="careers"
+			object
+			filter-sort-key="name"
+			render-selector="[template]"
+			src="./oracle/career-template.html"></div>
 
-        <textarea
-            id="mergedCareers"
-            realtime="true"
-            array="users"
-            object="$user_id"
-            key="careers"
-            value-type="json"
-            crdt="false"
-            broadcast="false"
-            filter-key="name"
-            filter-operator="$in"
-            filter-selector="document; #careers"
-            filter-case-sensitive="false"
-            input-attribute="array"
-            input-value="careers"
-            input-selector="document; #careers"
-            hidden></textarea>
-    </section>
+		<textarea
+			id="mergedCareers"
+			realtime="true"
+			array="users"
+			object="$user_id"
+			key="careers"
+			value-type="json"
+			crdt="false"
+			broadcast="false"
+			filter-query-key="name"
+			filter-operator="$in"
+			filter-selector="document; #careers"
+			filter-case-sensitive="false"
+			input-attribute="array"
+			input-value="careers"
+			input-selector="document; #careers"
+			hidden></textarea>
+	</section>
 </container>
