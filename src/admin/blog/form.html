@@ -255,7 +255,7 @@
 			click-selector="i[src]"
 			click-attribute="src"
 			click-value="./assets/svg/spinner.svg"
-			actions="click, save, timeout(1000), render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile), action(document; #postPublished)">
+			actions="click, save, timeout(1000), render(document; #publish), timeout(2000), action(document; #savefile), action(document; #postPublished)">
 			Publish
 			<i id="published-icon" src="./assets/svg/paper-plane.svg"></i>
 		</button>
@@ -271,15 +271,48 @@
 		<input key="$addToSet.host" value="*" />
 		<input key="public" value="true" />
 
-		<div id="publish" render-next render="object"></div>
-		<div
+		<div id="publish" render-selector="[template]" render="object">
+			<textarea key="src"></textarea>
+			<div
+				template
+				value-type="text"
+				onload-previous
+				onload-attribute="value"></div>
+			<div
+				src="./blog/post.html"
+				value-type="text"
+				input-previous
+				input-attribute="value"
+				hidden></div>
+		</div>
+		<!-- <div
+			src="./blog/post.html"
+			value-type="text"
+			input-next
+			input-attribute="value"
+			hidden></div> -->
+
+		<!-- <div
 			id="sethtml"
 			src="./blog/post.html"
 			value-type="text"
 			click-next
-			click-attribute="value"></div>
+			click-attribute="value"></div> -->
+		<!-- <div
+			src="./blog/post.html"
+			value-type="text"
+			input-next
+			input-attribute="value"
+			hidden></div> -->
 
-		<textarea key="src"></textarea>
+		<!-- <div
+			id="sethtml"
+			src="./blog/post.html"
+			value-type="text"
+			click-next
+			click-attribute="value"></div> -->
+
+		<!-- <textarea key="src"></textarea> -->
 		<button id="savefile" actions="save" hidden>Publish Post</button>
 	</form>
 
