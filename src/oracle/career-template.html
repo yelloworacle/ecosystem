@@ -140,20 +140,139 @@
 			</form>
 		</div>
 
-		<div class="width:100% subscribed">
-			<button class="unlock width:100% margin-top:20px font-size:16px">
-				<a state_to="mainView" state-src="./checkout/"
-					>Subscribe to unlock additional details</a
-				>
-			</button>
+		<div class="additional-container width:100%">
+			<div
+				class="card display:flex align-items:center flex-wrap:wrap gap:10px padding:10px">
+				<div
+					click-next
+					click-attribute="hidden"
+					click-value=""
+					toggle-selector=":first-child"
+					toggle-attribute="src"
+					toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
+					class="display:flex align-items:center gap:10px flex-grow:1 width:100%">
+					<i src="../assets/svg/angle-right.svg"></i>
+					<span>Additional Details</span>
+				</div>
+				<div class="width:100% subscribed" id="additional-list" hidden>
+					<button
+						class="unlock width:100% flex-grow:1 margin-top:20px font-size:16px">
+						<a state_to="mainView" state-src="./checkout/"
+							>Subscribe to unlock additional details</a
+						>
+					</button>
 
-			<a
-				id="show-example"
-				show="document; #example"
-				hide="document; #oracle"
-				class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
-				>View an example of subscribed career details</a
-			>
+					<a
+						id="show-example"
+						show="document; #example"
+						hide="document; #oracle"
+						class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
+						>View an example of subscribed career details</a
+					>
+				</div>
+			</div>
+		</div>
+
+		<div class="jobs-container width:100%">
+			<div
+				class="card display:flex align-items:center gap:10px padding:10px">
+				<div
+					click-closest=".jobs-container #jobs-list"
+					click-attribute="hidden"
+					click-value=""
+					toggle-selector=":first-child"
+					toggle-attribute="src"
+					toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
+					class="display:flex align-items:center gap:10px flex-grow:1">
+					<i src="../assets/svg/angle-right.svg"></i>
+					<span>Jobs</span>
+				</div>
+			</div>
+
+			<div
+				id="jobs-list"
+				array="jobs"
+				object=""
+				filter-limit
+				render-selector="[template]"
+				render-as="job"
+				class="display:flex flex-direction:column margin-top:10px gap:10px"
+				hidden>
+				<div class="card padding:10px" template render-as="job">
+					<div
+						class="display:flex align-items:center justify-content:flex-end margin-bottom:10px">
+						<div
+							class="display:flex align-items:center gap:10px transition:0.3s"
+							hover-selector=".options"
+							hover-attribute="class"
+							hover-value="display:inline-flex!important">
+							<div class="display:none options">
+								<a class="padding:5px margin-left:auto">
+									<i src="../assets/svg/trash.svg"></i>
+								</a>
+							</div>
+							<i src="../assets/svg/ellipsis-v.svg"></i>
+						</div>
+					</div>
+
+					<div class="display:flex flex-wrap:wrap gap:20px">
+						<div class="card-row full-width">
+							<span class="card-label">Job Title:</span>
+							<span class="card-value load-value"
+								>{{job.name}}</span
+							>
+						</div>
+						<div class="card-row full-width">
+							<span class="card-label">Company Name:</span>
+							<span class="card-value load-value"
+								>{{job.company}}</span
+							>
+						</div>
+						<div class="card-row full-width">
+							<span class="card-label">Location:</span>
+							<span class="card-value load-value"
+								>{{job.location}}</span
+							>
+						</div>
+						<div class="card-row full-width">
+							<span class="card-label">Job Description:</span>
+							<span class="card-value load-value"
+								>{{job.description}}</span
+							>
+						</div>
+						<div class="card-row full-width">
+							<span class="card-label">Requirements:</span>
+							<span class="card-value load-value"
+								>{{job.requirements}}</span
+							>
+						</div>
+						<div class="card-row">
+							<span class="card-label">Employment Type:</span>
+							<span class="card-value load-value"
+								>{{job.employment_type}}</span
+							>
+						</div>
+						<div class="card-row">
+							<span class="card-label">Salary:</span>
+							<span class="card-value load-value"
+								>{{job.salary}}</span
+							>
+						</div>
+						<div class="card-row">
+							<span class="card-label">Years of Experience:</span>
+							<span class="card-value load-value"
+								>{{job.years_experience}}</span
+							>
+						</div>
+						<div class="card-row full-width">
+							<span class="card-label">Job Category:</span>
+							<span class="card-value load-value"
+								>{{job.job_category}}</span
+							>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
