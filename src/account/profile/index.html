@@ -118,6 +118,28 @@
 			</div>
 		</floating-label>
 
+		<floating-label class="input-300">
+			<input
+				type="number"
+				id="distanceInput"
+				key="distance"
+				placeholder="Enter Distance"
+				class="floating-label"
+				value="10" />
+		</floating-label>
+
+		<floating-label class="input-100">
+			<select id="unitSelector" key="unit" class="floating-label">
+				<option value="1000">Kilometers</option>
+				<option value="1609.34">Miles</option>
+			</select>
+		</floating-label>
+		<input
+			type="number"
+			key="maxDistance"
+			calculate="{(#distanceInput)} * {(#unitSelector)}"
+			hidden />
+
 		<!-- <floating-label class="input-300">
         <input type="password" key="password" placeholder="password"
         class="floating-label" length="8" required/>
