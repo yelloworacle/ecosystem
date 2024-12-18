@@ -1,0 +1,107 @@
+<section class="centered">
+	<div
+		path="./"
+		src="./components/datatable-toolbar.html"
+		class="width:100%"></div>
+
+	<div class="datatable-container">
+		<table>
+			<tbody class="header">
+				<tr>
+					<td>
+						<floating-label>
+							<input
+								type="text"
+								filter-selector="document; tbody[render-selector]"
+								filter-query-key="name.$regex"
+								filter-query-options="i"
+								state_id="datatable"
+								placeholder="Name"
+								class="floating-label" />
+						</floating-label>
+						<span class="sort">
+							<a
+								filter-selector="document; tbody[render-selector]"
+								filter-sort-key="name"
+								filter-sort-direction=""
+								click-value="desc, asc"
+								click-attribute="filter-sort-direction"
+								state_id="datatable">
+								<i
+									toggle-attribute="src"
+									toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+									src="../assets/svg/sort.svg"></i>
+							</a>
+						</span>
+					</td>
+					<td>
+						<floating-label>
+							<input
+								type="text"
+								filter-selector="document; tbody[render-selector]"
+								filter-query-key="_id.$regex"
+								filter-query-options="i"
+								state_id="datatable"
+								placeholder="id"
+								class="floating-label" />
+						</floating-label>
+						<span class="sort">
+							<a
+								filter-selector="document; tbody[render-selector]"
+								filter-sort-key="_id"
+								filter-sort-direction=""
+								click-value="desc, asc"
+								click-attribute="filter-sort-direction"
+								state_id="datatable">
+								<i
+									toggle-attribute="src"
+									toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+									src="../assets/svg/sort.svg"></i>
+							</a>
+						</span>
+					</td>
+				</tr>
+			</tbody>
+
+			<tbody
+				array="jobs"
+				object
+				filter-sort-key="_id"
+				filter-sort-direction="desc"
+				filter-limit
+				render-selector="[template]">
+				<tr
+					class="border-bottom:1px_solid_darkgray"
+					template
+					object="{{object._id}}"
+					toggle="selected"
+					toggle-attribute="class">
+					<td class="display:flex min-width:200px align-items:center">
+						<a
+							actions="state"
+							state_to="mainView"
+							state-src="./account/advertise/jobs/form.html">
+							<h4>{{object.name}}</h4>
+							<div
+								state_to="form-fields"
+								state-object="{{object._id}}"></div>
+						</a>
+					</td>
+					<td>
+						<a
+							actions="state"
+							state_to="mainView"
+							state-src="./account/advertise/jobs/form.html">
+							<b>{{object._id}}</b>
+							<div
+								state_to="form-fields"
+								state-object="{{object._id}}"></div>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div filter-on="scroll" filter-previous="[render-selector]"></div>
+	</div>
+</section>

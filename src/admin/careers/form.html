@@ -1,85 +1,81 @@
-<!DOCTYPE html>
 <section class="centered">
-    <form
-        state_id="form-fields"
-        array="careers"
-        object=""
-        realtime="false"
-        class="flex-form">
-        <!-- deleteObject-->
+	<form
+		state_id="form-fields"
+		array="careers"
+		object=""
+		realtime="false"
+		class="flex-form">
+		<!-- deleteObject-->
 
-        <div
-            path="./"
-            src="./components/form-toolbar.html"
-            class="width:100%"></div>
+		<div
+			path="./"
+			src="./components/form-toolbar.html"
+			class="width:100%"></div>
 
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="name"
-                placeholder="Name"
-                class="floating-label" />
-        </floating-label>
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="_id"
-                placeholder="ID"
-                class="floating-label"
-                readonly />
-        </floating-label>
-        <floating-label class="input-600">
-            <textarea
-                type="code"
-                key="{}"
-                placeholder="JSON"
-                value-type="json"
-                class="floating-label"></textarea>
-        </floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="name"
+				placeholder="Name"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="_id"
+				placeholder="ID"
+				class="floating-label"
+				readonly />
+		</floating-label>
+		<floating-label class="input-600">
+			<textarea
+				type="code"
+				key="{}"
+				placeholder="JSON"
+				value-type="json"
+				class="floating-label"></textarea>
+		</floating-label>
 
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="salary"
-                placeholder="Salary"
-                class="floating-label" />
-        </floating-label>
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="stress"
-                placeholder="Stress Level"
-                class="floating-label" />
-        </floating-label>
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="pros"
-                placeholder="Pros"
-                class="floating-label" />
-        </floating-label>
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="cons"
-                placeholder="Cons"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="salary"
+				placeholder="Salary"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="stress"
+				placeholder="Stress Level"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="pros"
+				placeholder="Pros"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="cons"
+				placeholder="Cons"
+				class="floating-label" />
+		</floating-label>
 
-        <floating-label class="input-600">
-            <input
-                type="text"
-                key="facts"
-                placeholder="Interesting Facts"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-600">
+			<input
+				type="text"
+				key="facts"
+				placeholder="Interesting Facts"
+				class="floating-label" />
+		</floating-label>
 
-        <button
-            actions="save, state"
-            state_to="mainView"
-            state-src="./admin/careers/datatable.html"
-            class="button-round">
-            <i src="./assets/svg/save.svg"></i>
-        </button>
-    </form>
+		<div
+			path="./"
+			src="./components/form-buttons.html"
+			class="width:100%"></div>
+	</form>
 </section>

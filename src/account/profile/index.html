@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<a href="./signin.html" session="false" hidden></a>
-
 <section class="centered">
-    <form
-        state_id="form-fields"
-        array="users"
-        object="$user_id"
-        realtime="false"
-        class="flex-form">
-        <div
-            path="./"
-            src="./components/form-toolbar.html"
-            class="width:100%"></div>
+	<form
+		state_id="form-fields"
+		array="users"
+		object="$user_id"
+		realtime="false"
+		class="flex-form">
+		<div
+			path="./"
+			src="./components/form-toolbar.html"
+			class="width:100%"></div>
 
-        <floating-label class="input-600">
-            <input
-                type="text"
-                key="name"
-                placeholder="Name"
-                class="floating-label" />
-        </floating-label>
-        <!-- <floating-label class="input-300">
+		<floating-label class="input-600">
+			<input
+				type="text"
+				key="name"
+				placeholder="Name"
+				class="floating-label" />
+		</floating-label>
+		<!-- <floating-label class="input-300">
         <input
             type="text"
             key="firstname"
@@ -34,44 +31,121 @@
             placeholder="Last Name"
             class="floating-label" />
     </floating-label> -->
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="email"
-                placeholder="Email"
-                class="floating-label"
-                email
-                required />
-        </floating-label>
-        <floating-label class="input-300">
-            <input
-                type="tel"
-                key="phone"
-                placeholder="Phone"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="email"
+				placeholder="Email"
+				class="floating-label"
+				email
+				required />
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				type="tel"
+				key="phone"
+				placeholder="Phone"
+				class="floating-label" />
+		</floating-label>
 
-        <floating-label class="width:250px">
-            <div
-                type="file"
-                key="avatar"
-                accept="image/*"
-                placeholder="Profile Image"
-                class="floating-label min-height:40px active"
-                render-selector="[template]"
-                active>
-                <div template>
-                    <img src="{{avatar.src}}" alt="image" width="100%" />
-                </div>
-            </div>
-        </floating-label>
+		<floating-label class="width:100%">
+			<input
+				key="location.address"
+				type="text"
+				google-maps="places"
+				google-maps-key="autocomplete"
+				placeholder="Location (e.g., Remote, City, State)"
+				class="floating-label" />
+		</floating-label>
 
-        <!-- <floating-label class="input-300">
+		<input type="hidden" key="location.type" value="Point" />
+		<input
+			type="number"
+			key="location.coordinates[0]"
+			google-maps="places"
+			google-maps-key="geometry.location.lat"
+			hidden />
+		<input
+			type="number"
+			key="location.coordinates[1]"
+			google-maps="places"
+			google-maps-key="geometry.location.lng"
+			hidden />
+
+		<floating-label class="width:100%">
+			<select
+				id="remote-option"
+				key="remote"
+				placeholder="Remote"
+				input-attribute="remote-type"
+				input-selector="document; #remote-details"
+				class="floating-label">
+				<option value="" disabled selected>Select Remote Option</option>
+				<option value="none">None</option>
+				<option value="full">Full Remote</option>
+				<option value="partial">Partial Remote</option>
+			</select>
+		</floating-label>
+
+		<floating-label class="width:100%" id="remote-details">
+			<style>
+				#remote-details {
+					display: none;
+				}
+				#remote-details[remote-type="partial"] {
+					display: block;
+				}
+			</style>
+			<input
+				type="text"
+				key="remote-details"
+				placeholder="e.g., 2 days/week remote or 50% remote"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:250px">
+			<div
+				type="file"
+				key="avatar"
+				accept="image/*"
+				placeholder="Profile Image"
+				class="floating-label min-height:40px active"
+				render-selector="[template]"
+				active>
+				<div template>
+					<img src="{{avatar.src}}" alt="image" width="100%" />
+				</div>
+			</div>
+		</floating-label>
+
+		<floating-label class="input-300">
+			<input
+				type="number"
+				id="distanceInput"
+				key="distance"
+				placeholder="Enter Distance"
+				class="floating-label"
+				value="10" />
+		</floating-label>
+
+		<floating-label class="input-100">
+			<select id="unitSelector" key="unit" class="floating-label">
+				<option value="1000">Kilometers</option>
+				<option value="1609.34">Miles</option>
+			</select>
+		</floating-label>
+		<input
+			type="number"
+			key="maxDistance"
+			calculate="{(#distanceInput)} * {(#unitSelector)}"
+			hidden />
+
+		<!-- <floating-label class="input-300">
         <input type="password" key="password" placeholder="password"
         class="floating-label" length="8" required/>
     </floating-label>
  -->
-        <!-- <div class="height:0px width:0px overflow:hidden">
+		<!-- <div class="height:0px width:0px overflow:hidden">
         <input type="email" name="email" autocomplete="email" />
         <input type="tel" name="phone" autocomplete="tel" />
         <input
@@ -80,7 +154,7 @@
             autocomplete="current-password" />
     </div> -->
 
-        <!-- <div
+		<!-- <div
         id="questions"
         object
         key="questions"
@@ -93,9 +167,9 @@
             template
             read="false" />
     </div> -->
-
-        <button actions="validate, save" class="button-round">
-            <i src="./assets/svg/save.svg"></i>
-        </button>
-    </form>
+		<div
+			path="./"
+			src="./components/form-buttons.html"
+			class="width:100%"></div>
+	</form>
 </section>

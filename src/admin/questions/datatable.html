@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <section class="centered">
 	<div
 		path="./"
@@ -19,9 +18,8 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="name"
-								filter-operator="$regex"
-								filter-regex-flag="i"
+								filter-query-key="name.$regex"
+								filter-query-options="i"
 								state_id="datatable"
 								placeholder="Name"
 								class="floating-label" />
@@ -71,9 +69,8 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="actions"
-								filter-operator="$regex"
-								filter-regex-flag="i"
+								filter-query-key="actions.$regex"
+								filter-query-options="i"
 								state_id="datatable"
 								placeholder="Actions"
 								class="floating-label" />
@@ -98,9 +95,8 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="_id"
-								filter-operator="$regex"
-								filter-regex-flag="i"
+								filter-query-key="_id.$regex"
+								filter-query-options="i"
 								state_id="datatable"
 								placeholder="id"
 								class="floating-label" />
@@ -185,14 +181,5 @@
 		</table>
 
 		<div filter-on="scroll" filter-previous="[render-selector]"></div>
-
-		<button
-			actions="state"
-			state_to="mainView"
-			state-src="./admin/questions/form.html"
-			class="button-round">
-			<i src="./assets/svg/plus.svg"></i>
-			<div state_to="form-fields" state-object=""></div>
-		</button>
 	</div>
 </section>

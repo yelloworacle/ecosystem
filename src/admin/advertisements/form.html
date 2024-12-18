@@ -1,126 +1,120 @@
-<!DOCTYPE html>
-<a href="./signin.html" session="false" hidden></a>
-
 <section class="centered">
-    <form
-        state_id="form-fields"
-        array="advertisements"
-        object=""
-        realtime="false"
-        class="flex-form">
-        <div
-            path="./"
-            src="./components/form-toolbar.html"
-            class="width:100%"></div>
+	<form
+		state_id="form-fields"
+		array="advertisements"
+		object=""
+		realtime="false"
+		class="flex-form">
+		<div
+			path="./"
+			src="./components/form-toolbar.html"
+			class="width:100%"></div>
 
-        <floating-label class="input-300">
-            <input
-                type="text"
-                key="author"
-                placeholder="Author Name"
-                class="floating-label" />
-        </floating-label>
-        <floating-label class="input-300">
-            <select key="status" class="floating-label">
-                <option value="draft">Draft</option>
-                <option value="published">Published</option>
-                <!-- Other statuses -->
-            </select>
-        </floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="author"
+				placeholder="Author Name"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="input-300">
+			<select key="status" class="floating-label">
+				<option value="draft">Draft</option>
+				<option value="published">Published</option>
+				<!-- Other statuses -->
+			</select>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <input
-                type="text"
-                key="title"
-                placeholder="Title"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-600">
+			<input
+				type="text"
+				key="title"
+				placeholder="Title"
+				class="floating-label" />
+		</floating-label>
 
-        <floating-label class="input-300">
-            <div
-                type="file"
-                key="image"
-                accept="image/*"
-                placeholder="Upload Image or Video Thumbnail"
-                class="floating-label min-height:40px active"
-                render-selector="[template]"
-                active>
-                <div template>
-                    <img src="{{image.src}}" alt="image" width="100%" />
-                </div>
-            </div>
-        </floating-label>
+		<floating-label class="input-300">
+			<div
+				type="file"
+				key="image"
+				accept="image/*"
+				placeholder="Upload Image or Video Thumbnail"
+				class="floating-label min-height:40px active"
+				render-selector="[template]"
+				active>
+				<div template>
+					<img src="{{image.src}}" alt="image" width="100%" />
+				</div>
+			</div>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <textarea
-                key="shortDescription"
-                placeholder="Short Description"
-                class="floating-label"></textarea>
-        </floating-label>
+		<floating-label class="input-600">
+			<textarea
+				key="shortDescription"
+				placeholder="Short Description"
+				class="floating-label"></textarea>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <textarea
-                key="content"
-                placeholder="Content"
-                class="floating-label"></textarea>
-        </floating-label>
+		<floating-label class="input-600">
+			<textarea
+				key="content"
+				placeholder="Content"
+				class="floating-label"></textarea>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <select
-                key="category"
-                class="floating-label"
-                placeholder="Category">
-                <option value="">Select Category</option>
-                <option value="education">education</option>
-            </select>
-        </floating-label>
+		<floating-label class="input-600">
+			<select
+				key="category"
+				class="floating-label"
+				placeholder="Category">
+				<option value="">Select Category</option>
+				<option value="education">education</option>
+			</select>
+		</floating-label>
 
-        <floating-label class="input-600">
-            <input
-                type="text"
-                key="tags"
-                placeholder="Tags (comma-separated)"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-600">
+			<input
+				type="text"
+				key="tags"
+				placeholder="Tags (comma-separated)"
+				class="floating-label" />
+		</floating-label>
 
-        <floating-label class="input-600">
-            <input
-                type="text"
-                key="meta-title"
-                placeholder="Meta Title"
-                class="floating-label" />
-        </floating-label>
+		<floating-label class="input-600">
+			<input
+				type="text"
+				key="meta-title"
+				placeholder="Meta Title"
+				class="floating-label" />
+		</floating-label>
 
-        <floating-label class="input-600">
-            <textarea
-                key="meta-keywords"
-                placeholder="Meta Keywords"
-                class="floating-label"></textarea>
-        </floating-label>
+		<floating-label class="input-600">
+			<textarea
+				key="meta-keywords"
+				placeholder="Meta Keywords"
+				class="floating-label"></textarea>
+		</floating-label>
 
-        <!-- Additional Fields -->
+		<!-- Additional Fields -->
 
-        <floating-label class="input-600">
-            <textarea
-                key="meta-description"
-                placeholder="Meta Description"
-                class="floating-label"></textarea>
-        </floating-label>
+		<floating-label class="input-600">
+			<textarea
+				key="meta-description"
+				placeholder="Meta Description"
+				class="floating-label"></textarea>
+		</floating-label>
 
-        <input
-            key="_id"
-            input-selector="document; #publishform"
-            input-attribute="object"
-            hidden />
-        <input type="datetime" key="published" value="$now" hidden />
+		<input
+			key="_id"
+			input-selector="document; #publishform"
+			input-attribute="object"
+			hidden />
+		<input type="datetime" key="published" value="$now" hidden />
 
-        <button
-            actions="save, state"
-            state_to="mainView"
-            state-src="./admin/advertisements/datatable.html"
-            class="button-round">
-            <i src="./assets/svg/save.svg"></i>
-        </button>
-        <button actions="save">Publish</button>
-    </form>
+		<div
+			path="./"
+			src="./components/form-buttons.html"
+			class="width:100%"></div>
+		<button actions="save">Publish</button>
+	</form>
 </section>

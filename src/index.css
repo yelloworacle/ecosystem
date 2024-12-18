@@ -207,7 +207,10 @@ header {
 }
 
 button {
-	padding: 15px 30px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 30px;
 	font-weight: bold;
 	font-size: 16px;
 	cursor: pointer;
@@ -215,6 +218,31 @@ button {
 	border: 2px solid #f7cc02;
 	background-color: #f0f0f0;
 	border-radius: 8px;
+}
+
+.round {
+	padding: 0;
+	border-radius: 50%;
+}
+
+button.red {
+	border-color: #e74c3c;
+	color: #e74c3c;
+	fill: #e74c3c;
+}
+
+button.red:hover {
+	background-color: #e74c3c;
+}
+
+button.green {
+	border-color: #27ae60;
+	color: #27ae60;
+	fill: #27ae60;
+}
+
+button.green:hover {
+	background-color: #27ae60;
 }
 
 button:hover {
@@ -659,6 +687,11 @@ tr.hover:hover {
 
 	.card {
 		background-color: #1e1e1e;
+		border: 1px solid #333;
+	}
+
+	.card:hover {
+		background-color: #222;
 		border: 1px solid #333;
 	}
 

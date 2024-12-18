@@ -1,186 +1,184 @@
-<!DOCTYPE html>
-
 <style>
-    .plan-pricing {
-        text-align: center;
-        background: #f6f6f6;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        font-family: Arial, sans-serif;
-        margin: 22px 0;
-    }
+	.plan-pricing {
+		text-align: center;
+		background: #f6f6f6;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		font-family: Arial, sans-serif;
+		margin: 22px 0;
+	}
 
-    .plan-pricing-initial,
-    .plan-pricing-initial strong,
-    .plan-pricing-label strong {
-        font-size: 22px;
-        color: #888;
-    }
+	.plan-pricing-initial,
+	.plan-pricing-initial strong,
+	.plan-pricing-label strong {
+		font-size: 22px;
+		color: #888;
+	}
 
-    .plan-pricing-label {
-        border-radius: 4px;
-        font-size: 18px;
-        color: #888;
-        text-align: center;
-        line-height: 24px;
-    }
-    .plan-feature-label {
-        color: #333;
-        font-weight: 600;
-        margin-bottom: 5px;
-        line-height: 24px;
-        display: inline-block;
-    }
-    .plan-features {
-        list-style: none;
-    }
-    .plan-features li {
-        display: block;
-        margin: 0;
-        padding: 3px 0;
-        line-height: 24px;
-    }
+	.plan-pricing-label {
+		border-radius: 4px;
+		font-size: 18px;
+		color: #888;
+		text-align: center;
+		line-height: 24px;
+	}
+	.plan-feature-label {
+		color: #333;
+		font-weight: 600;
+		margin-bottom: 5px;
+		line-height: 24px;
+		display: inline-block;
+	}
+	.plan-features {
+		list-style: none;
+	}
+	.plan-features li {
+		display: block;
+		margin: 0;
+		padding: 3px 0;
+		line-height: 24px;
+	}
 
-    /* Basic styling for the form */
-    .stripe-element,
-    .input-field {
-        margin-bottom: 20px;
-        padding: 10px 14px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: white;
-    }
-    .input-field {
-        width: 100%;
-        box-sizing: border-box;
-    }
+	/* Basic styling for the form */
+	.stripe-element,
+	.input-field {
+		margin-bottom: 20px;
+		padding: 10px 14px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		background-color: white;
+	}
+	.input-field {
+		width: 100%;
+		box-sizing: border-box;
+	}
 
-    [display="features"] .features {
-        display: block;
-    }
-    [display="checkout"] .checkout {
-        display: block;
-    }
+	[display="features"] .features {
+		display: block;
+	}
+	[display="checkout"] .checkout {
+		display: block;
+	}
 
-    [display="features"] .checkout {
-        display: none;
-    }
-    [display="checkout"] .features {
-        display: none;
-    }
+	[display="features"] .checkout {
+		display: none;
+	}
+	[display="checkout"] .features {
+		display: none;
+	}
 </style>
 
 <section class="centered">
-    <!-- Pricing Plans Container -->
-    <div class="display:flex flex-wrap:wrap gap:15px padding-top:80px">
-        <!-- Plan -->
-        <div class="card flex-grow:1 width:365px padding:25px">
-            <!-- <div class="recommended-badge">Recommended</div> -->
-            <h3>Discover</h3>
-            <div class="plan-pricing">
-                <div class="plan-pricing-initial">
-                    <strong>$0.99</strong> for the 1st month
-                </div>
-                <div class="plan-pricing-label">
-                    <strong>$4.99</strong>/ monthly thereafter
-                </div>
-            </div>
-            <div display="features">
-                <div class="features">
-                    <div class="plan-features-label">
-                        <strong>Features of Standard Plan</strong>
-                        <ul class="plan-features">
-                            <li>Everything in free plan +</li>
-                            <li>More in-depth career details</li>
-                            <li>$1.99 each additional members</li>
-                        </ul>
-                    </div>
+	<!-- Pricing Plans Container -->
+	<div class="display:flex flex-wrap:wrap gap:15px padding-top:80px">
+		<!-- Plan -->
+		<div class="card flex-grow:1 width:365px padding:25px">
+			<!-- <div class="recommended-badge">Recommended</div> -->
+			<h3>Discover</h3>
+			<div class="plan-pricing">
+				<div class="plan-pricing-initial">
+					<strong>$0.99</strong> for the 1st month
+				</div>
+				<div class="plan-pricing-label">
+					<strong>$4.99</strong>/ monthly thereafter
+				</div>
+			</div>
+			<div display="features">
+				<div class="features">
+					<div class="plan-features-label">
+						<strong>Features of Standard Plan</strong>
+						<ul class="plan-features">
+							<li>Everything in free plan +</li>
+							<li>More in-depth career details</li>
+							<li>$1.99 each additional members</li>
+						</ul>
+					</div>
 
-                    <button
-                        click-attribute="display"
-                        click-value="checkout"
-                        click-closest="[display]"
-                        class="width:100% margin-top:20px font-size:18px">
-                        Subscribe
-                    </button>
-                </div>
+					<button
+						click-attribute="display"
+						click-value="checkout"
+						click-closest="[display]"
+						class="width:100% margin-top:20px font-size:18px">
+						Subscribe
+					</button>
+				</div>
 
-                <div class="checkout">
-                    <form id="payment-form">
-                        <input
-                            id="ambassadorAccount"
-                            type="hidden"
-                            array="users"
-                            object="$user_id"
-                            key="ambassadorAccount"
-                            input-next
-                            input-attribute="object" />
+				<div class="checkout">
+					<form id="payment-form">
+						<input
+							id="ambassadorAccount"
+							type="hidden"
+							array="users"
+							object="$user_id"
+							key="ambassadorAccount"
+							input-next
+							input-attribute="object" />
 
-                        <input
-                            id="ambassador"
-                            type="checkbox"
-                            array="ambassadors"
-                            object=""
-                            key="charges_enabled"
-                            hidden />
+						<input
+							id="ambassador"
+							type="checkbox"
+							array="ambassadors"
+							object=""
+							key="charges_enabled"
+							hidden />
 
-                        <textarea
-                            id="ambassadorParents"
-                            array="users"
-                            object="$user_id"
-                            key="ambassadorParents"
-                            value-type="json"
-                            class="input-field"
-                            hidden></textarea>
-                        <input
-                            id="customer"
-                            type="hidden"
-                            array="users"
-                            object="$user_id"
-                            key="customerId"
-                            class="input-field" />
-                        <input
-                            id="name"
-                            type="text"
-                            array="users"
-                            object="$user_id"
-                            key="name"
-                            save="false"
-                            class="input-field"
-                            placeholder="Name"
-                            required />
-                        <input
-                            type="email"
-                            id="email"
-                            array="users"
-                            object="$user_id"
-                            key="email"
-                            save="false"
-                            class="input-field"
-                            placeholder="Email"
-                            required />
+						<textarea
+							id="ambassadorParents"
+							array="users"
+							object="$user_id"
+							key="ambassadorParents"
+							value-type="json"
+							class="input-field"
+							hidden></textarea>
+						<input
+							id="customer"
+							type="hidden"
+							array="users"
+							object="$user_id"
+							key="customerId"
+							class="input-field" />
+						<input
+							id="name"
+							type="text"
+							array="users"
+							object="$user_id"
+							key="name"
+							save="false"
+							class="input-field"
+							placeholder="Name"
+							required />
+						<input
+							type="email"
+							id="email"
+							array="users"
+							object="$user_id"
+							key="email"
+							save="false"
+							class="input-field"
+							placeholder="Email"
+							required />
 
-                        <div id="card-element" class="stripe-element">
-                            <!-- Stripe Elements will be inserted here -->
-                        </div>
+						<div id="card-element" class="stripe-element">
+							<!-- Stripe Elements will be inserted here -->
+						</div>
 
-                        <input
-                            type="text"
-                            id="coupon"
-                            save="false"
-                            class="input-field"
-                            placeholder="Coupon" />
+						<input
+							type="text"
+							id="coupon"
+							save="false"
+							class="input-field"
+							placeholder="Coupon" />
 
-                        <button
-                            type="submit"
-                            class="width:100% margin-top:20px font-size:18px">
-                            Subscribe
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+						<button
+							type="submit"
+							class="width:100% margin-top:20px font-size:18px">
+							Subscribe
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 <script src="./checkout/index.js"></script>

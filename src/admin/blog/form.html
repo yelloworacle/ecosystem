@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<a href="./signin.html" session="false" hidden></a>
-
 <section class="centered flex-direction:column">
 	<form
 		id="blog-form"
@@ -236,29 +233,25 @@
 			hidden />
 		<input type="datetime" key="published" value="$now" hidden />
 
-		<button
-			actions="save, state"
-			state_to="mainView"
-			state-src="./admin/blog/datatable.html"
-			class="button-round">
-			<i src="./assets/svg/save.svg"></i>
-		</button>
+		<div class="display:flex justify-content:space-between width:100%">
+			<button
+				class="margin-top:20px green"
+				click-selector="i[src]"
+				click-attribute="src"
+				click-value="./assets/svg/spinner.svg"
+				actions="click, save, timeout(1000), render(document; #publish), timeout(2000), action(document; #savefile), action(document; #postPublished)">
+				<i id="published-icon" src="./assets/svg/paper-plane.svg"></i>
+				<span class="margin-left:5px">Publish</span>
+			</button>
 
+			<div path="./" src="./components/form-buttons.html"></div>
+		</div>
 		<a
 			id="postPublished"
 			click-selector="document; #published-icon"
 			click-attribute="src"
 			click-value="./assets/svg/check-circle.svg"
 			hidden></a>
-
-		<button
-			click-selector="i[src]"
-			click-attribute="src"
-			click-value="./assets/svg/spinner.svg"
-			actions="click, save, timeout(1000), render(document; #publish), timeout(2000), action(document; #savefile), action(document; #postPublished)">
-			Publish
-			<i id="published-icon" src="./assets/svg/paper-plane.svg"></i>
-		</button>
 	</form>
 
 	<!-- Get ObjectId from blobpost and reuse for file  -->

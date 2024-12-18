@@ -1,79 +1,77 @@
-<!DOCTYPE html>
-
 <!-- Comapny -->
 <style>
-    #tax_id,
-    #registration_number {
-        display: none;
-    }
-    form[country="US"] #tax_id {
-        display: block;
-    }
-    form:not([country="US"]) #registration_number {
-        display: block;
-    }
+	#tax_id,
+	#registration_number {
+		display: none;
+	}
+	form[country="US"] #tax_id {
+		display: block;
+	}
+	form:not([country="US"]) #registration_number {
+		display: block;
+	}
 </style>
 
 <div
-    class="accordion-button"
-    click-closest=".forms"
-    click-attribute="display"
-    click-value="company">
-    Company
+	class="accordion-button"
+	click-closest=".forms"
+	click-attribute="display"
+	click-value="company">
+	Company
 </div>
 
 <!-- Comapny -->
 <company class="form width:100% display:flex flex-wrap:wrap gap:15px">
-    <input
-        type="hidden"
-        key="country"
-        stripe="accounts.update"
-        stripe-key="company.address.country" />
+	<input
+		type="hidden"
+		key="country"
+		stripe="accounts.update"
+		stripe-key="company.address.country" />
 
-    <floating-label class="flex-grow:1">
-        <input
-            type="text"
-            key="company_name"
-            stripe="accounts.update"
-            stripe-key="company.name"
-            placeholder="Company Name" />
-    </floating-label>
-    <floating-label class="flex-grow:1">
-        <input
-            type="tel"
-            key="company.phone"
-            stripe="accounts.update"
-            stripe-key="company.phone"
-            placeholder="Company Phone" />
-    </floating-label>
+	<floating-label class="flex-grow:1">
+		<input
+			type="text"
+			key="company_name"
+			stripe="accounts.update"
+			stripe-key="company.name"
+			placeholder="Company Name" />
+	</floating-label>
+	<floating-label class="flex-grow:1">
+		<input
+			type="tel"
+			key="company.phone"
+			stripe="accounts.update"
+			stripe-key="company.phone"
+			placeholder="Company Phone" />
+	</floating-label>
 
-    <div class="width:100% display:flex flex-wrap:wrap gap:15px">
-        <floating-label class="width:100%">
-            <input
-                type="text"
-                key="company_address_line1"
-                stripe="accounts.update"
-                stripe-key="company.address.line1"
-                placeholder="Company Address Line 1" />
-        </floating-label>
-        <floating-label class="flex-grow:1 width:175px">
-            <input
-                type="text"
-                key="company_address_city"
-                stripe="accounts.update"
-                stripe-key="company.address.city"
-                placeholder="Company City" />
-        </floating-label>
-        <floating-label class="flex-grow:1 width:175px">
-            <input
-                type="text"
-                key="company_address_state"
-                stripe="accounts.update"
-                stripe-key="company.address.state"
-                placeholder="Company State" />
-        </floating-label>
+	<div class="width:100% display:flex flex-wrap:wrap gap:15px">
+		<floating-label class="width:100%">
+			<input
+				type="text"
+				key="company_address_line1"
+				stripe="accounts.update"
+				stripe-key="company.address.line1"
+				placeholder="Company Address Line 1" />
+		</floating-label>
+		<floating-label class="flex-grow:1 width:175px">
+			<input
+				type="text"
+				key="company_address_city"
+				stripe="accounts.update"
+				stripe-key="company.address.city"
+				placeholder="Company City" />
+		</floating-label>
+		<floating-label class="flex-grow:1 width:175px">
+			<input
+				type="text"
+				key="company_address_state"
+				stripe="accounts.update"
+				stripe-key="company.address.state"
+				placeholder="Company State" />
+		</floating-label>
 
-        <!-- <floating-label class="flex-grow:1 width:220px">
+		<!-- <floating-label class="flex-grow:1 width:220px">
         <select
             key="company_address_country"
             stripe="accounts.update"
@@ -83,32 +81,32 @@
             input-attribute="country"
             src="./account/ambassador/form/countries.html"></select>
     </floating-label> -->
-        <floating-label class="flex-grow:1 width:140px">
-            <input
-                type="text"
-                key="company_address_postal_code"
-                stripe="accounts.update"
-                stripe-key="company.address.postal_code"
-                placeholder="Company Postal Code" />
-        </floating-label>
-    </div>
+		<floating-label class="flex-grow:1 width:140px">
+			<input
+				type="text"
+				key="company_address_postal_code"
+				stripe="accounts.update"
+				stripe-key="company.address.postal_code"
+				placeholder="Company Postal Code" />
+		</floating-label>
+	</div>
 
-    <!-- Company Location Specific -->
-    <floating-label id="tax_id" class="flex-grow:1">
-        <input
-            type="text"
-            key="tax_id"
-            stripe="accounts.update"
-            stripe-key="company.tax_id"
-            placeholder="Tax ID" />
-    </floating-label>
+	<!-- Company Location Specific -->
+	<floating-label id="tax_id" class="flex-grow:1">
+		<input
+			type="text"
+			key="tax_id"
+			stripe="accounts.update"
+			stripe-key="company.tax_id"
+			placeholder="Tax ID" />
+	</floating-label>
 
-    <floating-label id="registration_number" class="flex-grow:1">
-        <input
-            type="text"
-            key="company_registration_number"
-            stripe="accounts.update"
-            stripe-key="company.registration_number"
-            placeholder="Registration Number" />
-    </floating-label>
+	<floating-label id="registration_number" class="flex-grow:1">
+		<input
+			type="text"
+			key="company_registration_number"
+			stripe="accounts.update"
+			stripe-key="company.registration_number"
+			placeholder="Registration Number" />
+	</floating-label>
 </company>

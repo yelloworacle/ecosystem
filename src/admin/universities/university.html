@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <div class="display:flex justify-content:center width:100% padding:80px_20px">
 	<style>
 		/* Add a CSS animation to make the icon spin */
@@ -233,8 +231,7 @@
 				array="users"
 				object="$user_id"
 				key="answeredQuestions"
-				filter-query-key="name"
-				filter-operator="$nin"
+				filter-query-key="name.$nin"
 				filter-next
 				value-type="json"
 				realtime="false"
@@ -370,9 +367,8 @@
 			<div
 				array="careers"
 				object
-				filter-query-key="name"
+				filter-query-key="name.$eq"
 				filter-query-value="Surgeon"
-				filter-operator="$eq"
 				render-selector="[template]"
 				src="./oracle/university-template.html"></div>
 		</section>
@@ -487,8 +483,7 @@
 		value-type="json"
 		crdt="false"
 		broadcast="false"
-		filter-query-key="name"
-		filter-operator="$in"
+		filter-query-key="name.$in"
 		filter-selector="document; #programs"
 		filter-case-sensitive="false"
 		input-attribute="array"

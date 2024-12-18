@@ -14,8 +14,7 @@
 		type="text"
 		class="floating-label"
 		filter-parent="next;"
-		filter-query-key="pathname"
-		filter-operator="$regex"
+		filter-query-key="pathname.$regex"
 		filter-regex-flag="i" />
 	<span
 		class="position:relative bottom:22px right:14px float:right font-size:18px">
@@ -29,9 +28,8 @@
 	class="display:flex flex-wrap:wrap justify-content:center gap:10px width:100% text-align:center padding-bottom:20px"
 	array
 	object
-	filter-query-key="content-type"
+	filter-query-key="content-type.$regex"
 	filter-query-value="^image|video"
-	filter-operator="$regex"
 	filter-regex-flag="i"
 	filter-sort-key="pathname"
 	filter-sort-direction="asc"
