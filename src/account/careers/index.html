@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<a href="./signin.html" session="false" hidden></a>
-
 <container class="centered">
 	<section id="oracle" class="max-width:800px margin:auto">
 		<input
@@ -39,8 +36,7 @@
 			value-type="json"
 			crdt="false"
 			broadcast="false"
-			filter-query-key="name"
-			filter-operator="$in"
+			filter-query-key="name.$in"
 			filter-selector="document; #careers"
 			filter-case-sensitive="false"
 			input-attribute="array"

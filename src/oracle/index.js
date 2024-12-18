@@ -1,43 +1,50 @@
 (function () {
-    CoCreate.actions.init({
-        name: "manageCareers",
-        callback: async (action) => {
-            const resultsElement = document.getElementById('careerResults');
-            let value = resultsElement.getValue()
-            if (!Array.isArray(value) && value.careers) {
-                value = value.careers
-            }
+	CoCreate.actions.init({
+		name: "manageCareers",
+		callback: async (action) => {
+			const resultsElement = document.getElementById("careerResults");
+			let value = resultsElement.getValue();
+			if (!Array.isArray(value) && value.careers) {
+				value = value.careers;
+			}
 
-            const element = document.getElementById('mergedCareers');
+			const element = document.getElementById("mergedCareers");
 
-            let preValue = element.getValue()
-            let newValue = [...value, ...preValue]
-            element.setValue(newValue, false)
-            document.dispatchEvent(new CustomEvent('manageCareers', {
-                detail: {}
-            }));
+			let preValue = element.getValue();
+			let newValue = [...value, ...preValue];
+			element.setValue(newValue, false);
+			document.dispatchEvent(
+				new CustomEvent("manageCareers", {
+					detail: {}
+				})
+			);
 
-            let careers = await CoCreate.socket.send({
-                method: "object.read",
-                array: "careers",
-                $filter: {
-                    query: { name: { $in: value } }
-                }
-            });
+			let careers = await CoCreate.socket.send({
+				method: "object.read",
+				array: "careers",
+				$filter: {
+					query: { name: { $in: value } }
+				}
+			});
 
-            for (let careerName of value) {
-                const careerExists = careers.object.some(existingCareer => existingCareer.name === careerName);
+			for (let careerName of value) {
+				const careerExists = careers.object.some(
+					(existingCareer) => existingCareer.name === careerName
+				);
 
-                if (!careerExists) {
-                    addCareer(careerName, element, newValue)
-                }
-            }
+				if (!careerExists) {
+					addCareer(careerName, element, newValue);
+				}
+			}
+		}
+	});
 
-        }
-    });
-
-    const careerFields = [`
+	const careerFields = [
+		`
     name
+    senseOfPurpose
+    healingEffect
+    bringsJoy
     salary
     stress
     pros
@@ -77,71 +84,71 @@
     technology
     vacation
     `
-    ]
+	];
 
-
-    async function addCareer(name, element, careerNames) {
-        try {
-            let careersDetails
-            for (let i = 0; i < careerFields.length; i++) {
-                const messages = []
-                messages.push({
-                    role: 'system',
-                    content: `Need details about the career name provided. Your response needs to be a valid Json object containing the following keys with no additional context required. please be sure it is valid JSON as it will be parsed:
+	async function addCareer(name, element, careerNames) {
+		try {
+			let careersDetails;
+			for (let i = 0; i < careerFields.length; i++) {
+				const messages = [];
+				messages.push({
+					role: "system",
+					content: `Need details about the career name provided. Your response needs to be a valid Json object containing the following keys with no additional context required. please be sure it is valid JSON as it will be parsed:
                     ${careerFields[i]}
                     `
-                })
-                messages.push({ role: 'user', content: name })
+				});
+				messages.push({ role: "user", content: name });
 
-                let data = await CoCreate.socket.send({
-                    method: 'openai.chat.completions.create',
-                    openai: {
-                        model: 'gpt-4o-mini',
-                        messages,
-                        max_tokens: 3300,
-                        temperature: 0.6,
-                        n: 1,
-                        stop: '###STOP###',
-                    }
-                })
+				let data = await CoCreate.socket.send({
+					method: "openai.chat.completions.create",
+					openai: {
+						model: "gpt-4o-mini",
+						messages,
+						max_tokens: 3300,
+						temperature: 0.6,
+						n: 1,
+						stop: "###STOP###"
+					}
+				});
 
-                if (data.openai.choices && data.openai.choices[0].message.content) {
-                    let content = data.openai.choices[0].message.content;
-                    content = content.replace(/```json\n|\n```/g, '');
-                    content = content.replace(/```javascript\n|\n```/g, '');
-                    try {
-                        content = JSON.parse(content)
-                        careersDetails = { ...careersDetails, ...content }
-                    } catch (error) {
-                        console.error(`Error parsing career ${name}: ${error}`);
-                    }
-                } else {
-                    console.error(`Error AI content is empty ${name}: ${error}`);
-                }
-            }
+				if (
+					data.openai.choices &&
+					data.openai.choices[0].message.content
+				) {
+					let content = data.openai.choices[0].message.content;
+					content = content.replace(/```json\n|\n```/g, "");
+					content = content.replace(/```javascript\n|\n```/g, "");
+					try {
+						content = JSON.parse(content);
+						careersDetails = { ...careersDetails, ...content };
+					} catch (error) {
+						console.error(`Error parsing career ${name}: ${error}`);
+					}
+				} else {
+					console.error(
+						`Error AI content is empty ${name}: ${error}`
+					);
+				}
+			}
 
-            if (!careersDetails)
-                return
-            let request = {
-                method: "object.create",
-                array: "careers",
-                object: {
-                    ...careersDetails
-                }
-            }
+			if (!careersDetails) return;
+			let request = {
+				method: "object.create",
+				array: "careers",
+				object: {
+					...careersDetails
+				}
+			};
 
-            data = await CoCreate.crud.send(request)
-            if (!data || !data.object || !data.object[0]) {
-                console.error(`Error saving career ${name}: ${error}`);
-            }
-            else {
-                element.setValue(careerNames, false)
-                console.log('created career: ', data.object[0])
-            }
-        } catch (error) {
-            console.error(`Error processing ${name}: ${error}`);
-        }
-    }
+			data = await CoCreate.crud.send(request);
+			if (!data || !data.object || !data.object[0]) {
+				console.error(`Error saving career ${name}: ${error}`);
+			} else {
+				element.setValue(careerNames, false);
+				console.log("created career: ", data.object[0]);
+			}
+		} catch (error) {
+			console.error(`Error processing ${name}: ${error}`);
+		}
+	}
 })();
-
-

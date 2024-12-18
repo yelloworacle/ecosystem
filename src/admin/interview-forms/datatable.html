@@ -1,9 +1,7 @@
-<!DOCTYPE html>
-
 <section class="centered">
 	<div class="datatable-container">
 		<div
-			path="./"
+			path="./admin/interview-forms/form.html"
 			src="./components/datatable-toolbar.html"
 			class="width:100%"></div>
 
@@ -96,14 +94,6 @@
 				</tr>
 			</tbody>
 		</table>
-
-		<button
-			actions="state"
-			state_to="mainView"
-			state-src="./admin/interview-forms/form.html"
-			class="button-round">
-			<i src="./assets/svg/plus.svg"></i>
-			<div state_to="form-fields" state-object=""></div>
-		</button>
+		<div filter-on="scroll" filter-previous="[render-selector]"></div>
 	</div>
 </section>

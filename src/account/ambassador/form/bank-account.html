@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-
 <!-- External Account -->
 <input
-    type="hidden"
-    stripe="accounts.update"
-    stripe-key="external_account.object"
-    value="bank_account" />
+	type="hidden"
+	stripe="accounts.update"
+	stripe-key="external_account.object"
+	value="bank_account" />
 <input
-    type="hidden"
-    key="country"
-    stripe="accounts.update"
-    stripe-key="external_account.country" />
+	type="hidden"
+	key="country"
+	stripe="accounts.update"
+	stripe-key="external_account.country" />
 <!-- <input
     type="hidden"
     key="currency"
@@ -18,52 +16,52 @@
     stripe-key="external_account.currency" /> -->
 
 <floating-label class="flex-grow:1">
-    <input
-        type="text"
-        key="account_number"
-        stripe="accounts.update"
-        stripe-key="external_account.account_number"
-        placeholder="Account Number"
-        test-value="000123456789" />
+	<input
+		type="text"
+		key="account_number"
+		stripe="accounts.update"
+		stripe-key="external_account.account_number"
+		placeholder="Account Number"
+		test-value="000123456789" />
 </floating-label>
 
 <floating-label class="flex-grow:1">
-    <input
-        type="text"
-        key="routing_number"
-        stripe="accounts.update"
-        stripe-key="external_account.routing_number"
-        placeholder="Routing Number"
-        test-value="110000000" />
+	<input
+		type="text"
+		key="routing_number"
+		stripe="accounts.update"
+		stripe-key="external_account.routing_number"
+		placeholder="Routing Number"
+		test-value="110000000" />
 </floating-label>
 
 <floating-label class="flex-grow:1">
-    <select
-        key="account_holder_type"
-        stripe="accounts.update"
-        stripe-key="external_account.account_holder_type"
-        placeholder="Account Holder Type">
-        <option value="individual">Individual</option>
-        <option value="company">Company</option>
-    </select>
+	<select
+		key="account_holder_type"
+		stripe="accounts.update"
+		stripe-key="external_account.account_holder_type"
+		placeholder="Account Holder Type">
+		<option value="individual">Individual</option>
+		<option value="company">Company</option>
+	</select>
 </floating-label>
 
 <floating-label class="flex-grow:1">
-    <input
-        type="text"
-        key="account_holder_name"
-        stripe="accounts.update"
-        stripe-key="external_account.account_holder_name"
-        placeholder="Account Holder Name" />
+	<input
+		type="text"
+		key="account_holder_name"
+		stripe="accounts.update"
+		stripe-key="external_account.account_holder_name"
+		placeholder="Account Holder Name" />
 </floating-label>
 
 <floating-label class="flex-grow:1">
-    <select
-        key="currency"
-        stripe="accounts.update"
-        stripe-key="external_account.currency"
-        placeholder="Currency"
-        src="./account/ambassador/form/currencies.html"></select>
+	<select
+		key="currency"
+		stripe="accounts.update"
+		stripe-key="external_account.currency"
+		placeholder="Currency"
+		src="./account/ambassador/form/currencies.html"></select>
 </floating-label>
 
 <!-- <floating-label class="flex-grow:1">

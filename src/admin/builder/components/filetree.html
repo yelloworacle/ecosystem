@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <div
 	class="margin-left:10px"
 	sortable
@@ -37,9 +35,8 @@
 		</div>
 		<div
 			class="margin-left:10px"
-			filter-query-key="path"
+			filter-query-key="path.$eq"
 			filter-query-value="{{object.pathname}}"
-			filter-operator="$eq"
 			filter-sort-key="name"
 			filter-sort-direction="asc"
 			filter-selector=":scope > div[]"
@@ -51,9 +48,8 @@
 	sortable
 	array="files"
 	object
-	filter-query-key="content-type"
+	filter-query-key="content-type.$ne"
 	filter-query-value="text/directory"
-	filter-operator="$ne"
 	filter-limit=""
 	render-selector="[template]">
 	<!--File Template -->

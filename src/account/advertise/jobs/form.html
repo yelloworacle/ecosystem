@@ -20,9 +20,56 @@
 
 		<floating-label class="width:100%">
 			<input
+				key="location.address"
 				type="text"
-				key="location"
+				google-maps="places"
+				google-maps-key="autocomplete"
 				placeholder="Location (e.g., Remote, City, State)"
+				class="floating-label" />
+		</floating-label>
+
+		<input type="hidden" key="location.type" value="Point" />
+		<input
+			type="number"
+			key="location.coordinates[0]"
+			google-maps="places"
+			google-maps-key="geometry.location.lat"
+			hidden />
+		<input
+			type="number"
+			key="location.coordinates[1]"
+			google-maps="places"
+			google-maps-key="geometry.location.lng"
+			hidden />
+
+		<floating-label class="width:100%">
+			<select
+				id="remote-option"
+				key="remote"
+				placeholder="Remote"
+				input-attribute="remote-type"
+				input-selector="document; #remote-details"
+				class="floating-label">
+				<option value="" disabled selected>Select Remote Option</option>
+				<option value="none">None</option>
+				<option value="full">Full Remote</option>
+				<option value="partial">Partial Remote</option>
+			</select>
+		</floating-label>
+
+		<floating-label class="width:100%" id="remote-details">
+			<style>
+				#remote-details {
+					display: none;
+				}
+				#remote-details[remote-type="partial"] {
+					display: block;
+				}
+			</style>
+			<input
+				type="text"
+				key="remote-details"
+				placeholder="e.g., 2 days/week remote or 50% remote"
 				class="floating-label" />
 		</floating-label>
 
@@ -79,6 +126,14 @@
 				<option label="Education" value="education">Education</option>
 				<option label="Other" value="other">Other</option>
 			</select>
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<input
+				type="text"
+				key="Test.new"
+				placeholder="Test dot notation"
+				class="floating-label" />
 		</floating-label>
 
 		<div class="display:flex gap:20px width:100% margin-top:20px">

@@ -13,9 +13,8 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="firstname"
-								filter-operator="$regex"
-								filter-regex-flag="i"
+								filter-query-key="name.$regex"
+								filter-query-options="i"
 								state_id="datatable"
 								placeholder="Name"
 								class="floating-label" />
@@ -23,8 +22,8 @@
 						<span class="sort">
 							<a
 								filter-selector="document; tbody[render-selector]"
-								filter-sort-key="firstname"
-								filter-sort-direction="asc"
+								filter-sort-key="name"
+								filter-sort-direction=""
 								click-value="desc, asc"
 								click-attribute="filter-sort-direction"
 								state_id="datatable">
@@ -40,9 +39,8 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="_id"
-								filter-operator="$regex"
-								filter-regex-flag="i"
+								filter-query-key="_id.$regex"
+								filter-query-options="i"
 								state_id="datatable"
 								placeholder="id"
 								class="floating-label" />
@@ -105,14 +103,5 @@
 		</table>
 
 		<div filter-on="scroll" filter-previous="[render-selector]"></div>
-
-		<!-- <button
-			actions="state"
-			state_to="mainView"
-			state-src="./account/advertise/jobs/form.html"
-			class="button-round">
-			<i src="./assets/svg/plus.svg"></i>
-			<div state_to="form-fields" state-object=""></div>
-		</button> -->
 	</div>
 </section>

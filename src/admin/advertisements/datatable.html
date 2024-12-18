@@ -1,9 +1,7 @@
-<!DOCTYPE html>
 <section class="centered">
 	<div class="datatable-container">
-		<a href="./signin.html" session="false" hidden></a>
 		<div
-			path="./"
+			path="./admin/advertisements/form.html"
 			src="./components/datatable-toolbar.html"
 			class="width:100%"></div>
 
@@ -15,9 +13,8 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="title"
-								filter-operator="$regex"
-								filter-regex-flag="i"
+								filter-query-key="title.$regex"
+								filter-query-options="i"
 								state_id="datatable"
 								placeholder="Name"
 								class="floating-label" />
@@ -42,9 +39,8 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="_id"
-								filter-operator="$regex"
-								filter-regex-flag="i"
+								filter-query-key="_id.$regex"
+								filter-query-options="i"
 								state_id="datatable"
 								placeholder="id"
 								class="floating-label" />
@@ -105,14 +101,5 @@
 		</table>
 
 		<div filter-on="scroll" filter-previous="[render-selector]"></div>
-
-		<button
-			actions="state"
-			state_to="mainView"
-			state-src="./admin/advertisements/form.html"
-			class="button-round">
-			<i src="./assets/svg/plus.svg"></i>
-			<div state_to="form-fields" state-object=""></div>
-		</button>
 	</div>
 </section>

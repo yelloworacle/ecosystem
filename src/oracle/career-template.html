@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <div class="card margin-bottom:15px" template>
 	<div class="card-content">
 		<div class="card-row full-width">
@@ -144,7 +143,7 @@
 			<div
 				class="card display:flex align-items:center flex-wrap:wrap gap:10px padding:10px">
 				<div
-					click-next
+					click-closest=".additional-container #additional-list"
 					click-attribute="hidden"
 					click-value=""
 					toggle-selector=":first-child"
@@ -154,22 +153,25 @@
 					<i src="../assets/svg/angle-right.svg"></i>
 					<span>Additional Details</span>
 				</div>
-				<div class="width:100% subscribed" id="additional-list" hidden>
-					<button
-						class="unlock width:100% flex-grow:1 margin-top:20px font-size:16px">
-						<a state_to="mainView" state-src="./checkout/"
-							>Subscribe to unlock additional details</a
-						>
-					</button>
-
-					<a
-						id="show-example"
-						show="document; #example"
-						hide="document; #oracle"
-						class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
-						>View an example of subscribed career details</a
+			</div>
+			<div
+				class="card width:100% margin-top:10px subscribed"
+				id="additional-list"
+				hidden>
+				<button
+					class="unlock width:100% flex-grow:1 margin-top:20px font-size:16px">
+					<a state_to="mainView" state-src="./checkout/"
+						>Subscribe to unlock additional details</a
 					>
-				</div>
+				</button>
+
+				<a
+					id="show-example"
+					show="document; #example"
+					hide="document; #oracle"
+					class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
+					>View an example of subscribed career details</a
+				>
 			</div>
 		</div>
 
@@ -191,6 +193,7 @@
 
 			<div
 				id="jobs-list"
+				storage="mongodb"
 				array="jobs"
 				object=""
 				filter-limit
@@ -198,7 +201,55 @@
 				render-as="job"
 				class="display:flex flex-direction:column margin-top:10px gap:10px"
 				hidden>
+				<input
+					type="text"
+					filter-query-key="location.$near.$geometry.type"
+					value="Point"
+					filter-parent
+					hidden />
+
+				<input
+					type="text"
+					array="users"
+					object="$user_id"
+					key="location.coordinates"
+					filter-query-key="location.$near.$geometry.coordinates"
+					value-type="array"
+					filter-parent
+					hidden />
+
+				<input
+					type="number"
+					filter-query-key="location.$near.$maxDistance"
+					value="10000"
+					filter-parent
+					hidden />
+
+				<!-- <input
+					type="number"
+					filter-query-key="location.$near.$minDistance"
+					value="100"
+					filter-parent hidden/> -->
+
 				<div class="card padding:10px" template render-as="job">
+					<form hidden>
+						<input
+							type="number"
+							array="jobs"
+							object="{{job._id}}"
+							key="$inc.impressions"
+							value="1"
+							read="false"
+							hidden />
+						<input
+							array="jobs"
+							object="{{job._id}}"
+							key="_id"
+							input-next
+							input-attribute="$click" />
+						<div actions="save"></div>
+					</form>
+
 					<div
 						class="display:flex align-items:center justify-content:flex-end margin-bottom:10px">
 						<div
@@ -270,6 +321,17 @@
 								>{{job.job_category}}</span
 							>
 						</div>
+						<form>
+							<input
+								type="number"
+								array="jobs"
+								object="{{job._id}}"
+								key="$inc.clicks"
+								value="1"
+								hidden />
+
+							<button action="save">Apply</button>
+						</form>
 					</div>
 				</div>
 			</div>

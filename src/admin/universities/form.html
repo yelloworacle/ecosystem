@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<a href="./signin.html" session="false" hidden></a>
-
 <section class="centered flex-direction:column">
 	<form
 		id="blog-form"
@@ -172,13 +169,10 @@
 			hidden />
 		<input type="datetime" key="published" value="$now" hidden />
 
-		<button
-			actions="save, state"
-			state_to="mainView"
-			state-src="./admin/blog/datatable.html"
-			class="button-round">
-			<i src="./assets/svg/save.svg"></i>
-		</button>
+		<div
+			path="./"
+			src="./components/form-buttons.html"
+			class="width:100%"></div>
 
 		<a
 			id="postPublished"
