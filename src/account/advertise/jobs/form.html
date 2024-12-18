@@ -77,14 +77,16 @@
 			<textarea
 				key="description"
 				placeholder="Job Description"
-				class="floating-label height:200px"></textarea>
+				class="floating-label"
+				height="auto"></textarea>
 		</floating-label>
 
 		<floating-label class="width:100%">
 			<textarea
 				key="requirements"
 				placeholder="Requirements"
-				class="floating-label height:150px"></textarea>
+				class="floating-label"
+				height="auto"></textarea>
 		</floating-label>
 
 		<floating-label class="width:100%">
@@ -129,13 +131,43 @@
 		</floating-label>
 
 		<floating-label class="width:100%">
-			<input
-				type="text"
-				key="Test.new"
-				placeholder="Test dot notation"
-				class="floating-label" />
+			<textarea
+				id="careerResults"
+				key="careers"
+				openai="chat.completions.create"
+				openai-key="choices[0].message.content"
+				openai-request="false"
+				value-type="array"
+				height="auto"></textarea>
 		</floating-label>
 
+		<div hidden>
+			<input
+				openai="chat.completions.create"
+				openai-key="model"
+				value="gpt-4o-mini" />
+
+			<input
+				openai="chat.completions.create"
+				openai-key="messages[0].role"
+				value="system" />
+			<textarea
+				id="systemInstructions"
+				openai="chat.completions.create"
+				openai-key="messages[0].content"></textarea>
+
+			<input
+				openai="chat.completions.create"
+				openai-key="messages[1].role"
+				value="user" />
+			<input
+				key="{}"
+				save="false"
+				reference="false"
+				openai="chat.completions.create"
+				openai-key="messages[1].content"
+				value-prefix="Job details:" />
+		</div>
 		<div class="display:flex gap:20px width:100% margin-top:20px">
 			<!-- <button
 				actions="state"
@@ -145,10 +177,19 @@
 				<i src="../assets/svg/ban.svg"></i>
 				<span class="margin-left:5px"> Cancel</span>
 			</button> -->
-			<button actions="save">
+			<button actions="openai.chat.completions.create, save">
 				<i src="../assets/svg/save.svg"></i>
 				<span class="margin-left:5px"> Post Job</span>
 			</button>
 		</div>
 	</form>
+	<textarea
+		array="ai"
+		object
+		key="content"
+		filter-query-key="name"
+		filter-query-value="Career Job Matches"
+		input-previous="#systemInstructions"
+		input-attribute="value"
+		hidden></textarea>
 </section>
