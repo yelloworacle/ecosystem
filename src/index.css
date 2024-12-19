@@ -616,6 +616,38 @@ tr.hover:hover {
 	/* Adjust the duration and other properties as needed */
 }
 
+:-webkit-autofill {
+	box-shadow: 0 0 0px 1000px transparent inset;
+	background-color: transparent;
+	color: inherit;
+	transition: background-color 5000s ease-in-out 0s;
+	-webkit-text-fill-color: inherit;
+}
+
+/* Firefox */
+:autofill {
+	background-color: transparent;
+	color: inherit;
+	border: 1px solid transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+	:-webkit-autofill {
+		-webkit-text-fill-color: #fff;
+		color: #fff;
+	}
+
+	/* Firefox */
+	:autofill {
+		-webkit-text-fill-color: #fff;
+		color: #fff;
+	}
+	option {
+		background-color: #222;
+		color: #fff;
+	}
+}
+
 @media (prefers-color-scheme: dark) {
 	body {
 		background-color: #333;
