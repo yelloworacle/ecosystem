@@ -233,9 +233,11 @@
 			hidden />
 		<input type="datetime" key="published" value="$now" hidden />
 
-		<div class="display:flex justify-content:space-between width:100%">
+		<div class="display:flex justify-content:flex-end width:100%">
+			<div path="./" src="./components/form-buttons.html"></div>
+
 			<button
-				class="margin-top:20px green"
+				class="margin-top:20px margin-left:20px green"
 				click-selector="i[src]"
 				click-attribute="src"
 				click-value="./assets/svg/spinner.svg"
@@ -243,8 +245,6 @@
 				<i id="published-icon" src="./assets/svg/paper-plane.svg"></i>
 				<span class="margin-left:5px">Publish</span>
 			</button>
-
-			<div path="./" src="./components/form-buttons.html"></div>
 		</div>
 		<a
 			id="postPublished"
@@ -255,7 +255,7 @@
 	</form>
 
 	<!-- Get ObjectId from blobpost and reuse for file  -->
-	<form id="publishform" array="files" object="" upsert="true" hidden>
+	<form id="publishform" array="files" object="" upsert="true">
 		<input key="name" class="title" />
 		<input key="pathname" value-prefix="/blog/" class="title" />
 		<input key="path" value="/blog" />
@@ -265,7 +265,7 @@
 		<input key="public" value="true" />
 
 		<div id="publish" render-selector="[template]" render="object">
-			<textarea key="src"></textarea>
+			<textarea key="src" class="width:100%"></textarea>
 			<div
 				template
 				value-type="text"
