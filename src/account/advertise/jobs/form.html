@@ -90,14 +90,6 @@
 				height="auto"></textarea>
 		</floating-label>
 
-		<floating-label class="width:100%">
-			<input
-				type="text"
-				key="employment_type"
-				placeholder="Employment Type (e.g., Full-time, Part-time, Contract)"
-				class="floating-label" />
-		</floating-label>
-
 		<floating-label class="width:290px">
 			<input
 				type="number"
@@ -114,7 +106,22 @@
 				class="floating-label" />
 		</floating-label>
 
-		<floating-label class="width:100%">
+		<floating-label class="width:290px">
+			<select
+				key="employment_type"
+				class="floating-label"
+				placeholder="Employment Type">
+				<!-- <option value="" disabled selected>Employment Type</option> -->
+				<option value="full_time">Full-time</option>
+				<option value="part_time">Part-time</option>
+				<option value="contract">Contract</option>
+				<option value="temporary">Temporary</option>
+				<option value="freelance">Freelance</option>
+				<option value="internship">Internship</option>
+			</select>
+		</floating-label>
+
+		<floating-label class="width:290px">
 			<select
 				key="job_category"
 				placeholder="Job Category"
