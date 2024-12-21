@@ -7,6 +7,31 @@
 		realtime="false"
 		class="flex-form">
 		<div
+			class="display:flex justify-content:center width:100% margin-bottom:30px">
+			<div
+				type="file"
+				key="avatar"
+				accept="image/*"
+				placeholder="Profile Image"
+				class="display:flex align-items:center justify-content:center position:relative border-radius:50% overflow:hidden width:250px height:250px border:2px_solid border-color:#fff@dark"
+				render-selector="[template]"
+				active>
+				<i
+					class="position:absolute height:100% width:100% top:15px"
+					src="../../assets/svg/user.svg"></i>
+
+				<div class="width:100% height:100% position:relative" template>
+					<img
+						src="{{avatar.src}}"
+						alt="image"
+						width="100%"
+						height="100%"
+						class="object-fit:cover" />
+				</div>
+			</div>
+		</div>
+
+		<div
 			path="./"
 			src="./components/form-toolbar.html"
 			class="width:100%"></div>
@@ -49,7 +74,7 @@
 				class="floating-label" />
 		</floating-label>
 
-		<floating-label class="width:100%">
+		<floating-label class="input-300">
 			<input
 				key="location.address"
 				type="text"
@@ -73,7 +98,7 @@
 			google-maps-key="geometry.location.lng"
 			hidden />
 
-		<floating-label class="width:100%">
+		<floating-label class="input-300">
 			<select
 				id="remote-option"
 				key="remote"
@@ -88,7 +113,7 @@
 			</select>
 		</floating-label>
 
-		<floating-label class="width:100%" id="remote-details">
+		<floating-label class="input-300" id="remote-details">
 			<style>
 				#remote-details {
 					display: none;
@@ -109,38 +134,41 @@
 				type="number"
 				id="distanceInput"
 				key="distance"
-				placeholder="Enter Distance"
+				placeholder="Max Distance"
 				class="floating-label"
 				value="10" />
+			<div
+				class="position:absolute width:30px top:8px right:18px float:right cursor:pointer">
+				<select
+					id="unitSelector"
+					class="remove-none border:none padding:0 min-height:24px!important"
+					key="unit">
+					<option
+						value="1000"
+						class="margin:0px padding:3px border-radius:4px">
+						km
+					</option>
+					<option
+						value="1609.34"
+						class="margin:0px padding:3px border-radius:4px">
+						mi
+					</option>
+				</select>
+			</div>
 		</floating-label>
 
-		<floating-label class="input-100">
+		<!-- <floating-label class="input-100">
 			<select id="unitSelector" key="unit" class="floating-label">
 				<option value="1000">Kilometers</option>
 				<option value="1609.34">Miles</option>
 			</select>
-		</floating-label>
+		</floating-label> -->
 
 		<input
 			type="number"
 			key="maxDistance"
 			calculate="{(#distanceInput)} * {(#unitSelector)}"
 			hidden />
-
-		<floating-label class="width:250px">
-			<div
-				type="file"
-				key="avatar"
-				accept="image/*"
-				placeholder="Profile Image"
-				class="floating-label min-height:40px active"
-				render-selector="[template]"
-				active>
-				<div template>
-					<img src="{{avatar.src}}" alt="image" width="100%" />
-				</div>
-			</div>
-		</floating-label>
 
 		<!-- <floating-label class="input-300">
         <input type="password" key="password" placeholder="password"
@@ -156,19 +184,6 @@
             autocomplete="current-password" />
     </div> -->
 
-		<!-- <div
-        id="questions"
-        object
-        key="questions"
-        render-selector="[template]"
-        read="false">
-        <input
-            type="text"
-            key="{{questions.key}}"
-            value="{{questions.value}}"
-            template
-            read="false" />
-    </div> -->
 		<div
 			path="./"
 			src="./components/form-buttons.html"

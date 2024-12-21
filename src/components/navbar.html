@@ -134,31 +134,56 @@
 </div>
 
 <!-- Avatar -->
-<div class="avatar round margin-right:10px">
-	<span array="users" object="$user_id" key="name" class="avatar-name">
+<div class="avatar round">
+	<div array="users" object="$user_id" key="firstname" class="avatar-name">
 		<i src="{{path}}assets/svg/sign-in-alt.svg"></i>
-	</span>
-	<span class="avatar-image">
+	</div>
+	<div class="avatar-image">
 		<img
 			array="users"
 			object="$user_id"
 			key="avatar[0].src"
 			onerror="this.style.display='none'" />
-
 		<div>
 			<a href="{{path}}signin.html"> </a>
 		</div>
 		<a
-			state_to="mainView"
-			state-src="{{path}}account/profile/"
-			href="{{path}}"
 			class="signin"
+			toggle="dropdown"
+			toggle-closest="nav #profile-dropdown"
+			toggle-attribute="hidden"
+			toggle-value=""
 			session>
 		</a>
-	</span>
+	</div>
 	<div
 		class="avatar-status"
 		array="users"
 		object="$user_id"
 		user-status="{'name':'status'}"></div>
+</div>
+
+<div
+	id="profile-dropdown"
+	class="display:flex flex-direction:column gap:15px position:absolute top:70px right:15px width:125px overflow:auto font-size:16px background:white background:#222@dark border:1px-solid-#ccc border-radius:5px padding:15px"
+	hidden>
+	<a
+		actions="state"
+		state-src="{{path}}account/profile/index.html"
+		state_to="mainView"
+		href="{{path}}"
+		click-parent
+		click-attribute="hidden"
+		click-value=""
+		class="display:flex align-items:center gap:10px">
+		<i src="{{path}}assets/svg/user.svg"></i>
+		<span>Profile</span>
+	</a>
+	<a
+		actions="signOut"
+		href="{{path}}signin.html"
+		class="display:flex align-items:center gap:10px">
+		<i src="{{path}}assets/svg/sign-out-alt.svg"></i>
+		<span>Sign Out</span>
+	</a>
 </div>

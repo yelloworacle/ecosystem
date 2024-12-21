@@ -139,7 +139,8 @@
 				openai-key="choices[0].message.content"
 				openai-request="false"
 				value-type="array"
-				height="auto"></textarea>
+				height="auto"
+				placeholder="Matching Careers"></textarea>
 		</floating-label>
 
 		<div hidden>
@@ -170,17 +171,21 @@
 				value-prefix="Job details:" />
 		</div>
 		<div class="display:flex gap:20px width:100% margin-top:20px">
-			<!-- <button
+			<button
 				actions="state"
-				state_to="main"
+				state_to="mainView"
 				state-src="$back"
 				class="red margin-left:auto">
 				<i src="../assets/svg/ban.svg"></i>
 				<span class="margin-left:5px"> Cancel</span>
-			</button> -->
-			<button actions="openai.chat.completions.create, save">
+			</button>
+			<button
+				actions="click, openai.chat.completions.create, save, click, timeout(2000), click"
+				click-selector="i"
+				click-attribute="src"
+				click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg">
 				<i src="../assets/svg/save.svg"></i>
-				<span class="margin-left:5px"> Post Job</span>
+				<span class="margin-left:5px">Save</span>
 			</button>
 		</div>
 	</form>
