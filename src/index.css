@@ -69,14 +69,14 @@ i {
 	align-items: center;
 }
 
-.centered {
-	display: flex;
-	/* align-items: center; */
-	justify-content: center;
-	flex-direction: column;
-	min-height: calc(100vh - 70px);
-	margin: auto;
-	padding: 20px;
+section {
+	padding: 80px 15px;
+}
+
+section.centered {
+	max-width: 800px;
+	height: 100%;
+	margin: 0px auto;
 }
 
 .datatable-container {
@@ -562,7 +562,7 @@ textarea {
 
 [hidden],
 [template] {
-	display: none;
+	display: none !important;
 }
 
 tr.hover:hover {
