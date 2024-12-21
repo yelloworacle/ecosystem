@@ -65,8 +65,13 @@ main {
 
 i {
 	display: inline-flex;
-	justify-content: center;
-	align-items: center;
+}
+
+svg {
+	height: inherit;
+	width: inherit;
+	fill: inherit;
+	stroke: inherit;
 }
 
 section {
