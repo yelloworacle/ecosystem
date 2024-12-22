@@ -362,17 +362,12 @@ sidenav ul li:hover {
 	font-size: 1rem;
 	font-weight: 600;
 	line-height: 1.5;
+	color: #666;
 }
 
 .card-value {
 	font-size: 1.1rem;
-	color: #555;
-}
-
-@media (max-width: 768px) {
-	.card-field {
-		width: 100%;
-	}
+	color: #333;
 }
 
 @media (max-width: 300px) {
@@ -822,10 +817,10 @@ tr.hover:hover {
 	}
 
 	.card-label {
-		color: #bb86fc; /* Light purple */
+		color: #b3b3b3; /* Soft gray for labels */
 	}
 
 	.card-value {
-		color: #e0e0e0; /* Near-white */
+		color: #e0e0e0; /* White or near-white for values */
 	}
 }
