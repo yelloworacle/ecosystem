@@ -1,339 +1,320 @@
 <div class="card margin-bottom:15px" template>
-	<div class="card-content">
-		<div class="card-row full-width">
-			<span class="card-label">Career Name:</span>
-			<span class="card-value load-value">{{object.name}}</span>
+	<div class="card-content margin-bottom:15px">
+		<div class="card-field full-width">
+			<label class="card-label">Career Name:</label>
+			<p class="card-value">{{object.name}}</p>
 		</div>
-		<div class="card-row full-width">
-			<span class="card-label">Sense Of Purpose:</span>
-			<span class="card-value load-value">{{object.senseOfPurpose}}</span>
+		<div class="card-field full-width">
+			<label class="card-label">Sense Of Purpose:</label>
+			<p class="card-value">{{object.senseOfPurpose}}</p>
 		</div>
-		<div class="card-row full-width">
-			<span class="card-label">Healing Effect:</span>
-			<span class="card-value load-value">{{object.healingEffect}}</span>
+		<div class="card-field full-width">
+			<label class="card-label">Healing Effect:</label>
+			<p class="card-value">{{object.healingEffect}}</p>
 		</div>
-		<div class="card-row full-width">
-			<span class="card-label">Brings Joy:</span>
-			<span class="card-value load-value">{{object.bringsJoy}}</span>
+		<div class="card-field full-width">
+			<label class="card-label">Brings Joy:</label>
+			<p class="card-value">{{object.bringsJoy}}</p>
 		</div>
-		<div class="card-row">
-			<span class="card-label">Average Salary:</span>
-			<span class="card-value load-value">{{object.salary}}</span>
+		<div class="card-field full-width">
+			<label class="card-label">Average Salary:</label>
+			<p class="card-value">{{object.salary}}</p>
 		</div>
-		<div class="card-row">
-			<span class="card-label">Stress Level:</span>
-			<span class="card-value load-value">{{object.stress}}</span>
-		</div>
-
-		<div class="card-row">
-			<span class="card-label">Pros:</span>
-			<span class="card-value load-value">{{object.pros}}</span>
-		</div>
-		<div class="card-row">
-			<span class="card-label">Cons:</span>
-			<span class="card-value load-value">{{object.cons}}</span>
-		</div>
-		<div class="card-row full-width">
-			<span class="card-label">Interesting Fact:</span>
-			<span class="card-value load-value">{{object.facts}}</span>
+		<div class="card-field full-width">
+			<label class="card-label">Stress Level:</label>
+			<p class="card-value">{{object.stress}}</p>
 		</div>
 
-		<div class="card-row">
-			<span class="card-label">Apprentice:</span>
-			<span class="card-value load-value">{{object.apprentice}}</span>
+		<div class="card-field">
+			<label class="card-label">Pros:</label>
+			<p class="card-value">{{object.pros}}</p>
 		</div>
-		<div class="card-row">
-			<span class="card-label">Satisfaction:</span>
-			<span class="card-value load-value">{{object.satisfaction}}</span>
+		<div class="card-field full-width">
+			<label class="card-label">Cons:</label>
+			<p class="card-value">{{object.cons}}</p>
 		</div>
-		<div class="card-row full-width">
-			<span class="card-label">Sacrifices:</span>
-			<span class="card-value load-value">{{object.sacrifices}}</span>
+		<div class="card-field full-width">
+			<label class="card-label">Interesting Fact:</label>
+			<p class="card-value">{{object.facts}}</p>
+		</div>
+	</div>
+	<div class="additional-container width:100%">
+		<div
+			class="card display:flex align-items:center flex-wrap:wrap gap:10px padding:10px width:100% margin-bottom:15px">
+			<div
+				click-closest=".additional-container #additional-list"
+				click-attribute="hidden"
+				click-value=""
+				toggle-selector=":first-child"
+				toggle-attribute="src"
+				toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
+				class="display:flex align-items:center gap:10px flex-grow:1 width:100%">
+				<i src="../assets/svg/angle-right.svg"></i>
+				<span>Additional Details</span>
+			</div>
+		</div>
+		<div
+			class="card width:100% margin-bottom:15px"
+			id="additional-list"
+			hidden>
+			<div class="card-content">
+				<div class="card-field">
+					<label class="card-label">Apprentice:</label>
+					<p class="card-value">{{object.apprentice}}</p>
+				</div>
+				<div class="card-field">
+					<label class="card-label">Satisfaction:</label>
+					<p class="card-value">{{object.satisfaction}}</p>
+				</div>
+				<div class="card-field full-width">
+					<label class="card-label">Sacrifices:</label>
+					<p class="card-value">{{object.sacrifices}}</p>
+				</div>
+
+				<div class="card-field full-width">
+					<label class="card-label">Characteristics:</label>
+					<p class="card-value">{{object.characteristics}}</p>
+				</div>
+				<div class="card-field full-width">
+					<label class="card-label">Career Path Variability:</label>
+					<p class="card-value">{{object.careerPathVariability}}</p>
+				</div>
+				<div class="card-field full-width">
+					<label class="card-label">Why:</label>
+					<p
+						class="card-value"
+						array="users"
+						object="$user_id"
+						key="why.{{object._id}}"
+						input-if="false"
+						input-next=".createWhy"
+						input-attribute="$click"
+						value-dispatch></p>
+
+					<form api="openai">
+						<input
+							openai="chat.completions.create"
+							openai-key="model"
+							value="gpt-4o-mini"
+							hidden />
+
+						<input
+							openai="chat.completions.create"
+							openai-key="messages[0].role"
+							value="system"
+							hidden />
+						<textarea
+							array="ai"
+							object
+							key="content"
+							save="false"
+							filter-query-key="name"
+							filter-query-value="Why Career"
+							openai="chat.completions.create"
+							openai-key="messages[0].content"
+							hidden></textarea>
+
+						<input
+							openai="chat.completions.create"
+							openai-key="messages[1].role"
+							value="user"
+							hidden />
+						<input
+							array="users"
+							object="$user_id"
+							key="questions"
+							save="false"
+							openai="chat.completions.create"
+							openai-key="messages[1].content"
+							hidden />
+
+						<input
+							openai="chat.completions.create"
+							openai-key="messages[2].role"
+							value="user"
+							hidden />
+						<input
+							openai="chat.completions.create"
+							openai-key="messages[2].content"
+							value="career name: {{object.name}}"
+							hidden />
+						<textarea
+							class="whyCareerResult"
+							realtime="true"
+							crdt="false"
+							array="users"
+							object="$user_id"
+							key="why.{{object._id}}"
+							openai="chat.completions.create"
+							openai-key="choices[0].message.content"
+							openai-request="false"
+							hidden></textarea>
+						<a
+							class="createWhy"
+							actions="openai.chat.completions.create, save"></a>
+					</form>
+				</div>
+
+				<div class="width:100% margin-top:10px subscribed">
+					<button
+						class="unlock width:100% flex-grow:1 margin-top:20px font-size:16px">
+						<a state_to="mainView" state-src="./checkout/"
+							>Subscribe to unlock additional details</a
+						>
+					</button>
+
+					<a
+						id="show-example"
+						show="document; #example"
+						hide="document; #oracle"
+						class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
+						>View an example of subscribed career details</a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="jobs-container width:100%">
+		<div
+			class="card display:flex align-items:center gap:10px padding:10px margin-bottom:15px">
+			<div
+				click-closest=".jobs-container #jobs-list"
+				click-attribute="hidden"
+				click-value=""
+				toggle-selector=":first-child"
+				toggle-attribute="src"
+				toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
+				class="display:flex align-items:center gap:10px flex-grow:1">
+				<i src="../assets/svg/angle-right.svg"></i>
+				<span>Jobs</span>
+			</div>
 		</div>
 
-		<div class="card-row full-width">
-			<span class="card-label">Characteristics:</span>
-			<span class="card-value load-value"
-				>{{object.characteristics}}</span
-			>
-		</div>
-		<div class="card-row full-width">
-			<span class="card-label">Career Path Variability:</span>
-			<span class="card-value load-value"
-				>{{object.careerPathVariability}}</span
-			>
-		</div>
-		<div class="card-row full-width">
-			<span class="card-label">Why:</span>
-			<span
-				class="card-value load-value"
+		<div
+			id="jobs-list"
+			storage="mongodb"
+			array="jobs"
+			object=""
+			filter-limit
+			render-selector="[template]"
+			class="display:flex flex-direction:column margin-top:10px gap:10px"
+			hidden>
+			<input
+				type="text"
+				filter-query-key="location.$near.$geometry.type"
+				value="Point"
+				filter-parent
+				hidden />
+
+			<input
+				type="text"
 				array="users"
 				object="$user_id"
-				key="why.{{object._id}}"
-				input-if="false"
-				input-next=".createWhy"
-				input-attribute="$click"
-				value-dispatch></span>
+				key="location.coordinates"
+				filter-query-key="location.$near.$geometry.coordinates"
+				value-type="array"
+				filter-parent
+				hidden />
 
-			<form api="openai">
-				<input
-					openai="chat.completions.create"
-					openai-key="model"
-					value="gpt-4o-mini"
-					hidden />
+			<input
+				type="number"
+				filter-query-key="location.$near.$maxDistance"
+				array="users"
+				object="$user_id"
+				key="maxDistance"
+				filter-parent
+				hidden />
 
-				<input
-					openai="chat.completions.create"
-					openai-key="messages[0].role"
-					value="system"
-					hidden />
-				<textarea
-					array="ai"
-					object
-					key="content"
-					save="false"
-					filter-query-key="name"
-					filter-query-value="Why Career"
-					openai="chat.completions.create"
-					openai-key="messages[0].content"
-					hidden></textarea>
-
-				<input
-					openai="chat.completions.create"
-					openai-key="messages[1].role"
-					value="user"
-					hidden />
-				<input
-					array="users"
-					object="$user_id"
-					key="questions"
-					save="false"
-					openai="chat.completions.create"
-					openai-key="messages[1].content"
-					hidden />
-
-				<input
-					openai="chat.completions.create"
-					openai-key="messages[2].role"
-					value="user"
-					hidden />
-				<input
-					openai="chat.completions.create"
-					openai-key="messages[2].content"
-					value="career name: {{object.name}}"
-					hidden />
-				<textarea
-					class="whyCareerResult"
-					realtime="true"
-					crdt="false"
-					array="users"
-					object="$user_id"
-					key="why.{{object._id}}"
-					openai="chat.completions.create"
-					openai-key="choices[0].message.content"
-					openai-request="false"
-					hidden></textarea>
-				<a
-					class="createWhy"
-					actions="openai.chat.completions.create, save"></a>
-			</form>
-		</div>
-
-		<div class="additional-container width:100%">
-			<div
-				class="card display:flex align-items:center flex-wrap:wrap gap:10px padding:10px">
-				<div
-					click-closest=".additional-container #additional-list"
-					click-attribute="hidden"
-					click-value=""
-					toggle-selector=":first-child"
-					toggle-attribute="src"
-					toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
-					class="display:flex align-items:center gap:10px flex-grow:1 width:100%">
-					<i src="../assets/svg/angle-right.svg"></i>
-					<span>Additional Details</span>
-				</div>
-			</div>
-			<div
-				class="card width:100% margin-top:10px subscribed"
-				id="additional-list"
-				hidden>
-				<button
-					class="unlock width:100% flex-grow:1 margin-top:20px font-size:16px">
-					<a state_to="mainView" state-src="./checkout/"
-						>Subscribe to unlock additional details</a
-					>
-				</button>
-
-				<a
-					id="show-example"
-					show="document; #example"
-					hide="document; #oracle"
-					class="display:block padding:10px text-align:center color:#1a73e8 text-decoration:underline:hover"
-					>View an example of subscribed career details</a
-				>
-			</div>
-		</div>
-
-		<div class="jobs-container width:100%">
-			<div
-				class="card display:flex align-items:center gap:10px padding:10px">
-				<div
-					click-closest=".jobs-container #jobs-list"
-					click-attribute="hidden"
-					click-value=""
-					toggle-selector=":first-child"
-					toggle-attribute="src"
-					toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
-					class="display:flex align-items:center gap:10px flex-grow:1">
-					<i src="../assets/svg/angle-right.svg"></i>
-					<span>Jobs</span>
-				</div>
-			</div>
-
-			<div
-				id="jobs-list"
-				storage="mongodb"
-				array="jobs"
-				object=""
-				filter-limit
-				render-selector="[template]"
-				class="display:flex flex-direction:column margin-top:10px gap:10px"
-				hidden>
-				<input
-					type="text"
-					filter-query-key="location.$near.$geometry.type"
-					value="Point"
-					filter-parent
-					hidden />
-
-				<input
-					type="text"
-					array="users"
-					object="$user_id"
-					key="location.coordinates"
-					filter-query-key="location.$near.$geometry.coordinates"
-					value-type="array"
-					filter-parent
-					hidden />
-
-				<input
-					type="number"
-					filter-query-key="location.$near.$maxDistance"
-					array="users"
-					object="$user_id"
-					key="maxDistance"
-					filter-parent
-					hidden />
-
-				<!-- <input
+			<!-- <input
 					type="number"
 					filter-query-key="location.$near.$minDistance"
 					value="100"
 					filter-parent hidden/> -->
 
-				<div class="card padding:10px" template render-as="job">
-					<form hidden>
+			<div class="card padding:10px" template render-as="job">
+				<form hidden>
+					<input
+						type="number"
+						array="jobs"
+						object="{{job._id}}"
+						key="$inc.impressions"
+						value="1"
+						read="false"
+						hidden />
+					<input
+						array="jobs"
+						object="{{job._id}}"
+						key="_id"
+						input-next
+						input-attribute="$click" />
+					<div actions="save"></div>
+				</form>
+
+				<div
+					class="display:flex align-items:center justify-content:flex-end margin-bottom:15px">
+					<div
+						class="display:flex align-items:center gap:10px transition:0.3s"
+						hover-selector=".options"
+						hover-attribute="class"
+						hover-value="display:inline-flex!important">
+						<div class="display:none options">
+							<a class="padding:5px margin-left:auto">
+								<i src="../assets/svg/trash.svg"></i>
+							</a>
+						</div>
+						<i src="../assets/svg/ellipsis-v.svg"></i>
+					</div>
+				</div>
+
+				<div class="display:flex flex-wrap:wrap gap:20px">
+					<div class="card-field full-width">
+						<label class="card-label">Job Title:</label>
+						<p class="card-value">{{job.name}}</p>
+					</div>
+					<div class="card-field full-width">
+						<label class="card-label">Company Name:</label>
+						<p class="card-value">{{job.company}}</p>
+					</div>
+					<div class="card-field full-width">
+						<label class="card-label">Location:</label>
+						<span class="card-value">{{job.location.address}}</span>
+					</div>
+					<div class="card-field full-width">
+						<label class="card-label">Job Description:</label>
+						<p class="card-value">{{job.description}}</p>
+					</div>
+					<div class="card-field full-width">
+						<label class="card-label">Requirements:</label>
+						<p class="card-value">{{job.requirements}}</p>
+					</div>
+					<div class="card-field">
+						<label class="card-label">Employment Type:</label>
+						<p class="card-value">{{job.employment_type}}</p>
+					</div>
+					<div class="card-field">
+						<label class="card-label">Salary:</label>
+						<p class="card-value">{{job.salary}}</p>
+					</div>
+					<div class="card-field">
+						<label class="card-label">Years of Experience:</label>
+						<p class="card-value">{{job.years_experience}}</p>
+					</div>
+					<div class="card-field full-width">
+						<label class="card-label">Job Category:</label>
+						<p class="card-value">{{job.job_category}}</p>
+					</div>
+					<form>
 						<input
 							type="number"
 							array="jobs"
 							object="{{job._id}}"
-							key="$inc.impressions"
+							key="$inc.clicks"
 							value="1"
-							read="false"
 							hidden />
-						<input
-							array="jobs"
-							object="{{job._id}}"
-							key="_id"
-							input-next
-							input-attribute="$click" />
-						<div actions="save"></div>
+
+						<button action="save">Apply</button>
 					</form>
-
-					<div
-						class="display:flex align-items:center justify-content:flex-end margin-bottom:10px">
-						<div
-							class="display:flex align-items:center gap:10px transition:0.3s"
-							hover-selector=".options"
-							hover-attribute="class"
-							hover-value="display:inline-flex!important">
-							<div class="display:none options">
-								<a class="padding:5px margin-left:auto">
-									<i src="../assets/svg/trash.svg"></i>
-								</a>
-							</div>
-							<i src="../assets/svg/ellipsis-v.svg"></i>
-						</div>
-					</div>
-
-					<div class="display:flex flex-wrap:wrap gap:20px">
-						<div class="card-row full-width">
-							<span class="card-label">Job Title:</span>
-							<span class="card-value load-value"
-								>{{job.name}}</span
-							>
-						</div>
-						<div class="card-row full-width">
-							<span class="card-label">Company Name:</span>
-							<span class="card-value load-value"
-								>{{job.company}}</span
-							>
-						</div>
-						<div class="card-row full-width">
-							<span class="card-label">Location:</span>
-							<span class="card-value load-value"
-								>{{job.location.address}}</span
-							>
-						</div>
-						<div class="card-row full-width">
-							<span class="card-label">Job Description:</span>
-							<span class="card-value load-value"
-								>{{job.description}}</span
-							>
-						</div>
-						<div class="card-row full-width">
-							<span class="card-label">Requirements:</span>
-							<span class="card-value load-value"
-								>{{job.requirements}}</span
-							>
-						</div>
-						<div class="card-row">
-							<span class="card-label">Employment Type:</span>
-							<span class="card-value load-value"
-								>{{job.employment_type}}</span
-							>
-						</div>
-						<div class="card-row">
-							<span class="card-label">Salary:</span>
-							<span class="card-value load-value"
-								>{{job.salary}}</span
-							>
-						</div>
-						<div class="card-row">
-							<span class="card-label">Years of Experience:</span>
-							<span class="card-value load-value"
-								>{{job.years_experience}}</span
-							>
-						</div>
-						<div class="card-row full-width">
-							<span class="card-label">Job Category:</span>
-							<span class="card-value load-value"
-								>{{job.job_category}}</span
-							>
-						</div>
-						<form>
-							<input
-								type="number"
-								array="jobs"
-								object="{{job._id}}"
-								key="$inc.clicks"
-								value="1"
-								hidden />
-
-							<button action="save">Apply</button>
-						</form>
-					</div>
 				</div>
 			</div>
 		</div>
