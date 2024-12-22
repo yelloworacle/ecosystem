@@ -1,4 +1,4 @@
-<div class="display:flex justify-content:center width:100% padding:80px_20px">
+<section class="centered display:flex justify-content:center">
 	<style>
 		/* Add a CSS animation to make the icon spin */
 		@keyframes spin {
@@ -26,7 +26,7 @@
 
 		input.question:not([hidden]) {
 			display: block;
-			width: calc(100% - 80px);
+			width: 100%;
 			padding: 0.5625rem 1rem;
 			padding-bottom: 15px;
 			padding-right: 85px;
@@ -154,7 +154,7 @@
 	</style>
 	<div
 		class="display:flex flex-direction:column gap:15px width:100% min-width:275px max-width:800px">
-		<section>
+		<container>
 			<input
 				type="hidden"
 				key="_id"
@@ -262,9 +262,7 @@
 						value="{{object.name}}"
 						read="false" />
 
-					<label
-						for="{{object.name}}"
-						class="load-value font-size:18px"
+					<label for="{{object.name}}" class="font-size:18px"
 						>{{object.question}}</label
 					>
 					<div
@@ -294,7 +292,7 @@
 							click-value="./assets/svg/spinner.svg"
 							class="sibling display:flex align-items:center position:absolute top:8px right:8px font-size:20px">
 							<span class="margin-right:5px font-weight:400"
-								>Enter</span
+								>Next</span
 							>
 							<i
 								src="./assets/svg/angle-right.svg"
@@ -317,7 +315,7 @@
 						onload-selector="document; #example"></div>
 				</form>
 			</div>
-		</section>
+		</container>
 
 		<input
 			type="hidden"
@@ -347,7 +345,7 @@
         class="width:100%"
         hidden></textarea> -->
 
-		<section id="example" class="position:relative" example hidden>
+		<container id="example" class="position:relative" example hidden>
 			<h3 class="position:absolute top:-30px left:0px">
 				Career Example:
 			</h3>
@@ -377,9 +375,9 @@
 				filter-query-value="Surgeon"
 				render-selector="[template]"
 				src="./oracle/career-template.html"></div>
-		</section>
+		</container>
 
-		<section id="oracle" class="oracle">
+		<container id="oracle" class="oracle">
 			<div
 				id="careers"
 				array=""
@@ -387,7 +385,7 @@
 				filter-sort-key="name"
 				render-selector="[template]"
 				src="./oracle/career-template.html"></div>
-		</section>
+		</container>
 	</div>
 
 	<form api="openai">
@@ -545,4 +543,4 @@
 			});
 		})();
 	</script>
-</div>
+</section>
