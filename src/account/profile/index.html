@@ -76,12 +76,21 @@
 
 		<floating-label class="input-300">
 			<input
+				id="address"
 				key="address"
 				type="text"
 				google-maps="places"
 				google-maps-key="autocomplete"
 				placeholder="Location (e.g., Remote, City, State)"
-				class="floating-label" />
+				class="floating-label padding-right:35px!important" />
+			<a
+				actions="action(document; #currentLocation)"
+				class="floating-icon">
+				<i
+					id="#clickIcon"
+					src="./assets/svg/crosshairs.svg"
+					class="width:20px height:20px"></i>
+			</a>
 		</floating-label>
 
 		<input type="hidden" key="location.type" value="Point" />
@@ -188,5 +197,37 @@
 			path="./"
 			src="./components/form-buttons.html"
 			class="width:100%"></div>
+	</form>
+	<form hidden>
+		<!-- Inputs to define the Geocoding API payload -->
+		<input
+			type="number"
+			geolocation="getCurrentPosition"
+			geolocation-key="coords.latitude"
+			google-maps="geocoder"
+			google-maps-key="location.lat"
+			placeholder="Latitude" />
+		<input
+			type="number"
+			google-maps="geocoder"
+			google-maps-key="location.lng"
+			geolocation="getCurrentPosition"
+			geolocation-key="coords.longitude"
+			placeholder="Longitude" />
+
+		<!-- Input to display the geocoded address -->
+		<input
+			google-maps="geocoder"
+			google-maps-key="response[0].formatted_address"
+			google-maps-request="false"
+			input-selector="document; #address"
+			input-attribute="value" />
+
+		<!-- Button to trigger geocoding -->
+		<button
+			id="currentLocation"
+			actions="geoLocation.getCurrentPosition, googlemaps.geocoder">
+			Get Address
+		</button>
 	</form>
 </section>
