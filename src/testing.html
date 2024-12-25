@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Google Maps Autocomplete</title>
+		<title>Google Maps API</title>
 	</head>
 	<body>
 		<form array="jobs" object="675b33bc04243e729a12106e">
@@ -127,6 +127,37 @@
 				google-maps="maps"
 				google-maps-key="addMarker">
 				Add Marker at Center
+			</button>
+		</form>
+
+		<form id="geocoderForm">
+			<!-- Inputs to define the Geocoding API payload -->
+			<input
+				type="number"
+				geolocation="getCurrentPosition"
+				geolocation-key="coords.latitude"
+				google-maps="geocoder"
+				google-maps-key="location.lat"
+				placeholder="Latitude" />
+			<input
+				type="number"
+				google-maps="geocoder"
+				google-maps-key="location.lng"
+				geolocation="getCurrentPosition"
+				geolocation-key="coords.longitude"
+				placeholder="Longitude" />
+
+			<!-- Input to display the geocoded address -->
+			<input
+				google-maps="geocoder"
+				google-maps-key="response[0].formatted_address"
+				google-maps-request="false"
+				placeholder="Address will appear here" />
+
+			<!-- Button to trigger geocoding -->
+			<button
+				actions="geoLocation.getCurrentPosition, googlemaps.geocoder">
+				Get Address
 			</button>
 		</form>
 
