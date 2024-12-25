@@ -101,6 +101,7 @@ section.centered {
 	position: sticky;
 	top: 0;
 	padding: 10px 0px;
+	min-width: 150px;
 }
 .datatable-container .header td:not(:first-child) {
 	padding-left: 10px;
