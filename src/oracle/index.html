@@ -133,6 +133,10 @@
 			display: none;
 		}
 
+		#careers[address] #addAddress {
+			display: block !important;
+		}
+
 		@media (prefers-color-scheme: dark) {
 			.question-container {
 				background-color: #222;
@@ -378,6 +382,16 @@
 		</container>
 
 		<container id="oracle" class="oracle">
+			<input
+				type="hidden"
+				array="users"
+				object="$user_id"
+				key="address"
+				input-if="false"
+				input-next
+				input-attribute="address"
+				value-dispatch />
+
 			<div
 				id="careers"
 				array=""
