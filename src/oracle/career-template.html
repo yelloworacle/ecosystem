@@ -1,4 +1,4 @@
-<div class="card margin-bottom:15px" template>
+<div id="career" class="card margin-bottom:15px" template>
 	<div class="card-content margin-bottom:15px">
 		<div class="card-field full-width">
 			<label class="card-label">Career Name:</label>
@@ -177,7 +177,7 @@
 
 	<div class="jobs-container width:100%">
 		<div
-			class="card display:flex align-items:center gap:10px padding:10px margin-bottom:15px">
+			class="card display:flex align-items:center gap:10px margin-bottom:15px padding:0px!important">
 			<div
 				click-closest=".jobs-container #jobs-list"
 				click-attribute="hidden"
@@ -186,8 +186,24 @@
 				toggle-attribute="src"
 				toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
 				class="display:flex align-items:center gap:10px flex-grow:1">
-				<i src="../assets/svg/angle-right.svg"></i>
-				<span>Jobs</span>
+				<i
+					class="padding:20px_0px_20px_20px"
+					src="../assets/svg/angle-right.svg"></i>
+				<span class="width:100%">Jobs</span>
+				<div
+					class="display:flex justify-content:flex-end align-items:center gap:15px transition:0.3s position:relative"
+					click-selector=".options"
+					click-attribute="class"
+					click-value="display:inline-flex!important">
+					<a
+						id="addAddress"
+						state_to="mainView"
+						state-src="./account/profile/"
+						class="display:flex align-items:center gap:10px width:142px padding-right:20px"
+						hidden>
+						<i src="./assets/svg/plus.svg"></i>Add Location
+					</a>
+				</div>
 			</div>
 		</div>
 
@@ -225,12 +241,6 @@
 				key="maxDistance"
 				filter-parent
 				hidden />
-
-			<!-- <input
-					type="number"
-					filter-query-key="location.$near.$minDistance"
-					value="100"
-					filter-parent hidden/> -->
 
 			<div class="card padding:10px" template render-as="job">
 				<form hidden>
