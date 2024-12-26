@@ -1,0 +1,78 @@
+<div
+	class="card display:none position:absolute options position:absolute top:55px right:0px position:absolute width:200px">
+	<form id="locationForm" array="users" object="$user_id" class="flex-form">
+		<input
+			type="hidden"
+			key="location.type"
+			value="Point"
+			filter-query-key="location.$near.$geometry.type"
+			filter-closest=".jobs-container #jobs-list" />
+		<input
+			type="number"
+			key="location.coordinates[0]"
+			geolocation="getCurrentPosition"
+			geolocation-key="coords.longitude"
+			filter-query-key="location.$near.$geometry.coordinates[0]"
+			filter-closest=".jobs-container #jobs-list"
+			hidden />
+
+		<input
+			type="number"
+			key="location.coordinates[1]"
+			geolocation="getCurrentPosition"
+			geolocation-key="coords.latitude"
+			filter-query-key="location.$near.$geometry.coordinates[1]"
+			filter-closest=".jobs-container #jobs-list"
+			hidden />
+		<a actions="geoLocation.getCurrentPosition, save">
+			<i src="../assets/svg/crosshairs.svg"></i>
+			<span class="margin-left:5px"> Current Location </span>
+		</a>
+
+		<floating-label>
+			<input
+				id="distanceInput"
+				type="number"
+				array="users"
+				object="$user_id"
+				key="distance"
+				max="300"
+				value="10"
+				placeholder="Max Distance"
+				class="floating-label" />
+
+			<div
+				class="position:absolute width:30px top:8px right:62px float:right cursor:pointer">
+				<select
+					id="unitSelector"
+					class="remove-none border:none padding:0 min-height:24px!important"
+					key="unit">
+					<option
+						value="1000"
+						class="margin:0px padding:3px border-radius:4px">
+						Kilometers
+					</option>
+					<option
+						value="1609.34"
+						class="margin:0px padding:3px border-radius:4px">
+						Miles
+					</option>
+				</select>
+			</div>
+			<input
+				type="number"
+				key="maxDistance"
+				read="false"
+				calculate="{(#distanceInput)} * {(#unitSelector)}"
+				filter-query-key="location.$near.$maxDistance"
+				filter-closest=".jobs-container #jobs-list"
+				hidden />
+		</floating-label>
+
+		<button actions="save">
+			<i src="../assets/svg/save.svg"></i>
+			<span class="margin-left:5px"> Save </span>
+		</button>
+	</form>
+</div>
+<i class="padding-right:20px" src="../assets/svg/ellipsis-v.svg"></i>
