@@ -1,0 +1,116 @@
+<style>
+	/* Basic styling for the form */
+	.stripe-element,
+	.input-field {
+		margin-bottom: 20px;
+		padding: 10px 14px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		background-color: white;
+	}
+	.input-field {
+		width: 100%;
+	}
+</style>
+
+<section class="centered max-width:400px">
+	<!-- Add Funds for Advertisements -->
+	<div class="display:flex flex-wrap:wrap gap:15px padding-top:80px">
+		<div class="card flex-grow:1 width:365px padding:25px">
+			<h3>Add Funds for Advertisements</h3>
+
+			<!-- Always Visible Section -->
+			<div class="padding-top:20px">
+				<input
+					type="number"
+					id="customAmount"
+					class="input-field"
+					placeholder="Enter amount (USD)"
+					min="1"
+					required />
+
+				<button
+					toggle-attribute="hidden"
+					toggle-value=""
+					click-attribute="hidden"
+					click-value=""
+					click-selector="document; [display]"
+					class="width:100% margin-top:20px font-size:18px">
+					Add Funds
+				</button>
+			</div>
+
+			<!-- Toggle Visibility Section -->
+			<div display="checkout" class="checkout" hidden>
+				<form id="payment-form">
+					<input
+						id="ambassadorAccount"
+						type="hidden"
+						array="users"
+						object="$user_id"
+						key="ambassadorAccount"
+						input-next
+						input-attribute="object" />
+
+					<input
+						id="ambassador"
+						type="checkbox"
+						array="ambassadors"
+						object=""
+						key="charges_enabled"
+						hidden />
+
+					<textarea
+						id="ambassadorParents"
+						array="users"
+						object="$user_id"
+						key="ambassadorParents"
+						value-type="json"
+						class="input-field"
+						hidden></textarea>
+
+					<input
+						id="customer"
+						type="hidden"
+						array="users"
+						object="$user_id"
+						key="customerId"
+						class="input-field" />
+
+					<input
+						id="name"
+						type="text"
+						array="users"
+						object="$user_id"
+						key="name"
+						save="false"
+						class="input-field"
+						placeholder="Name"
+						required />
+
+					<input
+						type="email"
+						id="email"
+						array="users"
+						object="$user_id"
+						key="email"
+						save="false"
+						class="input-field"
+						placeholder="Email"
+						required />
+
+					<div id="card-element" class="stripe-element">
+						<!-- Stripe Elements will be inserted here -->
+					</div>
+
+					<button
+						type="submit"
+						class="width:100% margin-top:20px font-size:18px">
+						Complete Payment
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="./checkout/index.js"></script>
