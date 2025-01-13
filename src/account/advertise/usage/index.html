@@ -1,0 +1,81 @@
+<section class="centered">
+	<style>
+		.card {
+			padding: 30px;
+			border-radius: 12px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			width: 100%;
+			max-width: 300px;
+		}
+
+		.card h2 {
+			font-size: 18px;
+			margin-bottom: 15px;
+		}
+
+		.card span {
+			font-size: 22px;
+			font-weight: bold;
+		}
+
+		.dashboard {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 20px;
+			justify-content: center;
+			margin-bottom: 30px;
+		}
+
+		.balance-card .actions {
+			margin-top: 15px;
+		}
+
+		.balance-card button {
+			background-color: var(--primary-color, #1a73e8);
+			color: var(--on-primary-color, white);
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.balance-card button:hover {
+			background-color: var(--primary-color-hover, #155bb5);
+		}
+	</style>
+
+	<!-- Dashboard Overview -->
+	<container id="dashboard" class="dashboard">
+		<div id="impressions" class="card">
+			<h2>Impressions</h2>
+			<span key="impressions" save="false">0</span>
+		</div>
+		<div id="clicks" class="card">
+			<h2>Clicks</h2>
+			<span key="clicks" save="false">0</span>
+		</div>
+		<div id="applicants" class="card">
+			<h2>Applicants</h2>
+			<span key="applicants" save="false">0</span>
+		</div>
+		<div id="cost" class="card">
+			<h2>Cost</h2>
+			<span>$</span>
+			<span key="cost" save="false">0</span>
+		</div>
+		<div id="balance" class="card balance-card">
+			<h2>Balance</h2>
+			<span>$</span>
+			<span key="balance" save="false">0</span>
+			<div class="actions">
+				<button
+					actions="state"
+					state_to="mainView"
+					state-src="./account/advertise/checkout/">
+					Add Funds
+				</button>
+			</div>
+		</div>
+	</container>
+</section>
