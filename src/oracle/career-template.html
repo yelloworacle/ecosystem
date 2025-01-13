@@ -242,24 +242,28 @@
 				filter-parent
 				hidden />
 
+			<!-- <input
+				filter-query-key="careers.$in"
+				array="users"
+				object="$user_id"
+				key="careers"
+				value-type="array"
+				filter-parent
+				hidden /> -->
+
 			<div class="card padding:10px" template render-as="job">
-				<form hidden>
-					<input
-						type="number"
-						array="jobs"
-						object="{{job._id}}"
-						key="$inc.impressions"
-						value="1"
-						read="false"
-						hidden />
-					<input
-						array="jobs"
-						object="{{job._id}}"
-						key="_id"
-						input-next
-						input-attribute="$click" />
-					<div actions="save"></div>
-				</form>
+				<div
+					intersection-next
+					intersection-attribute="$save"
+					intersection-if="!$template"></div>
+				<input
+					type="number"
+					array="jobs"
+					object="{{job._id}}"
+					key="$inc.impressions"
+					value="1"
+					read="false"
+					hidden />
 
 				<div
 					class="display:flex align-items:center justify-content:flex-end margin-bottom:15px">
@@ -288,7 +292,7 @@
 					</div>
 					<div class="card-field full-width">
 						<label class="card-label">Location:</label>
-						<span class="card-value">{{job.location.address}}</span>
+						<span class="card-value">{{job.address}}</span>
 					</div>
 					<div class="card-field full-width">
 						<label class="card-label">Job Description:</label>
@@ -323,7 +327,12 @@
 							value="1"
 							hidden />
 
-						<button action="save">Apply</button>
+						<button
+							actions="save, state"
+							state_to="mainView"
+							state-src="../account/advertise/applicants/form.html">
+							Apply
+						</button>
 					</form>
 				</div>
 			</div>
