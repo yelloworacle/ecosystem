@@ -64,31 +64,37 @@
 
 	<container id="dashboard" class="width:100% padding:0px">
 		<div class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
-			<div id="subscribers" class="card">
+			<div id="impressions" class="card flex-grow:1 width:150px">
 				<h2>Impressions</h2>
 
-				<span array="users" object key="$length" advertise>0</span>
+				<span id="test" key="impressions" save="false" impressions
+					>0</span
+				>
 			</div>
 
-			<!-- Next Payout -->
-			<div id="nextPayout" class="card">
+			<div id="clicks" class="card flex-grow:1 width:150px">
 				<h2>Clicks</h2>
-				<span array="advertisement" object key="$sum.amount" advertise
-					>0</span
-				>
+				<span key="clicks" save="false" clicks>0</span>
 			</div>
 
-			<!-- Total Payouts -->
-			<div id="totalPayouts" class="card">
-				<h2>Balance</h2>
+			<div id="applicants" class="card flex-grow:1 width:150px">
+				<h2>Applicants</h2>
+				<span key="clicks" save="false" applicants>0</span>
+			</div>
+
+			<div id="cost" class="card flex-grow:1 width:150px">
+				<h2>Cost</h2>
 				<span>$</span>
-				<span array="organizations" object key="balance" advertise
-					>0</span
-				>
+				<span array="organizations" object key="balance" costs>0</span>
 			</div>
 		</div>
 	</container>
 	<container id="table" class="datatable-container width:100% padding:0px">
+		<div
+			path="./account/advertise/form.html"
+			src="./components/datatable-toolbar.html"
+			class="width:100%"></div>
+
 		<table>
 			<tbody class="header">
 				<tr>
@@ -97,23 +103,24 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="amount"
+								filter-query-key="name.$regex"
+								filter-query-options="i"
 								state_id="datatable"
-								placeholder="Amount"
+								placeholder="Name"
 								class="floating-label" />
 						</floating-label>
 						<span class="sort">
 							<a
 								filter-selector="document; tbody[render-selector]"
-								filter-sort-key="amount"
-								filter-sort-direction="asc"
+								filter-sort-key="name"
+								filter-sort-direction=""
 								click-value="desc, asc"
 								click-attribute="filter-sort-direction"
 								state_id="datatable">
 								<i
 									toggle-attribute="src"
-									toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-									src="./assets/svg/sort.svg"></i>
+									toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+									src="../assets/svg/sort.svg"></i>
 							</a>
 						</span>
 					</td>
@@ -122,32 +129,8 @@
 							<input
 								type="text"
 								filter-selector="document; tbody[render-selector]"
-								filter-query-key="status"
-								state_id="datatable"
-								placeholder="status"
-								class="floating-label" />
-						</floating-label>
-						<span class="sort">
-							<a
-								filter-selector="document; tbody[render-selector]"
-								filter-sort-key="status"
-								filter-sort-direction="asc"
-								click-value="desc, asc"
-								click-attribute="filter-sort-direction"
-								state_id="datatable">
-								<i
-									toggle-attribute="src"
-									toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-									src="./assets/svg/sort.svg"></i>
-							</a>
-						</span>
-					</td>
-					<td>
-						<floating-label>
-							<input
-								type="text"
-								filter-selector="document; tbody[render-selector]"
-								filter-query-key="_id"
+								filter-query-key="_id.$regex"
+								filter-query-options="i"
 								state_id="datatable"
 								placeholder="id"
 								class="floating-label" />
@@ -162,8 +145,8 @@
 								state_id="datatable">
 								<i
 									toggle-attribute="src"
-									toggle-value="./assets/svg/sort-down.svg, ./assets/svg/sort-up.svg"
-									src="./assets/svg/sort.svg"></i>
+									toggle-value="../assets/svg/sort-down.svg, ../assets/svg/sort-up.svg"
+									src="../assets/svg/sort.svg"></i>
 							</a>
 						</span>
 					</td>
@@ -171,12 +154,14 @@
 			</tbody>
 
 			<tbody
-				array="payouts"
+				array="advertisements"
 				object
-				render-selector="[template]"
-				advertise>
+				filter-sort-key="_id"
+				filter-sort-direction="desc"
+				filter-limit
+				render-selector="[template]">
 				<tr
-					class="border-bottom:1px_solid_darkgray"
+					class="hover"
 					template
 					object="{{object._id}}"
 					toggle="selected"
@@ -185,8 +170,8 @@
 						<a
 							actions="state"
 							state_to="mainView"
-							state-src="./users/form.html">
-							<h4>{{object.amount}}</h4>
+							state-src="./account/advertise/form.html">
+							<h4>{{object.name}}</h4>
 							<div
 								state_to="form-fields"
 								state-object="{{object._id}}"></div>
@@ -196,18 +181,7 @@
 						<a
 							actions="state"
 							state_to="mainView"
-							state-src="./users/form.html">
-							<b>{{object.status}}</b>
-							<div
-								state_to="form-fields"
-								state-object="{{object._id}}"></div>
-						</a>
-					</td>
-					<td>
-						<a
-							actions="state"
-							state_to="mainView"
-							state-src="./users/form.html">
+							state-src="./account/advertise/form.html">
 							<b>{{object._id}}</b>
 							<div
 								state_to="form-fields"
@@ -218,8 +192,7 @@
 			</tbody>
 		</table>
 
-		<!-- <div filter-on="fetched" filter-previous="[render-selector]"></div> -->
-		<!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
+		<div filter-on="scroll" filter-previous="[render-selector]"></div>
 	</container>
 
 	<container
