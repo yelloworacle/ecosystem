@@ -233,11 +233,28 @@
 			hidden />
 		<input type="datetime" key="published" value="$now" hidden />
 
-		<div class="display:flex justify-content:flex-end width:100%">
-			<div path="./" src="./components/form-buttons.html"></div>
+		<div
+			class="display:flex justify-content:flex-end flex-wrap:wrap gap:20px width:100%">
+			<button
+				actions="state"
+				state_to="mainView"
+				state-src="$back"
+				class="red margin-left:auto flex-grow:1">
+				<i src="../assets/svg/ban.svg"></i>
+				<span class="margin-left:5px"> Cancel</span>
+			</button>
+			<button
+				actions="click, save, click, timeout(2000), click"
+				click-selector="i"
+				click-attribute="src"
+				click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg"
+				class="flex-grow:1">
+				<i src="../assets/svg/save.svg"></i>
+				<span class="margin-left:5px">Save</span>
+			</button>
 
 			<button
-				class="margin-top:20px margin-left:20px green"
+				class="flex-grow:1 green"
 				click-selector="i[src]"
 				click-attribute="src"
 				click-value="./assets/svg/spinner.svg"
