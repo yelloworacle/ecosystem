@@ -1,3 +1,73 @@
+:root {
+	/* Colors */
+	--color: #000; /* Default text color */
+	--background-color: #f0f0f0; /* Main background color */
+	--accent-color: #f7cc02; /* Brand color */
+	--border-color: #e0e0e0; /* Border color */
+
+	/* Shadow Colors */
+	--shadow-color: rgba(0, 0, 0, 0.1);
+	--shadow-color-light: rgba(0, 0, 0, 0.05); /* Subtle light shadow */
+	--shadow-color-medium: rgba(0, 0, 0, 0.2); /* Moderate shadow */
+	--shadow-color-dark: rgba(0, 0, 0, 0.4); /* Darker shadow for emphasis */
+
+	--secondary-color: #505050; /* Alternate section background */
+	--secondary-background-color: #fff; /* Alternate section background */
+	--secondary-accent-color: #f7cc02; /* Brand color */
+	--secondary-border-color: darkgray; /* Border color */
+
+	--tertiary-background-color: whitesmoke; /* Slightly darker dark background */
+	--success: #27ae60;
+	--danger: #e74c3c;
+	--hover-background: gainsboro;
+	--selected-background: darkgray;
+	--scrollbar-track-background: rgba(0, 0, 0, 0.03);
+	--scrollbar-thumb-background: rgba(0, 0, 0, 0.09);
+	--scrollbar-track-hover: rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		/* Colors */
+		--color: #f0f0f0; /* Light text color for dark mode */
+		--background-color: #333; /* Dark background */
+		--border-color: #555; /* Dark mode border color */
+
+		/* Dark Mode Shadows */
+		--shadow-color: rgba(255, 255, 255, 0.1);
+		--shadow-color-light: rgba(
+			255,
+			255,
+			255,
+			0.05
+		); /* Subtle light shadow in dark mode */
+		--shadow-color-medium: rgba(
+			255,
+			255,
+			255,
+			0.2
+		); /* Moderate shadow in dark mode */
+		--shadow-color-dark: rgba(
+			255,
+			255,
+			255,
+			0.4
+		); /* Darker shadow for emphasis in dark mode */
+
+		--secondary-color: #fff; /* Alternate dark color background */
+		--secondary-background-color: #444; /* Alternate dark background */
+
+		--tertiary-background-color: #222; /* Slightly darker dark background */
+
+		--hover-background: #222;
+		--selected-background: #111;
+
+		--scrollbar-track-background: rgba(255, 255, 255, 0.05);
+		--scrollbar-thumb-background: rgba(255, 255, 255, 0.15);
+		--scrollbar-track-hover: rgba(255, 255, 255, 0.1);
+	}
+}
+
 * {
 	padding: 0px;
 	margin: 0px;
@@ -18,9 +88,9 @@ html {
 body {
 	height: 100%;
 	font-family: Arial, sans-serif;
-	background-color: #f0f0f0;
-	color: #000;
-	fill: #000;
+	background-color: var(--background-color);
+	color: var(--color);
+	fill: var(--color);
 	font-size: 1rem;
 	font-weight: 500;
 	-webkit-font-smoothing: antialiased;
@@ -35,8 +105,8 @@ a {
 }
 
 a:hover {
-	color: #f7cc02;
-	fill: #f7cc02;
+	color: var(--accent-color);
+	fill: var(--accent-color);
 }
 
 nav {
@@ -52,8 +122,8 @@ nav {
 
 .sticky-nav {
 	position: sticky;
-	background-color: #f0f0f0;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+	background-color: var(--background-color);
+	box-shadow: 0 4px 4px var(--shadow-color-medium);
 	height: auto;
 	right: 0;
 	top: 0;
@@ -92,7 +162,10 @@ section.centered {
 	border-collapse: collapse;
 }
 .datatable-container tr {
-	border-bottom: 1px solid darkgray;
+	border-bottom: 1px solid var(--secondary-border-color);
+}
+.datatable-container tr.hover:hover {
+	background-color: var(--hover-background);
 }
 .datatable-container td {
 	padding: 10px;
@@ -129,8 +202,8 @@ header {
 
 /* seconday lighter yellow FDE87D */
 .logo-name-colored {
-	color: #f7cc02;
-	text-shadow: 1px 1px 2px #505050;
+	color: var(--accent-color);
+	text-shadow: 1px 1px 2px var(--secondary-color);
 	/* -webkit-text-stroke: 1px black; */
 }
 
@@ -149,11 +222,11 @@ header {
 	margin-top: 6px;
 	margin-bottom: 6px;
 	transition: all 0.25s;
-	background-color: #000;
+	background-color: var(--color);
 }
 
 [menu-icon]:hover span {
-	background-color: #f7cc02;
+	background-color: var(--accent-color);
 }
 
 [menu-icon="active"] span:first-child {
@@ -221,8 +294,10 @@ button {
 	font-size: 16px;
 	cursor: pointer;
 	transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
-	border: 2px solid #f7cc02;
-	background-color: #f0f0f0;
+	border: 2px solid var(--accent-color);
+	background-color: var(--background-color);
+	color: var(--accent-color);
+	fill: var(--accent-color);
 	border-radius: 8px;
 }
 
@@ -232,29 +307,29 @@ button {
 }
 
 button.red {
-	border-color: #e74c3c;
-	color: #e74c3c;
-	fill: #e74c3c;
+	border-color: var(--danger);
+	color: var(--danger);
+	fill: var(--danger);
 }
 
 button.red:hover {
-	background-color: #e74c3c;
+	background-color: var(--danger);
 }
 
 button.green {
-	border-color: #27ae60;
-	color: #27ae60;
-	fill: #27ae60;
+	border-color: var(--success);
+	color: var(--success);
+	fill: var(--success);
 }
 
 button.green:hover {
-	background-color: #27ae60;
+	background-color: var(--success);
 }
 
 button:hover {
-	background-color: #f7cc02;
-	color: #000;
-	fill: #000;
+	background-color: var(--accent-color);
+	color: var(--color);
+	fill: var(--color);
 }
 
 .second-container {
@@ -271,9 +346,9 @@ button:hover {
 	position: fixed;
 	bottom: 18px;
 	right: 18px;
-	border: 2px solid #f7cc02;
-	background-color: #f0f0f0;
-	color: #f7cc02;
+	border: 2px solid var(--accent-color);
+	background-color: var(--background-color);
+	color: var(--accent-color);
 	border-radius: 50%;
 	padding: 15px;
 	width: 50px;
@@ -282,28 +357,32 @@ button:hover {
 }
 
 .button-round:hover {
-	background-color: #f7cc02;
-	color: #000;
-	fill: #f7cc02;
+	background-color: var(--accent-color);
+	color: var(--color);
+	fill: var(--accent-color);
 }
 
 .button-round i {
 	height: 20px;
-	fill: #f7cc02;
+	fill: var(--accent-color);
 }
 
 .button-round:hover i {
-	fill: #000;
+	fill: var(--color);
 }
 
 sidenav {
 	position: fixed;
 	top: 0px;
 	overflow: hidden;
-	background: whitesmoke;
+	background-color: var(--tertiary-background-color);
 	height: 100vh;
 	width: 0px;
 	z-index: 10;
+}
+
+sidenav .nav {
+	background-color: var(--tertiary-background-color);
 }
 
 sidenav .close {
@@ -322,7 +401,7 @@ sidenav ul li {
 }
 
 sidenav ul li:hover {
-	background: #fff;
+	background: var(--secondary-background-color);
 }
 
 [sidenav="open"] sidenav {
@@ -330,17 +409,17 @@ sidenav ul li:hover {
 }
 
 .card {
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
 	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 8px var(--shadow-color);
 	padding: 20px;
-	background-color: #fff;
+	background-color: var(--tertiary-background-color);
 	transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
 	transform: translateY(-5px);
-	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 6px 12px var(--shadow-color);
 }
 
 .card-content {
@@ -363,12 +442,12 @@ sidenav ul li:hover {
 	font-size: 1rem;
 	font-weight: 600;
 	line-height: 1.5;
-	color: #666;
+	color: var(--secondary-color);
 }
 
 .card-value {
 	font-size: 1.1rem;
-	color: #333;
+	color: var(--secondary-color);
 }
 
 @media (max-width: 300px) {
@@ -396,14 +475,14 @@ sidenav ul li:hover {
 	--avatar-size: 40px;
 	width: var(--avatar-size);
 	height: var(--avatar-size);
-	background-color: #1f99ff;
+	background-color: var(--accent-color);
 	flex-shrink: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 18px;
 	font-weight: 700;
-	color: #fff;
+	color: var(--secondary-background-color);
 	position: relative;
 }
 
@@ -452,19 +531,31 @@ sidenav ul li:hover {
 	display: flex;
 	height: 12px;
 	width: 12px;
-	border: 2px solid #f7f7f7;
+	border: 2px solid var(--background-color);
 	border-radius: 50%;
 	z-index: 3;
-	background-color: #f44336;
+	background-color: var(--danger);
 	transform: translate(12%, 0%);
 }
 
 .avatar-status.on {
-	background-color: #4caf50;
+	background-color: var(--success);
 }
 
 .avatar-status.off {
-	background-color: #f44336;
+	background-color: var(--danger);
+}
+
+footer {
+	background-color: var(--accent-color);
+	color: #000;
+	fill: #000;
+	opacity: 0.9;
+}
+
+footer a:hover {
+	color: #444;
+	fill: #444;
 }
 
 footer p {
@@ -476,12 +567,12 @@ footer p {
 
 [unique="true"],
 [validation="true"] {
-	outline: 1px solid green !important;
+	outline: 1px solid var(--success) !important;
 }
 
 [unique="false"],
 [validation="false"] {
-	outline: 1px solid red !important;
+	outline: 1px solid var(--danger) !important;
 }
 
 .main-view {
@@ -497,6 +588,10 @@ footer p {
 	gap: 20px;
 	max-width: 600px;
 	margin: auto;
+}
+
+fieldset {
+	border: none;
 }
 
 .input-300 {
@@ -531,7 +626,7 @@ textarea {
 }
 
 .selected {
-	background-color: gainsboro;
+	background-color: var(--selected-background);
 }
 
 /* .menu-icon {
@@ -579,8 +674,24 @@ textarea {
 	display: none !important;
 }
 
-tr.hover:hover {
-	background: gainsboro;
+/* .hover:hover {
+	background: var(--hover-background);
+} */
+
+:-webkit-autofill {
+	box-shadow: 0 0 0px 1000px transparent inset;
+	background-color: transparent;
+	color: var(--color);
+	transition: background-color 5000s ease-in-out 0s;
+	-webkit-text-fill-color: var(--color);
+}
+
+/* Firefox */
+:autofill {
+	background-color: transparent;
+	color: var(--color);
+	-webkit-text-fill-color: var(--color);
+	border: 1px solid transparent;
 }
 
 /* WebKit browsers (Chrome, Edge, Safari, Opera) */
@@ -590,27 +701,28 @@ tr.hover:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: rgba(0, 0, 0, 0.09);
+	background: var(--scrollbar-thumb-background);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #f7cc02;
+	background: var(--accent-color);
 	opacity: 0.08;
 }
 
 ::-webkit-scrollbar-track {
-	background: rgba(0, 0, 0, 0.03);
+	background: var(--scrollbar-track-background);
 }
 
 ::-webkit-scrollbar-track:hover {
-	background: rgba(0, 0, 0, 0.06);
+	background: var(--scrollbar-track-hover);
 }
 
 /* Firefox browsers */
 * {
 	scrollbar-width: thin;
 	/* Options: auto, thin, none */
-	scrollbar-color: rgba(0, 0, 0, 0.09) rgba(0, 0, 0, 0.03);
+	scrollbar-color: var(--scrollbar-thumb-background)
+		var(--scrollbar-track-background);
 	/* Thumb color, Track color */
 }
 
@@ -630,198 +742,14 @@ tr.hover:hover {
 	/* Adjust the duration and other properties as needed */
 }
 
-:-webkit-autofill {
-	box-shadow: 0 0 0px 1000px transparent inset;
-	background-color: transparent;
-	color: inherit;
-	transition: background-color 5000s ease-in-out 0s;
-	-webkit-text-fill-color: inherit;
+.alt-section:nth-of-type(even) {
+	background-color: var(--background-color);
 }
 
-/* Firefox */
-:autofill {
-	background-color: transparent;
-	color: inherit;
-	border: 1px solid transparent;
+.alt-section:nth-of-type(odd) {
+	background-color: var(--secondary-background-color);
 }
 
-@media (prefers-color-scheme: dark) {
-	:-webkit-autofill {
-		-webkit-text-fill-color: #fff;
-		color: #fff;
-	}
-
-	/* Firefox */
-	:autofill {
-		-webkit-text-fill-color: #fff;
-		color: #fff;
-	}
-	option {
-		background-color: #222;
-		color: #fff;
-	}
-}
-
-@media (prefers-color-scheme: dark) {
-	body {
-		background-color: #333;
-		color: #f0f0f0;
-		fill: #f0f0f0;
-	}
-
-	a:hover {
-		color: #f7cc02;
-		fill: #f7cc02;
-	}
-
-	.sticky-nav {
-		background: #333 !important;
-		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
-	}
-
-	sidenav {
-		background-color: #222;
-	}
-
-	sidenav .nav {
-		background-color: #222;
-	}
-
-	sidenav ul li:hover {
-		background: #444;
-	}
-
-	sidenav ul:last-child {
-		/* Your styles for the last list item */
-		background: #222;
-		/* Example style */
-	}
-
-	header {
-		background-color: #333;
-	}
-
-	footer {
-		background-color: #145a8b;
-		color: #000;
-		fill: #000;
-	}
-
-	footer a:hover {
-		color: #444;
-		fill: #444;
-	}
-
-	option {
-		background-color: #333;
-		color: #f0f0f0;
-		fill: #f0f0f0;
-	}
-
-	button {
-		background-color: #222;
-		color: #f0f0f0;
-	}
-
-	.alt-section:nth-of-type(even) {
-		background-color: #333;
-	}
-
-	.alt-section:nth-of-type(odd) {
-		background-color: #444;
-	}
-
-	.card {
-		background-color: #1e1e1e;
-		border: 1px solid #333;
-	}
-
-	.card:hover {
-		background-color: #222;
-		border: 1px solid #333;
-	}
-
-	.button {
-		background-color: #333;
-		color: #f0f0f0;
-		border: 1px solid #555;
-	}
-
-	.button-round {
-		background-color: #333;
-	}
-
-	[menu-icon] span {
-		background-color: #fff;
-	}
-
-	[menu-icon]:hover span {
-		background-color: #f7cc02;
-	}
-
-	.floating-label_outline {
-		border-color: inherit;
-	}
-
-	.avatar-name {
-		color: #000;
-		fill: #000;
-	}
-
-	.avatar-status {
-		border: 2px solid #333;
-	}
-	tr.hover:hover {
-		background: #222;
-	}
-	.selected {
-		background-color: #222;
-	}
-
-	::-webkit-scrollbar-thumb {
-		background: rgba(
-			255,
-			255,
-			255,
-			0.15
-		); /* Slightly lighter for contrast */
-	}
-
-	::-webkit-scrollbar-thumb:hover {
-		background: #f7cc02;
-		opacity: 0.5; /* Increase opacity on hover for visibility */
-	}
-
-	::-webkit-scrollbar-track {
-		background: rgba(255, 255, 255, 0.05); /* Light track background */
-	}
-
-	::-webkit-scrollbar-track:hover {
-		background: rgba(255, 255, 255, 0.1); /* Slightly brighter on hover */
-	}
-
-	/* Firefox browsers - Dark Mode */
-	* {
-		scrollbar-width: thin; /* Options: auto, thin, none */
-		scrollbar-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.05);
-	}
-
-	.card {
-		background-color: #1e1e1e;
-		border: 1px solid #333;
-		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-	}
-
-	.card:hover {
-		transform: translateY(-5px);
-		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-	}
-
-	.card-label {
-		color: #b3b3b3; /* Soft gray for labels */
-	}
-
-	.card-value {
-		color: #e0e0e0; /* White or near-white for values */
-	}
+.floating-label_outline {
+	border-color: inherit;
 }
