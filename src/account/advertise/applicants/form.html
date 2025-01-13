@@ -1,0 +1,90 @@
+<section class="centered">
+	<a href="./signin.html" session="false" hidden></a>
+	<form state_id="form-fields" array="applicants" object="" class="flex-form">
+		<div src="../components/form-toolbar.html" class="width:100%"></div>
+
+		<floating-label class="width:100%">
+			<input
+				type="text"
+				key="name"
+				placeholder="Full Name"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<input
+				type="email"
+				key="email"
+				placeholder="Email Address"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<input
+				type="tel"
+				key="phone"
+				placeholder="Phone Number"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<input
+				type="text"
+				key="address"
+				placeholder="Current Address"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<textarea
+				key="cover_letter"
+				placeholder="Cover Letter (optional)"
+				class="floating-label"
+				height="auto"></textarea>
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<input
+				type="file"
+				key="resume"
+				accept=".pdf,.doc,.docx"
+				placeholder="Upload Resume"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<input
+				type="text"
+				key="linkedin"
+				placeholder="LinkedIn Profile (optional)"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<textarea
+				key="additional_info"
+				placeholder="Additional Information (optional)"
+				class="floating-label"
+				height="auto"></textarea>
+		</floating-label>
+
+		<div class="display:flex gap:20px width:100% margin-top:20px">
+			<button
+				actions="state"
+				state_to="mainView"
+				state-src="$back"
+				class="red margin-left:auto">
+				<i src="../assets/svg/ban.svg"></i>
+				<span class="margin-left:5px"> Cancel</span>
+			</button>
+			<button
+				actions="save, click, timeout(2000), click"
+				click-selector="i"
+				click-attribute="src"
+				click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg">
+				<i src="../assets/svg/save.svg"></i>
+				<span class="margin-left:5px">Submit</span>
+			</button>
+		</div>
+	</form>
+</section>
