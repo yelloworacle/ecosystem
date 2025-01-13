@@ -1,0 +1,370 @@
+<section class="centered">
+	<a href="./signin.html" session="false" hidden></a>
+	<style>
+		#job {
+			display: none;
+		}
+
+		[display="job"] #job {
+			display: flex;
+		}
+
+		#education {
+			display: none;
+		}
+
+		[display="education"] #education {
+			display: flex;
+		}
+	</style>
+	<form
+		state_id="form-fields"
+		array="advertisements"
+		object=""
+		class="flex-form">
+		<div src="../components/form-toolbar.html" class="width:100%"></div>
+
+		<div
+			class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px"
+			style="display: none">
+			<input
+				type="hidden"
+				key="_id"
+				input-parent
+				input-attribute="style"
+				input-value="display:flex" />
+			<div id="impressions" class="card flex-grow:1 width:180px">
+				<h2>Impressions</h2>
+
+				<span id="test" key="impressions" save="false" impressions
+					>0</span
+				>
+			</div>
+
+			<div id="clicks" class="card flex-grow:1 width:110px">
+				<h2>Clicks</h2>
+				<span key="clicks" save="false" clicks>0</span>
+			</div>
+
+			<div id="applicants" class="card flex-grow:1 width:160px">
+				<h2>Applicants</h2>
+				<span key="applicants" save="false" applicants>0</span>
+			</div>
+
+			<div id="cost" class="card flex-grow:1 width:100px">
+				<h2>Cost</h2>
+				<span>$</span>
+				<span key="cost" costs>0</span>
+			</div>
+		</div>
+
+		<floating-label class="width:100%">
+			<select
+				key="type"
+				placeholder="Type"
+				class="floating-label"
+				input-attribute="display"
+				input-closest="form">
+				<option value="" disabled selected>Select Post Type</option>
+				<option value="job">Job</option>
+				<option value="education">Education</option>
+			</select>
+		</floating-label>
+
+		<fieldset id="job" class="flex-form">
+			<floating-label class="width:100%">
+				<input
+					type="text"
+					key="name"
+					placeholder="Job Title"
+					class="floating-label" />
+			</floating-label>
+
+			<floating-label class="width:100%">
+				<input
+					type="text"
+					key="company"
+					placeholder="Company Name"
+					class="floating-label" />
+			</floating-label>
+
+			<floating-label class="width:100%">
+				<textarea
+					key="description"
+					placeholder="Job Description"
+					class="floating-label"
+					height="auto"></textarea>
+			</floating-label>
+
+			<floating-label class="width:100%">
+				<textarea
+					key="requirements"
+					placeholder="Requirements"
+					class="floating-label"
+					height="auto"></textarea>
+			</floating-label>
+
+			<floating-label class="width:290px">
+				<input
+					type="number"
+					key="salary"
+					placeholder="Salary"
+					class="floating-label" />
+			</floating-label>
+
+			<floating-label class="width:290px">
+				<input
+					type="number"
+					key="years_experience"
+					placeholder="Years of Experience"
+					class="floating-label" />
+			</floating-label>
+
+			<floating-label class="width:290px">
+				<select
+					key="employment_type"
+					class="floating-label"
+					placeholder="Employment Type">
+					<!-- <option value="" disabled selected>Employment Type</option> -->
+					<option value="full_time">Full-time</option>
+					<option value="part_time">Part-time</option>
+					<option value="contract">Contract</option>
+					<option value="temporary">Temporary</option>
+					<option value="freelance">Freelance</option>
+					<option value="internship">Internship</option>
+				</select>
+			</floating-label>
+
+			<floating-label class="width:290px">
+				<select
+					key="job_category"
+					placeholder="Job Category"
+					class="floating-label">
+					<option label="Technology" value="technology">
+						Technology
+					</option>
+					<option label="Finance" value="finance">Finance</option>
+					<option label="Healthcare" value="healthcare">
+						Healthcare
+					</option>
+					<option label="Education" value="education">
+						Education
+					</option>
+					<option label="Other" value="other">Other</option>
+				</select>
+			</floating-label>
+		</fieldset>
+
+		<fieldset id="education" class="flex-form">
+			<floating-label class="width:100%">
+				<input
+					type="text"
+					key="course_name"
+					placeholder="Course or Program Name"
+					class="floating-label" />
+			</floating-label>
+
+			<floating-label class="width:100%">
+				<input
+					type="text"
+					key="institution"
+					placeholder="University or Institution Name"
+					class="floating-label" />
+			</floating-label>
+
+			<floating-label class="width:100%">
+				<select
+					key="delivery_mode"
+					class="floating-label"
+					placeholder="Delivery Mode">
+					<option value="" disabled selected>
+						Select Delivery Mode
+					</option>
+					<option value="online">Online</option>
+					<option value="on_campus">On Campus</option>
+					<option value="hybrid">Hybrid</option>
+				</select>
+			</floating-label>
+
+			<floating-label class="width:100%">
+				<textarea
+					key="description"
+					placeholder="Course or Program Description"
+					class="floating-label"
+					height="auto"></textarea>
+			</floating-label>
+
+			<floating-label class="width:100%">
+				<textarea
+					key="requirements"
+					placeholder="Eligibility Requirements"
+					class="floating-label"
+					height="auto"></textarea>
+			</floating-label>
+
+			<floating-label class="width:290px">
+				<input
+					type="number"
+					key="duration"
+					placeholder="Duration (in months)"
+					class="floating-label" />
+			</floating-label>
+
+			<floating-label class="width:290px">
+				<input
+					type="number"
+					key="tuition_fee"
+					placeholder="Tuition Fee"
+					class="floating-label" />
+			</floating-label>
+
+			<floating-label class="width:290px">
+				<select
+					key="category"
+					class="floating-label"
+					placeholder="Category">
+					<option value="" disabled selected>Select Category</option>
+					<option value="bachelors">Bachelors</option>
+					<option value="masters">Masters</option>
+					<option value="phd">Ph.D.</option>
+					<option value="certificate">Certificate</option>
+					<option value="other">Other</option>
+				</select>
+			</floating-label>
+		</fieldset>
+
+		<floating-label class="width:290px">
+			<input
+				id="address"
+				key="address"
+				type="text"
+				google-maps="places"
+				google-maps-key="autocomplete"
+				placeholder="Location (e.g., Remote, City, State)"
+				class="floating-label padding-right:35px!important" />
+			<a
+				actions="action(document; #currentLocation)"
+				class="floating-icon">
+				<i
+					id="#clickIcon"
+					src="./assets/svg/crosshairs.svg"
+					class="width:20px height:20px"></i>
+			</a>
+		</floating-label>
+
+		<floating-label class="width:290px">
+			<select
+				id="remote-option"
+				key="remote"
+				placeholder="Remote"
+				input-attribute="remote-type"
+				input-selector="document; #remote-details"
+				class="floating-label">
+				<option value="" disabled selected>Select Remote Option</option>
+				<option value="none">None</option>
+				<option value="full">Full Remote</option>
+				<option value="partial">Partial Remote</option>
+			</select>
+		</floating-label>
+
+		<input type="hidden" key="location.type" value="Point" />
+
+		<input
+			type="number"
+			key="location.coordinates[0]"
+			google-maps="places"
+			google-maps-key="geometry.location.lng"
+			hidden />
+		<input
+			type="number"
+			key="location.coordinates[1]"
+			google-maps="places"
+			google-maps-key="geometry.location.lat"
+			hidden />
+
+		<floating-label class="width:100%" id="remote-details">
+			<style>
+				#remote-details {
+					display: none;
+				}
+				#remote-details[remote-type="partial"] {
+					display: block;
+				}
+			</style>
+			<input
+				type="text"
+				key="remote-details"
+				placeholder="e.g., 2 days/week remote or 50% remote"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:100%">
+			<textarea
+				id="careerResults"
+				key="careers"
+				openai="chat.completions.create"
+				openai-key="choices[0].message.content"
+				openai-request="false"
+				value-type="array"
+				height="auto"
+				placeholder="Matching Careers"></textarea>
+		</floating-label>
+
+		<div hidden>
+			<input
+				openai="chat.completions.create"
+				openai-key="model"
+				value="gpt-4o-mini" />
+
+			<input
+				openai="chat.completions.create"
+				openai-key="messages[0].role"
+				value="system" />
+			<textarea
+				id="systemInstructions"
+				openai="chat.completions.create"
+				openai-key="messages[0].content"></textarea>
+
+			<input
+				openai="chat.completions.create"
+				openai-key="messages[1].role"
+				value="user" />
+			<input
+				key="{}"
+				save="false"
+				reference="false"
+				openai="chat.completions.create"
+				openai-key="messages[1].content"
+				value-prefix="Job details:" />
+		</div>
+
+		<div class="display:flex gap:20px width:100% margin-top:20px">
+			<button
+				actions="state"
+				state_to="mainView"
+				state-src="$back"
+				class="red margin-left:auto">
+				<i src="../assets/svg/ban.svg"></i>
+				<span class="margin-left:5px"> Cancel</span>
+			</button>
+			<button
+				actions="click, openai.chat.completions.create, save, click, timeout(2000), click"
+				click-selector="i"
+				click-attribute="src"
+				click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg">
+				<i src="../assets/svg/save.svg"></i>
+				<span class="margin-left:5px">Save</span>
+			</button>
+		</div>
+	</form>
+
+	<textarea
+		array="ai"
+		object
+		key="content"
+		filter-query-key="name"
+		filter-query-value="Career Job Matches"
+		input-previous="#systemInstructions"
+		input-attribute="value"
+		hidden></textarea>
+</section>
