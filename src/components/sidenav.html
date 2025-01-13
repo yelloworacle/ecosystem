@@ -101,6 +101,7 @@
 
 		<h3 class="margin:50px_10px_5px">Account</h3>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -119,6 +120,7 @@
 			</a>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -137,6 +139,7 @@
 			</a>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -156,6 +159,7 @@
 		</li>
 
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -176,6 +180,7 @@
 		</li>
 
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -195,6 +200,7 @@
 		</li>
 
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -211,10 +217,21 @@
 				</span>
 				<span>Advertise</span>
 			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}account/advertise/form.html"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+					<div state_to="form-fields" state-object=""></div>
+				</a>
+			</div>
 		</li>
 
 		<ul class="sub-menu">
 			<li
+				href="{{path}}"
 				click-closest="sidenav"
 				click-attribute="style"
 				click-value="width:0px"
@@ -223,28 +240,36 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}account/advertise/jobs/datatable.html"
+					state-src="{{path}}account/advertise/applicants/datatable.html"
 					class="display:flex align-items:center">
 					<span
 						class="display:flex justify-content:center min-width:50px">
 					</span>
-					<span>Jobs</span>
+					<span>Applicants</span>
 				</a>
-
-				<div class="float:right width:50px text-align:center">
-					<a
-						actions="state"
-						state_to="mainView"
-						state-src="{{path}}account/advertise/jobs/form.html"
-						class="display:flex justify-content:center align-items:center height:40px">
-						<i src="{{path}}assets/svg/plus.svg"></i>
-						<div state_to="form-fields" state-object=""></div>
-					</a>
-				</div>
+			</li>
+			<li
+				href="{{path}}"
+				click-closest="sidenav"
+				click-attribute="style"
+				click-value="width:0px"
+				click-if="<=993px"
+				click-if-value="$innerWidth">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}account/advertise/usage/index.html"
+					class="display:flex align-items:center">
+					<span
+						class="display:flex justify-content:center min-width:50px">
+					</span>
+					<span>Usage</span>
+				</a>
 			</li>
 		</ul>
 
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -274,6 +299,7 @@
 		<h3 class="margin:50px_10px_5px">Admin</h3>
 
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -302,6 +328,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -330,6 +357,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -358,6 +386,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -386,6 +415,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -414,6 +444,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -442,6 +473,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -469,6 +501,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -497,6 +530,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -525,6 +559,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -553,6 +588,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -582,6 +618,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -611,6 +648,7 @@
 			</div>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -629,6 +667,7 @@
 			</a>
 		</li>
 		<li
+			href="{{path}}"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
