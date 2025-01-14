@@ -1,4 +1,6 @@
 <section class="centered">
+	<a href="./signin.html" session="false" hidden></a>
+
 	<style>
 		.advertise {
 			background-color: white;
@@ -63,23 +65,29 @@
 		value="$user_id" />
 
 	<container id="dashboard" class="width:100% padding:0px">
-		<div class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
-			<div id="impressions" class="card flex-grow:1 width:150px">
+		<form
+			array="advertisements"
+			object
+			save="false"
+			class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
+			<div class="card flex-grow:1 width:150px">
 				<h2>Impressions</h2>
 
-				<span id="test" key="impressions" save="false" impressions
+				<span id="impressions" key="$sum.impressions" filter-limit
 					>0</span
 				>
 			</div>
 
-			<div id="clicks" class="card flex-grow:1 width:150px">
+			<div class="card flex-grow:1 width:150px">
 				<h2>Clicks</h2>
-				<span key="clicks" save="false" clicks>0</span>
+				<span id="clicks" key="$sum.clicks" filter-limit>0</span>
 			</div>
 
 			<div id="applicants" class="card flex-grow:1 width:150px">
 				<h2>Applicants</h2>
-				<span key="clicks" save="false" applicants>0</span>
+				<span array="applicants" object key="$length" filter-limit
+					>0</span
+				>
 			</div>
 
 			<div id="cost" class="card flex-grow:1 width:150px">
@@ -87,7 +95,7 @@
 				<span>$</span>
 				<span array="organizations" object key="balance" costs>0</span>
 			</div>
-		</div>
+		</form>
 	</container>
 	<container id="table" class="datatable-container width:100% padding:0px">
 		<div
