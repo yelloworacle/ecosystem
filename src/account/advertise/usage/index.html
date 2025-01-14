@@ -46,24 +46,28 @@
 	</style>
 
 	<!-- Dashboard Overview -->
-	<container id="dashboard" class="dashboard">
-		<div id="impressions" class="card">
+	<form
+		id="dashboard"
+		array="advertisements"
+		object
+		save="false"
+		class="dashboard">
+		<div class="card flex-grow:1 width:150px">
 			<h2>Impressions</h2>
-			<span key="impressions" save="false">0</span>
+
+			<span id="impressions" key="$sum.impressions" filter-limit>0</span>
 		</div>
-		<div id="clicks" class="card">
+
+		<div class="card flex-grow:1 width:150px">
 			<h2>Clicks</h2>
-			<span key="clicks" save="false">0</span>
+			<span id="clicks" key="$sum.clicks" filter-limit>0</span>
 		</div>
-		<div id="applicants" class="card">
+
+		<div id="applicants" class="card flex-grow:1 width:150px">
 			<h2>Applicants</h2>
-			<span key="applicants" save="false">0</span>
+			<span array="applicants" object key="$length" filter-limit>0</span>
 		</div>
-		<div id="cost" class="card">
-			<h2>Cost</h2>
-			<span>$</span>
-			<span key="cost" save="false">0</span>
-		</div>
+
 		<div id="balance" class="card balance-card">
 			<h2>Balance</h2>
 			<span>$</span>
@@ -77,5 +81,5 @@
 				</button>
 			</div>
 		</div>
-	</container>
+	</form>
 </section>
