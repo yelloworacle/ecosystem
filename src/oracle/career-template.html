@@ -210,7 +210,7 @@
 		<div
 			id="jobs-list"
 			storage="mongodb"
-			array="jobs"
+			array="advertisements"
 			object=""
 			filter-limit
 			render-selector="[template]"
@@ -258,7 +258,7 @@
 					intersection-if="!$template"></div>
 				<input
 					type="number"
-					array="jobs"
+					array="advertisements"
 					object="{{job._id}}"
 					key="$inc.impressions"
 					value="1"
@@ -321,7 +321,7 @@
 					<form>
 						<input
 							type="number"
-							array="jobs"
+							array="advertisements"
 							object="{{job._id}}"
 							key="$inc.clicks"
 							value="1"
@@ -335,6 +335,9 @@
 							<div
 								state_to="post_id"
 								state-value="{{job._id}}"></div>
+							<div
+								state_to="organization"
+								state-object="{{job.organization}}"></div>
 						</button>
 					</form>
 				</div>
