@@ -594,6 +594,10 @@ fieldset {
 	border: none;
 }
 
+.flex-form floating-label {
+	flex-grow: 1;
+}
+
 .input-300 {
 	width: 290px;
 	flex-grow: 1;
