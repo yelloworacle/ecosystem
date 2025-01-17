@@ -46,12 +46,7 @@
 	</style>
 
 	<!-- Dashboard Overview -->
-	<form
-		id="dashboard"
-		array="advertisements"
-		object
-		save="false"
-		class="dashboard">
+	<form id="dashboard" array="advertisements" object class="dashboard">
 		<div class="card flex-grow:1 width:150px">
 			<h2>Impressions</h2>
 
@@ -71,7 +66,14 @@
 		<div id="balance" class="card balance-card">
 			<h2>Balance</h2>
 			<span>$</span>
-			<span key="balance" save="false">0</span>
+			<input
+				type="hidden"
+				array="users"
+				object="$user_id"
+				key="currentOrg"
+				input-attribute="object"
+				input-next />
+			<span array="organizations" object="" key="balance">0</span>
 			<div class="actions">
 				<button
 					actions="state"

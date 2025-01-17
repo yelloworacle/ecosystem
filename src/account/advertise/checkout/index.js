@@ -65,6 +65,8 @@
 				email: document.getElementById("email").value
 			};
 
+			const currentOrg = document.getElementById("currentOrg").value;
+
 			const customer = document.getElementById("customer").value;
 			if (customer) additionalData.customer = customer;
 
@@ -98,7 +100,7 @@
 					amount: Math.round(customAmount * 100), // Convert to cents
 					currency: "usd",
 					customer: additionalData.customer,
-					description: "Adding funds to account",
+					description: "Add advertising funds to account",
 					payment_method_types: ["card"]
 				},
 				environment
@@ -119,6 +121,17 @@
 			);
 
 			if (paymentResponse.stripe.id) {
+				await CoCreate.crud.send({
+					method: "object.update",
+					broadcast: false,
+					array: "organizations",
+					object: {
+						_id: currentOrg,
+						customerId: additionalData.customer,
+						"$inc.balance": customAmount
+					}
+				});
+
 				// Handle ambassador parent payouts (5% per level, up to 4 levels)
 				if (parents && enabled) {
 					console.log("Ambassador parents: ", parents);
@@ -147,7 +160,6 @@
 				}
 
 				submitButton.innerHTML = "Payment Successful";
-				alert("Funds added successfully!");
 				setTimeout(() => window.history.back(), 3000);
 			} else {
 				submitButton.innerHTML = "Payment Failed";

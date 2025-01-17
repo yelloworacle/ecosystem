@@ -1,10 +1,9 @@
 <section class="centered">
 	<a href="./signin.html" session="false" hidden></a>
 	<form
-		state_id="form-fields"
+		state_id="organization"
 		array="organizations"
-		object="668f0dc1015d12f213e71305"
-		realtime="false"
+		object=""
 		class="flex-form">
 		<div
 			path="./"
@@ -13,60 +12,20 @@
 		<floating-label class="input-300">
 			<input placeholder="Name" key="name" required />
 		</floating-label>
-		<floating-label class="input-300">
+		<!-- <floating-label class="input-300">
 			<input placeholder="URL" key="organizationUrl" required />
-		</floating-label>
-		<floating-label class="input-300">
-			<select key="type" class="floating-label" placeholder="Type">
-				<option value="">Select Category</option>
-				<option value="education">Education</option>
-				<option value="education">Company</option>
-			</select>
+		</floating-label> -->
+		<floating-label class="width:100%">
+			<textarea
+				key="members"
+				value-type="array"
+				height="auto"
+				placeholder="Members"></textarea>
 		</floating-label>
 
 		<div
 			path="./"
 			src="./components/form-buttons.html"
 			class="width:100%"></div>
-	</form>
-
-	<form>
-		<floating-label>
-			<input placeholder="Title" key="title[]" required />
-			<a
-				actions="validate, save"
-				class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
-				<span class="margin-right:5px font-weight:400">Add </span>
-				<i src="./assets/svg/angle-right.svg"></i>
-			</a>
-		</floating-label>
-
-		<table>
-			<tbody
-				array="organizations"
-				object
-				key="title"
-				filter-limit
-				render-selector="[template]">
-				<tr
-					class="hover"
-					template
-					object="{{object._id}}"
-					toggle="selected"
-					toggle-attribute="class">
-					<td class="padding:10px min-width:200px">
-						<a
-							actions="state"
-							state_to="mainView"
-							state-src="./admin/advertisements/form.html">
-							<h4>{{object.title}}</h4>
-							<div
-								state_to="form-fields"
-								state-object="{{object._id}}"></div>
-						</a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
 	</form>
 </section>

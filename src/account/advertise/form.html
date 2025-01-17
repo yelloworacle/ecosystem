@@ -25,6 +25,15 @@
 		display="job">
 		<div src="../components/form-toolbar.html" class="width:100%"></div>
 
+		<input
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="currentOrg"
+			input-attribute="value"
+			input-next />
+		<input type="hidden" key="organization" />
+
 		<div
 			class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px"
 			style="display: none">
@@ -55,7 +64,7 @@
 			<div id="cost" class="card flex-grow:1 width:100px">
 				<h2>Cost</h2>
 				<span>$</span>
-				<span key="cost" costs>0</span>
+				<span key="cost" save="false" costs>0</span>
 			</div>
 		</div>
 
@@ -130,9 +139,13 @@
 					<option value="full_time">Full-time</option>
 					<option value="part_time">Part-time</option>
 					<option value="contract">Contract</option>
+					<option value="commission">Commission</option>
+					<option value="apprenticeship">Apprenticeship</option>
 					<option value="temporary">Temporary</option>
 					<option value="freelance">Freelance</option>
+					<option value="gig">Gig</option>
 					<option value="internship">Internship</option>
+					<option value="co-op">Co-Op</option>
 				</select>
 			</floating-label>
 

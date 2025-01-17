@@ -44,6 +44,13 @@
 			<div display="checkout" class="checkout" hidden>
 				<form id="payment-form">
 					<input
+						id="currentOrg"
+						type="hidden"
+						array="users"
+						object="$user_id"
+						key="currentOrg" />
+
+					<input
 						id="ambassadorAccount"
 						type="hidden"
 						array="users"
@@ -113,4 +120,4 @@
 		</div>
 	</div>
 </section>
-<script src="./checkout/index.js"></script>
+<script src="./account/advertise/checkout/index.js"></script>

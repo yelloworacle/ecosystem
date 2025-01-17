@@ -4,6 +4,31 @@
 		<div src="../components/form-toolbar.html" class="width:100%"></div>
 
 		<input type="hidden" key="post_id" state_id="post_id" />
+		<input
+			type="number"
+			array="organizations"
+			object=""
+			key="$inc.balance"
+			value="-2"
+			hidden
+			state_id="organization"
+			state-overwrite
+			skip-attribute />
+		<input
+			type="hidden"
+			key="_id"
+			input-attribute="key"
+			input-value=""
+			input-previous />
+
+		<input
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="currentOrg"
+			input-attribute="value"
+			input-next />
+		<input type="hidden" key="organization" />
 
 		<floating-label class="width:100%">
 			<input

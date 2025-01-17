@@ -57,12 +57,38 @@
 		}
 	</style>
 
-	<input
-		type="hidden"
-		realtime="false"
-		filter-query-key="advertise"
-		filter-selector="document; [advertise][]"
-		value="$user_id" />
+	<floating-label class="margin-bottom:20px">
+		<cocreate-select
+			realtime="true"
+			array="users"
+			object="$user_id"
+			key="currentOrg"
+			filter-query-key="organization"
+			filter-selector="document; [org-filter][]"
+			change-selector="document; .change[]"
+			change-attribute="value"
+			change-value="0"
+			input-attribute="object"
+			input-selector="document; [org-object][]"
+			placeholder="Organization">
+			<cc-options
+				array="organizations"
+				object
+				filter-limit
+				render-selector="[template]">
+				<input
+					type="hidden"
+					filter-query-key="members.$in"
+					value-type="array"
+					filter-parent
+					value="$user_id" />
+
+				<cc-option value="{{object._id}}" template
+					>{{object.name}}
+				</cc-option>
+			</cc-options>
+		</cocreate-select>
+	</floating-label>
 
 	<container id="dashboard" class="width:100% padding:0px">
 		<form
@@ -70,30 +96,62 @@
 			object
 			save="false"
 			class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
-			<div class="card flex-grow:1 width:150px">
+			<div class="card flex-grow:1 width:180px">
 				<h2>Impressions</h2>
-
-				<span id="impressions" key="$sum.impressions" filter-limit
+				<span
+					id="impressions"
+					key="$sum.impressions"
+					filter-limit
+					org-filter
+					class="change"
 					>0</span
 				>
 			</div>
 
 			<div class="card flex-grow:1 width:150px">
 				<h2>Clicks</h2>
-				<span id="clicks" key="$sum.clicks" filter-limit>0</span>
+				<span
+					id="clicks"
+					key="$sum.clicks"
+					filter-limit
+					org-filter
+					class="change"
+					>0</span
+				>
 			</div>
 
 			<div id="applicants" class="card flex-grow:1 width:150px">
 				<h2>Applicants</h2>
-				<span array="applicants" object key="$length" filter-limit
+				<span
+					array="applicants"
+					object
+					key="$length"
+					filter-limit
+					org-filter
 					>0</span
 				>
 			</div>
 
 			<div id="cost" class="card flex-grow:1 width:150px">
-				<h2>Cost</h2>
+				<div class="display:flex width:100%">
+					<h2>Balance</h2>
+					<i
+						class="margin-left:10px"
+						actions="state"
+						state_to="mainView"
+						state-src="./account/advertise/checkout/"
+						src="../../assets/svg/plus.svg">
+					</i>
+				</div>
 				<span>$</span>
-				<span array="organizations" object key="balance" costs>0</span>
+				<span
+					array="organizations"
+					object
+					key="balance"
+					org-object
+					class="change"
+					>0</span
+				>
 			</div>
 		</form>
 	</container>
@@ -167,7 +225,8 @@
 				filter-sort-key="_id"
 				filter-sort-direction="desc"
 				filter-limit
-				render-selector="[template]">
+				render-selector="[template]"
+				org-filter>
 				<tr
 					class="hover"
 					template
@@ -270,7 +329,14 @@
 			get started.
 		</p>
 
-		<form array="users" object="$user_id" class="join" realtime="false">
+		<form array="organizations" object class="join">
+			<input
+				key="_id"
+				input-attribute="value"
+				input-selector="document; .addOrg[]" />
+			<input key="owner" value="$user_id" />
+			<input key="$push.members" value="$user_id" />
+
 			<!-- <div
                 class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
                 <floating-label class="flex-grow:1">
@@ -309,6 +375,17 @@
 			</div>
 
 			<button actions="validate, save">Join</button>
+		</form>
+
+		<form array="users" object="$user_id" hidde>
+			<input class="addOrg" key="currentOrg" />
+
+			<input
+				class="addOrg"
+				key="$push.organizations"
+				input-next
+				input-attribute="$click" />
+			<button actions="save"></button>
 		</form>
 	</container>
 </section>

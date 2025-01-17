@@ -198,6 +198,25 @@
 				<span>Ambassador</span>
 			</a>
 		</li>
+		<li
+			href="{{path}}"
+			click-closest="sidenav"
+			click-attribute="style"
+			click-value="width:0px"
+			click-if="<=993px"
+			click-if-value="$innerWidth">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}account/organization/"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/building.svg"></i>
+				</span>
+				<span>Organization</span>
+			</a>
+		</li>
 
 		<li
 			href="{{path}}"
@@ -248,7 +267,7 @@
 					<span>Applicants</span>
 				</a>
 			</li>
-			<li
+			<!-- <li
 				href="{{path}}"
 				click-closest="sidenav"
 				click-attribute="style"
@@ -265,7 +284,7 @@
 					</span>
 					<span>Usage</span>
 				</a>
-			</li>
+			</li> -->
 		</ul>
 
 		<li
