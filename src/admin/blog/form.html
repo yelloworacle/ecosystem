@@ -282,12 +282,7 @@
 		<input key="public" value="true" />
 
 		<div id="publish" render-selector="[template]" render="object">
-			<textarea key="src" class="width:100%"></textarea>
-			<div
-				template
-				value-type="text"
-				onload-previous
-				onload-attribute="value"></div>
+			<div template value-type="text" key="src" read="false"></div>
 			<div
 				src="./blog/post.html"
 				value-type="text"
@@ -295,34 +290,6 @@
 				input-attribute="value"
 				hidden></div>
 		</div>
-		<!-- <div
-			src="./blog/post.html"
-			value-type="text"
-			input-next
-			input-attribute="value"
-			hidden></div> -->
-
-		<!-- <div
-			id="sethtml"
-			src="./blog/post.html"
-			value-type="text"
-			click-next
-			click-attribute="value"></div> -->
-		<!-- <div
-			src="./blog/post.html"
-			value-type="text"
-			input-next
-			input-attribute="value"
-			hidden></div> -->
-
-		<!-- <div
-			id="sethtml"
-			src="./blog/post.html"
-			value-type="text"
-			click-next
-			click-attribute="value"></div> -->
-
-		<!-- <textarea key="src"></textarea> -->
 		<button id="savefile" actions="save" hidden>Publish Post</button>
 	</form>
 
