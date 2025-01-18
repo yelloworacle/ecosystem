@@ -1,0 +1,98 @@
+<section class="centered">
+	<a href="./signin.html" session="false" hidden></a>
+	<form
+		state_id="form-fields"
+		array="organizations"
+		object=""
+		class="flex-form">
+		<div
+			class="display:flex justify-content:center width:100% margin-bottom:30px">
+			<div
+				type="file"
+				key="logo"
+				accept="image/*"
+				placeholder="Profile Image"
+				class="display:flex align-items:center justify-content:center position:relative border-radius:50% overflow:hidden width:250px height:250px border:2px_solid border-color:#fff@dark"
+				render-selector="[template]"
+				active>
+				<i
+					class="position:absolute height:185px width:185px top:35px"
+					src="../../assets/svg/building.svg"></i>
+
+				<div
+					class="position:relative background:#fff background:#333@dark"
+					template>
+					<img
+						src="{{logo.src}}"
+						alt="image"
+						width="100%"
+						height="100%"
+						class="object-fit:cover" />
+				</div>
+			</div>
+		</div>
+
+		<div
+			path="./"
+			src="./components/form-toolbar.html"
+			class="width:100%"></div>
+
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="name"
+				placeholder="Name"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="email"
+				placeholder="Email"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				type="tel"
+				key="phone"
+				placeholder="Phone"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="input-300">
+			<input
+				type="text"
+				key="owner"
+				placeholder="owner"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="width:100%">
+			<textarea
+				key="members"
+				value-type="array"
+				height="auto"
+				placeholder="Members"></textarea>
+		</floating-label>
+
+		<!-- <div class="terms">
+			<input
+				type="checkbox"
+				key="advertiseTerms"
+				placeholder="Accept Terms"
+				required />
+			<a href="./terms/advertise.html">Advertise Terms</a>
+		</div>
+		<div class="termss">
+			<input
+				type="checkbox"
+				key="ambassadorTerms"
+				placeholder="Accept Terms"
+				required />
+			<a href="./terms/advertise.html">Ambassador Terms</a>
+		</div> -->
+
+		<div
+			path="./"
+			src="./components/form-buttons.html"
+			class="width:100%"></div>
+	</form>
+</section>
