@@ -63,13 +63,8 @@
 			array="users"
 			object="$user_id"
 			key="currentOrg"
-			filter-query-key="organization"
-			filter-selector="document; [org-filter][]"
-			change-selector="document; .change[]"
-			change-attribute="value"
-			change-value="0"
-			input-attribute="object"
-			input-selector="document; [org-object][]"
+			input-attribute="value"
+			input-selector="document; #test"
 			placeholder="Organization">
 			<cc-options
 				array="organizations"
@@ -89,6 +84,22 @@
 			</cc-options>
 		</cocreate-select>
 	</floating-label>
+
+	<input
+		id="test"
+		type="hidden"
+		array="users"
+		object="$user_id"
+		key="currentOrg"
+		filter-query-key="organization"
+		filter-selector="document; [org-filter][]"
+		change-selector="document; .change[]"
+		change-attribute="value"
+		change-value="0"
+		input-attribute="object"
+		input-selector="document; [org-object][]"
+		placeholder="Organization"
+		value="test" />
 
 	<container id="dashboard" class="width:100% padding:0px">
 		<form
@@ -268,11 +279,12 @@
 		module="stripe">
 		<input
 			type="hidden"
-			array="users"
-			object="$user_id"
+			array="organizations"
+			object=""
 			key="advertiseTerms"
 			input-closest=".main-view"
-			input-attribute="terms" />
+			input-attribute="terms"
+			org-object />
 
 		<h1>Advertise With Us</h1>
 		<p>
@@ -379,12 +391,6 @@
 
 		<form array="users" object="$user_id" hidde>
 			<input class="addOrg" key="currentOrg" />
-
-			<input
-				class="addOrg"
-				key="$push.organizations"
-				input-next
-				input-attribute="$click" />
 			<button actions="save"></button>
 		</form>
 	</container>

@@ -6,13 +6,8 @@
 			array="users"
 			object="$user_id"
 			key="currentOrg"
-			filter-query-key="organization"
-			filter-selector="document; [org-filter][]"
-			change-selector="document; .change[]"
-			change-attribute="value"
-			change-value="0"
-			input-attribute="object"
-			input-selector="document; [org-object][]"
+			input-attribute="value"
+			input-selector="document; #test"
 			placeholder="Organization">
 			<cc-options
 				array="organizations"
@@ -32,6 +27,22 @@
 			</cc-options>
 		</cocreate-select>
 	</floating-label>
+
+	<input
+		id="test"
+		type="hidden"
+		array="users"
+		object="$user_id"
+		key="currentOrg"
+		filter-query-key="organization"
+		filter-selector="document; [org-filter][]"
+		change-selector="document; .change[]"
+		change-attribute="value"
+		change-value="0"
+		input-attribute="object"
+		input-selector="document; [org-object][]"
+		placeholder="Organization"
+		value="test" />
 
 	<div
 		path="./account/advertise/applicants/form.html"
@@ -187,7 +198,7 @@
 							actions="state"
 							state_to="mainView"
 							state-src="./account/advertise/applicants/form.html">
-							<h4>{{object.post}}</h4>
+							<h4>{{object.post_id}}</h4>
 							<div
 								state_to="form-fields"
 								state-object="{{object._id}}"></div>
