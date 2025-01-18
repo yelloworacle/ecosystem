@@ -119,6 +119,37 @@
 				<span>Profile</span>
 			</a>
 		</li>
+
+		<li
+			href="{{path}}"
+			click-closest="sidenav"
+			click-attribute="style"
+			click-value="width:0px"
+			click-if="<=993px"
+			click-if-value="$innerWidth">
+			<a
+				actions="state"
+				state_to="mainView"
+				state-src="{{path}}account/organizations/datatable.html"
+				class="display:flex align-items:center">
+				<span
+					class="display:flex justify-content:center min-width:50px">
+					<i src="{{path}}assets/svg/building.svg"></i>
+				</span>
+				<span>Organizations</span>
+			</a>
+			<div class="float:right width:50px text-align:center">
+				<a
+					actions="state"
+					state_to="mainView"
+					state-src="{{path}}account/organizations/form.html"
+					class="display:flex justify-content:center align-items:center height:40px">
+					<i src="{{path}}assets/svg/plus.svg"></i>
+					<div state_to="form-fields" state-object=""></div>
+				</a>
+			</div>
+		</li>
+
 		<li
 			href="{{path}}"
 			click-closest="sidenav"
@@ -196,25 +227,6 @@
 					<i src="{{path}}assets/svg/bullhorn.svg"></i>
 				</span>
 				<span>Ambassador</span>
-			</a>
-		</li>
-		<li
-			href="{{path}}"
-			click-closest="sidenav"
-			click-attribute="style"
-			click-value="width:0px"
-			click-if="<=993px"
-			click-if-value="$innerWidth">
-			<a
-				actions="state"
-				state_to="mainView"
-				state-src="{{path}}account/organization/"
-				class="display:flex align-items:center">
-				<span
-					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/building.svg"></i>
-				</span>
-				<span>Organization</span>
 			</a>
 		</li>
 
