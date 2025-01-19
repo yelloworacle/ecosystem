@@ -19,60 +19,10 @@
 		<meta name="author" content="Yellow Oracle" />
 		<meta name="generator" content="Yellow Oracle" />
 
-		<!-- Canonical Tag -->
-		<link rel="canonical" href="https://yelloworacle.com" />
-
 		<link
 			rel="icon"
 			type="image/x-icon"
 			href="./assets/icons/favicon.ico" />
-
-		<!-- Sitemap Tags -->
-		<!-- <meta name="sitemap-type" content="standard" />
-        <meta name="sitemap-priority" content="1.0" />
-        <meta name="sitemap-changefreq" content="monthly" /> -->
-
-		<!-- Open Graph Tags (Facebook) -->
-		<meta
-			property="og:title"
-			content="AI career suggestions FOR YOU based on YOUR personality and desires" />
-		<meta
-			property="og:description"
-			content="Discover AI career suggestions tailored to your personality and aspirations. Find the perfect path for your unique skills and interests." />
-		<meta property="og:url" content="https://yelloworacle.com" />
-		<meta
-			property="og:image"
-			content="https://yelloworacle.com/assets/image.jpg" />
-		<meta property="og:type" content="website" />
-
-		<!-- Twitter Card Tags (Twitter) -->
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:site" content="YellowOracle" />
-		<meta
-			name="twitter:title"
-			content="AI career suggestions FOR YOU based on YOUR personality and desires" />
-		<meta
-			name="twitter:description"
-			content="Discover AI career suggestions tailored to your personality and aspirations. Find the perfect path for your unique skills and interests." />
-		<meta
-			name="twitter:image"
-			content="https://yelloworacle.com/assets/twitter-image.jpg" />
-
-		<!-- Structured Data (Schema Markup) -->
-		<script type="application/ld+json">
-			{
-				"@context": "http://schema.org",
-				"@type": "WebPage",
-				"name": "AI career suggestions FOR YOU based on YOUR personality and desires",
-				"description": "Discover AI career suggestions tailored to your personality and aspirations. Find the perfect path for your unique skills and interests.",
-				"url": "https://yelloworacle.com",
-				"image": "https://yelloworacle.com/image.jpg",
-				"author": {
-					"@type": "Organization",
-					"name": "Yellow Oracle"
-				}
-			}
-		</script>
 
 		<link
 			rel="stylesheet"
@@ -85,223 +35,48 @@
 		<link rel="manifest" href="./manifest.webmanifest" />
 	</head>
 
-	<!-- Google tag (gtag.js) -->
-	<script
-		async
-		src="https://www.googletagmanager.com/gtag/js?id=G-D5TE6M16QB"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag("js", new Date());
-
-		gtag("config", "G-D5TE6M16QB");
-	</script>
-
-	<!-- Microsoft Clarity tag) -->
-	<script type="text/javascript">
-		(function (c, l, a, r, i, t, y) {
-			c[a] =
-				c[a] ||
-				function () {
-					(c[a].q = c[a].q || []).push(arguments);
-				};
-			t = l.createElement(r);
-			t.async = 1;
-			t.src = "https://www.clarity.ms/tag/" + i;
-			y = l.getElementsByTagName(r)[0];
-			y.parentNode.insertBefore(t, y);
-		})(window, document, "clarity", "script", "muk7s8i6og");
-	</script>
-
 	<body>
-		<!-- Navbar  -->
-		<nav
-			scroll="sticky-nav,"
-			scroll-up="5"
-			scroll-down="5"
-			path="./"
-			src="./components/navbar.html"></nav>
+		<form array="testdate" object="">
+			<floating-label class="input-300">
+				<input
+					type="text"
+					key="name"
+					placeholder="Name"
+					value=""
+					class="floating-label" />
+			</floating-label>
 
-		<!-- SideNav Left-->
-		<sidenav
-			id="menuL"
-			class="top:0px left:0px width:300px@lg@xl"
-			path="./"
-			src="./components/sidenav.html"
-			resize-selector="document; main, document; footer"
-			resize-attribute="style"
-			resize-property="margin-left"
-			session></sidenav>
+			<floating-label class="input-300">
+				<input
+					type="datetime-local"
+					key="published"
+					placeholder="Publish On" />
+			</floating-label>
+			<a actions="save">Save</a>
+		</form>
 
-		<!-- <main
-            state_id="mainView"
-            src="./home/"
-            state-overwrite
-            state-onstoragechange="false" -->
-		<main class="margin-left:0px!important@xs@sm@md">
-			<header>
-				<p class="font-size:2em">Discover Your Destiny</p>
-				<h1 class="font-size:20px margin:25px">
-					AI career suggestions FOR YOU based on YOUR personality and
-					desires
-				</h1>
-				<div class="display:flex flex-wrap:wrap gap:20px">
-					<button
-						actions="state"
-						state_to="mainView"
-						state-src="./oracle/"
-						class="font-size:24px">
-						Discover
-					</button>
-					<button
-						actions="state"
-						state_to="mainView"
-						state-src="./search/"
-						class="font-size:24px">
-						Search
-					</button>
-				</div>
-			</header>
+		<input
+			type="datetime-local"
+			filter-next
+			filter-query-key="published.$lte"
+			value="$now"
+			hidden />
 
-			<style>
-				.steps-section {
-					padding: 20px;
-					box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-					background-color: #f4f4f4;
-				}
-
-				.steps-container {
-					max-width: 1000px;
-					margin: 50px auto;
-				}
-
-				.steps-section h2 {
-					text-align: center;
-					font-size: 2em;
-					margin-bottom: 40px;
-				}
-
-				.step {
-					display: flex;
-					align-items: center;
-					margin-bottom: 40px;
-				}
-
-				.step:nth-child(odd) .step-content {
-					order: 2;
-				}
-
-				.step-image {
-					flex: 1;
-					text-align: center;
-				}
-
-				.step-image img {
-					max-width: 100%;
-					height: auto;
-					border-radius: 8px;
-				}
-				.step-icon {
-					text-align: center;
-					font-size: 4em;
-				}
-				.step-content {
-					flex: 1;
-					padding: 20px;
-				}
-
-				.step-content h3 {
-					font-size: 1.5em;
-					margin-bottom: 10px;
-				}
-
-				.step-content p {
-					font-size: 1em;
-					line-height: 1.6;
-				}
-
-				@media (max-width: 768px) {
-					.step {
-						flex-direction: column;
-					}
-
-					.step-content {
-						order: 1;
-						padding: 10px;
-					}
-				}
-				@media (prefers-color-scheme: dark) {
-					.steps-section {
-						background-color: #222;
-					}
-				}
-			</style>
-			<section class="steps-section">
-				<div class="steps-container">
-					<h2>How It Works</h2>
-					<div class="step">
-						<div class="step-icon">
-							<i src="./assets/svg/circle-question.svg"></i>
-						</div>
-						<div class="step-content">
-							<h3>Step 1: Answer 7 Questions</h3>
-							<p>
-								Begin your journey by answering a brief set of
-								questions designed to understand your
-								personality traits and interests. This step
-								helps our advanced AI algorithms to generate
-								accurate career matches for you.
-							</p>
-						</div>
-					</div>
-					<div class="step">
-						<div class="step-icon">
-							<i src="./assets/svg/user.svg"></i>
-						</div>
-						<div class="step-content">
-							<h3>Step 2: Enter Name, Email, and Password</h3>
-							<p>
-								Securely create your account by providing your
-								name, email, and password. This will allow you
-								to access your personalized career
-								recommendations and insights anytime, anywhere.
-							</p>
-						</div>
-					</div>
-					<div class="step">
-						<div class="step-icon">
-							<i src="./assets/svg/wand-magic-sparkles.svg"></i>
-						</div>
-						<div class="step-content">
-							<h3>Step 3: Get Your Personalized Career Match</h3>
-							<p>
-								Instantly receive a tailored list of career
-								options that match your unique profile. Explore
-								different paths that resonate with your
-								strengths and passions.
-							</p>
-						</div>
-					</div>
-				</div>
-			</section>
-		</main>
-
-		<!-- Footer -->
-		<footer
-			id="spreadtheword"
-			path="./"
-			src="./components/footer.html"
-			class="margin-left:0px!important@xs@sm@md"></footer>
-
-		<div actions></div>
+		<!-- Fetch and Render Blog Posts -->
 		<div
-			src="./components/ai-chat.html"
-			path="./"
-			filter-query-key="name"
-			filter-query-value="Sales Chat"
-			filter-selector="#system-instructions"></div>
+			id="blog-posts"
+			class="display:flex flex-wrap:wrap gap:15px"
+			array="testdate"
+			object
+			filter-limit="20"
+			filter-sort-key="published"
+			filter-sort-direction="desc"
+			render-selector="[template]">
+			<!-- Blog Post Template -->
+			<div class="card flex-grow:1 width:300px" template>
+				{{object.name}}
+			</div>
+		</div>
 
 		<script src="./dist/CoCreate.js"></script>
 	</body>

@@ -19,7 +19,7 @@
 				value="YellowOracle"
 				class="floating-label" />
 		</floating-label>
-		<floating-label class="input-300">
+		<!-- <floating-label class="input-300" hidden>
 			<input placeholder="Published On" readonly />
 			<input
 				type="datetime"
@@ -29,6 +29,13 @@
 				input-previous
 				input-attribute="value"
 				hidden />
+		</floating-label>
+ -->
+		<floating-label class="input-300">
+			<input
+				type="datetime-local"
+				key="published"
+				placeholder="Publish On" />
 		</floating-label>
 
 		<floating-label class="input-600">
@@ -231,7 +238,7 @@
 			input-selector="document; #publishform"
 			input-attribute="object"
 			hidden />
-		<input type="datetime" key="published" value="$now" hidden />
+		<!-- <input type="datetime" key="published" value="$now" hidden /> -->
 
 		<div
 			class="display:flex justify-content:flex-end flex-wrap:wrap gap:20px width:100%">
