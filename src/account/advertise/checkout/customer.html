@@ -1,0 +1,42 @@
+<form hidden>
+	<input
+		array="users"
+		object="$user_id"
+		key="name"
+		save="false"
+		stripe="customers.create"
+		stripe-key="name" />
+	<input
+		array="users"
+		object="$user_id"
+		key="email"
+		save="false"
+		stripe="customers.create"
+		stripe-key="email" />
+	<input
+		class="currentOrg"
+		array="organizations"
+		key="customerId"
+		stripe="customers.create"
+		stripe-key="id"
+		stripe-request="false"
+		input-if="false"
+		input-next
+		input-attribute="$click"
+		value-dispatch />
+	<a actions="stripe.customers.create, save"></a>
+</form>
+
+<form hidden>
+	<!-- Input for Customer ID -->
+	<floating-label class="flex-grow:1">
+		<input
+			class="currentOrg"
+			array="organizations"
+			key="customerId"
+			placeholder="Enter Customer ID" />
+	</floating-label>
+
+	<!-- Submit Button to Trigger Session Creation -->
+	<button actions="save">Save</button>
+</form>

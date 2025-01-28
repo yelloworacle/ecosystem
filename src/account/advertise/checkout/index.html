@@ -11,113 +11,47 @@
 	.input-field {
 		width: 100%;
 	}
+	#sales > div {
+		display: none;
+	}
+	[display="payment"] #payment,
+	[display="auto-top-up"] #auto-top-up,
+	[display="payment-method"] #payment-method {
+		display: block;
+	}
+	cc-option[selected] {
+		display: none;
+	}
 </style>
 
-<section class="centered max-width:400px">
-	<!-- Add Funds for Advertisements -->
-	<div class="display:flex flex-wrap:wrap gap:15px padding-top:80px">
-		<div class="card flex-grow:1 width:365px padding:25px">
-			<h3>Add Funds for Advertisements</h3>
+<section class="centered max-width:400px" api="stripe">
+	<input
+		id="currentOrg"
+		type="hidden"
+		array="users"
+		object="$user_id"
+		key="currentOrg"
+		input-attribute="object"
+		input-selector="document; .currentOrg[]" />
+	<input
+		type="hidden"
+		class="currentOrg"
+		array="organizations"
+		key="customerId"
+		input-attribute="value"
+		input-selector="document; .customer[]" />
 
-			<!-- Always Visible Section -->
-			<div class="padding-top:20px">
-				<input
-					type="number"
-					id="customAmount"
-					class="input-field"
-					placeholder="Enter amount (min $50)"
-					min="50"
-					required />
-
-				<button
-					toggle-attribute="hidden"
-					toggle-value=""
-					click-attribute="hidden"
-					click-value=""
-					click-selector="document; [display]"
-					class="width:100% margin-top:20px font-size:18px">
-					Add Funds
-				</button>
-			</div>
-
-			<!-- Toggle Visibility Section -->
-			<div display="checkout" class="checkout" hidden>
-				<form id="payment-form">
-					<input
-						id="currentOrg"
-						type="hidden"
-						array="users"
-						object="$user_id"
-						key="currentOrg" />
-
-					<input
-						id="ambassadorAccount"
-						type="hidden"
-						array="users"
-						object="$user_id"
-						key="ambassadorAccount"
-						input-next
-						input-attribute="object" />
-
-					<input
-						id="ambassador"
-						type="checkbox"
-						array="ambassadors"
-						object=""
-						key="charges_enabled"
-						hidden />
-
-					<textarea
-						id="ambassadorParents"
-						array="users"
-						object="$user_id"
-						key="ambassadorParents"
-						value-type="json"
-						class="input-field"
-						hidden></textarea>
-
-					<input
-						id="customer"
-						type="hidden"
-						array="users"
-						object="$user_id"
-						key="customerId"
-						class="input-field" />
-
-					<input
-						id="name"
-						type="text"
-						array="users"
-						object="$user_id"
-						key="name"
-						save="false"
-						class="input-field"
-						placeholder="Name"
-						required />
-
-					<input
-						type="email"
-						id="email"
-						array="users"
-						object="$user_id"
-						key="email"
-						save="false"
-						class="input-field"
-						placeholder="Email"
-						required />
-
-					<div id="card-element" class="stripe-element">
-						<!-- Stripe Elements will be inserted here -->
-					</div>
-
-					<button
-						type="submit"
-						class="width:100% margin-top:20px font-size:18px">
-						Complete Payment
-					</button>
-				</form>
-			</div>
-		</div>
+	<div
+		id="sales"
+		display="payment"
+		class="card flex-grow:1 max-width:400px margin:auto padding:25px">
+		<div src="./account/advertise/checkout/customer.html"></div>
+		<div id="payment" src="./account/advertise/checkout/payment.html"></div>
+		<div
+			id="auto-top-up"
+			src="./account/advertise/checkout/auto-payment.html"></div>
+		<div
+			id="payment-method"
+			src="./account/advertise/checkout/payment-method.html"></div>
 	</div>
 </section>
-<script src="./account/advertise/checkout/index.js"></script>
