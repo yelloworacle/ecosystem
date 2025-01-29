@@ -14,11 +14,11 @@
 
 		<div class="floating-icon left:14px">$</div>
 		<div
-			class="position:absolute top:8px right:14px font-size:14px"
+			class="position:absolute top:10px right:14px font-size:14px"
 			click-closest="#sales"
 			click-attribute="display"
 			click-value="auto-top-up">
-			<i src="./assets/svg/plus.svg"></i>
+			<i src="./assets/svg/cog.svg"></i>
 			<span> Auto Top-Up </span>
 		</div>
 
@@ -189,17 +189,18 @@
 						</div>
 
 						<!-- Default Card Label -->
-						<div class="default-card-label font-size:12px">
+						<div
+							class="default-card-label padding-top:2px font-size:12px">
 							<span class="badge"> Default </span>
 						</div>
 
 						<div
-							class="display:flex align-items:center"
-							hover-selector=".options"
+							class="display:inline-flex align-items:center"
+							hover-selector=".card"
 							hover-attribute="class"
 							hover-value="display:block!important">
 							<div
-								class="card display:none text-align:right position:absolute transition:0.3s width:108px right:30px options padding:10px!important height:70px font-size:14px">
+								class="card display:none position:absolute right:35px height:70px wdth:108px padding:10px!important font-size:14px line-height:1.9 transition:0.3s box-shadow:unset!important">
 								<div
 									actions="click, remove"
 									click-attribute="value"
@@ -217,9 +218,9 @@
 									Set as default
 								</div>
 							</div>
-							<div class="padding-left:10px">
-								<i src="./assets/svg/ellipsis-v.svg"></i>
-							</div>
+							<i
+								class="padding-left:10px"
+								src="./assets/svg/ellipsis-v.svg"></i>
 						</div>
 					</payment-method>
 				</payment-method-list>
@@ -267,13 +268,14 @@
 			input-attribute="href"
 			input-next /> -->
 
-		<div class="display:flex gap:10px justify-content:flex-end width:100%">
+		<div class="display:flex justify-content:flex-end width:100%">
 			<div
+				class="display:flex gap:10px"
 				click-closest="#sales"
 				click-attribute="display"
 				click-value="payment-method">
 				<i src="./assets/svg/plus.svg"></i>
-				<span> Add payment method </span>
+				<span class="padding-top:2px"> Add payment method </span>
 			</div>
 		</div>
 	</payment-method-container>

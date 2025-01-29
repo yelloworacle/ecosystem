@@ -70,6 +70,13 @@
 				argument.data.stripe = paymentMethod;
 
 				CoCreate.api.setData(argument);
+
+				if (event.detail && event.detail.element)
+					event.detail.element.dispatchEvent(
+						new CustomEvent("submitted", {
+							detail: paymentMethod
+						})
+					);
 			} catch (err) {
 				console.error("Error:", err.message);
 			}

@@ -3,81 +3,51 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-		<title>
-			AI career suggestions FOR YOU based on YOUR personality and desires
-		</title>
-		<base href="/" />
-		<meta
-			name="description"
-			content="Discover AI career suggestions tailored to your personality and aspirations. Find the perfect path for your unique skills and interests." />
-		<meta
-			name="keywords"
-			content="AI career advice, Career recommendations, Personalized career guidance, Career path finder, Artificial intelligence career suggestions" />
-		<meta name="robots" content="index, follow" />
-		<meta name="author" content="Yellow Oracle" />
-		<meta name="generator" content="Yellow Oracle" />
-
-		<link
-			rel="icon"
-			type="image/x-icon"
-			href="./assets/icons/favicon.ico" />
-
-		<link
-			rel="stylesheet"
-			href="./index.css"
-			array="files"
-			object="65395d6f6ebd31be4c4349b2"
-			key="{}"
-			type="text/css"
-			parse="true" />
+		<title>SearchX - SEO Solutions</title>
+		<link rel="stylesheet" href="styles.css" />
 		<link rel="manifest" href="./manifest.webmanifest" />
 	</head>
-
 	<body>
-		<form array="testdate" object="">
-			<floating-label class="input-300">
-				<input
-					type="text"
-					key="name"
-					placeholder="Name"
-					value=""
-					class="floating-label" />
-			</floating-label>
+		<header>
+			<h1>SearchX</h1>
+			<p>Boost your online presence with expert SEO strategies.</p>
+			<a href="#contact" class="btn">Get Started</a>
+			<textarea
+				array="files"
+				object="666dbd543d5c297729bcb046"
+				key="src"
+				realtime="true"></textarea>
+		</header>
 
-			<floating-label class="input-300">
-				<input
-					type="datetime-local"
-					key="published"
-					placeholder="Publish On" />
-			</floating-label>
-			<a actions="save">Save</a>
-		</form>
-
-		<input
-			type="datetime-local"
-			filter-next
-			filter-query-key="published.$lte"
-			value="$now"
-			hidden />
-
-		<!-- Fetch and Render Blog Posts -->
-		<div
-			id="blog-posts"
-			class="display:flex flex-wrap:wrap gap:15px"
-			array="testdate"
-			object
-			filter-limit="20"
-			filter-sort-key="published"
-			filter-sort-direction="desc"
-			render-selector="[template]">
-			<!-- Blog Post Template -->
-			<div class="card flex-grow:1 width:300px" template>
-				{{object.name}}
+		<section id="services">
+			<h2>Our Services</h2>
+			<div class="service">
+				<h3>Keyword Research</h3>
+				<p>Identify the best keywords for your business.</p>
 			</div>
-		</div>
+			<div class="service">
+				<h3>On-Page Optimization</h3>
+				<p>Enhance your website elements for better visibility.</p>
+			</div>
+			<div class="service">
+				<h3>Content Creation</h3>
+				<p>Develop high-quality, engaging content.</p>
+			</div>
+			<div class="service">
+				<h3>Backlink Building</h3>
+				<p>Gain authoritative links from reputable sites.</p>
+			</div>
+		</section>
 
+		<section id="contact">
+			<h2>Contact Us</h2>
+			<p>Start improving your SEO today!</p>
+			<a href="https://searchxpro.com" class="btn">Visit SearchX</a>
+		</section>
+
+		<footer>
+			<p>&copy; 2024 SearchX. All rights reserved.</p>
+		</footer>
 		<script src="./dist/CoCreate.js"></script>
 	</body>
 </html>
