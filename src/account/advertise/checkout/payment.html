@@ -7,12 +7,16 @@
 		<input
 			type="number"
 			id="amountInput"
-			class="padding-left:28px!important"
+			storage="mongodb"
+			array="organizations"
+			object=""
+			key="$inc.balance"
+			read="false"
+			class="currentOrg padding-left:28px!important"
 			min="50"
-			value="50.00"
 			placeholder="Enter amount (min $50)" />
 
-		<div class="floating-icon left:14px">$</div>
+		<div class="floating-icon left:14px width:14px">$</div>
 		<div
 			class="position:absolute top:10px right:14px font-size:14px"
 			click-closest="#sales"
@@ -113,7 +117,6 @@
 			stripe-key="$param[0]" />
 
 		<floating-label
-			id="test"
 			class="margin-bottom:10px"
 			click-attribute="class"
 			click-value="open"
@@ -237,7 +240,7 @@
 				input-value=""
 				input-parent="payment-method[click-value='$value']"
 				change-attribute="value"
-				change-closest="[stripe-key='payment_method']"
+				change-previous
 				event-name="default"
 				defualt-attribute="selected"
 				defualt-value="true"
@@ -280,14 +283,14 @@
 		</div>
 	</payment-method-container>
 
-	<input
+	<!-- <input
 		type="number"
 		calculate="Math.round(({(#amountInCents)} * 15) / 100)"
 		stripe="paymentIntents.create"
 		stripe-key="application_fee_amount"
 		hidden />
-
-	<input
+ -->
+	<!-- <input
 		type="hidden"
 		array="users"
 		object="$user_id"
@@ -312,12 +315,12 @@
 		key="ambassadorParents"
 		value-type="json"
 		class="input-field"
-		hidden></textarea>
+		hidden></textarea> -->
 
 	<!-- Submit Button -->
 	<button
 		class="width:100% margin-top:20px"
-		actions="validate, stripe.paymentIntents.create, timeout(2000)">
+		actions="validate, stripe.paymentIntents.create, timeout(2000), save">
 		Confirm Payment
 	</button>
 
