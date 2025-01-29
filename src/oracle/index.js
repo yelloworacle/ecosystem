@@ -13,7 +13,7 @@
 			let preValue = element.getValue();
 			let newValue = [...value, ...preValue];
 			element.setValue(newValue, false);
-			document.dispatchEvent(
+			action.element.dispatchEvent(
 				new CustomEvent("manageCareers", {
 					detail: {}
 				})

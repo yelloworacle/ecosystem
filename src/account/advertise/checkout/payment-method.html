@@ -1,0 +1,121 @@
+<form id="payment-method-form" class="flex-form flex-direction:column gap:10px">
+	<div
+		class="display:flex justify-content:space-between width:100% margin-bottom:20px">
+		<h3>Add new payment method</h3>
+		<i
+			click-closest="#sales"
+			click-attribute="display"
+			click-value="payment"
+			src="./assets/svg/times.svg">
+		</i>
+	</div>
+
+	<!-- Cardholder Name -->
+	<floating-label>
+		<input
+			type="text"
+			array="users"
+			object="$user_id"
+			key="name"
+			stripe="paymentMethods.create"
+			stripe-key="billing_details.name"
+			placeholder="Name on card"
+			required />
+	</floating-label>
+
+	<!-- Cardholder Email -->
+	<floating-label>
+		<input
+			type="email"
+			array="users"
+			object="$user_id"
+			key="email"
+			stripe="paymentMethods.create"
+			stripe-key="billing_details.email"
+			placeholder="Email Address"
+			required />
+	</floating-label>
+
+	<div
+		id="payment-method-element"
+		class="stripe-element"
+		stripe="paymentMethods.create"
+		stripe-key="card"
+		stripe-response="false">
+		<!-- Stripe Elements will be inserted here -->
+	</div>
+
+	<!-- Hidden Input for Payment Method Type -->
+	<input
+		type="hidden"
+		stripe="paymentMethods.create"
+		stripe-key="type"
+		value="card" />
+
+	<!-- Hidden Input for Allow Redisplay -->
+	<input
+		type="hidden"
+		stripe="paymentMethods.create"
+		stripe-key="allow_redisplay"
+		value="always" />
+
+	<!-- Hidden Input for Payment Method ID -->
+	<input
+		type="hidden"
+		stripe="paymentMethods.create"
+		stripe-key="id"
+		stripe-request="false"
+		input-attribute="value"
+		input-selector="document; .paymentid[]" />
+
+	<!-- Attach Payment Method To Customer -->
+	<input
+		class="paymentid"
+		type="hidden"
+		stripe="paymentMethods.attach"
+		stripe-key="$param[0]" />
+	<input
+		type="hidden"
+		class="customer"
+		stripe="paymentMethods.attach"
+		stripe-key="customer"
+		required />
+
+	<!-- Hidden Input for Payment Method ID -->
+
+	<!-- Checkbox for Setting as Default Paymen Method -->
+	<label for="make-default">
+		<input
+			type="hidden"
+			class="customer"
+			stripe="customers.update"
+			stripe-key="$param[0]" />
+		<input
+			type="hidden"
+			stripe="customers.update"
+			stripe-key="invoice_settings.default_payment_method" />
+
+		<input
+			type="checkbox"
+			input-parent="[stripe][]"
+			input-attribute="stripe"
+			input-value="customers.update" />
+		Set as default payment method
+	</label>
+
+	<button
+		actions="submit, timeout(2000), stripe.paymentMethods.attach, action(document; #loadPaymentMethods), click"
+		click-closest="#sales"
+		click-attribute="display"
+		click-value="payment"
+		class="width:100%">
+		Save Payment Method
+	</button>
+
+	<div
+		template="stripe.paymentMethods.create, stripe.paymentMethods.attach, stripe.customers.update"
+		class="response">
+		<span class="{{status}}">{{message}}</span>
+	</div>
+</form>
+<script src="./account/advertise/checkout/index.js"></script>

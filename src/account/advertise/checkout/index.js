@@ -11,7 +11,7 @@
 	let productionPk =
 		"pk_live_51OoykOIMlR98agX1eiWRfz080ZdLitzBnAF75vbXecQBfHdy8sAu5h8B0au8lVzLKqQSiI2D1xQS8ZZoSFBEuXPr007I24duUf";
 	let testPk =
-		"pk_test_51OoykOIMlR98agX1pLmMH5EfRTscBQKMDd6jLBJxrQILkqrKcnTxaDXjVlX65nwZ1RlF26WoEd1amURrzzQmuxbG00R21LGW40";
+		"pk_test_51OK9b5DSpIU4j2Joz6AeDvWPQEpoWhRweNS6Hevwvza5IcHwTpgTGTNU5GGMZUiQYzeSBifqV8AWaT3OtjUAVwXt00c3hmBILe";
 
 	let pk = environment === "production" ? productionPk : testPk;
 
@@ -38,131 +38,47 @@
 		};
 
 		const card = elements.create("card", { style: style });
-		card.mount("#card-element");
+		card.mount("#payment-method-element");
 
-		const form = document.getElementById("payment-form");
+		// Form submission
+		const form = document.getElementById("payment-method-form");
 		form.addEventListener("submit", async function (event) {
 			event.preventDefault();
-			const submitButton = form.querySelector('button[type="submit"]');
-			submitButton.innerHTML = "Processing";
 
-			const customAmount =
-				parseFloat(document.getElementById("customAmount").value) || 0;
-			if (customAmount <= 0) {
-				alert("Please enter a valid amount.");
-				submitButton.innerHTML = "Submit Payment";
-				return;
-			}
+			try {
+				card._parent.getValue = () => card;
 
-			const destination =
-				document.getElementById("ambassadorAccount").value;
-			const enabled = document.getElementById("ambassador").getValue();
-			let parents = document.getElementById("ambassadorParents");
-			if (parents) parents = parents.getValue();
-
-			const additionalData = {
-				name: document.getElementById("name").value,
-				email: document.getElementById("email").value
-			};
-
-			const currentOrg = document.getElementById("currentOrg").value;
-
-			const customer = document.getElementById("customer").value;
-			if (customer) additionalData.customer = customer;
-
-			const result = await stripe.createToken(card, additionalData);
-			if (result.error) {
-				console.log(result.error.message);
-				submitButton.innerHTML = "Payment Failed";
-				return;
-			}
-
-			additionalData.source = result.token.id;
-
-			if (!additionalData.customer) {
-				const customerResponse = await CoCreate.socket.send({
-					method: "stripe.customers.create",
-					broadcast: false,
-					stripe: additionalData,
-					environment
-				});
-				if (!customerResponse.stripe || !customerResponse.stripe.id) {
-					submitButton.innerHTML = "Payment Failed";
-					return;
-				}
-				additionalData.customer = customerResponse.stripe.id;
-			}
-
-			const paymentIntentData = {
-				method: "stripe.paymentIntents.create",
-				broadcast: false,
-				stripe: {
-					amount: Math.round(customAmount * 100), // Convert to cents
-					currency: "usd",
-					customer: additionalData.customer,
-					description: "Add advertising funds to account",
-					payment_method_types: ["card"]
-				},
-				environment
-			};
-
-			// Include ambassador payout logic if applicable
-			if (destination && enabled) {
-				paymentIntentData.stripe.application_fee_amount = Math.round(
-					((customAmount * 15) / 100) * 100
-				); // 15% fee
-				paymentIntentData.stripe.transfer_data = {
-					destination
+				let argument = {
+					name: "stripe",
+					method: "paymentMethods.create",
+					form
 				};
-			}
 
-			const paymentResponse = await CoCreate.socket.send(
-				paymentIntentData
-			);
+				argument.data = {
+					stripe: await CoCreate.api.getData(argument)
+				};
 
-			if (paymentResponse.stripe.id) {
-				await CoCreate.crud.send({
-					method: "object.update",
-					broadcast: false,
-					array: "organizations",
-					object: {
-						_id: currentOrg,
-						customerId: additionalData.customer,
-						"$inc.balance": customAmount
-					}
-				});
+				const { paymentMethod, error } =
+					await stripe.createPaymentMethod(argument.data.stripe);
 
-				// Handle ambassador parent payouts (5% per level, up to 4 levels)
-				if (parents && enabled) {
-					console.log("Ambassador parents: ", parents);
-					let amount = Math.round(((customAmount * 5) / 100) * 100); // 5% of custom amount
-					for (let i = 0; i < parents.length && i < 4; i++) {
-						let transferData = {
-							method: "stripe.transfers.create",
-							broadcast: false,
-							stripe: {
-								amount,
-								currency: "usd",
-								destination: parents[i],
-								description: "5% share to connected account"
-							},
-							environment
-						};
-
-						const response = await CoCreate.socket.send(
-							transferData
-						);
-						console.log(
-							`Transfer response for parent account ${parents[i]}:`,
-							response
-						);
-					}
+				if (error) {
+					throw new Error(
+						`Payment Method creation failed: ${error.message}`
+					);
 				}
 
-				submitButton.innerHTML = "Payment Successful";
-				setTimeout(() => window.history.back(), 3000);
-			} else {
-				submitButton.innerHTML = "Payment Failed";
+				argument.data.stripe = paymentMethod;
+
+				CoCreate.api.setData(argument);
+
+				if (event.detail && event.detail.element)
+					event.detail.element.dispatchEvent(
+						new CustomEvent("submitted", {
+							detail: paymentMethod
+						})
+					);
+			} catch (err) {
+				console.error("Error:", err.message);
 			}
 		});
 	});

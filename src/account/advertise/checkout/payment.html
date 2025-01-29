@@ -1,0 +1,360 @@
+<form class="flex-form">
+	<h3 class="margin-bottom:20px">Add to credit balance</h3>
+
+	<!-- Payment Amount -->
+	<floating-label class="width:100%">
+		<!-- User Input Field -->
+		<input
+			type="number"
+			id="amountInput"
+			storage="mongodb"
+			array="organizations"
+			object=""
+			key="$inc.balance"
+			read="false"
+			class="currentOrg padding-left:28px!important"
+			min="50"
+			placeholder="Enter amount (min $50)" />
+
+		<div class="floating-icon left:14px width:14px">$</div>
+		<div
+			class="position:absolute top:10px right:14px font-size:14px"
+			click-closest="#sales"
+			click-attribute="display"
+			click-value="auto-top-up">
+			<i src="./assets/svg/cog.svg"></i>
+			<span> Auto Top-Up </span>
+		</div>
+
+		<!-- Processed Amount (in cents) -->
+		<input
+			id="amountInCents"
+			type="number"
+			calculate="{(#amountInput)} * 100"
+			stripe="paymentIntents.create"
+			stripe-key="amount"
+			required
+			hidden />
+	</floating-label>
+
+	<!-- Section: Auto-Recharge Details -->
+	<!-- <div
+		id="auto-top-up"
+		class="border:1px solid #ddd padding:20px border-radius:10px">
+		<h3>Auto-Recharge</h3>
+
+		<div class="recurring-details">
+			<p>Recharge Amount: <span id="recurring-amount">$50.00</span></p>
+			<p>Threshold Amount: <span id="threshold-amount">$10.00</span></p>
+			<p>Current Status: <span id="recurring-status">Enabled</span></p>
+		</div>
+
+		<button
+			click-closest="#sales"
+			click-attribute="display"
+			click-value="auto-top-up"
+			class="btn-primary margin-top:10px">
+			Auto Top-Up
+		</button>
+	</div> -->
+
+	<!-- Customer ID -->
+	<input
+		type="hidden"
+		class="customer"
+		stripe="paymentIntents.create"
+		stripe-key="customer"
+		required />
+
+	<!-- Currency -->
+	<input
+		type="hidden"
+		stripe="paymentIntents.create"
+		stripe-key="currency"
+		value="usd" />
+
+	<!-- Automatic Payment Methods -->
+	<input
+		type="hidden"
+		stripe="paymentIntents.create"
+		stripe-key="automatic_payment_methods.enabled"
+		value="true" />
+
+	<input
+		type="hidden"
+		stripe="paymentIntents.create"
+		stripe-key="automatic_payment_methods.allow_redirects"
+		value="never" />
+
+	<!-- Confirmation -->
+	<input
+		type="hidden"
+		stripe="paymentIntents.create"
+		stripe-key="confirm"
+		value="true" />
+
+	<payment-method-container class="width:100%">
+		<input
+			type="hidden"
+			stripe="paymentMethods.list"
+			stripe-key="type"
+			value="card" />
+		<input
+			type="hidden"
+			class="customer"
+			stripe="paymentMethods.list"
+			stripe-key="customer"
+			input-next
+			input-attribute="$click" />
+		<a
+			id="loadPaymentMethods"
+			actions="stripe.paymentMethods.list, stripe.customers.retrieve"></a>
+
+		<input
+			class="customer"
+			type="hidden"
+			stripe="customers.retrieve"
+			stripe-key="$param[0]" />
+
+		<floating-label
+			class="margin-bottom:10px"
+			click-attribute="class"
+			click-value="open"
+			click-selector="payment-method-list">
+			<div
+				stripe="paymentIntents.create"
+				stripe-key="payment_method"
+				value=""
+				placeholder="Payment Method">
+				<style>
+					payment-method-list {
+						display: flex;
+						flex-direction: column;
+					}
+					payment-method-list > payment-method:not([selected]) {
+						display: none;
+					}
+					payment-method-list.open > payment-method {
+						display: flex;
+					}
+
+					payment-method {
+						order: 1; /* Default order for all items */
+					}
+
+					payment-method[selected] {
+						order: 0; /* Move selected item to the top */
+					}
+					.options-icon {
+						cursor: pointer;
+						padding: 10px;
+					}
+					.options {
+						line-height: 1.5;
+					}
+					.options div:hover {
+						cursor: pointer;
+					}
+				</style>
+
+				<payment-method-list
+					class="display:flex flex-direction:column gap:10px"
+					stripe="paymentMethods.list"
+					stripe-key="data"
+					stripe-request="false"
+					value-type="array"
+					render="data"
+					render-selector="[template]">
+					<!-- Template for Individual Payment Method -->
+					<payment-method
+						template
+						click-attribute="value"
+						click-value="{{data.id}}"
+						click-closest="[stripe-key='payment_method']"
+						selected-attribute="isSelected"
+						selected-value="true"
+						selected-group="payment-methods"
+						class="card display:flex align-items:center padding:10px!important height:70px">
+						<!-- Icon for Card Brand -->
+						<i
+							src="./assets/svg/cc-{{data.card.brand}}.svg"
+							class="width:40px height:40px margin-right:15px"></i>
+
+						<!-- Card Details -->
+						<div class="flex-grow:1">
+							<div class="font-weight:bold font-size:16px">
+								.... {{data.card.last4}}
+							</div>
+							<div class="font-size:12px">
+								Expires
+								{{data.card.exp_month}}/{{data.card.exp_year}}
+							</div>
+						</div>
+
+						<!-- Default Card Label -->
+						<div
+							class="default-card-label padding-top:2px font-size:12px">
+							<span class="badge"> Default </span>
+						</div>
+
+						<div
+							class="display:inline-flex align-items:center"
+							hover-selector=".card"
+							hover-attribute="class"
+							hover-value="display:block!important">
+							<div
+								class="card display:none position:absolute right:35px height:70px wdth:108px padding:10px!important font-size:14px line-height:1.9 transition:0.3s box-shadow:unset!important">
+								<div
+									actions="click, remove"
+									click-attribute="value"
+									click-value="{{data.id}}"
+									click-selector="document; #detachPaymentMethod"
+									click-stopPropagation
+									remove-closest="payment-method">
+									Remove Card
+								</div>
+								<div
+									click-attribute="value"
+									click-value="{{data.id}}"
+									click-selector="document; #setDefaultPaymentMethod"
+									click-stopPropagation>
+									Set as default
+								</div>
+							</div>
+							<i
+								class="padding-left:10px"
+								src="./assets/svg/ellipsis-v.svg"></i>
+						</div>
+					</payment-method>
+				</payment-method-list>
+			</div>
+
+			<!-- Hidden Input for Default Payment Method -->
+			<input
+				class="paymentid"
+				type="hidden"
+				stripe="customers.retrieve"
+				stripe-key="invoice_settings.default_payment_method"
+				stripe-request="false"
+				input-attribute="selected"
+				input-value=""
+				input-parent="payment-method[click-value='$value']"
+				change-attribute="value"
+				change-previous
+				event-name="default"
+				defualt-attribute="selected"
+				defualt-value="true"
+				defualt-parent="payment-method[click-valuedeafault='$value']"
+				default-events="input" />
+		</floating-label>
+
+		<!-- <input
+			type="hidden"
+			stripe="billingPortal.sessions.create"
+			stripe-key="return_url"
+			value="$href" />
+
+		<input
+			type="hidden"
+			class="customer"
+			stripe="billingPortal.sessions.create"
+			stripe-key="customer"
+			input-attribute="$click"
+			input-next />
+		<div actions="stripe.billingPortal.sessions.create"></div>
+
+		<input
+			type="hidden"
+			stripe="billingPortal.sessions.create"
+			stripe-key="url"
+			stripe-request="false"
+			input-attribute="href"
+			input-next /> -->
+
+		<div class="display:flex justify-content:flex-end width:100%">
+			<div
+				class="display:flex gap:10px"
+				click-closest="#sales"
+				click-attribute="display"
+				click-value="payment-method">
+				<i src="./assets/svg/plus.svg"></i>
+				<span class="padding-top:2px"> Add payment method </span>
+			</div>
+		</div>
+	</payment-method-container>
+
+	<!-- <input
+		type="number"
+		calculate="Math.round(({(#amountInCents)} * 15) / 100)"
+		stripe="paymentIntents.create"
+		stripe-key="application_fee_amount"
+		hidden />
+ -->
+	<!-- <input
+		type="hidden"
+		array="users"
+		object="$user_id"
+		key="ambassadorAccount"
+		stripe="paymentIntents.create"
+		stripe-key="transfer_data.destination"
+		input-next
+		input-attribute="object" />
+
+	<input
+		id="ambassador"
+		type="checkbox"
+		array="ambassadors"
+		object=""
+		key="charges_enabled"
+		hidden />
+
+	<textarea
+		id="ambassadorParents"
+		array="users"
+		object="$user_id"
+		key="ambassadorParents"
+		value-type="json"
+		class="input-field"
+		hidden></textarea> -->
+
+	<!-- Submit Button -->
+	<button
+		class="width:100% margin-top:20px"
+		actions="validate, stripe.paymentIntents.create, timeout(2000), save">
+		Confirm Payment
+	</button>
+
+	<!-- Error/Success Response -->
+	<div template="validate, stripe.paymentIntents.create" class="response">
+		<span class="{{status}}">{{message}}</span>
+	</div>
+</form>
+
+<form hidden>
+	<input
+		id="detachPaymentMethod"
+		stripe="paymentMethods.detach"
+		stripe-key="$param[0]"
+		input-attribute="$click"
+		input-next />
+	<div actions="stripe.paymentMethods.detach"></div>
+</form>
+
+<form hidden>
+	<!-- Input for the Customer ID -->
+	<input
+		type="hidden"
+		class="customer"
+		stripe="customers.update"
+		stripe-key="$param[0]" />
+	<!-- Input for the Default Payment Method (pm_id) -->
+	<input
+		id="setDefaultPaymentMethod"
+		stripe="customers.update"
+		stripe-key="invoice_settings.default_payment_method"
+		input-attribute="$click"
+		input-next />
+
+	<!-- Action triggered when the Default Payment Method is set -->
+	<div actions="stripe.customers.update"></div>
+</form>

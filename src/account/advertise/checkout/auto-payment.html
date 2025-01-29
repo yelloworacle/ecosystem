@@ -1,0 +1,61 @@
+<form api="stripe" class="flex-form flex-direction:column gap:10px">
+	<div
+		class="display:flex justify-content:space-between width:100% margin-bottom:20px">
+		<h3>Auto Top-Up Settings</h3>
+		<i
+			click-closest="#sales"
+			click-attribute="display"
+			click-value="payment"
+			src="./assets/svg/times.svg">
+		</i>
+	</div>
+
+	<!-- Auto Top-Up Amount -->
+	<floating-label>
+		<!-- User Input Field -->
+		<input
+			id="autoTopUpAmount"
+			type="number"
+			class="padding-left:28px!important"
+			min="50"
+			placeholder="Enter amount (min $50)" />
+
+		<div class="floating-icon left:12px width:12px">$</div>
+
+		<!-- Processed Amount (in cents) -->
+		<input
+			id="autoTopUpAmountInCents"
+			type="number"
+			calculate="{(#amountInput)} * 100"
+			stripe="paymentIntents.create"
+			stripe-key="amount"
+			required
+			hidden />
+	</floating-label>
+
+	<!-- Threshold Amount -->
+	<floating-label>
+		<!-- User Input Field -->
+		<input
+			id="thresholdAmountInput"
+			type="number"
+			class="padding-left:28px!important"
+			min="5"
+			placeholder="Threshold Amount (e.g., 10.00)" />
+
+		<div class="floating-icon left:12px width:12px">$</div>
+
+		<!-- Processed Amount (in cents) -->
+		<input
+			id="ThresholdAmountInCents"
+			type="number"
+			calculate="{(#amountInput)} * 100"
+			stripe="paymentIntents.create"
+			stripe-key="amount"
+			required
+			hidden />
+	</floating-label>
+
+	<!-- Submit Button -->
+	<button actions="save" class="btn-primary width:100%">Save</button>
+</form>
