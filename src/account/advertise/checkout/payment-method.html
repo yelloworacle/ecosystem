@@ -102,15 +102,26 @@
 			input-value="customers.update" />
 		Set as default payment method
 	</label>
-
 	<button
+		actions="click, submit, timeout(2000), stripe.paymentMethods.attach, action(document; #loadPaymentMethods), click, timeout(2000), toggle"
+		click-selector="i"
+		click-attribute="src"
+		click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg"
+		toggle-closest="#sales"
+		toggle-attribute="display"
+		toggle-value="payment">
+		<i src="../assets/svg/save.svg"></i>
+		<span class="margin-left:5px">Save</span>
+	</button>
+
+	<!-- <button
 		actions="submit, timeout(2000), stripe.paymentMethods.attach, action(document; #loadPaymentMethods), click"
 		click-closest="#sales"
 		click-attribute="display"
 		click-value="payment"
 		class="width:100%">
 		Save Payment Method
-	</button>
+	</button> -->
 
 	<div
 		template="stripe.paymentMethods.create, stripe.paymentMethods.attach, stripe.customers.update"

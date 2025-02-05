@@ -319,10 +319,17 @@
 
 	<!-- Submit Button -->
 	<button
-		class="width:100% margin-top:20px"
-		actions="validate, stripe.paymentIntents.create, timeout(2000), save">
-		Confirm Payment
+		actions="validate, click, stripe.paymentIntents.create, timeout(2000), save, click, timeout(2000), click"
+		click-selector="i"
+		click-attribute="src"
+		click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg">
+		<i src="../assets/svg/save.svg"></i>
+		<span class="margin-left:5px">Confirm Payment</span>
 	</button>
+
+	<!-- <button
+		class="width:100% margin-top:20px"
+		actions="validate, stripe.paymentIntents.create, timeout(2000), save"></button> -->
 
 	<!-- Error/Success Response -->
 	<div template="validate, stripe.paymentIntents.create" class="response">
