@@ -166,8 +166,13 @@
 						click-value="{{data.id}}"
 						click-closest="[stripe-key='payment_method']"
 						value="{{data.id}}"
-						class="card display:none align-items:center order:1 padding:10px!importantheight:70px cursor:pointer">
+						class="card display:none align-items:center order:1 padding:10px!important height:70px cursor:pointer">
 						<style>
+							payment-method-list[value="{{object._id}}"]
+								> payment-method[value="{{object._id}}"] {
+								display: flex;
+								order: 0;
+							}
 							div[value="{{data.id}}"]
 								payment-method[value="{{data.id}}"] {
 								display: flex;
@@ -209,7 +214,10 @@
 							class="display:inline-flex align-items:center"
 							hover-selector=".card"
 							hover-attribute="class"
-							hover-value="display:block!important">
+							hover-value="display:block!important"
+							hover-stopPropagation
+							click-attribute=""
+							click-stopPropagation>
 							<div
 								class="card display:none position:absolute right:35px height:70px wdth:108px padding:10px!important font-size:14px line-height:1.9 transition:0.3s box-shadow:unset!important">
 								<div
@@ -224,9 +232,12 @@
 								<div
 									click-attribute="value"
 									click-value="{{data.id}}"
-									click-selector="document; #setDefaultPaymentMethod"
-									click-stopPropagation>
-									Set as default
+									click-selector="document; #setDefaultPaymentMethod, document; #defaultPaymentId">
+									<div
+										click-attribute="$click"
+										click-closest="payment-method">
+										Set as default
+									</div>
 								</div>
 							</div>
 							<i
