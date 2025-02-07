@@ -741,7 +741,7 @@ textarea {
 }
 
 /* Apply the animation to the icon with a class */
-[src="./assets/svg/spinner.svg"] {
+[src$="assets/svg/spinner.svg"] {
 	animation: spin 2s linear infinite;
 	/* Adjust the duration and other properties as needed */
 }

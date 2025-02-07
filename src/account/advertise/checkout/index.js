@@ -30,10 +30,14 @@
 		const stripe = Stripe(pk);
 		const elements = stripe.elements();
 
+		const color = getComputedStyle(document.body).color;
+
 		const style = {
 			base: {
 				fontSize: "16px",
-				color: "#32325d"
+				color,
+				backgroundColor: "transparent",
+				"::placeholder": { color }
 			}
 		};
 

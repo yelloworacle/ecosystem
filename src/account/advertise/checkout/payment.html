@@ -1,8 +1,19 @@
 <form class="flex-form">
-	<h3 class="margin-bottom:20px">Add to credit balance</h3>
+	<div
+		class="display:flex justify-content:space-between width:100% margin-bottom:20px">
+		<h3>Add to credit balance</h3>
+		<i
+			actions="state"
+			state_to="mainView"
+			state-src="./account/advertise/"
+			src="./assets/svg/times.svg">
+		</i>
+	</div>
 
 	<!-- Payment Amount -->
 	<floating-label class="width:100%">
+		<div class="padding-left:14px">$</div>
+
 		<!-- User Input Field -->
 		<input
 			type="number"
@@ -12,18 +23,17 @@
 			object=""
 			key="$inc.balance"
 			read="false"
-			class="currentOrg padding-left:28px!important"
+			class="floating-label currentOrg"
 			min="50"
 			placeholder="Enter amount (min $50)" />
 
-		<div class="floating-icon left:14px width:14px">$</div>
 		<div
-			class="position:absolute top:10px right:14px font-size:14px"
+			class="display:flex align-items:center gap:5px width:170px font-size:14px"
 			click-closest="#sales"
 			click-attribute="display"
 			click-value="auto-top-up">
 			<i src="./assets/svg/cog.svg"></i>
-			<span> Auto Top-Up </span>
+			<span class="margin-top:2px"> Auto Top-Up </span>
 		</div>
 
 		<!-- Processed Amount (in cents) -->
@@ -116,6 +126,12 @@
 			stripe="customers.retrieve"
 			stripe-key="$param[0]" />
 
+		<style>
+			payment-method-list.open > payment-method {
+				display: flex;
+			}
+		</style>
+
 		<floating-label
 			class="margin-bottom:10px"
 			click-attribute="class"
@@ -126,36 +142,14 @@
 				stripe-key="payment_method"
 				value=""
 				placeholder="Payment Method">
-				<style>
-					payment-method-list {
-						display: flex;
-						flex-direction: column;
-					}
-					payment-method-list > payment-method:not([selected]) {
-						display: none;
-					}
-					payment-method-list.open > payment-method {
-						display: flex;
-					}
-
-					payment-method {
-						order: 1; /* Default order for all items */
-					}
-
-					payment-method[selected] {
-						order: 0; /* Move selected item to the top */
-					}
-					.options-icon {
-						cursor: pointer;
-						padding: 10px;
-					}
-					.options {
-						line-height: 1.5;
-					}
-					.options div:hover {
-						cursor: pointer;
-					}
-				</style>
+				<input
+					id="defaultPaymentId"
+					type="hidden"
+					stripe="customers.retrieve"
+					stripe-key="invoice_settings.default_payment_method"
+					stripe-request="false"
+					input-attribute="value"
+					input-parent />
 
 				<payment-method-list
 					class="display:flex flex-direction:column gap:10px"
@@ -171,10 +165,23 @@
 						click-attribute="value"
 						click-value="{{data.id}}"
 						click-closest="[stripe-key='payment_method']"
-						selected-attribute="isSelected"
-						selected-value="true"
-						selected-group="payment-methods"
-						class="card display:flex align-items:center padding:10px!important height:70px">
+						value="{{data.id}}"
+						class="card display:none align-items:center order:1 padding:10px!importantheight:70px cursor:pointer">
+						<style>
+							div[value="{{data.id}}"]
+								payment-method[value="{{data.id}}"] {
+								display: flex;
+								order: 0;
+							}
+							#defaultPaymentId[value="{{data.id}}"]
+								~ payment-method-list
+								payment-method[value="{{data.id}}"]
+								.default-card-label {
+								display: block;
+								font-weight: bold;
+							}
+						</style>
+
 						<!-- Icon for Card Brand -->
 						<i
 							src="./assets/svg/cc-{{data.card.brand}}.svg"
@@ -193,8 +200,9 @@
 
 						<!-- Default Card Label -->
 						<div
-							class="default-card-label padding-top:2px font-size:12px">
-							<span class="badge"> Default </span>
+							value="{{data.id}}"
+							class="default-card-label display:none padding-top:2px font-size:12px">
+							<span> Default </span>
 						</div>
 
 						<div
@@ -228,48 +236,7 @@
 					</payment-method>
 				</payment-method-list>
 			</div>
-
-			<!-- Hidden Input for Default Payment Method -->
-			<input
-				class="paymentid"
-				type="hidden"
-				stripe="customers.retrieve"
-				stripe-key="invoice_settings.default_payment_method"
-				stripe-request="false"
-				input-attribute="selected"
-				input-value=""
-				input-parent="payment-method[click-value='$value']"
-				change-attribute="value"
-				change-previous
-				event-name="default"
-				defualt-attribute="selected"
-				defualt-value="true"
-				defualt-parent="payment-method[click-valuedeafault='$value']"
-				default-events="input" />
 		</floating-label>
-
-		<!-- <input
-			type="hidden"
-			stripe="billingPortal.sessions.create"
-			stripe-key="return_url"
-			value="$href" />
-
-		<input
-			type="hidden"
-			class="customer"
-			stripe="billingPortal.sessions.create"
-			stripe-key="customer"
-			input-attribute="$click"
-			input-next />
-		<div actions="stripe.billingPortal.sessions.create"></div>
-
-		<input
-			type="hidden"
-			stripe="billingPortal.sessions.create"
-			stripe-key="url"
-			stripe-request="false"
-			input-attribute="href"
-			input-next /> -->
 
 		<div class="display:flex justify-content:flex-end width:100%">
 			<div
@@ -283,29 +250,38 @@
 		</div>
 	</payment-method-container>
 
-	<!-- <input
-		type="number"
-		calculate="Math.round(({(#amountInCents)} * 15) / 100)"
-		stripe="paymentIntents.create"
-		stripe-key="application_fee_amount"
-		hidden />
- -->
-	<!-- <input
+	<!-- Transfer Destination (Also Dynamically Gets Stripe Attribute) -->
+	<input
 		type="hidden"
 		array="users"
 		object="$user_id"
 		key="ambassadorAccount"
-		stripe="paymentIntents.create"
 		stripe-key="transfer_data.destination"
+		class="ambassador-target"
 		input-next
-		input-attribute="object" />
+		input-attribute="object"
+		hidden />
 
+	<!-- Ambassador Condition (Controls When Stripe Attributes Are Applied) -->
 	<input
 		id="ambassador"
 		type="checkbox"
+		class="ambassador"
 		array="ambassadors"
 		object=""
 		key="charges_enabled"
+		input-attribute="stripe"
+		input-selector="ambassador-target[]"
+		input-value="paymentIntents.create"
+		input-if="true"
+		hidden />
+
+	<!-- Application Fee Amount (Dynamically Gets Stripe Attribute) -->
+	<input
+		type="number"
+		calculate="Math.round(({(#amountInCents)} * 15) / 100)"
+		stripe-key="application_fee_amount"
+		class="ambassador-target"
 		hidden />
 
 	<textarea
@@ -315,21 +291,18 @@
 		key="ambassadorParents"
 		value-type="json"
 		class="input-field"
-		hidden></textarea> -->
+		hidden></textarea>
 
 	<!-- Submit Button -->
 	<button
 		actions="validate, click, stripe.paymentIntents.create, timeout(2000), save, click, timeout(2000), click"
 		click-selector="i"
 		click-attribute="src"
-		click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg">
+		click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg"
+		class="width:100%">
 		<i src="../assets/svg/save.svg"></i>
 		<span class="margin-left:5px">Confirm Payment</span>
 	</button>
-
-	<!-- <button
-		class="width:100% margin-top:20px"
-		actions="validate, stripe.paymentIntents.create, timeout(2000), save"></button> -->
 
 	<!-- Error/Success Response -->
 	<div template="validate, stripe.paymentIntents.create" class="response">

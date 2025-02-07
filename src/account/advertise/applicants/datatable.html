@@ -1,49 +1,6 @@
 <section class="centered">
 	<a href="./signin.html" session="false" hidden></a>
-	<floating-label class="margin-bottom:20px">
-		<cocreate-select
-			realtime="true"
-			array="users"
-			object="$user_id"
-			key="currentOrg"
-			input-attribute="value"
-			input-selector="document; #test"
-			placeholder="Organization">
-			<cc-options
-				array="organizations"
-				object
-				filter-limit
-				render-selector="[template]">
-				<input
-					type="hidden"
-					filter-query-key="members.$in"
-					value-type="array"
-					filter-parent
-					value="$user_id" />
-
-				<cc-option value="{{object._id}}" template
-					>{{object.name}}
-				</cc-option>
-			</cc-options>
-		</cocreate-select>
-	</floating-label>
-
-	<input
-		id="test"
-		type="hidden"
-		array="users"
-		object="$user_id"
-		key="currentOrg"
-		filter-query-key="organization"
-		filter-selector="document; [org-filter][]"
-		change-selector="document; .change[]"
-		change-attribute="value"
-		change-value="0"
-		input-attribute="object"
-		input-selector="document; [org-object][]"
-		placeholder="Organization"
-		value="test" />
-
+	<div src="./account/organizations/org-selector.html"></div>
 	<div
 		path="./account/advertise/applicants/form.html"
 		src="./components/datatable-toolbar.html"
@@ -159,14 +116,6 @@
 					</td>
 				</tr>
 			</tbody>
-
-			<!-- <input
-				type="hidden"
-				array="users"
-				object="$user_id"
-				key="currentOrg"
-				filter-key="organization"
-				filter-next /> -->
 
 			<tbody
 				array="applicants"

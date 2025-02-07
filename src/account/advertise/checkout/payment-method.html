@@ -36,14 +36,16 @@
 			required />
 	</floating-label>
 
-	<div
-		id="payment-method-element"
-		class="stripe-element"
-		stripe="paymentMethods.create"
-		stripe-key="card"
-		stripe-response="false">
-		<!-- Stripe Elements will be inserted here -->
-	</div>
+	<floating-label>
+		<div
+			id="payment-method-element"
+			class="stripe-element"
+			stripe="paymentMethods.create"
+			stripe-key="card"
+			stripe-response="false">
+			<!-- Stripe Elements will be inserted here -->
+		</div>
+	</floating-label>
 
 	<!-- Hidden Input for Payment Method Type -->
 	<input
@@ -81,8 +83,6 @@
 		stripe-key="customer"
 		required />
 
-	<!-- Hidden Input for Payment Method ID -->
-
 	<!-- Checkbox for Setting as Default Paymen Method -->
 	<label for="make-default">
 		<input
@@ -109,7 +109,8 @@
 		click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg"
 		toggle-closest="#sales"
 		toggle-attribute="display"
-		toggle-value="payment">
+		toggle-value="payment"
+		class="width:100%">
 		<i src="../assets/svg/save.svg"></i>
 		<span class="margin-left:5px">Save</span>
 	</button>

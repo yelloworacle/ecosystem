@@ -57,36 +57,9 @@
 		}
 	</style>
 
-	<floating-label class="margin-bottom:20px">
-		<cocreate-select
-			realtime="true"
-			array="users"
-			object="$user_id"
-			key="currentOrg"
-			input-attribute="value"
-			input-selector="document; #test"
-			placeholder="Organization">
-			<cc-options
-				array="organizations"
-				object
-				filter-limit
-				render-selector="[template]">
-				<input
-					type="hidden"
-					filter-query-key="members.$in"
-					value-type="array"
-					filter-parent
-					value="$user_id" />
-
-				<cc-option value="{{object._id}}" template
-					>{{object.name}}
-				</cc-option>
-			</cc-options>
-		</cocreate-select>
-	</floating-label>
+	<div src="./account/organizations/org-selector.html"></div>
 
 	<input
-		id="test"
 		type="hidden"
 		array="users"
 		object="$user_id"
@@ -99,14 +72,14 @@
 		input-attribute="object"
 		input-selector="document; [org-object][]"
 		placeholder="Organization"
-		value="test" />
+		value="org_id" />
 
-	<container id="dashboard" class="width:100% padding:0px">
+	<container id="dashboard">
 		<form
 			array="advertisements"
 			object
 			save="false"
-			class="display:flex flex-wrap:wrap gap:15px margin-bottom:30px">
+			class="display:flex flex-wrap:wrap gap:15px margin-bottom:50px">
 			<div class="card flex-grow:1 width:180px">
 				<h2>Impressions</h2>
 				<span
@@ -166,7 +139,7 @@
 			</div>
 		</form>
 	</container>
-	<container id="table" class="datatable-container width:100% padding:0px">
+	<container id="table" class="datatable-container">
 		<div
 			path="./account/advertise/form.html"
 			src="./components/datatable-toolbar.html"

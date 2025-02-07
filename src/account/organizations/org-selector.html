@@ -1,0 +1,79 @@
+<style>
+	organization-list.open > organization {
+		display: flex;
+	}
+</style>
+
+<floating-label
+	class="margin-bottom:40px width:300px margin-left:auto"
+	click-attribute="class"
+	click-value="open"
+	click-selector="organization-list">
+	<organization-list
+		class="display:flex flex-direction:column gap:10px"
+		placeholder="Organization"
+		array="organizations"
+		object
+		value=""
+		filter-limit
+		render-selector="[template]">
+		<input
+			type="hidden"
+			value="$user_id"
+			value-type="array"
+			filter-query-key="members.$in"
+			filter-parent />
+		<input
+			id="currentOrg"
+			realtime="true"
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="currentOrg"
+			input-attribute="value"
+			input-parent />
+
+		<!-- Template for Organization -->
+		<organization
+			template
+			value="{{object._id}}"
+			click-attribute="value"
+			click-value="{{object._id}}"
+			click-previous
+			class="card display:none align-items:center order:1 cursor:pointer padding:10px!important">
+			<style>
+				organization-list[value="{{object._id}}"]
+					> organization[value="{{object._id}}"] {
+					display: flex;
+					order: 0;
+				}
+			</style>
+			<div class="flex-grow:1">
+				<div class="font-weight:bold font-size:16px">
+					{{object.name}}
+				</div>
+			</div>
+			<div
+				class="display:inline-flex align-items:center"
+				hover-selector=".card"
+				hover-attribute="class"
+				hover-value="display:block!important">
+				<div
+					class="card display:none position:absolute right:35px wdth:108px padding:5px!important font-size:14px transition:0.3s box-shadow:unset!important">
+					<div
+						actions="state"
+						state_to="mainView"
+						state-src="./account/organizations/form.html">
+						<div
+							state_to="form-fields"
+							state-object="{{object._id}}"></div>
+						Edit
+					</div>
+				</div>
+				<i
+					class="padding-left:10px"
+					src="./assets/svg/ellipsis-v.svg"></i>
+			</div>
+		</organization>
+	</organization-list>
+</floating-label>
