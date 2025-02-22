@@ -95,7 +95,7 @@
 			class="position:fixed top:0px left:0px overflow:hidden background:whitesmoke height:100vh width:300px@lg@xl"
 			path="../"
 			src="../components/sidenav.html"
-			resize-selector="document; main, document; footer"
+			resize-document="main, document; footer"
 			resize-attribute="style"
 			resize-property="margin-left"
 			session
@@ -116,7 +116,7 @@
 					<floating-label>
 						<input
 							type="text"
-							filter-selector="document; #blog-posts"
+							filter-document="#blog-posts"
 							filter-query-key="title"
 							state_id="datatable"
 							placeholder="Search" />
@@ -124,7 +124,7 @@
 					<span
 						class="position:absolute bottom:18px right:18px float:right">
 						<a
-							filter-selector="document; #blog-posts"
+							filter-document="#blog-posts"
 							filter-sort-key="title"
 							filter-sort-direction="asc"
 							click-value="desc, asc"

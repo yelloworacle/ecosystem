@@ -174,7 +174,7 @@
 				<input type="checkbox" key="ambassadorTerms" />
 				<a
 					id="createUser"
-					click-selector="document; #questions"
+					click-document="#questions"
 					click-attribute="read"
 					click-value="true"
 					actions="timeout(1000), save, localStorage, click"></a>
@@ -316,7 +316,7 @@
 					<div
 						onload-attribute="example"
 						onload-value="{{object.name}}"
-						onload-selector="document; #example"></div>
+						onload-document="#example"></div>
 				</form>
 			</div>
 		</container>
@@ -334,7 +334,7 @@
 			array="subscriptions"
 			object="6571fe530c48ef6970900a82"
 			key="fields"
-			input-selector="document; #oracle .subscribed[]"
+			input-document="#oracle .subscribed[]"
 			input-attribute="value"
 			class="width:100%"
 			hidden></textarea>
@@ -344,7 +344,7 @@
         array="subscriptions"
         object="6571fe530c48ef6970900a82"
         key="fields"
-        input-selector="document; #example .subscribed[]"
+        input-document="#example .subscribed[]"
         input-attribute="value"
         class="width:100%"
         hidden></textarea> -->
@@ -475,11 +475,11 @@
 		crdt="false"
 		broadcast="false"
 		filter-query-key="name.$in"
-		filter-selector="document; #careers"
+		filter-document="#careers"
 		filter-case-sensitive="false"
 		input-attribute="array"
 		input-value="careers"
-		input-selector="document; #careers"
+		input-document="#careers"
 		hidden></textarea>
 
 	<script src="./oracle/index.js"></script>

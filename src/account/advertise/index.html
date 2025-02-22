@@ -65,12 +65,12 @@
 		object="$user_id"
 		key="currentOrg"
 		filter-query-key="organization"
-		filter-selector="document; [org-filter][]"
-		change-selector="document; .change[]"
+		filter-document="[org-filter][]"
+		change-document=".change[]"
 		change-attribute="value"
 		change-value="0"
 		input-attribute="object"
-		input-selector="document; [org-object][]"
+		input-document="[org-object][]"
 		placeholder="Organization"
 		value="org_id" />
 
@@ -152,7 +152,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-selector="document; tbody[render-selector]"
+								filter-document="tbody[render-selector]"
 								filter-query-key="name.$regex"
 								filter-query-options="i"
 								state_id="datatable"
@@ -161,7 +161,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-selector="document; tbody[render-selector]"
+								filter-document="tbody[render-selector]"
 								filter-sort-key="name"
 								filter-sort-direction=""
 								click-value="desc, asc"
@@ -178,7 +178,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-selector="document; tbody[render-selector]"
+								filter-document="tbody[render-selector]"
 								filter-query-key="_id.$regex"
 								filter-query-options="i"
 								state_id="datatable"
@@ -187,7 +187,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-selector="document; tbody[render-selector]"
+								filter-document="tbody[render-selector]"
 								filter-sort-key="_id"
 								filter-sort-direction=""
 								click-value="desc, asc"
@@ -318,7 +318,7 @@
 			<input
 				key="_id"
 				input-attribute="value"
-				input-selector="document; .addOrg[]" />
+				input-document=".addOrg[]" />
 			<input key="owner" value="$user_id" />
 			<input key="$push.members" value="$user_id" />
 

@@ -76,7 +76,7 @@
 							placeholder="Member Email"
 							key="email"
 							crud="false"
-							input-selector="document; #setemailinput"
+							input-document="#setemailinput"
 							input-attribute="value"
 							required />
 						<a
@@ -103,7 +103,7 @@
 								<floating-label>
 									<input
 										type="text"
-										filter-selector="document; tbody[render-selector]"
+										filter-document="tbody[render-selector]"
 										filter-query-key="firstname.$regex"
 										filter-query-options="i"
 										state_id="datatable"
@@ -112,7 +112,7 @@
 								<span
 									class="position:absolute bottom:18px right:18px float:right">
 									<a
-										filter-selector="document; tbody[render-selector]"
+										filter-document="tbody[render-selector]"
 										filter-sort-key="firstname"
 										filter-sort-direction="asc"
 										click-value="desc, asc"

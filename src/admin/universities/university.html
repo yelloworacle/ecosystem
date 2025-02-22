@@ -171,7 +171,7 @@
 				<input type="checkbox" key="ambassadorTerms" />
 				<a
 					id="createUser"
-					click-selector="document; #questions"
+					click-document="#questions"
 					click-attribute="read"
 					click-value="true"
 					actions="timeout(1000), save, localStorage, click"></a>
@@ -313,7 +313,7 @@
 					<div
 						onload-attribute="example"
 						onload-value="{{object.name}}"
-						onload-selector="document; #example"></div>
+						onload-document="#example"></div>
 				</form>
 			</div>
 		</section>
@@ -482,11 +482,11 @@
 		crdt="false"
 		broadcast="false"
 		filter-query-key="name.$in"
-		filter-selector="document; #programs"
+		filter-document="#programs"
 		filter-case-sensitive="false"
 		input-attribute="array"
 		input-value="programs"
-		input-selector="document; #programs"
+		input-document="#programs"
 		hidden></textarea>
 
 	<script src="./oracle/index.js"></script>

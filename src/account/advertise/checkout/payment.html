@@ -18,12 +18,7 @@
 		<input
 			type="number"
 			id="amountInput"
-			storage="mongodb"
-			array="organizations"
-			object=""
-			key="$inc.balance"
-			read="false"
-			class="floating-label currentOrg"
+			class="floating-label"
 			min="50"
 			placeholder="Enter amount (min $50)" />
 
@@ -224,7 +219,7 @@
 									actions="click, remove"
 									click-attribute="value"
 									click-value="{{data.id}}"
-									click-selector="document; #detachPaymentMethod"
+									click-document="#detachPaymentMethod"
 									click-stopPropagation
 									remove-closest="payment-method">
 									Remove Card
@@ -232,7 +227,7 @@
 								<div
 									click-attribute="value"
 									click-value="{{data.id}}"
-									click-selector="document; #setDefaultPaymentMethod, document; #defaultPaymentId">
+									click-document="#setDefaultPaymentMethod, document; #defaultPaymentId">
 									<div
 										click-attribute="$click"
 										click-closest="payment-method">

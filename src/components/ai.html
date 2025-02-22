@@ -242,7 +242,7 @@
 
 <div
 	observe-target=".message.assistant textarea[type='code']"
-	observe-selector="document; .message.assistant codearea:not(.message.assistant .code-tools + codearea)[]"
+	observe-document=".message.assistant codearea:not(.message.assistant .code-tools + codearea)[]"
 	observe-insert-adjacent="beforebegin"
 	hidden>
 	<div class="code-tools">
@@ -301,8 +301,8 @@
 				actions="attributes"> -->
 			<a
 				class="display:flex align-items:center gap:5px"
-				click-selector="document; iframe; $clickedElement"
-				click-value-selector="document; .code-container textarea"
+				click-document="iframe; $clickedElement"
+				click-value-document=".code-container textarea"
 				click-insert-adjacent="afterbegin">
 				<i src="{{path}}assets/svg/chevron-right.svg"></i>
 			</a>
@@ -405,7 +405,7 @@
 	<button
 		id="send-message"
 		actions="save, click, reset, openai.chat.completions.create, action(document; #aiAction)"
-		click-selector="document; #chat-body"
+		click-document="#chat-body"
 		click-attribute="observe-value"
 		click-value="bottom">
 		<i src="{{path}}assets/svg/paper-plane.svg"></i>
@@ -415,7 +415,7 @@
 		openai="chat.completions.create"
 		openai-key="choices[0].message.content"
 		openai-request="false"
-		input-selector="document; .aiContent[]"
+		input-document=".aiContent[]"
 		input-attribute="value"
 		hidden></textarea>
 </form>

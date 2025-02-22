@@ -2,7 +2,7 @@
 	<a href="./signin.html" session="false" hidden></a>
 	<form
 		state_id="form-fields"
-		array="users"
+		array="payments"
 		object=""
 		realtime="false"
 		class="flex-form">
@@ -13,29 +13,6 @@
 
 		<floating-label class="width:290px">
 			<input
-				type="text"
-				key="firstname"
-				placeholder="First Name"
-				class="floating-label" />
-		</floating-label>
-		<floating-label class="width:290px">
-			<input
-				type="text"
-				key="lastname"
-				placeholder="Last Name"
-				class="floating-label" />
-		</floating-label>
-
-		<floating-label class="width:100%">
-			<input
-				type="text"
-				key="description"
-				placeholder="Description"
-				class="floating-label" />
-		</floating-label>
-
-		<floating-label class="width:290px">
-			<input
 				type="number"
 				key="amount"
 				placeholder="Amount"
@@ -43,65 +20,73 @@
 		</floating-label>
 
 		<floating-label class="width:290px">
-			<select key="status" placeholder="Status" class="floating-label">
-				<option label="Succesful" value="succesful">Succesful</option>
-				<option label="Refunded" value="refunded">Refunded</option>
-				<option label="Disputed" value="disputed">Disputed</option>
-			</select>
-		</floating-label>
-
-		<floating-label class="width:100%">
-			<select key="contact_id" class="floating-label">
-				<option label="Option1" value="option-1">Option1</option>
-				<option label="Option2" value="option-2">Option2</option>
-				<option label="Option3" value="option-3">Option3</option>
-				<option label="Option4" value="option-4">Option4</option>
-			</select>
-		</floating-label>
-
-		<floating-label class="width:290px">
 			<input
 				type="number"
-				key="app_fee"
-				placeholder="App Fee"
+				key="amount_received"
+				placeholder="Amount Received"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:290px">
+			<select key="status" placeholder="Status" class="floating-label">
+				<option label="Succeeded" value="succeeded">Succeeded</option>
+				<option label="Canceled" value="canceled">Canceled</option>
+			</select>
+		</floating-label>
+
+		<floating-label class="width:290px">
+			<input
+				type="text"
+				key="currency"
+				placeholder="Currency"
 				class="floating-label" />
 		</floating-label>
 
 		<floating-label class="width:290px">
 			<input
 				type="text"
-				key="destination"
-				placeholder="Destination"
+				key="id"
+				placeholder="Payment Intent ID"
 				class="floating-label" />
 		</floating-label>
 
 		<floating-label class="width:290px">
 			<input
 				type="text"
-				key="charge_id"
-				placeholder="Charge Id"
+				key="latest_charge"
+				placeholder="Latest Charge ID"
 				class="floating-label" />
 		</floating-label>
 
 		<floating-label class="width:290px">
-			<select key="vendor_id" placeholder="Vendor" class="floating-label">
-				<option label="Option 1" value="option-1">Option 1</option>
-				<option label="Option 2" value="option-2">Option 2</option>
-				<option label="Option 3" value="option-3">Option 3</option>
-				<option label="Option 4" value="option-4">Option 4</option>
-			</select>
+			<input
+				type="text"
+				key="payment_method"
+				placeholder="Payment Method ID"
+				class="floating-label" />
 		</floating-label>
 
-		<floating-label class="width:100%">
-			<select
-				key="related_to"
-				placeholder="Related To"
-				class="floating-label">
-				<option label="Option 1" value="option-1">Option 1</option>
-				<option label="Option 2" value="option-2">Option 2</option>
-				<option label="Option 3" value="option-3">Option 3</option>
-				<option label="Option 4" value="option-4">Option 4</option>
-			</select>
+		<floating-label class="width:290px">
+			<input
+				type="text"
+				key="customer"
+				placeholder="Customer ID"
+				class="floating-label" />
+		</floating-label>
+		<floating-label class="width:290px">
+			<input
+				type="text"
+				key="client_secret"
+				placeholder="Client Secret"
+				class="floating-label" />
+		</floating-label>
+
+		<floating-label class="width:290px">
+			<input
+				type="text"
+				key="organization_id"
+				placeholder="Organization ID"
+				class="floating-label" />
 		</floating-label>
 
 		<div
