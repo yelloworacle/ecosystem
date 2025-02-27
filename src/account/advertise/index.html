@@ -57,23 +57,6 @@
 		}
 	</style>
 
-	<div src="./account/organizations/org-selector.html"></div>
-
-	<input
-		type="hidden"
-		array="users"
-		object="$user_id"
-		key="currentOrg"
-		filter-query-key="organization"
-		filter-document="[org-filter][]"
-		change-document=".change[]"
-		change-attribute="value"
-		change-value="0"
-		input-attribute="object"
-		input-document="[org-object][]"
-		placeholder="Organization"
-		value="org_id" />
-
 	<container id="dashboard">
 		<form
 			array="advertisements"
@@ -132,8 +115,7 @@
 					array="organizations"
 					object
 					key="balance"
-					org-object
-					class="change"
+					class="change currentOrg"
 					>0</span
 				>
 			</div>
@@ -257,7 +239,7 @@
 			key="advertiseTerms"
 			input-closest=".main-view"
 			input-attribute="terms"
-			org-object />
+			class="currentOrg" />
 
 		<h1>Advertise With Us</h1>
 		<p>

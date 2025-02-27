@@ -20,12 +20,12 @@
 
 <!-- Logo -->
 <a
-	href="{{path}}"
+	href="$relativePath"
 	actions="state"
 	state_to="mainView"
-	state-src="{{path}}home/"
+	state-src="$relativePathhome/"
 	class="height:50px display:flex align-items:center display:none@xs@sm@md">
-	<img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
+	<img height="50px" src="$relativePathassets/icons/icon-1240-1240.png" />
 	<span class="logo-name" translate="no"
 		>Yellow <span class="logo-name-colored">Oracle</span></span
 	>
@@ -33,16 +33,16 @@
 
 <!-- Icon Logo -->
 <a
-	href="{{path}}"
+	href="$relativePath"
 	actions="state"
 	state_to="mainView"
-	state-src="{{path}}home/"
+	state-src="$relativePathhome/"
 	class="height:50px display:none@lg@xl">
 	<img
 		array="organizations"
 		object=""
 		key="icon-logo"
-		src="{{path}}assets/icons/icon-1240-1240.png"
+		src="$relativePathassets/icons/icon-1240-1240.png"
 		height="50px"
 		alt="icon logo" />
 </a>
@@ -51,29 +51,29 @@
 <div
 	class="display:flex align-items:center display:none@xs@sm overflow:auto height:50px width:100% min-width:335px margin-left:20px font-size:20px padding-top:5px">
 	<a
-		href="{{path}}"
+		href="$relativePath"
 		actions="state"
 		state_to="mainView"
-		state-src="{{path}}home/"
+		state-src="$relativePathhome/"
 		class="margin-right:25px"
 		>Home</a
 	>
 	<a
-		href="{{path}}"
+		href="$relativePath"
 		actions="state"
 		state_to="mainView"
-		state-src="{{path}}oracle/"
+		state-src="$relativePathoracle/"
 		class="margin-right:25px"
 		>Oracle</a
 	>
 
-	<a href="{{path}}blog/index.html" class="margin-right:25px">Blog</a>
+	<a href="$relativePathblog/index.html" class="margin-right:25px">Blog</a>
 
 	<a
-		href="{{path}}"
+		href="$relativePath"
 		actions="state"
 		state_to="mainView"
-		state-src="{{path}}account/profile/">
+		state-src="$relativePathaccount/profile/">
 		Account</a
 	>
 </div>
@@ -89,7 +89,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="{{path}}assets/svg/pinterest-p.svg"></i>
+				src="$relativePathassets/svg/pinterest-p.svg"></i>
 		</a>
 		<a
 			href="https://twitter.com/yelloworacle1"
@@ -97,7 +97,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="{{path}}assets/svg/twitter.svg"></i>
+				src="$relativePathassets/svg/twitter.svg"></i>
 		</a>
 		<a
 			href="https://www.facebook.com/yelloworacle"
@@ -105,7 +105,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="{{path}}assets/svg/facebook.svg"></i>
+				src="$relativePathassets/svg/facebook.svg"></i>
 		</a>
 		<a
 			href="https://www.instagram.com/yelloworacle/"
@@ -113,7 +113,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="{{path}}assets/svg/instagram.svg"></i>
+				src="$relativePathassets/svg/instagram.svg"></i>
 		</a>
 		<a
 			href="https://www.linkedin.com/company/yelloworacle"
@@ -121,7 +121,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="{{path}}assets/svg/linkedin-in.svg"></i>
+				src="$relativePathassets/svg/linkedin-in.svg"></i>
 		</a>
 	</div>
 
@@ -132,7 +132,7 @@
 <!-- Avatar -->
 <div class="avatar round">
 	<div array="users" object="$user_id" key="firstname" class="avatar-name">
-		<i src="{{path}}assets/svg/sign-in-alt.svg"></i>
+		<i src="$relativePathassets/svg/sign-in-alt.svg"></i>
 	</div>
 	<div class="avatar-image">
 		<img
@@ -141,7 +141,7 @@
 			key="avatar[0].src"
 			onerror="this.style.display='none'" />
 		<div>
-			<a href="{{path}}signin.html"> </a>
+			<a href="$relativePathsignin.html"> </a>
 		</div>
 		<a
 			class="signin"
@@ -165,21 +165,21 @@
 	hidden>
 	<a
 		actions="state"
-		state-src="{{path}}account/profile/index.html"
+		state-src="$relativePathaccount/profile/index.html"
 		state_to="mainView"
-		href="{{path}}"
+		href="$relativePath"
 		click-parent
 		click-attribute="hidden"
 		click-value=""
 		class="display:flex align-items:center gap:10px">
-		<i src="{{path}}assets/svg/user.svg"></i>
+		<i src="$relativePathassets/svg/user.svg"></i>
 		<span>Profile</span>
 	</a>
 	<a
 		actions="signOut"
-		href="{{path}}signin.html"
+		href="$relativePathsignin.html"
 		class="display:flex align-items:center gap:10px">
-		<i src="{{path}}assets/svg/sign-out-alt.svg"></i>
+		<i src="$relativePathassets/svg/sign-out-alt.svg"></i>
 		<span>Sign Out</span>
 	</a>
 </div>

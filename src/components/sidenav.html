@@ -13,23 +13,7 @@
 
 <div
 	class="display:flex justify-content:space-between align-items:center padding:10px">
-	<!-- Logo -->
-	<a
-		href="{{path}}"
-		actions="state"
-		state_to="mainView"
-		state-src="{{path}}home/"
-		click-closest="sidenav"
-		click-attribute="style"
-		click-value="width:0px"
-		click-if="<=993px"
-		click-if-value="$innerWidth"
-		class="height:50px width:210px display:flex align-items:center">
-		<img height="50px" src="{{path}}assets/icons/icon-1240-1240.png" />
-		<span class="logo-name" translate="no"
-			>Yellow <span class="logo-name-colored">Oracle</span></span
-		>
-	</a>
+	<div src="../components/org-selector.html" class="width:210px"></div>
 
 	<!-- Menu Icon -->
 	<a
@@ -51,10 +35,10 @@
 			Navigation
 		</h3>
 		<a
-			href="{{path}}"
+			href="$relativePath"
 			actions="state"
 			state_to="mainView"
-			state-src="{{path}}home/"
+			state-src="$relativePathhome/"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -64,10 +48,10 @@
 			>Home</a
 		>
 		<a
-			href="{{path}}"
+			href="$relativePath"
 			actions="state"
 			state_to="mainView"
-			state-src="{{path}}oracle/"
+			state-src="$relativePathoracle/"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -77,15 +61,15 @@
 			>Oracle</a
 		>
 		<a
-			href="{{path}}blog/index.html"
+			href="$relativePathblog/index.html"
 			class="display:block padding:12px_24px"
 			>Blog</a
 		>
 		<a
-			href="{{path}}"
+			href="$relativePath"
 			actions="state"
 			state_to="mainView"
-			state-src="{{path}}account/profile/"
+			state-src="$relativePathaccount/profile/"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -101,7 +85,7 @@
 
 		<h3 class="margin:50px_10px_5px">Account</h3>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -110,18 +94,18 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}account/profile/"
+				state-src="$pathaccount/profile/"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/user.svg"></i>
+					<i src="$relativePathassets/svg/user.svg"></i>
 				</span>
 				<span>Profile</span>
 			</a>
 		</li>
 
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -130,11 +114,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}account/organizations/datatable.html"
+				state-src="$relativePathaccount/organizations/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/building.svg"></i>
+					<i src="$relativePathassets/svg/building.svg"></i>
 				</span>
 				<span>Organizations</span>
 			</a>
@@ -142,16 +126,16 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}account/organizations/form.html"
+					state-src="$relativePathaccount/organizations/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -160,17 +144,17 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}account/answers/"
+				state-src="$relativePathaccount/answers/"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/circle-question.svg"></i>
+					<i src="$relativePathassets/svg/circle-question.svg"></i>
 				</span>
 				<span>Answers</span>
 			</a>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -179,18 +163,19 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}account/careers/"
+				state-src="$relativePathaccount/careers/"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/person-dots-from-line.svg"></i>
+					<i
+						src="$relativePathassets/svg/person-dots-from-line.svg"></i>
 				</span>
 				<span>Careers</span>
 			</a>
 		</li>
 
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -199,19 +184,19 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}account/subscription/"
+				state-src="$relativePathaccount/subscription/"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<!-- <i src="{{path}}assets/svg/clipboard-question.svg"></i> -->
-					<i src="{{path}}assets/svg/money-bill-wave.svg"></i>
+					<!-- <i src="$relativePathassets/svg/clipboard-question.svg"></i> -->
+					<i src="$relativePathassets/svg/money-bill-wave.svg"></i>
 				</span>
 				<span>Subscription</span>
 			</a>
 		</li>
 
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -220,18 +205,18 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}account/ambassador/"
+				state-src="$relativePathaccount/ambassador/"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/bullhorn.svg"></i>
+					<i src="$relativePathassets/svg/bullhorn.svg"></i>
 				</span>
 				<span>Ambassador</span>
 			</a>
 		</li>
 
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -240,11 +225,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}account/advertise/"
+				state-src="$relativePathaccount/advertise/"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/rectangle-ad.svg"></i>
+					<i src="$relativePathassets/svg/rectangle-ad.svg"></i>
 				</span>
 				<span>Advertise</span>
 			</a>
@@ -252,9 +237,9 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}account/advertise/form.html"
+					state-src="$relativePathaccount/advertise/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
@@ -262,7 +247,7 @@
 
 		<ul class="sub-menu">
 			<li
-				href="{{path}}"
+				href="$relativePath"
 				click-closest="sidenav"
 				click-attribute="style"
 				click-value="width:0px"
@@ -271,7 +256,7 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}account/advertise/applicants/datatable.html"
+					state-src="$relativePathaccount/advertise/applicants/datatable.html"
 					class="display:flex align-items:center">
 					<span
 						class="display:flex justify-content:center min-width:50px">
@@ -280,7 +265,7 @@
 				</a>
 			</li>
 			<!-- <li
-				href="{{path}}"
+				href="$relativePath"
 				click-closest="sidenav"
 				click-attribute="style"
 				click-value="width:0px"
@@ -289,7 +274,7 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}account/advertise/usage/index.html"
+					state-src="$relativePathaccount/advertise/usage/index.html"
 					class="display:flex align-items:center">
 					<span
 						class="display:flex justify-content:center min-width:50px">
@@ -300,7 +285,7 @@
 		</ul>
 
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -309,7 +294,7 @@
 			<a share class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/share-alt.svg"></i>
+					<i src="$relativePathassets/svg/share-alt.svg"></i>
 				</span>
 				<span>Share</span>
 			</a>
@@ -330,7 +315,7 @@
 		<h3 class="margin:50px_10px_5px">Admin</h3>
 
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -339,11 +324,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/users/datatable.html"
+				state-src="$relativePathadmin/users/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/users.svg"></i>
+					<i src="$relativePathassets/svg/users.svg"></i>
 				</span>
 				<span>Users</span>
 			</a>
@@ -351,15 +336,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/users/form.html"
+					state-src="$relativePathadmin/users/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -368,11 +353,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/organizations/datatable.html"
+				state-src="$relativePathadmin/organizations/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/people-roof.svg"></i>
+					<i src="$relativePathassets/svg/people-roof.svg"></i>
 				</span>
 				<span>Organizations</span>
 			</a>
@@ -380,15 +365,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/organizations/form.html"
+					state-src="$relativePathadmin/organizations/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -397,11 +382,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/payments/datatable.html"
+				state-src="$relativePathadmin/payments/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/credit-card.svg"></i>
+					<i src="$relativePathassets/svg/credit-card.svg"></i>
 				</span>
 				<span>Payments</span>
 			</a>
@@ -409,15 +394,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/payments/form.html"
+					state-src="$relativePathadmin/payments/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -426,11 +411,12 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/payouts/datatable.html"
+				state-src="$relativePathadmin/payouts/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/hand-holding-dollar.svg"></i>
+					<i
+						src="$relativePathassets/svg/hand-holding-dollar.svg"></i>
 				</span>
 				<span>Payouts</span>
 			</a>
@@ -438,15 +424,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/payouts/form.html"
+					state-src="$relativePathadmin/payouts/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -455,11 +441,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/blog/datatable.html"
+				state-src="$relativePathadmin/blog/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/blog.svg"></i>
+					<i src="$relativePathassets/svg/blog.svg"></i>
 				</span>
 				<span>Blog Posts</span>
 			</a>
@@ -467,15 +453,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/blog/form.html"
+					state-src="$relativePathadmin/blog/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -484,11 +470,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/social/index.html"
+				state-src="$relativePathadmin/social/index.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/share-from-square.svg"></i>
+					<i src="$relativePathassets/svg/share-from-square.svg"></i>
 				</span>
 				<span>Social Posts</span>
 			</a>
@@ -496,15 +482,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/social/form.html"
+					state-src="$relativePathadmin/social/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -512,11 +498,11 @@
 			click-if-value="$innerWidth">
 			<a
 				state_to="mainView"
-				state-src="{{path}}admin/email-campaigns/datatable.html"
+				state-src="$relativePathadmin/email-campaigns/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/email-campaign.svg"></i>
+					<i src="$relativePathassets/svg/email-campaign.svg"></i>
 				</span>
 				<span>Email Campaigns</span>
 			</a>
@@ -524,15 +510,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/email-campaigns/form.html"
+					state-src="$relativePathadmin/email-campaigns/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -541,11 +527,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/questions/datatable.html"
+				state-src="$relativePathadmin/questions/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/circle-question.svg"></i>
+					<i src="$relativePathassets/svg/circle-question.svg"></i>
 				</span>
 				<span>Questions</span>
 			</a>
@@ -553,15 +539,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/questions/form.html"
+					state-src="$relativePathadmin/questions/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -570,11 +556,12 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/careers/datatable.html"
+				state-src="$relativePathadmin/careers/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/person-dots-from-line.svg"></i>
+					<i
+						src="$relativePathassets/svg/person-dots-from-line.svg"></i>
 				</span>
 				<span>Careers</span>
 			</a>
@@ -582,15 +569,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/careers/form.html"
+					state-src="$relativePathadmin/careers/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -599,11 +586,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/subscriptions/datatable.html"
+				state-src="$relativePathadmin/subscriptions/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/money-bill-wave.svg"></i>
+					<i src="$relativePathassets/svg/money-bill-wave.svg"></i>
 				</span>
 				<span>Subscriptions</span>
 			</a>
@@ -611,15 +598,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/subscriptions/form.html"
+					state-src="$relativePathadmin/subscriptions/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -628,11 +615,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/advertisements/datatable.html"
+				state-src="$relativePathadmin/advertisements/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/rectangle-ad.svg"></i>
+					<i src="$relativePathassets/svg/rectangle-ad.svg"></i>
 				</span>
 				<span>Advertisements</span>
 			</a>
@@ -641,15 +628,15 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/advertisements/form.html"
+					state-src="$relativePathadmin/advertisements/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
@@ -658,11 +645,11 @@
 			<a
 				actions="state"
 				state_to="mainView"
-				state-src="{{path}}admin/ai/datatable.html"
+				state-src="$relativePathadmin/ai/datatable.html"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/brain.svg"></i>
+					<i src="$relativePathassets/svg/brain.svg"></i>
 				</span>
 				<span>AI Settings</span>
 			</a>
@@ -671,47 +658,47 @@
 				<a
 					actions="state"
 					state_to="mainView"
-					state-src="{{path}}admin/ai/form.html"
+					state-src="$relativePathadmin/ai/form.html"
 					class="display:flex justify-content:center align-items:center height:40px">
-					<i src="{{path}}assets/svg/plus.svg"></i>
+					<i src="$relativePathassets/svg/plus.svg"></i>
 					<div state_to="form-fields" state-object=""></div>
 				</a>
 			</div>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
 			click-if-value="$innerWidth">
 			<a
-				href="{{path}}admin/builder/"
+				href="$relativePathadmin/builder/"
 				state_to="builder"
 				state-object="66f6d0cb004fd1aefd6d070d"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/palette.svg"></i>
+					<i src="$relativePathassets/svg/palette.svg"></i>
 				</span>
 				<span>Builder</span>
 			</a>
 		</li>
 		<li
-			href="{{path}}"
+			href="$relativePath"
 			click-closest="sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
 			click-if-value="$innerWidth">
 			<a
-				href="{{path}}admin/code-editor/"
+				href="$relativePathadmin/code-editor/"
 				state_to="code-editor"
 				state-object="66f6d0cb004fd1aefd6d070d"
 				class="display:flex align-items:center">
 				<span
 					class="display:flex justify-content:center min-width:50px">
-					<i src="{{path}}assets/svg/code.svg"></i>
+					<i src="$relativePathassets/svg/code.svg"></i>
 				</span>
 				<span>Code</span>
 			</a>
@@ -721,10 +708,10 @@
 		class="line-height:40px height:40px overflow:hidden white-space:nowrap position:absolute bottom:0px width:100% background:#222@dark">
 		<a
 			actions="signOut"
-			href="{{path}}signin.html"
+			href="$relativePathsignin.html"
 			class="display:flex align-items:center">
 			<span class="display:flex justify-content:center min-width:50px">
-				<i src="{{path}}assets/svg/sign-out-alt.svg"></i>
+				<i src="$relativePathassets/svg/sign-out-alt.svg"></i>
 			</span>
 			<span>Sign Out</span>
 		</a>
