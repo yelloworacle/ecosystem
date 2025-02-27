@@ -1,0 +1,109 @@
+<style>
+	organization-list.open > organization {
+		display: flex;
+	}
+</style>
+
+<div
+	click-attribute="class"
+	click-value="open"
+	click-selector="organization-list">
+	<organization-list
+		class="display:flex flex-direction:column gap:10px"
+		placeholder="Organization"
+		array="organizations"
+		object
+		value=""
+		filter-limit
+		render-selector="[template]">
+		<input
+			type="hidden"
+			value="$user_id"
+			value-type="array"
+			filter-query-key="members.$in"
+			filter-parent />
+		<input
+			id="currentOrg"
+			realtime="true"
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="currentOrg"
+			input-attribute="value"
+			input-parent
+			filter-query-key="organization"
+			filter-document="[org-filter][]"
+			input-attribute="object"
+			input-next />
+
+		<input
+			type="hidden"
+			input-attribute="object"
+			input-document=".currentOrg[]"
+			change-document=".change[]"
+			change-attribute="value"
+			change-value="0" />
+
+		<!-- Template for Organization -->
+		<organization
+			template
+			value="{{object._id}}"
+			click-attribute="value"
+			click-value="{{object._id}}"
+			click-parent="#currentOrg"
+			hover-selector=".edit-org"
+			hover-attribute="class"
+			hover-value="display:block!important"
+			class="display:none align-items:center order:1 cursor:pointer">
+			<style>
+				organization-list[value="{{object._id}}"]
+					> organization[value="{{object._id}}"] {
+					display: flex;
+					order: 0;
+				}
+			</style>
+
+			<div class="display:flex align-items:center">
+				<!-- Logo -->
+				<a
+					click-closest="sidenav"
+					click-attribute="style"
+					click-value="width:0px"
+					click-if="<=993px"
+					click-if-value="$innerWidth"
+					class="height:50px display:flex align-items:center">
+					<img
+						height="50px"
+						src="$relativePathassets/icons/icon-1240-1240.png" />
+					<span
+						class="font-size:26px max-width:145px white-space:nowrap overflow:hidden"
+						translate="no"
+						value="$scrollWidth">
+						{{object.name}}
+					</span>
+					<input
+						type="hidden"
+						calculate="({(#test1)} > 145) ? 26 * (145 / {(#test1)}) : 26"
+						onload-next
+						onload-attribute="value"
+						onload-value="font-size: $valuepx;"
+						onload-delay="2000" />
+				</a>
+				<div
+					class="edit-org display:none font-size:16px transition:0.3s">
+					<div
+						actions="state"
+						state_to="mainView"
+						state-src="./account/organizations/form.html">
+						<div
+							state_to="form-fields"
+							state-object="{{object._id}}"></div>
+						<i
+							class="padding-left:10px"
+							src="./assets/svg/edit.svg"></i>
+					</div>
+				</div>
+			</div>
+		</organization>
+	</organization-list>
+</div>
