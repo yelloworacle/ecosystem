@@ -345,4 +345,105 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="video-container width:100%">
+		<div
+			class="card display:flex align-items:center gap:10px margin-bottom:15px padding:0px!important">
+			<div
+				click-closest=".video-container #video-list"
+				click-attribute="hidden"
+				click-value=""
+				toggle-selector=":first-child"
+				toggle-attribute="src"
+				toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
+				class="display:flex align-items:center gap:10px flex-grow:1">
+				<i
+					class="padding:20px_0px_20px_20px"
+					src="../assets/svg/angle-right.svg"></i>
+				<span class="width:100%">Career Video</span>
+			</div>
+		</div>
+
+		<div
+			id="video-list"
+			class="display:flex flex-direction:column margin-top:10px gap:10px"
+			hidden>
+			<div class="card padding:10px">
+				<label class="card-label">Career Video:</label>
+				<video
+					controls
+					class="width:100%"
+					hidden-if="!{{object.video_url}}">
+					<source src="{{object.video_url}}" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+				<div
+					class="card-value"
+					array="careers"
+					object="{{object._id}}"
+					key="video-script-html"></div>
+
+				<form api="openai">
+					<input
+						openai="chat.completions.create"
+						openai-key="model"
+						value="gpt-4o-mini"
+						hidden />
+
+					<input
+						openai="chat.completions.create"
+						openai-key="messages[0].role"
+						value="system"
+						hidden />
+					<textarea
+						array="ai"
+						object
+						key="content"
+						save="false"
+						filter-query-key="name"
+						filter-query-value="Video Script Template"
+						openai="chat.completions.create"
+						openai-key="messages[0].content"
+						hidden></textarea>
+
+					<input
+						openai="chat.completions.create"
+						openai-key="messages[1].role"
+						value="user"
+						hidden />
+					<input
+						openai="chat.completions.create"
+						openai-key="messages[1].content"
+						value="career name: {{object.name}}"
+						hidden />
+
+					<textarea
+						array="careers"
+						object="{{object._id}}"
+						key="video-script"
+						openai="chat.completions.create"
+						openai-key="choices[0].message.content"
+						openai-request="false"
+						input-next
+						input-attribute="value"
+						hidden></textarea>
+
+					<div
+						array="careers"
+						object="{{object._id}}"
+						key="video-script-html"
+						input-if="false"
+						input-next
+						input-attribute="$click"
+						value-dispatch
+						marked
+						hidden></div>
+
+					<a
+						class="createScript"
+						actions="openai.chat.completions.create, timeout(3000), save"></a>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>

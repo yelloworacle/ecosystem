@@ -313,21 +313,21 @@
 						<span class="{{type}}">{{message}}</span
 						><a actions="remove"> X</a>
 					</div>
-					<div
+					<!-- <div
 						onload-attribute="example"
 						onload-value="{{object.name}}"
-						onload-document="#example"></div>
+						onload-document="#example"></div> -->
 				</form>
 			</div>
 		</container>
 
-		<input
+		<!-- <input
 			type="hidden"
 			array="users"
 			object="$user_id"
 			key="subscription"
 			input-next
-			input-attribute="object" />
+			input-attribute="object" /> -->
 
 		<textarea
 			id="subscription"
@@ -339,17 +339,7 @@
 			class="width:100%"
 			hidden></textarea>
 
-		<!-- <textarea
-        id="subscription"
-        array="subscriptions"
-        object="6571fe530c48ef6970900a82"
-        key="fields"
-        input-document="#example .subscribed[]"
-        input-attribute="value"
-        class="width:100%"
-        hidden></textarea> -->
-
-		<container id="example" class="position:relative" example hidden>
+		<!-- <container id="example" class="position:relative" example hidden>
 			<h3 class="position:absolute top:-30px left:0px">
 				Career Example:
 			</h3>
@@ -379,9 +369,26 @@
 				filter-query-value="Surgeon"
 				render-selector="[template]"
 				src="./oracle/career-template.html"></div>
-		</container>
+		</container> -->
 
 		<container id="oracle" class="oracle">
+			<textarea
+				id="mergedCareers"
+				realtime="true"
+				array="users"
+				object="$user_id"
+				key="careers"
+				input-attribute="array"
+				input-value="careers"
+				input-parent="#careers"
+				value-type="json"
+				crdt="false"
+				broadcast="false"
+				filter-query-key="name.$in"
+				filter-parent="#careers"
+				filter-case-sensitive="false"
+				hidden></textarea>
+
 			<input
 				type="hidden"
 				array="users"
@@ -464,23 +471,6 @@
 			id="request"
 			actions="openai.chat.completions.create, manageCareers"></a>
 	</form>
-
-	<textarea
-		id="mergedCareers"
-		realtime="true"
-		array="users"
-		object="$user_id"
-		key="careers"
-		value-type="json"
-		crdt="false"
-		broadcast="false"
-		filter-query-key="name.$in"
-		filter-document="#careers"
-		filter-case-sensitive="false"
-		input-attribute="array"
-		input-value="careers"
-		input-document="#careers"
-		hidden></textarea>
 
 	<script src="./oracle/index.js"></script>
 	<script src="./oracle/progress.js"></script>
