@@ -1,9 +1,9 @@
 <style>
-	organization-list.open > organization {
+	organization-list.open > organization,
+	organization-list.open .org-create {
 		display: flex;
 	}
 </style>
-
 <div
 	class="min-height:50px"
 	click-attribute="class"
@@ -104,5 +104,26 @@
 				</div>
 			</div>
 		</organization>
+		<div
+			class="org-create display:none align-items:center order:1 width:100% cursor:pointer font-weight:bold white-space:nowrap overflow:hidden"
+			actions="state"
+			state_to="mainView"
+			state-src="./account/organizations/form.html"
+			state-overwrite
+			click-closest="sidenav"
+			click-attribute="style"
+			click-value="width:0px"
+			click-if="<575px"
+			click-if-value="$innerWidth">
+			<span
+				class="display:flex justify-content:center align-items:center min-width:50px">
+				<button
+					class="round width:30px height:30px"
+					title="Create New Organization">
+					<i src="../assets/svg/plus.svg"></i>
+				</button>
+			</span>
+			<span class="name">Create Organization</span>
+		</div>
 	</organization-list>
 </div>
