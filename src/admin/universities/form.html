@@ -30,7 +30,7 @@
 				placeholder="Image Url"
 				class="floating-label input-icon" />
 			<a
-				actions="action(document; #generate-image)"
+				actions="action($document #generate-image)"
 				click-selector="i[src]"
 				click-attribute="src"
 				click-value="./assets/svg/spinner.svg"
@@ -186,7 +186,7 @@
 			click-selector="i[src]"
 			click-attribute="src"
 			click-value="./assets/svg/spinner.svg"
-			actions="click, save, timeout(1000), render(document; #publish), timeout(1000), action(document; #sethtml), timeout(1000), action(document; #savefile), action(document; #postPublished)">
+			actions="click, save, timeout(1000), render($document #publish), timeout(1000), action($document #sethtml), timeout(1000), action($document #savefile), action($document #postPublished)">
 			Publish
 			<i id="published-icon" src="./assets/svg/paper-plane.svg"></i>
 		</button>

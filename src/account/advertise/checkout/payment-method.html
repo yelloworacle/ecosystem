@@ -103,7 +103,7 @@
 		Set as default payment method
 	</label>
 	<button
-		actions="click, submit, timeout(2000), stripe.paymentMethods.attach, action(document; #loadPaymentMethods), click, timeout(2000), toggle"
+		actions="click, submit, timeout(2000), stripe.paymentMethods.attach, action($document #loadPaymentMethods), click, timeout(2000), toggle"
 		click-selector="i"
 		click-attribute="src"
 		click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg"
@@ -116,7 +116,7 @@
 	</button>
 
 	<!-- <button
-		actions="submit, timeout(2000), stripe.paymentMethods.attach, action(document; #loadPaymentMethods), click"
+		actions="submit, timeout(2000), stripe.paymentMethods.attach, action($document #loadPaymentMethods), click"
 		click-closest="#sales"
 		click-attribute="display"
 		click-value="payment"

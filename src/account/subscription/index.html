@@ -80,7 +80,7 @@
 							input-attribute="value"
 							required />
 						<a
-							actions="validate, stripe.subscriptionItems.update, inviteUser, read(document; #membersList)"
+							actions="validate, stripe.subscriptionItems.update, inviteUser, read($document #membersList)"
 							class="sibling display:flex position:absolute top:9px right:8px font-size:20px color:green:hover fill:green:hover">
 							<span class="margin-right:5px font-weight:400"
 								>Invite
@@ -187,7 +187,7 @@
 											hidden />
 
 										<a
-											actions="validate, stripe.subscriptionItems.update, save, read(document; #membersList)"
+											actions="validate, stripe.subscriptionItems.update, save, read($document #membersList)"
 											class="color:#ff4d4d:hover">
 											<i
 												src="./assets/svg/trash-alt.svg"></i>
