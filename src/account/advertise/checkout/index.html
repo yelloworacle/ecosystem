@@ -21,9 +21,10 @@
 <section class="centered max-width:400px" api="stripe">
 	<input
 		type="hidden"
-		class="currentOrg"
 		array="organizations"
 		key="customerId"
+		value-document="#currentOrg"
+		value-attribute="object"
 		input-attribute="value"
 		input-document=".customer[]" />
 

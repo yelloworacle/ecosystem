@@ -70,19 +70,13 @@
 					key="$sum.impressions"
 					filter-limit
 					org-filter
-					class="change"
 					>0</span
 				>
 			</div>
 
 			<div class="card flex-grow:1 width:150px">
 				<h2>Clicks</h2>
-				<span
-					id="clicks"
-					key="$sum.clicks"
-					filter-limit
-					org-filter
-					class="change"
+				<span id="clicks" key="$sum.clicks" filter-limit org-filter
 					>0</span
 				>
 			</div>
@@ -111,11 +105,13 @@
 					</i>
 				</div>
 				<span>$</span>
+
 				<span
 					array="organizations"
 					object
 					key="balance"
-					class="change currentOrg"
+					value-document="#currentOrg"
+					value-attribute="object"
 					>0</span
 				>
 			</div>
@@ -239,7 +235,8 @@
 			key="advertiseTerms"
 			input-closest=".main-view"
 			input-attribute="terms"
-			class="currentOrg" />
+			value-document="#currentOrg"
+			value-attribute="object" />
 
 		<h1>Advertise With Us</h1>
 		<p>

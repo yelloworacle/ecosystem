@@ -15,6 +15,7 @@
 		array="organizations"
 		object
 		value=""
+		value-document="#currentOrg"
 		filter-limit
 		render-selector="[template]">
 		<input
@@ -23,25 +24,6 @@
 			value-type="array"
 			filter-query-key="members.$in"
 			filter-parent />
-		<input
-			id="currentOrg"
-			realtime="true"
-			type="hidden"
-			array="users"
-			object="$user_id"
-			key="currentOrg"
-			input-attribute="value"
-			input-parent
-			filter-query-key="organization"
-			filter-document="[org-filter][]" />
-
-		<input
-			type="hidden"
-			input-attribute="object"
-			input-document=".currentOrg[]"
-			change-document=".change[]"
-			change-attribute="value"
-			change-value="0" />
 
 		<!-- Template for Organization -->
 		<organization
@@ -49,7 +31,7 @@
 			value="{{object._id}}"
 			click-attribute="value"
 			click-value="{{object._id}}"
-			click-parent="#currentOrg"
+			click-document="#currentOrg"
 			hover-selector=".edit-org"
 			hover-attribute="class"
 			hover-value="display:block!important"

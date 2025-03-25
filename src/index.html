@@ -115,6 +115,16 @@
 	</script>
 
 	<body>
+		<input
+			id="currentOrg"
+			type="hidden"
+			realtime="true"
+			array="users"
+			object="$user_id"
+			key="currentOrg"
+			filter-query-key="organization"
+			filter-document="[org-filter][]" />
+
 		<!-- Navbar  -->
 		<nav
 			scroll="sticky-nav,"

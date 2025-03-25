@@ -48,8 +48,9 @@
 	</style>
 
 	<form
-		array="users"
-		object="$user_id"
+		array="organizations"
+		value-document="#currentOrg"
+		value-attribute="object"
 		class="forms width:100% max-width:800px margin:auto"
 		module="stripe">
 		<div
@@ -59,16 +60,12 @@
 
 		<input
 			type="hidden"
-			array="users"
-			object="$user_id"
 			key="country"
 			input-parent
 			input-attribute="country" />
 
 		<input
 			type="hidden"
-			array="users"
-			object="$user_id"
 			key="ambassadorAccount"
 			stripe="accounts.update"
 			stripe-key="$param[0]" />

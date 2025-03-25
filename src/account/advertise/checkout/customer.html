@@ -14,7 +14,6 @@
 		stripe="customers.create"
 		stripe-key="email" />
 	<input
-		class="currentOrg"
 		array="organizations"
 		key="customerId"
 		stripe="customers.create"
@@ -23,6 +22,8 @@
 		input-if="false"
 		input-next
 		input-attribute="$click"
+		value-document="#currentOrg"
+		value-attribute="object"
 		value-dispatch />
 	<a actions="stripe.customers.create, save"></a>
 </form>
@@ -31,9 +32,10 @@
 	<!-- Input for Customer ID -->
 	<floating-label class="flex-grow:1">
 		<input
-			class="currentOrg"
 			array="organizations"
 			key="customerId"
+			value-document="#currentOrg"
+			value-attribute="object"
 			placeholder="Enter Customer ID" />
 	</floating-label>
 
