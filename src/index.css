@@ -550,7 +550,6 @@ footer {
 	background-color: var(--accent-color);
 	color: #000;
 	fill: #000;
-	opacity: 0.9;
 }
 
 footer a:hover {
