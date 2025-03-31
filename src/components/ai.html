@@ -315,12 +315,14 @@
 		openai="chat.completions.create"
 		openai-key="model"
 		value="gpt-4o-mini"
+		reset="object"
 		hidden />
 
 	<input
 		openai="chat.completions.create"
 		openai-key="messages[0].role"
 		value="system"
+		reset="object"
 		hidden />
 	<textarea
 		id="system-instructions"
@@ -373,6 +375,7 @@
 		openai="chat.completions.create"
 		openai-key="messages[a].role"
 		value="user"
+		reset="object"
 		hidden />
 	<span
 		class="userMessage"
