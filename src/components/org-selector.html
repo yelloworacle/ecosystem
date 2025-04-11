@@ -1,111 +1,106 @@
-<style>
-	organization-list.open > organization,
-	organization-list.open .org-create {
-		display: flex;
-	}
-</style>
-<div
-	class="min-height:50px"
+<organization-list
+	class="display:flex flex-direction:column gap:10px min-height:50px"
+	placeholder="Organization"
+	array="organizations"
+	object
+	value=""
+	value-document="#currentOrg"
+	filter-limit
+	render-selector="[template]"
 	click-attribute="class"
 	click-value="open"
-	click-selector="organization-list">
-	<organization-list
-		class="display:flex flex-direction:column gap:10px"
-		placeholder="Organization"
-		array="organizations"
-		object
-		value=""
-		value-document="#currentOrg"
-		filter-limit
-		render-selector="[template]">
-		<input
-			type="hidden"
-			value="$user_id"
-			value-type="array"
-			filter-query-key="members.$in"
-			filter-parent />
+	click-stopPropagation>
+	<style>
+		organization-list.open > organization,
+		organization-list.open .org-create {
+			display: flex;
+		}
+	</style>
 
-		<!-- Template for Organization -->
-		<organization
-			template
-			value="{{object._id}}"
-			click-attribute="value"
-			click-value="{{object._id}}"
-			click-document="#currentOrg"
-			hover-selector=".edit-org"
-			hover-attribute="class"
-			hover-value="display:block!important"
-			class="display:none align-items:center order:1 cursor:pointer">
-			<style>
-				organization-list[value="{{object._id}}"]
-					> organization[value="{{object._id}}"] {
-					display: flex;
-					order: 0;
-				}
-			</style>
+	<input
+		type="hidden"
+		value="$user_id"
+		value-type="array"
+		filter-query-key="members.$in"
+		filter-parent />
 
-			<div class="display:flex align-items:center">
-				<!-- Logo -->
-				<a
-					click-closest="sidenav"
-					click-attribute="style"
-					click-value="width:0px"
-					click-if="<=993px"
-					click-if-value="$innerWidth"
-					class="height:50px display:flex align-items:center">
-					<img
-						height="50px"
-						src="$relativePathassets/icons/icon-1240-1240.png" />
-					<span
-						class="font-size:26px max-width:145px white-space:nowrap overflow:hidden"
-						translate="no"
-						value="$scrollWidth">
-						{{object.name}}
-					</span>
-					<!-- <input
-						type="hidden"
-						calculate="({(#test1)} > 145) ? 26 * (145 / {(#test1)}) : 26"
-						onload-next
-						onload-attribute="value"
-						onload-value="font-size: $valuepx;"
-						onload-delay="2000" /> -->
-				</a>
+	<!-- Template for Organization -->
+	<organization
+		template
+		value="{{object._id}}"
+		click-attribute="value"
+		click-value="{{object._id}}"
+		click-document="#currentOrg"
+		hover-selector=".edit-org"
+		hover-attribute="class"
+		hover-value="display:block!important"
+		class="display:none align-items:center order:1 cursor:pointer">
+		<style>
+			organization-list[value="{{object._id}}"]
+				> organization[value="{{object._id}}"] {
+				display: flex;
+				order: 0;
+			}
+		</style>
+
+		<div class="display:flex align-items:center">
+			<!-- Logo -->
+			<a class="height:50px display:flex align-items:center">
+				<img
+					height="50px"
+					src="$relativePathassets/icons/icon-1240-1240.png" />
+				<span
+					class="font-size:26px max-width:150px white-space:nowrap overflow:hidden"
+					translate="no"
+					value="$scrollWidth"
+					onload-next
+					onload-attribute="value"
+					onload-setTimeout="4000">
+					{{object.name}}
+				</span>
+				<input type="hidden" />
+				<input
+					type="hidden"
+					calculate="$value($previous) > 150 ? 26 * 150 / $value($previous) : 26"
+					input-parent="span"
+					input-attribute="style"
+					input-value="font-size: $valuepx;" />
+			</a>
+			<div class="edit-org display:none font-size:16px transition:0.3s">
 				<div
-					class="edit-org display:none font-size:16px transition:0.3s">
+					actions="state"
+					state_to="mainView"
+					state-src="./account/organizations/form.html">
 					<div
-						actions="state"
-						state_to="mainView"
-						state-src="./account/organizations/form.html">
-						<div
-							state_to="form-fields"
-							state-object="{{object._id}}"></div>
-						<i
-							class="padding-left:10px"
-							src="./assets/svg/edit.svg"></i>
-					</div>
+						state_to="form-fields"
+						state-object="{{object._id}}"></div>
+					<i
+						class="padding-left:10px"
+						src="./assets/svg/edit.svg"></i>
 				</div>
 			</div>
-		</organization>
-		<div
-			class="org-create display:none align-items:center order:1 width:100% cursor:pointer font-weight:bold white-space:nowrap overflow:hidden"
-			actions="state"
-			state_to="mainView"
-			state-src="./account/organizations/form.html"
-			state-overwrite
-			click-closest="sidenav"
-			click-attribute="style"
-			click-value="width:0px"
-			click-if="<575px"
-			click-if-value="$innerWidth">
-			<span
-				class="display:flex justify-content:center align-items:center min-width:50px">
-				<button
-					class="round width:30px height:30px"
-					title="Create New Organization">
-					<i src="../assets/svg/plus.svg"></i>
-				</button>
-			</span>
-			<span class="name">Create Organization</span>
 		</div>
-	</organization-list>
-</div>
+	</organization>
+
+	<div
+		class="org-create display:none align-items:center order:1 width:100% cursor:pointer font-weight:bold white-space:nowrap overflow:hidden"
+		actions="state"
+		state_to="mainView"
+		state-src="./account/organizations/form.html"
+		state-overwrite
+		click-closest="sidenav"
+		click-attribute="style"
+		click-value="width:0px"
+		click-if="<575px"
+		click-if-value="$innerWidth">
+		<span
+			class="display:flex justify-content:center align-items:center min-width:50px">
+			<button
+				class="round width:30px height:30px"
+				title="Create New Organization">
+				<i src="../assets/svg/plus.svg"></i>
+			</button>
+		</span>
+		<span class="name">Create Organization</span>
+	</div>
+</organization-list>
