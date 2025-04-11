@@ -177,7 +177,28 @@
 					click-document="#questions"
 					click-attribute="read"
 					click-value="true"
-					actions="timeout(1000), save, localStorage, click"></a>
+					actions="timeout(1000), save, localStorage, click, action(#createOrg)"></a>
+			</form>
+
+			<form array="organizations" object hidden>
+				<input type="text" key="name" />
+				<input type="text" key="owner" value="$user_id" />
+				<input type="text" key="members[]" value="$user_id" />
+				<input
+					type="text"
+					key="ambassador"
+					localstorage-get="ambassador" />
+				<input
+					type="text"
+					key="ambassadorAccount"
+					localstorage-get="ambassadorAccount" />
+				<input
+					type="text"
+					key="ambassadorParents"
+					localstorage-get="ambassadorParents" />
+				<input type="checkbox" key="advertiseTerms" />
+				<input type="checkbox" key="ambassadorTerms" />
+				<a id="createOrg" actions="save"></a>
 			</form>
 
 			<input
@@ -503,45 +524,45 @@
 					roles.value = "657726510fee1c6415f70760";
 					container.appendChild(roles);
 
-					let ambassadorId = localStorage.getItem("ambassador");
-					if (ambassadorId) {
-						const ambassador = document.createElement("input");
-						ambassador.type = "hidden";
-						ambassador.id = "amabassador";
-						ambassador.setAttribute("array", "users");
-						ambassador.setAttribute("object", "$user_id");
-						ambassador.setAttribute("key", "ambassador");
-						ambassador.value = ambassadorId;
-						container.appendChild(ambassador);
-					}
+					// let ambassadorId = localStorage.getItem("ambassador");
+					// if (ambassadorId) {
+					// 	const ambassador = document.createElement("input");
+					// 	ambassador.type = "hidden";
+					// 	ambassador.id = "amabassador";
+					// 	ambassador.setAttribute("array", "users");
+					// 	ambassador.setAttribute("object", "$user_id");
+					// 	ambassador.setAttribute("key", "ambassador");
+					// 	ambassador.value = ambassadorId;
+					// 	container.appendChild(ambassador);
+					// }
 
-					let ambassadorAccount =
-						localStorage.getItem("ambassadorAccount");
-					if (ambassadorAccount) {
-						const ambassadorAcc = document.createElement("input");
-						ambassadorAcc.type = "hidden";
-						ambassadorAcc.id = "ambassadorAccount";
-						ambassadorAcc.setAttribute("array", "users");
-						ambassadorAcc.setAttribute("object", "$user_id");
-						ambassadorAcc.setAttribute("key", "ambassadorAccount");
-						ambassadorAcc.value = ambassadorAccount;
-						container.appendChild(ambassadorAcc);
-					}
+					// let ambassadorAccount =
+					// 	localStorage.getItem("ambassadorAccount");
+					// if (ambassadorAccount) {
+					// 	const ambassadorAcc = document.createElement("input");
+					// 	ambassadorAcc.type = "hidden";
+					// 	ambassadorAcc.id = "ambassadorAccount";
+					// 	ambassadorAcc.setAttribute("array", "users");
+					// 	ambassadorAcc.setAttribute("object", "$user_id");
+					// 	ambassadorAcc.setAttribute("key", "ambassadorAccount");
+					// 	ambassadorAcc.value = ambassadorAccount;
+					// 	container.appendChild(ambassadorAcc);
+					// }
 
-					let ambassadorParents =
-						localStorage.getItem("ambassadorParents");
-					if (ambassadorParents) {
-						const ambassadorPar =
-							document.createElement("textarea");
-						ambassadorPar.id = "ambassadorParents";
-						ambassadorPar.setAttribute("hidden", "");
-						ambassadorPar.setAttribute("array", "users");
-						ambassadorPar.setAttribute("object", "$user_id");
-						ambassadorPar.setAttribute("key", "ambassadorParents");
-						ambassadorPar.setAttribute("value-type", "json");
-						ambassadorPar.value = ambassadorParents;
-						container.appendChild(ambassadorPar);
-					}
+					// let ambassadorParents =
+					// 	localStorage.getItem("ambassadorParents");
+					// if (ambassadorParents) {
+					// 	const ambassadorPar =
+					// 		document.createElement("textarea");
+					// 	ambassadorPar.id = "ambassadorParents";
+					// 	ambassadorPar.setAttribute("hidden", "");
+					// 	ambassadorPar.setAttribute("array", "users");
+					// 	ambassadorPar.setAttribute("object", "$user_id");
+					// 	ambassadorPar.setAttribute("key", "ambassadorParents");
+					// 	ambassadorPar.setAttribute("value-type", "json");
+					// 	ambassadorPar.value = ambassadorParents;
+					// 	container.appendChild(ambassadorPar);
+					// }
 					mutation.target.parentElement.appendChild(container);
 				}
 			});
