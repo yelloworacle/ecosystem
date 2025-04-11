@@ -1,352 +1,352 @@
 <bank_account_ownership_verification>
-    <!-- Bank Account Ownership Verifications Upload -->
-    <form
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-        <floating-label class="margin-top:20px width:100%">
-            <input
-                type="file"
-                array="users"
-                key="bank_account_ownership_verification"
-                placeholder="Proof of Address"
-                multiple />
-        </floating-label>
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="purpose"
-            value="account_requirement" />
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="file.name"
-            value="bank_account_ownership_verification" />
-        <input
-            type="hidden"
-            array="users"
-            key="bank_account_ownership_verification.src"
-            stripe="files.create"
-            stripe-key="file.data" />
-        <input
-            type="hidden"
-            array="users"
-            key="bank_account_ownership_verification.id"
-            stripe="files.create"
-            stripe-key="id" />
+	<!-- Bank Account Ownership Verifications Upload -->
+	<form
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+		<floating-label class="margin-top:20px width:100%">
+			<input
+				type="file"
+				array="users"
+				key="stripe.account.bank_account_ownership_verification"
+				placeholder="Proof of Address"
+				multiple />
+		</floating-label>
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="purpose"
+			value="account_requirement" />
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="file.name"
+			value="bank_account_ownership_verification" />
+		<input
+			type="hidden"
+			array="users"
+			key="stripe.account.bank_account_ownership_verification.src"
+			stripe="files.create"
+			stripe-key="file.data" />
+		<input
+			type="hidden"
+			array="users"
+			key="stripe.account.bank_account_ownership_verification.id"
+			stripe="files.create"
+			stripe-key="id" />
 
-        <button actions="validate, save, stripe.files.create">Upload</button>
-    </form>
+		<button actions="validate, save, stripe.files.create">Upload</button>
+	</form>
 
-    <!-- Form to Update Stripe Account with Bank Account Ownership Verification ID -->
-    <form class="width:100% display:flex flex-wrap:wrap margin-top:20px">
-        <input
-            type="hidden"
-            array="users"
-            object="$user_id"
-            key="ambassadorAccount"
-            stripe="accounts.update"
-            stripe-key="$param[0]" />
+	<!-- Form to Update Stripe Account with Bank Account Ownership Verification ID -->
+	<form class="width:100% display:flex flex-wrap:wrap margin-top:20px">
+		<input
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="ambassadorAccount"
+			stripe="accounts.update"
+			stripe-key="$param[0]" />
 
-        <input
-            type="hidden"
-            array="users"
-            key="bank_account_ownership_verification.id"
-            stripe="accounts.update"
-            stripe-key="documents.bank_account_ownership_verification.files[]" />
+		<input
+			type="hidden"
+			array="users"
+			key="stripe.account.bank_account_ownership_verification.id"
+			stripe="accounts.update"
+			stripe-key="documents.bank_account_ownership_verification.files[]" />
 
-        <button actions="validate, save, stripe.accounts.update">
-            Update Account
-        </button>
-    </form>
+		<button actions="validate, save, stripe.accounts.update">
+			Update Account
+		</button>
+	</form>
 </bank_account_ownership_verification>
 
 <comapny-additional-document hidden>
-    <!-- Additional Document Front Upload -->
-    <form
-        array="users"
-        object="$user_id"
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-        <floating-label class="margin-top:20px width:100%">
-            <input
-                type="file"
-                key="comapny_additional_document_front"
-                placeholder="Additional Document Front" />
-        </floating-label>
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="purpose"
-            value="identity_document" />
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="file.name"
-            value="comapny_additional_document_front" />
-        <input
-            type="hidden"
-            key="company_additional_document_front.src"
-            stripe="files.create"
-            stripe-key="file.data" />
-        <input
-            type="hidden"
-            key="company_additional_document_front.id"
-            stripe="files.create"
-            stripe-key="id" />
+	<!-- Additional Document Front Upload -->
+	<form
+		array="users"
+		object="$user_id"
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+		<floating-label class="margin-top:20px width:100%">
+			<input
+				type="file"
+				key="stripe.account.comapny_additional_document_front"
+				placeholder="Additional Document Front" />
+		</floating-label>
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="purpose"
+			value="identity_document" />
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="file.name"
+			value="comapny_additional_document_front" />
+		<input
+			type="hidden"
+			key="stripe.account.company_additional_document_front.src"
+			stripe="files.create"
+			stripe-key="file.data" />
+		<input
+			type="hidden"
+			key="stripe.account.company_additional_document_front.id"
+			stripe="files.create"
+			stripe-key="id" />
 
-        <button actions="validate, save, stripe.files.create">Upload</button>
-    </form>
+		<button actions="validate, save, stripe.files.create">Upload</button>
+	</form>
 
-    <!-- Additional Document Back Upload -->
-    <form
-        array="users"
-        object="$user_id"
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-        <floating-label class="margin-top:20px width:100%">
-            <input
-                type="file"
-                key="company_additional_document_back"
-                placeholder="Additional Document Back" />
-        </floating-label>
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="purpose"
-            value="identity_document" />
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="file.name"
-            value="company_additional_document_back" />
-        <input
-            type="hidden"
-            key="company_additional_document_back.src"
-            stripe="files.create"
-            stripe-key="file.data" />
-        <input
-            type="hidden"
-            key="company_additional_document_back.id"
-            stripe="files.create"
-            stripe-key="id" />
+	<!-- Additional Document Back Upload -->
+	<form
+		array="users"
+		object="$user_id"
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+		<floating-label class="margin-top:20px width:100%">
+			<input
+				type="file"
+				key="stripe.account.company_additional_document_back"
+				placeholder="Additional Document Back" />
+		</floating-label>
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="purpose"
+			value="identity_document" />
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="file.name"
+			value="company_additional_document_back" />
+		<input
+			type="hidden"
+			key="stripe.account.company_additional_document_back.src"
+			stripe="files.create"
+			stripe-key="file.data" />
+		<input
+			type="hidden"
+			key="stripe.account.company_additional_document_back.id"
+			stripe="files.create"
+			stripe-key="id" />
 
-        <button actions="validate, save, stripe.files.create">Upload</button>
-    </form>
+		<button actions="validate, save, stripe.files.create">Upload</button>
+	</form>
 
-    <!-- Save Additional Document IDs to Stripe Account -->
-    <form
-        array="users"
-        object="$user_id"
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px">
-        <input
-            type="hidden"
-            array="users"
-            object="$user_id"
-            key="ambassadorAccount"
-            stripe="accounts.update"
-            stripe-key="$param[0]" />
+	<!-- Save Additional Document IDs to Stripe Account -->
+	<form
+		array="users"
+		object="$user_id"
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px">
+		<input
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="ambassadorAccount"
+			stripe="accounts.update"
+			stripe-key="$param[0]" />
 
-        <input
-            type="hidden"
-            key="company_additional_document_front.id"
-            stripe="accounts.update"
-            stripe-key="company.verification.additional_document.front" />
-        <input
-            type="hidden"
-            key="company_additional_document_back.id"
-            stripe="accounts.update"
-            stripe-key="company.verification.additional_document.back" />
+		<input
+			type="hidden"
+			key="stripe.account.company_additional_document_front.id"
+			stripe="accounts.update"
+			stripe-key="company.verification.additional_document.front" />
+		<input
+			type="hidden"
+			key="stripe.account.company_additional_document_back.id"
+			stripe="accounts.update"
+			stripe-key="company.verification.additional_document.back" />
 
-        <button actions="validate, save, stripe.accounts.update">Save</button>
-    </form>
+		<button actions="validate, save, stripe.accounts.update">Save</button>
+	</form>
 </comapny-additional-document>
 
 <individual-identity-document hidden>
-    <form
-        array="users"
-        object="$user_id"
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-        <floating-label class="margin-top:20px width:100%">
-            <input
-                type="file"
-                key="identity_document_front"
-                placeholder="Identity Document Front" />
-        </floating-label>
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="purpose"
-            value="identity_document" />
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="file.name"
-            value="identity_document_front" />
-        <input
-            type="hidden"
-            key="identity_document_front.src"
-            stripe="files.create"
-            stripe-key="file.data" />
-        <input
-            type="hidden"
-            key="identity_document_front.id"
-            stripe="files.create"
-            stripe-key="id" />
+	<form
+		array="users"
+		object="$user_id"
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+		<floating-label class="margin-top:20px width:100%">
+			<input
+				type="file"
+				key="stripe.account.identity_document_front"
+				placeholder="Identity Document Front" />
+		</floating-label>
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="purpose"
+			value="identity_document" />
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="file.name"
+			value="identity_document_front" />
+		<input
+			type="hidden"
+			key="stripe.account.identity_document_front.src"
+			stripe="files.create"
+			stripe-key="file.data" />
+		<input
+			type="hidden"
+			key="stripe.account.identity_document_front.id"
+			stripe="files.create"
+			stripe-key="id" />
 
-        <button actions="validate, save, stripe.files.create">Upload</button>
-    </form>
+		<button actions="validate, save, stripe.files.create">Upload</button>
+	</form>
 
-    <form
-        array="users"
-        object="$user_id"
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-        <floating-label class="margin-top:20px width:100%">
-            <input
-                type="file"
-                object="$user_id"
-                key="identity_document_back"
-                placeholder="Identity Document Back" />
-        </floating-label>
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="purpose"
-            value="identity_document" />
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="file.name"
-            value="identity_document_back" />
-        <input
-            type="hidden"
-            key="identity_document_back.src"
-            stripe="files.create"
-            stripe-key="file.data" />
-        <input
-            type="hidden"
-            key="identity_document_back.id"
-            stripe="files.create"
-            stripe-key="id" />
+	<form
+		array="users"
+		object="$user_id"
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+		<floating-label class="margin-top:20px width:100%">
+			<input
+				type="file"
+				object="$user_id"
+				key="stripe.account.identity_document_back"
+				placeholder="Identity Document Back" />
+		</floating-label>
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="purpose"
+			value="identity_document" />
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="file.name"
+			value="identity_document_back" />
+		<input
+			type="hidden"
+			key="stripe.account.identity_document_back.src"
+			stripe="files.create"
+			stripe-key="file.data" />
+		<input
+			type="hidden"
+			key="stripe.account.identity_document_back.id"
+			stripe="files.create"
+			stripe-key="id" />
 
-        <button actions="validate, save, stripe.files.create">Upload</button>
-    </form>
+		<button actions="validate, save, stripe.files.create">Upload</button>
+	</form>
 
-    <form array="users" object="$user_id">
-        <input
-            type="hidden"
-            array="users"
-            object="$user_id"
-            key="ambassadorAccount"
-            stripe="accounts.update"
-            stripe-key="$param[0]" />
+	<form array="users" object="$user_id">
+		<input
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="ambassadorAccount"
+			stripe="accounts.update"
+			stripe-key="$param[0]" />
 
-        <input
-            type="hidden"
-            key="identity_document_front.id"
-            stripe="accounts.update"
-            stripe-key="individual.verification.document.front" />
-        <input
-            type="hidden"
-            key="identity_document_back.id"
-            stripe="accounts.update"
-            stripe-key="individual.verification.document.back" />
+		<input
+			type="hidden"
+			key="stripe.account.identity_document_front.id"
+			stripe="accounts.update"
+			stripe-key="individual.verification.document.front" />
+		<input
+			type="hidden"
+			key="stripe.account.identity_document_back.id"
+			stripe="accounts.update"
+			stripe-key="individual.verification.document.back" />
 
-        <button actions="validate, save, stripe.accounts.update">Save</button>
-    </form>
+		<button actions="validate, save, stripe.accounts.update">Save</button>
+	</form>
 </individual-identity-document>
 
 <individual-additional-document hidden>
-    <!-- Additional Document Front Upload -->
-    <form
-        array="users"
-        object="$user_id"
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-        <floating-label class="margin-top:20px width:100%">
-            <input
-                type="file"
-                key="additional_document_front"
-                placeholder="Additional Document Front" />
-        </floating-label>
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="purpose"
-            value="identity_document" />
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="file.name"
-            value="additional_document_front" />
-        <input
-            type="hidden"
-            key="additional_document_front.src"
-            stripe="files.create"
-            stripe-key="file.data" />
-        <input
-            type="hidden"
-            key="additional_document_front.id"
-            stripe="files.create"
-            stripe-key="id" />
+	<!-- Additional Document Front Upload -->
+	<form
+		array="users"
+		object="$user_id"
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+		<floating-label class="margin-top:20px width:100%">
+			<input
+				type="file"
+				key="stripe.account.additional_document_front"
+				placeholder="Additional Document Front" />
+		</floating-label>
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="purpose"
+			value="identity_document" />
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="file.name"
+			value="additional_document_front" />
+		<input
+			type="hidden"
+			key="stripe.account.additional_document_front.src"
+			stripe="files.create"
+			stripe-key="file.data" />
+		<input
+			type="hidden"
+			key="stripe.account.additional_document_front.id"
+			stripe="files.create"
+			stripe-key="id" />
 
-        <button actions="validate, save, stripe.files.create">Upload</button>
-    </form>
+		<button actions="validate, save, stripe.files.create">Upload</button>
+	</form>
 
-    <!-- Additional Document Back Upload -->
-    <form
-        array="users"
-        object="$user_id"
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
-        <floating-label class="margin-top:20px width:100%">
-            <input
-                type="file"
-                key="additional_document_back"
-                placeholder="Additional Document Back" />
-        </floating-label>
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="purpose"
-            value="identity_document" />
-        <input
-            type="hidden"
-            stripe="files.create"
-            stripe-key="file.name"
-            value="additional_document_back" />
-        <input
-            type="hidden"
-            key="additional_document_back.src"
-            stripe="files.create"
-            stripe-key="file.data" />
-        <input
-            type="hidden"
-            key="additional_document_back.id"
-            stripe="files.create"
-            stripe-key="id" />
+	<!-- Additional Document Back Upload -->
+	<form
+		array="users"
+		object="$user_id"
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px gap:15px">
+		<floating-label class="margin-top:20px width:100%">
+			<input
+				type="file"
+				key="stripe.account.additional_document_back"
+				placeholder="Additional Document Back" />
+		</floating-label>
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="purpose"
+			value="identity_document" />
+		<input
+			type="hidden"
+			stripe="files.create"
+			stripe-key="file.name"
+			value="additional_document_back" />
+		<input
+			type="hidden"
+			key="stripe.account.additional_document_back.src"
+			stripe="files.create"
+			stripe-key="file.data" />
+		<input
+			type="hidden"
+			key="stripe.account.additional_document_back.id"
+			stripe="files.create"
+			stripe-key="id" />
 
-        <button actions="validate, save, stripe.files.create">Upload</button>
-    </form>
+		<button actions="validate, save, stripe.files.create">Upload</button>
+	</form>
 
-    <!-- Save Additional Document IDs to Stripe Account -->
-    <form
-        array="users"
-        object="$user_id"
-        class="width:100% display:flex flex-wrap:wrap margin-top:20px">
-        <input
-            type="hidden"
-            array="users"
-            object="$user_id"
-            key="ambassadorAccount"
-            stripe="accounts.update"
-            stripe-key="$param[0]" />
+	<!-- Save Additional Document IDs to Stripe Account -->
+	<form
+		array="users"
+		object="$user_id"
+		class="width:100% display:flex flex-wrap:wrap margin-top:20px">
+		<input
+			type="hidden"
+			array="users"
+			object="$user_id"
+			key="ambassadorAccount"
+			stripe="accounts.update"
+			stripe-key="$param[0]" />
 
-        <input
-            type="hidden"
-            key="additional_document_front.id"
-            stripe="accounts.update"
-            stripe-key="individual.verification.additional_document.front" />
-        <input
-            type="hidden"
-            key="additional_document_back.id"
-            stripe="accounts.update"
-            stripe-key="individual.verification.additional_document.back" />
+		<input
+			type="hidden"
+			key="stripe.account.additional_document_front.id"
+			stripe="accounts.update"
+			stripe-key="individual.verification.additional_document.front" />
+		<input
+			type="hidden"
+			key="stripe.account.additional_document_back.id"
+			stripe="accounts.update"
+			stripe-key="individual.verification.additional_document.back" />
 
-        <button actions="validate, save, stripe.accounts.update">Save</button>
-    </form>
+		<button actions="validate, save, stripe.accounts.update">Save</button>
+	</form>
 </individual-additional-document>

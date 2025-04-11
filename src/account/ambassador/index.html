@@ -1,4 +1,6 @@
 <section class="centered">
+	<a href="./signin.html" session="false" hidden></a>
+
 	<style>
 		.ambassador {
 			background-color: white;
@@ -24,7 +26,7 @@
 
 		.ambassador h1 {
 			text-align: center;
-			margin-bottom: 30px;
+			margin: 10px 0 30px 0;
 		}
 		.ambassador p {
 			font-size: 18px;
@@ -85,7 +87,6 @@
 				<span
 					type="hidden"
 					array="organizations"
-					object=""
 					value-document="#currentOrg"
 					value-attribute="object"
 					key="stripe.account.charges_enabled"
@@ -96,8 +97,7 @@
 				<span>Payouts: </span>
 				<span
 					type="hidden"
-					array="users"
-					object=""
+					array="organizations"
 					key="stripe.account.payouts_enabled"
 					value-document="#currentOrg"
 					value-attribute="object"
@@ -118,37 +118,35 @@
 			<div id="subscribers" class="card">
 				<h2>Subscribers</h2>
 
-				<span array="users" object key="$length" ambassador>0</span>
+				<span array="organizations" object key="$length" ambassador
+					>0</span
+				>
 			</div>
 
 			<!-- Next Payout -->
 			<div id="nextPayout" class="card">
 				<h2>Next Payout</h2>
 				<span>$</span>
-				<span
-					array="payouts"
-					object
-					filter-query-key="status"
-					filter-query-value="pending"
-					key="$sum.amount"
-					filter-org
+				<span array="payouts" object key="$sum.amount" org-filter
 					>0</span
 				>
+				<div
+					filter-query-key="status"
+					filter-query-value="pending"
+					filter-previous></div>
 			</div>
 
 			<!-- Total Payouts -->
 			<div id="totalPayouts" class="card" hidden>
 				<h2>Total Payouts</h2>
 				<span>$</span>
-				<span
-					array="payouts"
-					object
-					filter-query-key="status"
-					filter-query-value="paid"
-					key="$sum.amount"
-					filter-org
+				<span array="payouts" object key="$sum.amount" org-filter
 					>0</span
 				>
+				<div
+					filter-query-key="status"
+					filter-query-value="paid"
+					filter-previous></div>
 			</div>
 		</div>
 	</container>
@@ -244,7 +242,7 @@
 				array="payouts"
 				object
 				render-selector="[template]"
-				filter-org
+				org-filter
 				hidden>
 				<tr
 					class="hover"
@@ -295,14 +293,15 @@
 
 	<container
 		id="terms"
-		class="ambassador padding:40px@md@lg@xl"
+		class="card ambassador padding:40px@md@lg@xl"
 		module="stripe">
 		<input
 			type="hidden"
-			array="users"
-			object="$user_id"
+			array="organizations"
+			value-document="#currentOrg"
+			value-attribute="object"
 			key="ambassadorTerms"
-			input-closest=".main-view"
+			input-closest="section.centered"
 			input-attribute="terms" />
 
 		<h1>Become an Ambassador</h1>
@@ -327,26 +326,33 @@
 			<!-- <small class="width:100%">Example: yelloworacle.com/customName or yelloworacle.com/unique-name</small> -->
 		</p>
 
-		<form array="users" object="$user_id" class="join" realtime="false">
-			<input
-				type="text"
-				key="ambassadorUrl"
-				placeholder="Ambassador URL"
-				required
-				unique
-				class="padding-left:145px!important"
-				input-next
-				input-attribute="value" />
+		<form
+			array="organizations"
+			value-document="#currentOrg"
+			value-attribute="object"
+			class="join"
+			realtime="false">
+			<floating-label>
+				<input
+					type="text"
+					key="ambassadorUrl"
+					placeholder="Ambassador URL"
+					required
+					unique
+					class="padding-left:145px!important floating-label"
+					input-next
+					input-attribute="value" />
+				<span
+					class="position:absolute left:6px float:left padding:5px pointer-events:none"
+					>yelloworacle.com/</span
+				>
+			</floating-label>
+
 			<input
 				type="hidden"
 				array="ambassadors"
-				object="$user_id"
 				key="ambassadorUrl"
 				upsert="true" />
-			<span
-				class="position:relative top:-34px left:6px float:left padding:5px background:whitesmoke"
-				>yelloworacle.com/</span
-			>
 
 			<input
 				type="hidden"
@@ -528,17 +534,15 @@
 				Join
 			</button>
 		</form>
-		<form hidden>
+		<form value-document="#currentOrg" value-attribute="object" hidden>
 			<input
-				array="users"
-				object="$user_id"
+				array="organizations"
 				key="ambassadorAccount"
 				input-next
 				input-attribute="value" />
 
 			<input
 				array="ambassadors"
-				object="$user_id"
 				key="ambassadorParents[]"
 				input-next
 				input-attribute="click" />
