@@ -14,7 +14,7 @@
 
 <div
 	class="accordion-button"
-	click-closest=".forms"
+	click-query="$closest .forms"
 	click-attribute="display"
 	click-value="company">
 	Company
@@ -77,7 +77,7 @@
             stripe="accounts.update"
             stripe-key="company.address.country"
             placeholder="Company Country"
-            input-closest="form"
+            input-query="$closest form"
             input-attribute="country"
             src="./account/ambassador/form/countries.html"></select>
     </floating-label> -->

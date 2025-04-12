@@ -87,10 +87,10 @@
 				<span
 					type="hidden"
 					array="organizations"
-					value-document="#currentOrg"
+					value-query="$document #currentOrg"
 					value-attribute="object"
 					key="stripe.account.charges_enabled"
-					input-parent
+					input-query="$parent"
 					input-attribute="charges_enabled"></span>
 			</div>
 			<div id="nextPayout" class="card maxwidth:200px" payouts_enabled>
@@ -99,9 +99,9 @@
 					type="hidden"
 					array="organizations"
 					key="stripe.account.payouts_enabled"
-					value-document="#currentOrg"
+					value-query="$document #currentOrg"
 					value-attribute="object"
-					input-parent
+					input-query="$parent"
 					input-attribute="payouts_enabled"></span>
 			</div>
 
@@ -133,7 +133,7 @@
 				<div
 					filter-query-key="status"
 					filter-query-value="pending"
-					filter-previous></div>
+					filter-query="$previous"></div>
 			</div>
 
 			<!-- Total Payouts -->
@@ -146,7 +146,7 @@
 				<div
 					filter-query-key="status"
 					filter-query-value="paid"
-					filter-previous></div>
+					filter-query="$previous"></div>
 			</div>
 		</div>
 	</container>
@@ -159,7 +159,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="amount"
 								state_id="datatable"
 								placeholder="Amount"
@@ -168,7 +168,7 @@
 						<span
 							class="position:absolute bottom:22px right:20px float:right z-index:6">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="amount"
 								filter-sort-direction="asc"
 								click-value="desc, asc"
@@ -186,7 +186,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="status"
 								state_id="datatable"
 								placeholder="status"
@@ -195,7 +195,7 @@
 						<span
 							class="position:absolute bottom:22px right:20px float:right z-index:6">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="status"
 								filter-sort-direction="asc"
 								click-value="desc, asc"
@@ -213,7 +213,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="_id"
 								state_id="datatable"
 								placeholder="id"
@@ -222,7 +222,7 @@
 						<span
 							class="position:absolute bottom:22px right:20px float:right z-index:6">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="_id"
 								filter-sort-direction=""
 								click-value="desc, asc"
@@ -241,7 +241,7 @@
 			<tbody
 				array="payouts"
 				object
-				render-selector="[template]"
+				render-query="[template]"
 				org-filter
 				hidden>
 				<tr
@@ -287,8 +287,8 @@
 			</tbody>
 		</table>
 
-		<!-- <div filter-on="fetched" filter-previous="[render-selector]"></div> -->
-		<!-- <div filter-on="scroll" filter-previous="[render-selector]"></div> -->
+		<!-- <div filter-on="fetched" filter-query="$previous [render-query]"></div> -->
+		<!-- <div filter-on="scroll" filter-query="$previous [render-query]"></div> -->
 	</container>
 
 	<container
@@ -298,10 +298,10 @@
 		<input
 			type="hidden"
 			array="organizations"
-			value-document="#currentOrg"
+			value-query="$document #currentOrg"
 			value-attribute="object"
 			key="ambassadorTerms"
-			input-closest="section.centered"
+			input-query="$closest section.centered"
 			input-attribute="terms" />
 
 		<h1>Become an Ambassador</h1>
@@ -328,7 +328,7 @@
 
 		<form
 			array="organizations"
-			value-document="#currentOrg"
+			value-query="$document #currentOrg"
 			value-attribute="object"
 			class="join"
 			realtime="false">
@@ -340,7 +340,7 @@
 					required
 					unique
 					class="padding-left:145px!important floating-label"
-					input-next
+					input-query="$next"
 					input-attribute="value" />
 				<span
 					class="position:absolute left:6px float:left padding:5px pointer-events:none"
@@ -360,7 +360,7 @@
 				stripe-key="id"
 				stripe-request="false"
 				key="ambassadorAccount"
-				input-next
+				input-query="$next"
 				input-attribute="value" />
 
 			<input
@@ -374,7 +374,7 @@
 				type="hidden"
 				localstorage-get="ambassadorParents"
 				key="ambassadorParents"
-				input-next
+				input-query="$next"
 				input-attribute="value" />
 
 			<input
@@ -534,17 +534,20 @@
 				Join
 			</button>
 		</form>
-		<form value-document="#currentOrg" value-attribute="object" hidden>
+		<form
+			value-query="$document #currentOrg"
+			value-attribute="object"
+			hidden>
 			<input
 				array="organizations"
 				key="ambassadorAccount"
-				input-next
+				input-query="$next"
 				input-attribute="value" />
 
 			<input
 				array="ambassadors"
 				key="ambassadorParents[]"
-				input-next
+				input-query="$next"
 				input-attribute="click" />
 
 			<button id="addParent" actions="validate, save"></button>

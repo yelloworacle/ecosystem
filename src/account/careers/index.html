@@ -5,7 +5,7 @@
 			array="users"
 			object="$user_id"
 			key="subscription"
-			input-next
+			input-query="$next"
 			input-attribute="object" />
 
 		<textarea
@@ -13,7 +13,7 @@
 			array="subscriptions"
 			object=""
 			key="fields"
-			input-next=".subscribed[]"
+			input-query="$next .subscribed[]"
 			input-attribute="value"
 			class="width:100%"
 			hidden
@@ -24,7 +24,7 @@
 			array="careers"
 			object
 			filter-sort-key="name"
-			render-selector="[template]"
+			render-query="[template]"
 			src="./oracle/career-template.html"></div>
 
 		<textarea
@@ -37,11 +37,11 @@
 			crdt="false"
 			broadcast="false"
 			filter-query-key="name.$in"
-			filter-document="#careers"
+			filter-query="$document #careers"
 			filter-case-sensitive="false"
 			input-attribute="array"
 			input-value="careers"
-			input-document="#careers"
+			input-query="$document #careers"
 			hidden></textarea>
 	</section>
 </container>

@@ -104,15 +104,15 @@
 			type="hidden"
 			value="$pathname"
 			value-replace="/"
-			onload-next
+			onload-query="$next"
 			onload-attribute="value" />
 
 		<input
 			id="ambassadorId"
 			type="hidden"
-			filter-next
+			filter-query="$next"
 			filter-query-key="ambassadorUrl.$eq"
-			input-next
+			input-query="$next"
 			input-attribute="array"
 			input-value="ambassadors" />
 
@@ -122,7 +122,7 @@
 			object
 			filter-limit="1"
 			render-limit="1"
-			render-selector="[template]">
+			render-query="[template]">
 			<div template>
 				<input
 					type="hidden"

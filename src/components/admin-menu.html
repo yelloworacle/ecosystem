@@ -2,13 +2,13 @@
     type="hidden"
     filter-query-key="key"
     value="$user_id"
-    filter-parent="#isadmin" />
+    filter-query="$parent #isadmin" />
 
 <div
     filter-query-key="roles.$in"
 
     filter-query-value="652c8d62d31d27088bdd29fc"
-    filter-next></div>
+    filter-query="$next"></div>
 
 <input
     type="hidden"
@@ -16,7 +16,7 @@
     array="keys"
     object
     key="key"
-    input-parent
+    input-query="$parent"
     input-attribute="admin"
     input-value="true"
     filter-limit="1" /> -->
@@ -25,9 +25,9 @@
             array="keys"
             object
             filter-limit="1"
-            render-selector="[template]">
+            render-query="[template]">
             <input
-                input-closest="menu"
+                input-query="$closest menu"
                 input-attribute="admin"
                 input-value="true"
                 template />
@@ -36,7 +36,7 @@
 <h3 class="margin:50px_10px_5px">Admin</h3>
 
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -62,7 +62,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -82,7 +82,7 @@
 			actions="state"
 			state_to="mainView"
 			state-src="$relativePathadmin/organizations/form.html"
-			click-document="[state_id='form-fields']"
+			click-query="$document [state_id='form-fields']"
 			click-action="reset"
 			class="display:flex justify-content:center align-items:center height:40px">
 			<i src="$relativePathassets/svg/plus.svg"></i>
@@ -90,7 +90,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -116,7 +116,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -142,7 +142,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -168,7 +168,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -194,7 +194,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -220,7 +220,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -246,7 +246,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -272,7 +272,7 @@
 	</div>
 </li>
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"
@@ -300,7 +300,7 @@
 </li>
 
 <li
-	click-closest="sidenav"
+	click-query="$closest sidenav"
 	click-attribute="style"
 	click-value="width:0px"
 	click-if="<=993px"

@@ -12,7 +12,7 @@
 					<floating-label>
 						<input
 							type="text"
-							filter-document="tbody[render-selector]"
+							filter-query="$document tbody[render-query]"
 							filter-query-key="name"
 							state_id="datatable"
 							placeholder="Form Name"
@@ -21,7 +21,7 @@
 					<span
 						class="position:absolute bottom:22px right:20px float:right z-index:6">
 						<a
-							filter-document="tbody[render-selector]"
+							filter-query="$document tbody[render-query]"
 							filter-sort-key="name"
 							filter-sort-direction="asc"
 							click-value="desc, asc"
@@ -38,7 +38,7 @@
 					<floating-label>
 						<input
 							type="text"
-							filter-document="tbody[render-selector]"
+							filter-query="$document tbody[render-query]"
 							filter-query-key="_id"
 							state_id="datatable"
 							placeholder="Object_id"
@@ -47,7 +47,7 @@
 					<span
 						class="position:absolute bottom:22px right:20px float:right z-index:6">
 						<a
-							filter-document="tbody[render-selector]"
+							filter-query="$document tbody[render-query]"
 							filter-sort-key="_id"
 							filter-sort-direction=""
 							click-value="desc, asc"
@@ -62,7 +62,7 @@
 				</td>
 			</tr>
 
-			<tbody array="interview-forms" object render-selector="[template]">
+			<tbody array="interview-forms" object render-query="[template]">
 				<tr
 					class="hover"
 					template
@@ -95,6 +95,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<div filter-on="scroll" filter-previous="[render-selector]"></div>
+		<div filter-on="scroll" filter-query="$previous [render-query]"></div>
 	</div>
 </section>

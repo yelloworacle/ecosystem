@@ -161,7 +161,7 @@
 				key="_id"
 				localstorage-get="user_id"
 				localstorage-if="false"
-				localstorage-next="#createUser"
+				localstorage-query="$next #createUser"
 				localstorage-attribute="$click" />
 
 			<form array="users" object="" hidden>
@@ -171,7 +171,7 @@
 				<input type="checkbox" key="ambassadorTerms" />
 				<a
 					id="createUser"
-					click-document="#questions"
+					click-query="$document #questions"
 					click-attribute="read"
 					click-value="true"
 					actions="timeout(1000), save, localStorage, click"></a>
@@ -180,7 +180,7 @@
 			<input
 				type="hidden"
 				id="applyRead"
-				click-parent="#questions"
+				click-query="$parent #questions"
 				click-attribute="read"
 				click-value="true" />
 
@@ -224,7 +224,7 @@
 			<div
 				filter-sort-key="position"
 				filter-sort-direction="asc"
-				filter-parent="#questions"></div>
+				filter-query="$parent #questions"></div>
 
 			<textarea
 				id="answeredQuestions"
@@ -232,12 +232,12 @@
 				object="$user_id"
 				key="answeredQuestions"
 				filter-query-key="name.$nin"
-				filter-next
+				filter-query="$next"
 				value-type="json"
 				realtime="false"
 				input-attribute="read"
 				input-value="true"
-				input-next
+				input-query="$next"
 				hidden></textarea>
 
 			<div
@@ -246,7 +246,7 @@
 				array="questions"
 				object
 				filter-limit="1"
-				render-selector="#temp"
+				render-query="#temp"
 				read="false"
 				loader>
 				<form
@@ -288,7 +288,7 @@
 							class="question" />
 						<a
 							actions="{{object.actions}}"
-							click-selector="i[src]"
+							click-query="i[src]"
 							click-attribute="src"
 							click-value="./assets/svg/spinner.svg"
 							class="sibling display:flex align-items:center position:absolute top:8px right:8px font-size:20px">
@@ -313,7 +313,7 @@
 					<div
 						onload-attribute="example"
 						onload-value="{{object.name}}"
-						onload-document="#example"></div>
+						onload-query="$document #example"></div>
 				</form>
 			</div>
 		</section>
@@ -335,7 +335,7 @@
 				array="subscriptions"
 				object="6571fe530c48ef6970900a82"
 				key="fields"
-				input-next=".subscribed[]"
+				input-query="$next .subscribed[]"
 				input-attribute="value"
 				class="width:100%"
 				hidden
@@ -347,7 +347,7 @@
 				key="answeredQuestions[1]"
 				input-attribute="hidden"
 				input-value="false"
-				input-parent
+				input-query="$parent"
 				input-if=""
 				hidden></textarea>
 
@@ -356,7 +356,7 @@
 				array="subscriptions"
 				object="6571fe530c48ef6970900a82"
 				key="fields"
-				input-next=".subscribed[]"
+				input-query="$next .subscribed[]"
 				input-attribute="value"
 				class="width:100%"
 				hidden
@@ -367,7 +367,7 @@
 				object
 				filter-query-key="name.$eq"
 				filter-query-value="Surgeon"
-				render-selector="[template]"
+				render-query="[template]"
 				src="./oracle/university-template.html"></div>
 		</section>
 
@@ -376,14 +376,14 @@
 				type="hidden"
 				filter-query-key="university"
 				filter-query-value=""
-				filter-parent="#programs" />
+				filter-query="$parent #programs" />
 
 			<input
 				type="hidden"
 				array="users"
 				object="$user_id"
 				key="subscription"
-				input-next
+				input-query="$next"
 				input-attribute="object" />
 
 			<textarea
@@ -391,7 +391,7 @@
 				array="subscriptions"
 				object=""
 				key="fields"
-				input-next=".subscribed[]"
+				input-query="$next .subscribed[]"
 				input-attribute="value"
 				class="width:100%"
 				hidden
@@ -402,7 +402,7 @@
 				array=""
 				object
 				filter-sort-key="name"
-				render-selector="[template]"
+				render-query="[template]"
 				src="./oracle/university-template.html"></div>
 		</section>
 	</div>
@@ -455,7 +455,7 @@
 			openai-key="messages[2].content"
 			value-prefix="programs: "
 			hidden
-			input-next
+			input-query="$next"
 			input-attribute="value" />
 		<input
 			openai="chat.completions.create"
@@ -482,11 +482,11 @@
 		crdt="false"
 		broadcast="false"
 		filter-query-key="name.$in"
-		filter-document="#programs"
+		filter-query="$document #programs"
 		filter-case-sensitive="false"
 		input-attribute="array"
 		input-value="programs"
-		input-document="#programs"
+		input-query="$document #programs"
 		hidden></textarea>
 
 	<script src="./oracle/index.js"></script>

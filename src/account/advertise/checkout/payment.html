@@ -18,7 +18,7 @@
 			array="organizations"
 			object
 			key="balance"
-			value-document="#currentOrg"
+			value-query="$document #currentOrg"
 			value-attribute="object"
 			>0</span
 		>
@@ -38,7 +38,7 @@
 
 		<div
 			class="display:flex align-items:center gap:5px width:170px font-size:14px"
-			click-closest="#sales"
+			click-query="$closest #sales"
 			click-attribute="display"
 			click-value="auto-top-up">
 			<i src="./assets/svg/cog.svg"></i>
@@ -69,7 +69,7 @@
 		</div>
 
 		<button
-			click-closest="#sales"
+			click-query="$closest #sales"
 			click-attribute="display"
 			click-value="auto-top-up"
 			class="btn-primary margin-top:10px">
@@ -123,7 +123,7 @@
 			class="customer"
 			stripe="paymentMethods.list"
 			stripe-key="customer"
-			input-next
+			input-query="$next"
 			input-attribute="$click" />
 		<a
 			id="loadPaymentMethods"
@@ -145,7 +145,7 @@
 			class="margin-bottom:10px"
 			click-attribute="class"
 			click-value="open"
-			click-selector="payment-method-list">
+			click-query="payment-method-list">
 			<div
 				stripe="paymentIntents.create"
 				stripe-key="payment_method"
@@ -158,7 +158,7 @@
 					stripe-key="invoice_settings.default_payment_method"
 					stripe-request="false"
 					input-attribute="value"
-					input-parent />
+					input-query="$parent" />
 
 				<payment-method-list
 					class="display:flex flex-direction:column gap:10px"
@@ -167,13 +167,13 @@
 					stripe-request="false"
 					value-type="array"
 					render="data"
-					render-selector="[template]">
+					render-query="[template]">
 					<!-- Template for Individual Payment Method -->
 					<payment-method
 						template
 						click-attribute="value"
 						click-value="{{data.id}}"
-						click-closest="[stripe-key='payment_method']"
+						click-query="$closest [stripe-key='payment_method']"
 						value="{{data.id}}"
 						class="card display:none align-items:center order:1 padding:10px!important height:70px cursor:pointer">
 						<style>
@@ -221,7 +221,7 @@
 
 						<div
 							class="display:inline-flex align-items:center"
-							hover-selector=".card"
+							hover-query=".card"
 							hover-attribute="class"
 							hover-value="display:block!important"
 							hover-stopPropagation
@@ -233,18 +233,18 @@
 									actions="click, remove"
 									click-attribute="value"
 									click-value="{{data.id}}"
-									click-document="#detachPaymentMethod"
+									click-query="$document #detachPaymentMethod"
 									click-stopPropagation
-									remove-closest="payment-method">
+									remove-query="$closest payment-method">
 									Remove Card
 								</div>
 								<div
 									click-attribute="value"
 									click-value="{{data.id}}"
-									click-document="#setDefaultPaymentMethod, $document #defaultPaymentId">
+									click-query="$document #setDefaultPaymentMethod, $document #defaultPaymentId">
 									<div
 										click-attribute="$click"
-										click-closest="payment-method">
+										click-query="$closest payment-method">
 										Set as default
 									</div>
 								</div>
@@ -261,7 +261,7 @@
 		<div class="display:flex justify-content:flex-end width:100%">
 			<div
 				class="display:flex gap:10px"
-				click-closest="#sales"
+				click-query="$closest #sales"
 				click-attribute="display"
 				click-value="payment-method">
 				<i src="./assets/svg/plus.svg"></i>
@@ -278,7 +278,7 @@
 		key="ambassadorAccount"
 		stripe-key="transfer_data.destination"
 		class="ambassador-target"
-		input-next
+		input-query="$next"
 		input-attribute="object"
 		hidden />
 
@@ -291,7 +291,7 @@
 		object=""
 		key="charges_enabled"
 		input-attribute="stripe"
-		input-selector="ambassador-target[]"
+		input-query="ambassador-target[]"
 		input-value="paymentIntents.create"
 		input-if="true"
 		hidden />
@@ -316,7 +316,7 @@
 	<!-- Submit Button -->
 	<button
 		actions="validate, click, stripe.paymentIntents.create, timeout(2000), save, click, timeout(2000), click"
-		click-selector="i"
+		click-query="i"
 		click-attribute="src"
 		click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg"
 		class="width:100%">
@@ -336,7 +336,7 @@
 		stripe="paymentMethods.detach"
 		stripe-key="$param[0]"
 		input-attribute="$click"
-		input-next />
+		input-query="$next" />
 	<div actions="stripe.paymentMethods.detach"></div>
 </form>
 
@@ -353,7 +353,7 @@
 		stripe="customers.update"
 		stripe-key="invoice_settings.default_payment_method"
 		input-attribute="$click"
-		input-next />
+		input-query="$next" />
 
 	<!-- Action triggered when the Default Payment Method is set -->
 	<div actions="stripe.customers.update"></div>

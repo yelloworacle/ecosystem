@@ -30,7 +30,7 @@
 	type="hidden"
 	localstorage-get="user_id"
 	localstorage-if="false"
-	localstorage-next="#createUserAI"
+	localstorage-query="$next #createUserAI"
 	localstorage-attribute="$click" />
 
 <form array="users" object="" hidden>
@@ -43,7 +43,7 @@
 
 <button
 	id="chat-toggle"
-	click-next
+	click-query="$next"
 	click-attribute="style"
 	click-value="visibility:visible,"
 	class="button-round">
@@ -54,7 +54,7 @@
 	<div id="chat-header">
 		Chat with YellowOracle
 		<a
-			click-closest="#chat-container"
+			click-query="$closest #chat-container"
 			click-attribute="style"
 			click-value="visibility:visible,"
 			class="float:right font-size:20px color:#000:hover">

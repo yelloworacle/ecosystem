@@ -32,7 +32,7 @@
 			<input
 				type="hidden"
 				key="_id"
-				input-parent
+				input-query="$parent"
 				input-attribute="style"
 				input-value="display:flex" />
 			<div id="impressions" class="card flex-grow:1 width:180px">
@@ -66,7 +66,7 @@
 				placeholder="Type"
 				class="floating-label"
 				input-attribute="display"
-				input-closest="form">
+				input-query="$closest form">
 				<option value="" disabled selected>Select Post Type</option>
 				<option value="job">Job</option>
 				<option value="education">Education</option>
@@ -264,7 +264,7 @@
 				key="remote"
 				placeholder="Remote"
 				input-attribute="remote-type"
-				input-document="#remote-details"
+				input-query="$document #remote-details"
 				class="floating-label">
 				<option value="" disabled selected>Select Remote Option</option>
 				<option value="none">None</option>
@@ -355,7 +355,7 @@
 			</button>
 			<button
 				actions="click, openai.chat.completions.create, save, click, timeout(2000), click"
-				click-selector="i"
+				click-query="i"
 				click-attribute="src"
 				click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg">
 				<i src="../assets/svg/save.svg"></i>
@@ -370,7 +370,7 @@
 		key="content"
 		filter-query-key="name"
 		filter-query-value="Career Job Matches"
-		input-previous="#systemInstructions"
+		input-query="$previous #systemInstructions"
 		input-attribute="value"
 		hidden></textarea>
 </section>

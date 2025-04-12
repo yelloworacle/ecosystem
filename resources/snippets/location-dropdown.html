@@ -6,14 +6,14 @@
 			key="location.type"
 			value="Point"
 			filter-query-key="location.$near.$geometry.type"
-			filter-closest=".jobs-container #jobs-list" />
+			filter-query="$closest .jobs-container #jobs-list" />
 		<input
 			type="number"
 			key="location.coordinates[0]"
 			geolocation="getCurrentPosition"
 			geolocation-key="coords.longitude"
 			filter-query-key="location.$near.$geometry.coordinates[0]"
-			filter-closest=".jobs-container #jobs-list"
+			filter-query="$closest .jobs-container #jobs-list"
 			hidden />
 
 		<input
@@ -22,7 +22,7 @@
 			geolocation="getCurrentPosition"
 			geolocation-key="coords.latitude"
 			filter-query-key="location.$near.$geometry.coordinates[1]"
-			filter-closest=".jobs-container #jobs-list"
+			filter-query="$closest .jobs-container #jobs-list"
 			hidden />
 		<a actions="geoLocation.getCurrentPosition, save">
 			<i src="../assets/svg/crosshairs.svg"></i>
@@ -65,7 +65,7 @@
 				read="false"
 				calculate="{(#distanceInput)} * {(#unitSelector)}"
 				filter-query-key="location.$near.$maxDistance"
-				filter-closest=".jobs-container #jobs-list"
+				filter-query="$closest .jobs-container #jobs-list"
 				hidden />
 		</floating-label>
 

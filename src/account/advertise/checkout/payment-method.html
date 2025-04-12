@@ -3,7 +3,7 @@
 		class="display:flex justify-content:space-between width:100% margin-bottom:20px">
 		<h3>Add new payment method</h3>
 		<i
-			click-closest="#sales"
+			click-query="$closest #sales"
 			click-attribute="display"
 			click-value="payment"
 			src="./assets/svg/times.svg">
@@ -68,7 +68,7 @@
 		stripe-key="id"
 		stripe-request="false"
 		input-attribute="value"
-		input-document=".paymentid[]" />
+		input-query="$document .paymentid[]" />
 
 	<!-- Attach Payment Method To Customer -->
 	<input
@@ -97,17 +97,17 @@
 
 		<input
 			type="checkbox"
-			input-parent="[stripe][]"
+			input-query="$parent [stripe][]"
 			input-attribute="stripe"
 			input-value="customers.update" />
 		Set as default payment method
 	</label>
 	<button
 		actions="click, submit, timeout(2000), stripe.paymentMethods.attach, action($document #loadPaymentMethods), click, timeout(2000), toggle"
-		click-selector="i"
+		click-query="i"
 		click-attribute="src"
 		click-value="../assets/svg/spinner.svg, ../assets/svg/check-circle.svg, ../assets/svg/save.svg"
-		toggle-closest="#sales"
+		toggle-query="$closest #sales"
 		toggle-attribute="display"
 		toggle-value="payment"
 		class="width:100%">
@@ -117,7 +117,7 @@
 
 	<!-- <button
 		actions="submit, timeout(2000), stripe.paymentMethods.attach, action($document #loadPaymentMethods), click"
-		click-closest="#sales"
+		click-query="$closest #sales"
 		click-attribute="display"
 		click-value="payment"
 		class="width:100%">

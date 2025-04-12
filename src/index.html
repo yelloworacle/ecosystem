@@ -123,7 +123,7 @@
 			object="$user_id"
 			key="currentOrg"
 			filter-query-key="organization"
-			filter-document="[org-filter][]" />
+			filter-query="$document [org-filter][]" />
 
 		<!-- Navbar  -->
 		<nav
@@ -139,7 +139,7 @@
 			class="top:0px left:0px width:300px@lg@xl"
 			path="./"
 			src="./components/sidenav.html"
-			resize-document="main, footer"
+			resize-query="$document main, footer"
 			resize-attribute="style"
 			resize-property="margin-left"
 			session></sidenav>
@@ -165,7 +165,7 @@
 			path="./"
 			filter-query-key="name"
 			filter-query-value="Sales Chat"
-			filter-selector="#system-instructions"></div>
+			filter-query="#system-instructions"></div>
 
 		<script src="./dist/CoCreate.js"></script>
 	</body>

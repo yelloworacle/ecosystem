@@ -49,7 +49,7 @@
 
 	<form
 		array="organizations"
-		value-document="#currentOrg"
+		value-query="$document #currentOrg"
 		value-attribute="object"
 		class="forms width:100% max-width:800px margin:auto"
 		module="stripe">
@@ -61,7 +61,7 @@
 		<input
 			type="hidden"
 			key="country"
-			input-parent
+			input-query="$parent"
 			input-attribute="country" />
 
 		<input
@@ -87,7 +87,7 @@
 		<div class="accordion-item">
 			<div
 				class="accordion-button"
-				click-closest=".forms"
+				click-query="$closest .forms"
 				click-attribute="display"
 				click-value="account">
 				Account
@@ -103,7 +103,7 @@
 			id="individual"
 			key="business_type"
 			type="hidden"
-			input-next
+			input-query="$next"
 			input-attribute="src"
 			input-value="account/ambassador/form/individual.html"
 			input-if="individual" />
@@ -113,7 +113,7 @@
 			id="owner"
 			key="business_type"
 			type="hidden"
-			input-next
+			input-query="$next"
 			input-attribute="src"
 			input-value="account/ambassador/form/owner.html"
 			input-if="!individual" />
@@ -123,7 +123,7 @@
 			id="comapany"
 			type="hidden"
 			key="business_type"
-			input-next
+			input-query="$next"
 			input-attribute="src"
 			input-value="account/ambassador/form/company.html"
 			input-if="!individual" />
@@ -132,7 +132,7 @@
 		<div class="accordion-item">
 			<div
 				class="accordion-button"
-				click-closest=".forms"
+				click-query="$closest .forms"
 				click-attribute="display"
 				click-value="bank-account">
 				Bank Account
@@ -147,7 +147,7 @@
 		<div class="accordion-item">
 			<div
 				class="accordion-button"
-				click-closest=".forms"
+				click-query="$closest .forms"
 				click-attribute="display"
 				click-value="documents">
 				Documents

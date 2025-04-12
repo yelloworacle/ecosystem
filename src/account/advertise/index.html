@@ -110,7 +110,7 @@
 					array="organizations"
 					object
 					key="balance"
-					value-document="#currentOrg"
+					value-query="$document #currentOrg"
 					value-attribute="object"
 					>0</span
 				>
@@ -130,7 +130,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="name.$regex"
 								filter-query-options="i"
 								state_id="datatable"
@@ -139,7 +139,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="name"
 								filter-sort-direction=""
 								click-value="desc, asc"
@@ -156,7 +156,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="_id.$regex"
 								filter-query-options="i"
 								state_id="datatable"
@@ -165,7 +165,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="_id"
 								filter-sort-direction=""
 								click-value="desc, asc"
@@ -187,7 +187,7 @@
 				filter-sort-key="_id"
 				filter-sort-direction="desc"
 				filter-limit
-				render-selector="[template]"
+				render-query="[template]"
 				org-filter>
 				<tr
 					class="hover"
@@ -221,7 +221,7 @@
 			</tbody>
 		</table>
 
-		<div filter-on="scroll" filter-previous="[render-selector]"></div>
+		<div filter-on="scroll" filter-query="$previous [render-query]"></div>
 	</container>
 
 	<container
@@ -233,9 +233,9 @@
 			array="organizations"
 			object=""
 			key="advertiseTerms"
-			input-closest=".main-view"
+			input-query="$closest .main-view"
 			input-attribute="terms"
-			value-document="#currentOrg"
+			value-query="$document #currentOrg"
 			value-attribute="object" />
 
 		<h1>Advertise With Us</h1>
@@ -297,7 +297,7 @@
 			<input
 				key="_id"
 				input-attribute="value"
-				input-document=".addOrg[]" />
+				input-query="$document .addOrg[]" />
 			<input key="owner" value="$user_id" />
 			<input key="$push.members" value="$user_id" />
 

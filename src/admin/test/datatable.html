@@ -8,7 +8,7 @@
 		<div
 			filter-sort-key="position"
 			filter-sort-direction="asc"
-			filter-next="[array='test']"></div>
+			filter-query="$next [array='test']"></div>
 
 		<table>
 			<tbody class="header">
@@ -17,7 +17,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="name.$regex"
 								filter-query-options="i"
 								state_id="datatable"
@@ -26,7 +26,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="name"
 								filter-sort-direction=""
 								click-value="desc, asc"
@@ -43,7 +43,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="_id.$regex"
 								filter-query-options="i"
 								state_id="datatable"
@@ -52,7 +52,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="_id"
 								filter-sort-direction=""
 								click-value="desc, asc"
@@ -74,7 +74,7 @@
 				filter-sort-key="position"
 				filter-sort-direction="asc"
 				filter-limit="20"
-				render-selector="[template]">
+				render-query="[template]">
 				<tr
 					class="hover"
 					template
@@ -106,6 +106,6 @@
 				</tr>
 			</tbody>
 		</table>
-		<div filter-on="scroll" filter-previous="[render-selector]"></div>
+		<div filter-on="scroll" filter-query="$previous [render-query]"></div>
 	</div>
 </section>

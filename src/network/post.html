@@ -83,11 +83,11 @@
 			class="position:fixed top:0px left:0px overflow:hidden background:whitesmoke height:100vh width:300px@lg@xl"
 			path="../"
 			src="../components/sidenav.html"
-			resize-document="main, footer"
+			resize-query="$document main, footer"
 			resize-attribute="style"
 			resize-property="margin-left"
 			session
-			input-selector="[actions][]"
+			input-query="[actions][]"
 			input-attribute="href"
 			input-value="../"></sidenav>
 
@@ -99,7 +99,7 @@
 					array="blog-posts"
 					object=""
 					key="category"
-					render-selector="[template]"
+					render-query="[template]"
 					class="padding:0_20px width:100% margin-top:20px display:flex flex-wrap:wrap gap:10px">
 					<a
 						class="border-radius:5px padding:2px_5px background:#F23A2E color:#fff color:#ddd:hover font-size:12px@sm"

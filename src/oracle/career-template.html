@@ -42,10 +42,10 @@
 		<div
 			class="card display:flex align-items:center flex-wrap:wrap gap:10px padding:10px width:100% margin-bottom:15px">
 			<div
-				click-closest=".additional-container #additional-list"
+				click-query="$closest .additional-container #additional-list"
 				click-attribute="hidden"
 				click-value=""
-				toggle-selector=":first-child"
+				toggle-query=":first-child"
 				toggle-attribute="src"
 				toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
 				class="display:flex align-items:center gap:10px flex-grow:1 width:100%">
@@ -88,7 +88,7 @@
 						object="$user_id"
 						key="why.{{object._id}}"
 						input-if="false"
-						input-next=".createWhy"
+						input-query="$next .createWhy"
 						input-attribute="$click"
 						value-dispatch></p>
 
@@ -180,10 +180,10 @@
 		<div
 			class="card display:flex align-items:center gap:10px margin-bottom:15px padding:0px!important">
 			<div
-				click-closest=".jobs-container #jobs-list"
+				click-query="$closest .jobs-container #jobs-list"
 				click-attribute="hidden"
 				click-value=""
-				toggle-selector=":first-child"
+				toggle-query=":first-child"
 				toggle-attribute="src"
 				toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
 				class="display:flex align-items:center gap:10px flex-grow:1">
@@ -193,7 +193,7 @@
 				<span class="width:100%">Jobs</span>
 				<div
 					class="display:flex justify-content:flex-end align-items:center gap:15px transition:0.3s position:relative"
-					click-selector=".options"
+					click-query=".options"
 					click-attribute="class"
 					click-value="display:inline-flex!important">
 					<a
@@ -214,14 +214,14 @@
 			array="advertisements"
 			object=""
 			filter-limit
-			render-selector="[template]"
+			render-query="[template]"
 			class="display:flex flex-direction:column margin-top:10px gap:10px"
 			hidden>
 			<input
 				type="text"
 				filter-query-key="location.$near.$geometry.type"
 				value="Point"
-				filter-parent
+				filter-query="$parent"
 				hidden />
 
 			<input
@@ -231,7 +231,7 @@
 				key="location.coordinates"
 				filter-query-key="location.$near.$geometry.coordinates"
 				value-type="array"
-				filter-parent
+				filter-query="$parent"
 				hidden />
 
 			<input
@@ -240,7 +240,7 @@
 				array="users"
 				object="$user_id"
 				key="maxDistance"
-				filter-parent
+				filter-query="$parent"
 				hidden />
 
 			<!-- <input
@@ -249,12 +249,12 @@
 				object="$user_id"
 				key="careers"
 				value-type="array"
-				filter-parent
+				filter-query="$parent"
 				hidden /> -->
 
 			<div class="card padding:10px" template render-as="job">
 				<div
-					intersection-next
+					intersection-query="$next"
 					intersection-attribute="$save"
 					intersection-if="!$template"></div>
 				<input
@@ -270,7 +270,7 @@
 					class="display:flex align-items:center justify-content:flex-end margin-bottom:15px">
 					<div
 						class="display:flex align-items:center gap:10px transition:0.3s"
-						hover-selector=".options"
+						hover-query=".options"
 						hover-attribute="class"
 						hover-value="display:inline-flex!important">
 						<div class="display:none options">
@@ -350,10 +350,10 @@
 		<div
 			class="card display:flex align-items:center gap:10px margin-bottom:15px padding:0px!important">
 			<div
-				click-closest=".video-container #video-list"
+				click-query="$closest .video-container #video-list"
 				click-attribute="hidden"
 				click-value=""
-				toggle-selector=":first-child"
+				toggle-query=":first-child"
 				toggle-attribute="src"
 				toggle-value="../assets/svg/angle-down.svg, ../assets/svg/angle-right.svg"
 				class="display:flex align-items:center gap:10px flex-grow:1">
@@ -424,7 +424,7 @@
 						openai="chat.completions.create"
 						openai-key="choices[0].message.content"
 						openai-request="false"
-						input-next
+						input-query="$next"
 						input-attribute="value"
 						hidden></textarea>
 
@@ -433,7 +433,7 @@
 						object="{{object._id}}"
 						key="video-script-html"
 						input-if="false"
-						input-next
+						input-query="$next"
 						input-attribute="$click"
 						value-dispatch
 						marked

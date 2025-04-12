@@ -42,7 +42,7 @@
 				accept="image/*"
 				placeholder="Upload Image or Video Thumbnail"
 				class="floating-label min-height:40px active"
-				render-selector="[template]"
+				render-query="[template]"
 				active>
 				<div template>
 					<img src="{{image.src}}" alt="image" width="100%" />
@@ -108,7 +108,7 @@
 
 		<input
 			key="_id"
-			input-document="#publishform"
+			input-query="$document #publishform"
 			input-attribute="object"
 			hidden />
 		<input type="datetime" key="published" value="$now" hidden />

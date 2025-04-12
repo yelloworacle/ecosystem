@@ -4,9 +4,9 @@
 	array="organizations"
 	object
 	value=""
-	value-document="#currentOrg"
+	value-query="$document #currentOrg"
 	filter-limit
-	render-selector="[template]"
+	render-query="[template]"
 	click-attribute="class"
 	click-value="open"
 	click-stopPropagation>
@@ -22,7 +22,7 @@
 		value="$user_id"
 		value-type="array"
 		filter-query-key="members.$in"
-		filter-parent />
+		filter-query="$parent" />
 
 	<!-- Template for Organization -->
 	<organization
@@ -30,8 +30,8 @@
 		value="{{object._id}}"
 		click-attribute="value"
 		click-value="{{object._id}}"
-		click-document="#currentOrg"
-		hover-selector=".edit-org"
+		click-query="$document #currentOrg"
+		hover-query=".edit-org"
 		hover-attribute="class"
 		hover-value="display:block!important"
 		class="display:none align-items:center order:1 cursor:pointer">
@@ -53,7 +53,7 @@
 					class="font-size:26px max-width:150px white-space:nowrap overflow:hidden"
 					translate="no"
 					value="$scrollWidth"
-					onload-next
+					onload-query="$next"
 					onload-attribute="value"
 					onload-setTimeout="4000">
 					{{object.name}}
@@ -62,7 +62,7 @@
 				<input
 					type="hidden"
 					calculate="$value($previous) > 150 ? 26 * 150 / $value($previous) : 26"
-					input-parent="span"
+					input-query="$parent span"
 					input-attribute="style"
 					input-value="font-size: $valuepx;" />
 			</a>
@@ -88,7 +88,7 @@
 		state_to="mainView"
 		state-src="./account/organizations/form.html"
 		state-overwrite
-		click-closest="sidenav"
+		click-query="$closest sidenav"
 		click-attribute="style"
 		click-value="width:0px"
 		click-if="<575px"

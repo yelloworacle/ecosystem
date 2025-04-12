@@ -20,7 +20,7 @@
 				accept="image/*"
 				placeholder="Profile Image"
 				class="display:flex align-items:center justify-content:center position:relative border-radius:50% overflow:hidden width:250px height:250px border:2px_solid border-color:#fff@dark"
-				render-selector="[template]"
+				render-query="[template]"
 				active>
 				<i
 					class="position:absolute height:100% width:100% top:15px"
@@ -46,7 +46,7 @@
 			></a>
 			<div
 				class="display:flex align-items:center transition:0.3s"
-				hover-selector=".options"
+				hover-query=".options"
 				hover-attribute="class"
 				hover-value="display:flex!important">
 				<div class="display:none options">
@@ -186,7 +186,7 @@
         id="questions"
         object
         key="questions"
-        render-selector="[template]"
+        render-query="[template]"
         read="false">
         <input
             type="text"

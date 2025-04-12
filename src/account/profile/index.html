@@ -15,7 +15,7 @@
 				accept="image/*"
 				placeholder="Profile Image"
 				class="display:flex align-items:center justify-content:center position:relative border-radius:50% overflow:hidden width:250px height:250px border:2px_solid border-color:#fff@dark"
-				render-selector="[template]"
+				render-query="[template]"
 				active>
 				<i
 					class="position:absolute height:100% width:100% top:15px"
@@ -114,7 +114,7 @@
 				key="remote"
 				placeholder="Remote"
 				input-attribute="remote-type"
-				input-document="#remote-details"
+				input-query="$document #remote-details"
 				class="floating-label">
 				<option value="" disabled selected>Select Remote Option</option>
 				<option value="none">None</option>
@@ -221,7 +221,7 @@
 			google-maps="geocoder"
 			google-maps-key="response[0].formatted_address"
 			google-maps-request="false"
-			input-document="#address"
+			input-query="$document #address"
 			input-attribute="value" />
 
 		<!-- Button to trigger geocoding -->

@@ -122,11 +122,11 @@
 			class="top:0px left:0px width:300px@lg@xl"
 			path="../"
 			src="../components/sidenav.html"
-			resize-document="main, footer"
+			resize-query="$document main, footer"
 			resize-attribute="style"
 			resize-property="margin-left"
 			session
-			input-selector="[actions][]"
+			input-query="[actions][]"
 			input-attribute="href"
 			input-value="../"></sidenav>
 
@@ -143,7 +143,7 @@
 					<floating-label>
 						<input
 							type="text"
-							filter-document="#blog-posts"
+							filter-query="$document #blog-posts"
 							filter-query-key="title.$regex"
 							filter-query-options="i"
 							placeholder="Search" />
@@ -151,7 +151,7 @@
 					<span
 						class="position:absolute bottom:21px right:18px float:right">
 						<a
-							filter-document="#blog-posts"
+							filter-query="$document #blog-posts"
 							filter-sort-key="title"
 							filter-sort-direction=""
 							click-value="desc, asc"
@@ -166,7 +166,7 @@
 
 				<input
 					type="datetime-local"
-					filter-next
+					filter-query="$next"
 					filter-query-key="published.$lte"
 					value="$now"
 					hidden />
@@ -180,7 +180,7 @@
 					filter-limit="20"
 					filter-sort-key="published"
 					filter-sort-direction="desc"
-					render-selector="[template]">
+					render-query="[template]">
 					<!-- Blog Post Template -->
 					<div class="card flex-grow:1 width:300px" template>
 						<a class="overflow:hidden" href="{{object.url}}">
@@ -199,7 +199,7 @@
 							<!-- Post Content -->
 							<div
 								hover="display:block"
-								hover-selector=".description">
+								hover-query=".description">
 								<h2
 									class="font-size:24px margin:0 padding:0_0_10px font-weight:700">
 									{{object.title}}
@@ -217,7 +217,7 @@
 										type="date"
 										value="{{object.created.on}}"
 										value-type="toLocaleDateString"
-										onload-next
+										onload-query="$next"
 										onload-attribute="value"
 										hidden />
 
@@ -241,7 +241,7 @@
 						</a>
 					</div>
 				</div>
-				<div filter-on="scroll" filter-previous></div>
+				<div filter-on="scroll" filter-query="$previous"></div>
 			</section>
 		</main>
 

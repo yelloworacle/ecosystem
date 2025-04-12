@@ -139,12 +139,12 @@
 
 				<input
 					value="$search.user_id"
-					onload-next
+					onload-query="$next"
 					onload-attribute="value"
 					hidden />
 
 				<input
-					input-next
+					input-query="$next"
 					input-attribute="display"
 					input-value="signin"
 					hidden />
@@ -183,7 +183,7 @@
 								<input
 									type="hidden"
 									value="$search.email"
-									onload-previous
+									onload-query="$previous"
 									onload-attribute="value" />
 							</floating-label>
 
@@ -228,7 +228,7 @@
 							<p class="signup-prompt">
 								Already have an account?
 								<a
-									click-closest="section"
+									click-query="$closest section"
 									click-attribute="display"
 									click-value="signin"
 									>Click here.</a
@@ -269,7 +269,7 @@
 								<input
 									type="hidden"
 									value="$search.email"
-									onload-previous
+									onload-query="$previous"
 									onload-attribute="value" />
 							</floating-label>
 
@@ -296,7 +296,7 @@
 									Accept Invite
 								</button>
 								<a
-									click-closest="section"
+									click-query="$closest section"
 									click-attribute="display"
 									click-value="forgotpass"
 									class="padding:10px"
@@ -306,7 +306,7 @@
 							<p class="signup-prompt">
 								Don't have an account?
 								<a
-									click-closest="section"
+									click-query="$closest section"
 									click-attribute="display"
 									click-value="signup"
 									>Click here.</a
@@ -373,13 +373,13 @@
 									>Send Email</a
 								>
 								<a
-									click-closest="section"
+									click-query="$closest section"
 									click-attribute="display"
 									click-value="signin"></a>
 							</button>
 
 							<a
-								click-closest="section"
+								click-query="$closest section"
 								click-attribute="display"
 								click-value="signin"
 								>Sign In</a

@@ -8,7 +8,7 @@
 	class="margin-bottom:40px width:300px margin-left:auto"
 	click-attribute="class"
 	click-value="open"
-	click-selector="organization-list">
+	click-query="organization-list">
 	<organization-list
 		class="display:flex flex-direction:column gap:10px"
 		placeholder="Organization"
@@ -16,13 +16,13 @@
 		object
 		value=""
 		filter-limit
-		render-selector="[template]">
+		render-query="[template]">
 		<input
 			type="hidden"
 			value="$user_id"
 			value-type="array"
 			filter-query-key="members.$in"
-			filter-parent />
+			filter-query="$parent" />
 		<input
 			realtime="true"
 			type="hidden"
@@ -30,7 +30,7 @@
 			object="$user_id"
 			key="currentOrg"
 			input-attribute="value"
-			input-parent />
+			input-query="$parent" />
 
 		<!-- Template for Organization -->
 		<organization
@@ -38,7 +38,7 @@
 			value="{{object._id}}"
 			click-attribute="value"
 			click-value="{{object._id}}"
-			click-parent="#currentOrg"
+			click-query="$parent #currentOrg"
 			class="card display:none align-items:center order:1 cursor:pointer padding:10px!important">
 			<style>
 				organization-list[value="{{object._id}}"]
@@ -54,7 +54,7 @@
 			</div>
 			<div
 				class="display:inline-flex align-items:center"
-				hover-selector=".card"
+				hover-query=".card"
 				hover-attribute="class"
 				hover-value="display:block!important">
 				<div

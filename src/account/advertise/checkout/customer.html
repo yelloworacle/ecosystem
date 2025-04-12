@@ -20,9 +20,9 @@
 		stripe-key="id"
 		stripe-request="false"
 		input-if="false"
-		input-next
+		input-query="$next"
 		input-attribute="$click"
-		value-document="#currentOrg"
+		value-query="$document #currentOrg"
 		value-attribute="object"
 		value-dispatch />
 	<a actions="stripe.customers.create, save"></a>
@@ -34,7 +34,7 @@
 		<input
 			array="organizations"
 			key="customerId"
-			value-document="#currentOrg"
+			value-query="$document #currentOrg"
 			value-attribute="object"
 			placeholder="Enter Customer ID" />
 	</floating-label>

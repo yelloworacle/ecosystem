@@ -3,13 +3,13 @@
 	resize-attribute="menu-icon"
 	resize-value="active"
 	resize-if="300px"
-	resize-document="[menu-icon][]"></div>
+	resize-query="$document [menu-icon][]"></div>
 <div
 	class="width:100%"
 	resize-attribute="menu-icon"
 	resize-value="false"
 	resize-if="0px"
-	resize-document="[menu-icon][]"></div>
+	resize-query="$document [menu-icon][]"></div>
 
 <div
 	class="display:flex justify-content:space-between align-items:center padding:10px">
@@ -20,7 +20,7 @@
 		menu-icon
 		class="margin-right:5px!important"
 		toggle="width:0px,"
-		toggle-document="#menuL"
+		toggle-query="$document #menuL"
 		toggle-attribute="style">
 		<span></span>
 		<span></span>
@@ -40,7 +40,7 @@
 			actions="state"
 			state_to="mainView"
 			state-src="$relativePathhome/"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -53,7 +53,7 @@
 			actions="state"
 			state_to="mainView"
 			state-src="$relativePathoracle/"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -71,7 +71,7 @@
 			actions="state"
 			state_to="mainView"
 			state-src="$relativePathaccount/profile/"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -87,7 +87,7 @@
 		<h3 class="margin:50px_10px_5px">Account</h3>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -107,7 +107,7 @@
 
 		<!-- <li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -128,7 +128,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathaccount/organizations/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -139,7 +139,7 @@
  -->
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -158,7 +158,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -179,7 +179,7 @@
 
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -200,7 +200,7 @@
 
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -220,7 +220,7 @@
 
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -241,7 +241,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathaccount/advertise/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -253,7 +253,7 @@
 		<ul class="sub-menu">
 			<li
 				href="$relativePath"
-				click-closest="sidenav"
+				click-query="$closest sidenav"
 				click-attribute="style"
 				click-value="width:0px"
 				click-if="<=993px"
@@ -271,7 +271,7 @@
 			</li>
 			<!-- <li
 				href="$relativePath"
-				click-closest="sidenav"
+				click-query="$closest sidenav"
 				click-attribute="style"
 				click-value="width:0px"
 				click-if="<=993px"
@@ -291,7 +291,7 @@
 
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -313,7 +313,7 @@
 			array="keys"
 			object="652c8d62a91e10cd4800fffb"
 			key="key"
-			input-parent
+			input-query="$parent"
 			input-attribute="admin"
 			input-value="true" />
 
@@ -321,7 +321,7 @@
 
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -342,7 +342,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/users/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -352,7 +352,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -373,7 +373,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/organizations/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -383,7 +383,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -404,7 +404,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/payments/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -414,7 +414,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -436,7 +436,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/payouts/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -446,7 +446,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -467,7 +467,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/blog/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -477,7 +477,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -498,7 +498,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/social/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -508,7 +508,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -528,7 +528,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/email-campaigns/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -538,7 +538,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -559,7 +559,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/questions/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -569,7 +569,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -591,7 +591,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/careers/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -601,7 +601,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -622,7 +622,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/subscriptions/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -632,7 +632,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -654,7 +654,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/advertisements/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -664,7 +664,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -686,7 +686,7 @@
 					actions="state"
 					state_to="mainView"
 					state-src="$relativePathadmin/ai/form.html"
-					click-document="[state_id='form-fields']"
+					click-query="$document [state_id='form-fields']"
 					click-action="reset"
 					class="display:flex justify-content:center align-items:center height:40px">
 					<i src="$relativePathassets/svg/plus.svg"></i>
@@ -696,7 +696,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"
@@ -715,7 +715,7 @@
 		</li>
 		<li
 			href="$relativePath"
-			click-closest="sidenav"
+			click-query="$closest sidenav"
 			click-attribute="style"
 			click-value="width:0px"
 			click-if="<=993px"

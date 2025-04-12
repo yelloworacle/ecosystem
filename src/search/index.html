@@ -5,7 +5,7 @@
 			<floating-label class="margin-bottom:20px">
 				<input
 					type="text"
-					filter-document="#careers"
+					filter-query="$document #careers"
 					filter-query-key="name.$regex"
 					filter-query-options="i"
 					placeholder="Search Careers"
@@ -18,7 +18,7 @@
 				object
 				filter-sort-key="name"
 				filter-limit="10"
-				render-selector="[template]"
+				render-query="[template]"
 				src="../search/search-template.html"></div>
 		</section>
 
@@ -39,7 +39,7 @@
 				array="subscriptions"
 				object="6571fe530c48ef6970900a82"
 				key="fields"
-				input-next=".subscribed[]"
+				input-query="$next .subscribed[]"
 				input-attribute="value"
 				class="width:100%"
 				hidden
@@ -51,7 +51,7 @@
 				key="answeredQuestions[1]"
 				input-attribute="hidden"
 				input-value="false"
-				input-parent
+				input-query="$parent"
 				input-if=""
 				hidden></textarea>
 
@@ -60,7 +60,7 @@
 				array="subscriptions"
 				object="6571fe530c48ef6970900a82"
 				key="fields"
-				input-next=".subscribed[]"
+				input-query="$next .subscribed[]"
 				input-attribute="value"
 				class="width:100%"
 				hidden
@@ -72,7 +72,7 @@
 				filter-query-key="name.$eq"
 				filter-query-value="Surgeon"
 				filter-limit="1"
-				render-selector="[template]"
+				render-query="[template]"
 				src="../search/search-template.html"></div>
 		</section>
 	</div>

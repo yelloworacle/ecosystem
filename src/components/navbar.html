@@ -10,7 +10,7 @@
 	menu-icon
 	class="display:none@md@lg@xl display:block@xxs@xs@sm"
 	toggle="width:300px,"
-	toggle-document="#menuL"
+	toggle-query="$document #menuL"
 	toggle-attribute="style"
 	session>
 	<span></span>
@@ -146,7 +146,7 @@
 		<a
 			class="signin"
 			toggle="dropdown"
-			toggle-closest="nav #profile-dropdown"
+			toggle-query="$closest nav #profile-dropdown"
 			toggle-attribute="hidden"
 			toggle-value=""
 			session>
@@ -168,7 +168,7 @@
 		state-src="$relativePathaccount/profile/index.html"
 		state_to="mainView"
 		href="$relativePath"
-		click-parent
+		click-query="$parent"
 		click-attribute="hidden"
 		click-value=""
 		class="display:flex align-items:center gap:10px">

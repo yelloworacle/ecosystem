@@ -13,7 +13,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="firstname.$regex"
 								filter-query-options="i"
 								state_id="datatable"
@@ -22,7 +22,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="firstname"
 								filter-sort-direction="asc"
 								click-value="desc, asc"
@@ -39,7 +39,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="amount"
 								state_id="datatable"
 								placeholder="Amount"
@@ -47,7 +47,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="amount"
 								filter-sort-direction="asc"
 								click-value="desc, asc"
@@ -64,7 +64,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="status"
 								state_id="datatable"
 								placeholder="Status"
@@ -72,7 +72,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="sattus"
 								filter-sort-direction="asc"
 								click-value="desc, asc"
@@ -89,7 +89,7 @@
 						<floating-label>
 							<input
 								type="text"
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-query-key="_id.$regex"
 								filter-query-options="i"
 								state_id="datatable"
@@ -98,7 +98,7 @@
 						</floating-label>
 						<span class="sort">
 							<a
-								filter-document="tbody[render-selector]"
+								filter-query="$document tbody[render-query]"
 								filter-sort-key="_id"
 								filter-sort-direction=""
 								click-value="desc, asc"
@@ -119,7 +119,7 @@
 				object
 				filter-sort-key="name"
 				filter-sort-direction="asc"
-				render-selector="[template]">
+				render-query="[template]">
 				<tr
 					class="hover"
 					template
@@ -183,6 +183,6 @@
 			</tbody>
 		</table>
 
-		<div filter-on="scroll" filter-previous="[render-selector]"></div>
+		<div filter-on="scroll" filter-query="$previous [render-query]"></div>
 	</div>
 </section>
