@@ -36,6 +36,12 @@
 				type="datetime-local"
 				key="published"
 				placeholder="Publish On" />
+			<input
+				type="datetime-local"
+				onload-query="$previous"
+				onload-attribute="value"
+				value="$now"
+				hidden />
 		</floating-label>
 
 		<floating-label class="input-600">
@@ -51,15 +57,15 @@
 				type="hidden"
 				value-replaceall=" "
 				value-replacement="-"
-				value-suffix=".html"
 				input-query="$next"
 				input-attribute="value" />
 
 			<input
 				type="hidden"
-				value-replace="/[&:!#()*+,;=?@\[\]\\\u2013\u2014\u2019\u0022\u0027`<>|{}^%$]/g, ''"
+				value-replace="/[^a-zA-Z0-9-]/g, ''"
 				input-query="$document .title[]"
-				input-attribute="value" />
+				input-attribute="value"
+				value-suffix=".html" />
 
 			<a
 				actions="action($document #generate-post)"
