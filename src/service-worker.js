@@ -52,113 +52,130 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", async (e) => {
-	if (!(e.request.url.indexOf("http") === 0) || e.request.method === "POST")
-		return;
+	try {
+		if (
+			!(e.request.url.indexOf("http") === 0) ||
+			e.request.method === "POST"
+		)
+			return;
 
-	e.respondWith(
-		caches
-			.match(e.request)
-			.then(async (cacheResponse) => {
-				let fetchedOn;
-				if (cacheResponse && cacheType !== "false") {
-					fetchedOn = cacheResponse.headers.get("fetched-on");
-					if (fetchedOn) fetchedOn = new Date(fetchedOn);
-				}
-
-				if (
-					!navigator.onLine ||
-					(!!cacheResponse &&
-						cacheType !== "false" &&
-						(!fetchedOn || fetchedOn > updatedOn))
-				) {
-					const organization =
-						cacheResponse.headers.get("organization");
-					// console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
-					const lastModified =
-						cacheResponse.headers.get("last-modified");
-					sendCacheUpdate(e.request.url, organization, lastModified);
-					return cacheResponse;
-				} else {
-					// console.log('fetching fetchOn less', fetchedOn > updatedOn)
-
-					const networkResponse = await fetch(e.request);
-
-					if (!organization_id)
-						organization_id =
-							networkResponse.headers.get("organization");
-
-					let storageHeader = networkResponse.headers.get("storage");
-					if (storageHeader) storage = storageHeader;
+		e.respondWith(
+			caches
+				.match(e.request)
+				.then(async (cacheResponse) => {
+					let fetchedOn;
+					if (cacheResponse && cacheType !== "false") {
+						fetchedOn = cacheResponse.headers.get("fetched-on");
+						if (fetchedOn) fetchedOn = new Date(fetchedOn);
+					}
 
 					if (
-						cacheType &&
-						cacheType !== "false" &&
-						networkResponse.status === 200
+						!navigator.onLine ||
+						(!!cacheResponse &&
+							cacheType !== "false" &&
+							(!fetchedOn || fetchedOn > updatedOn))
 					) {
-						// console.log('caching')
+						const organization =
+							cacheResponse.headers.get("organization");
+						// console.log('servering cache fetchOn greater', fetchedOn > updatedOn, organization)
+						const lastModified =
+							cacheResponse.headers.get("last-modified");
+						sendCacheUpdate(
+							e.request.url,
+							organization,
+							lastModified
+						);
+						return cacheResponse;
+					} else {
+						// console.log('fetching fetchOn less', fetchedOn > updatedOn)
 
-						caches
-							.open(cacheName)
-							.then((cache) => {
-								if (networkResponse.status !== 206) {
-									const networkModified =
-										networkResponse.headers.get(
-											"last-modified"
-										);
-									// if (!networkModified) {
-									//     networkResponse.headers.set('Last-Modified', new Date().toISOString());
-									// }
-									cache.put(e.request, networkResponse);
-									if (
-										cacheType === "reload" ||
-										cacheType === "prompt"
-									) {
-										const cacheModified =
-											cacheResponse.headers.get(
+						const networkResponse = await fetch(e.request);
+
+						if (!organization_id)
+							organization_id =
+								networkResponse.headers.get("organization");
+
+						let storageHeader =
+							networkResponse.headers.get("storage");
+						if (storageHeader) storage = storageHeader;
+
+						if (
+							cacheType &&
+							cacheType !== "false" &&
+							networkResponse.status === 200
+						) {
+							// console.log('caching')
+
+							caches
+								.open(cacheName)
+								.then((cache) => {
+									if (networkResponse.status !== 206) {
+										const networkModified =
+											networkResponse.headers.get(
 												"last-modified"
 											);
-										if (networkModified !== cacheModified) {
-											self.clients
-												.matchAll()
-												.then((clients) => {
-													clients.forEach(
-														(client) => {
-															client.postMessage({
-																action: "cacheType",
-																cacheType
-															}); // Send a custom message
-															// console.log(`file ${cacheType} has been triggered`)
-														}
-													);
-												});
+										// if (!networkModified) {
+										//     networkResponse.headers.set('Last-Modified', new Date().toISOString());
+										// }
+										cache.put(e.request, networkResponse);
+										if (
+											cacheType === "reload" ||
+											cacheType === "prompt"
+										) {
+											const cacheModified =
+												cacheResponse.headers.get(
+													"last-modified"
+												);
+											if (
+												networkModified !==
+												cacheModified
+											) {
+												self.clients
+													.matchAll()
+													.then((clients) => {
+														clients.forEach(
+															(client) => {
+																client.postMessage(
+																	{
+																		action: "cacheType",
+																		cacheType
+																	}
+																); // Send a custom message
+																// console.log(`file ${cacheType} has been triggered`)
+															}
+														);
+													});
+											}
 										}
 									}
-								}
-							})
-							.catch(() => {});
+								})
+								.catch(() => {});
+						}
+
+						if (
+							!cacheResponse ||
+							cacheType === "false" ||
+							cacheType === "offline"
+						) {
+							return networkResponse.clone();
+						}
 					}
 
 					if (
-						!cacheResponse ||
-						cacheType === "false" ||
-						cacheType === "offline"
+						!!cacheResponse &&
+						cacheType !== "false" &&
+						cacheType !== "offline"
 					) {
-						return networkResponse.clone();
+						return cacheResponse;
 					}
-				}
-
-				if (
-					!!cacheResponse &&
-					cacheType !== "false" &&
-					cacheType !== "offline"
-				) {
-					return cacheResponse;
-				}
-			})
-			.catch(function () {
-				return caches.match("./offline.html");
-			})
-	);
+				})
+				.catch(function () {
+					return caches.match("./offline.html");
+				})
+		);
+	} catch (error) {
+		console.error("An error occurred:", error.message);
+	}
 });
 
 self.addEventListener("message", function (event) {
