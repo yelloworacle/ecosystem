@@ -356,7 +356,6 @@
 			value-type="array"
 			openai="chat.completions.create"
 			openai-key="messages[]"
-			reset="object"
 			skip-attribute
 			hidden></textarea>
 	</previousConversation>
@@ -438,9 +437,7 @@
 		component
 		key="html"
 		marked
-		marked-code="<div class='code-container'><codearea><textarea type='code' lang='${code.lang}' class='code-editor' value='${code.text}' height='auto' input-query="$next" input-attribute='value'
-            input-events='input, onload' readonly></textarea><iframe class='preview' width='100%' height='auto' hidden></iframe></codearea></div>"></div>
-
+		marked-code="<div class='code-container'><codearea><textarea type='code' lang='${code.lang}' class='code-editor' value='${code.text}' height='auto' input-query='$next' input-attribute='value' input-events='input, onload' readonly></textarea><iframe class='preview' width='100%' height='auto' hidden></iframe></codearea></div>"></div>
 	<!-- <div id="aiContent" component key="content"></div> -->
 	<a id="aiAction" actions="timeout(1000), save, reset"></a>
 </form>
