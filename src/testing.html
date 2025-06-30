@@ -9,74 +9,148 @@
 	</head>
 	<body>
 		<header>
-			<h1>SearchX</h1>
-			<p>Boost your online presence with expert SEO strategies.</p>
-			<a href="#contact" class="btn">Get Started</a>
-			<form>
-				<input
-					type="text"
-					array="files"
-					object="6799ed67568d3f771682b039"
-					key="pathname" />
-				<textarea
-					array="files"
-					object="6799ed67568d3f771682b039"
-					key="name"></textarea>
-				<textarea
-					array="files"
-					object="6799ed67568d3f771682b039"
-					key="src"></textarea>
-				<a actions="save">save</a>
-			</form>
-			<form array="contacts" object>
-				<input type="text" key="name" />
-				<textarea key="address"></textarea>
-				<textarea key="src"></textarea>
-				<textarea
-					storage="mongodb"
-					array="files"
-					object="666dbd543d5c297729bcb046"
-					key="name"
-					realtime="true"></textarea>
-				<textarea
-					storage="mongodb"
-					array="files"
-					object="666dbd543d5c297729bcb046"
-					key="src"
-					realtime="true"></textarea>
-				<a actions="save">save</a>
-			</form>
+			<div class="card padding:10px">
+				<label class="card-label">1. Generate Video Script</label>
+				<form api="openai" id="form-creative-script">
+					<input
+						openai="chat.completions.create"
+						openai-key="model"
+						value="gpt-4o-mini"
+						hidden />
+
+					<input
+						openai="chat.completions.create"
+						openai-key="messages[0].role"
+						value="system"
+						hidden />
+					<textarea
+						array="ai"
+						object
+						key="content"
+						save="false"
+						filter-query-key="name"
+						filter-query-value="Veed Video Script JSON"
+						openai="chat.completions.create"
+						openai-key="messages[0].content"
+						hidden></textarea>
+
+					<input
+						openai="chat.completions.create"
+						openai-key="messages[1].role"
+						value="user"
+						hidden />
+					<input
+						openai="chat.completions.create"
+						openai-key="messages[1].content"
+						value="Generate the script for career: Auto Mechanic"
+						hidden />
+
+					<textarea
+						openai="chat.completions.create"
+						openai-key="choices[0].message.content"
+						openai-request="false"
+						input-query="$document #veed-elements"
+						input-attribute="value">
+					</textarea>
+					<!-- <textarea
+						array="careers"
+						object="{{object._id}}"
+						key="raw_script_markdown"
+						openai="chat.completions.create"
+						openai-key="choices[0].message.content"
+						openai-request="false"
+						input-query="$document #veed-elements "
+						input-attribute="value"
+						hidden>
+					</textarea> -->
+
+					<button
+						type="button"
+						actions="openai.chat.completions.create">
+						Generate Script
+					</button>
+				</form>
+			</div>
+
+			<div class="card padding:10px">
+				<label class="card-label">2. Generate Video (VEED)</label>
+
+				<video
+					controls
+					class="width:100%"
+					hidden-if="!{{object.video_url}}">
+					<source src="{{object.video_url}}" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+				<div
+					class="card-value"
+					hidden-if="!{{object.video_url}}"
+					style="margin-top: 5px">
+					<small>Video URL: {{object.video_url}}</small>
+				</div>
+				<div
+					class="status-message margin-top:5px"
+					hidden-if="{{object.video_url}} || {{object.video_error}}">
+					Waiting for JSON transformation...
+				</div>
+				<div class="error-message" hidden-if="!{{object.video_error}}">
+					Error generating video: {{object.video_error}}
+				</div>
+
+				<form api="veed" id="form-veed-call" style="margin-top: 10px">
+					<input
+						veed="renders.create"
+						veed-key="name"
+						value="Career Video for {{object.name}}"
+						hidden />
+					<input
+						veed="renders.create"
+						veed-key="output.format"
+						value="mp4"
+						hidden />
+					<input
+						veed="renders.create"
+						veed-key="output.resolution"
+						value="1080p"
+						hidden />
+					<input
+						id="veed-elements"
+						type="hidden"
+						veed="renders.create"
+						veed-key="elements"
+						value-type="json"
+						input-query="$closest('form') [actions]"
+						input-attribute="$click" />
+					<!-- <input
+						type="hidden"
+						key="elements_json_representation"
+						array="careers"
+						object="{{object._id}}"
+						veed="renders.create"
+						veed-key="elements"
+						value-type="json"
+						input-query="$closest('form') [actions]"
+						input-attribute="$click" /> -->
+
+					<input
+						type="hidden"
+						array="careers"
+						object="{{object._id}}"
+						key="video_error"
+						veed="renders.create"
+						veed-key="error"
+						veed-request="false"
+						input-query="$next"
+						input-attribute="value" />
+					<button
+						type="button"
+						actions="veed.renders.create, save"
+						style="display: none"
+						aria-hidden="true"></button>
+				</form>
+			</div>
 		</header>
 
-		<section id="services">
-			<h2>Our Services</h2>
-			<div class="service">
-				<h3>Keyword Research</h3>
-				<p>Identify the best keywords for your business.</p>
-			</div>
-			<div class="service">
-				<h3>On-Page Optimization</h3>
-				<p>Enhance your website elements for better visibility.</p>
-			</div>
-			<div class="service">
-				<h3>Content Creation</h3>
-				<p>Develop high-quality, engaging content.</p>
-			</div>
-			<div class="service">
-				<h3>Backlink Building</h3>
-				<p>Gain authoritative links from reputable sites.</p>
-			</div>
-		</section>
-
-		<section id="contact">
-			<h2>Contact Us</h2>
-			<p>Start improving your SEO today!</p>
-			<a href="https://searchxpro.com" class="btn">Visit SearchX</a>
-		</section>
-
-		<footer>
-			<p>&copy; 2024 SearchX. All rights reserved.</p>
-		</footer>
 		<script src="./dist/CoCreate.js"></script>
 	</body>
 </html>
