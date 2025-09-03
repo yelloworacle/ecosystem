@@ -20,12 +20,12 @@
 
 <!-- Logo -->
 <a
-	href="$relativePath"
+	href="$relativePath/"
 	actions="state"
 	state_to="mainView"
-	state-src="$relativePathhome/"
+	state-src="$relativePath/home/"
 	class="height:50px display:flex align-items:center display:none@xs@sm@md">
-	<img height="50px" src="$relativePathassets/icons/icon-1240-1240.png" />
+	<img height="50px" src="$relativePath/assets/icons/icon-1240-1240.png" />
 	<span class="logo-name" translate="no"
 		>Yellow <span class="logo-name-colored">Oracle</span></span
 	>
@@ -33,16 +33,16 @@
 
 <!-- Icon Logo -->
 <a
-	href="$relativePath"
+	href="$relativePath/"
 	actions="state"
 	state_to="mainView"
-	state-src="$relativePathhome/"
+	state-src="$relativePath/home/"
 	class="height:50px display:none@lg@xl">
 	<img
 		array="organizations"
 		object=""
 		key="icon-logo"
-		src="$relativePathassets/icons/icon-1240-1240.png"
+		src="$relativePath/assets/icons/icon-1240-1240.png"
 		height="50px"
 		alt="icon logo" />
 </a>
@@ -51,29 +51,29 @@
 <div
 	class="display:flex align-items:center display:none@xs@sm overflow:auto height:50px width:100% min-width:335px margin-left:20px font-size:20px padding-top:5px">
 	<a
-		href="$relativePath"
+		href="$relativePath/"
 		actions="state"
 		state_to="mainView"
-		state-src="$relativePathhome/"
+		state-src="$relativePath/home/"
 		class="margin-right:25px"
 		>Home</a
 	>
 	<a
-		href="$relativePath"
+		href="$relativePath/"
 		actions="state"
 		state_to="mainView"
-		state-src="$relativePathoracle/"
+		state-src="$relativePath/oracle/"
 		class="margin-right:25px"
 		>Oracle</a
 	>
 
-	<a href="$relativePathblog/index.html" class="margin-right:25px">Blog</a>
+	<a href="$relativePath/blog/index.html" class="margin-right:25px">Blog</a>
 
 	<a
-		href="$relativePath"
+		href="$relativePath/"
 		actions="state"
 		state_to="mainView"
-		state-src="$relativePathaccount/profile/">
+		state-src="$relativePath/account/profile/">
 		Account</a
 	>
 </div>
@@ -89,7 +89,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="$relativePathassets/svg/pinterest-p.svg"></i>
+				src="$relativePath/assets/svg/pinterest-p.svg"></i>
 		</a>
 		<a
 			href="https://twitter.com/yelloworacle1"
@@ -97,7 +97,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="$relativePathassets/svg/twitter.svg"></i>
+				src="$relativePath/assets/svg/twitter.svg"></i>
 		</a>
 		<a
 			href="https://www.facebook.com/yelloworacle"
@@ -105,7 +105,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="$relativePathassets/svg/facebook.svg"></i>
+				src="$relativePath/assets/svg/facebook.svg"></i>
 		</a>
 		<a
 			href="https://www.instagram.com/yelloworacle/"
@@ -113,7 +113,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="$relativePathassets/svg/instagram.svg"></i>
+				src="$relativePath/assets/svg/instagram.svg"></i>
 		</a>
 		<a
 			href="https://www.linkedin.com/company/yelloworacle"
@@ -121,7 +121,7 @@
 			class="margin-right:15px">
 			<i
 				class="display:flex height:20px"
-				src="$relativePathassets/svg/linkedin-in.svg"></i>
+				src="$relativePath/assets/svg/linkedin-in.svg"></i>
 		</a>
 	</div>
 
@@ -132,7 +132,7 @@
 <!-- Avatar -->
 <div class="avatar round">
 	<div array="users" object="$user_id" key="firstname" class="avatar-name">
-		<i src="$relativePathassets/svg/sign-in-alt.svg"></i>
+		<i src="$relativePath/assets/svg/sign-in-alt.svg"></i>
 	</div>
 	<div class="avatar-image">
 		<img
@@ -141,7 +141,7 @@
 			key="avatar[0].src"
 			onerror="this.style.display='none'" />
 		<div>
-			<a href="$relativePathsignin.html"> </a>
+			<a href="$relativePath/signin.html"> </a>
 		</div>
 		<a
 			class="signin"
@@ -165,21 +165,21 @@
 	hidden>
 	<a
 		actions="state"
-		state-src="$relativePathaccount/profile/index.html"
+		state-src="$relativePath/account/profile/index.html"
 		state_to="mainView"
-		href="$relativePath"
+		href="$relativePath/"
 		click-query="$parent"
 		click-attribute="hidden"
 		click-value=""
 		class="display:flex align-items:center gap:10px">
-		<i src="$relativePathassets/svg/user.svg"></i>
+		<i src="$relativePath/assets/svg/user.svg"></i>
 		<span>Profile</span>
 	</a>
 	<a
 		actions="signOut"
-		href="$relativePathsignin.html"
+		href="$relativePath/signin.html"
 		class="display:flex align-items:center gap:10px">
-		<i src="$relativePathassets/svg/sign-out-alt.svg"></i>
+		<i src="$relativePath/assets/svg/sign-out-alt.svg"></i>
 		<span>Sign Out</span>
 	</a>
 </div>
