@@ -11,7 +11,7 @@ module.exports = {
 	directories: [
 		{
 			entry: "./src",
-			exclude: [".txt", "assets", "admin"],
+			exclude: [".txt"],
 			array: "files",
 			object: {
 				name: "{{name}}",

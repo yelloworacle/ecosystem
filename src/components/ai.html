@@ -207,7 +207,7 @@
 
 			<div class="display:flex width:100% {{object.role}}">
 				<img
-					src="$relativePath/assets/icons/icon-1240-1240.png"
+					src="$relativePath/assets/icons/icon-192x192.png"
 					alt="AI Icon" />
 				<form class="width:100%">
 					<div
@@ -248,10 +248,10 @@
 	<div class="code-tools">
 		<div
 			class="display:flex justify-content:flex-end align-items:center gap:10px">
-			<a>
+			<span>
 				<i src="$relativePath/assets/svg/clone.svg"></i>
-			</a>
-			<a
+			</span>
+			<span
 				toggle-query="$next"
 				toggle-attribute="hidden"
 				toggle-value=""
@@ -259,17 +259,17 @@
 				click-attribute="readonly"
 				click-value="">
 				<i src="$relativePath/assets/svg/edit.svg"></i>
-			</a>
-			<span class="" hidden>
-				<a
+			</span>
+			<span hidden>
+				<span
 					toggle-query="$closest .code-container textarea"
 					toggle-attribute="readonly"
 					toggle-value=""
 					click-query="$closest .markdown-body"
 					click-attribute="$save">
 					<i src="$relativePath/assets/svg/save.svg"></i>
-				</a>
-				<a
+				</span>
+				<span
 					toggle-query="$closest .code-container textarea"
 					toggle-attribute="readonly"
 					toggle-value=""
@@ -277,14 +277,14 @@
 					click-attribute="hidden"
 					click-value="">
 					<i src="$relativePath/assets/svg/ban.svg"></i>
-				</a>
+				</span>
 			</span>
-			<a
+			<span
 				toggle-query="$closest .code-container codearea *[]"
 				toggle-attribute="hidden"
 				toggle-value="">
 				<i src="$relativePath/assets/svg/eye.svg"></i>
-			</a>
+			</span>
 		</div>
 		<div class="display:flex align-items:center gap:10px">
 			<select input-query="$next" input-attribute="click-insert-adjacent">
@@ -299,13 +299,13 @@
 				attribute="innerText"
 				attribute-query="iframe;"
 				actions="attributes"> -->
-			<a
-				class="display:flex align-items:center gap:5px"
+			<span
+				class="display:inline-flex align-items:center gap:5px"
 				click-query="$document iframe; $clickedElement"
 				click-value-query="$document .code-container textarea"
 				click-insert-adjacent="afterbegin">
 				<i src="$relativePath/assets/svg/chevron-right.svg"></i>
-			</a>
+			</span>
 		</div>
 	</div>
 </div>
@@ -315,27 +315,38 @@
 		openai="chat.completions.create"
 		openai-key="model"
 		value="gpt-4o-mini"
-		reset="object"
+		reset="false"
 		hidden />
 
 	<input
 		openai="chat.completions.create"
 		openai-key="messages[0].role"
 		value="system"
+		reset="false"
 		hidden />
 	<textarea
 		id="system-instructions"
 		array="ai"
-		object="671e55a2011ac037520805b0"
+		object
 		key="content"
+		filter-limit
 		save="false"
 		openai="chat.completions.create"
 		openai-key="messages[0].content"
+		reset="object"
 		skip-attribute
 		hidden></textarea>
 
-	<previousConversation>
+	<!-- <previousConversation>
 		<input
+			filter-query-key="role"
+			filter-query-value="1"
+			filter-query="$parent textarea"
+			hidden />
+
+		<input
+			filter-query-key="content"
+			filter-query-value="1"
 			filter-query-key="user_id"
 			filter-query-value="$user_id"
 			filter-sort-key="_id"
@@ -343,25 +354,26 @@
 			filter-query="$next"
 			hidden />
 
-		<!-- TODO: Needs to merge with with message array -->
 		<textarea
 			id="messagetest"
 			array="aiConversations"
 			object
-			key="$object"
+			key="{}"
 			save="false"
 			value-type="array"
 			openai="chat.completions.create"
 			openai-key="messages[]"
+			reset="object"
 			skip-attribute
 			hidden></textarea>
-	</previousConversation>
+	</previousConversation> -->
 
 	<input
 		array="aiConversations"
 		object
 		key="user_id"
 		value="$user_id"
+		reset="object"
 		hidden />
 
 	<input
@@ -392,10 +404,9 @@
 		hidden></span>
 
 	<textarea
-		placeholder="Message YellowOracle"
+		placeholder="Message CoCreate"
 		input-query="$parent .userMessage[]"
 		input-attribute="value"
-		input-if="true"
 		rows="1"
 		height="auto"
 		class="messageArea"
@@ -403,7 +414,7 @@
 
 	<button
 		id="send-message"
-		actions="save, click, reset, openai.chat.completions.create, action($document #aiAction)"
+		actions="save, click, openai.chat.completions.create, reset, action($document #aiAction)"
 		click-query="$document #chat-body"
 		click-attribute="observe-value"
 		click-value="bottom">
@@ -434,7 +445,26 @@
 		component
 		key="html"
 		marked
-		marked-code="<div class='code-container'><codearea><textarea type='code' lang='${code.lang}' class='code-editor' value='${code.text}' height='auto' input-query='$next' input-attribute='value' input-events='input, onload' readonly></textarea><iframe class='preview' width='100%' height='auto' hidden></iframe></codearea></div>"></div>
+		marked-code="<div class='code-container'><codearea><textarea type='code' lang='${code.lang}' class='code-editor' value='${code.text}' height='auto' input-query="$next" input-attribute='value'
+            input-events='input, onload' readonly></textarea><iframe class='preview' width='100%' height='auto' hidden></iframe></codearea></div>"></div>
+
 	<!-- <div id="aiContent" component key="content"></div> -->
-	<a id="aiAction" actions="timeout(1000), save, reset"></a>
+	<div id="aiAction" actions="timeout(1000), save, reset"></div>
+</form>
+
+<!-- If no aiConversation execute -->
+<form array="aiConversations" object hidden>
+	<input key="user_id" value="$user_id" />
+	<input key="role" value="assistant" />
+	<span key="html"><p>Hello! How can I assist you today?</p></span>
+	<span key="content">Hello! How can I assist you today?</span>
+	<input
+		key="$length"
+		filter
+		filter-limit="1"
+		input-query="$next"
+		input-attribute="$click"
+		input-if="0"
+		save="false" />
+	<button actions="save"></button>
 </form>
