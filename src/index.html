@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -145,7 +145,6 @@
 		<sidenav
 			id="menuL"
 			class="top:0px left:0px width:300px@lg@xl"
-			path="./"
 			src="./components/sidenav.html"
 			resize-query="$document main, footer"
 			resize-attribute="style"
@@ -155,7 +154,6 @@
 		<main
 			state_id="mainView"
 			src="./home/"
-			path=""
 			state-overwrite
 			state-onstoragechange="false"
 			class="margin-left:0px!important@xs@sm@md"></main>
@@ -163,14 +161,12 @@
 		<!-- Footer -->
 		<footer
 			id="spreadtheword"
-			path="./"
 			src="./components/footer.html"
 			class="margin-left:0px!important@xs@sm@md"></footer>
 
 		<div actions></div>
 		<div
 			src="./components/ai-chat.html"
-			path="./"
 			filter-query-key="name"
 			filter-query-value="Sales Chat"
 			filter-query="#system-instructions"></div>
