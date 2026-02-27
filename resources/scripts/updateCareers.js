@@ -1,9 +1,10 @@
 let config = {
-	dburl: "",
-	openAiKey: ""
+	dburl: process.env.MONGO_URI,
+	openAiKey: process.env.OPENAI_API_KEY
 };
 
 const { MongoClient } = require("mongodb");
+require("dotenv").config();
 
 let openai;
 

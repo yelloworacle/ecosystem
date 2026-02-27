@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/frankpagan/YellowOracle/issues"
   },
-  "homepage": "https://yelloworacle.com/"
+  "homepage": "https://yelloworacle.com/",
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
 }
