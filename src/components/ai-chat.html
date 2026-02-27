@@ -7,7 +7,7 @@
 		bottom: 18px;
 		right: 18px;
 		width: 300px;
-		height: calc(100vh - 80px);
+		max-height: calc(100vh - 80px);
 		border-radius: 10px;
 		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 		overflow: hidden;
@@ -52,11 +52,11 @@
 
 <div id="chat-container" resizable>
 	<div id="chat-header">
-		Chat with YellowOracle
+		Ask Betty (beta)
 		<a
 			click-query="$closest #chat-container"
 			click-attribute="style"
-			click-value="visibility:visible,"
+			click-value="visibility:hidden,"
 			class="float:right font-size:20px color:#000:hover">
 			<i src="$relativePath/assets/svg/times.svg"></i>
 		</a>
