@@ -21,7 +21,7 @@ module.exports = {
 				path: "{{path}}",
 				pathname: "{{pathname}}",
 				"content-type": "{{content-type}}",
-				public: "true"
+				public: true
 			}
 		}
 	]
